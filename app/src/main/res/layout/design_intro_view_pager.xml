@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:elevation="@dimen/_20sdp"
+    android:outlineAmbientShadowColor="#2196F3"
+    android:outlineSpotShadowColor="#2196F3">
+
+
+    <ImageView
+        android:id="@+id/my_featured_image"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
+        android:scaleType="fitXY"
+        android:src="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/slider_background"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/my_featured_image"
+        app:layout_constraintTop_toBottomOf="@+id/the_caption_Title_description"
+        app:srcCompat="@drawable/flag_transparent" />
+
+    <TextView
+        android:id="@+id/my_caption_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:text="The Caption Title"
+        android:textAlignment="center"
+        android:fontFamily="@font/montserrat_semibold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_featured_image"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/the_caption_Title_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="The Caption Title"
+        android:textAlignment="center"
+        android:fontFamily="@font/montserrat_semibold"
+        android:textColor="@color/colorDarkGray"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="@+id/my_caption_title"
+        app:layout_constraintStart_toStartOf="@+id/my_caption_title"
+        app:layout_constraintTop_toBottomOf="@+id/my_caption_title" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

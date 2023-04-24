@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp"
+    tools:context=".ui.fragments.ProfileAboutFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/namePAtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:text="Wasu"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/titlePAtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="New Comer"
+                    app:layout_constraintStart_toStartOf="@+id/namePAtv"
+                    app:layout_constraintTop_toBottomOf="@+id/namePAtv" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profileImgeIv"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_profile"
+                    app:civ_border_color="@color/green"
+                    app:civ_border_width="@dimen/_2sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView6"
+                    app:layout_constraintTop_toTopOf="@+id/namePAtv" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/profileImgeIv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/namePAtv"
+                    app:srcCompat="@drawable/ic_forward" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/editProfilePictv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Edit Profile Picture"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_11sdp" />
+
+            <TextView
+                android:id="@+id/editPersonalDetailstv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Edit Personal Details"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_11sdp" />
+
+            <TextView
+                android:id="@+id/verifyProfiletv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="Verify Your Profile"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/verifyId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_add"
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="Verify My ID"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_11sdp" />
+
+
+            <TextView
+                android:id="@+id/confirmEmailTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+
+                android:drawableLeft="@drawable/ic_add"
+
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="Confirm your email"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_11sdp" />
+
+
+            <TextView
+                android:id="@+id/phoneTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableLeft="@drawable/ic_add"
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="+91 9876543210"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_11sdp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/colorGray_light" />
+
+            <TextView
+                android:id="@+id/aboutYoutv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="About you"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/addAMiniBioTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_add"
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="Add a mini Bio"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_11sdp" />
+
+
+            <TextView
+                android:id="@+id/addMyPreferencesTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableLeft="@drawable/ic_add"
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="Add my Preferences"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_11sdp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/colorGray_light" />
+
+            <TextView
+                android:id="@+id/vehicletv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="Vehicles"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/addVehicleTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:drawableLeft="@drawable/ic_add"
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="Add Vehicles"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_11sdp" />
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/sendTrackingLinkTv"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginTop="@dimen/_10sdp"-->
+            <!--                android:layout_marginBottom="@dimen/_10sdp"-->
+            <!--                android:drawableLeft="@drawable/ic_add"-->
+            <!--                android:drawablePadding="@dimen/_10sdp"-->
+            <!--                android:text="Add Vehicles"-->
+            <!--                android:textColor="@color/green"-->
+            <!--                android:textSize="@dimen/_11sdp"-->
+            <!--                 />-->
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
