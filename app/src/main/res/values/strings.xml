@@ -313,5 +313,13 @@
     <string name="choose_language">Choose Language</string>
     <string name="registration">Registration</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+
+    <!--    for navigation bar-->
+    <string name="search" translatable="false">Search</string>
+    <string name="publish" translatable="false">Publish</string>
+    <string name="your_ride" translatable="false">Your Ride</string>
+    <string name="holiday" translatable="false">Holiday</string>
+    <string name="account" translatable="false">Account</string>
+
 </resources>

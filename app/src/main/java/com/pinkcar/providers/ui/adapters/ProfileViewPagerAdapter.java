@@ -3,6 +3,7 @@ package com.pinkcar.providers.ui.adapters;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.pinkcar.providers.ui.fragments.ProfileAboutFragment;
@@ -16,6 +17,10 @@ public class ProfileViewPagerAdapter extends FragmentStateAdapter {
 
     public ProfileViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
+    }
+
+    public ProfileViewPagerAdapter(FragmentManager childFragmentManager) {
+        super(childFragmentManager.getPrimaryNavigationFragment());
     }
 
     @NonNull

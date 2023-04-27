@@ -69,7 +69,8 @@
                     android:gravity="center|start"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toStartOf="@id/imgSourceClose"
-                    app:layout_constraintStart_toEndOf="@id/llLeftTop">
+                    app:layout_constraintStart_toEndOf="@id/llLeftTop"
+                    tools:ignore="MissingConstraints">
 
                     <TextView
                         android:layout_width="match_parent"

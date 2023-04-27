@@ -1,66 +1,112 @@
 package com.pinkcar.providers.ui.fragments;
 
+import static android.content.Context.NOTIFICATION_SERVICE;
+import static android.content.Intent.getIntent;
+import static androidx.core.content.ContextCompat.getSystemService;
+import static com.facebook.FacebookSdk.getApplicationContext;
+
+import static cn.jzvd.JZUtils.getWindow;
+
+import android.app.Activity;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager2.widget.ViewPager2;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.facebook.FacebookSdk;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.tabs.TabLayout;
 import com.pinkcar.providers.R;
+import com.pinkcar.providers.helper.SharedHelper;
+import com.pinkcar.providers.listeners.Connect;
+import com.pinkcar.providers.ui.activities.Profile;
+import com.pinkcar.providers.ui.adapters.MainActivityViewPagerAdapter;
+import com.pinkcar.providers.utills.Utilities;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SearchFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class SearchFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    // tags used to attach the fragments
+    private static final String TAG_HOME = "home";
+    private static final String TAG_SUMMARY = "summary";
+    private static final String TAG_HELP = "help";
+    private static final int REQUEST_LOCATION = 1450;
+    public static FragmentManager fragmentManager;
+    public static String statustg = "";
+    // index to identify current nav menu item
+    public int navItemIndex = 0;
+    public String CURRENT_TAG = TAG_HOME;
+    Fragment fragment;
+    Activity activity;
+    Context context;
+    Toolbar toolbar;
+    Utilities utils = new Utilities();
+    boolean push = false;
+    GoogleApiClient mGoogleApiClient;
+    DriverMapFragment lFrag;
+    private NavigationView navigationView;
+    private DrawerLayout drawer;
+    private View navHeader;
+    private ImageView imgProfile;
+    private TextView txtName, approvaltxt, tvRate;
+    private ImageView status;
+    // flag to load home fragment when user presses back key
+    private boolean shouldLoadHomeFragOnBackPress = true;
+    private NotificationManager notificationManager;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    // for fraement Change
+    ViewPager2 viewPager;
+    TabLayout tabLayout;
+
+
+    private String[] titles = {"Search", "Publish","Your Ride","Holiday Package","Account"};
+    private int[] tabIcons = {
+            R.drawable.search,
+            R.drawable.publish,
+            R.drawable.bg_car,
+            R.drawable.bn_holiday_package,
+            R.drawable.bn_account
+    };
+    MainActivityViewPagerAdapter viewPagerAdapter;
+
+
 
     public SearchFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SearchFragment newInstance(String param1, String param2) {
-        SearchFragment fragment = new SearchFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        View view =  inflater.inflate(R.layout.fragment_search, container, false);
+
+
+
+
+
+        return view;
     }
 }

@@ -62,9 +62,11 @@ import com.pinkcar.providers.helper.ConnectionHelper;
 import com.pinkcar.providers.helper.CustomDialog;
 import com.pinkcar.providers.helper.SharedHelper;
 import com.pinkcar.providers.helper.URLHelper;
+import com.pinkcar.providers.ui.activities.HomeScreenActivity;
 import com.pinkcar.providers.ui.activities.MainActivity;
 import com.pinkcar.providers.ui.activities.OtpVerification;
 import com.pinkcar.providers.ui.activities.login.ForgotPassword;
+import com.pinkcar.providers.ui.activities.login.LoginActivity;
 import com.pinkcar.providers.ui.activities.login.SignUp;
 import com.pinkcar.providers.utills.Utilities;
 
@@ -783,6 +785,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
             Log.d("Google", "display_name:" + acct.getDisplayName());
             Log.d("Google", "mail:" + acct.getEmail());
             Log.d("Google", "photo:" + acct.getPhotoUrl());
+
 
             new RetrieveTokenTask().execute(acct.getEmail());
         }

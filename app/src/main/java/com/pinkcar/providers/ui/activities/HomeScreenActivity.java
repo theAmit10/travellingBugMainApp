@@ -1,13 +1,14 @@
 package com.pinkcar.providers.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
 import com.pinkcar.providers.R;
 import com.pinkcar.providers.ui.adapters.MainActivityViewPagerAdapter;
 
@@ -17,7 +18,8 @@ public class HomeScreenActivity extends AppCompatActivity {
     TabLayout tabLayout;
 
 
-    private String[] titles = {"Search", "Publish","Your Ride","Holiday","Account"};
+
+    private String[] titles = {"Search", "Publish", "Your Ride", "Holiday", "Account"};
 
     private int[] tabIcons = {
             R.drawable.search,
@@ -33,6 +35,9 @@ public class HomeScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         settingFragmentViewPager();
+
+
+
     }
 
     private void settingFragmentViewPager() {
@@ -50,7 +55,6 @@ public class HomeScreenActivity extends AppCompatActivity {
         tabLayout.getTabAt(2).setText("Your Ride").setIcon(R.drawable.bg_car);
         tabLayout.getTabAt(3).setText("Holiday").setIcon(R.drawable.bn_holiday_package);
         tabLayout.getTabAt(4).setText("Account").setIcon(R.drawable.bn_account);
-
 
 
     }

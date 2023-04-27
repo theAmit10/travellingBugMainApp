@@ -35,6 +35,7 @@
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_40sdp"
         android:text="Skip"
+        android:fontFamily="@font/montserrat_semibold"
         android:textColor="@color/green"
         android:textSize="@dimen/_12sdp"
         android:textStyle="bold"

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        drawable="@drawable/search"
+        text="@string/search" />
+
+    <tab
+        drawable="@drawable/publish"
+        text="@string/publish" />
+
+    <tab
+        drawable="@drawable/bg_car"
+        text="@string/your_ride" />
+
+    <tab
+        drawable="@drawable/bn_holiday_package"
+        text="@string/holiday" />
+
+    <tab
+        drawable="@drawable/bn_account"
+        text="@string/account" />
+</tabs>
+

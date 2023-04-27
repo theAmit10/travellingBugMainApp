@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -33,12 +34,10 @@ import com.pinkcar.providers.ui.activities.OtpVerification;
 import com.pinkcar.providers.helper.CustomDialog;
 import com.pinkcar.providers.helper.SharedHelper;
 import com.pinkcar.providers.helper.URLHelper;
-import com.pinkcar.providers.utills.Utilities;
 import com.google.gson.JsonObject;
 import com.hbb20.CountryCodePicker;
 import com.koushikdutta.ion.Ion;
 
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -66,6 +65,13 @@ public class LoginActivity extends AppCompatActivity {
     private String mobile = "";
     private CustomDialog customDialog;
 
+    @BindView(R.id.ccp)
+    CountryCodePicker ccp;
+    @BindView(R.id.nextIcon)
+    Button nextIcon;
+    @BindView(R.id.mobile_no)
+    EditText mobile_no;
+
     @OnClick(R.id.btnGoogle)
     void btnGoogleClick() {
         System.out.println("google btn clicked wasu");
@@ -87,22 +93,37 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(new Intent(this, ForgotPassword.class));
     }
 
-    @OnClick(R.id.btnLogin)
+    @OnClick(R.id.nextIcon)
     void btnLoginClick() {
-        if (etEmail.getText().toString().equals("") ||
-                etEmail.getText().toString().equalsIgnoreCase(getString(R.string.sample_mail_id))) {
-            displayMessage(getString(R.string.email_validation));
-        } else if (!Utilities.isValidEmail(etEmail.getText().toString())) {
-            displayMessage(getString(R.string.not_valid_email));
-        } else if (etPassword.getText().toString().equals("") ||
-                etPassword.getText().toString()
-                        .equalsIgnoreCase(getString(R.string.password_txt))) {
-            displayMessage(getString(R.string.password_validation));
-        } else if (etPassword.length() < 6) {
-            displayMessage(getString(R.string.password_size));
-        } else {
-            signIn();
+//        if (etEmail.getText().toString().equals("") ||
+//                etEmail.getText().toString().equalsIgnoreCase(getString(R.string.sample_mail_id))) {
+//            displayMessage(getString(R.string.email_validation));
+//        } else if (!Utilities.isValidEmail(etEmail.getText().toString())) {
+//            displayMessage(getString(R.string.not_valid_email));
+//        } else if (etPassword.getText().toString().equals("") ||
+//                etPassword.getText().toString()
+//                        .equalsIgnoreCase(getString(R.string.password_txt))) {
+//            displayMessage(getString(R.string.password_validation));
+//        } else if (etPassword.length() < 6) {
+//            displayMessage(getString(R.string.password_size));
+//        } else {
+//            signIn();
+//        }
+
+        if(mobile_no.getText().toString().equals("")){
+            displayMessage("Enter Mobile Number");
+        }else{
+            String phone = ccp.getSelectedCountryCodeWithPlus() + mobile_no.getText().toString();
+            mobile = phone;
+//            socialJson.addProperty("mobile", mobile);
+            Toast.makeText(this, "Processing ...", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(LoginActivity.this, OtpVerification.class);
+            intent.putExtra("phonenumber", phone);
+            startActivityForResult(intent, OTP_LOGIN);
+
         }
+
+
     }
 
     @SuppressLint("HardwareIds")
@@ -198,7 +219,14 @@ public class LoginActivity extends AppCompatActivity {
                     socialUrl = URLHelper.GOOGLE_LOGIN;
                     loginType = "google";
 
+//                    ########################
+                    // added this  for testing
+//                    SharedHelper.putKey(LoginActivity.this,"loggedIn","true");
+//                    startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
                     phoneLogin();
+
+//                    #########################
+
                 }
                 if (requestCode == FACEBOOK_LOGIN) {
                     data.getStringExtra("userName");
@@ -240,6 +268,7 @@ public class LoginActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.mobileverification);
         dialog.setCancelable(true);
         dialog.show();
+
         ImageView imgBack = dialog.findViewById(R.id.imgBack);
         CountryCodePicker ccp = dialog.findViewById(R.id.ccp);
         ImageButton nextIcon = dialog.findViewById(R.id.nextIcon);

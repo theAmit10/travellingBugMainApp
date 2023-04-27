@@ -105,12 +105,11 @@ public class MainActivity extends AppCompatActivity {
     private boolean shouldLoadHomeFragOnBackPress = true;
     private NotificationManager notificationManager;
 
-    // for fraement Change
+    // for fragment Change
     ViewPager2 viewPager;
     TabLayout tabLayout;
 
-
-    private String[] titles = {"Search", "Publish","Your Ride","Holiday Package","Account"};
+    private String[] titles = {"Search", "Publish", "Your Ride", "Holiday", "Account"};
 
     private int[] tabIcons = {
             R.drawable.search,
@@ -135,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         if (SharedHelper.getKey(context, "login_by").equals("facebook"))
             FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
+
 
         settingFragmentViewPager();
 
@@ -172,16 +172,19 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(viewPagerAdapter);
 
 
-//
         new TabLayoutMediator(tabLayout, viewPager, ((tab, position) -> tab.setIcon(tabIcons[position]))).attach();
 
 
         tabLayout.getTabAt(0).setText("Search").setIcon(R.drawable.search).setTabLabelVisibility(TabLayout.TAB_LABEL_VISIBILITY_LABELED);
         tabLayout.getTabAt(1).setText("Publish").setIcon(R.drawable.publish).setTabLabelVisibility(TabLayout.TAB_LABEL_VISIBILITY_LABELED);
         tabLayout.getTabAt(2).setText("Your Ride").setIcon(R.drawable.bg_car);
-        tabLayout.getTabAt(3).setText("Holiday Package").setIcon(R.drawable.bn_holiday_package);
-        tabLayout.getTabAt(3).setText("Account").setIcon(R.drawable.bn_account);
+        tabLayout.getTabAt(3).setText("Holiday").setIcon(R.drawable.bn_holiday_package);
+        tabLayout.getTabAt(4).setText("Account").setIcon(R.drawable.bn_account);
+
+
     }
+
+
 
     private void findViewById() {
         drawer = findViewById(R.id.drawer_layout);

@@ -32,6 +32,7 @@
             android:layout_marginTop="-40dp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:text="Welcome to Travelling Bug"
+            android:fontFamily="@font/montserrat_semibold"
             android:textColor="@color/black"
             android:textSize="@dimen/_18sdp"
             android:textStyle="bold" />
@@ -42,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_semibold"
             android:text="enter your phone number to continue"
             android:textColor="@color/colorDarkGray"
             android:textSize="@dimen/_10sdp" />
@@ -67,19 +69,28 @@
             <!--            android:textColor="@color/colorDarkGray"-->
             <!--            android:textSize="@dimen/_11sdp" />-->
 
-            <TextView
+
+
+            <FrameLayout
+
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/auth_btn_white_bg"
-                android:padding="@dimen/_10sdp"
-                android:text="+91"
-                android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_14sdp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content">
+
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/ccp"
+                    android:layout_width="@dimen/_68sdp"
+                    android:layout_height="wrap_content"
+                    app:ccp_contentColor="@color/black"
+                    app:ccp_defaultNameCode="eg"
+                    app:ccp_showFlag="true"
+                    app:ccp_showNameCode="false"
+                    app:ccp_showPhoneCode="true"
+                    app:ccp_textSize="@dimen/_10sdp" />
+            </FrameLayout>
 
 
             <EditText
-                android:id="@+id/et_mobile_no"
+                android:id="@+id/mobile_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_2sdp"
@@ -115,6 +126,7 @@
                 android:backgroundTint="@color/colorLightGray"
                 android:padding="@dimen/_10sdp"
                 android:text="OR CONTINUE WITH"
+
                 android:textColor="@color/black"
                 android:textSize="@dimen/_11sdp" />
 
@@ -304,7 +316,7 @@
 
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/nextIcon"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:layout_gravity="bottom"
@@ -312,6 +324,7 @@
         android:background="@drawable/auth_btn_green_bg"
         android:text="Continue"
         android:textAllCaps="false"
+        android:fontFamily="@font/montserrat_semibold"
         android:textColor="@color/white"
         android:textSize="@dimen/_12sdp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -13,38 +13,42 @@ com/pinkcar/providers/helper/SharedHelper.java
  com.pinkcar.providers.helper.SharedHelper
 com/pinkcar/providers/helper/SharedHelperImage.java
  com.pinkcar.providers.helper.SharedHelperImage
+com/pinkcar/providers/fcm/MyBroadcastReceiver.java
+ com.pinkcar.providers.fcm.MyBroadcastReceiver
+com/pinkcar/providers/models/PlacePredictions.java
+ com.pinkcar.providers.models.PlacePredictions
 com/pinkcar/providers/models/Driver.java
  com.pinkcar.providers.models.Driver
  com.pinkcar.providers.models.Driver$1
-com/pinkcar/providers/models/PlacePredictions.java
- com.pinkcar.providers.models.PlacePredictions
 com/pinkcar/providers/helper/DataParser.java
  com.pinkcar.providers.helper.DataParser
-com/pinkcar/providers/models/IntroModel.java
- com.pinkcar.providers.models.IntroModel
+com/pinkcar/providers/listeners/ConnectionChangeListener.java
+ com.wedrive.driver.Listeners.ConnectionChangeListener
 com/pinkcar/providers/models/ChatAppMsgDTO.java
  com.pinkcar.providers.models.ChatAppMsgDTO
-com/pinkcar/providers/models/User.java
- com.pinkcar.providers.models.User
- com.pinkcar.providers.models.User$1
+com/pinkcar/providers/models/IntroModel.java
+ com.pinkcar.providers.models.IntroModel
+com/pinkcar/providers/helper/ConnectionHelper.java
+ com.pinkcar.providers.helper.ConnectionHelper
 com/pinkcar/providers/utills/MyButton.java
  com.pinkcar.providers.utills.MyButton
-com/pinkcar/providers/listeners/Connect.java
- com.pinkcar.providers.listeners.Connect
 com/pinkcar/providers/models/CardDetails.java
  com.pinkcar.providers.models.CardDetails
-com/pinkcar/providers/helper/BitmapWorkerTask.java
- com.pinkcar.providers.helper.BitmapWorkerTask
+com/pinkcar/providers/listeners/Connect.java
+ com.pinkcar.providers.listeners.Connect
 com/pinkcar/providers/utills/MyCheckbox.java
  com.pinkcar.providers.utills.MyCheckbox
-com/pinkcar/providers/utills/FontCache.java
- com.pinkcar.providers.utills.FontCache
+com/pinkcar/providers/models/DocumentItem.java
+ com.pinkcar.providers.models.DocumentItem
+com/pinkcar/providers/helper/BitmapWorkerTask.java
+ com.pinkcar.providers.helper.BitmapWorkerTask
 com/pinkcar/providers/models/DocListItemModel.java
  com.pinkcar.providers.models.DocListItemModel
 com/pinkcar/providers/models/WithdrawAmount.java
  com.pinkcar.providers.models.WithdrawAmount
-com/pinkcar/providers/helper/ConnectionHelper.java
- com.pinkcar.providers.helper.ConnectionHelper
+com/pinkcar/providers/models/User.java
+ com.pinkcar.providers.models.User
+ com.pinkcar.providers.models.User$1
 com/pinkcar/providers/utills/Typefaces.java
  com.pinkcar.providers.utills.Typefaces
 com/pinkcar/providers/helper/VolleyMultipartRequest.java
@@ -54,28 +58,28 @@ com/pinkcar/providers/utills/CustomTypefaceSpan.java
  com.pinkcar.providers.utills.CustomTypefaceSpan
 com/pinkcar/providers/ui/activities/GifImageView.java
  com.pinkcar.providers.ui.activities.GifImageView
-com/pinkcar/providers/chat/PageTransformer.java
- com.pinkcar.providers.chat.PageTransformer
-com/pinkcar/providers/listeners/ConnectionChangeListener.java
- com.wedrive.driver.Listeners.ConnectionChangeListener
-com/pinkcar/providers/fcm/MyBroadcastReceiver.java
- com.pinkcar.providers.fcm.MyBroadcastReceiver
-com/pinkcar/providers/utills/MyBoldTextView.java
- com.pinkcar.providers.utills.MyBoldTextView
-com/pinkcar/providers/helper/BitmapCompletion.java
- com.pinkcar.providers.helper.BitmapCompletion
-com/pinkcar/providers/utills/MyEditText.java
- com.pinkcar.providers.utills.MyEditText
-com/pinkcar/providers/models/PlaceAutoComplete.java
- com.pinkcar.providers.models.PlaceAutoComplete
-com/pinkcar/providers/utills/MyTextView.java
- com.pinkcar.providers.utills.MyTextView
-com/pinkcar/providers/models/DocumentItem.java
- com.pinkcar.providers.models.DocumentItem
-com/pinkcar/providers/utills/Utilities.java
- com.pinkcar.providers.utills.Utilities
 com/pinkcar/providers/models/ChatList.java
  com.pinkcar.providers.models.ChatList
+com/pinkcar/providers/utills/Utilities.java
+ com.pinkcar.providers.utills.Utilities
+com/pinkcar/providers/chat/PageTransformer.java
+ com.pinkcar.providers.chat.PageTransformer
+com/pinkcar/providers/ui/adapters/MainActivityViewPagerAdapter.java
+ com.pinkcar.providers.ui.adapters.MainActivityViewPagerAdapter
+com/pinkcar/providers/utills/MyEditText.java
+ com.pinkcar.providers.utills.MyEditText
+com/pinkcar/providers/helper/BitmapCompletion.java
+ com.pinkcar.providers.helper.BitmapCompletion
+com/pinkcar/providers/utills/MyTextView.java
+ com.pinkcar.providers.utills.MyTextView
+com/pinkcar/providers/models/PlaceAutoComplete.java
+ com.pinkcar.providers.models.PlaceAutoComplete
+com/pinkcar/providers/utills/FontCache.java
+ com.pinkcar.providers.utills.FontCache
+com/pinkcar/providers/utills/MyBoldTextView.java
+ com.pinkcar.providers.utills.MyBoldTextView
+com/pinkcar/providers/ui/adapters/ProfileViewPagerAdapter.java
+ com.pinkcar.providers.ui.adapters.ProfileViewPagerAdapter
 com/pinkcar/providers/helper/AppHelper.java
  com.pinkcar.providers.helper.AppHelper
 com/pinkcar/providers/ui/adapters/IntroAdapter.java
@@ -111,6 +115,8 @@ com/pinkcar/providers/ui/activities/TrackActivity.java
  com.pinkcar.providers.ui.activities.TrackActivity$2
  com.pinkcar.providers.ui.activities.TrackActivity$GeoWebChromeClient
  com.pinkcar.providers.ui.activities.TrackActivity$GeoWebViewClient
+com/pinkcar/providers/ui/activities/TermsAndConditionActivity.java
+ com.pinkcar.providers.ui.activities.TermsAndConditionActivity
 com/pinkcar/providers/ui/adapters/PaymentListAdapter.java
  com.pinkcar.providers.ui.adapters.PaymentListAdapter
  com.pinkcar.providers.ui.adapters.PaymentListAdapter$1
@@ -162,6 +168,9 @@ com/pinkcar/providers/ui/activities/SplashScreen.java
  com.pinkcar.providers.ui.activities.SplashScreen$3
 com/pinkcar/providers/fcm/FCMService.java
  com.pinkcar.providers.fcm.FCMService
+com/pinkcar/providers/ui/activities/ChangeAddressAdtivityOne.java
+ com.pinkcar.providers.ui.activities.ChangeAddressAdtivityOne
+ com.pinkcar.providers.ui.activities.ChangeAddressAdtivityOne$1
 com/pinkcar/providers/ui/activities/SosCallActivity.java
  com.pinkcar.providers.ui.activities.SosCallActivity
 com/pinkcar/providers/ui/activities/CustomGooglePlacesSearch.java
@@ -237,8 +246,8 @@ com/pinkcar/providers/ui/activities/login/LoginActivity.java
  com.pinkcar.providers.ui.activities.login.LoginActivity$1
  com.pinkcar.providers.ui.activities.login.LoginActivity$2
  com.pinkcar.providers.ui.activities.login.LoginActivity$3
-com/pinkcar/providers/ui/adapters/CouponListAdapter.java
- com.pinkcar.providers.ui.adapters.CouponListAdapter
+com/pinkcar/providers/ui/activities/ChangePasswordActivity.java
+ com.pinkcar.providers.ui.activities.ChangePasswordActivity
 com/pinkcar/providers/ui/fragments/PublishFragment.java
  com.pinkcar.providers.ui.fragments.PublishFragment
 com/pinkcar/providers/ui/activities/CouponActivity.java
@@ -259,12 +268,12 @@ com/pinkcar/providers/ui/activities/login/SignUp.java
  com.pinkcar.providers.ui.activities.login.SignUp$3
  com.pinkcar.providers.ui.activities.login.SignUp$4
  com.pinkcar.providers.ui.activities.login.SignUp$5
+com/pinkcar/providers/ui/activities/ChangeAddressAdtivityTwo.java
+ com.pinkcar.providers.ui.activities.ChangeAddressAdtivityTwo
 com/pinkcar/providers/ui/activities/FavouritePlaceSearch.java
  com.pinkcar.providers.ui.activities.FavouritePlaceSearch
  com.pinkcar.providers.ui.activities.FavouritePlaceSearch$1
  com.pinkcar.providers.ui.activities.FavouritePlaceSearch$2
-com/pinkcar/providers/ui/adapters/ProfileViewPagerAdapter.java
- com.pinkcar.providers.ui.adapters.ProfileViewPagerAdapter
 com/pinkcar/providers/ui/activities/EditProfile.java
  com.pinkcar.providers.ui.activities.EditProfile
  com.pinkcar.providers.ui.activities.EditProfile$1
@@ -290,6 +299,10 @@ com/pinkcar/providers/ui/activities/UserReview.java
  com.pinkcar.providers.ui.activities.UserReview$PostAdapter$MyViewHolder
 com/pinkcar/providers/ui/fragments/ProfileAccountFragment.java
  com.pinkcar.providers.ui.fragments.ProfileAccountFragment
+ com.pinkcar.providers.ui.fragments.ProfileAccountFragment$1
+ com.pinkcar.providers.ui.fragments.ProfileAccountFragment$2
+ com.pinkcar.providers.ui.fragments.ProfileAccountFragment$3
+ com.pinkcar.providers.ui.fragments.ProfileAccountFragment$4
 com/pinkcar/providers/ui/activities/PrivacyPolicyActivity.java
  com.pinkcar.providers.ui.activities.PrivacyPolicyActivity
 com/pinkcar/providers/ui/fragments/SearchFragment.java
@@ -337,13 +350,8 @@ com/pinkcar/providers/ui/fragments/SummaryFragment.java
  com.pinkcar.providers.ui.fragments.SummaryFragment
  com.pinkcar.providers.ui.fragments.SummaryFragment$1
  com.pinkcar.providers.ui.fragments.SummaryFragment$2
-com/pinkcar/providers/ui/activities/DocumentStatus.java
- com.pinkcar.providers.ui.activities.DocumentStatus
- com.pinkcar.providers.ui.activities.DocumentStatus$1
- com.pinkcar.providers.ui.activities.DocumentStatus$2
- com.pinkcar.providers.ui.activities.DocumentStatus$3
- com.pinkcar.providers.ui.activities.DocumentStatus$PostAdapter
- com.pinkcar.providers.ui.activities.DocumentStatus$PostAdapter$MyViewHolder
+com/pinkcar/providers/ui/fragments/AccoutFragment.java
+ com.pinkcar.providers.ui.fragments.AccoutFragment
 com/pinkcar/providers/ui/fragments/PastTrips.java
  com.pinkcar.providers.ui.fragments.PastTrips
  com.pinkcar.providers.ui.fragments.PastTrips$1
@@ -355,13 +363,20 @@ com/pinkcar/providers/ui/adapters/ChatAppMsgAdapter.java
 com/pinkcar/providers/utills/ExpandableTextView.java
  com.pinkcar.providers.utills.ExpandableTextView
  com.pinkcar.providers.utills.ExpandableTextView$1
+com/pinkcar/providers/ui/activities/HelpActivity.java
+ com.pinkcar.providers.ui.activities.HelpActivity
 com/pinkcar/providers/ui/activities/IntroScreen.java
  com.pinkcar.providers.ui.activities.IntroScreen
  com.pinkcar.providers.ui.activities.IntroScreen$1
  com.pinkcar.providers.ui.activities.IntroScreen$2
  com.pinkcar.providers.ui.activities.IntroScreen$The_slide_timer
  com.pinkcar.providers.ui.activities.IntroScreen$The_slide_timer$1
-com/pinkcar/providers/ui/fragments/AccoutFragment.java
- com.pinkcar.providers.ui.fragments.AccoutFragment
-com/pinkcar/providers/ui/adapters/MainActivityViewPagerAdapter.java
- com.pinkcar.providers.ui.adapters.MainActivityViewPagerAdapter
+com/pinkcar/providers/ui/adapters/CouponListAdapter.java
+ com.pinkcar.providers.ui.adapters.CouponListAdapter
+com/pinkcar/providers/ui/activities/DocumentStatus.java
+ com.pinkcar.providers.ui.activities.DocumentStatus
+ com.pinkcar.providers.ui.activities.DocumentStatus$1
+ com.pinkcar.providers.ui.activities.DocumentStatus$2
+ com.pinkcar.providers.ui.activities.DocumentStatus$3
+ com.pinkcar.providers.ui.activities.DocumentStatus$PostAdapter
+ com.pinkcar.providers.ui.activities.DocumentStatus$PostAdapter$MyViewHolder

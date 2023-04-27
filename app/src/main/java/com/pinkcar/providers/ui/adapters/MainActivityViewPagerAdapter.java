@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.pinkcar.providers.ui.fragments.AccoutFragment;
+import com.pinkcar.providers.ui.fragments.DriverMapFragment;
 import com.pinkcar.providers.ui.fragments.HolidayPackageFragment;
 import com.pinkcar.providers.ui.fragments.PublishFragment;
 import com.pinkcar.providers.ui.fragments.SearchFragment;
@@ -26,7 +27,7 @@ public class MainActivityViewPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new SearchFragment();
+                return new DriverMapFragment();
             case 1:
                 return new PublishFragment();
             case 2:

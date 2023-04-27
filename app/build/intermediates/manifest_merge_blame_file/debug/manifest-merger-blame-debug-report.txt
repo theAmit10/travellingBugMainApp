@@ -93,7 +93,7 @@
 44-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:26:22-107
 45
 46    <application
-46-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:27:5-290:19
+46-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:27:5-306:19
 47        android:name="com.pinkcar.providers.ClassLuxApp"
 47-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:28:9-36
 48        android:allowBackup="false"
@@ -107,923 +107,953 @@
 52-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:31:9-42
 53        android:hardwareAccelerated="true"
 53-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:32:9-43
-54        android:icon="@drawable/app_logo"
-54-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:33:9-42
+54        android:icon="@drawable/app_logo_org"
+54-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:33:9-46
 55        android:label="@string/app_name"
 55-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:34:9-41
 56        android:largeHeap="true"
 56-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:35:9-33
 57        android:networkSecurityConfig="@xml/network_security_config"
 57-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:36:9-69
-58        android:roundIcon="@drawable/app_logo"
-58-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:37:9-47
+58        android:roundIcon="@drawable/app_logo_org"
+58-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:37:9-51
 59        android:supportsRtl="true"
 59-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:38:9-35
 60        android:testOnly="true"
 61        android:theme="@style/AppTheme" >
 61-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:39:9-40
 62        <activity
-62-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:42:9-50:20
-63            android:name="com.pinkcar.providers.ui.activities.HomeScreenActivity"
-63-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:43:13-61
-64            android:exported="true" >
-64-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:44:13-36
-65            <intent-filter>
-65-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:45:13-49:29
-66                <action android:name="android.intent.action.MAIN" />
-66-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:46:17-69
-66-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:46:25-66
-67
-68                <category android:name="android.intent.category.LAUNCHER" />
-68-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:48:17-77
-68-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:48:27-74
-69            </intent-filter>
-70        </activity>
+62-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:42:9-44:40
+63            android:name="com.pinkcar.providers.ui.activities.HelpActivity"
+63-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:43:13-55
+64            android:exported="false" />
+64-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:44:13-37
+65        <activity
+65-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:45:9-47:40
+66            android:name="com.pinkcar.providers.ui.activities.TermsAndConditionActivity"
+66-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:46:13-68
+67            android:exported="false" />
+67-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:47:13-37
+68        <activity
+68-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:48:9-50:40
+69            android:name="com.pinkcar.providers.ui.activities.ChangePasswordActivity"
+69-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:49:13-65
+70            android:exported="false" />
+70-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:50:13-37
 71        <activity
-71-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:51:9-54:59
-72            android:name="com.pinkcar.providers.ui.activities.IntroScreen"
-72-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:52:13-54
-73            android:exported="false"
+71-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:51:9-53:40
+72            android:name="com.pinkcar.providers.ui.activities.ChangeAddressAdtivityTwo"
+72-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:52:13-67
+73            android:exported="false" />
 73-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:53:13-37
-74            android:theme="@style/AppTheme.NoActionBar" />
-74-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:54:13-56
-75        <activity
-75-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:55:9-59:59
-76            android:name="com.pinkcar.providers.ui.activities.login.IntroActivity"
-76-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:56:13-62
-77            android:configChanges="locale|orientation"
-77-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:57:13-55
-78            android:screenOrientation="portrait"
-78-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:58:13-49
-79            android:theme="@style/AppTheme.NoActionBar" />
-79-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:59:13-56
-80        <activity
-80-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:60:9-64:59
-81            android:name="com.pinkcar.providers.ui.activities.login.LoginActivity"
-81-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:61:13-62
-82            android:configChanges="locale|orientation"
-82-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:62:13-55
-83            android:screenOrientation="portrait"
-83-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:63:13-49
+74        <activity
+74-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:54:9-56:40
+75            android:name="com.pinkcar.providers.ui.activities.ChangeAddressAdtivityOne"
+75-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:55:13-67
+76            android:exported="false" />
+76-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:56:13-37
+77        <activity
+77-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:57:9-61:20
+78            android:name="com.pinkcar.providers.ui.activities.HomeScreenActivity"
+78-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:58:13-61
+79            android:exported="true" >
+79-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:59:13-36
+80        </activity>
+81        <activity
+81-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:62:9-65:59
+82            android:name="com.pinkcar.providers.ui.activities.IntroScreen"
+82-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:63:13-54
+83            android:exported="false"
+83-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:64:13-37
 84            android:theme="@style/AppTheme.NoActionBar" />
-84-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:64:13-56
+84-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:65:13-56
 85        <activity
-85-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:65:9-68:78
-86            android:name="com.pinkcar.providers.ui.activities.login.FaceBookLoginActivity"
-86-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:66:13-70
-87            android:screenOrientation="portrait"
-87-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:67:13-49
-88            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
-88-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:68:13-75
-89        <activity
-89-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:69:9-72:78
-90            android:name="com.pinkcar.providers.ui.activities.login.GoogleLoginActivity"
-90-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:70:13-68
-91            android:screenOrientation="portrait"
-91-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:71:13-49
-92            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
-92-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:72:13-75
-93        <activity
-93-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:73:9-83:20
-94            android:name="com.pinkcar.providers.ui.activities.NotificationTab"
-94-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:74:13-58
-95            android:configChanges="orientation|keyboardHidden|screenSize"
-95-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:75:13-74
-96            android:exported="true"
-96-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:76:13-36
-97            android:theme="@style/AppTheme.NoActionBar" >
-97-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:77:13-56
-98            <intent-filter>
-98-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:78:13-82:29
-99                <action android:name="com.quickridejadriver.providers.TARGETNOTIFICATION" />
-99-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:79:17-93
-99-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:79:25-90
-100
-101                <category android:name="android.intent.category.DEFAULT" />
-101-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:17-76
-101-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:27-73
-102            </intent-filter>
-103        </activity>
-104        <activity android:name="com.pinkcar.providers.ui.activities.DocUploadActivity" />
-104-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:84:9-69
-104-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:84:19-66
-105
-106        <uses-library
-106-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:86:9-88:40
-107            android:name="org.apache.http.legacy"
-107-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:87:13-50
-108            android:required="false" />
-108-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:88:13-37
-109
-110        <activity
-110-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:90:9-92:59
-111            android:name="com.pinkcar.providers.ui.activities.WithdrawActivity"
-111-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:91:13-59
-112            android:theme="@style/AppTheme.NoActionBar" />
-112-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:13-56
-113        <activity
-113-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:93:9-95:59
-114            android:name="com.pinkcar.providers.ui.activities.OtpVerification"
-114-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:94:13-58
-115            android:theme="@style/AppTheme.NoActionBar" />
-115-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:95:13-56
-116        <activity
-116-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:96:9-100:67
-117            android:name="com.pinkcar.providers.ui.activities.WithdrawAmountActivity"
-117-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:97:13-65
-118            android:screenOrientation="portrait"
-118-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:98:13-49
-119            android:theme="@style/AppTheme.NoActionBar"
-119-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:99:13-56
-120            android:windowSoftInputMode="stateHidden|adjustPan" />
-120-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:100:13-64
-121        <activity android:name="com.pinkcar.providers.ui.activities.DocumentStatus" />
-121-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:101:9-66
-121-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:101:19-63
-122        <activity
-122-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:102:9-105:68
-123            android:name="com.pinkcar.providers.ui.activities.SplashScreen"
-123-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:103:13-55
-124            android:exported="true"
-124-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:104:13-36
+85-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:66:9-70:59
+86            android:name="com.pinkcar.providers.ui.activities.login.IntroActivity"
+86-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:67:13-62
+87            android:configChanges="locale|orientation"
+87-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:68:13-55
+88            android:screenOrientation="portrait"
+88-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:69:13-49
+89            android:theme="@style/AppTheme.NoActionBar" />
+89-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:70:13-56
+90        <activity
+90-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:71:9-75:59
+91            android:name="com.pinkcar.providers.ui.activities.login.LoginActivity"
+91-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:72:13-62
+92            android:configChanges="locale|orientation"
+92-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:73:13-55
+93            android:screenOrientation="portrait"
+93-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:74:13-49
+94            android:theme="@style/AppTheme.NoActionBar" />
+94-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:75:13-56
+95        <activity
+95-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:76:9-79:78
+96            android:name="com.pinkcar.providers.ui.activities.login.FaceBookLoginActivity"
+96-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:77:13-70
+97            android:screenOrientation="portrait"
+97-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:78:13-49
+98            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
+98-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:79:13-75
+99        <activity
+99-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:80:9-83:78
+100            android:name="com.pinkcar.providers.ui.activities.login.GoogleLoginActivity"
+100-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:13-68
+101            android:screenOrientation="portrait"
+101-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:82:13-49
+102            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
+102-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:83:13-75
+103        <activity
+103-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:84:9-94:20
+104            android:name="com.pinkcar.providers.ui.activities.NotificationTab"
+104-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:85:13-58
+105            android:configChanges="orientation|keyboardHidden|screenSize"
+105-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:86:13-74
+106            android:exported="true"
+106-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:87:13-36
+107            android:theme="@style/AppTheme.NoActionBar" >
+107-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:88:13-56
+108            <intent-filter>
+108-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:89:13-93:29
+109                <action android:name="com.quickridejadriver.providers.TARGETNOTIFICATION" />
+109-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:90:17-93
+109-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:90:25-90
+110
+111                <category android:name="android.intent.category.DEFAULT" />
+111-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:17-76
+111-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:27-73
+112            </intent-filter>
+113        </activity>
+114        <activity android:name="com.pinkcar.providers.ui.activities.DocUploadActivity" />
+114-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:95:9-69
+114-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:95:19-66
+115
+116        <uses-library
+116-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:97:9-99:40
+117            android:name="org.apache.http.legacy"
+117-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:98:13-50
+118            android:required="false" />
+118-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:99:13-37
+119
+120        <activity
+120-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:101:9-103:59
+121            android:name="com.pinkcar.providers.ui.activities.WithdrawActivity"
+121-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:102:13-59
+122            android:theme="@style/AppTheme.NoActionBar" />
+122-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:103:13-56
+123        <activity
+123-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:104:9-106:59
+124            android:name="com.pinkcar.providers.ui.activities.OtpVerification"
+124-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:105:13-58
 125            android:theme="@style/AppTheme.NoActionBar" />
-125-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:105:13-56
+125-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:106:13-56
 126        <activity
-126-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:106:9-108:59
-127            android:name="com.pinkcar.providers.Login"
-127-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:107:13-34
-128            android:theme="@style/AppTheme.NoActionBar" />
-128-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:108:13-56
-129        <activity
-129-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:109:9-111:59
-130            android:name="com.pinkcar.providers.ui.activities.FullImage"
-130-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:110:13-52
-131            android:theme="@style/AppTheme.NoActionBar" />
-131-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:111:13-56
+126-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:107:9-111:67
+127            android:name="com.pinkcar.providers.ui.activities.WithdrawAmountActivity"
+127-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:108:13-65
+128            android:screenOrientation="portrait"
+128-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:109:13-49
+129            android:theme="@style/AppTheme.NoActionBar"
+129-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:110:13-56
+130            android:windowSoftInputMode="stateHidden|adjustPan" />
+130-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:111:13-64
+131        <activity android:name="com.pinkcar.providers.ui.activities.DocumentStatus" />
+131-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:112:9-66
+131-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:112:19-63
 132        <activity
-132-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:112:9-114:59
-133            android:name="com.pinkcar.providers.ui.activities.login.SignUp"
-133-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:113:13-55
-134            android:theme="@style/AppTheme.NoActionBar" />
-134-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:114:13-56
-135        <activity
-135-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:115:9-119:58
-136            android:name="com.pinkcar.providers.chat.UserChatActivity"
-136-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:116:13-50
-137            android:screenOrientation="portrait"
-137-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:117:13-49
-138            android:theme="@style/AppTheme.NoActionBar"
-138-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:118:13-56
-139            android:windowSoftInputMode="adjustResize" />
-139-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:119:13-55
-140        <activity
-140-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:120:9-123:59
-141            android:name="com.pinkcar.providers.ui.activities.UserReview"
-141-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:121:13-53
-142            android:screenOrientation="portrait"
-142-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:122:13-49
-143            android:theme="@style/AppTheme.NoActionBar" />
-143-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:123:13-56
-144        <activity
-144-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:124:9-127:59
-145            android:name="com.pinkcar.providers.ui.activities.login.ForgotPassword"
-145-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:125:13-63
-146            android:screenOrientation="portrait"
-146-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:126:13-49
+132-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:113:9-123:20
+133            android:name="com.pinkcar.providers.ui.activities.SplashScreen"
+133-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:114:13-55
+134            android:exported="true"
+134-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:115:13-36
+135            android:theme="@style/AppTheme.NoActionBar" >
+135-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:116:13-56
+136            <intent-filter>
+136-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:117:13-121:29
+137                <action android:name="android.intent.action.MAIN" />
+137-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:118:17-69
+137-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:118:25-66
+138
+139                <category android:name="android.intent.category.LAUNCHER" />
+139-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:120:17-77
+139-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:120:27-74
+140            </intent-filter>
+141        </activity>
+142        <activity
+142-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:124:9-126:59
+143            android:name="com.pinkcar.providers.Login"
+143-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:125:13-34
+144            android:theme="@style/AppTheme.NoActionBar" />
+144-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:126:13-56
+145        <activity
+145-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:127:9-129:59
+146            android:name="com.pinkcar.providers.ui.activities.FullImage"
+146-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:128:13-52
 147            android:theme="@style/AppTheme.NoActionBar" />
-147-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:127:13-56
-148
-149        <meta-data
-149-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:129:9-131:54
-150            android:name="com.google.android.geo.API_KEY"
-150-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:130:13-58
-151            android:value="@string/google_map_api" />
-151-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:131:13-51
-152
-153        <activity
-153-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:133:9-140:20
-154            android:name="com.pinkcar.providers.ui.activities.MainActivity"
-154-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:134:13-55
-155            android:exported="true"
-155-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:135:13-36
-156            android:label="@string/app_name"
-156-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:136:13-45
-157            android:theme="@style/AppTheme.NoActionBar"
-157-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:137:13-56
-158            android:windowSoftInputMode="adjustResize" >
-158-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:138:13-55
-159        </activity>
+147-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:129:13-56
+148        <activity
+148-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:130:9-132:59
+149            android:name="com.pinkcar.providers.ui.activities.login.SignUp"
+149-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:131:13-55
+150            android:theme="@style/AppTheme.NoActionBar" />
+150-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:132:13-56
+151        <activity
+151-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:133:9-137:58
+152            android:name="com.pinkcar.providers.chat.UserChatActivity"
+152-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:134:13-50
+153            android:screenOrientation="portrait"
+153-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:135:13-49
+154            android:theme="@style/AppTheme.NoActionBar"
+154-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:136:13-56
+155            android:windowSoftInputMode="adjustResize" />
+155-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:137:13-55
+156        <activity
+156-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:138:9-141:59
+157            android:name="com.pinkcar.providers.ui.activities.UserReview"
+157-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:139:13-53
+158            android:screenOrientation="portrait"
+158-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:140:13-49
+159            android:theme="@style/AppTheme.NoActionBar" />
+159-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:141:13-56
 160        <activity
-160-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:141:9-146:57
-161            android:name="com.pinkcar.providers.ui.activities.EditProfile"
-161-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:142:13-54
-162            android:label="@string/app_name"
-162-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:143:13-45
-163            android:screenOrientation="portrait"
-163-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:144:13-49
-164            android:theme="@style/AppTheme.NoActionBar"
-164-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:145:13-56
-165            android:windowSoftInputMode="stateHidden" />
-165-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:146:13-54
-166        <activity
-166-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:147:9-152:57
-167            android:name="com.pinkcar.providers.ui.activities.ShowProfile"
-167-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:148:13-54
-168            android:label="@string/app_name"
-168-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:149:13-45
-169            android:screenOrientation="portrait"
-169-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:150:13-49
-170            android:theme="@style/AppTheme.NoActionBar"
-170-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:151:13-56
-171            android:windowSoftInputMode="stateHidden" />
-171-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:152:13-54
-172        <activity
-172-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:153:9-158:58
-173            android:name="com.pinkcar.providers.ui.activities.HistoryDetails"
-173-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:154:13-57
-174            android:label="@string/app_name"
-174-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:155:13-45
-175            android:screenOrientation="portrait"
-175-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:156:13-49
-176            android:theme="@style/AppTheme.NoActionBar"
-176-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:157:13-56
-177            android:windowSoftInputMode="adjustResize" />
-177-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:158:13-55
-178        <activity
-178-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:159:9-162:52
-179            android:name="com.pinkcar.providers.ui.activities.HistoryActivity"
-179-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:160:13-58
-180            android:label="History"
-180-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:161:13-36
-181            android:screenOrientation="portrait" />
-181-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:162:13-49
-182        <activity
-182-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:163:9-166:57
-183            android:name="com.pinkcar.providers.ui.activities.CouponActivity"
-183-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:164:13-57
-184            android:label="Coupon"
-184-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:165:13-35
-185            android:windowSoftInputMode="stateHidden" />
-185-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:166:13-54
-186        <activity
-186-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:167:9-172:58
-187            android:name="com.pinkcar.providers.ui.activities.login.ChangePassword"
-187-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:168:13-63
-188            android:label="@string/app_name"
-188-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:169:13-45
-189            android:screenOrientation="portrait"
-189-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:170:13-49
-190            android:theme="@style/AppTheme.NoActionBar"
-190-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:171:13-56
-191            android:windowSoftInputMode="adjustResize" />
-191-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:172:13-55
-192        <activity
-192-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:173:9-178:58
-193            android:name="com.pinkcar.providers.ui.activities.CustomGooglePlacesSearch"
-193-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:174:13-67
-194            android:label="@string/app_name"
-194-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:175:13-45
-195            android:screenOrientation="portrait"
-195-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:176:13-49
-196            android:theme="@style/AppTheme.NoActionBar"
-196-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:177:13-56
-197            android:windowSoftInputMode="adjustResize" />
-197-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:178:13-55
-198
-199        <service
-199-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:180:9-186:19
-200            android:name="com.pinkcar.providers.fcm.FCMService"
-200-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:181:13-43
-201            android:exported="true" >
-201-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:182:13-36
-202            <intent-filter>
-202-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:183:13-185:29
-203                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-203-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:184:17-78
-203-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:184:25-75
-204            </intent-filter>
-205        </service>
-206
-207        <meta-data
-207-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:188:9-190:71
-208            android:name="com.google.firebase.messaging.default_notification_channel_id"
-208-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:189:13-89
-209            android:value="@string/default_notification_channel_id" />
-209-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:190:13-68
-210
-211        <receiver
-211-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:192:9-194:39
-212            android:name="com.pinkcar.providers.fcm.MyBroadcastReceiver"
-212-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:193:13-52
-213            android:exported="true" />
-213-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:194:13-36
-214
-215        <meta-data
-215-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:196:9-198:48
-216            android:name="com.facebook.accountkit.ApplicationName"
-216-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:197:13-67
-217            android:value="@string/app_name" />
-217-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:198:13-45
-218        <meta-data
-218-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:199:9-201:55
-219            android:name="com.facebook.sdk.ApplicationId"
-219-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:200:13-58
-220            android:value="@string/facebook_app_id" />
-220-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:201:13-52
+160-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:142:9-145:59
+161            android:name="com.pinkcar.providers.ui.activities.login.ForgotPassword"
+161-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:143:13-63
+162            android:screenOrientation="portrait"
+162-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:144:13-49
+163            android:theme="@style/AppTheme.NoActionBar" />
+163-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:145:13-56
+164
+165        <meta-data
+165-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:147:9-149:54
+166            android:name="com.google.android.geo.API_KEY"
+166-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:148:13-58
+167            android:value="@string/google_map_api" />
+167-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:149:13-51
+168
+169        <activity
+169-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:151:9-156:58
+170            android:name="com.pinkcar.providers.ui.activities.MainActivity"
+170-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:152:13-55
+171            android:exported="true"
+171-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:153:13-36
+172            android:label="@string/app_name"
+172-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:154:13-45
+173            android:theme="@style/AppTheme.NoActionBar"
+173-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:155:13-56
+174            android:windowSoftInputMode="adjustResize" />
+174-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:156:13-55
+175        <activity
+175-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:157:9-162:57
+176            android:name="com.pinkcar.providers.ui.activities.EditProfile"
+176-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:158:13-54
+177            android:label="@string/app_name"
+177-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:159:13-45
+178            android:screenOrientation="portrait"
+178-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:160:13-49
+179            android:theme="@style/AppTheme.NoActionBar"
+179-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:161:13-56
+180            android:windowSoftInputMode="stateHidden" />
+180-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:162:13-54
+181        <activity
+181-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:163:9-168:57
+182            android:name="com.pinkcar.providers.ui.activities.ShowProfile"
+182-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:164:13-54
+183            android:label="@string/app_name"
+183-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:165:13-45
+184            android:screenOrientation="portrait"
+184-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:166:13-49
+185            android:theme="@style/AppTheme.NoActionBar"
+185-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:167:13-56
+186            android:windowSoftInputMode="stateHidden" />
+186-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:168:13-54
+187        <activity
+187-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:169:9-174:58
+188            android:name="com.pinkcar.providers.ui.activities.HistoryDetails"
+188-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:170:13-57
+189            android:label="@string/app_name"
+189-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:171:13-45
+190            android:screenOrientation="portrait"
+190-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:172:13-49
+191            android:theme="@style/AppTheme.NoActionBar"
+191-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:173:13-56
+192            android:windowSoftInputMode="adjustResize" />
+192-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:174:13-55
+193        <activity
+193-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:175:9-178:52
+194            android:name="com.pinkcar.providers.ui.activities.HistoryActivity"
+194-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:176:13-58
+195            android:label="History"
+195-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:177:13-36
+196            android:screenOrientation="portrait" />
+196-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:178:13-49
+197        <activity
+197-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:179:9-182:57
+198            android:name="com.pinkcar.providers.ui.activities.CouponActivity"
+198-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:180:13-57
+199            android:label="Coupon"
+199-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:181:13-35
+200            android:windowSoftInputMode="stateHidden" />
+200-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:182:13-54
+201        <activity
+201-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:183:9-188:58
+202            android:name="com.pinkcar.providers.ui.activities.login.ChangePassword"
+202-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:184:13-63
+203            android:label="@string/app_name"
+203-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:185:13-45
+204            android:screenOrientation="portrait"
+204-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:186:13-49
+205            android:theme="@style/AppTheme.NoActionBar"
+205-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:187:13-56
+206            android:windowSoftInputMode="adjustResize" />
+206-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:188:13-55
+207        <activity
+207-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:189:9-194:58
+208            android:name="com.pinkcar.providers.ui.activities.CustomGooglePlacesSearch"
+208-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:190:13-67
+209            android:label="@string/app_name"
+209-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:191:13-45
+210            android:screenOrientation="portrait"
+210-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:192:13-49
+211            android:theme="@style/AppTheme.NoActionBar"
+211-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:193:13-56
+212            android:windowSoftInputMode="adjustResize" />
+212-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:194:13-55
+213
+214        <service
+214-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:196:9-202:19
+215            android:name="com.pinkcar.providers.fcm.FCMService"
+215-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:197:13-43
+216            android:exported="true" >
+216-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:198:13-36
+217            <intent-filter>
+217-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:199:13-201:29
+218                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+218-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:200:17-78
+218-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:200:25-75
+219            </intent-filter>
+220        </service>
 221
-222        <activity
-222-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:203:9-206:48
-223            android:name="com.facebook.FacebookActivity"
-223-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:204:13-57
-224            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-224-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:205:13-96
-225            android:label="@string/app_name"
-225-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:206:13-45
-226            android:theme="@style/com_facebook_activity_theme" />
-226-->[com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:32:13-63
-227        <activity
-227-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:207:9-220:20
-228            android:name="com.facebook.CustomTabActivity"
-228-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:208:13-58
-229            android:exported="true" >
-229-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:209:13-36
-230            <intent-filter>
-230-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:210:13-219:29
-231                <action android:name="android.intent.action.VIEW" />
-231-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:211:17-69
-231-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:211:25-66
-232
-233                <category android:name="android.intent.category.DEFAULT" />
-233-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:17-76
-233-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:27-73
-234                <category android:name="android.intent.category.BROWSABLE" />
-234-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:214:17-78
-234-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:214:27-75
-235
-236                <data android:scheme="@string/fb_login_protocol_scheme" />
-236-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:216:17-218:55
-236-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:217:21-70
-237            </intent-filter>
-238        </activity>
-239        <activity
-239-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:221:9-225:59
-240            android:name="com.pinkcar.providers.ui.activities.SosCallActivity"
-240-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:222:13-58
-241            android:hardwareAccelerated="false"
-241-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:13-48
-242            android:screenOrientation="portrait"
-242-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:224:13-49
-243            android:theme="@style/AppTheme.NoActionBar" />
-243-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:225:13-56
-244        <activity
-244-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:226:9-230:59
-245            android:name="com.pinkcar.providers.ui.activities.ComplaintsAcivity"
-245-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:227:13-60
-246            android:hardwareAccelerated="false"
-246-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:228:13-48
-247            android:screenOrientation="portrait"
-247-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:229:13-49
-248            android:theme="@style/AppTheme.NoActionBar" />
-248-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:230:13-56
-249        <activity
-249-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:231:9-234:59
-250            android:name="com.pinkcar.providers.ui.activities.LegalActivity"
-250-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:232:13-56
-251            android:hardwareAccelerated="false"
-251-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:233:13-48
-252            android:theme="@style/AppTheme.NoActionBar" />
-252-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:234:13-56
-253        <activity
-253-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:235:9-239:59
-254            android:name="com.pinkcar.providers.ui.activities.TermsOfUseActivity"
-254-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:236:13-61
-255            android:hardwareAccelerated="false"
-255-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:237:13-48
-256            android:screenOrientation="portrait"
-256-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:238:13-49
-257            android:theme="@style/AppTheme.NoActionBar" />
-257-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:239:13-56
-258        <activity
-258-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:240:9-244:59
-259            android:name="com.pinkcar.providers.ui.activities.PrivacyPolicyActivity"
-259-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:241:13-64
-260            android:hardwareAccelerated="false"
-260-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:242:13-48
-261            android:screenOrientation="portrait"
-261-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:243:13-49
-262            android:theme="@style/AppTheme.NoActionBar" />
-262-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:244:13-56
-263        <activity
-263-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:245:9-249:59
-264            android:name="com.pinkcar.providers.ui.activities.UpdateProfile"
-264-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:246:13-56
-265            android:hardwareAccelerated="false"
-265-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:247:13-48
-266            android:screenOrientation="portrait"
-266-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:248:13-49
+222        <meta-data
+222-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:204:9-206:71
+223            android:name="com.google.firebase.messaging.default_notification_channel_id"
+223-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:205:13-89
+224            android:value="@string/default_notification_channel_id" />
+224-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:206:13-68
+225
+226        <receiver
+226-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:208:9-210:39
+227            android:name="com.pinkcar.providers.fcm.MyBroadcastReceiver"
+227-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:209:13-52
+228            android:exported="true" />
+228-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:210:13-36
+229
+230        <meta-data
+230-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:212:9-214:48
+231            android:name="com.facebook.accountkit.ApplicationName"
+231-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:213:13-67
+232            android:value="@string/app_name" />
+232-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:214:13-45
+233        <meta-data
+233-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:215:9-217:55
+234            android:name="com.facebook.sdk.ApplicationId"
+234-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:216:13-58
+235            android:value="@string/facebook_app_id" />
+235-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:217:13-52
+236
+237        <activity
+237-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:9-222:48
+238            android:name="com.facebook.FacebookActivity"
+238-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:220:13-57
+239            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+239-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:221:13-96
+240            android:label="@string/app_name"
+240-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:222:13-45
+241            android:theme="@style/com_facebook_activity_theme" />
+241-->[com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:32:13-63
+242        <activity
+242-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:9-236:20
+243            android:name="com.facebook.CustomTabActivity"
+243-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:224:13-58
+244            android:exported="true" >
+244-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:225:13-36
+245            <intent-filter>
+245-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:226:13-235:29
+246                <action android:name="android.intent.action.VIEW" />
+246-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:227:17-69
+246-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:227:25-66
+247
+248                <category android:name="android.intent.category.DEFAULT" />
+248-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:17-76
+248-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:27-73
+249                <category android:name="android.intent.category.BROWSABLE" />
+249-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:230:17-78
+249-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:230:27-75
+250
+251                <data android:scheme="@string/fb_login_protocol_scheme" />
+251-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:232:17-234:55
+251-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:233:21-70
+252            </intent-filter>
+253        </activity>
+254        <activity
+254-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:237:9-241:59
+255            android:name="com.pinkcar.providers.ui.activities.SosCallActivity"
+255-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:238:13-58
+256            android:hardwareAccelerated="false"
+256-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:239:13-48
+257            android:screenOrientation="portrait"
+257-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:240:13-49
+258            android:theme="@style/AppTheme.NoActionBar" />
+258-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:241:13-56
+259        <activity
+259-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:242:9-246:59
+260            android:name="com.pinkcar.providers.ui.activities.ComplaintsAcivity"
+260-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:243:13-60
+261            android:hardwareAccelerated="false"
+261-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:244:13-48
+262            android:screenOrientation="portrait"
+262-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:245:13-49
+263            android:theme="@style/AppTheme.NoActionBar" />
+263-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:246:13-56
+264        <activity
+264-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:247:9-250:59
+265            android:name="com.pinkcar.providers.ui.activities.LegalActivity"
+265-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:248:13-56
+266            android:hardwareAccelerated="false"
+266-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:249:13-48
 267            android:theme="@style/AppTheme.NoActionBar" />
-267-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:249:13-56
+267-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:250:13-56
 268        <activity
-268-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:250:9-255:58
-269            android:name="com.pinkcar.providers.ui.activities.WaitingForApproval"
-269-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:251:13-61
-270            android:label="@string/app_name"
-270-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:252:13-45
+268-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:251:9-255:59
+269            android:name="com.pinkcar.providers.ui.activities.TermsOfUseActivity"
+269-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:252:13-61
+270            android:hardwareAccelerated="false"
+270-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:253:13-48
 271            android:screenOrientation="portrait"
-271-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:253:13-49
-272            android:theme="@style/AppTheme.NoActionBar"
-272-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:254:13-56
-273            android:windowSoftInputMode="adjustResize" />
-273-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:255:13-55
-274        <activity
-274-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:256:9-260:59
-275            android:name="com.pinkcar.providers.ui.activities.FavouritePlaceSearch"
-275-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:257:13-63
-276            android:hardwareAccelerated="false"
-276-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:258:13-48
-277            android:screenOrientation="portrait"
-277-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:259:13-49
-278            android:theme="@style/AppTheme.NoActionBar" />
-278-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:260:13-56
-279        <activity
-279-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:261:9-265:59
-280            android:name="com.pinkcar.providers.ui.activities.DocumentUpload"
-280-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:262:13-57
-281            android:configChanges="orientation|keyboardHidden"
-281-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:263:13-63
-282            android:screenOrientation="portrait"
-282-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:264:13-49
-283            android:theme="@style/AppTheme.NoActionBar" />
-283-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:265:13-56
-284        <activity
-284-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:266:9-270:59
-285            android:name="com.pinkcar.providers.ui.activities.TrackActivity"
-285-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:267:13-56
-286            android:configChanges="orientation|keyboardHidden"
-286-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:268:13-63
-287            android:screenOrientation="portrait"
-287-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:269:13-49
-288            android:theme="@style/AppTheme.NoActionBar" />
-288-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:270:13-56
+271-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:254:13-49
+272            android:theme="@style/AppTheme.NoActionBar" />
+272-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:255:13-56
+273        <activity
+273-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:256:9-260:59
+274            android:name="com.pinkcar.providers.ui.activities.PrivacyPolicyActivity"
+274-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:257:13-64
+275            android:hardwareAccelerated="false"
+275-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:258:13-48
+276            android:screenOrientation="portrait"
+276-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:259:13-49
+277            android:theme="@style/AppTheme.NoActionBar" />
+277-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:260:13-56
+278        <activity
+278-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:261:9-265:59
+279            android:name="com.pinkcar.providers.ui.activities.UpdateProfile"
+279-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:262:13-56
+280            android:hardwareAccelerated="false"
+280-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:263:13-48
+281            android:screenOrientation="portrait"
+281-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:264:13-49
+282            android:theme="@style/AppTheme.NoActionBar" />
+282-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:265:13-56
+283        <activity
+283-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:266:9-271:58
+284            android:name="com.pinkcar.providers.ui.activities.WaitingForApproval"
+284-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:267:13-61
+285            android:label="@string/app_name"
+285-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:268:13-45
+286            android:screenOrientation="portrait"
+286-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:269:13-49
+287            android:theme="@style/AppTheme.NoActionBar"
+287-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:270:13-56
+288            android:windowSoftInputMode="adjustResize" />
+288-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:271:13-55
 289        <activity
-289-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:271:9-274:59
-290            android:name="com.pinkcar.providers.ui.activities.Profile"
-290-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:272:13-50
-291            android:configChanges="orientation|keyboardHidden"
-291-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:273:13-63
-292            android:theme="@style/AppTheme.NoActionBar" />
-292-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:274:13-56
-293        <activity
-293-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:275:9-279:59
-294            android:name="com.pinkcar.providers.ui.activities.EarningActivity"
-294-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:276:13-58
-295            android:configChanges="orientation|keyboardHidden"
-295-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:277:13-63
-296            android:screenOrientation="portrait"
-296-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:278:13-49
-297            android:theme="@style/AppTheme.NoActionBar" />
-297-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:279:13-56
-298
-299        <provider
-300            android:name="androidx.core.content.FileProvider"
-300-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:282:13-62
-301            android:authorities="com.pinkcar.providers.provider"
-301-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:283:13-60
-302            android:exported="false"
-302-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:284:13-37
-303            android:grantUriPermissions="true" >
-303-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:285:13-47
-304            <meta-data
-304-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:286:13-288:54
-305                android:name="android.support.FILE_PROVIDER_PATHS"
-305-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:287:17-67
-306                android:resource="@xml/file_paths" />
-306-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:288:17-51
-307        </provider>
-308
-309        <activity
-309-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:12:9-15:58
-310            android:name="com.stripe.android.view.AddSourceActivity"
-310-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:13:13-69
-311            android:theme="@style/StripeDefaultTheme"
-311-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:14:13-54
-312            android:windowSoftInputMode="stateVisible" />
-312-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:15:13-55
-313        <activity
-313-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:16:9-18:57
-314            android:name="com.stripe.android.view.PaymentMethodsActivity"
-314-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:17:13-74
-315            android:theme="@style/StripeDefaultTheme" />
-315-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:18:13-54
-316        <activity
-316-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:19:9-21:57
-317            android:name="com.stripe.android.view.PaymentFlowActivity"
-317-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:20:13-71
-318            android:theme="@style/StripeDefaultTheme" />
-318-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:21:13-54
-319        <activity
-319-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:22:9-24:57
-320            android:name="com.stripe.android.view.AuthWebViewActivity"
-320-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:23:13-71
-321            android:theme="@style/StripeDefaultTheme" />
-321-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:24:13-54
-322        <activity
-322-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:17:9-20:57
-323            android:name="com.vincent.filepicker.activity.ImagePickActivity"
-323-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:18:13-77
-324            android:screenOrientation="portrait"
-324-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:19:13-49
-325            android:theme="@style/vw_FilePickerTheme" />
-325-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:20:13-54
-326        <activity
-326-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:21:9-25:57
-327            android:name="com.vincent.filepicker.activity.ImageBrowserActivity"
-327-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:22:13-80
-328            android:hardwareAccelerated="false"
-328-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:23:13-48
-329            android:screenOrientation="portrait"
-329-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:24:13-49
-330            android:theme="@style/vw_FilePickerTheme" />
-330-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:25:13-54
+289-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:272:9-276:59
+290            android:name="com.pinkcar.providers.ui.activities.FavouritePlaceSearch"
+290-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:273:13-63
+291            android:hardwareAccelerated="false"
+291-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:274:13-48
+292            android:screenOrientation="portrait"
+292-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:275:13-49
+293            android:theme="@style/AppTheme.NoActionBar" />
+293-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:276:13-56
+294        <activity
+294-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:277:9-281:59
+295            android:name="com.pinkcar.providers.ui.activities.DocumentUpload"
+295-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:278:13-57
+296            android:configChanges="orientation|keyboardHidden"
+296-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:279:13-63
+297            android:screenOrientation="portrait"
+297-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:280:13-49
+298            android:theme="@style/AppTheme.NoActionBar" />
+298-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:281:13-56
+299        <activity
+299-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:282:9-286:59
+300            android:name="com.pinkcar.providers.ui.activities.TrackActivity"
+300-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:283:13-56
+301            android:configChanges="orientation|keyboardHidden"
+301-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:284:13-63
+302            android:screenOrientation="portrait"
+302-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:285:13-49
+303            android:theme="@style/AppTheme.NoActionBar" />
+303-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:286:13-56
+304        <activity
+304-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:287:9-290:59
+305            android:name="com.pinkcar.providers.ui.activities.Profile"
+305-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:288:13-50
+306            android:configChanges="orientation|keyboardHidden"
+306-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:289:13-63
+307            android:theme="@style/AppTheme.NoActionBar" />
+307-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:290:13-56
+308        <activity
+308-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:291:9-295:59
+309            android:name="com.pinkcar.providers.ui.activities.EarningActivity"
+309-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:292:13-58
+310            android:configChanges="orientation|keyboardHidden"
+310-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:293:13-63
+311            android:screenOrientation="portrait"
+311-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:294:13-49
+312            android:theme="@style/AppTheme.NoActionBar" />
+312-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:295:13-56
+313
+314        <provider
+315            android:name="androidx.core.content.FileProvider"
+315-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:298:13-62
+316            android:authorities="com.pinkcar.providers.provider"
+316-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:299:13-60
+317            android:exported="false"
+317-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:300:13-37
+318            android:grantUriPermissions="true" >
+318-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:301:13-47
+319            <meta-data
+319-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:302:13-304:54
+320                android:name="android.support.FILE_PROVIDER_PATHS"
+320-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:303:17-67
+321                android:resource="@xml/file_paths" />
+321-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:304:17-51
+322        </provider>
+323
+324        <activity
+324-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:12:9-15:58
+325            android:name="com.stripe.android.view.AddSourceActivity"
+325-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:13:13-69
+326            android:theme="@style/StripeDefaultTheme"
+326-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:14:13-54
+327            android:windowSoftInputMode="stateVisible" />
+327-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:15:13-55
+328        <activity
+328-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:16:9-18:57
+329            android:name="com.stripe.android.view.PaymentMethodsActivity"
+329-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:17:13-74
+330            android:theme="@style/StripeDefaultTheme" />
+330-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:18:13-54
 331        <activity
-331-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:26:9-29:57
-332            android:name="com.vincent.filepicker.activity.VideoPickActivity"
-332-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:27:13-77
-333            android:screenOrientation="portrait"
-333-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:28:13-49
-334            android:theme="@style/vw_FilePickerTheme" />
-334-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:29:13-54
-335        <activity
-335-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:30:9-33:57
-336            android:name="com.vincent.filepicker.activity.AudioPickActivity"
-336-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:31:13-77
-337            android:screenOrientation="portrait"
-337-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:32:13-49
-338            android:theme="@style/vw_FilePickerTheme" />
-338-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:33:13-54
-339        <activity
-339-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:34:9-37:57
-340            android:name="com.vincent.filepicker.activity.NormalFilePickActivity"
-340-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:35:13-82
-341            android:screenOrientation="portrait"
-341-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:36:13-49
-342            android:theme="@style/vw_FilePickerTheme" />
-342-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:37:13-54
-343        <activity
-343-->[com.karumi:dexter:6.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4e535b1724b6e18b954211ba365399a8\jetified-dexter-6.0.1\AndroidManifest.xml:27:9-29:72
-344            android:name="com.karumi.dexter.DexterActivity"
-344-->[com.karumi:dexter:6.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4e535b1724b6e18b954211ba365399a8\jetified-dexter-6.0.1\AndroidManifest.xml:28:13-60
-345            android:theme="@style/Dexter.Internal.Theme.Transparent" />
-345-->[com.karumi:dexter:6.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4e535b1724b6e18b954211ba365399a8\jetified-dexter-6.0.1\AndroidManifest.xml:29:13-69
-346
-347        <service
-347-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:13:9-19:19
-348            android:name="com.google.firebase.components.ComponentDiscoveryService"
-348-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:14:13-84
-349            android:directBootAware="true"
-349-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:34:13-43
-350            android:exported="false" >
-350-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:15:13-37
-351            <meta-data
-351-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:16:13-18:85
-352                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
-352-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:17:17-115
-353                android:value="com.google.firebase.components.ComponentRegistrar" />
-353-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:18:17-82
-354            <meta-data
-354-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:77:13-79:85
-355                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-355-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:78:17-109
-356                android:value="com.google.firebase.components.ComponentRegistrar" />
-356-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:79:17-82
-357            <meta-data
-357-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:52:13-54:85
-358                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-358-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:53:17-119
-359                android:value="com.google.firebase.components.ComponentRegistrar" />
-359-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:54:17-82
-360            <meta-data
-360-->[com.google.android.gms:play-services-measurement-api:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5019e47da7d7fdc658df67774e87edcd\jetified-play-services-measurement-api-19.0.0\AndroidManifest.xml:30:13-32:85
-361                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-361-->[com.google.android.gms:play-services-measurement-api:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5019e47da7d7fdc658df67774e87edcd\jetified-play-services-measurement-api-19.0.0\AndroidManifest.xml:31:17-139
-362                android:value="com.google.firebase.components.ComponentRegistrar" />
-362-->[com.google.android.gms:play-services-measurement-api:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5019e47da7d7fdc658df67774e87edcd\jetified-play-services-measurement-api-19.0.0\AndroidManifest.xml:32:17-82
-363            <meta-data
-363-->[com.google.firebase:firebase-installations:17.1.3] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7fd091c106ff88f5db06bc6ad1869e0d\jetified-firebase-installations-17.1.3\AndroidManifest.xml:17:13-19:85
-364                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-364-->[com.google.firebase:firebase-installations:17.1.3] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7fd091c106ff88f5db06bc6ad1869e0d\jetified-firebase-installations-17.1.3\AndroidManifest.xml:18:17-127
-365                android:value="com.google.firebase.components.ComponentRegistrar" />
-365-->[com.google.firebase:firebase-installations:17.1.3] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7fd091c106ff88f5db06bc6ad1869e0d\jetified-firebase-installations-17.1.3\AndroidManifest.xml:19:17-82
+331-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:19:9-21:57
+332            android:name="com.stripe.android.view.PaymentFlowActivity"
+332-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:20:13-71
+333            android:theme="@style/StripeDefaultTheme" />
+333-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:21:13-54
+334        <activity
+334-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:22:9-24:57
+335            android:name="com.stripe.android.view.AuthWebViewActivity"
+335-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:23:13-71
+336            android:theme="@style/StripeDefaultTheme" />
+336-->[com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:24:13-54
+337        <activity
+337-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:17:9-20:57
+338            android:name="com.vincent.filepicker.activity.ImagePickActivity"
+338-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:18:13-77
+339            android:screenOrientation="portrait"
+339-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:19:13-49
+340            android:theme="@style/vw_FilePickerTheme" />
+340-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:20:13-54
+341        <activity
+341-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:21:9-25:57
+342            android:name="com.vincent.filepicker.activity.ImageBrowserActivity"
+342-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:22:13-80
+343            android:hardwareAccelerated="false"
+343-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:23:13-48
+344            android:screenOrientation="portrait"
+344-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:24:13-49
+345            android:theme="@style/vw_FilePickerTheme" />
+345-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:25:13-54
+346        <activity
+346-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:26:9-29:57
+347            android:name="com.vincent.filepicker.activity.VideoPickActivity"
+347-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:27:13-77
+348            android:screenOrientation="portrait"
+348-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:28:13-49
+349            android:theme="@style/vw_FilePickerTheme" />
+349-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:29:13-54
+350        <activity
+350-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:30:9-33:57
+351            android:name="com.vincent.filepicker.activity.AudioPickActivity"
+351-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:31:13-77
+352            android:screenOrientation="portrait"
+352-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:32:13-49
+353            android:theme="@style/vw_FilePickerTheme" />
+353-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:33:13-54
+354        <activity
+354-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:34:9-37:57
+355            android:name="com.vincent.filepicker.activity.NormalFilePickActivity"
+355-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:35:13-82
+356            android:screenOrientation="portrait"
+356-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:36:13-49
+357            android:theme="@style/vw_FilePickerTheme" />
+357-->[com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:37:13-54
+358        <activity
+358-->[com.karumi:dexter:6.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4e535b1724b6e18b954211ba365399a8\jetified-dexter-6.0.1\AndroidManifest.xml:27:9-29:72
+359            android:name="com.karumi.dexter.DexterActivity"
+359-->[com.karumi:dexter:6.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4e535b1724b6e18b954211ba365399a8\jetified-dexter-6.0.1\AndroidManifest.xml:28:13-60
+360            android:theme="@style/Dexter.Internal.Theme.Transparent" />
+360-->[com.karumi:dexter:6.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4e535b1724b6e18b954211ba365399a8\jetified-dexter-6.0.1\AndroidManifest.xml:29:13-69
+361
+362        <service
+362-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:13:9-19:19
+363            android:name="com.google.firebase.components.ComponentDiscoveryService"
+363-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:14:13-84
+364            android:directBootAware="true"
+364-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:34:13-43
+365            android:exported="false" >
+365-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:15:13-37
 366            <meta-data
-366-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c3ecf707debc0f1553f9d236b1ecfdb3\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:28:13-30:85
-367                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-367-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c3ecf707debc0f1553f9d236b1ecfdb3\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:29:17-115
+366-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:16:13-18:85
+367                android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar"
+367-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:17:17-115
 368                android:value="com.google.firebase.components.ComponentRegistrar" />
-368-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c3ecf707debc0f1553f9d236b1ecfdb3\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:30:17-82
-369        </service>
-370
-371        <activity
-371-->[pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:12:9-16:66
-372            android:name="pub.devrel.easypermissions.AppSettingsDialogHolderActivity"
-372-->[pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:13:13-86
-373            android:exported="false"
-373-->[pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:14:13-37
-374            android:label=""
-374-->[pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:15:13-29
-375            android:theme="@style/EasyPermissions.Transparent" />
-375-->[pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:16:13-63
-376        <activity android:name="com.facebook.CustomTabMainActivity" />
-376-->[com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:33:9-71
-376-->[com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:33:19-68
-377        <activity
-377-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:23:9-27:75
-378            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-378-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:24:13-93
-379            android:excludeFromRecents="true"
-379-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:25:13-46
-380            android:exported="false"
-380-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:26:13-37
-381            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-381-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:27:13-72
-382        <!--
-383            Service handling Google Sign-In user revocation. For apps that do not integrate with
-384            Google Sign-In, this service will never be started.
-385        -->
-386        <service
-386-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:33:9-37:51
-387            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-387-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:34:13-89
-388            android:exported="true"
-388-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:35:13-36
-389            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-389-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:36:13-107
-390            android:visibleToInstantApps="true" />
-390-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:37:13-48
-391
+368-->[com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:18:17-82
+369            <meta-data
+369-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:77:13-79:85
+370                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+370-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:78:17-109
+371                android:value="com.google.firebase.components.ComponentRegistrar" />
+371-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:79:17-82
+372            <meta-data
+372-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:52:13-54:85
+373                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+373-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:53:17-119
+374                android:value="com.google.firebase.components.ComponentRegistrar" />
+374-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:54:17-82
+375            <meta-data
+375-->[com.google.android.gms:play-services-measurement-api:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5019e47da7d7fdc658df67774e87edcd\jetified-play-services-measurement-api-19.0.0\AndroidManifest.xml:30:13-32:85
+376                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+376-->[com.google.android.gms:play-services-measurement-api:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5019e47da7d7fdc658df67774e87edcd\jetified-play-services-measurement-api-19.0.0\AndroidManifest.xml:31:17-139
+377                android:value="com.google.firebase.components.ComponentRegistrar" />
+377-->[com.google.android.gms:play-services-measurement-api:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5019e47da7d7fdc658df67774e87edcd\jetified-play-services-measurement-api-19.0.0\AndroidManifest.xml:32:17-82
+378            <meta-data
+378-->[com.google.firebase:firebase-installations:17.1.3] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7fd091c106ff88f5db06bc6ad1869e0d\jetified-firebase-installations-17.1.3\AndroidManifest.xml:17:13-19:85
+379                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+379-->[com.google.firebase:firebase-installations:17.1.3] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7fd091c106ff88f5db06bc6ad1869e0d\jetified-firebase-installations-17.1.3\AndroidManifest.xml:18:17-127
+380                android:value="com.google.firebase.components.ComponentRegistrar" />
+380-->[com.google.firebase:firebase-installations:17.1.3] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7fd091c106ff88f5db06bc6ad1869e0d\jetified-firebase-installations-17.1.3\AndroidManifest.xml:19:17-82
+381            <meta-data
+381-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c3ecf707debc0f1553f9d236b1ecfdb3\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:28:13-30:85
+382                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+382-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c3ecf707debc0f1553f9d236b1ecfdb3\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:29:17-115
+383                android:value="com.google.firebase.components.ComponentRegistrar" />
+383-->[com.google.firebase:firebase-datatransport:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c3ecf707debc0f1553f9d236b1ecfdb3\jetified-firebase-datatransport-18.0.0\AndroidManifest.xml:30:17-82
+384        </service>
+385
+386        <activity
+386-->[pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:12:9-16:66
+387            android:name="pub.devrel.easypermissions.AppSettingsDialogHolderActivity"
+387-->[pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:13:13-86
+388            android:exported="false"
+388-->[pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:14:13-37
+389            android:label=""
+389-->[pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:15:13-29
+390            android:theme="@style/EasyPermissions.Transparent" />
+390-->[pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:16:13-63
+391        <activity android:name="com.facebook.CustomTabMainActivity" />
+391-->[com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:33:9-71
+391-->[com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:33:19-68
 392        <activity
-392-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:27:9-44:20
-393            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-393-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:28:13-80
+392-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:23:9-27:75
+393            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+393-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:24:13-93
 394            android:excludeFromRecents="true"
-394-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:29:13-46
-395            android:exported="true"
-395-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:30:13-36
-396            android:launchMode="singleTask"
-396-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:31:13-44
-397            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-397-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:32:13-72
-398            <intent-filter>
-398-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:33:13-43:29
-399                <action android:name="android.intent.action.VIEW" />
-399-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:211:17-69
-399-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:211:25-66
-400
-401                <category android:name="android.intent.category.DEFAULT" />
-401-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:17-76
-401-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:27-73
-402                <category android:name="android.intent.category.BROWSABLE" />
-402-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:214:17-78
-402-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:214:27-75
-403
-404                <data
-404-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:216:17-218:55
-405                    android:host="firebase.auth"
-406                    android:path="/"
-407                    android:scheme="genericidp" />
-407-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:217:21-70
-408            </intent-filter>
-409        </activity>
-410        <activity
-410-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:45:9-62:20
-411            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-411-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:46:13-79
-412            android:excludeFromRecents="true"
-412-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:47:13-46
-413            android:exported="true"
-413-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:48:13-36
-414            android:launchMode="singleTask"
-414-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:49:13-44
-415            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-415-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:50:13-72
-416            <intent-filter>
-416-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:51:13-61:29
-417                <action android:name="android.intent.action.VIEW" />
-417-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:211:17-69
-417-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:211:25-66
+394-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:25:13-46
+395            android:exported="false"
+395-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:26:13-37
+396            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+396-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:27:13-72
+397        <!--
+398            Service handling Google Sign-In user revocation. For apps that do not integrate with
+399            Google Sign-In, this service will never be started.
+400        -->
+401        <service
+401-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:33:9-37:51
+402            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+402-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:34:13-89
+403            android:exported="true"
+403-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:35:13-36
+404            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+404-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:36:13-107
+405            android:visibleToInstantApps="true" />
+405-->[com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:37:13-48
+406
+407        <activity
+407-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:27:9-44:20
+408            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+408-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:28:13-80
+409            android:excludeFromRecents="true"
+409-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:29:13-46
+410            android:exported="true"
+410-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:30:13-36
+411            android:launchMode="singleTask"
+411-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:31:13-44
+412            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+412-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:32:13-72
+413            <intent-filter>
+413-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:33:13-43:29
+414                <action android:name="android.intent.action.VIEW" />
+414-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:227:17-69
+414-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:227:25-66
+415
+416                <category android:name="android.intent.category.DEFAULT" />
+416-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:17-76
+416-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:27-73
+417                <category android:name="android.intent.category.BROWSABLE" />
+417-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:230:17-78
+417-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:230:27-75
 418
-419                <category android:name="android.intent.category.DEFAULT" />
-419-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:17-76
-419-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:27-73
-420                <category android:name="android.intent.category.BROWSABLE" />
-420-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:214:17-78
-420-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:214:27-75
-421
-422                <data
-422-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:216:17-218:55
-423                    android:host="firebase.auth"
-424                    android:path="/"
-425                    android:scheme="recaptcha" />
-425-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:217:21-70
-426            </intent-filter>
-427        </activity>
-428
-429        <service
-429-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:64:9-73:19
-430            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
-430-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:65:13-101
-431            android:enabled="true"
-431-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:66:13-35
-432            android:exported="false" >
-432-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:67:13-37
-433            <intent-filter>
-433-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:68:13-72:29
-434                <action android:name="com.google.firebase.auth.api.gms.service.START" />
-434-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:69:17-89
-434-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:69:25-86
-435
-436                <category android:name="android.intent.category.DEFAULT" />
-436-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:17-76
-436-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:27-73
-437            </intent-filter>
-438        </service>
-439
-440        <activity
-440-->[com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:23:9-26:75
-441            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-441-->[com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:24:13-79
-442            android:exported="false"
-442-->[com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:25:13-37
-443            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-443-->[com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:26:13-72
-444
-445        <meta-data
-445-->[com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:12:9-14:69
-446            android:name="com.google.android.gms.version"
-446-->[com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:13:13-58
-447            android:value="@integer/google_play_services_version" />
-447-->[com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:14:13-66
-448
-449        <receiver
-449-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:28:9-35:20
-450            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-450-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:29:13-78
-451            android:exported="true"
-451-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:30:13-36
-452            android:permission="com.google.android.c2dm.permission.SEND" >
-452-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:31:13-73
-453            <intent-filter>
-453-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:32:13-34:29
-454                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-454-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:33:17-81
-454-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:33:25-78
-455            </intent-filter>
-456        </receiver>
-457        <!--
-458             FirebaseMessagingService performs security checks at runtime,
-459             but set to not exported to explicitly avoid allowing another app to call it.
-460        -->
-461        <service
-461-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:41:9-48:19
-462            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-462-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:42:13-82
-463            android:directBootAware="true"
-463-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:43:13-43
-464            android:exported="false" >
-464-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:44:13-37
-465            <intent-filter android:priority="-500" >
-465-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:183:13-185:29
-466                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-466-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:184:17-78
-466-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:184:25-75
-467            </intent-filter>
-468        </service>
-469
-470        <provider
-470-->[com.squareup.picasso:picasso:2.71828] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3ed3b87961e4aa22372d503e1b7edee8\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
-471            android:name="com.squareup.picasso.PicassoProvider"
-471-->[com.squareup.picasso:picasso:2.71828] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3ed3b87961e4aa22372d503e1b7edee8\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
-472            android:authorities="com.pinkcar.providers.com.squareup.picasso"
-472-->[com.squareup.picasso:picasso:2.71828] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3ed3b87961e4aa22372d503e1b7edee8\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
-473            android:exported="false" />
-473-->[com.squareup.picasso:picasso:2.71828] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3ed3b87961e4aa22372d503e1b7edee8\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
-474
-475        <receiver
-475-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:29:9-33:20
-476            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-476-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:30:13-85
-477            android:enabled="true"
-477-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:31:13-35
-478            android:exported="false" >
-478-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:32:13-37
-479        </receiver>
-480
-481        <service
-481-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:35:9-38:40
-482            android:name="com.google.android.gms.measurement.AppMeasurementService"
-482-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:36:13-84
-483            android:enabled="true"
-483-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:37:13-35
-484            android:exported="false" />
-484-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:38:13-37
-485        <service
-485-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:39:9-43:72
-486            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-486-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:40:13-87
-487            android:enabled="true"
-487-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:41:13-35
-488            android:exported="false"
-488-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:42:13-37
-489            android:permission="android.permission.BIND_JOB_SERVICE" />
-489-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:43:13-69
-490
-491        <provider
-491-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:25:9-30:39
-492            android:name="com.google.firebase.provider.FirebaseInitProvider"
-492-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:26:13-77
-493            android:authorities="com.pinkcar.providers.firebaseinitprovider"
-493-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:27:13-72
-494            android:directBootAware="true"
-494-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:28:13-43
-495            android:exported="false"
-495-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:29:13-37
-496            android:initOrder="100" />
-496-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:30:13-36
-497        <!--
-498         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
-499         with the application context. This config is merged in with the host app's manifest,
-500         but there can only be one provider with the same authority activated at any given
-501         point; so if the end user has two or more different apps that use Facebook SDK, only the
-502         first one will be able to use the provider. To work around this problem, we use the
-503         following placeholder in the authority to identify each host application as if it was
-504         a completely different provider.
-505        -->
+419                <data
+419-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:232:17-234:55
+420                    android:host="firebase.auth"
+421                    android:path="/"
+422                    android:scheme="genericidp" />
+422-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:233:21-70
+423            </intent-filter>
+424        </activity>
+425        <activity
+425-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:45:9-62:20
+426            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+426-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:46:13-79
+427            android:excludeFromRecents="true"
+427-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:47:13-46
+428            android:exported="true"
+428-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:48:13-36
+429            android:launchMode="singleTask"
+429-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:49:13-44
+430            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+430-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:50:13-72
+431            <intent-filter>
+431-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:51:13-61:29
+432                <action android:name="android.intent.action.VIEW" />
+432-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:227:17-69
+432-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:227:25-66
+433
+434                <category android:name="android.intent.category.DEFAULT" />
+434-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:17-76
+434-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:27-73
+435                <category android:name="android.intent.category.BROWSABLE" />
+435-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:230:17-78
+435-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:230:27-75
+436
+437                <data
+437-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:232:17-234:55
+438                    android:host="firebase.auth"
+439                    android:path="/"
+440                    android:scheme="recaptcha" />
+440-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:233:21-70
+441            </intent-filter>
+442        </activity>
+443
+444        <service
+444-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:64:9-73:19
+445            android:name="com.google.firebase.auth.api.fallback.service.FirebaseAuthFallbackService"
+445-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:65:13-101
+446            android:enabled="true"
+446-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:66:13-35
+447            android:exported="false" >
+447-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:67:13-37
+448            <intent-filter>
+448-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:68:13-72:29
+449                <action android:name="com.google.firebase.auth.api.gms.service.START" />
+449-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:69:17-89
+449-->[com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:69:25-86
+450
+451                <category android:name="android.intent.category.DEFAULT" />
+451-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:17-76
+451-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:27-73
+452            </intent-filter>
+453        </service>
+454
+455        <activity
+455-->[com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:23:9-26:75
+456            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+456-->[com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:24:13-79
+457            android:exported="false"
+457-->[com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:25:13-37
+458            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+458-->[com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:26:13-72
+459
+460        <meta-data
+460-->[com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:12:9-14:69
+461            android:name="com.google.android.gms.version"
+461-->[com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:13:13-58
+462            android:value="@integer/google_play_services_version" />
+462-->[com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:14:13-66
+463
+464        <receiver
+464-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:28:9-35:20
+465            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+465-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:29:13-78
+466            android:exported="true"
+466-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:30:13-36
+467            android:permission="com.google.android.c2dm.permission.SEND" >
+467-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:31:13-73
+468            <intent-filter>
+468-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:32:13-34:29
+469                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+469-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:33:17-81
+469-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:33:25-78
+470            </intent-filter>
+471        </receiver>
+472        <!--
+473             FirebaseMessagingService performs security checks at runtime,
+474             but set to not exported to explicitly avoid allowing another app to call it.
+475        -->
+476        <service
+476-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:41:9-48:19
+477            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+477-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:42:13-82
+478            android:directBootAware="true"
+478-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:43:13-43
+479            android:exported="false" >
+479-->[com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:44:13-37
+480            <intent-filter android:priority="-500" >
+480-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:199:13-201:29
+481                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+481-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:200:17-78
+481-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:200:25-75
+482            </intent-filter>
+483        </service>
+484
+485        <provider
+485-->[com.squareup.picasso:picasso:2.71828] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3ed3b87961e4aa22372d503e1b7edee8\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+486            android:name="com.squareup.picasso.PicassoProvider"
+486-->[com.squareup.picasso:picasso:2.71828] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3ed3b87961e4aa22372d503e1b7edee8\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+487            android:authorities="com.pinkcar.providers.com.squareup.picasso"
+487-->[com.squareup.picasso:picasso:2.71828] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3ed3b87961e4aa22372d503e1b7edee8\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+488            android:exported="false" />
+488-->[com.squareup.picasso:picasso:2.71828] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3ed3b87961e4aa22372d503e1b7edee8\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+489
+490        <receiver
+490-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:29:9-33:20
+491            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+491-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:30:13-85
+492            android:enabled="true"
+492-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:31:13-35
+493            android:exported="false" >
+493-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:32:13-37
+494        </receiver>
+495
+496        <service
+496-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:35:9-38:40
+497            android:name="com.google.android.gms.measurement.AppMeasurementService"
+497-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:36:13-84
+498            android:enabled="true"
+498-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:37:13-35
+499            android:exported="false" />
+499-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:38:13-37
+500        <service
+500-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:39:9-43:72
+501            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+501-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:40:13-87
+502            android:enabled="true"
+502-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:41:13-35
+503            android:exported="false"
+503-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:42:13-37
+504            android:permission="android.permission.BIND_JOB_SERVICE" />
+504-->[com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:43:13-69
+505
 506        <provider
-506-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:39:9-42:40
-507            android:name="com.facebook.internal.FacebookInitProvider"
-507-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:40:13-70
-508            android:authorities="com.pinkcar.providers.FacebookInitProvider"
-508-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:41:13-72
-509            android:exported="false" />
-509-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:42:13-37
-510
-511        <receiver
-511-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:44:9-50:20
-512            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
-512-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:45:13-86
-513            android:exported="false" >
-513-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:46:13-37
-514            <intent-filter>
-514-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:47:13-49:29
-515                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
-515-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:48:17-95
-515-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:48:25-92
-516            </intent-filter>
-517        </receiver>
-518        <receiver
-518-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:51:9-58:20
-519            android:name="com.facebook.CampaignTrackingReceiver"
-519-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:52:13-65
-520            android:exported="true"
-520-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:53:13-36
-521            android:permission="android.permission.INSTALL_PACKAGES" >
-521-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:54:13-69
-522            <intent-filter>
-522-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:55:13-57:29
-523                <action android:name="com.android.vending.INSTALL_REFERRER" />
-523-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:56:17-79
-523-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:56:25-76
-524            </intent-filter>
-525        </receiver>
-526
-527        <service
-527-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:29:9-35:19
-528            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-528-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:30:13-103
-529            android:exported="false" >
-529-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:31:13-37
-530            <meta-data
-530-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:32:13-34:39
-531                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-531-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:33:17-94
-532                android:value="cct" />
-532-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:34:17-36
-533        </service>
-534        <service
-534-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:26:9-30:19
-535            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-535-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:27:13-117
-536            android:exported="false"
-536-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:28:13-37
-537            android:permission="android.permission.BIND_JOB_SERVICE" >
-537-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:29:13-69
-538        </service>
-539
-540        <receiver
-540-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:32:9-34:40
-541            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-541-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:33:13-132
-542            android:exported="false" />
-542-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:34:13-37
-543    </application>
-544
-545</manifest>
+506-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:25:9-30:39
+507            android:name="com.google.firebase.provider.FirebaseInitProvider"
+507-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:26:13-77
+508            android:authorities="com.pinkcar.providers.firebaseinitprovider"
+508-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:27:13-72
+509            android:directBootAware="true"
+509-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:28:13-43
+510            android:exported="false"
+510-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:29:13-37
+511            android:initOrder="100" />
+511-->[com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:30:13-36
+512        <!--
+513         The initialization ContentProvider will call FacebookSdk.sdkInitialize automatically
+514         with the application context. This config is merged in with the host app's manifest,
+515         but there can only be one provider with the same authority activated at any given
+516         point; so if the end user has two or more different apps that use Facebook SDK, only the
+517         first one will be able to use the provider. To work around this problem, we use the
+518         following placeholder in the authority to identify each host application as if it was
+519         a completely different provider.
+520        -->
+521        <provider
+521-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:39:9-42:40
+522            android:name="com.facebook.internal.FacebookInitProvider"
+522-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:40:13-70
+523            android:authorities="com.pinkcar.providers.FacebookInitProvider"
+523-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:41:13-72
+524            android:exported="false" />
+524-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:42:13-37
+525
+526        <receiver
+526-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:44:9-50:20
+527            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
+527-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:45:13-86
+528            android:exported="false" >
+528-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:46:13-37
+529            <intent-filter>
+529-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:47:13-49:29
+530                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
+530-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:48:17-95
+530-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:48:25-92
+531            </intent-filter>
+532        </receiver>
+533        <receiver
+533-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:51:9-58:20
+534            android:name="com.facebook.CampaignTrackingReceiver"
+534-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:52:13-65
+535            android:exported="true"
+535-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:53:13-36
+536            android:permission="android.permission.INSTALL_PACKAGES" >
+536-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:54:13-69
+537            <intent-filter>
+537-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:55:13-57:29
+538                <action android:name="com.android.vending.INSTALL_REFERRER" />
+538-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:56:17-79
+538-->[com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:56:25-76
+539            </intent-filter>
+540        </receiver>
+541
+542        <service
+542-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:29:9-35:19
+543            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+543-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:30:13-103
+544            android:exported="false" >
+544-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:31:13-37
+545            <meta-data
+545-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:32:13-34:39
+546                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+546-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:33:17-94
+547                android:value="cct" />
+547-->[com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:34:17-36
+548        </service>
+549        <service
+549-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:26:9-30:19
+550            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+550-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:27:13-117
+551            android:exported="false"
+551-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:28:13-37
+552            android:permission="android.permission.BIND_JOB_SERVICE" >
+552-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:29:13-69
+553        </service>
+554
+555        <receiver
+555-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:32:9-34:40
+556            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+556-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:33:13-132
+557            android:exported="false" />
+557-->[com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:34:13-37
+558    </application>
+559
+560</manifest>

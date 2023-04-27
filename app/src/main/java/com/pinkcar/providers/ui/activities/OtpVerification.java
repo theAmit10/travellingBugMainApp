@@ -150,7 +150,7 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
 
 //                        SharedHelper.getKey(OtpVerification.this, "loggedIn").equalsIgnoreCase(getString(R.string.True));
                         SharedHelper.putKey(OtpVerification.this,"loggedIn","true");
-                        startActivity(new Intent(OtpVerification.this, MainActivity.class));
+                        startActivity(new Intent(OtpVerification.this, HomeScreenActivity.class));
 
                         // get the user info to know that user is already login or not
 
@@ -179,7 +179,7 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
 
             public void onTick(long millisUntilFinished) {
                 tvResend.setEnabled(false);
-                tvResend.setText(getString(R.string.resend_in) + millisUntilFinished / 1000);
+                tvResend.setText(getString(R.string.resend_in)+" " + millisUntilFinished / 1000);
                 //here you can have your logic to set text to edittext
             }
 
