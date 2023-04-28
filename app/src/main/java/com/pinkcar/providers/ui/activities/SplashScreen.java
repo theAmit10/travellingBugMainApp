@@ -35,6 +35,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.google.firebase.installations.InstallationTokenResult;
 import com.karumi.dexter.Dexter;
@@ -68,6 +70,8 @@ import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
 
 public class SplashScreen extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
 
     private static final String TAG = SplashScreen.class.getSimpleName();
     ConnectionHelper helper;
@@ -110,6 +114,8 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mAuth = FirebaseAuth.getInstance();
+
         // To Remove Status bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(
@@ -122,7 +128,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    sleep(2000);
+                    sleep(4000);
                 }catch (Exception e){
                     e.printStackTrace();
                 }finally {
@@ -212,6 +218,17 @@ public class SplashScreen extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent intent = new Intent(SplashScreen.this, HomeScreenActivity.class);
+            startActivity(intent);
+        }
     }
 
     @SuppressLint("HardwareIds")

@@ -95,4 +95,12 @@ public class ClassLuxApp extends Application {
         res.updateConfiguration(conf, dm);
     }
 
+    public <T> void cancelRequestInQueue(String tag) {
+        VolleyLog.DEBUG = true;
+        getRequestQueue().cancelAll(tag);
+    }
+
+
+
+
 }

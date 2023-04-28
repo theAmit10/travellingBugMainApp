@@ -58,5 +58,8 @@
     <color name="colorGreyLight">#4DCCCCCC</color>
     <color name="vividCerise">#da1d81</color>
     <color name="smokyBlack">#100c08</color>
+    <color name="transwhite">#F2ffffff</color>
+    <color name="confirmcolor">#00a328</color>
+    <color name="white_trans">#00000000</color>
 
 </resources>

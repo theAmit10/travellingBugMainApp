@@ -1,6 +1,7 @@
 package com.pinkcar.providers;
 
 import android.accounts.NetworkErrorException;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -108,6 +109,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
     private static final int RC_SIGN_IN = 100;
     public static int APP_REQUEST_CODE = 99;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

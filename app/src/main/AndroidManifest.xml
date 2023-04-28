@@ -40,6 +40,51 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".ui.activities.Payment"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.ProfilePictureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.PersonalDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.VerifyEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.VerifyMobileNumberActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.VehicleDetailsMenufactureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.VehicleDetailsColorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.VehicleDetailsTypeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.VehicleDetailsModelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.VehicleDetailsBrandActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.VehicleDetailsLicensePlateNumberActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.TravelPreferenceActivityMain"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.TravelPreferenceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.VerifyIdMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.VerifyIdActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.HelpActivity"
             android:exported="false" />
         <activity
@@ -56,9 +101,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.activities.HomeScreenActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".ui.activities.IntroScreen"
             android:exported="false"
@@ -119,7 +162,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Login"

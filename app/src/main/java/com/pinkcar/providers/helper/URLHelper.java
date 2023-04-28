@@ -6,7 +6,8 @@ public interface URLHelper {
     int client_id = 2;
     String client_secret = "WifS1rMi3LvuorP1G2UdtKZairUNSH2iMqrKivPf";
 
-    String BASE = "https://pintaxi.xyz/";
+//    String BASE = "https://pintaxi.xyz/";
+    String BASE = "https://tejratidukan.com/carpool/";
     String STRIPE_TOKEN = "pk_test_LTXZTPA9yepu9dEodKsJm6GA";
     String GET_USERREVIEW = BASE + "api/provider/review";
     String GET_NOTIFICATIONS = BASE + "api/provider/notification";
@@ -44,4 +45,55 @@ public interface URLHelper {
     String COMPLETE_DOCUMENT = BASE + "api/provider/document/checkDocument?term_n=1";
 
     String ChatGetMessage = BASE + "api/provider/firebase/getChat?request_id=";
+
+    String CARD_PAYMENT_LIST = BASE + "api/user/card";
+
+    String GET_SERVICE_LIST_API = BASE + "api/user/services";
+
+    String ESTIMATED_FARE_DETAILS_API = BASE + "api/user/estimated/fare";
+    String GET_PROVIDERS_LIST_API = BASE + "api/user/show/providers";
+
+    String SEND_REQUEST_API = BASE + "api/user/send/request";
+
+
+//    #####################################
+
+
+    String REDIRECT_URL = BASE;
+    String REDIRECT_SHARE_URL = "http://maps.google.com/maps?q=loc:";
+
+    String image_url_signature = BASE + "public/";
+    String CURRENT_TRIP = BASE + "api/user/trips/current";
+
+
+    String UserProfile = BASE + "api/user/details";
+    String UseProfileUpdate = BASE + "api/user/update/profile";
+    String getUserProfileUrl = BASE + "api/user/details";
+
+    String REQUEST_STATUS_CHECK_API = BASE + "api/user/request/check";
+
+
+    String VALID_ZONE = BASE + "api/user/getvalidzone";
+
+    String PAY_NOW_API = BASE + "api/user/payment";
+    String RATE_PROVIDER_API = BASE + "api/user/rate/provider";
+
+
+    String DELETE_CARD_FROM_ACCOUNT_API = BASE + "api/user/card/destory";
+
+
+    String addCardUrl = BASE + "api/user/add/money";
+
+
+    //    Safaricom Payment
+    String PAYMENT_TOKEN = "https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials";
+
+
+    String ADD_CARD_TO_ACCOUNT_API = BASE + "api/user/card";
+
+    String GET_PAYMENT_CONFIRMATION = "api/user/payment/now?total_amount=";
+
+
+    String NOTIFICATION_URL = BASE + "api/user/notification";
+
 }

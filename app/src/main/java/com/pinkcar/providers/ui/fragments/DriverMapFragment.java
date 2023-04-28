@@ -52,6 +52,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -430,7 +431,7 @@ public class DriverMapFragment extends Fragment implements
     @OnClick(R.id.menuIcon)
     void menuIconClick() {
         if (NAV_DRAWER == 0) {
-            drawer.openDrawer(Gravity.START);
+            drawer.openDrawer(GravityCompat.START);
         } else {
             NAV_DRAWER = 0;
             drawer.closeDrawers();

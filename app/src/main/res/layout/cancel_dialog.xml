@@ -50,22 +50,41 @@
             android:text="@string/my_reason_is_not_listed"
             android:textColor="@color/black"
             android:textSize="@dimen/_12sdp" />
-        <!--<RadioButton-->
-        <!--android:id="@+id/moving"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:textSize="@dimen/_12sdp"-->
-        <!--android:textColor="@color/black"-->
-        <!--android:fontFamily="@font/montserrat_medium"-->
-        <!--android:text="@string/driver_is_not_moving"/>-->
-        <!--<RadioButton-->
-        <!--android:id="@+id/denied"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:textSize="@dimen/_12sdp"-->
-        <!--android:textColor="@color/black"-->
-        <!--android:fontFamily="@font/montserrat_medium"-->
-        <!--android:text="@string/driver_denied_to_come"/>-->
+
+        <RadioButton
+            android:id="@+id/moving"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_regular"
+            android:text="@string/driver_is_not_moving"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+        <RadioButton
+            android:id="@+id/denied"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_regular"
+            android:text="@string/driver_denied_to_come"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+<!--        <RadioButton-->
+<!--        android:id="@+id/moving"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="@dimen/_12sdp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:fontFamily="@font/montserrat_medium"-->
+<!--        android:text="@string/driver_is_not_moving"/>-->
+<!--        <RadioButton-->
+<!--        android:id="@+id/denied"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="@dimen/_12sdp"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:fontFamily="@font/montserrat_medium"-->
+<!--        android:text="@string/driver_denied_to_come"/>-->
     </RadioGroup>
 
     <EditText

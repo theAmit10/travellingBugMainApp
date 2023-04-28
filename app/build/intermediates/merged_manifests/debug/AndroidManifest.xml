@@ -60,6 +60,51 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
+            android:name="com.pinkcar.providers.ui.activities.Payment"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.ProfilePictureActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.PersonalDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.VerifyEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.VerifyMobileNumberActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.VehicleDetailsMenufactureActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.VehicleDetailsColorActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.VehicleDetailsTypeActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.VehicleDetailsModelActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.VehicleDetailsBrandActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.VehicleDetailsLicensePlateNumberActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.TravelPreferenceActivityMain"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.TravelPreferenceActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.VerifyIdMainActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.pinkcar.providers.ui.activities.VerifyIdActivity"
+            android:exported="false" />
+        <activity
             android:name="com.pinkcar.providers.ui.activities.HelpActivity"
             android:exported="false" />
         <activity
@@ -76,8 +121,7 @@
             android:exported="false" />
         <activity
             android:name="com.pinkcar.providers.ui.activities.HomeScreenActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name="com.pinkcar.providers.ui.activities.IntroScreen"
             android:exported="false"

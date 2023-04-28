@@ -11,8 +11,14 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import com.pinkcar.providers.R;
 import com.pinkcar.providers.ui.adapters.MainActivityViewPagerAdapter;
+import com.pinkcar.providers.ui.fragments.PublishFragment;
+import com.pinkcar.providers.utills.ResponseListener;
 
-public class HomeScreenActivity extends AppCompatActivity {
+import org.json.JSONArray;
+
+public class HomeScreenActivity extends AppCompatActivity implements
+        PublishFragment.HomeFragmentListener,
+        ResponseListener {
 
     ViewPager2 viewPager;
     TabLayout tabLayout;
@@ -56,6 +62,11 @@ public class HomeScreenActivity extends AppCompatActivity {
         tabLayout.getTabAt(3).setText("Holiday").setIcon(R.drawable.bn_holiday_package);
         tabLayout.getTabAt(4).setText("Account").setIcon(R.drawable.bn_account);
 
+
+    }
+
+    @Override
+    public void getJSONArrayResult(String strTag, JSONArray arrayResponse) {
 
     }
 }

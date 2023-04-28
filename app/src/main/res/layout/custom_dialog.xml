@@ -2,15 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@drawable/auth_btn_white_bg"
     android:orientation="vertical"
     android:padding="15dp">
 
+    <ProgressBar
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:secondaryProgressTint="@color/green"
+        android:layout_gravity="center"
+        />
+
     <pl.droidsonroids.gif.GifImageView
         android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
+        android:paddingStart="@dimen/_8sdp"
         android:src="@drawable/loading_gif" />
+
 
     <pl.droidsonroids.gif.GifTextView
         android:layout_width="wrap_content"

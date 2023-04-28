@@ -1,5 +1,6 @@
 package com.pinkcar.providers.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,60 +8,124 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.pinkcar.providers.R;
+import com.pinkcar.providers.ui.activities.PersonalDetailsActivity;
+import com.pinkcar.providers.ui.activities.ProfilePictureActivity;
+import com.pinkcar.providers.ui.activities.TravelPreferenceActivity;
+import com.pinkcar.providers.ui.activities.TravelPreferenceActivityMain;
+import com.pinkcar.providers.ui.activities.VehicleDetailsLicensePlateNumberActivity;
+import com.pinkcar.providers.ui.activities.VerifyEmailActivity;
+import com.pinkcar.providers.ui.activities.VerifyIdActivity;
+import com.pinkcar.providers.ui.activities.VerifyMobileNumberActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileAboutFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ProfileAboutFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    TextView verifyId,addMyPreferencesTv,addAMiniBioTv,addVehicleTv,editProfilePictv,editPersonalDetailstv,confirmEmailTv,phoneTv;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public ProfileAboutFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileAboutFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfileAboutFragment newInstance(String param1, String param2) {
-        ProfileAboutFragment fragment = new ProfileAboutFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_about, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile_about, container, false);
+
+        initComponent(view);
+        clickHandlerOnComponenet();
+
+        return view;
+    }
+
+    private void clickHandlerOnComponenet() {
+        verifyId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), VerifyIdActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        addMyPreferencesTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), TravelPreferenceActivityMain.class);
+                startActivity(intent);
+            }
+        });
+
+        addAMiniBioTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), TravelPreferenceActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        addVehicleTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), VehicleDetailsLicensePlateNumberActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        editProfilePictv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ProfilePictureActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        editPersonalDetailstv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), PersonalDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        confirmEmailTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), VerifyEmailActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        phoneTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), VerifyMobileNumberActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void initComponent(View view) {
+        verifyId = view.findViewById(R.id.verifyId);
+        addMyPreferencesTv = view.findViewById(R.id.addMyPreferencesTv);
+        addAMiniBioTv = view.findViewById(R.id.addAMiniBioTv);
+        addVehicleTv = view.findViewById(R.id.addVehicleTv);
+
+        editProfilePictv = view.findViewById(R.id.editProfilePictv);
+        editPersonalDetailstv = view.findViewById(R.id.editPersonalDetailstv);
+        confirmEmailTv = view.findViewById(R.id.confirmEmailTv);
+        phoneTv = view.findViewById(R.id.phoneTv);
     }
 }

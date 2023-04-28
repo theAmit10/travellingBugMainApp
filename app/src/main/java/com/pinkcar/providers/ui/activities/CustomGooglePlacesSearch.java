@@ -30,6 +30,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.google.android.libraries.places.api.net.PlacesClient;
 import com.pinkcar.providers.ClassLuxApp;
 import com.pinkcar.providers.R;
 import com.pinkcar.providers.helper.SharedHelper;
@@ -75,6 +76,14 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
     private Handler handler;
     private GoogleApiClient mGoogleApiClient;
     private PlacePredictions placePredictions = new PlacePredictions();
+
+
+
+
+    PlacesClient placesClient;
+    String TAG = "CustomGoogleplacesearch";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -486,6 +495,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_LOC: {
                 // If request is cancelled, the result arrays are empty.

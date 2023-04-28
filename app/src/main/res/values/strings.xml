@@ -1,8 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY appName "Pink Car Driver"><!ENTITY trip "trip"><!ENTITY trips "rides"><!ENTITY tripscap "RIDES"><!ENTITY service "Service">]>
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE resources [<!ENTITY appName "Pink Car Driver"> <!ENTITY Provider "Driver"><!ENTITY trip "trip"><!ENTITY trips "rides"><!ENTITY tripscap "RIDES"><!ENTITY service "Service">]>
 
-<resources>
+
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">TravellingBug</string>
-    <string name="google_map_api">AIzaSyDYbRQKyMGHPP-hh1jOTaPv3f3jSXQScUg</string>
+    <string name="google_map_api">AIzaSyCXr0_LD2gosGvCyeghGW3OGlXq_VjOuQA</string>
+<!--    <string name="google_map_api">AIzaSyDYbRQKyMGHPP-hh1jOTaPv3f3jSXQScUg</string>-->
 
     <string name="facebook_app_id">562245434540329</string>
     <string name="fb_login_protocol_scheme">fb562245434540329</string>
@@ -68,7 +70,7 @@
 
 
     <!--Payment Fragment-->
-    <string name="payment_methods">Payment Methods</string>
+    <string name="payment_methods" translatable="false">Payment Methods</string>
 
 
     <!--Status -->
@@ -322,4 +324,137 @@
     <string name="holiday" translatable="false">Holiday</string>
     <string name="account" translatable="false">Account</string>
 
+    <string name="terms_and_condition" translatable="false">The information colledted below by travelling bug us necessary to verify your identity. You can learn more about your rights and how we handle your personal data in our  <font color='#01C6DB'>Privacy Policy.</font></string>
+
+    <string name="trip_completed" translatable="false">Trip Completed</string>
+    <string name="change_destination" translatable="false">Change Destination</string>
+    <string name="add_stop" translatable="false">Add Stop</string>
+    <string name="round_trip" translatable="false">Round Trip</string>
+    <string name="enter_destination" translatable="false">Enter Destination</string>
+    <string name="pickup_location" translatable="false">Pickup Address</string>
+
+    <string name="driver_is_on_the_way" translatable="false">Driver is on the way</string>
+    <string name="request_ride" translatable="false">Request Ride</string>
+    <string name="base_fare" translatable="false">Base Fare</string>
+
+    <string name="fare" translatable="false">Fare/km</string>
+    <string name="fare_min" translatable="false">Fare/min</string>
+    <string name="fare_type" translatable="false">Fare Type</string>
+    <string name="capacity" translatable="false">Capacity</string>
+    <string name="accounts" translatable="false">Accounts</string>
+
+
+    <string name="description_add" translatable="false">Add Calendar</string>
+    <string name="summary_hint" translatable="false">Enter the calendar title</string>
+    <string name="save" translatable="false">Save</string>
+
+    <string name="icon_desc" translatable="false">Application icon</string>
+    <string name="title_separator_desc" translatable="false">Title separator</string>
+    <string name="refresh" translatable="false">Refresh</string>
+    <string name="batchadd" translatable="false">Copy Calendar x3 (Batch)</string>
+    <string name="delete" translatable="false">Delete Calendar</string>
+    <string name="delete_title" translatable="false">Delete Calendar?</string>
+    <string name="error" translatable="false">Error</string>
+
+    <string name="error_format" translatable="false">[Error] %s</string>
+    <string name="user" translatable="false">Login User</string>
+    <string name="add_money" translatable="false">Add Money</string>
+
+
+    <string name="promocode_applied" translatable="false">PromoCode Applied</string>
+    <string name="cash_wallet" translatable="false">CASH AND WALLET</string>
+
+    <string name="rate_your_trip_with" translatable="false">Rate your trip with</string>
+
+    <string name="enter_name" translatable="false">Enter  Name</string>
+
+    <string name="no_notification_found" translatable="false">No Notification found</string>
+    <string name="location" translatable="false">Location</string>
+    <string name="location_detail" translatable="false">Location Detail</string>
+    <string name="copyright" translatable="false">Copyright</string>
+    <string name="terms_amp_conditions" translatable="false"><![CDATA[Terms & Conditions]]></string>
+
+    <string name="other" translatable="false">Other</string>
+    <string name="complete" translatable="false">Complete</string>
+    <string name="loading" translatable="false">Loading...</string>
+    <string name="send" translatable="false">Send</string>
+    <string name="if_you_have_not_received_otp" translatable="false">If you have not received OTP</string>
+
+    <string name="promo_code" translatable="false">Promo Code</string>
+
+    <string name="upcomeng_rides" translatable="false">Upcoming Rides</string>
+    <string name="my_location" translatable="false">MyLocation</string>
+
+
+    <string name="no_comment" translatable="false">No Comment</string>
+
+    <string name="driver_will_pickup" translatable="false">Driver will pickup you in</string>
+    <string-array name="nav_item_activity_titles">
+        <item>Home</item>
+        <item>Photos</item>
+        <item>Movies</item>
+        <item>Notifications</item>
+        <item>Settings</item>
+    </string-array>
+
+    <string name="register" translatable="false">Register</string>
+
+
+    <string name="schedule" translatable="false">Schedule a &tripscap;</string>
+    <string name="sample_date" translatable="false">Choose a date</string>
+    <string name="sample_time" translatable="false">Choose a time</string>
+    <string name="different_time" translatable="false">You can\'t schedule in past timings, please choose different time</string>
+    <string name="choose_date_time" translatable="false">Please choose date and time for schedule</string>
+
+    <string name="done" translatable="false">Done</string>
+
+    <string name="sample_name" translatable="false">WASU DEV</string>
+    <string name="sample_service" translatable="false">BMW</string>
+    <string name="call_btn" translatable="false">Call</string>
+    <string name="cancel_trip" translatable="false">Cancel Ride</string>
+    <string name="surge_pricing" translatable="false">Due to peak hours, charges will be vary based on availability of providers</string>
+
+
+    <!--Activity Help-->
+
+    <string name="book_name" translatable="false">Booking ID</string>
+
+    <string name="email_exist" translatable="false">The email has already been taken</string>
+
+    <string name="use_wallet_amount" translatable="false">Use wallet amount</string>
+    <string name="arriving" translatable="false">&Provider; accepted your request.</string>
+    <string name="view_invoice" translatable="false">View receipt</string>
+
+    <string name="paid_driver" translatable="false">You paid to your driver</string>
+
+    <!--Invoice -->
+    <string name="sample_base_price" translatable="false">$10000</string>
+    <string name="extra_price" translatable="false">Extra</string>
+    <string name="tax" translatable="false">Tax</string>
+    <string name="pay_now" translatable="false">Pay Now</string>
+
+    <!--Rate provider-->
+    <string name="write_your_comment" translatable="false">Write your comment</string>
+
+
+    <string name="selected_payment_mode" translatable="false">Cash</string>
+    <string name="change" translatable="false">Change</string>
+
+
+    <string name="surge_pricing_title" translatable="false">Due to high demand price may vary</string>
+    <string name="looking_for_ride" translatable="false">Finding &Provider;</string>
+    <string name="commision" translatable="false">Service charge</string>
+
+    <string name="version" translatable="false">v %s</string>
+
+    <string name="emaergeny_call" translatable="false">Are you sure you want to proceed with Emergency call?</string>
+
+    <string name="cancel_ride_alert" translatable="false">Are you sure you want to cancel the &service;?</string>
+    <string name="driver_is_not_moving" translatable="false">Driver is not moving</string>
+    <string name="driver_denied_to_come" translatable="false">Driver Denied to Come</string>
+
+    <string name="request_cancel" translatable="false">You have cancelled the request</string>
+    <string name="action_wallet" translatable="false">&appName; Wallet</string>
+    <string name="wallet_balance" translatable="false">Your wallet amount is</string>
+    <string name="no_service" translatable="false">No Services found</string>
 </resources>

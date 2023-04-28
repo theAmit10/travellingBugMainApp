@@ -12,14 +12,20 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.pinkcar.providers.R;
 import com.pinkcar.providers.helper.SharedHelper;
+import com.pinkcar.providers.ui.activities.HomeScreenActivity;
 import com.pinkcar.providers.ui.activities.IntroScreen;
 import com.pinkcar.providers.ui.activities.SplashScreen;
 
 import java.util.Locale;
 
 public class IntroActivity extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
+
     RadioGroup radioGroup;
     Button btnSubmit;
     boolean localeHasChanged = false;
@@ -27,6 +33,9 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mAuth = FirebaseAuth.getInstance();
+
         if (SharedHelper.getKey(this, "selectedlanguage").contains("ar")) {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
@@ -49,6 +58,17 @@ public class IntroActivity extends AppCompatActivity {
             }
         });
         setLanguage();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Intent intent = new Intent(IntroActivity.this, HomeScreenActivity.class);
+            startActivity(intent);
+        }
     }
 
     private void setLanguage() {

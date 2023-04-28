@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/view_grey_bg_"
     android:orientation="vertical"
-    tools:context="com.pinkcar.booknwin.Transportation.Fragments.SoruceAndDestination">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
