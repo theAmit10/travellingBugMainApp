@@ -2,10 +2,11 @@
 
 <resources>
     <string name="app_name">TravellingBug</string>
-    <string name="google_map_api">AIzaSyDYbRQKyMGHPP-hh1jOTaPv3f3jSXQScUg</string>
+    <string name="google_map_api">AIzaSyCXr0_LD2gosGvCyeghGW3OGlXq_VjOuQA</string>
 
-    <string name="facebook_app_id">562245434540329</string>
-    <string name="fb_login_protocol_scheme">fb562245434540329</string>
+    <string name="facebook_app_id">758774072385786</string>
+    <string name="fb_login_protocol_scheme">fb758774072385786</string>
+    <string name="facebook_client_token" translatable="false">b0430d3f83ac7dc81427e590623014e2</string>
 
     <!--Navigation Drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>

@@ -13,7 +13,7 @@
 
         android:background="@drawable/ic_driver" />
 
-    <com.pinkcar.providers.utills.MyTextView
+    <com.travel.travellingbug.utills.MyTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_15sdp"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.pinkcar.providers.utills.MyButton
+        <com.travel.travellingbug.utills.MyButton
             android:id="@+id/logoutBtn"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"

@@ -425,7 +425,7 @@
         android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <com.pinkcar.providers.utills.MyBoldTextView
+        <com.travel.travellingbug.utills.MyBoldTextView
             android:id="@+id/txtPickLocation"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"

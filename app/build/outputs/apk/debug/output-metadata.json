@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.pinkcar.providers",
+  "applicationId": "com.travel.travellingbug",
   "variantName": "debug",
   "elements": [
     {

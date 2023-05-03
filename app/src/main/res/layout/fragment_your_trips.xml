@@ -24,7 +24,7 @@
                 android:padding="5dp"
                 android:src="@drawable/back_white" />
 
-            <com.pinkcar.providers.utills.MyTextView
+            <com.travel.travellingbug.utills.MyTextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"

@@ -64,7 +64,7 @@
                     app:civ_shadow_color="#FFFFFF"
                     app:civ_shadow_radius="10" />
 
-                <com.pinkcar.providers.utills.MyTextView
+                <com.travel.travellingbug.utills.MyTextView
                     android:id="@+id/txtHeaderName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
                     android:textColor="@color/text_color_white"
                     android:textSize="@dimen/_15sdp" />
 
-                <com.pinkcar.providers.utills.MyTextView
+                <com.travel.travellingbug.utills.MyTextView
                     android:id="@+id/txtHeaderMob"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -214,7 +214,7 @@
                     android:paddingBottom="@dimen/_10sdp"
                     android:visibility="gone">
 
-                    <com.pinkcar.providers.utills.MyTextView
+                    <com.travel.travellingbug.utills.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -228,7 +228,7 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13sdp" />
 
-                    <com.pinkcar.providers.utills.MyEditText
+                    <com.travel.travellingbug.utills.MyEditText
                         android:id="@+id/service"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -260,7 +260,7 @@
                     android:paddingBottom="@dimen/_10sdp"
                     android:visibility="gone">
 
-                    <com.pinkcar.providers.utills.MyTextView
+                    <com.travel.travellingbug.utills.MyTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -274,7 +274,7 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/_13sdp" />
 
-                    <com.pinkcar.providers.utills.MyTextView
+                    <com.travel.travellingbug.utills.MyTextView
                         android:id="@+id/changePasswordTxt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -322,7 +322,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:visibility="gone">
 
-            <com.pinkcar.providers.utills.MyTextView
+            <com.travel.travellingbug.utills.MyTextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_44sdp"
                 android:background="@drawable/bggradient"
@@ -332,7 +332,7 @@
                 android:textSize="@dimen/_14sdp" />
         </androidx.cardview.widget.CardView>
 
-        <com.pinkcar.providers.utills.MyButton
+        <com.travel.travellingbug.utills.MyButton
             android:id="@+id/saveBTN"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -191,7 +191,7 @@
 
             android:background="@drawable/box_registrationmirror">
 
-            <com.pinkcar.providers.utills.MyBoldTextView
+            <com.travel.travellingbug.utills.MyBoldTextView
                 android:id="@+id/txtSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -237,7 +237,7 @@
                     android:orientation="vertical">
 
 
-                    <com.pinkcar.providers.utills.MyEditText
+                    <com.travel.travellingbug.utills.MyEditText
                         android:id="@+id/etEmail"
                         android:layout_width="@dimen/_230sdp"
                         android:layout_height="match_parent"
@@ -258,7 +258,7 @@
                         android:background="#f2f2f2" />
 
 
-                    <com.pinkcar.providers.utills.MyEditText
+                    <com.travel.travellingbug.utills.MyEditText
 
                         android:id="@+id/etPassword"
                         android:layout_width="@dimen/_230sdp"
@@ -291,7 +291,7 @@
 
 
 
-                <com.pinkcar.providers.utills.MyTextView
+                <com.travel.travellingbug.utills.MyTextView
                     android:id="@+id/txtForget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

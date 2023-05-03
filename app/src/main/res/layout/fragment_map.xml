@@ -636,7 +636,7 @@
                         android:text="Drop Address"
                         android:textSize="@dimen/_10sdp" />
 
-                    <com.pinkcar.providers.utills.ExpandableTextView
+                    <com.travel.travellingbug.utills.ExpandableTextView
                         android:id="@+id/destination"
                         style="@style/Base.TextAppearance.AppCompat.Body1"
                         android:layout_width="match_parent"

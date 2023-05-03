@@ -20,7 +20,7 @@
             android:padding="5dp"
             android:src="@drawable/ic_back_icon" />
 
-        <com.pinkcar.providers.utills.MyBoldTextView
+        <com.travel.travellingbug.utills.MyBoldTextView
             android:id="@+id/toolName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -50,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
-                <com.pinkcar.providers.utills.MyEditText
+                <com.travel.travellingbug.utills.MyEditText
 
                     android:id="@+id/editText"
                     android:layout_width="match_parent"
@@ -60,7 +60,7 @@
         </LinearLayout>
 
 
-        <com.pinkcar.providers.utills.MyButton
+        <com.travel.travellingbug.utills.MyButton
             android:id="@+id/btnUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

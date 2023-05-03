@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.pinkcar.providers">
+    package="com.travel.travellingbug">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -25,7 +25,7 @@
         android:required="false" />
 
     <application
-        android:name=".ClassLuxApp"
+        android:name="com.travel.travellingbug.ClassLuxApp"
         android:allowBackup="false"
         android:autoMirrored="true"
         android:fullBackupContent="false"
@@ -40,92 +40,92 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
         <activity
-            android:name=".ui.activities.Payment"
+            android:name="com.travel.travellingbug.ui.activities.Payment"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.ProfilePictureActivity"
+            android:name="com.travel.travellingbug.ui.activities.ProfilePictureActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.PersonalDetailsActivity"
+            android:name="com.travel.travellingbug.ui.activities.PersonalDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.VerifyEmailActivity"
+            android:name="com.travel.travellingbug.ui.activities.VerifyEmailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.VerifyMobileNumberActivity"
+            android:name="com.travel.travellingbug.ui.activities.VerifyMobileNumberActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.VehicleDetailsMenufactureActivity"
+            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsMenufactureActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.VehicleDetailsColorActivity"
+            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsColorActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.VehicleDetailsTypeActivity"
+            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsTypeActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.VehicleDetailsModelActivity"
+            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsModelActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.VehicleDetailsBrandActivity"
+            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsBrandActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.VehicleDetailsLicensePlateNumberActivity"
+            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsLicensePlateNumberActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.TravelPreferenceActivityMain"
+            android:name="com.travel.travellingbug.ui.activities.TravelPreferenceActivityMain"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.TravelPreferenceActivity"
+            android:name="com.travel.travellingbug.ui.activities.TravelPreferenceActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.VerifyIdMainActivity"
+            android:name="com.travel.travellingbug.ui.activities.VerifyIdMainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.VerifyIdActivity"
+            android:name="com.travel.travellingbug.ui.activities.VerifyIdActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.HelpActivity"
+            android:name="com.travel.travellingbug.ui.activities.HelpActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.TermsAndConditionActivity"
+            android:name="com.travel.travellingbug.ui.activities.TermsAndConditionActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.ChangePasswordActivity"
+            android:name="com.travel.travellingbug.ui.activities.ChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.ChangeAddressAdtivityTwo"
+            android:name="com.travel.travellingbug.ui.activities.ChangeAddressAdtivityTwo"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.ChangeAddressAdtivityOne"
+            android:name="com.travel.travellingbug.ui.activities.ChangeAddressAdtivityOne"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.HomeScreenActivity"
+            android:name="com.travel.travellingbug.ui.activities.HomeScreenActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.activities.IntroScreen"
+            android:name="com.travel.travellingbug.ui.activities.IntroScreen"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.login.IntroActivity"
+            android:name="com.travel.travellingbug.ui.activities.login.IntroActivity"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.login.LoginActivity"
+            android:name="com.travel.travellingbug.ui.activities.login.LoginActivity"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.login.FaceBookLoginActivity"
+            android:name="com.travel.travellingbug.ui.activities.login.FaceBookLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
-            android:name=".ui.activities.login.GoogleLoginActivity"
+            android:name="com.travel.travellingbug.ui.activities.login.GoogleLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
-            android:name=".ui.activities.NotificationTab"
+            android:name="com.travel.travellingbug.ui.activities.NotificationTab"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
@@ -135,26 +135,26 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.DocUploadActivity" />
+        <activity android:name="com.travel.travellingbug.ui.activities.DocUploadActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
         <activity
-            android:name=".ui.activities.WithdrawActivity"
+            android:name="com.travel.travellingbug.ui.activities.WithdrawActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.OtpVerification"
+            android:name="com.travel.travellingbug.ui.activities.OtpVerification"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.WithdrawAmountActivity"
+            android:name="com.travel.travellingbug.ui.activities.WithdrawAmountActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".ui.activities.DocumentStatus" />
+        <activity android:name="com.travel.travellingbug.ui.activities.DocumentStatus" />
         <activity
-            android:name=".ui.activities.SplashScreen"
+            android:name="com.travel.travellingbug.ui.activities.SplashScreen"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -164,25 +164,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Login"
+            android:name="com.travel.travellingbug.Login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.FullImage"
+            android:name="com.travel.travellingbug.ui.activities.FullImage"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.login.SignUp"
+            android:name="com.travel.travellingbug.ui.activities.login.SignUp"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".chat.UserChatActivity"
+            android:name="com.travel.travellingbug.chat.UserChatActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.activities.UserReview"
+            android:name="com.travel.travellingbug.ui.activities.UserReview"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.login.ForgotPassword"
+            android:name="com.travel.travellingbug.ui.activities.login.ForgotPassword"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -191,52 +191,52 @@
             android:value="@string/google_map_api" />
 
         <activity
-            android:name=".ui.activities.MainActivity"
+            android:name="com.travel.travellingbug.ui.activities.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.activities.EditProfile"
+            android:name="com.travel.travellingbug.ui.activities.EditProfile"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.activities.ShowProfile"
+            android:name="com.travel.travellingbug.ui.activities.ShowProfile"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.activities.HistoryDetails"
+            android:name="com.travel.travellingbug.ui.activities.HistoryDetails"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.activities.HistoryActivity"
+            android:name="com.travel.travellingbug.ui.activities.HistoryActivity"
             android:label="History"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.activities.CouponActivity"
+            android:name="com.travel.travellingbug.ui.activities.CouponActivity"
             android:label="Coupon"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.activities.login.ChangePassword"
+            android:name="com.travel.travellingbug.ui.activities.login.ChangePassword"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.activities.CustomGooglePlacesSearch"
+            android:name="com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
 
         <service
-            android:name=".fcm.FCMService"
+            android:name="com.travel.travellingbug.fcm.FCMService"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -248,8 +248,10 @@
             android:value="@string/default_notification_channel_id" />
 
         <receiver
-            android:name=".fcm.MyBroadcastReceiver"
+            android:name="com.travel.travellingbug.fcm.MyBroadcastReceiver"
             android:exported="true" />
+
+
 
         <meta-data
             android:name="com.facebook.accountkit.ApplicationName"
@@ -258,7 +260,11 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
+
+
+
+    <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
@@ -267,7 +273,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
-
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
@@ -276,62 +281,66 @@
                     tools:ignore="ManifestResource" />
             </intent-filter>
         </activity>
+
+
+
+
         <activity
-            android:name=".ui.activities.SosCallActivity"
+            android:name="com.travel.travellingbug.ui.activities.SosCallActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.ComplaintsAcivity"
+            android:name="com.travel.travellingbug.ui.activities.ComplaintsAcivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.LegalActivity"
+            android:name="com.travel.travellingbug.ui.activities.LegalActivity"
             android:hardwareAccelerated="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.TermsOfUseActivity"
-            android:hardwareAccelerated="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.activities.PrivacyPolicyActivity"
+            android:name="com.travel.travellingbug.ui.activities.TermsOfUseActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.UpdateProfile"
+            android:name="com.travel.travellingbug.ui.activities.PrivacyPolicyActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.WaitingForApproval"
+            android:name="com.travel.travellingbug.ui.activities.UpdateProfile"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.travel.travellingbug.ui.activities.WaitingForApproval"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.activities.FavouritePlaceSearch"
+            android:name="com.travel.travellingbug.ui.activities.FavouritePlaceSearch"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.DocumentUpload"
+            android:name="com.travel.travellingbug.ui.activities.DocumentUpload"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.TrackActivity"
+            android:name="com.travel.travellingbug.ui.activities.TrackActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.Profile"
+            android:name="com.travel.travellingbug.ui.activities.Profile"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.activities.EarningActivity"
+            android:name="com.travel.travellingbug.ui.activities.EarningActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

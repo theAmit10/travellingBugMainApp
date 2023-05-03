@@ -24,7 +24,7 @@
             android:padding="@dimen/_7sdp"
             android:src="@drawable/back_white" />
 
-        <com.pinkcar.providers.utills.MyTextView
+        <com.travel.travellingbug.utills.MyTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/_10sdp"
@@ -55,7 +55,7 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/ic_launcher_web" />
 
-        <com.pinkcar.providers.utills.MyTextView
+        <com.travel.travellingbug.utills.MyTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/error_image"

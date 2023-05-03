@@ -23,7 +23,7 @@
             android:layout_alignParentBottom="true"
             android:orientation="vertical">
 
-            <com.pinkcar.providers.utills.MyButton
+            <com.travel.travellingbug.utills.MyButton
                 android:id="@+id/goOnlineBtn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_height"

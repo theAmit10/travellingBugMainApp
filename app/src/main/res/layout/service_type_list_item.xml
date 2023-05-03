@@ -64,7 +64,7 @@
     </FrameLayout>
 
 
-    <com.pinkcar.providers.utills.MyTextView
+    <com.travel.travellingbug.utills.MyTextView
         android:id="@+id/serviceItemPrice"
         android:layout_width="@dimen/_76sdp"
         android:layout_height="wrap_content"

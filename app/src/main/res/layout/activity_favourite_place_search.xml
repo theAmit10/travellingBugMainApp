@@ -68,7 +68,7 @@
                     app:layout_constraintEnd_toStartOf="@id/imgSourceClose"
                     app:layout_constraintStart_toEndOf="@id/llLeftTop">
 
-                    <com.pinkcar.providers.utills.MyTextView
+                    <com.travel.travellingbug.utills.MyTextView
                         android:id="@+id/addressType"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
                         android:text="Home Address"
                         android:textSize="14dp" />
 
-                    <com.pinkcar.providers.utills.MyEditText
+                    <com.travel.travellingbug.utills.MyEditText
                         android:id="@+id/txtaddressSource"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_30sdp"

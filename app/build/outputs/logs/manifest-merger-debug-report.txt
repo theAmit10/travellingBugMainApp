@@ -1,22 +1,22 @@
 -- Merging decision tree log ---
 provider#androidx.core.content.FileProvider
-INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:339:9-347:20
+INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:348:9-356:20
 MERGED from [com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:39:9-47:20
 MERGED from [com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:39:9-47:20
 	android:grantUriPermissions
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:343:13-47
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:352:13-47
 	android:authorities
 		INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:341:13-60
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:350:13-60
 	android:exported
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:342:13-37
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:351:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:340:13-62
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:349:13-62
 manifest
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-350:12
-INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-350:12
-INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-350:12
-INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-350:12
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-359:12
+INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-359:12
+INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-359:12
+INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-359:12
 MERGED from [com.braintreepayments:card-form:4.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\488ee9c903fa164398007bc1da60a037\jetified-card-form-4.2.0\AndroidManifest.xml:2:1-11:12
 MERGED from [com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:2:1-27:12
 MERGED from [com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:2:1-50:12
@@ -26,6 +26,7 @@ MERGED from [androidx.constraintlayout:constraintlayout:2.1.0-beta02] C:\Users\D
 MERGED from [com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:2:1-22:12
 MERGED from [com.google.firebase:firebase-core:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\517d015797930de7a28ed75c01e1d7ab\jetified-firebase-core-19.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-analytics:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf53bb8ec53ae204b7417747f8e8967c\jetified-firebase-analytics-19.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:2:1-24:12
 MERGED from [fr.avianey.com.viewpagerindicator:library:2.4.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\09b82a2c9f1fd4083e3234de9600d47c\jetified-library-2.4.1\AndroidManifest.xml:3:1-9:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9715b17d7b56d154d41dd6bc0a2cd72d\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 MERGED from [uk.co.chrisjenx:calligraphy:2.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f1c58e18fc5d701ed8e6a17dc649498f\jetified-calligraphy-2.3.0\AndroidManifest.xml:2:1-13:12
@@ -37,10 +38,11 @@ MERGED from [com.github.GrenderG:Toasty:1.4.2] C:\Users\Demon\Music\truelysell-a
 MERGED from [com.github.iammert:ReadableBottomBar:0.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b3dadc49f7dfce52d1ec947f8955ede4\jetified-ReadableBottomBar-0.2\AndroidManifest.xml:2:1-11:12
 MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1b4836039050ac16b061dc9450135df3\jetified-fastscroll-0.2.5\AndroidManifest.xml:2:1-13:12
 MERGED from [pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:2:1-19:12
-MERGED from [com.facebook.android:facebook-android-sdk:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a9c92921bf10569cd2b001bd1d08aef6\jetified-facebook-android-sdk-5.11.2\AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-login:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0f788479d8717785c98c797e79fc4b18\jetified-facebook-login-5.11.2\AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-share:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\597d835e2d0babce55dc8a4b1d1ef2d3\jetified-facebook-share-5.11.2\AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:21:1-37:12
+MERGED from [com.facebook.android:facebook-android-sdk:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c8c267d6e0c891fe6410e634c2a13d35\jetified-facebook-android-sdk-16.0.1\AndroidManifest.xml:9:1-19:12
+MERGED from [com.facebook.android:facebook-login:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\e394fd799d189e7d477132202f9d2199\jetified-facebook-login-16.0.1\AndroidManifest.xml:9:1-19:12
+MERGED from [com.facebook.android:facebook-gamingservices:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5afcb0e828d8b9aaf49d59501a37b708\jetified-facebook-gamingservices-16.0.1\AndroidManifest.xml:9:1-19:12
+MERGED from [com.facebook.android:facebook-share:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4eb8dde8e19b7d539e68a4f8d90f8db9\jetified-facebook-share-16.0.1\AndroidManifest.xml:9:1-19:12
+MERGED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:9:1-44:12
 MERGED from [com.vanniktech:emoji-ios:0.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0c6f161439a81ec49b33da16f7abc35a\jetified-emoji-ios-0.6.0\AndroidManifest.xml:2:1-7:12
 MERGED from [com.vanniktech:emoji:0.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\821984017f4330d30d5b58366b36845f\jetified-emoji-0.6.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.appcompat:appcompat:1.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\eb7259f4bf12b6beff4977d643dcf064\appcompat-1.3.1\AndroidManifest.xml:17:1-24:12
@@ -48,21 +50,22 @@ MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\Demon\Music\truely
 MERGED from [pl.droidsonroids.gif:android-gif-drawable:1.2.19] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\304260ae1ce61008d7e82f237fe6a7d0\jetified-android-gif-drawable-1.2.19\AndroidManifest.xml:2:1-9:12
 MERGED from [com.mikhaellopez:circularimageview:3.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bba9ce5f2590acba6c4f70e944e18dbc\jetified-circularimageview-3.2.0\AndroidManifest.xml:2:1-11:12
 MERGED from [de.hdodenhof:circleimageview:3.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a4ef090dc37aa6689dfbf8078d8c348f\jetified-circleimageview-3.0.1\AndroidManifest.xml:2:1-11:12
-MERGED from [com.koushikdutta.ion:ion:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\00e9752fbd0cd4ffb5e64bbfd257d760\jetified-ion-3.0.8\AndroidManifest.xml:2:1-16:12
+MERGED from [com.koushikdutta.ion:ion:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1d427b7a2b1b80415b6f561e3d056b6c\jetified-ion-3.1.0\AndroidManifest.xml:2:1-16:12
 MERGED from [com.github.citux:datetimepicker:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b557b69236be1b793cda16f11d75086d\jetified-datetimepicker-0.3.0\AndroidManifest.xml:17:1-28:12
 MERGED from [androidx.legacy:legacy-support-v13:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1843b04778ac268e7cdcc9b9790314ea\legacy-support-v13-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ab3862641b727e94197b0c11234401f4\legacy-support-v4-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.android.gms:play-services-location:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b278411a4b443d65e46fef0e9139052a\jetified-play-services-location-18.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-places:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9ca11cbac60676b097524dd8141d3c65\jetified-play-services-places-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:17:1-44:12
-MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:17:1-83:12
 MERGED from [com.google.android.gms:play-services-gcm:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f5faab86261a19f0d7dec6163fba2cd6\jetified-play-services-gcm-17.0.0\AndroidManifest.xml:17:1-28:12
-MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b525a7501ba809183340799b45f01748\jetified-play-services-auth-base-17.0.0\AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a397d42ac13b7e37b863b88e1e9c71fa\jetified-play-services-auth-api-phone-17.4.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-location:20.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b40e834698bcdabdbb013293d9044444\jetified-play-services-location-20.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5646d0e6c92ea96261bf820684efdeb7\jetified-play-services-auth-api-phone-18.0.1\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\66d70a1a9960550dd1ec1cff4d267eb1\jetified-play-services-auth-base-18.0.4\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\afe04ef0ffa5f147e86c8c0d8258b9bf\jetified-play-services-fido-20.0.1\AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b6a1a76cea699e09b867d04b51d4e130\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-iid:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\20e420680233b5fa1a5a7aeb65f2c062\jetified-play-services-iid-17.0.0\AndroidManifest.xml:17:1-28:12
-MERGED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c45feb400f24bc2d758c2215511cc53b\jetified-play-services-base-18.0.1\AndroidManifest.xml:16:1-24:12
 MERGED from [com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:2:1-17:12
 MERGED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:17:1-58:12
 MERGED from [com.google.android.gms:play-services-measurement-api:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5019e47da7d7fdc658df67774e87edcd\jetified-play-services-measurement-api-19.0.0\AndroidManifest.xml:17:1-36:12
@@ -88,7 +91,7 @@ MERGED from [com.google.android.gms:play-services-tasks:18.0.2] C:\Users\Demon\M
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9e89a0f1d916fefd57cd31f9601ad002\jetified-play-services-ads-identifier-17.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8b9d29825f1e1fa44716e903e60d5949\jetified-play-services-measurement-sdk-api-19.0.0\AndroidManifest.xml:17:1-27:12
 MERGED from [com.google.android.gms:play-services-measurement-base:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\34375a25ed03d142d852ef7f7ab9840f\jetified-play-services-measurement-base-19.0.0\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\edb5b1df5faadda4cb2f487d66a07bf7\jetified-play-services-basement-18.1.0\AndroidManifest.xml:16:1-26:12
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7d9c5e333e231e20215083fc5250ad49\jetified-play-services-basement-18.2.0\AndroidManifest.xml:16:1-26:12
 MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\d987c9964b50c31625c700cc58e10c7e\fragment-1.3.6\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.2.4] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1af9d5c406e0a2ca953667d7fc9920b9\jetified-activity-1.2.4\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat-resources:1.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\e3631bfa1ad44da46228a63020c8a77f\jetified-appcompat-resources-1.3.1\AndroidManifest.xml:17:1-24:12
@@ -101,10 +104,9 @@ MERGED from [androidx.transition:transition:1.2.0] C:\Users\Demon\Music\truelyse
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\28e2bfa0227badca695b7f986378b30b\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9118582072a5dc73907213dcd3534268\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.media:media:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\75dd3c009de2b691b957d5fb3867ec50\media-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.facebook.android:facebook-places:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\cef3f927b57ea80577c7da017e90645c\jetified-facebook-places-5.11.2\AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-applinks:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\edf2f39da347d587daae015ce62192eb\jetified-facebook-applinks-5.11.2\AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-messenger:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\93634e75740207da7b1569d72547d467\jetified-facebook-messenger-5.11.2\AndroidManifest.xml:21:1-31:12
-MERGED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:21:1-61:12
+MERGED from [com.facebook.android:facebook-applinks:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0851b69d404b0a145a7e68abe090cdbb\jetified-facebook-applinks-16.0.1\AndroidManifest.xml:9:1-19:12
+MERGED from [com.facebook.android:facebook-messenger:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\05640efa97d9df4c21f904eb4dc5649a\jetified-facebook-messenger-16.0.1\AndroidManifest.xml:9:1-19:12
+MERGED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:9:1-50:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\d787deb8883fa42e1e15ae50a0c576d9\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a71ec79ae7098e6e93ecdd643b762061\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.jakewharton:butterknife:10.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\2f479167f0ef261d871a2e61b25d6df0\jetified-butterknife-10.2.0\AndroidManifest.xml:2:1-7:12
@@ -115,12 +117,14 @@ MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] C:\Users\Demon\
 MERGED from [androidx.customview:customview:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\16f60884f0a7c6fdb10686290495ec01\customview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b175204999e9c1355c06a98ba31fe9ee\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\d894b44d0798f8a7c2244b25442410d9\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.android:facebook-bolts:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b2bdb6c68b9a53ee38db20e4f24b37ed\jetified-facebook-bolts-16.0.1\AndroidManifest.xml:9:1-19:12
+MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3766b9c2dda34a69d455e48635a0353f\jetified-core-ktx-1.3.2\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.core:core:1.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c18859ecb579254e2402d0e10b45da0d\core-1.5.0\AndroidManifest.xml:17:1-26:12
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7854c394f0ce66a93671c0213c45adc6\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\986b1aaeaf001b3cccf366b54ea5f62b\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9149c57cd545f886cb8db46453eec5b6\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7854c394f0ce66a93671c0213c45adc6\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\6c61ccff1f56142ad057757e544facd9\jetified-savedstate-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\64b53dc2def19eeff1569bdfab690074\lifecycle-runtime-2.3.1\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9149c57cd545f886cb8db46453eec5b6\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\e6178d4756c3bb0254361b04eb068d8a\jetified-gifdecoder-4.11.0\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b99b2b8b1e0d940be1c151f46f61137c\exifinterface-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:15:1-38:12
@@ -137,31 +141,32 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Demon\Music\true
 MERGED from [androidx.print:print:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\07ba9ddb36a0b7fe897d36160b5e813a\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7579d38aa950d0c8b31cb1f5c4a19ff\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c1200b81fc2076200bdb0c125077409f\jetified-firebase-encoders-json-18.0.0\AndroidManifest.xml:15:1-23:12
-MERGED from [com.android.volley:volley:1.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a5e1a14b13ddfb145bae0984148a57c4\jetified-volley-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.android.volley:volley:1.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5c9b583d8459f4f0153f167f3cbf2fec\jetified-volley-1.2.1\AndroidManifest.xml:2:1-7:12
 MERGED from [com.skyfishjy.ripplebackground:library:1.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\627a0c2d7223d9070a1240524b74db69\jetified-library-1.0.1\AndroidManifest.xml:2:1-13:12
 MERGED from [com.intuit.sdp:sdp-android:1.0.6] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\15b6a533185ec13e661a0c1120624f61\jetified-sdp-android-1.0.6\AndroidManifest.xml:2:1-11:12
 MERGED from [cn.jzvd:jiaozivideoplayer:7.0.5] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\6151a2d198db3d7c199c922885d50a5a\jetified-jiaozivideoplayer-7.0.5\AndroidManifest.xml:2:1-13:12
 MERGED from [pl.droidsonroids:relinker:1.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b4ec15b0a94b112b019cfc6777b28225\jetified-relinker-1.3.1\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8ff379919ceee3b9050b41ba1c074071\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [io.michaelrocks:libphonenumber-android:8.10.14] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\673f514c5394e09cca6def84a74eb6d2\jetified-libphonenumber-android-8.10.14\AndroidManifest.xml:2:1-11:12
-MERGED from [com.koushikdutta.async:androidasync:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\eaf293701106b5422b577d745123c250\jetified-androidasync-3.0.8\AndroidManifest.xml:2:1-16:12
+MERGED from [com.koushikdutta.async:androidasync:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\161b0dd58ce149428ce7c2870738e096\jetified-androidasync-3.1.0\AndroidManifest.xml:2:1-16:12
 MERGED from [com.bm.photoview:library:1.4.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4df43ff01f7f6fc696ca62186f44bb40\jetified-library-1.4.1\AndroidManifest.xml:2:1-14:12
-INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-350:12
-INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-350:12
-INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-350:12
+MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9ac303f1fdd3b0e32db68259262de9d1\jetified-installreferrer-1.0\AndroidManifest.xml:2:1-13:12
+INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-359:12
+INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-359:12
+INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-359:12
 	package
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:4:5-36
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:4:5-39
 		INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-350:12
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-359:12
 		INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-350:12
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:1-359:12
 		INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:2:11-69
@@ -169,8 +174,10 @@ uses-permission#android.permission.INTERNET
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:6:5-67
 MERGED from [com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:10:5-67
 MERGED from [com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:10:5-67
-MERGED from [com.koushikdutta.ion:ion:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\00e9752fbd0cd4ffb5e64bbfd257d760\jetified-ion-3.0.8\AndroidManifest.xml:11:5-67
-MERGED from [com.koushikdutta.ion:ion:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\00e9752fbd0cd4ffb5e64bbfd257d760\jetified-ion-3.0.8\AndroidManifest.xml:11:5-67
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:12:5-67
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:12:5-67
+MERGED from [com.koushikdutta.ion:ion:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1d427b7a2b1b80415b6f561e3d056b6c\jetified-ion-3.1.0\AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.ion:ion:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1d427b7a2b1b80415b6f561e3d056b6c\jetified-ion-3.1.0\AndroidManifest.xml:11:5-67
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:24:5-67
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:24:5-67
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:23:5-67
@@ -193,8 +200,8 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:19.0.0] C:
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8b9d29825f1e1fa44716e903e60d5949\jetified-play-services-measurement-sdk-api-19.0.0\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:26:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:26:5-67
-MERGED from [com.koushikdutta.async:androidasync:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\eaf293701106b5422b577d745123c250\jetified-androidasync-3.0.8\AndroidManifest.xml:11:5-67
-MERGED from [com.koushikdutta.async:androidasync:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\eaf293701106b5422b577d745123c250\jetified-androidasync-3.0.8\AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.async:androidasync:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\161b0dd58ce149428ce7c2870738e096\jetified-androidasync-3.1.0\AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.async:androidasync:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\161b0dd58ce149428ce7c2870738e096\jetified-androidasync-3.1.0\AndroidManifest.xml:11:5-67
 	android:name
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:6:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
@@ -239,10 +246,14 @@ MERGED from [com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Mu
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:9:22-77
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:10:5-81
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:9:5-81
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:9:5-81
 	android:name
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:10:22-78
 uses-permission#android.permission.ACCESS_FINE_LOCATION
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:11:5-79
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:10:5-79
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:10:5-79
 	android:name
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:11:22-76
 uses-permission#android.permission.CALL_PHONE
@@ -255,6 +266,8 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:13:22-62
 uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:14:5-76
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:11:5-76
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:11:5-76
 	android:name
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:14:22-73
 uses-permission#android.permission.CHANGE_WIFI_MULTICAST_STATE
@@ -304,7 +317,7 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:name
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:24:9-50
 application
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:27:5-348:19
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:27:5-357:19
 MERGED from [com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:11:5-25:19
 MERGED from [com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:11:5-25:19
 MERGED from [com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:14:5-48:19
@@ -321,6 +334,8 @@ MERGED from [com.google.firebase:firebase-core:19.0.0] C:\Users\Demon\Music\true
 MERGED from [com.google.firebase:firebase-core:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\517d015797930de7a28ed75c01e1d7ab\jetified-firebase-core-19.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf53bb8ec53ae204b7417747f8e8967c\jetified-firebase-analytics-19.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf53bb8ec53ae204b7417747f8e8967c\jetified-firebase-analytics-19.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:14:5-22:19
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:14:5-22:19
 MERGED from [uk.co.chrisjenx:calligraphy:2.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f1c58e18fc5d701ed8e6a17dc649498f\jetified-calligraphy-2.3.0\AndroidManifest.xml:11:5-20
 MERGED from [uk.co.chrisjenx:calligraphy:2.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f1c58e18fc5d701ed8e6a17dc649498f\jetified-calligraphy-2.3.0\AndroidManifest.xml:11:5-20
 MERGED from [com.daasuu:CountAnimationTextView:0.1.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\aa21cee8ca327e7956aa057443b53a2b\jetified-CountAnimationTextView-0.1.1\AndroidManifest.xml:11:5-15:19
@@ -333,40 +348,44 @@ MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\Demon\
 MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1b4836039050ac16b061dc9450135df3\jetified-fastscroll-0.2.5\AndroidManifest.xml:11:5-20
 MERGED from [pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:11:5-17:19
 MERGED from [pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:11:5-17:19
-MERGED from [com.facebook.android:facebook-android-sdk:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a9c92921bf10569cd2b001bd1d08aef6\jetified-facebook-android-sdk-5.11.2\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-android-sdk:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a9c92921bf10569cd2b001bd1d08aef6\jetified-facebook-android-sdk-5.11.2\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-login:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0f788479d8717785c98c797e79fc4b18\jetified-facebook-login-5.11.2\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-login:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0f788479d8717785c98c797e79fc4b18\jetified-facebook-login-5.11.2\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-share:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\597d835e2d0babce55dc8a4b1d1ef2d3\jetified-facebook-share-5.11.2\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-share:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\597d835e2d0babce55dc8a4b1d1ef2d3\jetified-facebook-share-5.11.2\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:28:5-35:19
-MERGED from [com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:28:5-35:19
+MERGED from [com.facebook.android:facebook-android-sdk:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c8c267d6e0c891fe6410e634c2a13d35\jetified-facebook-android-sdk-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-android-sdk:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c8c267d6e0c891fe6410e634c2a13d35\jetified-facebook-android-sdk-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-login:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\e394fd799d189e7d477132202f9d2199\jetified-facebook-login-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-login:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\e394fd799d189e7d477132202f9d2199\jetified-facebook-login-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-gamingservices:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5afcb0e828d8b9aaf49d59501a37b708\jetified-facebook-gamingservices-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-gamingservices:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5afcb0e828d8b9aaf49d59501a37b708\jetified-facebook-gamingservices-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-share:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4eb8dde8e19b7d539e68a4f8d90f8db9\jetified-facebook-share-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-share:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4eb8dde8e19b7d539e68a4f8d90f8db9\jetified-facebook-share-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:21:5-42:19
+MERGED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:21:5-42:19
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\156bb45224be9ab6b436ed19f8f69962\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\156bb45224be9ab6b436ed19f8f69962\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
 MERGED from [de.hdodenhof:circleimageview:3.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a4ef090dc37aa6689dfbf8078d8c348f\jetified-circleimageview-3.0.1\AndroidManifest.xml:9:5-20
 MERGED from [de.hdodenhof:circleimageview:3.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a4ef090dc37aa6689dfbf8078d8c348f\jetified-circleimageview-3.0.1\AndroidManifest.xml:9:5-20
-MERGED from [com.koushikdutta.ion:ion:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\00e9752fbd0cd4ffb5e64bbfd257d760\jetified-ion-3.0.8\AndroidManifest.xml:13:5-14:19
-MERGED from [com.koushikdutta.ion:ion:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\00e9752fbd0cd4ffb5e64bbfd257d760\jetified-ion-3.0.8\AndroidManifest.xml:13:5-14:19
+MERGED from [com.koushikdutta.ion:ion:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1d427b7a2b1b80415b6f561e3d056b6c\jetified-ion-3.1.0\AndroidManifest.xml:13:5-14:19
+MERGED from [com.koushikdutta.ion:ion:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1d427b7a2b1b80415b6f561e3d056b6c\jetified-ion-3.1.0\AndroidManifest.xml:13:5-14:19
 MERGED from [com.github.citux:datetimepicker:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b557b69236be1b793cda16f11d75086d\jetified-datetimepicker-0.3.0\AndroidManifest.xml:26:5-20
 MERGED from [com.github.citux:datetimepicker:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b557b69236be1b793cda16f11d75086d\jetified-datetimepicker-0.3.0\AndroidManifest.xml:26:5-20
-MERGED from [com.google.android.gms:play-services-location:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b278411a4b443d65e46fef0e9139052a\jetified-play-services-location-18.0.0\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-location:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b278411a4b443d65e46fef0e9139052a\jetified-play-services-location-18.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-places:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9ca11cbac60676b097524dd8141d3c65\jetified-play-services-places-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-places:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9ca11cbac60676b097524dd8141d3c65\jetified-play-services-places-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:36:5-42:19
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:36:5-42:19
-MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:22:5-38:19
-MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:22:5-38:19
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:26:5-81:19
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:26:5-81:19
 MERGED from [com.google.android.gms:play-services-gcm:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f5faab86261a19f0d7dec6163fba2cd6\jetified-play-services-gcm-17.0.0\AndroidManifest.xml:26:5-20
 MERGED from [com.google.android.gms:play-services-gcm:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f5faab86261a19f0d7dec6163fba2cd6\jetified-play-services-gcm-17.0.0\AndroidManifest.xml:26:5-20
+MERGED from [com.google.android.gms:play-services-location:20.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b40e834698bcdabdbb013293d9044444\jetified-play-services-location-20.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:20.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b40e834698bcdabdbb013293d9044444\jetified-play-services-location-20.0.0\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\afe04ef0ffa5f147e86c8c0d8258b9bf\jetified-play-services-fido-20.0.1\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\afe04ef0ffa5f147e86c8c0d8258b9bf\jetified-play-services-fido-20.0.1\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b6a1a76cea699e09b867d04b51d4e130\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b6a1a76cea699e09b867d04b51d4e130\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-iid:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\20e420680233b5fa1a5a7aeb65f2c062\jetified-play-services-iid-17.0.0\AndroidManifest.xml:26:5-20
 MERGED from [com.google.android.gms:play-services-iid:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\20e420680233b5fa1a5a7aeb65f2c062\jetified-play-services-iid-17.0.0\AndroidManifest.xml:26:5-20
-MERGED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:22:5-27:19
-MERGED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c45feb400f24bc2d758c2215511cc53b\jetified-play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c45feb400f24bc2d758c2215511cc53b\jetified-play-services-base-18.0.1\AndroidManifest.xml:19:5-23:19
 MERGED from [com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:11:5-15:19
 MERGED from [com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:11:5-15:19
 MERGED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:27:5-56:19
@@ -403,16 +422,16 @@ MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\User
 MERGED from [com.google.android.gms:play-services-ads-identifier:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9e89a0f1d916fefd57cd31f9601ad002\jetified-play-services-ads-identifier-17.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-measurement-base:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\34375a25ed03d142d852ef7f7ab9840f\jetified-play-services-measurement-base-19.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-measurement-base:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\34375a25ed03d142d852ef7f7ab9840f\jetified-play-services-measurement-base-19.0.0\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\edb5b1df5faadda4cb2f487d66a07bf7\jetified-play-services-basement-18.1.0\AndroidManifest.xml:20:5-24:19
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\edb5b1df5faadda4cb2f487d66a07bf7\jetified-play-services-basement-18.1.0\AndroidManifest.xml:20:5-24:19
-MERGED from [com.facebook.android:facebook-places:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\cef3f927b57ea80577c7da017e90645c\jetified-facebook-places-5.11.2\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-places:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\cef3f927b57ea80577c7da017e90645c\jetified-facebook-places-5.11.2\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-applinks:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\edf2f39da347d587daae015ce62192eb\jetified-facebook-applinks-5.11.2\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-applinks:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\edf2f39da347d587daae015ce62192eb\jetified-facebook-applinks-5.11.2\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-messenger:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\93634e75740207da7b1569d72547d467\jetified-facebook-messenger-5.11.2\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-messenger:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\93634e75740207da7b1569d72547d467\jetified-facebook-messenger-5.11.2\AndroidManifest.xml:28:5-29:19
-MERGED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:28:5-59:19
-MERGED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:28:5-59:19
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7d9c5e333e231e20215083fc5250ad49\jetified-play-services-basement-18.2.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7d9c5e333e231e20215083fc5250ad49\jetified-play-services-basement-18.2.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.facebook.android:facebook-applinks:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0851b69d404b0a145a7e68abe090cdbb\jetified-facebook-applinks-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-applinks:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0851b69d404b0a145a7e68abe090cdbb\jetified-facebook-applinks-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-messenger:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\05640efa97d9df4c21f904eb4dc5649a\jetified-facebook-messenger-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-messenger:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\05640efa97d9df4c21f904eb4dc5649a\jetified-facebook-messenger-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:18:5-48:19
+MERGED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:18:5-48:19
+MERGED from [com.facebook.android:facebook-bolts:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b2bdb6c68b9a53ee38db20e4f24b37ed\jetified-facebook-bolts-16.0.1\AndroidManifest.xml:16:5-17:19
+MERGED from [com.facebook.android:facebook-bolts:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b2bdb6c68b9a53ee38db20e4f24b37ed\jetified-facebook-bolts-16.0.1\AndroidManifest.xml:16:5-17:19
 MERGED from [androidx.core:core:1.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c18859ecb579254e2402d0e10b45da0d\core-1.5.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c18859ecb579254e2402d0e10b45da0d\core-1.5.0\AndroidManifest.xml:24:5-89
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\e6178d4756c3bb0254361b04eb068d8a\jetified-gifdecoder-4.11.0\AndroidManifest.xml:9:5-20
@@ -425,10 +444,12 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\De
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\e605b07d7583708b566c456437b07637\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 MERGED from [com.skyfishjy.ripplebackground:library:1.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\627a0c2d7223d9070a1240524b74db69\jetified-library-1.0.1\AndroidManifest.xml:11:5-20
 MERGED from [com.skyfishjy.ripplebackground:library:1.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\627a0c2d7223d9070a1240524b74db69\jetified-library-1.0.1\AndroidManifest.xml:11:5-20
-MERGED from [com.koushikdutta.async:androidasync:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\eaf293701106b5422b577d745123c250\jetified-androidasync-3.0.8\AndroidManifest.xml:13:5-14:19
-MERGED from [com.koushikdutta.async:androidasync:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\eaf293701106b5422b577d745123c250\jetified-androidasync-3.0.8\AndroidManifest.xml:13:5-14:19
+MERGED from [com.koushikdutta.async:androidasync:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\161b0dd58ce149428ce7c2870738e096\jetified-androidasync-3.1.0\AndroidManifest.xml:13:5-14:19
+MERGED from [com.koushikdutta.async:androidasync:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\161b0dd58ce149428ce7c2870738e096\jetified-androidasync-3.1.0\AndroidManifest.xml:13:5-14:19
 MERGED from [com.bm.photoview:library:1.4.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4df43ff01f7f6fc696ca62186f44bb40\jetified-library-1.4.1\AndroidManifest.xml:11:5-12:19
 MERGED from [com.bm.photoview:library:1.4.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4df43ff01f7f6fc696ca62186f44bb40\jetified-library-1.4.1\AndroidManifest.xml:11:5-12:19
+MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9ac303f1fdd3b0e32db68259262de9d1\jetified-installreferrer-1.0\AndroidManifest.xml:11:5-20
+MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9ac303f1fdd3b0e32db68259262de9d1\jetified-installreferrer-1.0\AndroidManifest.xml:11:5-20
 	tools:ignore
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:40:9-48
 	android:roundIcon
@@ -462,142 +483,142 @@ MERGED from [com.bm.photoview:library:1.4.1] C:\Users\Demon\Music\truelysell-and
 	tools:replace
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:41:9-44
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:28:9-36
-activity#com.pinkcar.providers.ui.activities.Payment
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:28:9-60
+activity#com.travel.travellingbug.ui.activities.Payment
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:42:9-44:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:44:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:43:13-50
-activity#com.pinkcar.providers.ui.activities.ProfilePictureActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:43:13-74
+activity#com.travel.travellingbug.ui.activities.ProfilePictureActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:45:9-47:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:47:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:46:13-65
-activity#com.pinkcar.providers.ui.activities.PersonalDetailsActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:46:13-89
+activity#com.travel.travellingbug.ui.activities.PersonalDetailsActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:48:9-50:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:50:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:49:13-66
-activity#com.pinkcar.providers.ui.activities.VerifyEmailActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:49:13-90
+activity#com.travel.travellingbug.ui.activities.VerifyEmailActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:51:9-53:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:53:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:52:13-62
-activity#com.pinkcar.providers.ui.activities.VerifyMobileNumberActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:52:13-86
+activity#com.travel.travellingbug.ui.activities.VerifyMobileNumberActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:54:9-56:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:56:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:55:13-69
-activity#com.pinkcar.providers.ui.activities.VehicleDetailsMenufactureActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:55:13-93
+activity#com.travel.travellingbug.ui.activities.VehicleDetailsMenufactureActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:57:9-59:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:59:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:58:13-76
-activity#com.pinkcar.providers.ui.activities.VehicleDetailsColorActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:58:13-100
+activity#com.travel.travellingbug.ui.activities.VehicleDetailsColorActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:60:9-62:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:62:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:61:13-70
-activity#com.pinkcar.providers.ui.activities.VehicleDetailsTypeActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:61:13-94
+activity#com.travel.travellingbug.ui.activities.VehicleDetailsTypeActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:63:9-65:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:65:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:64:13-69
-activity#com.pinkcar.providers.ui.activities.VehicleDetailsModelActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:64:13-93
+activity#com.travel.travellingbug.ui.activities.VehicleDetailsModelActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:66:9-68:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:68:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:67:13-70
-activity#com.pinkcar.providers.ui.activities.VehicleDetailsBrandActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:67:13-94
+activity#com.travel.travellingbug.ui.activities.VehicleDetailsBrandActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:69:9-71:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:71:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:70:13-70
-activity#com.pinkcar.providers.ui.activities.VehicleDetailsLicensePlateNumberActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:70:13-94
+activity#com.travel.travellingbug.ui.activities.VehicleDetailsLicensePlateNumberActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:72:9-74:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:74:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:73:13-83
-activity#com.pinkcar.providers.ui.activities.TravelPreferenceActivityMain
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:73:13-107
+activity#com.travel.travellingbug.ui.activities.TravelPreferenceActivityMain
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:75:9-77:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:77:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:76:13-71
-activity#com.pinkcar.providers.ui.activities.TravelPreferenceActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:76:13-95
+activity#com.travel.travellingbug.ui.activities.TravelPreferenceActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:78:9-80:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:80:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:79:13-67
-activity#com.pinkcar.providers.ui.activities.VerifyIdMainActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:79:13-91
+activity#com.travel.travellingbug.ui.activities.VerifyIdMainActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:9-83:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:83:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:82:13-63
-activity#com.pinkcar.providers.ui.activities.VerifyIdActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:82:13-87
+activity#com.travel.travellingbug.ui.activities.VerifyIdActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:84:9-86:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:86:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:85:13-59
-activity#com.pinkcar.providers.ui.activities.HelpActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:85:13-83
+activity#com.travel.travellingbug.ui.activities.HelpActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:87:9-89:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:89:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:88:13-55
-activity#com.pinkcar.providers.ui.activities.TermsAndConditionActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:88:13-79
+activity#com.travel.travellingbug.ui.activities.TermsAndConditionActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:90:9-92:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:91:13-68
-activity#com.pinkcar.providers.ui.activities.ChangePasswordActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:91:13-92
+activity#com.travel.travellingbug.ui.activities.ChangePasswordActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:93:9-95:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:95:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:94:13-65
-activity#com.pinkcar.providers.ui.activities.ChangeAddressAdtivityTwo
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:94:13-89
+activity#com.travel.travellingbug.ui.activities.ChangeAddressAdtivityTwo
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:96:9-98:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:98:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:97:13-67
-activity#com.pinkcar.providers.ui.activities.ChangeAddressAdtivityOne
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:97:13-91
+activity#com.travel.travellingbug.ui.activities.ChangeAddressAdtivityOne
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:99:9-101:40
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:101:13-37
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:100:13-67
-activity#com.pinkcar.providers.ui.activities.HomeScreenActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:100:13-91
+activity#com.travel.travellingbug.ui.activities.HomeScreenActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:102:9-104:39
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:104:13-36
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:103:13-61
-activity#com.pinkcar.providers.ui.activities.IntroScreen
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:103:13-85
+activity#com.travel.travellingbug.ui.activities.IntroScreen
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:105:9-108:59
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:107:13-37
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:108:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:106:13-54
-activity#com.pinkcar.providers.ui.activities.login.IntroActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:106:13-78
+activity#com.travel.travellingbug.ui.activities.login.IntroActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:109:9-113:59
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:112:13-49
@@ -606,8 +627,8 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:113:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:110:13-62
-activity#com.pinkcar.providers.ui.activities.login.LoginActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:110:13-86
+activity#com.travel.travellingbug.ui.activities.login.LoginActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:114:9-118:59
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:117:13-49
@@ -616,24 +637,24 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:118:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:115:13-62
-activity#com.pinkcar.providers.ui.activities.login.FaceBookLoginActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:115:13-86
+activity#com.travel.travellingbug.ui.activities.login.FaceBookLoginActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:119:9-122:78
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:121:13-49
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:122:13-75
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:120:13-70
-activity#com.pinkcar.providers.ui.activities.login.GoogleLoginActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:120:13-94
+activity#com.travel.travellingbug.ui.activities.login.GoogleLoginActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:123:9-126:78
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:125:13-49
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:126:13-75
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:124:13-68
-activity#com.pinkcar.providers.ui.activities.NotificationTab
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:124:13-92
+activity#com.travel.travellingbug.ui.activities.NotificationTab
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:127:9-137:20
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:130:13-36
@@ -642,7 +663,7 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:131:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:128:13-58
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:128:13-82
 intent-filter#action:name:com.quickridejadriver.providers.TARGETNOTIFICATION+category:name:android.intent.category.DEFAULT
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:132:13-136:29
 action#com.quickridejadriver.providers.TARGETNOTIFICATION
@@ -653,10 +674,10 @@ category#android.intent.category.DEFAULT
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:135:17-76
 	android:name
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:135:27-73
-activity#com.pinkcar.providers.ui.activities.DocUploadActivity
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:138:9-69
+activity#com.travel.travellingbug.ui.activities.DocUploadActivity
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:138:9-93
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:138:19-66
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:138:19-90
 uses-library#org.apache.http.legacy
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:140:9-142:40
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:39:9-41:40
@@ -665,19 +686,19 @@ MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Mu
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:142:13-37
 	android:name
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:141:13-50
-activity#com.pinkcar.providers.ui.activities.WithdrawActivity
+activity#com.travel.travellingbug.ui.activities.WithdrawActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:144:9-146:59
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:146:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:145:13-59
-activity#com.pinkcar.providers.ui.activities.OtpVerification
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:145:13-83
+activity#com.travel.travellingbug.ui.activities.OtpVerification
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:147:9-149:59
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:149:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:148:13-58
-activity#com.pinkcar.providers.ui.activities.WithdrawAmountActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:148:13-82
+activity#com.travel.travellingbug.ui.activities.WithdrawAmountActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:150:9-154:67
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:152:13-49
@@ -686,19 +707,19 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:153:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:151:13-65
-activity#com.pinkcar.providers.ui.activities.DocumentStatus
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:155:9-66
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:151:13-89
+activity#com.travel.travellingbug.ui.activities.DocumentStatus
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:155:9-90
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:155:19-63
-activity#com.pinkcar.providers.ui.activities.SplashScreen
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:155:19-87
+activity#com.travel.travellingbug.ui.activities.SplashScreen
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:156:9-165:20
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:158:13-36
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:159:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:157:13-55
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:157:13-79
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:160:13-164:29
 action#android.intent.action.MAIN
@@ -709,25 +730,25 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:163:17-77
 	android:name
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:163:27-74
-activity#com.pinkcar.providers.Login
+activity#com.travel.travellingbug.Login
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:166:9-168:59
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:168:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:167:13-34
-activity#com.pinkcar.providers.ui.activities.FullImage
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:167:13-58
+activity#com.travel.travellingbug.ui.activities.FullImage
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:169:9-171:59
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:171:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:170:13-52
-activity#com.pinkcar.providers.ui.activities.login.SignUp
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:170:13-76
+activity#com.travel.travellingbug.ui.activities.login.SignUp
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:172:9-174:59
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:174:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:173:13-55
-activity#com.pinkcar.providers.chat.UserChatActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:173:13-79
+activity#com.travel.travellingbug.chat.UserChatActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:175:9-179:58
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:177:13-49
@@ -736,30 +757,30 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:178:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:176:13-50
-activity#com.pinkcar.providers.ui.activities.UserReview
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:176:13-74
+activity#com.travel.travellingbug.ui.activities.UserReview
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:180:9-183:59
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:182:13-49
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:183:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:181:13-53
-activity#com.pinkcar.providers.ui.activities.login.ForgotPassword
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:181:13-77
+activity#com.travel.travellingbug.ui.activities.login.ForgotPassword
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:184:9-187:59
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:186:13-49
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:187:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:185:13-63
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:185:13-87
 meta-data#com.google.android.geo.API_KEY
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:189:9-191:54
 	android:value
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:191:13-51
 	android:name
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:190:13-58
-activity#com.pinkcar.providers.ui.activities.MainActivity
+activity#com.travel.travellingbug.ui.activities.MainActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:193:9-198:58
 	android:label
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:196:13-45
@@ -770,8 +791,8 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:197:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:194:13-55
-activity#com.pinkcar.providers.ui.activities.EditProfile
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:194:13-79
+activity#com.travel.travellingbug.ui.activities.EditProfile
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:199:9-204:57
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:202:13-49
@@ -782,8 +803,8 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:203:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:200:13-54
-activity#com.pinkcar.providers.ui.activities.ShowProfile
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:200:13-78
+activity#com.travel.travellingbug.ui.activities.ShowProfile
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:205:9-210:57
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:208:13-49
@@ -794,8 +815,8 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:209:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:206:13-54
-activity#com.pinkcar.providers.ui.activities.HistoryDetails
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:206:13-78
+activity#com.travel.travellingbug.ui.activities.HistoryDetails
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:211:9-216:58
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:214:13-49
@@ -806,24 +827,24 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:215:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:212:13-57
-activity#com.pinkcar.providers.ui.activities.HistoryActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:212:13-81
+activity#com.travel.travellingbug.ui.activities.HistoryActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:217:9-220:52
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:220:13-49
 	android:label
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:13-36
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:218:13-58
-activity#com.pinkcar.providers.ui.activities.CouponActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:218:13-82
+activity#com.travel.travellingbug.ui.activities.CouponActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:221:9-224:57
 	android:label
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:13-35
 	android:windowSoftInputMode
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:224:13-54
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:222:13-57
-activity#com.pinkcar.providers.ui.activities.login.ChangePassword
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:222:13-81
+activity#com.travel.travellingbug.ui.activities.login.ChangePassword
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:225:9-230:58
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:228:13-49
@@ -834,8 +855,8 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:229:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:226:13-63
-activity#com.pinkcar.providers.ui.activities.CustomGooglePlacesSearch
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:226:13-87
+activity#com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:231:9-236:58
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:234:13-49
@@ -846,13 +867,13 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:235:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:232:13-67
-service#com.pinkcar.providers.fcm.FCMService
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:232:13-91
+service#com.travel.travellingbug.fcm.FCMService
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:238:9-244:19
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:240:13-36
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:239:13-43
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:239:13-67
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:241:13-243:29
 action#com.google.firebase.MESSAGING_EVENT
@@ -865,89 +886,79 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:248:13-68
 	android:name
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:247:13-89
-receiver#com.pinkcar.providers.fcm.MyBroadcastReceiver
+receiver#com.travel.travellingbug.fcm.MyBroadcastReceiver
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:250:9-252:39
 	android:exported
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:252:13-36
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:251:13-52
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:251:13-76
 meta-data#com.facebook.accountkit.ApplicationName
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:254:9-256:48
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:256:9-258:48
 	android:value
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:256:13-45
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:258:13-45
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:255:13-67
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:257:13-67
 meta-data#com.facebook.sdk.ApplicationId
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:257:9-259:55
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:259:9-261:55
 	android:value
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:259:13-52
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:261:13-52
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:258:13-58
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:260:13-58
+meta-data#com.facebook.sdk.ClientToken
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:263:9-111
+	android:value
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:263:64-109
+	android:name
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:263:20-63
 activity#com.facebook.FacebookActivity
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:261:9-264:48
-MERGED from [com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:29:9-32:66
-MERGED from [com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:29:9-32:66
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:267:5-270:48
+MERGED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:22:9-25:66
+MERGED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:22:9-25:66
 	android:label
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:264:13-45
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:270:13-45
 	android:configChanges
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:263:13-96
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:269:13-96
 	android:theme
-		ADDED from [com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:32:13-63
+		ADDED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:25:13-63
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:262:13-57
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:268:13-57
 activity#com.facebook.CustomTabActivity
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:265:9-278:20
-MERGED from [com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:34:9-67
-MERGED from [com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:34:9-67
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:271:9-283:20
+MERGED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:27:9-41:20
+MERGED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:27:9-41:20
+	tools:node
+		ADDED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:30:13-31
 	android:exported
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:267:13-36
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:273:13-36
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:266:13-58
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:272:13-58
 intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:scheme:@string/fb_login_protocol_scheme
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:268:13-277:29
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:274:13-282:29
 action#android.intent.action.VIEW
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:269:17-69
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:275:17-69
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:269:25-66
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:275:25-66
 category#android.intent.category.BROWSABLE
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:272:17-78
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:277:17-78
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:272:27-75
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:277:27-75
 data
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:274:17-276:55
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:279:17-281:55
 	android:scheme
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:275:21-70
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:280:21-70
 	tools:ignore
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:276:21-52
-activity#com.pinkcar.providers.ui.activities.SosCallActivity
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:279:9-283:59
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:281:21-52
+activity#com.travel.travellingbug.ui.activities.SosCallActivity
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:288:9-292:59
 	android:screenOrientation
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:282:13-49
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:291:13-49
 	android:hardwareAccelerated
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:281:13-48
-	android:theme
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:283:13-56
-	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:280:13-58
-activity#com.pinkcar.providers.ui.activities.ComplaintsAcivity
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:284:9-288:59
-	android:screenOrientation
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:287:13-49
-	android:hardwareAccelerated
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:286:13-48
-	android:theme
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:288:13-56
-	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:285:13-60
-activity#com.pinkcar.providers.ui.activities.LegalActivity
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:289:9-292:59
-	android:hardwareAccelerated
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:291:13-48
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:290:13-48
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:292:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:290:13-56
-activity#com.pinkcar.providers.ui.activities.TermsOfUseActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:289:13-82
+activity#com.travel.travellingbug.ui.activities.ComplaintsAcivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:293:9-297:59
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:296:13-49
@@ -956,78 +967,78 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:297:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:294:13-61
-activity#com.pinkcar.providers.ui.activities.PrivacyPolicyActivity
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:298:9-302:59
-	android:screenOrientation
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:301:13-49
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:294:13-84
+activity#com.travel.travellingbug.ui.activities.LegalActivity
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:298:9-301:59
 	android:hardwareAccelerated
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:300:13-48
 	android:theme
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:302:13-56
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:301:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:299:13-64
-activity#com.pinkcar.providers.ui.activities.UpdateProfile
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:303:9-307:59
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:299:13-80
+activity#com.travel.travellingbug.ui.activities.TermsOfUseActivity
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:302:9-306:59
 	android:screenOrientation
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:306:13-49
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:305:13-49
 	android:hardwareAccelerated
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:305:13-48
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:304:13-48
 	android:theme
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:307:13-56
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:306:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:304:13-56
-activity#com.pinkcar.providers.ui.activities.WaitingForApproval
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:308:9-313:58
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:303:13-85
+activity#com.travel.travellingbug.ui.activities.PrivacyPolicyActivity
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:307:9-311:59
 	android:screenOrientation
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:311:13-49
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:310:13-49
+	android:hardwareAccelerated
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:309:13-48
+	android:theme
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:311:13-56
+	android:name
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:308:13-88
+activity#com.travel.travellingbug.ui.activities.UpdateProfile
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:312:9-316:59
+	android:screenOrientation
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:315:13-49
+	android:hardwareAccelerated
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:314:13-48
+	android:theme
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:316:13-56
+	android:name
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:313:13-80
+activity#com.travel.travellingbug.ui.activities.WaitingForApproval
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:317:9-322:58
+	android:screenOrientation
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:320:13-49
 	android:label
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:310:13-45
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:319:13-45
 	android:windowSoftInputMode
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:313:13-55
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:322:13-55
 	android:theme
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:312:13-56
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:321:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:309:13-61
-activity#com.pinkcar.providers.ui.activities.FavouritePlaceSearch
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:314:9-318:59
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:318:13-85
+activity#com.travel.travellingbug.ui.activities.FavouritePlaceSearch
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:323:9-327:59
 	android:screenOrientation
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:317:13-49
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:326:13-49
 	android:hardwareAccelerated
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:316:13-48
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:325:13-48
 	android:theme
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:318:13-56
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:327:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:315:13-63
-activity#com.pinkcar.providers.ui.activities.DocumentUpload
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:319:9-323:59
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:324:13-87
+activity#com.travel.travellingbug.ui.activities.DocumentUpload
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:328:9-332:59
 	android:screenOrientation
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:322:13-49
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:331:13-49
 	android:configChanges
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:321:13-63
-	android:theme
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:323:13-56
-	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:320:13-57
-activity#com.pinkcar.providers.ui.activities.TrackActivity
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:324:9-328:59
-	android:screenOrientation
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:327:13-49
-	android:configChanges
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:326:13-63
-	android:theme
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:328:13-56
-	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:325:13-56
-activity#com.pinkcar.providers.ui.activities.Profile
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:329:9-332:59
-	android:configChanges
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:331:13-63
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:330:13-63
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:332:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:330:13-50
-activity#com.pinkcar.providers.ui.activities.EarningActivity
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:329:13-81
+activity#com.travel.travellingbug.ui.activities.TrackActivity
 ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:333:9-337:59
 	android:screenOrientation
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:336:13-49
@@ -1036,7 +1047,25 @@ ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest
 	android:theme
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:337:13-56
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:334:13-58
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:334:13-80
+activity#com.travel.travellingbug.ui.activities.Profile
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:338:9-341:59
+	android:configChanges
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:340:13-63
+	android:theme
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:341:13-56
+	android:name
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:339:13-74
+activity#com.travel.travellingbug.ui.activities.EarningActivity
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:342:9-346:59
+	android:screenOrientation
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:345:13-49
+	android:configChanges
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:344:13-63
+	android:theme
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:346:13-56
+	android:name
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:343:13-82
 uses-sdk
 INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
@@ -1059,6 +1088,8 @@ MERGED from [com.google.firebase:firebase-core:19.0.0] C:\Users\Demon\Music\true
 MERGED from [com.google.firebase:firebase-core:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\517d015797930de7a28ed75c01e1d7ab\jetified-firebase-core-19.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf53bb8ec53ae204b7417747f8e8967c\jetified-firebase-analytics-19.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf53bb8ec53ae204b7417747f8e8967c\jetified-firebase-analytics-19.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:7:5-44
+MERGED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:7:5-44
 MERGED from [fr.avianey.com.viewpagerindicator:library:2.4.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\09b82a2c9f1fd4083e3234de9600d47c\jetified-library-2.4.1\AndroidManifest.xml:8:5-43
 MERGED from [fr.avianey.com.viewpagerindicator:library:2.4.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\09b82a2c9f1fd4083e3234de9600d47c\jetified-library-2.4.1\AndroidManifest.xml:8:5-43
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9715b17d7b56d154d41dd6bc0a2cd72d\multidex-2.0.1\AndroidManifest.xml:20:5-43
@@ -1081,14 +1112,16 @@ MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\Demon\
 MERGED from [com.futuremind.recyclerfastscroll:fastscroll:0.2.5] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1b4836039050ac16b061dc9450135df3\jetified-fastscroll-0.2.5\AndroidManifest.xml:7:5-9:41
 MERGED from [pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:7:5-9:41
 MERGED from [pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:7:5-9:41
-MERGED from [com.facebook.android:facebook-android-sdk:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a9c92921bf10569cd2b001bd1d08aef6\jetified-facebook-android-sdk-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-android-sdk:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a9c92921bf10569cd2b001bd1d08aef6\jetified-facebook-android-sdk-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-login:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0f788479d8717785c98c797e79fc4b18\jetified-facebook-login-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-login:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0f788479d8717785c98c797e79fc4b18\jetified-facebook-login-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-share:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\597d835e2d0babce55dc8a4b1d1ef2d3\jetified-facebook-share-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-share:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\597d835e2d0babce55dc8a4b1d1ef2d3\jetified-facebook-share-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-android-sdk:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c8c267d6e0c891fe6410e634c2a13d35\jetified-facebook-android-sdk-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-android-sdk:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c8c267d6e0c891fe6410e634c2a13d35\jetified-facebook-android-sdk-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-login:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\e394fd799d189e7d477132202f9d2199\jetified-facebook-login-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-login:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\e394fd799d189e7d477132202f9d2199\jetified-facebook-login-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-gamingservices:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5afcb0e828d8b9aaf49d59501a37b708\jetified-facebook-gamingservices-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-gamingservices:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5afcb0e828d8b9aaf49d59501a37b708\jetified-facebook-gamingservices-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-share:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4eb8dde8e19b7d539e68a4f8d90f8db9\jetified-facebook-share-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-share:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4eb8dde8e19b7d539e68a4f8d90f8db9\jetified-facebook-share-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:13:5-15:41
+MERGED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:13:5-15:41
 MERGED from [com.vanniktech:emoji-ios:0.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0c6f161439a81ec49b33da16f7abc35a\jetified-emoji-ios-0.6.0\AndroidManifest.xml:5:5-44
 MERGED from [com.vanniktech:emoji-ios:0.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0c6f161439a81ec49b33da16f7abc35a\jetified-emoji-ios-0.6.0\AndroidManifest.xml:5:5-44
 MERGED from [com.vanniktech:emoji:0.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\821984017f4330d30d5b58366b36845f\jetified-emoji-0.6.0\AndroidManifest.xml:5:5-44
@@ -1103,36 +1136,38 @@ MERGED from [com.mikhaellopez:circularimageview:3.2.0] C:\Users\Demon\Music\true
 MERGED from [com.mikhaellopez:circularimageview:3.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bba9ce5f2590acba6c4f70e944e18dbc\jetified-circularimageview-3.2.0\AndroidManifest.xml:7:5-9:41
 MERGED from [de.hdodenhof:circleimageview:3.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a4ef090dc37aa6689dfbf8078d8c348f\jetified-circleimageview-3.0.1\AndroidManifest.xml:5:5-7:41
 MERGED from [de.hdodenhof:circleimageview:3.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a4ef090dc37aa6689dfbf8078d8c348f\jetified-circleimageview-3.0.1\AndroidManifest.xml:5:5-7:41
-MERGED from [com.koushikdutta.ion:ion:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\00e9752fbd0cd4ffb5e64bbfd257d760\jetified-ion-3.0.8\AndroidManifest.xml:7:5-9:41
-MERGED from [com.koushikdutta.ion:ion:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\00e9752fbd0cd4ffb5e64bbfd257d760\jetified-ion-3.0.8\AndroidManifest.xml:7:5-9:41
+MERGED from [com.koushikdutta.ion:ion:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1d427b7a2b1b80415b6f561e3d056b6c\jetified-ion-3.1.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.koushikdutta.ion:ion:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1d427b7a2b1b80415b6f561e3d056b6c\jetified-ion-3.1.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.citux:datetimepicker:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b557b69236be1b793cda16f11d75086d\jetified-datetimepicker-0.3.0\AndroidManifest.xml:22:5-44
 MERGED from [com.github.citux:datetimepicker:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b557b69236be1b793cda16f11d75086d\jetified-datetimepicker-0.3.0\AndroidManifest.xml:22:5-44
 MERGED from [androidx.legacy:legacy-support-v13:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1843b04778ac268e7cdcc9b9790314ea\legacy-support-v13-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v13:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1843b04778ac268e7cdcc9b9790314ea\legacy-support-v13-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ab3862641b727e94197b0c11234401f4\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-v4:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ab3862641b727e94197b0c11234401f4\legacy-support-v4-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-location:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b278411a4b443d65e46fef0e9139052a\jetified-play-services-location-18.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-location:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b278411a4b443d65e46fef0e9139052a\jetified-play-services-location-18.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-places:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9ca11cbac60676b097524dd8141d3c65\jetified-play-services-places-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-places:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9ca11cbac60676b097524dd8141d3c65\jetified-play-services-places-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:21:5-44
 MERGED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:21:5-44
 MERGED from [com.google.android.gms:play-services-gcm:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f5faab86261a19f0d7dec6163fba2cd6\jetified-play-services-gcm-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-gcm:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f5faab86261a19f0d7dec6163fba2cd6\jetified-play-services-gcm-17.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b525a7501ba809183340799b45f01748\jetified-play-services-auth-base-17.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b525a7501ba809183340799b45f01748\jetified-play-services-auth-base-17.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a397d42ac13b7e37b863b88e1e9c71fa\jetified-play-services-auth-api-phone-17.4.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-auth-api-phone:17.4.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a397d42ac13b7e37b863b88e1e9c71fa\jetified-play-services-auth-api-phone-17.4.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:20.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b40e834698bcdabdbb013293d9044444\jetified-play-services-location-20.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:20.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b40e834698bcdabdbb013293d9044444\jetified-play-services-location-20.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5646d0e6c92ea96261bf820684efdeb7\jetified-play-services-auth-api-phone-18.0.1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5646d0e6c92ea96261bf820684efdeb7\jetified-play-services-auth-api-phone-18.0.1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\66d70a1a9960550dd1ec1cff4d267eb1\jetified-play-services-auth-base-18.0.4\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\66d70a1a9960550dd1ec1cff4d267eb1\jetified-play-services-auth-base-18.0.4\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\afe04ef0ffa5f147e86c8c0d8258b9bf\jetified-play-services-fido-20.0.1\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\afe04ef0ffa5f147e86c8c0d8258b9bf\jetified-play-services-fido-20.0.1\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b6a1a76cea699e09b867d04b51d4e130\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b6a1a76cea699e09b867d04b51d4e130\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-iid:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\20e420680233b5fa1a5a7aeb65f2c062\jetified-play-services-iid-17.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-iid:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\20e420680233b5fa1a5a7aeb65f2c062\jetified-play-services-iid-17.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c45feb400f24bc2d758c2215511cc53b\jetified-play-services-base-18.0.1\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c45feb400f24bc2d758c2215511cc53b\jetified-play-services-base-18.0.1\AndroidManifest.xml:18:5-43
 MERGED from [com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-messaging:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\83ec65fc998552346bef965cc4b7eff0\jetified-firebase-messaging-22.0.0\AndroidManifest.xml:20:5-44
@@ -1183,8 +1218,8 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:19.0.0] C:
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8b9d29825f1e1fa44716e903e60d5949\jetified-play-services-measurement-sdk-api-19.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-measurement-base:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\34375a25ed03d142d852ef7f7ab9840f\jetified-play-services-measurement-base-19.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-measurement-base:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\34375a25ed03d142d852ef7f7ab9840f\jetified-play-services-measurement-base-19.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\edb5b1df5faadda4cb2f487d66a07bf7\jetified-play-services-basement-18.1.0\AndroidManifest.xml:18:5-43
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\edb5b1df5faadda4cb2f487d66a07bf7\jetified-play-services-basement-18.1.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7d9c5e333e231e20215083fc5250ad49\jetified-play-services-basement-18.2.0\AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7d9c5e333e231e20215083fc5250ad49\jetified-play-services-basement-18.2.0\AndroidManifest.xml:18:5-43
 MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\d987c9964b50c31625c700cc58e10c7e\fragment-1.3.6\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.3.6] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\d987c9964b50c31625c700cc58e10c7e\fragment-1.3.6\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.2.4] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\1af9d5c406e0a2ca953667d7fc9920b9\jetified-activity-1.2.4\AndroidManifest.xml:20:5-22:41
@@ -1209,14 +1244,12 @@ MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Demon\Music\
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9118582072a5dc73907213dcd3534268\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.media:media:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\75dd3c009de2b691b957d5fb3867ec50\media-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.media:media:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\75dd3c009de2b691b957d5fb3867ec50\media-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [com.facebook.android:facebook-places:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\cef3f927b57ea80577c7da017e90645c\jetified-facebook-places-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-places:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\cef3f927b57ea80577c7da017e90645c\jetified-facebook-places-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-applinks:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\edf2f39da347d587daae015ce62192eb\jetified-facebook-applinks-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-applinks:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\edf2f39da347d587daae015ce62192eb\jetified-facebook-applinks-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-messenger:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\93634e75740207da7b1569d72547d467\jetified-facebook-messenger-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-messenger:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\93634e75740207da7b1569d72547d467\jetified-facebook-messenger-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:24:5-26:41
-MERGED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:24:5-26:41
+MERGED from [com.facebook.android:facebook-applinks:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0851b69d404b0a145a7e68abe090cdbb\jetified-facebook-applinks-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-applinks:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\0851b69d404b0a145a7e68abe090cdbb\jetified-facebook-applinks-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-messenger:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\05640efa97d9df4c21f904eb4dc5649a\jetified-facebook-messenger-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-messenger:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\05640efa97d9df4c21f904eb4dc5649a\jetified-facebook-messenger-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:12:5-14:41
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\d787deb8883fa42e1e15ae50a0c576d9\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\d787deb8883fa42e1e15ae50a0c576d9\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a71ec79ae7098e6e93ecdd643b762061\loader-1.0.0\AndroidManifest.xml:20:5-44
@@ -1237,18 +1270,22 @@ MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Demo
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b175204999e9c1355c06a98ba31fe9ee\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\d894b44d0798f8a7c2244b25442410d9\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\d894b44d0798f8a7c2244b25442410d9\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.android:facebook-bolts:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b2bdb6c68b9a53ee38db20e4f24b37ed\jetified-facebook-bolts-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [com.facebook.android:facebook-bolts:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b2bdb6c68b9a53ee38db20e4f24b37ed\jetified-facebook-bolts-16.0.1\AndroidManifest.xml:12:5-14:41
+MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3766b9c2dda34a69d455e48635a0353f\jetified-core-ktx-1.3.2\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.3.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3766b9c2dda34a69d455e48635a0353f\jetified-core-ktx-1.3.2\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.core:core:1.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c18859ecb579254e2402d0e10b45da0d\core-1.5.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c18859ecb579254e2402d0e10b45da0d\core-1.5.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7854c394f0ce66a93671c0213c45adc6\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7854c394f0ce66a93671c0213c45adc6\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\986b1aaeaf001b3cccf366b54ea5f62b\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\986b1aaeaf001b3cccf366b54ea5f62b\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9149c57cd545f886cb8db46453eec5b6\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9149c57cd545f886cb8db46453eec5b6\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7854c394f0ce66a93671c0213c45adc6\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7854c394f0ce66a93671c0213c45adc6\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\6c61ccff1f56142ad057757e544facd9\jetified-savedstate-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\6c61ccff1f56142ad057757e544facd9\jetified-savedstate-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\64b53dc2def19eeff1569bdfab690074\lifecycle-runtime-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\64b53dc2def19eeff1569bdfab690074\lifecycle-runtime-2.3.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9149c57cd545f886cb8db46453eec5b6\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9149c57cd545f886cb8db46453eec5b6\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\e6178d4756c3bb0254361b04eb068d8a\jetified-gifdecoder-4.11.0\AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\e6178d4756c3bb0254361b04eb068d8a\jetified-gifdecoder-4.11.0\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b99b2b8b1e0d940be1c151f46f61137c\exifinterface-1.0.0\AndroidManifest.xml:20:5-44
@@ -1281,8 +1318,8 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Demon\Music\true
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7579d38aa950d0c8b31cb1f5c4a19ff\interpolator-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c1200b81fc2076200bdb0c125077409f\jetified-firebase-encoders-json-18.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c1200b81fc2076200bdb0c125077409f\jetified-firebase-encoders-json-18.0.0\AndroidManifest.xml:19:5-21:41
-MERGED from [com.android.volley:volley:1.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a5e1a14b13ddfb145bae0984148a57c4\jetified-volley-1.2.0\AndroidManifest.xml:5:5-43
-MERGED from [com.android.volley:volley:1.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a5e1a14b13ddfb145bae0984148a57c4\jetified-volley-1.2.0\AndroidManifest.xml:5:5-43
+MERGED from [com.android.volley:volley:1.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5c9b583d8459f4f0153f167f3cbf2fec\jetified-volley-1.2.1\AndroidManifest.xml:5:5-43
+MERGED from [com.android.volley:volley:1.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\5c9b583d8459f4f0153f167f3cbf2fec\jetified-volley-1.2.1\AndroidManifest.xml:5:5-43
 MERGED from [com.skyfishjy.ripplebackground:library:1.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\627a0c2d7223d9070a1240524b74db69\jetified-library-1.0.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.skyfishjy.ripplebackground:library:1.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\627a0c2d7223d9070a1240524b74db69\jetified-library-1.0.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.intuit.sdp:sdp-android:1.0.6] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\15b6a533185ec13e661a0c1120624f61\jetified-sdp-android-1.0.6\AndroidManifest.xml:7:5-9:41
@@ -1295,10 +1332,12 @@ MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Demon\M
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8ff379919ceee3b9050b41ba1c074071\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [io.michaelrocks:libphonenumber-android:8.10.14] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\673f514c5394e09cca6def84a74eb6d2\jetified-libphonenumber-android-8.10.14\AndroidManifest.xml:7:5-9:41
 MERGED from [io.michaelrocks:libphonenumber-android:8.10.14] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\673f514c5394e09cca6def84a74eb6d2\jetified-libphonenumber-android-8.10.14\AndroidManifest.xml:7:5-9:41
-MERGED from [com.koushikdutta.async:androidasync:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\eaf293701106b5422b577d745123c250\jetified-androidasync-3.0.8\AndroidManifest.xml:7:5-9:41
-MERGED from [com.koushikdutta.async:androidasync:3.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\eaf293701106b5422b577d745123c250\jetified-androidasync-3.0.8\AndroidManifest.xml:7:5-9:41
+MERGED from [com.koushikdutta.async:androidasync:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\161b0dd58ce149428ce7c2870738e096\jetified-androidasync-3.1.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.koushikdutta.async:androidasync:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\161b0dd58ce149428ce7c2870738e096\jetified-androidasync-3.1.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.bm.photoview:library:1.4.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4df43ff01f7f6fc696ca62186f44bb40\jetified-library-1.4.1\AndroidManifest.xml:7:5-9:41
 MERGED from [com.bm.photoview:library:1.4.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4df43ff01f7f6fc696ca62186f44bb40\jetified-library-1.4.1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9ac303f1fdd3b0e32db68259262de9d1\jetified-installreferrer-1.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9ac303f1fdd3b0e32db68259262de9d1\jetified-installreferrer-1.0\AndroidManifest.xml:5:5-7:41
 INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
@@ -1310,13 +1349,13 @@ INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManif
 		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:344:13-346:54
+ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:353:13-355:54
 MERGED from [com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:44:13-46:54
 MERGED from [com.vincent.filepicker:MultiTypeFilePicker:1.0.8] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\13c0e65195e438e910474b450dcbeaf8\jetified-MultiTypeFilePicker-1.0.8\AndroidManifest.xml:44:13-46:54
 	android:resource
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:346:17-51
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:355:17-51
 	android:name
-		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:345:17-67
+		ADDED from C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:354:17-67
 activity#com.stripe.android.view.AddSourceActivity
 ADDED from [com.stripe:stripe-android:9.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\ebfacce6a1232429b4b3675c49da3af5\jetified-stripe-android-9.0.1\AndroidManifest.xml:12:9-15:58
 	android:windowSoftInputMode
@@ -1419,6 +1458,18 @@ ADDED from [com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Musi
 		ADDED from [com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:18:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-crashlytics:17.2.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bd2d6c9644dd575c384503f77154af88\jetified-firebase-crashlytics-17.2.1\AndroidManifest.xml:17:17-115
+activity#com.google.android.libraries.places.widget.AutocompleteActivity
+ADDED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:15:9-21:20
+	android:label
+		ADDED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:18:13-62
+	android:windowSoftInputMode
+		ADDED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:20:13-55
+	android:exported
+		ADDED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:17:13-37
+	android:theme
+		ADDED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:19:13-61
+	android:name
+		ADDED from [com.google.android.libraries.places:places:3.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f4b3bc504f4a4a2b3c3a6f77d20071a0\jetified-places-3.1.0\AndroidManifest.xml:16:13-91
 activity#pub.devrel.easypermissions.AppSettingsDialogHolderActivity
 ADDED from [pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:12:9-16:66
 	android:label
@@ -1429,10 +1480,22 @@ ADDED from [pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-an
 		ADDED from [pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:16:13-63
 	android:name
 		ADDED from [pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:13:13-86
-activity#com.facebook.CustomTabMainActivity
-ADDED from [com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:33:9-71
+queries
+ADDED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:17:5-19:15
+MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:30:5-34:15
+MERGED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:30:5-34:15
+package#com.facebook.katana
+ADDED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:18:9-55
 	android:name
-		ADDED from [com.facebook.android:facebook-common:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9855163ba9f3b903b072fc47e5a7e10b\jetified-facebook-common-5.11.2\AndroidManifest.xml:33:19-68
+		ADDED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:18:18-52
+activity#com.facebook.CustomTabMainActivity
+ADDED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:26:9-71
+	android:name
+		ADDED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:26:19-68
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:cct.${applicationId}+data:scheme:fbconnect
+ADDED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:31:13-40:29
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:cct.com.travel.travellingbug+data:scheme:fbconnect
+ADDED from [com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:31:13-40:29
 uses-permission#android.permission.VIBRATE
 ADDED from [com.github.citux:datetimepicker:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b557b69236be1b793cda16f11d75086d\jetified-datetimepicker-0.3.0\AndroidManifest.xml:24:5-66
 	android:name
@@ -1443,32 +1506,30 @@ ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Mus
 		ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:27:9-41
 	android:required
 		ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:28:9-32
-queries
-ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:30:5-34:15
 package#com.google.android.apps.maps
 ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:33:9-64
 	android:name
 		ADDED from [com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:33:18-61
 activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
-ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:23:9-27:75
+ADDED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:23:9-27:75
 	android:excludeFromRecents
-		ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:25:13-46
+		ADDED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:25:13-46
 	android:exported
-		ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:26:13-37
+		ADDED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:26:13-37
 	android:theme
-		ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:27:13-72
+		ADDED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:27:13-72
 	android:name
-		ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:24:13-93
+		ADDED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:24:13-93
 service#com.google.android.gms.auth.api.signin.RevocationBoundService
-ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:33:9-37:51
+ADDED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:33:9-37:51
 	android:exported
-		ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:35:13-36
+		ADDED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:35:13-36
 	android:visibleToInstantApps
-		ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:37:13-48
+		ADDED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:37:13-48
 	android:permission
-		ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:36:13-107
+		ADDED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:36:13-107
 	android:name
-		ADDED from [com.google.android.gms:play-services-auth:19.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\efdcd886b963e4320e6a3293b1cb3b0a\jetified-play-services-auth-19.2.0\AndroidManifest.xml:34:13-89
+		ADDED from [com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:34:13-89
 activity#com.google.firebase.auth.internal.GenericIdpActivity
 ADDED from [com.google.firebase:firebase-auth:21.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\4dfd64d5a446fa02de8285e3a1293dee\jetified-firebase-auth-21.0.1\AndroidManifest.xml:27:9-44:20
 	android:excludeFromRecents
@@ -1528,17 +1589,17 @@ MERGED from [com.google.android.gms:play-services-cloud-messaging:16.0.0] C:\Use
 	android:name
 		ADDED from [com.google.android.gms:play-services-gcm:17.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\f5faab86261a19f0d7dec6163fba2cd6\jetified-play-services-gcm-17.0.0\AndroidManifest.xml:23:22-79
 activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:23:9-26:75
+ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c45feb400f24bc2d758c2215511cc53b\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
 	android:exported
-		ADDED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:25:13-37
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c45feb400f24bc2d758c2215511cc53b\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
 	android:theme
-		ADDED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:26:13-72
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c45feb400f24bc2d758c2215511cc53b\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
 	android:name
-		ADDED from [com.google.android.gms:play-services-base:17.6.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3850eb60c64517e2aeddff070133fcaf\jetified-play-services-base-17.6.0\AndroidManifest.xml:24:13-79
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c45feb400f24bc2d758c2215511cc53b\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
 meta-data#com.google.android.gms.version
 ADDED from [com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:12:9-14:69
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\edb5b1df5faadda4cb2f487d66a07bf7\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:18.1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\edb5b1df5faadda4cb2f487d66a07bf7\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7d9c5e333e231e20215083fc5250ad49\jetified-play-services-basement-18.2.0\AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7d9c5e333e231e20215083fc5250ad49\jetified-play-services-basement-18.2.0\AndroidManifest.xml:21:9-23:69
 	android:value
 		ADDED from [com.google.maps.android:android-maps-utils:0.6.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\94b38761ac86f4f39a3be8687d400303\jetified-android-maps-utils-0.6.2\AndroidManifest.xml:14:13-66
 	android:name
@@ -1595,6 +1656,8 @@ uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_S
 ADDED from [com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:26:5-110
 MERGED from [com.google.android.gms:play-services-measurement-impl:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\6d470a81a3abd464e608d0c8fc742024\jetified-play-services-measurement-impl-19.0.0\AndroidManifest.xml:26:5-110
 MERGED from [com.google.android.gms:play-services-measurement-impl:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\6d470a81a3abd464e608d0c8fc742024\jetified-play-services-measurement-impl-19.0.0\AndroidManifest.xml:26:5-110
+MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9ac303f1fdd3b0e32db68259262de9d1\jetified-installreferrer-1.0\AndroidManifest.xml:9:5-110
+MERGED from [com.android.installreferrer:installreferrer:1.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9ac303f1fdd3b0e32db68259262de9d1\jetified-installreferrer-1.0\AndroidManifest.xml:9:5-110
 	android:name
 		ADDED from [com.google.android.gms:play-services-measurement:19.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9cfadcd75a754f8700aff801a6b60cd6\jetified-play-services-measurement-19.0.0\AndroidManifest.xml:26:22-107
 receiver#com.google.android.gms.measurement.AppMeasurementReceiver
@@ -1641,40 +1704,42 @@ ADDED from [com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\tru
 		ADDED from [com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:30:13-36
 	android:name
 		ADDED from [com.google.firebase:firebase-common:20.3.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\3729cc27242419f39fa05b1a85dea445\jetified-firebase-common-20.3.1\AndroidManifest.xml:26:13-77
+uses-permission#com.google.android.gms.permission.AD_ID
+ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:16:5-79
+	android:name
+		ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:16:22-76
 provider#com.facebook.internal.FacebookInitProvider
-ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:39:9-42:40
+ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:29:9-32:40
 	android:authorities
-		ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:41:13-72
+		ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:31:13-72
 	android:exported
-		ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:42:13-37
+		ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:32:13-37
 	android:name
-		ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:40:13-70
+		ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:30:13-70
 receiver#com.facebook.CurrentAccessTokenExpirationBroadcastReceiver
-ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:44:9-50:20
+ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:34:9-40:20
 	android:exported
-		ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:46:13-37
+		ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:36:13-37
 	android:name
-		ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:45:13-86
+		ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:35:13-86
 intent-filter#action:name:com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
-ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:47:13-49:29
+ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:37:13-39:29
 action#com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED
-ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:48:17-95
+ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:38:17-95
 	android:name
-		ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:48:25-92
-receiver#com.facebook.CampaignTrackingReceiver
-ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:51:9-58:20
+		ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:38:25-92
+receiver#com.facebook.AuthenticationTokenManager$CurrentAuthenticationTokenChangedBroadcastReceiver
+ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:41:9-47:20
 	android:exported
-		ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:53:13-36
-	android:permission
-		ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:54:13-69
+		ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:43:13-37
 	android:name
-		ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:52:13-65
-intent-filter#action:name:com.android.vending.INSTALL_REFERRER
-ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:55:13-57:29
-action#com.android.vending.INSTALL_REFERRER
-ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:56:17-79
+		ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:42:13-118
+intent-filter#action:name:com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED
+ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:44:13-46:29
+action#com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED
+ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:45:17-103
 	android:name
-		ADDED from [com.facebook.android:facebook-core:5.11.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\60bb677daf01819f0d688900fd340ba8\jetified-facebook-core-5.11.2\AndroidManifest.xml:56:25-76
+		ADDED from [com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:45:25-100
 service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
 ADDED from [com.google.android.datatransport:transport-backend-cct:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\bf67591e579fa0861b1e861510d227a3\jetified-transport-backend-cct-3.0.0\AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.android.datatransport:transport-runtime:3.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\48566d4169a73691b68288fcf8cf5fd3\jetified-transport-runtime-3.0.0\AndroidManifest.xml:36:9-38:40

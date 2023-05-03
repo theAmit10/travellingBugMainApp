@@ -13,7 +13,7 @@
         android:layout_marginBottom="10dp"
         android:orientation="vertical">
 
-        <com.pinkcar.providers.utills.MyBoldTextView
+        <com.travel.travellingbug.utills.MyBoldTextView
             android:id="@+id/place_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <com.pinkcar.providers.utills.MyBoldTextView
+        <com.travel.travellingbug.utills.MyBoldTextView
             android:id="@+id/place_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

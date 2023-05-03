@@ -19,7 +19,7 @@
             android:padding="5dp"
             android:src="@drawable/back_white" />
 
-        <com.pinkcar.providers.utills.MyTextView
+        <com.travel.travellingbug.utills.MyTextView
             android:id="@+id/lblTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -80,7 +80,7 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <com.pinkcar.providers.utills.MyBoldTextView
+                        <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/tripProviderName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -146,7 +146,7 @@
                             android:src="@drawable/pick_up_location"
                             android:tint="@color/colorPrimary" />
 
-                        <com.pinkcar.providers.utills.MyBoldTextView
+                        <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/tripSource"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -169,7 +169,7 @@
                             android:src="@drawable/destination_icon"
                             android:tint="@color/colorPrimary" />
 
-                        <com.pinkcar.providers.utills.MyBoldTextView
+                        <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/tripDestination"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -192,7 +192,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <com.pinkcar.providers.utills.MyBoldTextView
+                        <com.travel.travellingbug.utills.MyBoldTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -201,7 +201,7 @@
                             android:textColor="@color/black_text_color"
                             android:textSize="@dimen/_12sdp" />
 
-                        <com.pinkcar.providers.utills.MyBoldTextView
+                        <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/trip_id"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -224,7 +224,7 @@
                         android:layout_marginEnd="16dp"
                         android:orientation="horizontal">
 
-                        <com.pinkcar.providers.utills.MyBoldTextView
+                        <com.travel.travellingbug.utills.MyBoldTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -232,7 +232,7 @@
                             android:textColor="@color/black_text_color"
                             android:textSize="@dimen/_12sdp" />
 
-                        <com.pinkcar.providers.utills.MyBoldTextView
+                        <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/paymentType"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -257,7 +257,7 @@
                             android:visibility="gone"
                             app:srcCompat="@drawable/credit_card" />
 
-                        <com.pinkcar.providers.utills.MyBoldTextView
+                        <com.travel.travellingbug.utills.MyBoldTextView
 
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
@@ -267,7 +267,7 @@
                             android:textColor="@color/black_text_color"
                             android:textSize="@dimen/_12sdp" />
 
-                        <com.pinkcar.providers.utills.MyBoldTextView
+                        <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/tripAmount"
                             android:layout_width="match_parent"
                             android:layout_height="40dp"
@@ -290,14 +290,14 @@
                     android:layout_marginBottom="10dp"
                     android:orientation="vertical">
 
-                    <com.pinkcar.providers.utills.MyBoldTextView
+                    <com.travel.travellingbug.utills.MyBoldTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/comments"
                         android:textColor="@color/black_text_color"
                         android:textSize="16sp" />
 
-                    <com.pinkcar.providers.utills.MyBoldTextView
+                    <com.travel.travellingbug.utills.MyBoldTextView
                         android:id="@+id/tripComments"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -319,7 +319,7 @@
         android:orientation="horizontal"
         android:weightSum="100">
 
-        <com.pinkcar.providers.utills.MyButton
+        <com.travel.travellingbug.utills.MyButton
             android:id="@+id/btnStartRide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -334,7 +334,7 @@
             android:textAllCaps="true"
             android:textColor="@color/white" />
 
-        <com.pinkcar.providers.utills.MyButton
+        <com.travel.travellingbug.utills.MyButton
             android:id="@+id/btnCancelRide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

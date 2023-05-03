@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.pinkcar.providers"
+    package="com.travel.travellingbug"
     android:versionCode="1"
     android:versionName="1.0.0.0" >
 
@@ -29,22 +29,23 @@
         android:name="android.hardware.telephony"
         android:required="false" />
 
+    <queries>
+        <package android:name="com.facebook.katana" />
+        <!-- Needs to be explicitly declared on Android R+ -->
+        <package android:name="com.google.android.apps.maps" />
+    </queries>
+
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true" />
-
-    <queries>
-
-        <!-- Needs to be explicitly declared on Android R+ -->
-        <package android:name="com.google.android.apps.maps" />
-    </queries> <!-- Required by older versions of Google Play services to create GCM registration tokens -->
+        android:required="true" /> <!-- Required by older versions of Google Play services to create GCM registration tokens -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
     <application
-        android:name="com.pinkcar.providers.ClassLuxApp"
+        android:name="com.travel.travellingbug.ClassLuxApp"
         android:allowBackup="false"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:autoMirrored="true"
@@ -60,92 +61,92 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.pinkcar.providers.ui.activities.Payment"
+            android:name="com.travel.travellingbug.ui.activities.Payment"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.ProfilePictureActivity"
+            android:name="com.travel.travellingbug.ui.activities.ProfilePictureActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.PersonalDetailsActivity"
+            android:name="com.travel.travellingbug.ui.activities.PersonalDetailsActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.VerifyEmailActivity"
+            android:name="com.travel.travellingbug.ui.activities.VerifyEmailActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.VerifyMobileNumberActivity"
+            android:name="com.travel.travellingbug.ui.activities.VerifyMobileNumberActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.VehicleDetailsMenufactureActivity"
+            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsMenufactureActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.VehicleDetailsColorActivity"
+            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsColorActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.VehicleDetailsTypeActivity"
+            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsTypeActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.VehicleDetailsModelActivity"
+            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsModelActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.VehicleDetailsBrandActivity"
+            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsBrandActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.VehicleDetailsLicensePlateNumberActivity"
+            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsLicensePlateNumberActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.TravelPreferenceActivityMain"
+            android:name="com.travel.travellingbug.ui.activities.TravelPreferenceActivityMain"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.TravelPreferenceActivity"
+            android:name="com.travel.travellingbug.ui.activities.TravelPreferenceActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.VerifyIdMainActivity"
+            android:name="com.travel.travellingbug.ui.activities.VerifyIdMainActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.VerifyIdActivity"
+            android:name="com.travel.travellingbug.ui.activities.VerifyIdActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.HelpActivity"
+            android:name="com.travel.travellingbug.ui.activities.HelpActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.TermsAndConditionActivity"
+            android:name="com.travel.travellingbug.ui.activities.TermsAndConditionActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.ChangePasswordActivity"
+            android:name="com.travel.travellingbug.ui.activities.ChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.ChangeAddressAdtivityTwo"
+            android:name="com.travel.travellingbug.ui.activities.ChangeAddressAdtivityTwo"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.ChangeAddressAdtivityOne"
+            android:name="com.travel.travellingbug.ui.activities.ChangeAddressAdtivityOne"
             android:exported="false" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.HomeScreenActivity"
+            android:name="com.travel.travellingbug.ui.activities.HomeScreenActivity"
             android:exported="true" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.IntroScreen"
+            android:name="com.travel.travellingbug.ui.activities.IntroScreen"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.login.IntroActivity"
+            android:name="com.travel.travellingbug.ui.activities.login.IntroActivity"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.login.LoginActivity"
+            android:name="com.travel.travellingbug.ui.activities.login.LoginActivity"
             android:configChanges="locale|orientation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.login.FaceBookLoginActivity"
+            android:name="com.travel.travellingbug.ui.activities.login.FaceBookLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.login.GoogleLoginActivity"
+            android:name="com.travel.travellingbug.ui.activities.login.GoogleLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.NotificationTab"
+            android:name="com.travel.travellingbug.ui.activities.NotificationTab"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" >
@@ -155,26 +156,26 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="com.pinkcar.providers.ui.activities.DocUploadActivity" />
+        <activity android:name="com.travel.travellingbug.ui.activities.DocUploadActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
 
         <activity
-            android:name="com.pinkcar.providers.ui.activities.WithdrawActivity"
+            android:name="com.travel.travellingbug.ui.activities.WithdrawActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.OtpVerification"
+            android:name="com.travel.travellingbug.ui.activities.OtpVerification"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.WithdrawAmountActivity"
+            android:name="com.travel.travellingbug.ui.activities.WithdrawAmountActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name="com.pinkcar.providers.ui.activities.DocumentStatus" />
+        <activity android:name="com.travel.travellingbug.ui.activities.DocumentStatus" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.SplashScreen"
+            android:name="com.travel.travellingbug.ui.activities.SplashScreen"
             android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -184,25 +185,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.pinkcar.providers.Login"
+            android:name="com.travel.travellingbug.Login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.FullImage"
+            android:name="com.travel.travellingbug.ui.activities.FullImage"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.login.SignUp"
+            android:name="com.travel.travellingbug.ui.activities.login.SignUp"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.chat.UserChatActivity"
+            android:name="com.travel.travellingbug.chat.UserChatActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.UserReview"
+            android:name="com.travel.travellingbug.ui.activities.UserReview"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.login.ForgotPassword"
+            android:name="com.travel.travellingbug.ui.activities.login.ForgotPassword"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -211,52 +212,52 @@
             android:value="@string/google_map_api" />
 
         <activity
-            android:name="com.pinkcar.providers.ui.activities.MainActivity"
+            android:name="com.travel.travellingbug.ui.activities.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.EditProfile"
+            android:name="com.travel.travellingbug.ui.activities.EditProfile"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.ShowProfile"
+            android:name="com.travel.travellingbug.ui.activities.ShowProfile"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.HistoryDetails"
+            android:name="com.travel.travellingbug.ui.activities.HistoryDetails"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.HistoryActivity"
+            android:name="com.travel.travellingbug.ui.activities.HistoryActivity"
             android:label="History"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.CouponActivity"
+            android:name="com.travel.travellingbug.ui.activities.CouponActivity"
             android:label="Coupon"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.login.ChangePassword"
+            android:name="com.travel.travellingbug.ui.activities.login.ChangePassword"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.CustomGooglePlacesSearch"
+            android:name="com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
 
         <service
-            android:name="com.pinkcar.providers.fcm.FCMService"
+            android:name="com.travel.travellingbug.fcm.FCMService"
             android:exported="true" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -268,7 +269,7 @@
             android:value="@string/default_notification_channel_id" />
 
         <receiver
-            android:name="com.pinkcar.providers.fcm.MyBroadcastReceiver"
+            android:name="com.travel.travellingbug.fcm.MyBroadcastReceiver"
             android:exported="true" />
 
         <meta-data
@@ -277,6 +278,9 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
 
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -294,70 +298,80 @@
 
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="cct.com.travel.travellingbug"
+                    android:scheme="fbconnect" />
+            </intent-filter>
         </activity>
         <activity
-            android:name="com.pinkcar.providers.ui.activities.SosCallActivity"
+            android:name="com.travel.travellingbug.ui.activities.SosCallActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.ComplaintsAcivity"
+            android:name="com.travel.travellingbug.ui.activities.ComplaintsAcivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.LegalActivity"
+            android:name="com.travel.travellingbug.ui.activities.LegalActivity"
             android:hardwareAccelerated="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.TermsOfUseActivity"
-            android:hardwareAccelerated="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="com.pinkcar.providers.ui.activities.PrivacyPolicyActivity"
+            android:name="com.travel.travellingbug.ui.activities.TermsOfUseActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.UpdateProfile"
+            android:name="com.travel.travellingbug.ui.activities.PrivacyPolicyActivity"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.WaitingForApproval"
+            android:name="com.travel.travellingbug.ui.activities.UpdateProfile"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.travel.travellingbug.ui.activities.WaitingForApproval"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.FavouritePlaceSearch"
+            android:name="com.travel.travellingbug.ui.activities.FavouritePlaceSearch"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.DocumentUpload"
+            android:name="com.travel.travellingbug.ui.activities.DocumentUpload"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.TrackActivity"
+            android:name="com.travel.travellingbug.ui.activities.TrackActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.Profile"
+            android:name="com.travel.travellingbug.ui.activities.Profile"
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.pinkcar.providers.ui.activities.EarningActivity"
+            android:name="com.travel.travellingbug.ui.activities.EarningActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.pinkcar.providers.provider"
+            android:authorities="com.travel.travellingbug.provider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -427,6 +441,13 @@
                 android:value="com.google.firebase.components.ComponentRegistrar" />
         </service>
 
+        <activity
+            android:name="com.google.android.libraries.places.widget.AutocompleteActivity"
+            android:exported="false"
+            android:label="@string/places_autocomplete_label"
+            android:theme="@style/PlacesAutocompleteOverlay"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
         <activity
             android:name="pub.devrel.easypermissions.AppSettingsDialogHolderActivity"
             android:exported="false"
@@ -528,7 +549,7 @@
 
         <provider
             android:name="com.squareup.picasso.PicassoProvider"
-            android:authorities="com.pinkcar.providers.com.squareup.picasso"
+            android:authorities="com.travel.travellingbug.com.squareup.picasso"
             android:exported="false" />
 
         <receiver
@@ -549,7 +570,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.pinkcar.providers.firebaseinitprovider"
+            android:authorities="com.travel.travellingbug.firebaseinitprovider"
             android:directBootAware="true"
             android:exported="false"
             android:initOrder="100" />
@@ -564,7 +585,7 @@
         -->
         <provider
             android:name="com.facebook.internal.FacebookInitProvider"
-            android:authorities="com.pinkcar.providers.FacebookInitProvider"
+            android:authorities="com.travel.travellingbug.FacebookInitProvider"
             android:exported="false" />
 
         <receiver
@@ -575,11 +596,10 @@
             </intent-filter>
         </receiver>
         <receiver
-            android:name="com.facebook.CampaignTrackingReceiver"
-            android:exported="true"
-            android:permission="android.permission.INSTALL_PACKAGES" >
+            android:name="com.facebook.AuthenticationTokenManager$CurrentAuthenticationTokenChangedBroadcastReceiver"
+            android:exported="false" >
             <intent-filter>
-                <action android:name="com.android.vending.INSTALL_REFERRER" />
+                <action android:name="com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED" />
             </intent-filter>
         </receiver>
 

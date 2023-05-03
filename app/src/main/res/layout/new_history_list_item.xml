@@ -14,7 +14,7 @@
         android:paddingTop="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp">
 
-        <com.pinkcar.providers.utills.MyTextView
+        <com.travel.travellingbug.utills.MyTextView
             android:id="@+id/datetime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,14 +80,14 @@
                         android:orientation="vertical">
 
 
-                        <com.pinkcar.providers.utills.MyTextView
+                        <com.travel.travellingbug.utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/source_location"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_12sdp" />
 
-                        <com.pinkcar.providers.utills.MyTextView
+                        <com.travel.travellingbug.utills.MyTextView
                             android:id="@+id/txtSource"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -105,14 +105,14 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <com.pinkcar.providers.utills.MyTextView
+                        <com.travel.travellingbug.utills.MyTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/destination_location"
                             android:textColor="@color/white"
                             android:textSize="@dimen/_12sdp" />
 
-                        <com.pinkcar.providers.utills.MyTextView
+                        <com.travel.travellingbug.utills.MyTextView
                             android:id="@+id/txtDestination"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

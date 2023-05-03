@@ -19,7 +19,7 @@
             android:gravity="center|start"
             android:orientation="vertical">
 
-            <com.pinkcar.providers.utills.MyEditText
+            <com.travel.travellingbug.utills.MyEditText
                 android:id="@+id/etName"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_42sdp"
@@ -40,7 +40,7 @@
                 android:background="@color/view_grey_bg_" />
 
 
-            <com.pinkcar.providers.utills.MyEditText
+            <com.travel.travellingbug.utills.MyEditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_42sdp"
@@ -61,7 +61,7 @@
                 android:background="@color/view_grey_bg_" />
 
 
-            <com.pinkcar.providers.utills.MyEditText
+            <com.travel.travellingbug.utills.MyEditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_42sdp"
@@ -104,7 +104,7 @@
 
         android:src="@drawable/ic_launcher_web" />
 
-    <com.pinkcar.providers.utills.MyBoldTextView
+    <com.travel.travellingbug.utills.MyBoldTextView
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

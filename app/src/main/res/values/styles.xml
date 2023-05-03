@@ -26,14 +26,14 @@
 
     <style name="SCBSwitch" parent="Theme.AppCompat.Light">
         <!-- active thumb & track color (30% transparency) -->
-        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/green</item>
 
         <!-- inactive thumb color -->
-        <item name="colorSwitchThumbNormal">@color/colorPrimary
+        <item name="colorSwitchThumbNormal">@color/green
         </item>
 
         <!-- inactive track color (30% transparency) -->
-        <item name="android:colorForeground">@color/colorPrimary
+        <item name="android:colorForeground">@color/green
         </item>
     </style>
 
@@ -65,8 +65,8 @@
 
     <style name="AppThemeMaterial" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryDark">@color/dark_green</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 

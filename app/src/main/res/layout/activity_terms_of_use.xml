@@ -18,7 +18,7 @@
             android:padding="5dp"
             android:src="@drawable/back" />
 
-        <com.pinkcar.providers.utills.MyBoldTextView
+        <com.travel.travellingbug.utills.MyBoldTextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
