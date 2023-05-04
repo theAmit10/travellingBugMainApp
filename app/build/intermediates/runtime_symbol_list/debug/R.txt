@@ -4820,7 +4820,6 @@ int id addCard 0x7f0a009e
 int id addCountryCode 0x7f0a009f
 int id addCountryName 0x7f0a00a0
 int id addMyPreferencesTv 0x7f0a00a1
-int id addPhoneNumberTv 0x7f0a00a2
 int id addPostalAddressTv 0x7f0a00a3
 int id addStop 0x7f0a00a4
 int id addVehicleTv 0x7f0a00a5
@@ -4923,7 +4922,6 @@ int id btnDone 0x7f0a0105
 int id btnDonePopup 0x7f0a0106
 int id btnFb 0x7f0a0107
 int id btnGoogle 0x7f0a0108
-int id btnLogin 0x7f0a0109
 int id btnLogout 0x7f0a010a
 int id btnPayNow 0x7f0a010b
 int id btnRequestRideConfirm 0x7f0a010c
@@ -5028,7 +5026,6 @@ int id com_facebook_smart_instructions_or 0x7f0a016e
 int id com_facebook_tooltip_bubble_view_bottom_pointer 0x7f0a016f
 int id com_facebook_tooltip_bubble_view_text_body 0x7f0a0170
 int id com_facebook_tooltip_bubble_view_top_pointer 0x7f0a0171
-int id confirmEmailTv 0x7f0a0172
 int id confirmNewPassword 0x7f0a0173
 int id confirmNewPasswordET 0x7f0a0174
 int id confirm_button 0x7f0a0175
@@ -5143,7 +5140,6 @@ int id email 0x7f0a01e1
 int id emailETL 0x7f0a01e2
 int id emailInput 0x7f0a01e3
 int id emailTv 0x7f0a01e4
-int id emailValTv 0x7f0a01e5
 int id emojiPopupWindowSkinPopupContainer 0x7f0a01e6
 int id emojiViewDivider 0x7f0a01e7
 int id emojiViewPager 0x7f0a01e8
@@ -5193,7 +5189,6 @@ int id firstNameETL 0x7f0a0213
 int id firstNameInput 0x7f0a0214
 int id first_name 0x7f0a0215
 int id firstnameTv 0x7f0a0216
-int id firstnameValTv 0x7f0a0217
 int id fitToContents 0x7f0a0218
 int id fixed 0x7f0a0219
 int id flip 0x7f0a021a
@@ -5552,7 +5547,6 @@ int id my_caption_title 0x7f0a037a
 int id my_featured_image 0x7f0a037b
 int id my_pager 0x7f0a037c
 int id my_tablayout 0x7f0a037d
-int id namePAtv 0x7f0a037e
 int id nav_document 0x7f0a037f
 int id nav_earnings 0x7f0a0380
 int id nav_help 0x7f0a0381
@@ -5639,7 +5633,6 @@ int id pb_video_pick 0x7f0a03d1
 int id peekHeight 0x7f0a03d2
 int id percent 0x7f0a03d3
 int id persontv 0x7f0a03d4
-int id phoneTv 0x7f0a03d5
 int id pin 0x7f0a03d6
 int id place_autocomplete_clear_button 0x7f0a03d7
 int id place_autocomplete_powered_by_google 0x7f0a03d8
@@ -5675,7 +5668,6 @@ int id postalAddresstv 0x7f0a03f5
 int id preferenceDivider 0x7f0a03f6
 int id privacyPolicyTextView 0x7f0a03f7
 int id privateCarCheckBox 0x7f0a03f8
-int id profileImgeIv 0x7f0a03f9
 int id profileTv 0x7f0a03fa
 int id profile_detail_layout 0x7f0a03fb
 int id profile_image 0x7f0a03fc
@@ -6140,6 +6132,7 @@ int id vp_image_pick 0x7f0a05c6
 int id wallet_layout 0x7f0a05c7
 int id webView 0x7f0a05c8
 int id webview 0x7f0a05c9
+int id webviewOrg 0x7f0a05d7
 int id west 0x7f0a05ca
 int id wide 0x7f0a05cb
 int id widget_viewstub_as 0x7f0a05cc

@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_8sdp"
                 android:src="@drawable/menu_icon"
-                app:tint="@color/colorPrimary" />
+                app:tint="@color/black" />
 
 
             <TextView
@@ -50,7 +50,7 @@
                 android:fontFamily="@font/montserrat_semibold"
                 android:gravity="center"
                 android:text="Online"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_16sdp"
                 android:visibility="visible" />
 

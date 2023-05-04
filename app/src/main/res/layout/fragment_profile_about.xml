@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/namePAtv"
+                    android:id="@+id/txtuserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -41,11 +41,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:text="New Comer"
-                    app:layout_constraintStart_toStartOf="@+id/namePAtv"
-                    app:layout_constraintTop_toBottomOf="@+id/namePAtv" />
+                    app:layout_constraintStart_toStartOf="@+id/txtuserName"
+                    app:layout_constraintTop_toBottomOf="@+id/txtuserName" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profileImgeIv"
+                    android:id="@+id/img_profile"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_50sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
@@ -56,7 +56,7 @@
                     app:civ_border_width="@dimen/_2sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/imageView6"
-                    app:layout_constraintTop_toTopOf="@+id/namePAtv" />
+                    app:layout_constraintTop_toTopOf="@+id/txtuserName" />
 
                 <ImageView
                     android:id="@+id/imageView6"
@@ -64,9 +64,9 @@
                     android:layout_height="@dimen/_20sdp"
 
                     android:layout_marginEnd="@dimen/_10sdp"
-                    app:layout_constraintBottom_toBottomOf="@+id/profileImgeIv"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_profile"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/namePAtv"
+                    app:layout_constraintTop_toTopOf="@+id/txtuserName"
                     app:srcCompat="@drawable/ic_forward" />
 
 
@@ -85,6 +85,7 @@
                 android:id="@+id/editPersonalDetailstv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="Edit Personal Details"
                 android:textColor="@color/green"
@@ -97,7 +98,7 @@
 
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
-                android:text="Verify Your Profile"
+                android:text="Verify your profile"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13sdp"
                 android:textStyle="bold" />
@@ -113,15 +114,26 @@
                 android:textColor="@color/green"
                 android:textSize="@dimen/_11sdp" />
 
-
             <TextView
-                android:id="@+id/confirmEmailTv"
+                android:id="@+id/first_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-
                 android:drawableLeft="@drawable/ic_add"
+                android:drawablePadding="@dimen/_10sdp"
+                android:text="Name"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_11sdp" />
 
+
+
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:drawableLeft="@drawable/ic_add"
                 android:drawablePadding="@dimen/_10sdp"
                 android:text="Confirm your email"
                 android:textColor="@color/green"
@@ -129,7 +141,7 @@
 
 
             <TextView
-                android:id="@+id/phoneTv"
+                android:id="@+id/mobile_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -225,6 +237,31 @@
             <!--                android:textColor="@color/green"-->
             <!--                android:textSize="@dimen/_11sdp"-->
             <!--                 />-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/saveBTN"
+                    android:layout_width="match_parent"
+                    android:visibility="gone"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:background="@drawable/auth_btn_green_bg"
+                    android:elevation="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:text="Save"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>

@@ -202,6 +202,8 @@ public class MainActivity extends AppCompatActivity {
                     new Handler().postDelayed(() -> startActivity(new Intent(MainActivity.this,
                             NotificationTab.class)), 250);
 
+
+
                     break;
                 case R.id.nav_wallet:
                     navItemIndex = 2;

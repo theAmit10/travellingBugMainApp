@@ -117,7 +117,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
         isInternet = helper.isConnectingToInternet();
         txtSignUp = findViewById(R.id.txtSignUp);
         txtForget = findViewById(R.id.txtForget);
-        btnLogin = findViewById(R.id.btnLogin);
+        btnLogin = findViewById(R.id.nextIcon);
         etEmail = findViewById(R.id.etEmail);
         btnFb = findViewById(R.id.btnFb);
         etPassword = findViewById(R.id.etPassword);
@@ -176,7 +176,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener, Go
         if (v.getId() == R.id.btnFb) {
             facebookLogin();
         }
-        if (v.getId() == R.id.btnLogin) {
+        if (v.getId() == R.id.nextIcon) {
             Pattern ps = Pattern.compile(".*[0-9].*");
             if (etEmail.getText().toString().equals("") ||
                     etEmail.getText().toString().equalsIgnoreCase(getString(R.string.sample_mail_id))) {

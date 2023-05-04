@@ -15,7 +15,7 @@
         android:padding="@dimen/_10sdp">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/backArrow"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_weight="0"
@@ -25,26 +25,24 @@
 
     </LinearLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="@dimen/_110sdp"
         android:layout_height="@dimen/_110sdp"
         android:layout_gravity="center"
         android:src="@drawable/people"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"/>
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/_20sdp"
-        android:text="Dont't wear sunglasses, look straight ahead and make sure you are alone."
+        android:text="Don't wear sunglasses, look straight ahead and make sure you are alone."
         android:textColor="@color/black"
         android:textSize="@dimen/_18sdp"
         android:textStyle="bold" />
-
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,14 +54,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingTop="@dimen/_1sdp"
-            android:paddingBottom="@dimen/_20sdp"
             android:paddingStart="@dimen/_20sdp"
+            android:paddingTop="@dimen/_1sdp"
             android:paddingEnd="@dimen/_20sdp"
-            android:text="Choose a picture"
+            android:paddingBottom="@dimen/_20sdp"
+            android:text="Update"
             android:textColor="#2196F3"
             android:textSize="@dimen/_14sdp"
             android:textStyle="bold"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/btnTakePicture"
             app:layout_constraintStart_toStartOf="@+id/btnTakePicture" />
@@ -74,10 +73,11 @@
             android:layout_height="@dimen/_40sdp"
             android:layout_margin="@dimen/_10sdp"
             android:background="@drawable/auth_btn_blue_bg"
+            android:backgroundTint="@color/green"
             android:elevation="@dimen/_10sdp"
             android:fontFamily="@font/montserrat_semibold"
             android:paddingStart="@dimen/_10sdp"
-            android:text="Take a picture"
+            android:text="Choose a picture"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp"
@@ -86,8 +86,6 @@
             app:layout_constraintHorizontal_bias="0.36"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
 </LinearLayout>

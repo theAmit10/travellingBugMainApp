@@ -127,8 +127,9 @@ public class DocumentStatus extends AppCompatActivity {
 
         setContentView(R.layout.activity_document_status);
 
-        getSupportActionBar().setTitle("Document ");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        COMMENTING THIS JUST FOR TESTING
+//        getSupportActionBar().setTitle("Document ");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recDocuments = findViewById(R.id.recDocuments);
 
         getDocList();

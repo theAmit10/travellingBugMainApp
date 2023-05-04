@@ -136,6 +136,8 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
             String res = new String(response.data);
             try {
                 JSONObject jsonObject = new JSONObject(res);
+                Log.e("update url : ", URLHelper.USER_PROFILE_API);
+                Log.e("update url data : ", res.toString());
                 SharedHelper.putKey(getApplicationContext(), "id", jsonObject.optString("id"));
                 SharedHelper.putKey(getApplicationContext(), "first_name", jsonObject.optString("first_name"));
 //                    SharedHelper.putKey(getApplicationContext(), "last_name", jsonObject.optString("last_name"));

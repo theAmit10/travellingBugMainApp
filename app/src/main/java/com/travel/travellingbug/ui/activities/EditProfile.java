@@ -169,9 +169,14 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
 
         profile_Image.setOnClickListener(view -> {
 
-            if (checkStoragePermission())
-                requestPermissions(new String[]{Manifest.permission.CAMERA,
-                        Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+            if (checkStoragePermission()) {
+                goToImageIntent();
+            }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(new String[]{Manifest.permission.CAMERA,
+                            Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+
+                }
             else
                 goToImageIntent();
 

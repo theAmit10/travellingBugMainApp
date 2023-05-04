@@ -4821,7 +4821,6 @@ id addCard
 id addCountryCode
 id addCountryName
 id addMyPreferencesTv
-id addPhoneNumberTv
 id addPostalAddressTv
 id addStop
 id addVehicleTv
@@ -4924,7 +4923,6 @@ id btnDone
 id btnDonePopup
 id btnFb
 id btnGoogle
-id btnLogin
 id btnLogout
 id btnPayNow
 id btnRequestRideConfirm
@@ -5029,7 +5027,6 @@ id com_facebook_smart_instructions_or
 id com_facebook_tooltip_bubble_view_bottom_pointer
 id com_facebook_tooltip_bubble_view_text_body
 id com_facebook_tooltip_bubble_view_top_pointer
-id confirmEmailTv
 id confirmNewPassword
 id confirmNewPasswordET
 id confirm_button
@@ -5144,7 +5141,6 @@ id email
 id emailETL
 id emailInput
 id emailTv
-id emailValTv
 id emojiPopupWindowSkinPopupContainer
 id emojiViewDivider
 id emojiViewPager
@@ -5194,7 +5190,6 @@ id firstNameETL
 id firstNameInput
 id first_name
 id firstnameTv
-id firstnameValTv
 id fitToContents
 id fixed
 id flip
@@ -5553,7 +5548,6 @@ id my_caption_title
 id my_featured_image
 id my_pager
 id my_tablayout
-id namePAtv
 id nav_document
 id nav_earnings
 id nav_help
@@ -5640,7 +5634,6 @@ id pb_video_pick
 id peekHeight
 id percent
 id persontv
-id phoneTv
 id pin
 id place_autocomplete_clear_button
 id place_autocomplete_powered_by_google
@@ -5676,7 +5669,6 @@ id postalAddresstv
 id preferenceDivider
 id privacyPolicyTextView
 id privateCarCheckBox
-id profileImgeIv
 id profileTv
 id profile_detail_layout
 id profile_image
@@ -6141,6 +6133,7 @@ id vp_image_pick
 id wallet_layout
 id webView
 id webview
+id webviewOrg
 id west
 id wide
 id widget_viewstub_as

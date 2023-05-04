@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.HolidayPackageFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/errorLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
 
         >
 
@@ -38,5 +39,39 @@
             app:layout_constraintTop_toBottomOf="@+id/error_image" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_edit_profile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/theme">
+
+            <com.travel.travellingbug.utills.MyBoldTextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="Holiday Package"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <WebView
+            android:id="@+id/webviewOrg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             />
+
+
+    </LinearLayout>
 
 </FrameLayout>
