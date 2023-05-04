@@ -50,7 +50,12 @@ public class HomeScreenActivity extends AppCompatActivity implements
         viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabLayout);
         viewPagerAdapter = new MainActivityViewPagerAdapter(this);
+
+        // to disable swipe between different fragment
+        viewPager.setUserInputEnabled(false);
+
         viewPager.setAdapter(viewPagerAdapter);
+
 
 
         new TabLayoutMediator(tabLayout, viewPager, ((tab, position) -> tab.setIcon(tabIcons[position]))).attach();

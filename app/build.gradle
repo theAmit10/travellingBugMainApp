@@ -107,5 +107,7 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:latest.release'
     implementation 'com.google.android.gms:play-services-auth:20.5.0'
 
+    implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha02'
+
 }
 apply plugin: 'com.google.gms.google-services'
