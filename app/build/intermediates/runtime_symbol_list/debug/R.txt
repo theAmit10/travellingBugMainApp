@@ -4930,6 +4930,7 @@ int id btnSave 0x7f0a010e
 int id btnSearch 0x7f0a010f
 int id btnSend 0x7f0a0110
 int id btnSignUp 0x7f0a0111
+int id btnSignUps 0x7f0a05d8
 int id btnStart 0x7f0a0112
 int id btnStartRide 0x7f0a0113
 int id btnSubmit 0x7f0a0114
@@ -5156,6 +5157,7 @@ int id etComplaint 0x7f0a01f2
 int id etDate 0x7f0a01f3
 int id etEmail 0x7f0a01f4
 int id etName 0x7f0a01f5
+int id etNames 0x7f0a05d9
 int id etPassword 0x7f0a01f6
 int id et_add_source_card_number_ml 0x7f0a01f7
 int id et_add_source_cvc_ml 0x7f0a01f8
@@ -5778,8 +5780,6 @@ int id search_mag_icon 0x7f0a0464
 int id search_plate 0x7f0a0465
 int id search_src_text 0x7f0a0466
 int id search_voice_btn 0x7f0a0467
-int id secondNameETL 0x7f0a0468
-int id secondNameInput 0x7f0a0469
 int id second_row_layout 0x7f0a046a
 int id selectAmountTxt 0x7f0a046b
 int id selectVTtv 0x7f0a046c

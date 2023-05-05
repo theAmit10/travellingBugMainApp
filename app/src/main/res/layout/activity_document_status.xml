@@ -3,13 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.DocumentStatus">
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.activities.DocumentStatus">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:orientation="horizontal"
+        android:padding="@dimen/_5sdp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recDocuments"
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_weight="0"
+            android:padding="@dimen/_5sdp"
+            app:srcCompat="@drawable/ic_arrow_back" />
+
+    </LinearLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recDocuments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </RelativeLayout>
 
 </LinearLayout>

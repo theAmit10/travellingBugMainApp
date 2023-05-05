@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -54,7 +55,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     String TAG = "SignUp";
     TextView txtSignIn;
     EditText etName, etEmail, etPassword;
-    ImageView btnSignUp;
+    Button btnSignUp;
     CustomDialog customDialog;
     ConnectionHelper helper;
     Boolean isInternet;
@@ -121,11 +122,33 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnSignUp = findViewById(R.id.btnSignUp);
-        txtSignIn.setOnClickListener(this);
-        btnSignUp.setOnClickListener(this);
+//        txtSignIn.setOnClickListener(this);
+//        btnSignUp.setOnClickListener(this);
 
         getToken();
-    }
+
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(SignUp.this, "Clicked", Toast.LENGTH_SHORT).show();
+                if (etName.getText().toString().equals("") ||
+                        etName.getText().toString().equalsIgnoreCase(getString(R.string.first_name))) {
+                    displayMessage("Phone Number Required");
+                }
+                else if (isInternet) {
+                    SharedHelper.putKey(getApplicationContext(), "mobile_number", etName.getText().toString());
+                    dialog = new Dialog(SignUp.this, R.style.AppTheme_NoActionBar);
+                    registerAPI();
+
+
+                } else {
+                    displayMessage(getString(R.string.something_went_wrong_net));
+                }
+            }
+
+    });
+
+}
 
     @SuppressLint("HardwareIds")
     public void getToken() {
@@ -190,20 +213,18 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 displayMessage(getString(R.string.first_name_empty));
 //            } else if (firstName.matches()) {
 //                displayMessage(getString(R.string.first_name_no_number));
-            } else if (etEmail.getText().toString().equals("") ||
-                    etEmail.getText().toString().equalsIgnoreCase(getString(R.string.sample_mail_id))) {
-                displayMessage(getString(R.string.email_validation));
-            } else if (!Utilities.isValidEmail(etEmail.getText().toString())) {
-                displayMessage(getString(R.string.not_valid_email));
-            } else if (etPassword.getText().toString().equals("") ||
-                    etPassword.getText().toString().equalsIgnoreCase(getString(R.string.password_txt))) {
-                displayMessage(getString(R.string.password_validation));
-            } else if (etPassword.length() < 6) {
-                displayMessage(getString(R.string.password_size));
-            } else {
+//            } else if (etEmail.getText().toString().equals("") ||
+//                    etEmail.getText().toString().equalsIgnoreCase(getString(R.string.sample_mail_id))) {
+//                displayMessage(getString(R.string.email_validation));
+//            } else if (!Utilities.isValidEmail(etEmail.getText().toString())) {
+//                displayMessage(getString(R.string.not_valid_email));
+//            } else if (etPassword.getText().toString().equals("") ||
+//                    etPassword.getText().toString().equalsIgnoreCase(getString(R.string.password_txt))) {
+//                displayMessage(getString(R.string.password_validation));
+//            } else if (etPassword.length() < 6) {
+//                displayMessage(getString(R.string.password_size));
+//            } else {
                 if (isInternet) {
-
-
 //                    checkEmail();
                     SharedHelper.putKey(getApplicationContext(), "mobile_number", etName.getText().toString());
                     dialog = new Dialog(SignUp.this, R.style.AppTheme_NoActionBar);
@@ -319,7 +340,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             object.put("scope", "");
             object.put("device_type", "android");
             object.put("device_id", device_UDID);
-            object.put("device_token",device_token);
+            object.put("device_token", device_token);
 //            object.put("device_id", "0079ae652f15b06f");
 //            object.put("device_token", "" + "eqbYFHiiQgKyQ86Lmx0EUZ:APA91bFSv48-EnMOeasV7LW5g1i0fQnL3TzP82J5-fV8jIMOT4WKrbuRMNK6uAF4B2fB7iXf_jaFXRq7h8dXtq1gIrvtggnIfgEXt3CHy5iqOSsQ_iOcs9GqbYNV6m7R57_hCUhWH4mC");
             object.put("logged_in", "1");

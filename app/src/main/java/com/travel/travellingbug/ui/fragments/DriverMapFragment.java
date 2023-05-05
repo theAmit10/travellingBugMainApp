@@ -62,6 +62,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.ui.activities.DocUploadActivity;
+import com.travel.travellingbug.ui.activities.DocumentUpload;
 import com.travel.travellingbug.ui.activities.HomeScreenActivity;
 import com.travel.travellingbug.ui.activities.MainActivity;
 import com.travel.travellingbug.ui.activities.Profile;
@@ -571,6 +572,30 @@ public class DriverMapFragment extends Fragment implements
         });
         sos.setOnClickListener(v -> showSosDialog());
         lnrGoOffline.setVisibility(View.GONE);
+
+
+
+        // for testing
+        TextView leavingtv = view.findViewById(R.id.leavingtv);
+        TextView goingtv = view.findViewById(R.id.goingtv);
+
+        leavingtv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), DocUploadActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        goingtv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), DocumentUpload.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override

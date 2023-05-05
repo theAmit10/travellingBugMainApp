@@ -4931,6 +4931,7 @@ id btnSave
 id btnSearch
 id btnSend
 id btnSignUp
+id btnSignUps
 id btnStart
 id btnStartRide
 id btnSubmit
@@ -5157,6 +5158,7 @@ id etComplaint
 id etDate
 id etEmail
 id etName
+id etNames
 id etPassword
 id et_add_source_card_number_ml
 id et_add_source_cvc_ml
@@ -5779,8 +5781,6 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
-id secondNameETL
-id secondNameInput
 id second_row_layout
 id selectAmountTxt
 id selectVTtv

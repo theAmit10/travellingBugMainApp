@@ -100,6 +100,8 @@ public class DocUploadActivity extends AppCompatActivity {
     Button adapterButton;
     int totalDocUpload = 0;
     String Profile;
+
+    ImageView backArrow;
     TextView txtUploa;
     Uri documentUri;
     private String first = "", boring_depth = "";
@@ -179,10 +181,12 @@ public class DocUploadActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_doc_upload);
 
-        getSupportActionBar().setTitle("Documents");
+//        getSupportActionBar().setTitle("Documents");
+//
+//
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         verifyStoragePermissions(DocUploadActivity.this);
         token = SharedHelper.getKey(DocUploadActivity.this, "access_token");
         imgPersonal = findViewById(R.id.imgPersonal);
@@ -194,6 +198,7 @@ public class DocUploadActivity extends AppCompatActivity {
         txtUploa = findViewById(R.id.txtUploa);
         btnDone = findViewById(R.id.btnDone);
         chkTerm = findViewById(R.id.chkTerm);
+        backArrow = findViewById(R.id.backArrow);
 
         btMotorInspectCertificate = findViewById(R.id.btMotorInspectCertificate);
         btPsvInsurenceCertificate = findViewById(R.id.btPsvInsurenceCertificate);
@@ -248,6 +253,13 @@ public class DocUploadActivity extends AppCompatActivity {
             d.show();
         });
 
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         btGoodConduct.setOnClickListener(v -> {
             uploadTag = "Registration Certificate";
@@ -295,7 +307,8 @@ public class DocUploadActivity extends AppCompatActivity {
         });
 
         btnDone.setOnClickListener(v -> {
-            if (totalDocUpload == responseArray.length()) {
+
+            if (totalDocUpload >= 1) {
                 if (chkTerm.isChecked()) {
                     completeDocumentStatus();
                 } else {
@@ -304,10 +317,26 @@ public class DocUploadActivity extends AppCompatActivity {
                     displayMessage("Please check document certify");
                 }
             } else {
-                Toast.makeText(DocUploadActivity.this, "Upload all documents",
+                Toast.makeText(DocUploadActivity.this, "Upload atleast one documents",
                         Toast.LENGTH_LONG).show();
                 displayMessage(DocUploadActivity.this.getString(R.string.upload_all_documents_and_check_term));
             }
+
+
+
+//            if (totalDocUpload == responseArray.length()) {
+//                if (chkTerm.isChecked()) {
+//                    completeDocumentStatus();
+//                } else {
+//                    Toast.makeText(DocUploadActivity.this, "Please check document certify",
+//                            Toast.LENGTH_LONG).show();
+//                    displayMessage("Please check document certify");
+//                }
+//            } else {
+//                Toast.makeText(DocUploadActivity.this, "Upload all documents",
+//                        Toast.LENGTH_LONG).show();
+//                displayMessage(DocUploadActivity.this.getString(R.string.upload_all_documents_and_check_term));
+//            }
 
 
         });
@@ -844,7 +873,7 @@ public class DocUploadActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(DocAdapter.MyViewHolder holder, int position) {
+        public void onBindViewHolder(DocAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
             Log.v("dpcArray", jsonArray + "");
             try {
                 holder.txtDocomentName.setText(jsonArray.optJSONObject(position).optString("name"));

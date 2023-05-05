@@ -16,7 +16,7 @@
         android:padding="@dimen/_10sdp">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/backArrow"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_weight="0"
@@ -58,37 +58,12 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             android:fontFamily="@font/montserrat_semibold"
-            android:hint="First Name"
+            android:hint="Name"
             android:paddingBottom="@dimen/_5sdp"
             tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/secondNameInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_16sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_15sdp"
-        android:background="@drawable/auth_btn_gray_bg"
-        android:elevation="@dimen/_10sdp"
-        android:outlineAmbientShadowColor="@color/green"
-        android:outlineSpotShadowColor="@color/green"
-        android:paddingStart="@dimen/_15sdp"
-        android:paddingTop="@dimen/_5sdp"
-        android:paddingEnd="@dimen/_15sdp"
-        android:paddingBottom="@dimen/_5sdp">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/secondNameETL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:fontFamily="@font/montserrat_semibold"
-            android:hint="Second Name"
-            android:paddingBottom="@dimen/_5sdp"
-            tools:ignore="TouchTargetSizeCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

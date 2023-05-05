@@ -32,7 +32,7 @@ public class HistoryActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_history);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         viewPager = findViewById(R.id.viewpager);
         tabLayout = findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);

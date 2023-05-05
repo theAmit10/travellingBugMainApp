@@ -161,6 +161,9 @@ public class MainActivity extends AppCompatActivity {
         imgProfile = navHeader.findViewById(R.id.img_profile);
         tvRate = navHeader.findViewById(R.id.tvRate);
         status = navHeader.findViewById(R.id.status);
+
+
+
     }
 
     private void setUpNavigationView() {

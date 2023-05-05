@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:elevation="@dimen/_20sdp"
     android:outlineAmbientShadowColor="#2196F3"
     android:outlineSpotShadowColor="#2196F3">

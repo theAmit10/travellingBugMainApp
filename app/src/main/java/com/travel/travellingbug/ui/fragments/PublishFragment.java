@@ -116,6 +116,7 @@ import com.travel.travellingbug.ui.activities.CouponActivity;
 import com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch;
 import com.travel.travellingbug.ui.activities.Payment;
 import com.travel.travellingbug.ui.activities.ShowProfile;
+import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.ui.activities.TrackActivity;
 import com.travel.travellingbug.utills.MapAnimator;
 import com.travel.travellingbug.utills.MapRipple;
@@ -754,8 +755,14 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         if (mMap != null) {
             setupMap();
         }
+
+//        getActivity().runOnUiThread(new Runnable() {
+//            public void run() {
+//                new Handler().postDelayed(() -> getServiceList(), 500);
+//            }
+//        });
         new Handler().postDelayed(() -> getServiceList(), 500);
-        // checkStatus();
+//        // checkStatus();
 
     }
 

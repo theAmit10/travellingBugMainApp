@@ -18,7 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5sdp"
-
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -36,9 +35,9 @@
         <Button
             android:id="@+id/btnUpload"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="@dimen/_30sdp"
             android:layout_marginEnd="@dimen/_5sdp"
-            android:backgroundTint="@color/colorPrimary"
+            android:background="@drawable/auth_btn_green_bg"
             android:fontFamily="@font/montserrat_semibold"
             android:paddingStart="@dimen/_5sdp"
             android:paddingEnd="@dimen/_5sdp"
@@ -61,5 +60,17 @@
             android:layout_width="@dimen/_56sdp"
             android:layout_height="@dimen/_56sdp"
             android:visibility="gone" />
+
+
     </LinearLayout>
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@color/colorGreyLight"
+        />
 </LinearLayout>
