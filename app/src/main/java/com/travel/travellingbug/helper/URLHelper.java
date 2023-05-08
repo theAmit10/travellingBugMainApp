@@ -41,6 +41,7 @@ public interface URLHelper {
 //    String login = BASE + "oauth/token";
 //    String register = BASE + "api/user/signup";
     String email_check = BASE + "api/provider/check-email";
+
     String USER_PROFILE_API = BASE + "api/provider/profile";
     String UPDATE_AVAILABILITY_API = BASE + "api/provider/profile/available";
     String GET_HISTORY_API = BASE + "api/provider/requests/history";

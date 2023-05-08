@@ -27,7 +27,7 @@ public class MainActivityViewPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new DriverMapFragment();
+                return new SearchFragment();
             case 1:
                 return new PublishFragment();
             case 2:

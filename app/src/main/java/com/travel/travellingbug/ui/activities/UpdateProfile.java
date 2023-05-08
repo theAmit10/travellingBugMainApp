@@ -58,10 +58,11 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
         btnUpdate = findViewById(R.id.btnUpdate);
         text_input_layout = findViewById(R.id.text_input_layout);
         backArrow.setOnClickListener(this);
-        btnUpdate.setOnClickListener(this);
+
         helper = new ConnectionHelper(getApplicationContext());
         isInternet = helper.isConnectingToInternet();
         getIntentData();
+        btnUpdate.setOnClickListener(this);
 
 
     }
@@ -114,7 +115,8 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
 
                         SharedHelper.putKey(getApplicationContext(), "first_name", editText.getText().toString());
                         updateProfileWithoutImage();
-                    } else {
+                    }
+                    else {
                         SharedHelper.putKey(getApplicationContext(), parameter, editText.getText().toString());
                         updateProfileWithoutImage();
                     }

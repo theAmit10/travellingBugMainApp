@@ -12,12 +12,13 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.ui.adapters.MainActivityViewPagerAdapter;
 import com.travel.travellingbug.ui.fragments.PublishFragment;
+import com.travel.travellingbug.ui.fragments.SearchFragment;
 import com.travel.travellingbug.utills.ResponseListener;
 
 import org.json.JSONArray;
 
 public class HomeScreenActivity extends AppCompatActivity implements
-        PublishFragment.HomeFragmentListener,
+        SearchFragment.HomeFragmentListener,
         ResponseListener {
 
     ViewPager2 viewPager;

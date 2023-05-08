@@ -54,7 +54,6 @@ import java.util.regex.Pattern;
 import es.dmoral.toasty.Toasty;
 
 
-
 public class EditProfile extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "EditProfile";
@@ -134,33 +133,33 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
             onBackPressed();
         });
 
-        saveBTN.setOnClickListener(view -> {
-
-            Pattern ps = Pattern.compile(".*[0-9].*");
-            Matcher firstName = ps.matcher(first_name.getText().toString());
-//                Matcher lastName = ps.matcher(last_name.getText().toString());
-
-
-            if (email.getText().toString().equals("") || email.getText().toString().length() == 0) {
-                displayMessage(getString(R.string.email_validation));
-            } else if (mobile_no.getText().toString().equals("") || mobile_no.getText().toString().length() == 0) {
-                displayMessage(getString(R.string.mobile_number_empty));
-            } else if (mobile_no.getText().toString().length() < 10 || mobile_no.getText().toString().length() > 20) {
-                displayMessage(getString(R.string.mobile_number_validation));
-            } else if (first_name.getText().toString().equals("") || first_name.getText().toString().length() == 0) {
-                displayMessage(getString(R.string.first_name_empty));
-            } else if (firstName.matches()) {
-                displayMessage(getString(R.string.first_name_no_number));
-            } else {
-                if (isInternet) {
-                    updateProfile();
-                } else {
-                    displayMessage(getString(R.string.something_went_wrong_net));
-                }
-            }
-
-
-        });
+//        saveBTN.setOnClickListener(view -> {
+//
+//            Pattern ps = Pattern.compile(".*[0-9].*");
+//            Matcher firstName = ps.matcher(first_name.getText().toString());
+////                Matcher lastName = ps.matcher(last_name.getText().toString());
+//
+//
+//            if (email.getText().toString().equals("") || email.getText().toString().length() == 0) {
+//                displayMessage(getString(R.string.email_validation));
+//            } else if (mobile_no.getText().toString().equals("") || mobile_no.getText().toString().length() == 0) {
+//                displayMessage(getString(R.string.mobile_number_empty));
+//            } else if (mobile_no.getText().toString().length() < 10 || mobile_no.getText().toString().length() > 20) {
+//                displayMessage(getString(R.string.mobile_number_validation));
+//            } else if (first_name.getText().toString().equals("") || first_name.getText().toString().length() == 0) {
+//                displayMessage(getString(R.string.first_name_empty));
+//            } else if (firstName.matches()) {
+//                displayMessage(getString(R.string.first_name_no_number));
+//            } else {
+//                if (isInternet) {
+//                    updateProfile();
+//                } else {
+//                    displayMessage(getString(R.string.something_went_wrong_net));
+//                }
+//            }
+//
+//
+//        });
 
         getProfile();
 
@@ -169,16 +168,17 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
 
         profile_Image.setOnClickListener(view -> {
 
-            if (checkStoragePermission()) {
-                goToImageIntent();
-            }
+            if (checkStoragePermission())
+            {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     requestPermissions(new String[]{Manifest.permission.CAMERA,
                             Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
-
                 }
-            else
+            }
+            else{
                 goToImageIntent();
+            }
+
 
         });
 
@@ -217,6 +217,8 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
                                 if (service.optJSONObject("service_type") != null) {
                                     JSONObject serviceType = service.optJSONObject("service_type");
                                     SharedHelper.putKey(context, "service", serviceType.optString("name"));
+                                    SharedHelper.putKey(context, "service_image", serviceType.optString("vehicle_image"));
+
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();

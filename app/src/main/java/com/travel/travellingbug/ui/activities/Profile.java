@@ -37,6 +37,7 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import es.dmoral.toasty.Toasty;
@@ -63,6 +64,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         }
 
+
+
         setContentView(R.layout.activity_profile);
         currentLanguage = getIntent().getStringExtra(currentLang);
 
@@ -70,6 +73,82 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
 
         backArrow.setOnClickListener(view -> onBackPressed());
     }
+
+//    private void getProfile() {
+////        customDialog.setCancelable(false);
+////        customDialog.show();
+//        JSONObject object = new JSONObject();
+//        JsonObjectRequest jsonObjectRequest = new
+//                JsonObjectRequest(Request.Method.GET,
+//                        URLHelper.USER_PROFILE_API + "?device_type=android&device_id="
+//                                + deviceUDID + "&device_token=" + deviceToken,
+//                        object,
+//                        response -> {
+////                            if ((customDialog != null) && customDialog.isShowing())
+////                                customDialog.dismiss();
+//                            SharedHelper.putKey(getApplicationContext(), "id",
+//                                    response.optString("id"));
+//                            SharedHelper.putKey(getApplicationContext(), "first_name",
+//                                    response.optString("first_name"));
+//                            SharedHelper.putKey(getApplicationContext(), "email",
+//                                    response.optString("email"));
+//                            SharedHelper.putKey(getApplicationContext(), "gender", "" +
+//                                    response.optString("gender"));
+//                            SharedHelper.putKey(getApplicationContext(), "mobile",
+//                                    response.optString("mobile"));
+//                            SharedHelper.putKey(getApplicationContext(), "approval_status",
+//                                    response.optString("status"));
+//                            SharedHelper.putKey(getApplicationContext(), "loggedIn",
+//                                    getString(R.string.True));
+//                            SharedHelper.putKey(getApplicationContext(), "rating", response.optString("rating"));
+//                            SharedHelper.putKey(getApplicationContext(), "currency", response.optString("currency"));
+//                            if (response.optString("avatar").startsWith("http"))
+//                                SharedHelper.putKey(getApplicationContext(), "picture",
+//                                        response.optString("avatar"));
+//                            else
+//                                SharedHelper.putKey(getApplicationContext(), "picture",
+//                                        URLHelper.BASE + "storage/app/public/" +
+//                                                response.optString("avatar"));
+//
+//                            SharedHelper.getKey(getApplicationContext(), "picture");
+//
+//                            if (response.optJSONObject("service") != null) {
+//                                try {
+//                                    JSONObject service = response.optJSONObject("service");
+//                                    if (service.optJSONObject("service_type") != null) {
+//                                        JSONObject serviceType = service.optJSONObject("service_type");
+//                                        SharedHelper.putKey(getApplicationContext(), "service",
+//                                                serviceType.optString("name"));
+//                                        SharedHelper.putKey(getApplicationContext(), "service_image",
+//                                                serviceType.optString("image"));
+//                                    }
+//                                } catch (Exception e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                            SharedHelper.putKey(getApplicationContext(), "sos",
+//                                    response.optString("sos"));
+//                            SharedHelper.putKey(getApplicationContext(), "sos", response.optString("sos"));
+//                            SharedHelper.putKey(getApplicationContext(), "loggedIn", getString(R.string.True));
+////                            GoToMainActivity();
+//
+//                        },
+//                        error -> {
+////                            if ((customDialog != null) && customDialog.isShowing())
+////                                customDialog.dismiss();
+//                            displayMessage(getString(R.string.something_went_wrong));
+//                        }) {
+//                    @Override
+//                    public Map<String, String> getHeaders() {
+//                        HashMap<String, String> headers = new HashMap<String, String>();
+//                        headers.put("X-Requested-With", "XMLHttpRequest");
+//                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+//                        return headers;
+//                    }
+//                };
+//
+//        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+//    }
 
     private void findview() {
         img_profile = findViewById(R.id.img_profile);
@@ -107,6 +186,9 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
                     .error(R.drawable.car_select)
                     .into(img_car);
         }
+
+//        System.out.println("car : "+);
+
         txtEdituser.setOnClickListener(this);
         txtPassword.setOnClickListener(this);
         txtDocuments.setOnClickListener(this);

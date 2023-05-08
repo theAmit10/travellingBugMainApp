@@ -448,7 +448,16 @@ public class ProfileAboutFragment extends Fragment {
                         SharedHelper.putKey(getContext(), "wallet_balance", response.optString("wallet_balance"));
                         SharedHelper.putKey(getContext(), "payment_mode", response.optString("payment_mode"));
                         SharedHelper.putKey(getContext(), "currency", response.optString("currency"));
+
+
                         //                    SharedHelper.putKey(context, "currency", response.optString("payment_mode"));
+                        SharedHelper.putKey(getContext(), "rating", response.optString("rating"));
+                        SharedHelper.putKey(getContext(), "status", response.optString("status"));
+                        SharedHelper.putKey(getContext(), "ulatitude", response.optString("latitude"));
+                        SharedHelper.putKey(getContext(), "ulongitude", response.optString("longitude"));
+                        SharedHelper.putKey(getContext(), "udevice_token", response.optString("device_token"));
+
+
                         SharedHelper.putKey(getContext(), "loggedIn", getString(R.string.True));
                         if (response.optString("avatar").startsWith("http"))
                             SharedHelper.putKey(getContext(), "picture", response.optString("avatar"));
@@ -458,6 +467,19 @@ public class ProfileAboutFragment extends Fragment {
                         if (response.optJSONObject("service") != null) {
                             try {
                                 JSONObject service = response.optJSONObject("service");
+
+                                SharedHelper.putKey(getContext(), "service_id", service.optString("id"));
+                                SharedHelper.putKey(getContext(), "service_status", service.optString("status"));
+                                SharedHelper.putKey(getContext(), "service_number", service.optString("service_number"));
+                                SharedHelper.putKey(getContext(), "service_model", service.optString("service_model"));
+                                SharedHelper.putKey(getContext(), "service_capacity", service.optString("service_capacity"));
+                                SharedHelper.putKey(getContext(), "service_year", service.optString("service_year"));
+                                SharedHelper.putKey(getContext(), "service_make", service.optString("service_make"));
+                                SharedHelper.putKey(getContext(), "service_name", service.optString("service_name"));
+                                SharedHelper.putKey(getContext(), "service_ac", service.optString("service_ac"));
+                                SharedHelper.putKey(getContext(), "service_color", service.optString("service_color"));
+
+
                                 if (service.optJSONObject("service_type") != null) {
                                     JSONObject serviceType = service.optJSONObject("service_type");
                                     SharedHelper.putKey(getContext(), "service", serviceType.optString("name"));

@@ -313,6 +313,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         utils.print("Profile_PIC", "" + SharedHelper.getKey(context, "picture") + " ");
+        utils.print("vehicle PIC", "" + SharedHelper.getKey(context, "service_image") + " ");
         if (SharedHelper.getKey(context, "picture") != null
                 && !SharedHelper.getKey(context, "picture").isEmpty()) {
             Picasso.get().load(SharedHelper.getKey(context, "picture"))
