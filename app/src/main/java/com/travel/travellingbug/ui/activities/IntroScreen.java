@@ -87,7 +87,8 @@ public class IntroScreen extends AppCompatActivity {
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =  new Intent(IntroScreen.this, LoginActivity.class);
+                SharedHelper.putKey(getApplicationContext(),"selectedlanguage","true");
+                Intent intent =  new Intent(IntroScreen.this, SignUp.class);
                 startActivity(intent);
             }
         });

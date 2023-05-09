@@ -86,7 +86,7 @@ public class FCMService extends FirebaseMessagingService {
                 Intent notifyIntent = new Intent(this, MainActivity.class);
                 notifyIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 PendingIntent notifyPendingIntent = PendingIntent.getActivity(
-                        this, 0, notifyIntent, 0
+                        this, 0, notifyIntent, PendingIntent.FLAG_IMMUTABLE
                 );
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(this, getString(R.string.default_notification_channel_id));
                 builder.setSmallIcon(R.mipmap.ic_launcher);
@@ -134,7 +134,7 @@ public class FCMService extends FirebaseMessagingService {
             intent.putExtra("message", message);
             intent.putExtra("request_id", requestId);
             intent.putExtra("userName", userName);
-            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* TripRequest code */, intent, PendingIntent.FLAG_ONE_SHOT);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* TripRequest code */, intent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
             Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, getString(R.string.default_notification_channel_id))
                     .setSmallIcon(R.mipmap.ic_launcher)
@@ -172,7 +172,7 @@ public class FCMService extends FirebaseMessagingService {
 
             String message = notificationBody;
             intent.putExtra("message", message);
-            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent, PendingIntent.FLAG_ONE_SHOT);
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
             Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder notificationBuilder = new
                     NotificationCompat.Builder(this, getString(R.string.default_notification_channel_id))

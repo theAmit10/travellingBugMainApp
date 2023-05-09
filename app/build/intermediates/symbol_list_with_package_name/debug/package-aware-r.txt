@@ -3603,6 +3603,7 @@ drawable emoji_ios_sheet_7
 drawable emoji_ios_sheet_8
 drawable emoji_ios_sheet_9
 drawable emoji_recent
+drawable fare
 drawable fastscroll__default_bubble
 drawable fastscroll__default_handle
 drawable filechooselogo
@@ -4598,6 +4599,7 @@ drawable rounded_button
 drawable roundshape
 drawable sad
 drawable search
+drawable seat
 drawable selected_indicator
 drawable selected_service_item
 drawable selector_row
@@ -4614,6 +4616,7 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable top_shadow
 drawable triangle
+drawable up_down
 drawable user_marker
 drawable user_markers
 drawable vertical_dashed_line
@@ -4861,6 +4864,7 @@ id autoCompleteToStart
 id autocomplete_country_cat
 id automatic
 id availableFundsTv
+id availableSeat
 id back
 id backArrow
 id backLayout
@@ -4915,6 +4919,7 @@ id bt_card_form_save_card_checkbox
 id bt_expiration_date_sheet
 id bt_expiration_month_grid_view
 id bt_expiration_year_grid_view
+id btnAddRide
 id btnCall
 id btnCancel
 id btnCancelRide
@@ -4960,6 +4965,7 @@ id cancel_action
 id cancel_button
 id cancel_card
 id cancel_txt
+id carTypeVal
 id car_name
 id cardListViewLayout
 id card_layout
@@ -5062,6 +5068,8 @@ id customPanel
 id cut
 id dark
 id dataProtectionTv
+id date
+id dateVal
 id date_picker_actions
 id date_picker_day
 id date_picker_header
@@ -5088,6 +5096,7 @@ id design_navigation_view
 id dest_border_img
 id destination
 id destinationLayer
+id details
 id dialog_button
 id dimensions
 id direct
@@ -5181,6 +5190,8 @@ id expiry
 id expiry_date_label
 id fade
 id familyTxtName
+id fare
+id fareVal
 id fastscroll
 id fill
 id fillRipple
@@ -5209,6 +5220,7 @@ id frmDest
 id frmDestination
 id frmProgressBar
 id frmSource
+id from
 id frost
 id fullAdressETL
 id fullAdressInput
@@ -5255,12 +5267,15 @@ id ignore
 id ignoreRequest
 id image
 id imageView
+id imageView10
 id imageView2
 id imageView3
 id imageView4
+id imageView5
 id imageView6
 id imageView7
 id imageView8
+id imageView9
 id imageView_arrow
 id image_flag
 id img01User
@@ -5431,6 +5446,7 @@ id linear_flag_border
 id linear_flag_holder
 id listMode
 id list_item
+id listitemrating
 id llFlow
 id llGreatConversation
 id llHero
@@ -5550,6 +5566,7 @@ id my_caption_title
 id my_featured_image
 id my_pager
 id my_tablayout
+id namePAtv
 id nav_document
 id nav_earnings
 id nav_help
@@ -5614,6 +5631,7 @@ id parentLayout
 id parentPanel
 id parentRelative
 id parent_matrix
+id passengerLV
 id password_toggle
 id path
 id pathRelative
@@ -5671,6 +5689,7 @@ id postalAddresstv
 id preferenceDivider
 id privacyPolicyTextView
 id privateCarCheckBox
+id profileImgeIv
 id profileTv
 id profile_detail_layout
 id profile_image
@@ -5692,6 +5711,7 @@ id rat01UserRating
 id rat02UserRating
 id rat03UserRating
 id rat05UserRating
+id rateRider
 id ratingProvider
 id ratingProviderRate
 id ratingtv
@@ -5718,6 +5738,7 @@ id recycler_countryDialog
 id registerLayout
 id registerTextview
 id replay_text
+id request
 id resend
 id retry_btn
 id retry_layout
@@ -5781,6 +5802,8 @@ id search_mag_icon
 id search_plate
 id search_src_text
 id search_voice_btn
+id seat
+id seatVal
 id second_row_layout
 id selectAmountTxt
 id selectVTtv
@@ -5839,6 +5862,7 @@ id src_over
 id standard
 id start
 id startHorizontal
+id startTimeVal
 id startToEnd
 id startVertical
 id start_layout
@@ -5893,12 +5917,16 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textView
+id textView10a
+id textView11
 id textView2
 id textView3
 id textView4
 id textView5
 id textView6
 id textView7
+id textView8
+id textView9
 id textViewAccountName
 id textViewAccountNumber
 id textViewBankName
@@ -5922,10 +5950,12 @@ id textinput_suffix_text
 id the_caption_Title_description
 id thumb
 id time
+id timeVal
 id time_display
 id time_display_background
 id time_picker
 id time_picker_dialog
+id timetv
 id title
 id titleDividerNoCustom
 id titlePAtv
@@ -5967,6 +5997,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id travelPreferenceRV
+id travelPreferencesLV
 id triangle
 id trip
 id tripAmount
@@ -6116,6 +6147,7 @@ id video_current_time
 id video_item
 id video_quality_wrapper_area
 id view4
+id view5
 id viewId
 id viewLoginLayout
 id viewPager
@@ -6232,6 +6264,7 @@ layout activity_change_password
 layout activity_change_password2
 layout activity_chat_app_item_view
 layout activity_complaints
+layout activity_confirm_ride_request
 layout activity_coupon
 layout activity_doc_upload
 layout activity_document_status
@@ -6240,6 +6273,8 @@ layout activity_edit_profile
 layout activity_enter_shipping_info
 layout activity_face_book_login
 layout activity_favourite_place_search
+layout activity_find_ride_details
+layout activity_find_rides
 layout activity_forgot_password
 layout activity_full_image
 layout activity_google_login
@@ -6324,6 +6359,7 @@ layout date_picker_selected_date
 layout date_picker_view_animator
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
+layout design_find_ride
 layout design_intro_view_pager
 layout design_layout_snackbar
 layout design_layout_snackbar_include

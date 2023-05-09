@@ -257,6 +257,7 @@ public class SplashScreen extends AppCompatActivity {
                     SharedHelper.getKey(this, "device_token") != null) {
                 device_token = SharedHelper.getKey(this, "device_token");
                 Log.i(TAG, "GCM Registration Token: " + device_token);
+                Log.i(TAG, "device_token: " + device_token);
             } else {
 //                FirebaseInstallations.getInstance().getToken(true).addOnCompleteListener(new OnCompleteListener<InstallationTokenResult>() {
 //                    @Override

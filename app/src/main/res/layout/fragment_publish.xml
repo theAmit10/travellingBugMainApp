@@ -7,83 +7,231 @@
     android:orientation="vertical"
     tools:context=".ui.fragments.PublishFragment">
 
-
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
-        <FrameLayout
-            android:id="@+id/content"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical">
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:background="@color/nav_body"
-            android:fitsSystemWindows="true"
-            app:headerLayout="@layout/nav_header_main"
-            app:itemIconTint="@color/colorPrimary"
-            app:itemTextColor="@color/menu_color"
+            <ImageView
+                android:id="@+id/backArrow"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:padding="@dimen/_7sdp"
+                android:src="@drawable/back_white" />
 
-            app:menu="@menu/activity_main_drawer"
-            app:theme="@style/NavigationDrawerStyle">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:gravity="center_vertical|center"
+                android:text="Add Ride"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
+        </LinearLayout>
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            app:cardElevation="@dimen/_5sdp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:clickable="true"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/done_disabled_dark" />
+                android:background="@drawable/auth_btn_white_low_corner_bg"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/llLeftTop"
+                    android:layout_width="@dimen/_20sdp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_5sdp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/_3sdp"
-                    android:weightSum="2">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/llTopMiddle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <com.travel.travellingbug.utills.MyBoldTextView
-                        android:id="@+id/legal_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical|start"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_weight=".5"
-                        android:gravity="start"
-                        android:text="@string/legal"
-                        android:textColor="@color/done_disabled_dark"
-                        android:textSize="@dimen/_10sdp" />
+                    <ImageView
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
 
-                    <com.travel.travellingbug.utills.MyBoldTextView
-                        android:id="@+id/footer_item_version"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|end"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_weight="1.5"
-                        android:gravity="end"
-                        android:text="v1.0"
-                        android:textColor="@color/done_disabled_dark"
-                        android:textSize="@dimen/_10sdp" />
+                        android:src="@drawable/pick_up_location" />
+
+                    <View
+                        android:layout_width="@dimen/_1sdp"
+                        android:layout_height="@dimen/_60sdp"
+                        android:background="@color/colorDarkGray" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_16sdp"
+                        android:layout_height="@dimen/_16sdp"
+
+
+                        android:src="@drawable/ic_circle_yellow" />
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/_10sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+
+                        <com.travel.travellingbug.utills.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/source_location"
+                            android:textColor="@color/colorDarkGray"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <com.travel.travellingbug.utills.MyTextView
+                            android:id="@+id/txtSource"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="40"
+                            android:maxLines="1"
+                            android:text="Set pickup location"
+                            android:textColor="@color/colorGray"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@color/colorLightGray" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.travel.travellingbug.utills.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/destination_location"
+                            android:textColor="@color/colorDarkGray"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <com.travel.travellingbug.utills.MyTextView
+                            android:id="@+id/txtDestination"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:maxLength="40"
+                            android:maxLines="1"
+                            android:text="Set drop location"
+                            android:textColor="@color/colorGray"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
-        </com.google.android.material.navigation.NavigationView>
-    </androidx.drawerlayout.widget.DrawerLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_color_rect_shape"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/calendertv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_calender"
+                android:drawableTint="@color/white"
+                android:background="@drawable/auth_btn_green_bg"
+                android:drawablePadding="@dimen/_10sdp"
+                android:padding="@dimen/_10sdp"
+                android:text="Ride Start Date"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/timetv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_time"
+                android:background="@drawable/auth_btn_green_bg"
+                android:drawablePadding="@dimen/_10sdp"
+                android:drawableTint="@color/white"
+                android:padding="@dimen/_10sdp"
+                android:text="Ride Start Time"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                android:textStyle="bold" />
+
+
+
+
+
+
+        </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/privateCarCheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="Return on same route ?"
+            android:textStyle="bold"
+            android:textColor="@color/green" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <Button
+                android:id="@+id/btnAddRide"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/auth_btn_green_bg"
+                android:fontFamily="@font/montserrat_semibold"
+                android:text="Add Ride"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp"
+                android:layout_margin="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
 
 
 </FrameLayout>

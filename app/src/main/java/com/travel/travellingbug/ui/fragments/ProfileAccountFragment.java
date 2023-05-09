@@ -1,6 +1,16 @@
 package com.travel.travellingbug.ui.fragments;
 
+import static android.content.Context.ACTIVITY_SERVICE;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
+
+import static java.lang.Thread.sleep;
+
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -9,6 +19,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
+import android.os.StrictMode;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +37,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
+import com.travel.travellingbug.helper.ConnectionHelper;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.ui.activities.ChangeAddressAdtivityOne;
@@ -38,18 +51,23 @@ import com.travel.travellingbug.ui.activities.TermsAndConditionActivity;
 import com.travel.travellingbug.ui.activities.UserReview;
 import com.travel.travellingbug.ui.activities.WithdrawActivity;
 import com.travel.travellingbug.ui.activities.login.ChangePassword;
+import com.travel.travellingbug.ui.activities.login.SignUp;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
+import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
 
 
 public class ProfileAccountFragment extends Fragment {
 
-    TextView changePasswordtv,postalAddresstv,helpTv,termConditionTv,ratingtv,logoutTv,notificationEmailAndSmstv,availableFundsTv;
+    TextView changePasswordtv, postalAddresstv, helpTv, termConditionTv, ratingtv, logoutTv, notificationEmailAndSmstv, availableFundsTv;
     GoogleApiClient mGoogleApiClient;
 
 
@@ -72,7 +90,6 @@ public class ProfileAccountFragment extends Fragment {
 
         initComponenet(view);
         clickHandler();
-
 
 
         return view;
@@ -113,48 +130,101 @@ public class ProfileAccountFragment extends Fragment {
     }
 
     public void logout() {
-        JSONObject object = new JSONObject();
-        try {
-            object.put("id", SharedHelper.getKey(getContext(), "id"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        JsonObjectRequest jsonObjectRequest = new
-                JsonObjectRequest(Request.Method.POST,
-                        URLHelper.LOGOUT,
-                        object,
-                        response -> {
-                            if (SharedHelper.getKey(getContext(), "login_by").equals("facebook"))
-                                LoginManager.getInstance().logOut();
-                            if (SharedHelper.getKey(getContext(), "login_by").equals("google"))
-                                signOut();
-                            if (!SharedHelper.getKey(getContext(), "account_kit_token").equalsIgnoreCase("")) {
-                                Log.e("MainActivity", "Account kit logout: " + SharedHelper.getKey(getContext(), "account_kit_token"));
-                                SharedHelper.putKey(getContext(), "account_kit_token", "");
-                            }
+        Toast.makeText(getContext(), "Logging Out", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Logging Out", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Clearing All Cache ...", Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "Logging Out", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Clearing All Cache ...", Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "Cleared  All the Cache\nNow Closing App", Toast.LENGTH_LONG).show();
 
+        ExecutorService service = Executors.newSingleThreadExecutor();
+        service.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    sleep(3000);
 
-                            //SharedHelper.putKey(context, "email", "");
-                            SharedHelper.clearSharedPreferences(getContext());
-                            Intent goToLogin = new Intent(getContext(), SplashScreen.class);
-                            goToLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(goToLogin);
-//                            finishAffinity();
-                        }, error -> {
-                    displayMessage(getString(R.string.something_went_wrong));
-                }) {
-                    @Override
-                    public java.util.Map<String, String> getHeaders() {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("X-Requested-With", "XMLHttpRequest");
-                        Log.e("getHeaders: Token", SharedHelper.getKey(getContext(), "access_token") + SharedHelper.getKey(getContext(), "token_type"));
-                        headers.put("Authorization", "" + "Bearer" + " " + SharedHelper.getKey(getContext(), "access_token"));
-                        return headers;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+
+                    JSONObject object = new JSONObject();
+                    try {
+                        object.put("id", SharedHelper.getKey(getContext(), "id"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                };
+                    JsonObjectRequest jsonObjectRequest = new
+                            JsonObjectRequest(Request.Method.POST,
+                                    URLHelper.LOGOUT,
+                                    object,
+                                    response -> {
+                                        if (SharedHelper.getKey(getContext(), "login_by").equals("facebook"))
+                                            LoginManager.getInstance().logOut();
+                                        if (SharedHelper.getKey(getContext(), "login_by").equals("google"))
+                                            signOut();
+                                        if (!SharedHelper.getKey(getContext(), "account_kit_token").equalsIgnoreCase("")) {
+                                            Log.e("MainActivity", "Account kit logout: " + SharedHelper.getKey(getContext(), "account_kit_token"));
+                                            SharedHelper.putKey(getContext(), "account_kit_token", "");
+                                        }
 
-        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+
+                                        //SharedHelper.putKey(context, "email", "");
+
+
+                                        try {
+
+                                            SharedHelper.clearSharedPreferences(getContext());
+
+
+                                            Intent goToLogin = new Intent(getContext(), SplashScreen.class);
+                                            goToLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(goToLogin);
+                                            getActivity().finishAffinity();
+
+
+                                        } catch (Exception e) {
+                                            displayMessage("Error Found : " + e.getMessage());
+
+                                        } finally {
+                                            if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+                                                ((ActivityManager) getContext().getSystemService(ACTIVITY_SERVICE))
+                                                        .clearApplicationUserData();
+                                                return;
+                                            }
+//
+//                                            Context ctx = getApplicationContext();
+//                                            PackageManager pm = ctx.getPackageManager();
+//                                            Intent intent = pm.getLaunchIntentForPackage(ctx.getPackageName());
+//                                            Intent mainIntent = Intent.makeRestartActivityTask(intent.getComponent());
+//                                            ctx.startActivity(mainIntent);
+//                                            Runtime.getRuntime().exit(0);
+                                        }
+
+
+                                    }, error -> {
+                                displayMessage(getString(R.string.something_went_wrong));
+                            }) {
+                                @Override
+                                public java.util.Map<String, String> getHeaders() {
+                                    HashMap<String, String> headers = new HashMap<String, String>();
+                                    headers.put("X-Requested-With", "XMLHttpRequest");
+                                    Log.e("getHeaders: Token", SharedHelper.getKey(getContext(), "access_token") + SharedHelper.getKey(getContext(), "token_type"));
+                                    headers.put("Authorization", "" + "Bearer" + " " + SharedHelper.getKey(getContext(), "access_token"));
+                                    return headers;
+                                }
+                            };
+
+                    ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+
+                }
+            }
+        });
+
+
+
     }
+
 
     public void displayMessage(String toastString) {
         Toasty.info(getContext(), toastString, Toast.LENGTH_SHORT, true).show();

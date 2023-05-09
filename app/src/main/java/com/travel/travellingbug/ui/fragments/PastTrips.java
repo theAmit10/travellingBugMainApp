@@ -1,17 +1,20 @@
 package com.travel.travellingbug.ui.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -217,16 +220,36 @@ public class PastTrips extends Fragment {
             return new MyViewHolder(itemView);
         }
 
+        @SuppressLint("NotifyDataSetChanged")
         @Override
         public void onBindViewHolder(PostAdapter.MyViewHolder holder, int position) {
             try {
 
+                for(int i=0; i<jsonArray.length(); i++){
+                    System.out.println("History data : "+jsonArray.get(i));
+                }
+
                 holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
                 holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
+
+                holder.status.setText(jsonArray.optJSONObject(position).optString("status"));
+                if(holder.status.equals("COMPLETED")){
+                    holder.rateRider.setVisibility(View.VISIBLE);
+                    holder.status.setText("Completed");
+                    notifyDataSetChanged();
+                    holder.status.setBackgroundColor(getResources().getColor(R.color.quantum_yellow));
+
+                }else if(holder.status.equals("CANCELLED")){
+                    holder.rateRider.setVisibility(View.GONE);
+                    holder.status.setText("Cancelled");
+                    holder.status.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorGray));
+                    notifyDataSetChanged();
+                }
+
                 if (!jsonArray.optJSONObject(position).optString("assigned_at", "").isEmpty()) {
                     String form = jsonArray.optJSONObject(position).optString("assigned_at");
                     try {
-                        holder.datetime.setText(getDate(form) + "th " + getMonth(form) + " " + getYear(form) + " at " + getTime(form));
+                        holder.datetime.setText(getDate(form) + "th " + getMonth(form) + " at " + getTime(form));
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
@@ -244,7 +267,8 @@ public class PastTrips extends Fragment {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView datetime, txtSource, txtDestination;
+            TextView datetime, txtSource, txtDestination, status;
+            Button rateRider;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
@@ -252,6 +276,8 @@ public class PastTrips extends Fragment {
                 datetime = itemView.findViewById(R.id.datetime);
                 txtSource = itemView.findViewById(R.id.txtSource);
                 txtDestination = itemView.findViewById(R.id.txtDestination);
+                status = itemView.findViewById(R.id.status);
+                rateRider = itemView.findViewById(R.id.rateRider);
 
                 itemView.setOnClickListener(view -> {
                     Intent intent = new Intent(getActivity(), HistoryDetails.class);

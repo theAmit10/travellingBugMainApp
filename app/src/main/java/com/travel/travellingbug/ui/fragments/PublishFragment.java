@@ -244,49 +244,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PublishFragment extends Fragment  {
 
-    // tags used to attach the fragments
-    private static final String TAG_HOME = "home";
-    private static final String TAG_SUMMARY = "summary";
-    private static final String TAG_HELP = "help";
-    private static final int REQUEST_LOCATION = 1450;
-    public static FragmentManager fragmentManager;
-    public static String statustg = "";
-    // index to identify current nav menu item
-    public int navItemIndex = 0;
-    public String CURRENT_TAG = TAG_HOME;
-    Fragment fragment;
-    Activity activity;
-    Context context;
-    Toolbar toolbar;
-    Utilities utils = new Utilities();
-    boolean push = false;
-    GoogleApiClient mGoogleApiClient;
-    DriverMapFragment lFrag;
-    private NavigationView navigationView;
-    private DrawerLayout drawer;
-    private View navHeader;
-    private ImageView imgProfile;
-    private TextView txtName, approvaltxt, tvRate;
-    private ImageView status;
-    // flag to load home fragment when user presses back key
-    private boolean shouldLoadHomeFragOnBackPress = true;
-    private NotificationManager notificationManager;
-
-    // for fraement Change
-    ViewPager2 viewPager;
-    TabLayout tabLayout;
-
-
-    private String[] titles = {"Search", "Publish","Your Ride","Holiday Package","Account"};
-    private int[] tabIcons = {
-            R.drawable.search,
-            R.drawable.publish,
-            R.drawable.bg_car,
-            R.drawable.bn_holiday_package,
-            R.drawable.bn_account
-    };
-    MainActivityViewPagerAdapter viewPagerAdapter;
-
 
 
     public PublishFragment() {

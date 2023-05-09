@@ -75,6 +75,7 @@ import com.travel.travellingbug.helper.DataParser;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.models.User;
+import com.travel.travellingbug.ui.activities.UpdateProfile;
 import com.travel.travellingbug.utills.LocationTracking;
 import com.travel.travellingbug.utills.Utilities;
 import com.google.android.gms.common.ConnectionResult;
@@ -608,14 +609,42 @@ public class DriverMapFragment extends Fragment implements
         if (push) {
             isRunning = false;
         }
-        Intent i = getActivity().getIntent();
-        type = i.getStringExtra("type");
-        datas = i.getStringExtra("datas");
-        if (type != null) {
-            checkStatusSchedule();
-        } else {
-            checkStatus();
+//
+//        Toast.makeText(getContext(), "First Name : "+SharedHelper.getKey(getContext(),"first_name"), Toast.LENGTH_SHORT).show();
+//        System.out.println("First Name : "+SharedHelper.getKey(getContext(),"first_name"));
+//        // Setting Name First
+//        if(SharedHelper.getKey(getContext(),"first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(),"first_name").equalsIgnoreCase("") || SharedHelper.getKey(getContext(),"first_name").equalsIgnoreCase(null)){
+//            Toast.makeText(getContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
+//            Intent intent = new Intent(getContext(), UpdateProfile.class);
+//            intent.putExtra("parameter", "first_name");
+//            intent.putExtra("value", "");
+//            startActivityForResult(intent, 1);
+//        }
+
+
+        if(!SharedHelper.getKey(getContext(),"first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(),"first_name").equalsIgnoreCase("") || SharedHelper.getKey(getContext(),"first_name").equalsIgnoreCase(null)){
+
+            Intent i = getActivity().getIntent();
+            type = i.getStringExtra("type");
+            datas = i.getStringExtra("datas");
+            if (type != null) {
+                checkStatusSchedule();
+            } else {
+                checkStatus();
+            }
         }
+//
+//        Intent i = getActivity().getIntent();
+//        type = i.getStringExtra("type");
+//        datas = i.getStringExtra("datas");
+//        if (type != null) {
+//            checkStatusSchedule();
+//        } else {
+//            checkStatus();
+//        }
+
+
+
         Log.e(TAG, "TYPE: " + type);
         Log.e(TAG, "DATAS: " + datas);
     }
@@ -2647,6 +2676,21 @@ public class DriverMapFragment extends Fragment implements
             if (resultCode == Activity.RESULT_CANCELED) {
                 Toast.makeText(getActivity(), "Request Cancelled", Toast.LENGTH_SHORT).show();
             }
+        }
+        if(requestCode == 1){
+//            if (Build.VERSION.SDK_INT >= 11) {
+//                getActivity().recreate();
+//            } else {
+//                Intent intent = getActivity().getIntent();
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                getActivity().finish();
+//                getActivity().overridePendingTransition(0, 0);
+//
+//                startActivity(intent);
+//                getActivity().overridePendingTransition(0, 0);
+//            }
+
+
         }
     }
 

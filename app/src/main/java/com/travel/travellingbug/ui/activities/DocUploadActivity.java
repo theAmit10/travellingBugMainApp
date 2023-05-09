@@ -181,6 +181,18 @@ public class DocUploadActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_doc_upload);
 
+
+        Toast.makeText(getApplicationContext(), "First Name : "+SharedHelper.getKey(getApplicationContext(),"first_name"), Toast.LENGTH_SHORT).show();
+        System.out.println("First Name : "+SharedHelper.getKey(getApplicationContext(),"first_name"));
+        // Setting Name First
+        if(SharedHelper.getKey(getApplicationContext(),"first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getApplicationContext(),"first_name").equalsIgnoreCase("") || SharedHelper.getKey(getApplicationContext(),"first_name").equalsIgnoreCase(null)){
+            Toast.makeText(getApplicationContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), UpdateProfile.class);
+            intent.putExtra("parameter", "first_name");
+            intent.putExtra("value", "");
+            startActivityForResult(intent, 1);
+        }
+
 //        getSupportActionBar().setTitle("Documents");
 //
 //

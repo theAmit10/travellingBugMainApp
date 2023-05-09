@@ -21,8 +21,9 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_300sdp"
+            android:layout_height="@dimen/_250sdp"
             android:layout_gravity="center"
+            android:scaleType="centerCrop"
             app:srcCompat="@drawable/intro_four" />
 
         <TextView
@@ -30,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="-40dp"
+            android:layout_marginTop="-25dp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:text="Welcome to Travelling Bug"
             android:fontFamily="@font/montserrat_semibold"
@@ -168,15 +169,16 @@
                 android:layout_width="@dimen/_110sdp"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_margin="@dimen/_10sdp"
+                android:drawableLeft="@drawable/ic_fb"
                 android:background="@drawable/auth_btn_blue_bg"
-                android:drawableLeft="@drawable/ic_facebook"
                 android:elevation="@dimen/_10sdp"
                 android:fontFamily="sans-serif-condensed-light"
                 android:paddingStart="@dimen/_10sdp"
                 android:text="Facebook"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                 />
 
 
         </LinearLayout>

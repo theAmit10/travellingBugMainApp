@@ -19,12 +19,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.google.firebase.installations.InstallationTokenResult;
+import com.google.gson.JsonObject;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.Login;
 import com.travel.travellingbug.R;
@@ -49,9 +51,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import es.dmoral.toasty.Toasty;
+import kotlin.jvm.Throws;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
     public static int APP_REQUEST_CODE = 99;
+
+    private final int GOOGLE_LOGIN = 0001;
+
+    private final int FACEBOOK_LOGIN = 0002;
+
+    private final int OTP_LOGIN = 0003;
+
+    private String socialUrl, loginType;
+
+    Button btnGoogle,btnFb;
+
+
     String TAG = "SignUp";
     TextView txtSignIn;
     EditText etName, etEmail, etPassword;
@@ -60,7 +75,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     ConnectionHelper helper;
     Boolean isInternet;
     Utilities utils = new Utilities();
-    String device_token, device_UDID;
+
+    CountryCodePicker ccp;
+    String device_token, device_UDID,mobile;
     //    Button btnFb,btnGoogle;
     Dialog dialog;
     private MaterialSpinner spRegister;
@@ -75,44 +92,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         }
 
 
-//        FirebaseInstallations.getInstance().getToken(true).addOnCompleteListener(new OnCompleteListener<InstallationTokenResult>() {
-//            @Override
-//            public void onComplete(@NonNull @NotNull Task<InstallationTokenResult> task) {
-////                String newToken = task.getResult().getToken();
-////                Log.e("newToken", newToken);
-////                SharedHelper.putKey(getApplicationContext(), "device_token", "" + newToken);
-////                device_token = newToken;
-//
-//                if (task.isSuccessful() && task.getResult() != null) {
-//                    Log.d("Installations", "From Sign Up Screen Installation auth token: " + task.getResult().getToken());
-//                    String newToken = task.getResult().getToken();
-//                    Log.e("newToken", newToken);
-//                    SharedHelper.putKey(getApplicationContext(), "device_token", "" + newToken);
-//                    device_token = newToken;
-//                } else {
-//                    Log.e("Installations", "Unable to get Installation auth token");
-//                }
-//            }
-//        });
-//
-////        FirebaseInstallations.getInstance().getToken(/* forceRefresh */true)
-////                .addOnCompleteListener(new OnCompleteListener<InstallationTokenResult>() {
-////                    @Override
-////                    public void onComplete(@NonNull Task<InstallationTokenResult> task) {
-////                        if (task.isSuccessful() && task.getResult() != null) {
-////                            Log.d("Installations", "From Sign Up Screen Installation auth token: " + task.getResult().getToken());
-////                            String newToken = task.getResult().getToken();
-////                            Log.e("newToken", newToken);
-////                            SharedHelper.putKey(getApplicationContext(), "device_token", "" + newToken);
-////                            device_token = newToken;
-////                        } else {
-////                            Log.e("Installations", "Unable to get Installation auth token");
-////                        }
-////                    }
-////                });
-//
-//        device_UDID = android.provider.Settings.Secure.getString(getApplicationContext().getContentResolver(),
-//                android.provider.Settings.Secure.ANDROID_ID);
 
         setContentView(R.layout.activity_sign_up);
         helper = new ConnectionHelper(getApplicationContext());
@@ -122,6 +101,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnSignUp = findViewById(R.id.btnSignUp);
+        ccp = findViewById(R.id.ccp);
+        btnGoogle = findViewById(R.id.btnGoogle);
+        btnFb = findViewById(R.id.btnFb);
 //        txtSignIn.setOnClickListener(this);
 //        btnSignUp.setOnClickListener(this);
 
@@ -130,15 +112,22 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(SignUp.this, "Clicked", Toast.LENGTH_SHORT).show();
                 if (etName.getText().toString().equals("") ||
                         etName.getText().toString().equalsIgnoreCase(getString(R.string.first_name))) {
                     displayMessage("Phone Number Required");
                 }
                 else if (isInternet) {
-                    SharedHelper.putKey(getApplicationContext(), "mobile_number", etName.getText().toString());
+
                     dialog = new Dialog(SignUp.this, R.style.AppTheme_NoActionBar);
-                    registerAPI();
+//                    registerAPI();
+
+                    String phone = ccp.getSelectedCountryCodeWithPlus() + etName.getText().toString();
+                    SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
+                    SharedHelper.putKey(getApplicationContext(), "mobile", phone);
+                    Log.v("Phonecode", phone + " ");
+                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
+                    intent.putExtra("phonenumber", phone);
+                    startActivityForResult(intent, APP_REQUEST_CODE);
 
 
                 } else {
@@ -147,6 +136,20 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             }
 
     });
+
+        btnGoogle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(SignUp.this, GoogleLoginActivity.class), GOOGLE_LOGIN);
+            }
+        });
+
+        btnFb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(SignUp.this, FaceBookLoginActivity.class), FACEBOOK_LOGIN);
+            }
+        });
 
 }
 
@@ -228,7 +231,15 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 //                    checkEmail();
                     SharedHelper.putKey(getApplicationContext(), "mobile_number", etName.getText().toString());
                     dialog = new Dialog(SignUp.this, R.style.AppTheme_NoActionBar);
-                    registerAPI();
+//                    registerAPI();
+//                    openphonelogin();
+
+                    String phone = ccp.getSelectedCountryCodeWithPlus() + etName.getText().toString();
+                    SharedHelper.putKey(getApplicationContext(), "mobile", phone);
+                    Log.v("Phonecode", phone + " ");
+                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
+                    intent.putExtra("phonenumber", phone);
+                    startActivityForResult(intent, APP_REQUEST_CODE);
 
 
                 } else {
@@ -318,8 +329,61 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         Log.e(TAG, "onActivityResult");
         if (data != null) {
             if (requestCode == APP_REQUEST_CODE) { // confirm that this response matches your request
-                dialog.dismiss();
+                if(dialog != null ){
+                    dialog.dismiss();
+                }
                 registerAPI();
+            } else if (requestCode == GOOGLE_LOGIN) {
+
+                data.getStringExtra("userName");
+                data.getStringExtra("userMail");
+                data.getStringExtra("userId");
+                data.getStringExtra("userToken");
+
+                final JsonObject json = new JsonObject();
+                json.addProperty("device_type", "android");
+                json.addProperty("device_token", device_token);
+                json.addProperty("accessToken", data.getStringExtra("userToken"));
+                json.addProperty("device_id", device_UDID);
+                json.addProperty("login_by", "google");
+                json.addProperty("mobile", mobile);
+
+
+//                socialJson = json;
+                socialUrl = URLHelper.GOOGLE_LOGIN;
+                loginType = "google";
+
+//                    ########################
+                // added this  for testing
+//                    SharedHelper.putKey(LoginActivity.this,"loggedIn","true");
+//                    startActivity(new Intent(LoginActivity.this, HomeScreenActivity.class));
+                phoneLogin();
+
+            } else if (requestCode == FACEBOOK_LOGIN) {
+                data.getStringExtra("userName");
+                data.getStringExtra("userMail");
+                data.getStringExtra("userId");
+                data.getStringExtra("userToken");
+
+                final JsonObject json = new JsonObject();
+                json.addProperty("device_type", "android");
+                json.addProperty("device_token", device_token);
+                json.addProperty("accessToken", data.getStringExtra("userToken"));
+                json.addProperty("device_id", device_UDID);
+                json.addProperty("login_by", "facebook");
+                json.addProperty("first_name", data.getStringExtra("userName"));
+                json.addProperty("last_name", "");
+                json.addProperty("id", data.getStringExtra("userId"));
+                json.addProperty("email", data.getStringExtra("userMail"));
+                json.addProperty("avatar", "");
+                json.addProperty("mobile", mobile);
+
+//                socialJson = json;
+//                socialUrl = URLHelper.FACEBOOK_LOGIN;
+                loginType = "facebook";
+
+                phoneLogin();
+
             }
         }
     }
@@ -353,7 +417,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 //            object.put("mobile", SharedHelper.getKey(getApplicationContext(), "mobile"));
 //            object.put("email", "9876543516");
 
-            displayMessage(object.toString());
+
 
             utils.print("InputToRegisterAPI", "" + object);
 
@@ -372,11 +436,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                             if (response.optString("msg").equalsIgnoreCase("The mobile has already been taken.")) {
                                 if ((customDialog != null) && (customDialog.isShowing()))
                                     customDialog.dismiss();
-                                displayMessage("The mobile has already been taken.");
+//                                displayMessage("The mobile has already been taken.");
+                                displayMessage("Processing...");
                                 signIn();
                             } else {
-                                SharedHelper.putKey(getApplicationContext(), "email", etEmail.getText().toString());
-                                SharedHelper.putKey(getApplicationContext(), "password", etPassword.getText().toString());
+//                                SharedHelper.putKey(getApplicationContext(), "email", etEmail.getText().toString());
+//                                SharedHelper.putKey(getApplicationContext(), "password", etPassword.getText().toString());
                                 displayMessage("User Registered Successfully");
                                 signIn();
                             }
@@ -384,7 +449,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                         error -> {
                             customDialog.dismiss();
                             displayMessage(getString(R.string.something_went_wrong));
+                            displayMessage(error.toString());
+                            displayMessage(error.getMessage());
                         }) {
+
                     @Override
                     public Map<String, String> getHeaders() {
                         HashMap<String, String> headers = new HashMap<String, String>();
@@ -397,6 +465,37 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+    private void phoneLogin() {
+        Dialog dialog = new Dialog(this, R.style.AppTheme_NoActionBar);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.MATCH_PARENT);
+        dialog.setContentView(R.layout.mobileverification);
+        dialog.setCancelable(true);
+        dialog.show();
+
+
+
+        ImageView imgBack = dialog.findViewById(R.id.imgBack);
+        CountryCodePicker ccp = dialog.findViewById(R.id.ccp);
+        ImageButton nextIcon = dialog.findViewById(R.id.nextIcon);
+        EditText mobile_no = dialog.findViewById(R.id.mobile_no);
+        imgBack.setOnClickListener(v -> dialog.dismiss());
+        nextIcon.setOnClickListener(v -> {
+            dialog.dismiss();
+            String phone = ccp.getSelectedCountryCodeWithPlus() + mobile_no.getText().toString();
+            mobile = phone;
+            SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
+            SharedHelper.putKey(getApplicationContext(), "mobile", phone);
+//            socialJson.addProperty("mobile", mobile);
+            Intent intent = new Intent(SignUp.this, OtpVerification.class);
+            intent.putExtra("phonenumber", phone);
+            startActivityForResult(intent, APP_REQUEST_CODE);
+
+
+        });
+
+    }
 
     private void signIn() {
         if (isInternet) {
@@ -423,6 +522,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 //                object.put("device_token", "" + "eqbYFHiiQgKyQ86Lmx0EUZ:APA91bFSv48-EnMOeasV7LW5g1i0fQnL3TzP82J5-fV8jIMOT4WKrbuRMNK6uAF4B2fB7iXf_jaFXRq7h8dXtq1gIrvtggnIfgEXt3CHy5iqOSsQ_iOcs9GqbYNV6m7R57_hCUhWH4mC");
                 object.put("logged_in", "1");
                 utils.print("InputToLoginAPI", "" + object);
+
+
+
+
+
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -462,9 +567,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                                     customDialog.dismiss();
                                 displayMessage(getString(R.string.something_went_wrong));
                             }) {
+
                         @Override
-                        public Map<String, String> getHeaders() {
+                        public Map<String, String> getHeaders() throws AuthFailureError {
                             HashMap<String, String> headers = new HashMap<String, String>();
+
                             headers.put("X-Requested-With", "XMLHttpRequest");
                             return headers;
                         }

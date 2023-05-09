@@ -124,27 +124,47 @@ public class LoginActivity extends AppCompatActivity {
 //        } else {
 //            signIn();
 //        }
+//
+//        if(mobile_no.getText().toString().equals("")){
+//            displayMessage("Enter Mobile Number");
+//        }else{
+//            String phone = ccp.getSelectedCountryCodeWithPlus() + mobile_no.getText().toString();
+//            mobile = phone;
+////            socialJson.addProperty("mobile", mobile);
+//            Toast.makeText(this, "Processing ...", Toast.LENGTH_SHORT).show();
+//            SharedHelper.putKey(getApplicationContext(),"mobile_number",mobile_no.getText().toString());
+//
+////            Intent intent = new Intent(LoginActivity.this, OtpVerification.class);
+////            intent.putExtra("phonenumber", phone);
+////            startActivityForResult(intent, OTP_LOGIN);
+////            registerAPI();
+//            signIn();
+//
+//            //                    chcking phone number is already registered or not
+////            checkEmail();
+//
+//        }
 
-        if(mobile_no.getText().toString().equals("")){
-            displayMessage("Enter Mobile Number");
-        }else{
-            String phone = ccp.getSelectedCountryCodeWithPlus() + mobile_no.getText().toString();
-            mobile = phone;
-//            socialJson.addProperty("mobile", mobile);
-            Toast.makeText(this, "Processing ...", Toast.LENGTH_SHORT).show();
-            SharedHelper.putKey(getApplicationContext(),"mobile_number",mobile_no.getText().toString());
 
-//            Intent intent = new Intent(LoginActivity.this, OtpVerification.class);
-//            intent.putExtra("phonenumber", phone);
-//            startActivityForResult(intent, OTP_LOGIN);
-//            registerAPI();
-            signIn();
-
-            //                    chcking phone number is already registered or not
-//            checkEmail();
-
+        if (mobile_no.getText().toString().equals("") ||
+                mobile_no.getText().toString().equalsIgnoreCase(getString(R.string.first_name))) {
+            displayMessage("Phone Number Required");
         }
+        else if (isInternet) {
 
+            dialog = new Dialog(LoginActivity.this, R.style.AppTheme_NoActionBar);
+
+            String phone = ccp.getSelectedCountryCodeWithPlus() + mobile_no.getText().toString();
+            SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
+            Log.v("Phonecode", phone + " ");
+            Intent intent = new Intent(LoginActivity.this, OtpVerification.class);
+            intent.putExtra("phonenumber", phone);
+            startActivityForResult(intent, OTP_LOGIN);
+
+
+        } else {
+            displayMessage(getString(R.string.something_went_wrong_net));
+        }
 
     }
 
@@ -222,8 +242,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            if (data != null) {
+//        if (resultCode == Activity.RESULT_OK) {
+//            if (data != null) {
                 if (requestCode == GOOGLE_LOGIN) {
                     data.getStringExtra("userName");
                     data.getStringExtra("userMail");
@@ -279,10 +299,11 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if (requestCode == OTP_LOGIN) {
 //                    login(socialJson, socialUrl, loginType);
+                    dialog.dismiss();
                     registerAPI();
                 }
-            }
-        }
+//            }
+//        }
     }
 
     private void checkEmail() {
@@ -498,181 +519,6 @@ public class LoginActivity extends AppCompatActivity {
         ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 
-    private void registerAPI() {
-        customDialog = new CustomDialog(LoginActivity.this);
-        customDialog.setCancelable(false);
-        if (customDialog != null)
-            customDialog.show();
-        JSONObject object = new JSONObject();
-        try {
-
-            object.put("device_type", "android");
-            object.put("device_id", deviceUDID);
-            object.put("device_token", "" + deviceToken);
-            object.put("login_by", "manual");
-//            object.put("first_name", etName.getText().toString());
-//            object.put("last_name", etName.getText().toString());
-//            object.put("email", etEmail.getText().toString());
-//            object.put("password", etPassword.getText().toString());
-//            object.put("mobile", SharedHelper.getKey(getApplicationContext(), "mobile_number"));
-            object.put("mobile", SharedHelper.getKey(getApplicationContext(),"mobile_number"));
-            object.put("picture", "");
-            object.put("social_unique_id", "");
-
-            Utilities.print("register API : ", "" + object);
-            Utilities.print("InputToRegisterAPI", "" + object);
-
-
-
-
-
-
-
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        JsonObjectRequest jsonObjectRequest = new
-                JsonObjectRequest(Request.Method.POST,
-                        URLHelper.register,
-                        object,
-                        response -> {
-                            dialog.dismiss();
-                            try {
-                                displayMessage(response.getString("msg"));
-                                System.out.println("#################");
-                                System.out.println("payload details");
-                                System.out.println("#################");
-                                System.out.println("url : "+URLHelper.register);
-
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                                Utilities.print(" During Register Error : ", e.getMessage().toString());
-                            }
-                            if ((customDialog != null) && (customDialog.isShowing()))
-                                customDialog.dismiss();
-                            Utilities.print("Register Status : ", response.toString());
-                            Utilities.print("SignInResponse", response.toString());
-                            Toast.makeText(this, ""+response.toString(), Toast.LENGTH_SHORT).show();
-                            SharedHelper.putKey(getApplicationContext(), "email", "9876543210");
-                            SharedHelper.putKey(getApplicationContext(), "password", "12345678");
-                            signIn();
-                        },
-                        error -> {
-                            if ((customDialog != null) && (customDialog.isShowing()))
-                                customDialog.dismiss();
-                            displayMessage(getString(R.string.something_went_wrong));
-                        }) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("X-Requested-With", "XMLHttpRequest");
-                        return headers;
-                    }
-                };
-
-        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
-
-    }
-
-    public void signIn() {
-        if (isInternet) {
-            customDialog = new CustomDialog(LoginActivity.this);
-            customDialog.setCancelable(false);
-            if (customDialog != null)
-                customDialog.show();
-            JSONObject object = new JSONObject();
-            try {
-                object.put("grant_type", "password");
-                object.put("client_id", URLHelper.client_id);
-                object.put("client_secret", URLHelper.client_secret);
-//                object.put("username", SharedHelper.getKey(getApplicationContext(), "email"));
-//                object.put("password", SharedHelper.getKey(getApplicationContext(), "password"));
-                object.put("mobile", SharedHelper.getKey(getApplicationContext(),"mobile_number"));
-                object.put("password", "12345678");
-                object.put("scope", "");
-                object.put("device_type", "android");
-                object.put("device_id", deviceUDID);
-                object.put("device_token", "eqbYFHiiQgKyQ86Lmx0EUZ:APA91bFSv48-EnMOeasV7LW5g1i0fQnL3TzP82J5-fV8jIMOT4WKrbuRMNK6uAF4B2fB7iXf_jaFXRq7h8dXtq1gIrvtggnIfgEXt3CHy5iqOSsQ_iOcs9GqbYNV6m7R57_hCUhWH4mC");
-                object.put("logged_in", "1");
-                Utilities.print("login in process : ", "" + object);
-                Utilities.print("InputToLoginAPI", "" + object);
-
-
-
-//                object.put("grant_type", "password");
-//                object.put("client_id", URLHelper.client_id);
-//                object.put("client_secret", URLHelper.client_secret);
-////                object.put("email", SharedHelper.getKey(getApplicationContext(), "email"));
-////                object.put("password", SharedHelper.getKey(getApplicationContext(), "password"));
-//                object.put("mobile", SharedHelper.getKey(getApplicationContext(), "mobile_number"));
-//                object.put("password", "12345678");
-//                object.put("scope", "");
-//                object.put("device_type", "android");
-//                object.put("device_id", device_UDID);
-//                object.put("device_token", device_token);
-////                object.put("device_id", "0079ae652f15b06f");
-////                object.put("device_token", "" + "eqbYFHiiQgKyQ86Lmx0EUZ:APA91bFSv48-EnMOeasV7LW5g1i0fQnL3TzP82J5-fV8jIMOT4WKrbuRMNK6uAF4B2fB7iXf_jaFXRq7h8dXtq1gIrvtggnIfgEXt3CHy5iqOSsQ_iOcs9GqbYNV6m7R57_hCUhWH4mC");
-//                object.put("logged_in", "1");
-//                utils.print("InputToLoginAPI", "" + object);
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            JsonObjectRequest jsonObjectRequest = new
-                    JsonObjectRequest(Request.Method.POST,
-                            URLHelper.login,
-                            object,
-                            response -> {
-                                if ((customDialog != null) && (customDialog.isShowing()))
-                                    customDialog.dismiss();
-                                Utilities.print("SignUpResponse", response.toString());
-                                SharedHelper.putKey(getApplicationContext(), "access_token",
-                                        response.optString("access_token"));
-                                SharedHelper.putKey(getApplicationContext(), "refresh_token",
-                                        response.optString("refresh_token"));
-                                SharedHelper.putKey(getApplicationContext(), "token_type",
-                                        response.optString("token_type"));
-
-                                System.out.println("#################");
-                                System.out.println("login area payload details");
-                                System.out.println("#################");
-                                System.out.println("url : "+URLHelper.login);
-
-//                                SharedHelper.putKey(getApplicationContext(), "sos",
-//                                        response.optString("sos"));
-                                SharedHelper.putKey(getApplicationContext(), "loggedIn",
-                                        getString(R.string.True));
-                                GoToMainActivity();
-
-                                // commenttine getProfile for now
-//                                getProfile();
-                            },
-                            error -> {
-                                if ((customDialog != null) && (customDialog.isShowing()))
-                                    customDialog.dismiss();
-                                displayMessage(getString(R.string.something_went_wrong));
-                            }) {
-                        @Override
-                        public Map<String, String> getHeaders() throws AuthFailureError {
-                            HashMap<String, String> headers = new HashMap<String, String>();
-                            headers.put("X-Requested-With", "XMLHttpRequest");
-                            return headers;
-                        }
-                    };
-
-            ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
-        } else {
-            displayMessage(getString(R.string.something_went_wrong_net));
-        }
-
-    }
-
 //    private void registerAPI() {
 //        customDialog = new CustomDialog(LoginActivity.this);
 //        customDialog.setCancelable(false);
@@ -690,13 +536,20 @@ public class LoginActivity extends AppCompatActivity {
 ////            object.put("email", etEmail.getText().toString());
 ////            object.put("password", etPassword.getText().toString());
 ////            object.put("mobile", SharedHelper.getKey(getApplicationContext(), "mobile_number"));
-//
 //            object.put("mobile", SharedHelper.getKey(getApplicationContext(),"mobile_number"));
 //            object.put("picture", "");
 //            object.put("social_unique_id", "");
 //
 //            Utilities.print("register API : ", "" + object);
 //            Utilities.print("InputToRegisterAPI", "" + object);
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //        } catch (JSONException e) {
 //            e.printStackTrace();
@@ -718,13 +571,14 @@ public class LoginActivity extends AppCompatActivity {
 //
 //                            } catch (Exception e) {
 //                                e.printStackTrace();
+//                                Utilities.print(" During Register Error : ", e.getMessage().toString());
 //                            }
 //                            if ((customDialog != null) && (customDialog.isShowing()))
 //                                customDialog.dismiss();
 //                            Utilities.print("Register Status : ", response.toString());
 //                            Utilities.print("SignInResponse", response.toString());
 //                            Toast.makeText(this, ""+response.toString(), Toast.LENGTH_SHORT).show();
-//                            SharedHelper.putKey(getApplicationContext(), "email", "");
+//                            SharedHelper.putKey(getApplicationContext(), "email", "9876543210");
 //                            SharedHelper.putKey(getApplicationContext(), "password", "12345678");
 //                            signIn();
 //                        },
@@ -744,72 +598,267 @@ public class LoginActivity extends AppCompatActivity {
 //        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
 //
 //    }
-//    private void signIn() {
-//        customDialog.setCancelable(false);
-//        customDialog.show();
-//        JSONObject object = new JSONObject();
-//        try {
+
+//    public void signIn() {
+//        if (isInternet) {
+//            customDialog = new CustomDialog(LoginActivity.this);
+//            customDialog.setCancelable(false);
+//            if (customDialog != null)
+//                customDialog.show();
+//            JSONObject object = new JSONObject();
+//            try {
+//                object.put("grant_type", "password");
+//                object.put("client_id", URLHelper.client_id);
+//                object.put("client_secret", URLHelper.client_secret);
+////                object.put("username", SharedHelper.getKey(getApplicationContext(), "email"));
+////                object.put("password", SharedHelper.getKey(getApplicationContext(), "password"));
+//                object.put("mobile", SharedHelper.getKey(getApplicationContext(),"mobile_number"));
+//                object.put("password", "12345678");
+//                object.put("scope", "");
+//                object.put("device_type", "android");
+//                object.put("device_id", deviceUDID);
+//                object.put("device_token", "eqbYFHiiQgKyQ86Lmx0EUZ:APA91bFSv48-EnMOeasV7LW5g1i0fQnL3TzP82J5-fV8jIMOT4WKrbuRMNK6uAF4B2fB7iXf_jaFXRq7h8dXtq1gIrvtggnIfgEXt3CHy5iqOSsQ_iOcs9GqbYNV6m7R57_hCUhWH4mC");
+//                object.put("logged_in", "1");
+//                Utilities.print("login in process : ", "" + object);
+//                Utilities.print("InputToLoginAPI", "" + object);
 //
-//            object.put("grant_type", "password");
-//            object.put("client_id", URLHelper.client_id);
-//            object.put("client_secret", URLHelper.client_secret);
-////            object.put("email", etEmail.getText().toString().trim());
-////            object.put("password", etPassword.getText().toString().trim());
 //
-//            object.put("username", SharedHelper.getKey(getApplicationContext(),"mobile_number"));
-//            object.put("password", "12345678");
-//            object.put("scope", "");
-//            object.put("device_type", "android");
-//            object.put("device_id", deviceUDID);
-//            object.put("device_token", deviceToken);
-//            object.put("logged_in", "1");
 //
-//        } catch (JSONException e) {
-//            e.printStackTrace();
+////                object.put("grant_type", "password");
+////                object.put("client_id", URLHelper.client_id);
+////                object.put("client_secret", URLHelper.client_secret);
+//////                object.put("email", SharedHelper.getKey(getApplicationContext(), "email"));
+//////                object.put("password", SharedHelper.getKey(getApplicationContext(), "password"));
+////                object.put("mobile", SharedHelper.getKey(getApplicationContext(), "mobile_number"));
+////                object.put("password", "12345678");
+////                object.put("scope", "");
+////                object.put("device_type", "android");
+////                object.put("device_id", device_UDID);
+////                object.put("device_token", device_token);
+//////                object.put("device_id", "0079ae652f15b06f");
+//////                object.put("device_token", "" + "eqbYFHiiQgKyQ86Lmx0EUZ:APA91bFSv48-EnMOeasV7LW5g1i0fQnL3TzP82J5-fV8jIMOT4WKrbuRMNK6uAF4B2fB7iXf_jaFXRq7h8dXtq1gIrvtggnIfgEXt3CHy5iqOSsQ_iOcs9GqbYNV6m7R57_hCUhWH4mC");
+////                object.put("logged_in", "1");
+////                utils.print("InputToLoginAPI", "" + object);
+//
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//
+//            JsonObjectRequest jsonObjectRequest = new
+//                    JsonObjectRequest(Request.Method.POST,
+//                            URLHelper.login,
+//                            object,
+//                            response -> {
+//                                if ((customDialog != null) && (customDialog.isShowing()))
+//                                    customDialog.dismiss();
+//                                Utilities.print("SignUpResponse", response.toString());
+//                                SharedHelper.putKey(getApplicationContext(), "access_token",
+//                                        response.optString("access_token"));
+//                                SharedHelper.putKey(getApplicationContext(), "refresh_token",
+//                                        response.optString("refresh_token"));
+//                                SharedHelper.putKey(getApplicationContext(), "token_type",
+//                                        response.optString("token_type"));
+//
+//                                System.out.println("#################");
+//                                System.out.println("login area payload details");
+//                                System.out.println("#################");
+//                                System.out.println("url : "+URLHelper.login);
+//
+////                                SharedHelper.putKey(getApplicationContext(), "sos",
+////                                        response.optString("sos"));
+//                                SharedHelper.putKey(getApplicationContext(), "loggedIn",
+//                                        getString(R.string.True));
+//                                GoToMainActivity();
+//
+//                                // commenttine getProfile for now
+////                                getProfile();
+//                            },
+//                            error -> {
+//                                if ((customDialog != null) && (customDialog.isShowing()))
+//                                    customDialog.dismiss();
+//                                displayMessage(getString(R.string.something_went_wrong));
+//                            }) {
+//                        @Override
+//                        public Map<String, String> getHeaders() throws AuthFailureError {
+//                            HashMap<String, String> headers = new HashMap<String, String>();
+//                            headers.put("X-Requested-With", "XMLHttpRequest");
+//                            return headers;
+//                        }
+//                    };
+//
+//            ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+//        } else {
+//            displayMessage(getString(R.string.something_went_wrong_net));
 //        }
 //
-//        JsonObjectRequest jsonObjectRequest = new
-//                JsonObjectRequest(Request.Method.POST,
-//                        URLHelper.login,
-//                        object,
-//                        response -> {
-//                            if ((customDialog != null) && customDialog.isShowing())
-//                                customDialog.dismiss();
-//                            SharedHelper.putKey(getApplicationContext(),
-//                                    "access_token", response.optString("access_token"));
-//                            SharedHelper.putKey(getApplicationContext(),
-//                                    "refresh_token", response.optString("refresh_token"));
-//                            SharedHelper.putKey(getApplicationContext(),
-//                                    "token_type", response.optString("token_type"));
-//                            if (!response.optString("currency").equalsIgnoreCase("") && response.optString("currency") != null)
-//                                SharedHelper.putKey(getApplicationContext(), "currency", response.optString("currency"));
-//                            else
-//                                SharedHelper.putKey(getApplicationContext(), "currency", "$");
-//
-////                            getProfile();
-//                            SharedHelper.putKey(getApplicationContext(), "sos",
-//                                    response.optString("sos"));
-//                            SharedHelper.putKey(getApplicationContext(), "loggedIn",
-//                                    getString(R.string.True));
-//                            GoToMainActivity();
-//
-//                        },
-//                        error -> {
-//                            if ((customDialog != null) && customDialog.isShowing())
-//                                customDialog.dismiss();
-//                            displayMessage(getString(R.string.something_went_wrong));
-//                        }) {
-//                    @Override
-//                    public Map<String, String> getHeaders() {
-//                        HashMap<String, String> headers = new HashMap<String, String>();
-//                        headers.put("X-Requested-With", "XMLHttpRequest");
-//                        return headers;
-//                    }
-//                };
-//
-//        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
-//
 //    }
+
+    private void registerAPI() {
+        customDialog = new CustomDialog(LoginActivity.this);
+        customDialog.setCancelable(false);
+        if (customDialog != null)
+            customDialog.show();
+        JSONObject object = new JSONObject();
+        try {
+
+            object.put("grant_type", "password");
+            object.put("client_id", URLHelper.client_id);
+            object.put("client_secret", URLHelper.client_secret);
+            object.put("email", "");
+            object.put("mobile", SharedHelper.getKey(getApplicationContext(), "mobile_number"));
+            object.put("scope", "");
+            object.put("device_type", "android");
+            object.put("device_id", deviceUDID);
+            object.put("device_token", deviceToken);
+//            object.put("device_id", "0079ae652f15b06f");
+//            object.put("device_token", "" + "eqbYFHiiQgKyQ86Lmx0EUZ:APA91bFSv48-EnMOeasV7LW5g1i0fQnL3TzP82J5-fV8jIMOT4WKrbuRMNK6uAF4B2fB7iXf_jaFXRq7h8dXtq1gIrvtggnIfgEXt3CHy5iqOSsQ_iOcs9GqbYNV6m7R57_hCUhWH4mC");
+            object.put("logged_in", "1");
+//            object.put("login_by", "manual");
+//            object.put("first_name", etName.getText().toString());
+//            object.put("last_name", "");
+//            object.put("email", etEmail.getText().toString());
+//            object.put("password", etPassword.getText().toString());
+//            object.put("password_confirmation", etPassword.getText().toString());
+//            object.put("mobile", SharedHelper.getKey(getApplicationContext(), "mobile"));
+//            object.put("email", "9876543516");
+
+
+
+            utils.print("InputToRegisterAPI", "" + object);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        @SuppressLint("SuspiciousIndentation") JsonObjectRequest jsonObjectRequest = new
+                JsonObjectRequest(Request.Method.POST,
+                        URLHelper.register,
+                        object,
+                        response -> {
+                            Log.e("registerresponse", response + "");
+
+                            utils.print("SignInResponse", response.toString());
+                            displayMessage(response.toString());
+                            if (response.optString("msg").equalsIgnoreCase("The mobile has already been taken.")) {
+                                if ((customDialog != null) && (customDialog.isShowing()))
+                                    customDialog.dismiss();
+//                                displayMessage("The mobile has already been taken.");
+                                displayMessage("Processing...");
+                                signIn();
+                            } else {
+//                                SharedHelper.putKey(getApplicationContext(), "email", etEmail.getText().toString());
+//                                SharedHelper.putKey(getApplicationContext(), "password", etPassword.getText().toString());
+                                displayMessage("User Registered Successfully");
+                                signIn();
+                            }
+                        },
+                        error -> {
+                            customDialog.dismiss();
+                            displayMessage(getString(R.string.something_went_wrong));
+                            displayMessage(error.toString());
+                            displayMessage(error.getMessage());
+                        }) {
+
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("X-Requested-With", "XMLHttpRequest");
+                        return headers;
+                    }
+                };
+
+        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+
+    }
+
+    private void signIn() {
+        if (isInternet) {
+            customDialog = new CustomDialog(LoginActivity.this);
+            customDialog.setCancelable(false);
+            if (customDialog != null)
+                customDialog.show();
+            JSONObject object = new JSONObject();
+            try {
+
+
+                object.put("grant_type", "password");
+                object.put("client_id", URLHelper.client_id);
+                object.put("client_secret", URLHelper.client_secret);
+//                object.put("email", SharedHelper.getKey(getApplicationContext(), "email"));
+//                object.put("password", SharedHelper.getKey(getApplicationContext(), "password"));
+                object.put("mobile", SharedHelper.getKey(getApplicationContext(), "mobile_number"));
+                object.put("password", "12345678");
+                object.put("scope", "");
+                object.put("device_type", "android");
+                object.put("device_id", deviceUDID);
+                object.put("device_token", deviceToken);
+//                object.put("device_id", "0079ae652f15b06f");
+//                object.put("device_token", "" + "eqbYFHiiQgKyQ86Lmx0EUZ:APA91bFSv48-EnMOeasV7LW5g1i0fQnL3TzP82J5-fV8jIMOT4WKrbuRMNK6uAF4B2fB7iXf_jaFXRq7h8dXtq1gIrvtggnIfgEXt3CHy5iqOSsQ_iOcs9GqbYNV6m7R57_hCUhWH4mC");
+                object.put("logged_in", "1");
+                utils.print("InputToLoginAPI", "" + object);
+
+
+
+
+
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest jsonObjectRequest = new
+                    JsonObjectRequest(Request.Method.POST,
+                            URLHelper.login,
+                            object,
+                            response -> {
+                                if ((customDialog != null) && customDialog.isShowing())
+                                    customDialog.dismiss();
+                                utils.print("LoginResponse", response.toString());
+                                SharedHelper.putKey(getApplicationContext(),
+                                        "access_token", response.optString("access_token"));
+                                SharedHelper.putKey(getApplicationContext(),
+                                        "refresh_token", response.optString("refresh_token"));
+                                SharedHelper.putKey(getApplicationContext(),
+                                        "token_type", response.optString("token_type"));
+
+//                                if (!response.optString("currency").equalsIgnoreCase("") &&
+//                                        response.optString("currency") != null)
+//                                    SharedHelper.putKey(getApplicationContext(), "currency",
+//                                            response.optString("currency"));
+//                                    SharedHelper.putKey(getApplicationContext(), "currency",
+//                                            response.optString("currency"));
+//                                getProfile();
+
+                                SharedHelper.putKey(getApplicationContext(), "loggedIn",
+                                        getString(R.string.True));
+                                GoToMainActivity();
+
+
+                            },
+                            error -> {
+                                if ((customDialog != null) && customDialog.isShowing())
+                                    customDialog.dismiss();
+                                displayMessage(getString(R.string.something_went_wrong));
+                            }) {
+
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+
+                            headers.put("X-Requested-With", "XMLHttpRequest");
+                            return headers;
+                        }
+                    };
+
+            ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+
+        } else {
+            displayMessage(getString(R.string.something_went_wrong_net));
+        }
+
+    }
+
 
 
 }
