@@ -27,31 +27,27 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.installations.FirebaseInstallations;
 import com.google.firebase.installations.InstallationTokenResult;
 import com.google.gson.JsonObject;
+import com.hbb20.CountryCodePicker;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.Login;
 import com.travel.travellingbug.R;
-import com.travel.travellingbug.ui.activities.MainActivity;
-import com.travel.travellingbug.ui.activities.OtpVerification;
-import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.helper.ConnectionHelper;
 import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
+import com.travel.travellingbug.ui.activities.MainActivity;
+import com.travel.travellingbug.ui.activities.OtpVerification;
+import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.utills.Utilities;
-import com.hbb20.CountryCodePicker;
-import com.jaredrummler.materialspinner.MaterialSpinner;
 
-import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import es.dmoral.toasty.Toasty;
-import kotlin.jvm.Throws;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
     public static int APP_REQUEST_CODE = 99;
@@ -119,15 +115,18 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 else if (isInternet) {
 
                     dialog = new Dialog(SignUp.this, R.style.AppTheme_NoActionBar);
-//                    registerAPI();
+
 
                     String phone = ccp.getSelectedCountryCodeWithPlus() + etName.getText().toString();
                     SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
                     SharedHelper.putKey(getApplicationContext(), "mobile", phone);
                     Log.v("Phonecode", phone + " ");
-                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
-                    intent.putExtra("phonenumber", phone);
-                    startActivityForResult(intent, APP_REQUEST_CODE);
+                    registerAPI();
+//                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
+//                    intent.putExtra("phonenumber", phone);
+//                    startActivityForResult(intent, APP_REQUEST_CODE);
+
+
 
 
                 } else {

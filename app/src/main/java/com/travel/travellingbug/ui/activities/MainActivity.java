@@ -1,5 +1,7 @@
 package com.travel.travellingbug.ui.activities;
 
+import static com.travel.travellingbug.ui.activities.DocUploadActivity.TAG;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -22,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
@@ -33,25 +36,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
-import com.travel.travellingbug.ClassLuxApp;
-import com.travel.travellingbug.Login;
-import com.travel.travellingbug.R;
-import com.travel.travellingbug.ui.activities.login.LoginActivity;
-import com.travel.travellingbug.ui.adapters.MainActivityViewPagerAdapter;
-import com.travel.travellingbug.ui.fragments.DriverMapFragment;
-import com.travel.travellingbug.ui.fragments.Help;
-import com.travel.travellingbug.ui.fragments.SummaryFragment;
-import com.travel.travellingbug.helper.SharedHelper;
-import com.travel.travellingbug.helper.URLHelper;
-import com.travel.travellingbug.listeners.Connect;
-import com.travel.travellingbug.utills.CustomTypefaceSpan;
-import com.travel.travellingbug.utills.Utilities;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
@@ -64,9 +51,23 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
+import com.travel.travellingbug.ClassLuxApp;
+import com.travel.travellingbug.R;
+import com.travel.travellingbug.helper.SharedHelper;
+import com.travel.travellingbug.helper.URLHelper;
+import com.travel.travellingbug.listeners.Connect;
+import com.travel.travellingbug.ui.activities.login.LoginActivity;
+import com.travel.travellingbug.ui.fragments.DriverMapFragment;
+import com.travel.travellingbug.ui.fragments.Help;
+import com.travel.travellingbug.ui.fragments.SummaryFragment;
+import com.travel.travellingbug.utills.CustomTypefaceSpan;
+import com.travel.travellingbug.utills.Utilities;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -133,6 +134,28 @@ public class MainActivity extends AppCompatActivity {
         if (extras != null) {
             push = extras.getBoolean("push");
         }
+
+        // Testing Firebase FCM
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+
+                        // Log and toast
+//                        String msg = getString(Integer.parseInt("MESSAGE TOKEN"), token);
+                        Log.d("MESSAGE TOKENS : ", token);
+//                        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
         map();
 
         Connect.addMyBooleanListener(() -> Toast.makeText(getApplication(),

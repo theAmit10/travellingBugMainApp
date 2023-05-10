@@ -847,10 +847,12 @@ attr maxActionInlineWidth
 attr maxButtonHeight
 attr maxCharacterCount
 attr maxHeight
+attr maxHeightPct
 attr maxImageSize
 attr maxLines
 attr maxVelocity
 attr maxWidth
+attr maxWidthPct
 attr measureWithLargestChild
 attr menu
 attr menuGravity
@@ -2823,6 +2825,8 @@ dimen android_pay_button_layout_margin
 dimen android_pay_button_separation
 dimen android_pay_confirmation_margin
 dimen appcompat_dialog_background_inset
+dimen bannerContentWeight
+dimen bannerWeightSum
 dimen browser_actions_context_menu_max_width
 dimen browser_actions_context_menu_min_padding
 dimen bt_edit_text_icon_padding
@@ -2945,6 +2949,8 @@ dimen design_tab_scrollable_min_width
 dimen design_tab_text_size
 dimen design_tab_text_size_2line
 dimen design_textinput_caption_translate_y
+dimen dialogHeightPct
+dimen dialogWidthPct
 dimen dialog_height
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
@@ -3021,6 +3027,8 @@ dimen material_textinput_min_width
 dimen material_time_picker_minimum_screen_height
 dimen material_time_picker_minimum_screen_width
 dimen material_timepicker_dialog_buttons_margin_top
+dimen minImageHeight
+dimen minImageWidth
 dimen minimum_margin_sides
 dimen minimum_margin_top_bottom
 dimen month_day_label_text_size
@@ -3249,6 +3257,7 @@ dimen otp_view_cursor_width
 dimen otp_view_item_line_width
 dimen otp_view_item_size
 dimen otp_view_item_spacing
+dimen paddingSmall
 dimen picker_dimen
 dimen place_autocomplete_button_padding
 dimen place_autocomplete_powered_by_google_height
@@ -3305,6 +3314,7 @@ dimen test_navigation_bar_text_size
 dimen text_size_medium
 dimen time_label_right_padding
 dimen time_label_size
+dimen title_height
 dimen toolbar_elevation
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
@@ -3455,6 +3465,7 @@ drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
 drawable btn_checkbox_unchecked_to_checked_mtrl_animation
+drawable btn_clear
 drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
@@ -3475,6 +3486,7 @@ drawable chat
 drawable chat_support
 drawable circle_icon
 drawable circle_leaving
+drawable collapse
 drawable com_facebook_auth_dialog_background
 drawable com_facebook_auth_dialog_cancel_background
 drawable com_facebook_auth_dialog_header_background
@@ -4210,6 +4222,7 @@ drawable ic_visa_template_32
 drawable ic_withdraw
 drawable ic_wrong
 drawable icon_google
+drawable image_placeholder
 drawable img_default
 drawable indicator_selector
 drawable intro_five
@@ -4596,6 +4609,7 @@ drawable round_corner_primary_color_shape
 drawable round_shape
 drawable round_source
 drawable rounded_button
+drawable rounded_layout
 drawable roundshape
 drawable sad
 drawable search
@@ -4825,6 +4839,7 @@ id addCountryCode
 id addCountryName
 id addMyPreferencesTv
 id addPostalAddressTv
+id addPreferences
 id addStop
 id addVehicleTv
 id add_money_card
@@ -4869,6 +4884,11 @@ id back
 id backArrow
 id backLayout
 id back_tiny
+id banner_body
+id banner_content_root
+id banner_image
+id banner_root
+id banner_title
 id barrier
 id baseline
 id battery_level
@@ -4877,6 +4897,7 @@ id beginOnFirstDraw
 id beginning
 id bestChoice
 id blocking
+id body_scroll
 id booking_id
 id bottom
 id bottomCardViews
@@ -4961,6 +4982,7 @@ id cache_measures
 id calendertv
 id calligraphy_tag_id
 id cancelBtn
+id cancelButton
 id cancel_action
 id cancel_button
 id cancel_card
@@ -4968,8 +4990,10 @@ id cancel_txt
 id carTypeVal
 id car_name
 id cardListViewLayout
+id card_content_root
 id card_layout
 id card_number_label
+id card_root
 id card_view
 id carryVelocity
 id cash_layout
@@ -5024,6 +5048,7 @@ id clip_vertical
 id clockwise
 id closest
 id collapseActionView
+id collapse_button
 id com_facebook_body_frame
 id com_facebook_button_xout
 id com_facebook_device_auth_instructions
@@ -5142,6 +5167,8 @@ id editPersonalDetailstv
 id editProfilePictv
 id editText
 id editText_search
+id editTextsubtitle
+id editTexttitle
 id editWriteMessage
 id edit_query
 id edittextBoxLayout
@@ -5267,6 +5294,7 @@ id ignore
 id ignoreRequest
 id image
 id imageView
+id imageView1
 id imageView10
 id imageView2
 id imageView3
@@ -5277,7 +5305,10 @@ id imageView7
 id imageView8
 id imageView9
 id imageView_arrow
+id image_content_root
 id image_flag
+id image_root
+id image_view
 id img01User
 id img02User
 id img03Call
@@ -5442,6 +5473,8 @@ id lineView
 id line_devider
 id linear
 id linearLayout
+id linearLayout1
+id linearLayout2
 id linear_flag_border
 id linear_flag_holder
 id listMode
@@ -5521,6 +5554,8 @@ id material_value_index
 id media_actions
 id menuIcon
 id message
+id message_body
+id message_title
 id messenger_send_button
 id mhl_folder
 id middle
@@ -5528,6 +5563,8 @@ id mini
 id minutes
 id minutes_space
 id mobile_no
+id modal_content_root
+id modal_root
 id month_grid
 id month_navigation_bar
 id month_navigation_fragment_toggle
@@ -5686,7 +5723,9 @@ id places_autocomplete_try_again_progress
 id position
 id postLayout
 id postalAddresstv
+id preferenceContainer
 id preferenceDivider
+id primary_button
 id privacyPolicyTextView
 id privateCarCheckBox
 id profileImgeIv
@@ -5775,6 +5814,7 @@ id rv_top_divider
 id rv_video_pick
 id satellite
 id saveBTN
+id saveButton
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -5805,6 +5845,7 @@ id search_voice_btn
 id seat
 id seatVal
 id second_row_layout
+id secondary_button
 id selectAmountTxt
 id selectVTtv
 id select_dialog_listview
@@ -5878,6 +5919,7 @@ id submenuarrow
 id submitButton
 id submit_area
 id submit_btn
+id summaryText
 id surface_container
 id surgeDiscount
 id surge_txt
@@ -5917,6 +5959,7 @@ id textSpacerNoTitle
 id textStart
 id textTop
 id textView
+id textView1
 id textView10a
 id textView11
 id textView2
@@ -5932,6 +5975,7 @@ id textViewAccountNumber
 id textViewBankName
 id textViewCountry
 id textViewRoutingNumber
+id textViewTitle
 id textView_code
 id textView_countryName
 id textView_noresult
@@ -5940,6 +5984,8 @@ id textView_title
 id text_input_end_icon
 id text_input_error_icon
 id text_input_layout
+id text_input_layout_subtitle
+id text_input_layout_title
 id text_input_start_icon
 id textinput_counter
 id textinput_error
@@ -5997,6 +6043,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id travelPreferenceRV
+id travelPreferenceRVLayout
 id travelPreferencesLV
 id triangle
 id trip
@@ -6309,6 +6356,7 @@ layout activity_terms_of_use
 layout activity_track
 layout activity_travel_preference
 layout activity_travel_preference_main
+layout activity_update_preference
 layout activity_update_profile
 layout activity_user_chat
 layout activity_user_review
@@ -6327,20 +6375,25 @@ layout activity_withdraw
 layout activity_withdraw_amount
 layout add_address_widget
 layout add_bank_account_item
+layout addcalendar
 layout amu_info_window
 layout amu_text_bubble
 layout amu_webview
 layout auth_web_view_layout
 layout autocomplete_row
 layout bank_details_popup
+layout banner
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout bt_card_form_fields
 layout bt_expiration_date_item
 layout bt_expiration_date_sheet
 layout cancel_dialog
+layout card
 layout card_input_widget
+layout card_landscape_inner
 layout card_multiline_widget
+layout card_portrait_inner
 layout com_facebook_activity_layout
 layout com_facebook_device_auth_dialog_fragment
 layout com_facebook_login_fragment
@@ -6404,6 +6457,7 @@ layout fragment_soruce_and_destination
 layout fragment_summary
 layout fragment_your_ride
 layout fragment_your_trips
+layout image
 layout image_show_layout
 layout jz_dialog_brightness
 layout jz_dialog_progress
@@ -6442,6 +6496,8 @@ layout messenger_button_send_white_large
 layout messenger_button_send_white_round
 layout messenger_button_send_white_small
 layout mobileverification
+layout modal
+layout modal_portrait_inner
 layout ms__list_item
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
@@ -6754,6 +6810,7 @@ string cancel_trip
 string canceled_rides
 string capacity
 string card
+string card_content_descriptor
 string card_number_hint
 string cash
 string cash_wallet
@@ -6827,6 +6884,7 @@ string confirm_payment
 string confirm_validation
 string connect_to_network
 string connect_to_wifi
+string copy_toast_msg
 string copyright
 string countrys
 string coupon_added
@@ -6890,6 +6948,9 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string facebook_app_id
 string facebook_client_token
+string fallback_menu_item_copy_link
+string fallback_menu_item_open_in_browser
+string fallback_menu_item_share_link
 string fare
 string fare_min
 string fare_type
@@ -6970,6 +7031,8 @@ string minute_picker_description
 string mobile
 string mobile_number_empty
 string mobile_number_validation
+string modal_content_descriptor
+string modal_inner_content_descriptor
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_content_description
@@ -7470,6 +7533,21 @@ style Dexter_Internal_Theme_Transparent
 style EasyPermissions
 style EasyPermissions_Transparent
 style EmptyTheme
+style FiamUI
+style FiamUI_Banner
+style FiamUI_Card
+style FiamUI_Card_ActionBar
+style FiamUI_Card_ActionBar_Button
+style FiamUI_Card_ImageView
+style FiamUI_Card_Scroll
+style FiamUI_CollapseButton
+style FiamUI_CollapseButtonBase
+style FiamUI_Modal
+style FiamUI_ModalBody
+style FiamUI_ModalImageView
+style FiamUI_ResizableImageView
+style FiamUI_Text_BannerTitle
+style FiamUI_Text_Title
 style MaterialAlertDialog_MaterialComponents
 style MaterialAlertDialog_MaterialComponents_Body_Text
 style MaterialAlertDialog_MaterialComponents_Picker_Date_Calendar
@@ -7788,6 +7866,8 @@ style ThemeOverlay_MaterialComponents_TimePicker_Display
 style ThemeOverlay_MaterialComponents_Toolbar_Primary
 style ThemeOverlay_MaterialComponents_Toolbar_Surface
 style ThemeOverlayColorAccentRed
+style TitleBar
+style TitleBarSpring
 style Widget
 style Widget_AppCompat_ActionBar
 style Widget_AppCompat_ActionBar_Solid
@@ -8175,6 +8255,7 @@ styleable MenuGroup android_enabled android_id android_visible android_menuCateg
 styleable MenuItem android_icon android_enabled android_id android_checked android_visible android_menuCategory android_orderInCategory android_title android_titleCondensed android_alphabeticShortcut android_numericShortcut android_checkable android_onClick actionLayout actionProviderClass actionViewClass alphabeticModifiers contentDescription iconTint iconTintMode numericModifiers showAsAction tooltipText
 styleable MenuView android_windowAnimationStyle android_itemTextAppearance android_horizontalDivider android_verticalDivider android_headerBackground android_itemBackground android_itemIconDisabledAlpha preserveIconSpacing subMenuArrow
 styleable MockView mock_diagonalsColor mock_label mock_labelBackgroundColor mock_labelColor mock_showDiagonals mock_showLabel
+styleable ModalLayout maxHeightPct maxWidthPct
 styleable Motion animateCircleAngleTo animateRelativeTo drawPath motionPathRotate motionStagger pathMotionArc quantizeMotionInterpolator quantizeMotionPhase quantizeMotionSteps transitionEasing
 styleable MotionEffect motionEffect_alpha motionEffect_end motionEffect_move motionEffect_start motionEffect_strict motionEffect_translationX motionEffect_translationY motionEffect_viewTransition
 styleable MotionHelper onHide onShow
@@ -8243,6 +8324,7 @@ styleable fastscroll__fastScroller fastscroll__bubbleColor fastscroll__bubbleTex
 styleable include constraintSet
 styleable ms9_MaterialShadowContainerView ms9_affectsDisplayedPosition ms9_ambientShadowDrawablesList ms9_forceUseCompatShadow ms9_shadowElevation ms9_shadowTranslationZ ms9_spotShadowDrawablesList ms9_useAmbientShadow ms9_useSpotShadow
 xml file_paths
+xml image_share_filepaths
 xml jz_network_security_config
 xml network_security_config
 xml standalone_badge

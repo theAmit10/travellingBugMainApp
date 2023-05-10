@@ -1,11 +1,25 @@
 package com.travel.travellingbug.models;
 
 public class VerifyIdMainActivityModel {
-    String title,description;
+    String title,description,id;
+
+    public VerifyIdMainActivityModel(String title, String description, String id) {
+        this.title = title;
+        this.description = description;
+        this.id = id;
+    }
 
     public VerifyIdMainActivityModel(String title, String description) {
         this.title = title;
         this.description = description;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {

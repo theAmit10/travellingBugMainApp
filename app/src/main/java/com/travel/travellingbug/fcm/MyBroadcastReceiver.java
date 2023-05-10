@@ -12,8 +12,12 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Intent launch_intent = new Intent(context, MainActivity.class);
-        launch_intent.setComponent(new ComponentName("com.classluxdrive.providers",
-                "com.classluxdrive.providers.activities.MainActivity"));
+//        launch_intent.setComponent(new ComponentName("com.classluxdrive.providers",
+//                "com.classluxdrive.providers.activities.MainActivity"));
+
+        launch_intent.setComponent(new ComponentName("com.travel.travellingbug",
+                "com.travel.travellingbug.ui.activities.MainActivity"));
+
         launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
                 Intent.FLAG_ACTIVITY_SINGLE_TOP |
                 Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);

@@ -2,18 +2,10 @@ package com.travel.travellingbug.ui.fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ActivityManager;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,9 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -40,19 +36,15 @@ import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.helper.VolleyMultipartRequest;
-import com.travel.travellingbug.ui.activities.EditProfile;
 import com.travel.travellingbug.ui.activities.MainActivity;
 import com.travel.travellingbug.ui.activities.PersonalDetailsActivity;
-import com.travel.travellingbug.ui.activities.Profile;
 import com.travel.travellingbug.ui.activities.ProfilePictureActivity;
 import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.ui.activities.TravelPreferenceActivity;
 import com.travel.travellingbug.ui.activities.TravelPreferenceActivityMain;
 import com.travel.travellingbug.ui.activities.UpdateProfile;
 import com.travel.travellingbug.ui.activities.VehicleDetailsLicensePlateNumberActivity;
-import com.travel.travellingbug.ui.activities.VerifyEmailActivity;
 import com.travel.travellingbug.ui.activities.VerifyIdActivity;
-import com.travel.travellingbug.ui.activities.VerifyMobileNumberActivity;
 import com.travel.travellingbug.utills.Utilities;
 
 import org.json.JSONException;
@@ -362,6 +354,20 @@ public class ProfileAboutFragment extends Fragment {
 //            service.setText(SharedHelper.getKey(context, "service"));
 //        else
 //            service.setText(getString(R.string.no_services));
+
+        String TravelPreferenceStatus = SharedHelper.getKey(getContext(), "TravelPreferenceStatus");
+        if (TravelPreferenceStatus != null || !TravelPreferenceStatus.equalsIgnoreCase("0") ) {
+            addMyPreferencesTv.setText("Travel Preferences");
+            addMyPreferencesTv.setTextColor(getResources().getColor(R.color.dark_gray));
+            addMyPreferencesTv.setTypeface(addMyPreferencesTv.getTypeface(), Typeface.BOLD);
+            addMyPreferencesTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+        } else {
+            addMyPreferencesTv.setText("Add Travel Preferences");
+            addMyPreferencesTv.setTextColor(getResources().getColor(R.color.green));
+            addMyPreferencesTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
+
+        }
 
     }
 

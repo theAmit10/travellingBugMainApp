@@ -103,4 +103,7 @@ public interface URLHelper {
 
     String NOTIFICATION_URL = BASE + "api/user/notification";
 
+    // for preference
+    String PREFERENCES = BASE + "api/provider/profile/preference";
+
 }

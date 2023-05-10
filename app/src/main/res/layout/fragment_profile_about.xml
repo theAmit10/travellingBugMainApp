@@ -99,7 +99,7 @@
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
                 android:text="Verify your profile"
-                android:textColor="@color/black"
+
                 android:textSize="@dimen/_13sdp"
                 android:textStyle="bold" />
 
@@ -166,7 +166,7 @@
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
                 android:text="About you"
-                android:textColor="@color/black"
+
                 android:textSize="@dimen/_13sdp"
                 android:textStyle="bold" />
 
@@ -207,7 +207,7 @@
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
                 android:text="Vehicles"
-                android:textColor="@color/black"
+
                 android:textSize="@dimen/_13sdp"
                 android:textStyle="bold" />
 

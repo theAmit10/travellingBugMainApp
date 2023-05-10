@@ -129,6 +129,7 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
 
 
     private void updateProfileWithoutImage() {
+
         Dialog dialogCustom = new Dialog(UpdateProfile.this);
         dialogCustom.setContentView(R.layout.custom_dialog);
         dialogCustom.setCancelable(false);

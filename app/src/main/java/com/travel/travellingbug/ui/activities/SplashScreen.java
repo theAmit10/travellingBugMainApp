@@ -47,7 +47,6 @@ import com.travel.travellingbug.helper.ConnectionHelper;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.ui.activities.login.IntroActivity;
-import com.travel.travellingbug.ui.activities.login.LoginActivity;
 import com.travel.travellingbug.ui.activities.login.SignUp;
 
 import org.json.JSONObject;
@@ -116,6 +115,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
+
 
         // To Remove Status bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
