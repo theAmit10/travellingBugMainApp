@@ -4895,6 +4895,7 @@ int id battery_time_layout 0x7f0a00d8
 int id beginOnFirstDraw 0x7f0a00d9
 int id beginning 0x7f0a00da
 int id bestChoice 0x7f0a00db
+int id bioTv 0x7f0a060e
 int id blocking 0x7f0a00dc
 int id body_scroll 0x7f0a00dd
 int id booking_id 0x7f0a00de

@@ -103,7 +103,7 @@
                             android:textSize="@dimen/_12sdp" />
 
                         <com.travel.travellingbug.utills.MyTextView
-                            android:id="@+id/txtSource"
+                            android:id="@+id/frmSource"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:maxLength="40"
@@ -135,7 +135,7 @@
                             android:textSize="@dimen/_12sdp" />
 
                         <com.travel.travellingbug.utills.MyTextView
-                            android:id="@+id/txtDestination"
+                            android:id="@+id/frmDest"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:maxLength="40"

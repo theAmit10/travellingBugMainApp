@@ -61,7 +61,7 @@ import es.dmoral.toasty.Toasty;
 
 public class ProfileAboutFragment extends Fragment {
 
-    TextView verifyId, addMyPreferencesTv, addAMiniBioTv, addVehicleTv, editProfilePictv, editPersonalDetailstv;
+    TextView verifyId, addMyPreferencesTv, addAMiniBioTv, addVehicleTv, editProfilePictv, editPersonalDetailstv,titlePAtv;
 
     TextView email, first_name, mobile_no;
     TextView txtuserName;
@@ -277,6 +277,7 @@ public class ProfileAboutFragment extends Fragment {
 
         txtuserName = view.findViewById(R.id.txtuserName);
         img_profile = view.findViewById(R.id.img_profile);
+        titlePAtv = view.findViewById(R.id.titlePAtv);
 
         setProviderDetails();
 
@@ -313,6 +314,21 @@ public class ProfileAboutFragment extends Fragment {
             email.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
 //            txtHeaderMob.setText("");
         }
+
+//        String emailS = SharedHelper.getKey(getContext(), "email");
+//        if (emailS != null && !emailS.equalsIgnoreCase("null")&& !emailS.equalsIgnoreCase("") && emailS.length() > 0) {
+//            email.setText("Confirm your email");
+//            email.setTextColor(getResources().getColor(R.color.green));
+//            email.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
+//
+//        } else {
+//            email.setText("Confirm your email");
+//            email.setTextColor(getResources().getColor(R.color.green));
+//            email.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
+//
+//        }
+
+        setTextToComponent();
 
 
         String first_nameS = SharedHelper.getKey(getContext(), "first_name");
@@ -369,7 +385,52 @@ public class ProfileAboutFragment extends Fragment {
 
         }
 
+
+        String bio = SharedHelper.getKey(getContext(), "bio");
+        if (bio != null || !bio.equalsIgnoreCase("null") || !bio.equalsIgnoreCase("") ) {
+            addAMiniBioTv.setText("Bio");
+            addAMiniBioTv.setTextColor(getResources().getColor(R.color.dark_gray));
+            addAMiniBioTv.setTypeface(addAMiniBioTv.getTypeface(), Typeface.BOLD);
+            addAMiniBioTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+        } else {
+            addAMiniBioTv.setText("Add a mini bio");
+            addAMiniBioTv.setTextColor(getResources().getColor(R.color.green));
+            addAMiniBioTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
+
+        }
+
+        String DocumentStatus = SharedHelper.getKey(getContext(), "DocumentStatus");
+        if (DocumentStatus != null || !DocumentStatus.equalsIgnoreCase("null") || !DocumentStatus.equalsIgnoreCase("") || DocumentStatus.equalsIgnoreCase("yes") ) {
+            verifyId.setText("Documents");
+            verifyId.setTextColor(getResources().getColor(R.color.dark_gray));
+            verifyId.setTypeface(verifyId.getTypeface(), Typeface.BOLD);
+            verifyId.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+        } else {
+            verifyId.setText("Verify ID");
+            verifyId.setTextColor(getResources().getColor(R.color.green));
+            verifyId.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
+
+        }
+
+
+        String status = SharedHelper.getKey(getContext(), "status");
+        if (status != null && !status.equalsIgnoreCase("null") && status.length() > 0) {
+            titlePAtv.setText(status);
+            titlePAtv.setAllCaps(true);
+            titlePAtv.setTextColor(getResources().getColor(R.color.dark_gray));
+
+        } else {
+            titlePAtv.setText("New Comer");
+        }
+
+
+
+
     }
+
+
 
     public void GoToMainActivity() {
         Intent mainIntent = new Intent(getContext(), MainActivity.class);
@@ -456,12 +517,14 @@ public class ProfileAboutFragment extends Fragment {
                         SharedHelper.putKey(getContext(), "currency", response.optString("currency"));
 
 
+
                         //                    SharedHelper.putKey(context, "currency", response.optString("payment_mode"));
                         SharedHelper.putKey(getContext(), "rating", response.optString("rating"));
                         SharedHelper.putKey(getContext(), "status", response.optString("status"));
                         SharedHelper.putKey(getContext(), "ulatitude", response.optString("latitude"));
                         SharedHelper.putKey(getContext(), "ulongitude", response.optString("longitude"));
                         SharedHelper.putKey(getContext(), "udevice_token", response.optString("device_token"));
+                        SharedHelper.putKey(getContext(), "bio", response.optString("bio"));
 
 
                         SharedHelper.putKey(getContext(), "loggedIn", getString(R.string.True));
@@ -812,5 +875,9 @@ public class ProfileAboutFragment extends Fragment {
         super.onStop();
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        setProviderDetails();
+    }
 }

@@ -61,7 +61,7 @@
             android:layout_below="@+id/error_image"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:text="@string/no_trips"
+            android:text="You have no upcomming rides"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp" />
 

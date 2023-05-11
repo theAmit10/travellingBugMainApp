@@ -29,6 +29,7 @@ import androidx.core.content.ContextCompat;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.AppHelper;
@@ -39,7 +40,6 @@ import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.helper.VolleyMultipartRequest;
 import com.travel.travellingbug.ui.activities.login.ChangePassword;
 import com.travel.travellingbug.utills.Utilities;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,8 +48,6 @@ import java.io.FileDescriptor;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import es.dmoral.toasty.Toasty;
 
@@ -363,7 +361,7 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
                         Map<String, String> params = new HashMap<>();
                         params.put("first_name", first_name.getText().toString());
                         params.put("last_name", "");
-                        params.put("email", email.getText().toString());
+                        params.put("emailid", email.getText().toString());
                         params.put("mobile", mobile_no.getText().toString());
                         params.put("avatar", "");
                         return params;
@@ -450,7 +448,7 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
                         Map<String, String> params = new HashMap<>();
                         params.put("first_name", first_name.getText().toString());
                         params.put("last_name", "");
-                        params.put("email", email.getText().toString());
+                        params.put("emailid", email.getText().toString());
                         params.put("mobile", mobile_no.getText().toString());
 
                         return params;

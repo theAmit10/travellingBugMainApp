@@ -98,6 +98,16 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
             editText.setInputType(InputType.TYPE_CLASS_NUMBER);
         }
 
+
+        if (parameter.equalsIgnoreCase("bio")) {
+            toolName.setText("Update a Mini Bio");
+            editText.setHint("Bio");
+            text_input_layout.setHint("Enter Mini Bio");
+
+            editText.setText(value);
+            editText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        }
+
     }
 
     @Override
@@ -156,6 +166,7 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
                 SharedHelper.putKey(getApplicationContext(), "sos", jsonObject.optString("sos"));
                 SharedHelper.putKey(getApplicationContext(), "gender", jsonObject.optString("gender"));
                 SharedHelper.putKey(getApplicationContext(), "mobile", jsonObject.optString("mobile"));
+                SharedHelper.putKey(getApplicationContext(), "bio", jsonObject.optString("bio"));
 //                        SharedHelper.putKey(context, "wallet_balance", jsonObject.optString("wallet_balance"));
 //                        SharedHelper.putKey(context, "payment_mode", jsonObject.optString("payment_mode"));
                 callSuccess();
@@ -178,9 +189,10 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
                 Map<String, String> params = new HashMap<>();
                 params.put("first_name", SharedHelper.getKey(getApplicationContext(), "first_name"));
                 params.put("last_name", "");
-                params.put("email", SharedHelper.getKey(getApplicationContext(), "email"));
+                params.put("emailid", SharedHelper.getKey(getApplicationContext(), "email"));
                 params.put("mobile", SharedHelper.getKey(getApplicationContext(), "mobile"));
                 params.put("avatar", "");
+                params.put("bio", SharedHelper.getKey(getApplicationContext(), "bio"));
                 return params;
             }
 

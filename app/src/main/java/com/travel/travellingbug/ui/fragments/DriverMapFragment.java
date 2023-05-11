@@ -1,6 +1,8 @@
 package com.travel.travellingbug.ui.fragments;
 
 
+import static android.content.Context.NOTIFICATION_SERVICE;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -59,25 +61,6 @@ import androidx.fragment.app.FragmentManager;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.travel.travellingbug.ClassLuxApp;
-import com.travel.travellingbug.R;
-import com.travel.travellingbug.ui.activities.DocUploadActivity;
-import com.travel.travellingbug.ui.activities.DocumentUpload;
-import com.travel.travellingbug.ui.activities.HomeScreenActivity;
-import com.travel.travellingbug.ui.activities.MainActivity;
-import com.travel.travellingbug.ui.activities.Profile;
-import com.travel.travellingbug.ui.activities.ShowProfile;
-import com.travel.travellingbug.ui.activities.SplashScreen;
-import com.travel.travellingbug.chat.UserChatActivity;
-import com.travel.travellingbug.helper.ConnectionHelper;
-import com.travel.travellingbug.helper.CustomDialog;
-import com.travel.travellingbug.helper.DataParser;
-import com.travel.travellingbug.helper.SharedHelper;
-import com.travel.travellingbug.helper.URLHelper;
-import com.travel.travellingbug.models.User;
-import com.travel.travellingbug.ui.activities.UpdateProfile;
-import com.travel.travellingbug.utills.LocationTracking;
-import com.travel.travellingbug.utills.Utilities;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -103,6 +86,23 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.squareup.picasso.Picasso;
+import com.travel.travellingbug.ClassLuxApp;
+import com.travel.travellingbug.R;
+import com.travel.travellingbug.chat.UserChatActivity;
+import com.travel.travellingbug.helper.ConnectionHelper;
+import com.travel.travellingbug.helper.CustomDialog;
+import com.travel.travellingbug.helper.DataParser;
+import com.travel.travellingbug.helper.SharedHelper;
+import com.travel.travellingbug.helper.URLHelper;
+import com.travel.travellingbug.models.User;
+import com.travel.travellingbug.ui.activities.DocUploadActivity;
+import com.travel.travellingbug.ui.activities.DocumentUpload;
+import com.travel.travellingbug.ui.activities.HomeScreenActivity;
+import com.travel.travellingbug.ui.activities.Profile;
+import com.travel.travellingbug.ui.activities.ShowProfile;
+import com.travel.travellingbug.ui.activities.SplashScreen;
+import com.travel.travellingbug.utills.LocationTracking;
+import com.travel.travellingbug.utills.Utilities;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -127,8 +127,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
-
-import static android.content.Context.NOTIFICATION_SERVICE;
 
 
 public class DriverMapFragment extends Fragment implements
@@ -641,6 +639,7 @@ public class DriverMapFragment extends Fragment implements
 //            checkStatusSchedule();
 //        } else {
 //            checkStatus();
+
 //        }
 
 
