@@ -41,6 +41,12 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".ui.activities.RideRequestDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.RideRequest"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.UpdatePreference"
             android:exported="false" />
         <activity

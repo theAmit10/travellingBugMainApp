@@ -12,7 +12,7 @@ import com.travel.travellingbug.ui.fragments.ProfileAccountFragment;
 
 public class ProfileViewPagerAdapter extends FragmentStateAdapter {
 
-    private String[] titles = {"ABOUT", "ACCOUNT"};
+    private String[] titles = {"About", "Account"};
 
 
     public ProfileViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {

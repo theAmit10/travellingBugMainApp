@@ -23,6 +23,7 @@
         android:id="@+id/slider_background"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/my_featured_image"
@@ -34,7 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:text="The Caption Title"
         android:textAlignment="center"
@@ -51,14 +52,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
+        android:fontFamily="@font/montserrat_semibold"
         android:text="The Caption Title"
         android:textAlignment="center"
-        android:fontFamily="@font/montserrat_semibold"
         android:textColor="@color/colorDarkGray"
         android:textSize="@dimen/_12sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/my_caption_title"
         app:layout_constraintStart_toStartOf="@+id/my_caption_title"
-        app:layout_constraintTop_toBottomOf="@+id/my_caption_title" />
+        app:layout_constraintTop_toBottomOf="@+id/my_caption_title"
+        app:layout_constraintVertical_bias="0.07999998" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

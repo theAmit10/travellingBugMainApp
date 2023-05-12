@@ -50,6 +50,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
+
                     android:gravity="bottom"
                     android:orientation="vertical">
 
@@ -58,21 +60,164 @@
                         android:id="@+id/lnrRequestProviders"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+
                         android:layout_gravity="bottom"
                         android:orientation="vertical"
                         android:visibility="visible">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@color/white"
-                            android:orientation="vertical">
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="1"-->
+
+<!--                            android:background="@color/white"-->
+<!--                            android:orientation="vertical">-->
+
+<!--                            <LinearLayout-->
+<!--                                android:id="@+id/sourceDestLayout"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:background="@drawable/white_color_rect_shape"-->
+<!--                                android:focusable="true"-->
+<!--                                android:orientation="vertical"-->
+<!--                                android:visibility="visible">-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:gravity="start|center"-->
+<!--                                    android:orientation="horizontal">-->
+
+<!--                                    <com.travel.travellingbug.utills.MyTextView-->
+<!--                                        android:id="@+id/frmSource"-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_margin="@dimen/_10sdp"-->
+<!--                                        android:drawableLeft="@drawable/circle_leaving"-->
+<!--                                        android:drawablePadding="@dimen/_10sdp"-->
+<!--                                        android:padding="@dimen/_10sdp"-->
+<!--                                        android:text="Leaving From"-->
+<!--                                        android:textColor="@color/colorDarkGray"-->
+<!--                                        android:textSize="@dimen/_11sdp"-->
+<!--                                        android:textStyle="bold" />-->
+
+<!--                                    <ImageView-->
+<!--                                        android:id="@+id/ivTopFav"-->
+<!--                                        android:layout_width="@dimen/_18sdp"-->
+<!--                                        android:layout_height="@dimen/_18sdp"-->
+<!--                                        android:layout_marginStart="4dp"-->
+<!--                                        android:layout_marginEnd="8dp"-->
+<!--                                        android:background="@drawable/wishlist_heart_shape"-->
+<!--                                        android:backgroundTint="@color/white"-->
+<!--                                        android:focusable="true"-->
+<!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                        app:layout_constraintTop_toTopOf="parent" />-->
+
+
+<!--                                </LinearLayout>-->
+
+
+<!--                                <View-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="1dp"-->
+<!--                                    android:layout_marginStart="@dimen/_10sdp"-->
+<!--                                    android:layout_marginEnd="@dimen/_10sdp"-->
+<!--                                    android:background="@color/colorLightGray" />-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:gravity="start|center"-->
+<!--                                    android:orientation="horizontal">-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/frmDest"-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_margin="@dimen/_10sdp"-->
+<!--                                        android:drawableLeft="@drawable/circle_leaving"-->
+<!--                                        android:drawablePadding="@dimen/_10sdp"-->
+<!--                                        android:padding="@dimen/_10sdp"-->
+<!--                                        android:text="Going To"-->
+<!--                                        android:textColor="@color/colorDarkGray"-->
+<!--                                        android:textSize="@dimen/_11sdp"-->
+<!--                                        android:textStyle="bold" />-->
+
+<!--                                </LinearLayout>-->
+
+
+<!--                                <View-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="1dp"-->
+<!--                                    android:layout_marginStart="@dimen/_10sdp"-->
+<!--                                    android:layout_marginEnd="@dimen/_10sdp"-->
+<!--                                    android:background="@color/colorLightGray" />-->
+
+<!--                                <LinearLayout-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:background="@drawable/white_color_rect_shape"-->
+<!--                                    android:elevation="@dimen/_5sdp"-->
+<!--                                    android:orientation="horizontal">-->
+
+<!--                                    <com.travel.travellingbug.utills.MyTextView-->
+<!--                                        android:id="@+id/calendertv"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_margin="@dimen/_10sdp"-->
+<!--                                        android:layout_weight="1"-->
+<!--                                        android:drawableLeft="@drawable/ic_calender"-->
+<!--                                        android:drawablePadding="@dimen/_10sdp"-->
+<!--                                        android:padding="@dimen/_10sdp"-->
+<!--                                        android:text="Today"-->
+<!--                                        android:textColor="@color/colorDarkGray"-->
+<!--                                        android:textSize="@dimen/_11sdp"-->
+<!--                                        android:textStyle="bold" />-->
+
+<!--                                    <View-->
+<!--                                        android:layout_width="1dp"-->
+<!--                                        android:layout_height="match_parent"-->
+<!--                                        android:layout_margin="@dimen/_10sdp"-->
+<!--                                        android:background="@color/colorLightGray" />-->
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/persontv"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:layout_margin="@dimen/_10sdp"-->
+<!--                                        android:drawableLeft="@drawable/ic_person"-->
+<!--                                        android:drawablePadding="@dimen/_10sdp"-->
+<!--                                        android:padding="@dimen/_10sdp"-->
+<!--                                        android:text="1"-->
+<!--                                        android:textColor="@color/colorDarkGray"-->
+<!--                                        android:textSize="@dimen/_11sdp"-->
+<!--                                        android:textStyle="bold" />-->
+
+
+<!--                                </LinearLayout>-->
+
+
+<!--                                <Button-->
+<!--                                    android:id="@+id/btnSearch"-->
+<!--                                    android:visibility="gone"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="@dimen/_2sdp"-->
+<!--                                    android:background="@drawable/auth_btn_green_bg"-->
+<!--                                    android:text="Search"-->
+<!--                                    android:textAllCaps="false"-->
+<!--                                    android:textColor="@color/white"-->
+<!--                                    android:textSize="@dimen/_12sdp" />-->
+
+
+<!--                            </LinearLayout>-->
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rcvServiceTypes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
                                 android:layout_gravity="center"
                                 android:layout_marginTop="@dimen/_10sdp"
                                 android:layout_marginBottom="@dimen/_7sdp"
@@ -96,74 +241,74 @@
                                 android:background="@color/view_bg"
                                 android:visibility="gone" />
 
-                            <!--                            // Cash-->
+<!--                            &lt;!&ndash;                            // Cash&ndash;&gt;-->
 
-                            <RelativeLayout
-                                android:id="@+id/paymentLayout"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:visibility="gone">
+<!--                            <RelativeLayout-->
+<!--                                android:id="@+id/paymentLayout"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:visibility="gone">-->
 
-                                <ImageView
-                                    android:id="@+id/imgPaymentType"
-                                    android:layout_width="@dimen/_40sdp"
-                                    android:layout_height="@dimen/_30sdp"
-                                    android:layout_alignParentStart="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginStart="@dimen/_2sdp"
-                                    android:visibility="gone"
-                                    app:srcCompat="@drawable/money1" />
+<!--                                <ImageView-->
+<!--                                    android:id="@+id/imgPaymentType"-->
+<!--                                    android:layout_width="@dimen/_40sdp"-->
+<!--                                    android:layout_height="@dimen/_30sdp"-->
+<!--                                    android:layout_alignParentStart="true"-->
+<!--                                    android:layout_centerVertical="true"-->
+<!--                                    android:layout_marginStart="@dimen/_2sdp"-->
+<!--                                    android:visibility="gone"-->
+<!--                                    app:srcCompat="@drawable/money1" />-->
 
-                                <com.travel.travellingbug.utills.MyBoldTextView
-                                    android:id="@+id/lblPaymentType"
-                                    android:layout_width="@dimen/_150sdp"
-                                    android:layout_height="@dimen/_30sdp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginStart="5dp"
-                                    android:layout_toEndOf="@+id/imgPaymentType"
-                                    android:gravity="center_vertical"
-                                    android:text="@string/cash"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_10sdp" />
+<!--                                <com.travel.travellingbug.utills.MyBoldTextView-->
+<!--                                    android:id="@+id/lblPaymentType"-->
+<!--                                    android:layout_width="@dimen/_150sdp"-->
+<!--                                    android:layout_height="@dimen/_30sdp"-->
+<!--                                    android:layout_centerVertical="true"-->
+<!--                                    android:layout_marginStart="5dp"-->
+<!--                                    android:layout_toEndOf="@+id/imgPaymentType"-->
+<!--                                    android:gravity="center_vertical"-->
+<!--                                    android:text="@string/cash"-->
+<!--                                    android:textColor="@color/black_text_color"-->
+<!--                                    android:textSize="@dimen/_10sdp" />-->
 
 
-                                <ImageView
-                                    android:id="@+id/img_profile"
-                                    android:layout_width="20dp"
-                                    android:layout_height="30dp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginEnd="20dp"
-                                    android:layout_toStartOf="@+id/imgPaymentType"
-                                    android:visibility="visible" />
+<!--                                <ImageView-->
+<!--                                    android:id="@+id/img_profile"-->
+<!--                                    android:layout_width="20dp"-->
+<!--                                    android:layout_height="30dp"-->
+<!--                                    android:layout_centerVertical="true"-->
+<!--                                    android:layout_marginEnd="20dp"-->
+<!--                                    android:layout_toStartOf="@+id/imgPaymentType"-->
+<!--                                    android:visibility="visible" />-->
 
-                                <com.travel.travellingbug.utills.MyBoldTextView
-                                    android:id="@+id/lblPromo"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="@dimen/_30sdp"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginEnd="@dimen/_5sdp"
-                                    android:gravity="center"
-                                    android:text="@string/promo_code"
-                                    android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp"
-                                    android:visibility="visible" />
+<!--                                <com.travel.travellingbug.utills.MyBoldTextView-->
+<!--                                    android:id="@+id/lblPromo"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="@dimen/_30sdp"-->
+<!--                                    android:layout_alignParentEnd="true"-->
+<!--                                    android:layout_centerVertical="true"-->
+<!--                                    android:layout_marginEnd="@dimen/_5sdp"-->
+<!--                                    android:gravity="center"-->
+<!--                                    android:text="@string/promo_code"-->
+<!--                                    android:textColor="@color/black"-->
+<!--                                    android:textSize="@dimen/_12sdp"-->
+<!--                                    android:visibility="visible" />-->
 
-                                <com.travel.travellingbug.utills.MyBoldTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginEnd="20dp"
-                                    android:paddingEnd="@dimen/_2sdp"
-                                    android:text="1-4"
-                                    android:textColor="@android:color/black"
-                                    android:textSize="20sp"
-                                    android:visibility="gone" />
+<!--                                <com.travel.travellingbug.utills.MyBoldTextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_alignParentEnd="true"-->
+<!--                                    android:layout_centerVertical="true"-->
+<!--                                    android:layout_marginEnd="20dp"-->
+<!--                                    android:paddingEnd="@dimen/_2sdp"-->
+<!--                                    android:text="1-4"-->
+<!--                                    android:textColor="@android:color/black"-->
+<!--                                    android:textSize="20sp"-->
+<!--                                    android:visibility="gone" />-->
 
-                            </RelativeLayout>
+<!--                            </RelativeLayout>-->
 
-                        </LinearLayout>
+<!--                        </LinearLayout>-->
 
                         <View
                             android:layout_width="match_parent"
@@ -171,8 +316,10 @@
                             android:background="@color/calbg" />
 
                         <LinearLayout
+                            android:id="@+id/requestLinearLayout"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_10sdp"
                             android:orientation="horizontal">
 
                             <androidx.cardview.widget.CardView
@@ -181,7 +328,7 @@
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
                                 app:cardBackgroundColor="@color/colorPrimary"
-                                app:cardCornerRadius="0dp"
+                                app:cardCornerRadius="10dp"
                                 app:cardElevation="@dimen/_5sdp">
 
                                 <com.travel.travellingbug.utills.MyTextView
@@ -190,7 +337,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="@string/request_ride"
+                                    android:text="Search"
                                     android:textColor="@color/button_text_color"
                                     android:textSize="@dimen/_12sdp" />
                             </androidx.cardview.widget.CardView>
@@ -203,6 +350,7 @@
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="match_parent"
+                                android:visibility="gone"
                                 android:layout_height="@dimen/_40sdp"
                                 android:layout_gravity="center"
                                 android:layout_weight="1"
@@ -1705,7 +1853,7 @@
                             android:visibility="gone"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:background="@drawable/menu_icon"
+                            android:background="@color/transparent"
                             android:backgroundTint="@color/colorPrimary" />
 
                         <LinearLayout
@@ -1809,6 +1957,7 @@
                             android:visibility="gone" />
 
                         <RelativeLayout
+
                             android:id="@+id/lnrSearch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -1956,138 +2105,145 @@
                                 </FrameLayout>
                             </LinearLayout>
 
-<!--                            <LinearLayout-->
-<!--                                android:id="@+id/sourceDestLayout"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:background="@drawable/white_color_rect_shape"-->
-<!--                                android:focusable="true"-->
-<!--                                android:orientation="vertical"-->
-<!--                                android:visibility="visible">-->
+                            <!--                            <LinearLayout-->
+                            <!--                                android:id="@+id/sourceDestLayout"-->
+                            <!--                                android:layout_width="match_parent"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:background="@drawable/white_color_rect_shape"-->
+                            <!--                                android:focusable="true"-->
+                            <!--                                android:orientation="vertical"-->
+                            <!--                                android:visibility="visible">-->
 
-<!--                                <LinearLayout-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:orientation="horizontal"-->
-<!--                                    android:gravity="start|center"-->
-<!--                                    android:layout_height="wrap_content">-->
+                            <!--                                <LinearLayout-->
+                            <!--                                    android:layout_width="match_parent"-->
+                            <!--                                    android:orientation="horizontal"-->
+                            <!--                                    android:gravity="start|center"-->
+                            <!--                                    android:layout_height="wrap_content">-->
 
-<!--                                    <LinearLayout-->
-<!--                                        android:id="@+id/llLeftTop"-->
-<!--                                        android:layout_width="@dimen/_20sdp"-->
-<!--                                        android:layout_height="@dimen/_40sdp"-->
-<!--                                        android:gravity="center"-->
-<!--                                        android:orientation="vertical"-->
-<!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                                        app:layout_constraintEnd_toStartOf="@id/llTopMiddle"-->
-<!--                                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                                        app:layout_constraintTop_toTopOf="parent">-->
+                            <!--                                    <LinearLayout-->
+                            <!--                                        android:id="@+id/llLeftTop"-->
+                            <!--                                        android:layout_width="@dimen/_20sdp"-->
+                            <!--                                        android:layout_height="@dimen/_40sdp"-->
+                            <!--                                        android:gravity="center"-->
+                            <!--                                        android:orientation="vertical"-->
+                            <!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
+                            <!--                                        app:layout_constraintEnd_toStartOf="@id/llTopMiddle"-->
+                            <!--                                        app:layout_constraintStart_toStartOf="parent"-->
+                            <!--                                        app:layout_constraintTop_toTopOf="parent">-->
 
-<!--                                        <ImageView-->
-<!--                                            android:layout_width="@dimen/_8sdp"-->
-<!--                                            android:layout_height="@dimen/_8sdp"-->
-<!--                                            android:layout_marginTop="12dp"-->
-<!--                                            android:background="@drawable/pick_up_location"-->
-<!--                                            android:backgroundTint="@color/white" />-->
+                            <!--                                        <ImageView-->
+                            <!--                                            android:layout_width="@dimen/_8sdp"-->
+                            <!--                                            android:layout_height="@dimen/_8sdp"-->
+                            <!--                                            android:layout_marginTop="12dp"-->
+                            <!--                                            android:background="@drawable/pick_up_location"-->
+                            <!--                                            android:backgroundTint="@color/white" />-->
 
-<!--                                        <View-->
-<!--                                            android:layout_width="wrap_content"-->
-<!--                                            android:layout_height="wrap_content"-->
-<!--                                            android:background="@drawable/vertical_dashed_line" />-->
+                            <!--                                        <View-->
+                            <!--                                            android:layout_width="wrap_content"-->
+                            <!--                                            android:layout_height="wrap_content"-->
+                            <!--                                            android:background="@drawable/vertical_dashed_line" />-->
 
-<!--                                    </LinearLayout>-->
+                            <!--                                    </LinearLayout>-->
 
-<!--                                    <com.travel.travellingbug.utills.MyTextView-->
-<!--                                        android:id="@+id/frmSource"-->
-<!--                                        android:layout_width="match_parent"-->
-<!--                                        android:layout_height="@dimen/_30sdp"-->
-<!--                                        android:ellipsize="end"-->
-<!--                                        android:fontFamily="@font/muli_regular"-->
-<!--                                        android:gravity="center|start"-->
-<!--                                        android:maxLines="1"-->
-<!--                                        android:layout_weight="1"-->
-<!--                                        android:text="@string/pickup_location"-->
-<!--                                        android:paddingStart="@dimen/_5sdp"-->
-<!--                                        android:paddingEnd="@dimen/_18sdp"-->
-<!--                                        android:paddingBottom="@dimen/_5sdp"-->
-<!--                                        android:textColor="@color/colorDarkGray"-->
-<!--                                        android:textSize="@dimen/_12sdp" />a-->
+                            <!--                                    <com.travel.travellingbug.utills.MyTextView-->
+                            <!--                                        android:id="@+id/frmSource"-->
+                            <!--                                        android:layout_width="match_parent"-->
+                            <!--                                        android:layout_height="@dimen/_30sdp"-->
+                            <!--                                        android:ellipsize="end"-->
+                            <!--                                        android:fontFamily="@font/muli_regular"-->
+                            <!--                                        android:gravity="center|start"-->
+                            <!--                                        android:maxLines="1"-->
+                            <!--                                        android:layout_weight="1"-->
+                            <!--                                        android:text="@string/pickup_location"-->
+                            <!--                                        android:paddingStart="@dimen/_5sdp"-->
+                            <!--                                        android:paddingEnd="@dimen/_18sdp"-->
+                            <!--                                        android:paddingBottom="@dimen/_5sdp"-->
+                            <!--                                        android:textColor="@color/colorDarkGray"-->
+                            <!--                                        android:textSize="@dimen/_12sdp" />a-->
 
-<!--                                    <ImageView-->
-<!--                                        android:id="@+id/ivTopFav"-->
-<!--                                        android:layout_width="@dimen/_18sdp"-->
-<!--                                        android:layout_height="@dimen/_18sdp"-->
-<!--                                        android:layout_marginStart="4dp"-->
-<!--                                        android:layout_marginEnd="8dp"-->
-<!--                                        android:background="@drawable/wishlist_heart_shape"-->
-<!--                                        android:backgroundTint="@color/white"-->
-<!--                                        android:focusable="true"-->
-<!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                                        app:layout_constraintTop_toTopOf="parent" />-->
+                            <!--                                    <ImageView-->
+                            <!--                                        android:id="@+id/ivTopFav"-->
+                            <!--                                        android:layout_width="@dimen/_18sdp"-->
+                            <!--                                        android:layout_height="@dimen/_18sdp"-->
+                            <!--                                        android:layout_marginStart="4dp"-->
+                            <!--                                        android:layout_marginEnd="8dp"-->
+                            <!--                                        android:background="@drawable/wishlist_heart_shape"-->
+                            <!--                                        android:backgroundTint="@color/white"-->
+                            <!--                                        android:focusable="true"-->
+                            <!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
+                            <!--                                        app:layout_constraintEnd_toEndOf="parent"-->
+                            <!--                                        app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--                                </LinearLayout>-->
+                            <!--                                </LinearLayout>-->
 
-<!--                                <LinearLayout-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:orientation="horizontal"-->
-<!--                                    android:gravity="start|center"-->
-<!--                                    android:layout_height="wrap_content">-->
+                            <!--                                <LinearLayout-->
+                            <!--                                    android:layout_width="match_parent"-->
+                            <!--                                    android:orientation="horizontal"-->
+                            <!--                                    android:gravity="start|center"-->
+                            <!--                                    android:layout_height="wrap_content">-->
 
-<!--                                    <LinearLayout-->
-<!--                                        android:id="@+id/llLeftBottom"-->
-<!--                                        android:layout_width="@dimen/_20sdp"-->
-<!--                                        android:layout_height="@dimen/_40sdp"-->
-<!--                                        android:gravity="center"-->
-<!--                                        android:orientation="vertical"-->
-<!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                                        app:layout_constraintStart_toStartOf="parent"-->
-<!--                                        app:layout_constraintTop_toTopOf="parent">-->
+                            <!--                                    <LinearLayout-->
+                            <!--                                        android:id="@+id/llLeftBottom"-->
+                            <!--                                        android:layout_width="@dimen/_20sdp"-->
+                            <!--                                        android:layout_height="@dimen/_40sdp"-->
+                            <!--                                        android:gravity="center"-->
+                            <!--                                        android:orientation="vertical"-->
+                            <!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
+                            <!--                                        app:layout_constraintStart_toStartOf="parent"-->
+                            <!--                                        app:layout_constraintTop_toTopOf="parent">-->
 
-<!--                                        <View-->
-<!--                                            android:layout_width="wrap_content"-->
-<!--                                            android:layout_height="wrap_content"-->
-<!--                                            android:layout_marginTop="20dp"-->
-<!--                                            android:background="@drawable/vertical_dashed_line" />-->
+                            <!--                                        <View-->
+                            <!--                                            android:layout_width="wrap_content"-->
+                            <!--                                            android:layout_height="wrap_content"-->
+                            <!--                                            android:layout_marginTop="20dp"-->
+                            <!--                                            android:background="@drawable/vertical_dashed_line" />-->
 
-<!--                                        <ImageView-->
-<!--                                            android:layout_width="@dimen/_10sdp"-->
-<!--                                            android:layout_height="@dimen/_10sdp"-->
-<!--                                            android:layout_marginBottom="12dp"-->
-<!--                                            android:background="@drawable/destination_icon"-->
-<!--                                            android:backgroundTint="@color/white" />-->
+                            <!--                                        <ImageView-->
+                            <!--                                            android:layout_width="@dimen/_10sdp"-->
+                            <!--                                            android:layout_height="@dimen/_10sdp"-->
+                            <!--                                            android:layout_marginBottom="12dp"-->
+                            <!--                                            android:background="@drawable/destination_icon"-->
+                            <!--                                            android:backgroundTint="@color/white" />-->
 
-<!--                                    </LinearLayout>-->
+                            <!--                                    </LinearLayout>-->
 
-<!--                                    <com.travel.travellingbug.utills.MyTextView-->
-<!--                                        android:id="@+id/frmDest"-->
-<!--                                        android:layout_width="match_parent"-->
-<!--                                        android:layout_height="@dimen/_30sdp"-->
-<!--                                        android:ellipsize="end"-->
-<!--                                        android:text="@string/destination_location"-->
-<!--                                        android:gravity="center_vertical"-->
-<!--                                        android:maxLines="1"-->
-<!--                                        android:hint="@string/destination_location"-->
-<!--                                        android:layout_weight="1"-->
-<!--                                        android:paddingStart="@dimen/_5sdp"-->
-<!--                                        android:paddingEnd="@dimen/_18sdp"-->
-<!--                                        android:paddingBottom="@dimen/_5sdp"-->
-<!--                                        android:textColor="@color/colorDarkGray"-->
-<!--                                        android:textSize="@dimen/_12sdp" />-->
+                            <!--                                    <com.travel.travellingbug.utills.MyTextView-->
+                            <!--                                        android:id="@+id/frmDest"-->
+                            <!--                                        android:layout_width="match_parent"-->
+                            <!--                                        android:layout_height="@dimen/_30sdp"-->
+                            <!--                                        android:ellipsize="end"-->
+                            <!--                                        android:text="@string/destination_location"-->
+                            <!--                                        android:gravity="center_vertical"-->
+                            <!--                                        android:maxLines="1"-->
+                            <!--                                        android:hint="@string/destination_location"-->
+                            <!--                                        android:layout_weight="1"-->
+                            <!--                                        android:paddingStart="@dimen/_5sdp"-->
+                            <!--                                        android:paddingEnd="@dimen/_18sdp"-->
+                            <!--                                        android:paddingBottom="@dimen/_5sdp"-->
+                            <!--                                        android:textColor="@color/colorDarkGray"-->
+                            <!--                                        android:textSize="@dimen/_12sdp" />-->
 
-<!--                                    <ImageView-->
-<!--                                        android:layout_width="@dimen/_18sdp"-->
-<!--                                        android:layout_height="@dimen/_18sdp"-->
-<!--                                        android:layout_marginStart="4dp"-->
-<!--                                        android:layout_marginEnd="8dp"-->
-<!--                                        android:background="@drawable/cross"-->
-<!--                                        android:backgroundTint="@color/white"-->
-<!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                                        app:layout_constraintEnd_toEndOf="parent"-->
-<!--                                        app:layout_constraintTop_toTopOf="parent" />-->
+                            <!--                                    <ImageView-->
+                            <!--                                        android:layout_width="@dimen/_18sdp"-->
+                            <!--                                        android:layout_height="@dimen/_18sdp"-->
+                            <!--                                        android:layout_marginStart="4dp"-->
+                            <!--                                        android:layout_marginEnd="8dp"-->
+                            <!--                                        android:background="@drawable/cross"-->
+                            <!--                                        android:backgroundTint="@color/white"-->
+                            <!--                                        app:layout_constraintBottom_toBottomOf="parent"-->
+                            <!--                                        app:layout_constraintEnd_toEndOf="parent"-->
+                            <!--                                        app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--                                </LinearLayout>-->
+                            <!--                                </LinearLayout>-->
 
-<!--                            </LinearLayout>-->
+                            <!--                            </LinearLayout>-->
+
+
+                            <!--                            ################################################################-->
+
+                            <!--                            Here will be dest layout-->
+
+                            <!--                            #####################################-->
 
                             <LinearLayout
                                 android:id="@+id/sourceDestLayout"
@@ -2216,6 +2372,7 @@
 
                                 <Button
                                     android:id="@+id/btnSearch"
+
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_2sdp"

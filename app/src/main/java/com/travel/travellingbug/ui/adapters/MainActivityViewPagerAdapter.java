@@ -6,7 +6,6 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.travel.travellingbug.ui.fragments.AccoutFragment;
-import com.travel.travellingbug.ui.fragments.DriverMapFragment;
 import com.travel.travellingbug.ui.fragments.HolidayPackageFragment;
 import com.travel.travellingbug.ui.fragments.PublishFragment;
 import com.travel.travellingbug.ui.fragments.SearchFragment;
@@ -27,6 +26,7 @@ public class MainActivityViewPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
+
                 return new SearchFragment();
             case 1:
                 return new PublishFragment();

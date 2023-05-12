@@ -59,7 +59,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -333,6 +332,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     private Marker providerMarker;
     private boolean isDragging;
 
+    TextView calendertv;
 
     public static PublishFragment newInstance() {
         return new PublishFragment();
@@ -418,6 +418,120 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                Toast.makeText(context, "You have already requested to a trip", Toast.LENGTH_SHORT).show();
             }
         }
+
+
+        calendertv = rootView.findViewById(R.id.calendertv);
+        calendertv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR); // current year
+                int mMonth = c.get(Calendar.MONTH); // current month
+                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                datePickerDialog = new DatePickerDialog(getActivity(), android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,
+                        (view, year, monthOfYear, dayOfMonth) -> {
+
+                            // set day of month , month and year value in the edit text
+                            String choosedMonth = "";
+                            String choosedDate = "";
+                            String choosedDateFormat = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                            scheduledDate = choosedDateFormat;
+                            try {
+                                choosedMonth = utils.getMonth(choosedDateFormat);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            if (dayOfMonth < 10) {
+                                choosedDate = "0" + dayOfMonth;
+                            } else {
+                                choosedDate = "" + dayOfMonth;
+                            }
+                            afterToday = Utilities.isAfterToday(year, monthOfYear, dayOfMonth);
+                            calendertv.setText(choosedDate + " " + choosedMonth + " " + year);
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                datePickerDialog.getDatePicker().setMaxDate((System.currentTimeMillis() - 1000) + (1000 * 60 * 60 * 24 * 7));
+                datePickerDialog.show();
+
+
+
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(getActivity(), android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new TimePickerDialog.OnTimeSetListener() {
+                    int callCount = 0;   //To track number of calls to onTimeSet()
+
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+
+                        if (callCount == 0) {
+                            String choosedHour = "";
+                            String choosedMinute = "";
+                            String choosedTimeZone = "";
+                            String choosedTime = "";
+
+                            scheduledTime = selectedHour + ":" + selectedMinute;
+
+                            if (selectedHour > 12) {
+                                choosedTimeZone = "PM";
+                                selectedHour = selectedHour - 12;
+                                if (selectedHour < 10) {
+                                    choosedHour = "0" + selectedHour;
+                                } else {
+                                    choosedHour = "" + selectedHour;
+                                }
+                            } else {
+                                choosedTimeZone = "AM";
+                                if (selectedHour < 10) {
+                                    choosedHour = "0" + selectedHour;
+                                } else {
+                                    choosedHour = "" + selectedHour;
+                                }
+                            }
+
+                            if (selectedMinute < 10) {
+                                choosedMinute = "0" + selectedMinute;
+                            } else {
+                                choosedMinute = "" + selectedMinute;
+                            }
+                            choosedTime = choosedHour + ":" + choosedMinute + " " + choosedTimeZone;
+
+                            if (scheduledDate != "" && scheduledTime != "") {
+                                Date date = null;
+                                try {
+                                    date = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(scheduledDate);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                long milliseconds = date.getTime();
+                                if (!DateUtils.isToday(milliseconds)) {
+//                                    timetv.setText(choosedTime);
+                                    System.out.println("time : "+choosedTime);
+                                } else {
+                                    if (utils.checktimings(scheduledTime)) {
+//                                        timetv.setText(choosedTime);
+                                        System.out.println("time : "+choosedTime);
+                                    } else {
+                                        Toast toast = new Toast(getActivity());
+                                        Toast.makeText(getActivity(), getString(R.string.different_time), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            } else {
+                                Toast.makeText(getActivity(), getString(R.string.choose_date_time), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        callCount++;
+                    }
+                }, hour, minute, false);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+            }
+        });
+
+
+
         return rootView;
 
 
@@ -1656,7 +1770,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
     public void getServiceList() {
         if (customDialog != null && (!customDialog.isShowing())) {
-            customDialog = new CustomDialog(getActivity());
+            customDialog = new CustomDialog(getContext());
             customDialog.setCancelable(false);
             customDialog.show();
         }
@@ -1682,7 +1796,10 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         }, error -> {
                     if ((customDialog != null) && (customDialog.isShowing()))
                         customDialog.dismiss();
-                    displayMessage(getString(R.string.something_went_wrong));
+                    if(getContext() != null){
+                        displayMessage(getString(R.string.something_went_wrong));
+                    }
+
                 }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
@@ -1806,7 +1923,10 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             }
 
                         }, error -> {
-                    displayMessage(getString(R.string.something_went_wrong));
+                    if(getContext() != null){
+                        displayMessage(getString(R.string.something_went_wrong));
+                    }
+
                 }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
@@ -3021,12 +3141,12 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                 source_lng = "" + cmPosition.target.longitude;
 
                                 mMap.clear();
-//                            setValuesForSourceAndDestination();
+                            setValuesForSourceAndDestination();
                                 flowValue = 1;
                                 layoutChanges();
                                 strPickLocation = "";
                                 strPickType = "";
-                                getServiceList();
+//                                getServiceList();
 
                                 CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(cmPosition.target.latitude,
                                         cmPosition.target.longitude));
@@ -3059,12 +3179,12 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                 dest_lng = "" + cmPosition.target.longitude;
                                 dropLocationName = dest_address;
                                 mMap.clear();
-//                            setValuesForSourceAndDestination();
+                            setValuesForSourceAndDestination();
                                 flowValue = 1;
                                 layoutChanges();
                                 strPickLocation = "";
                                 strPickType = "";
-                                getServiceList();
+//                                getServiceList();
 
                                 CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(cmPosition.target.latitude,
                                         cmPosition.target.longitude));
@@ -3113,14 +3233,14 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     layoutChanges();
                     break;
                 case R.id.imgMenu:
-                    if (NAV_DRAWER == 0) {
-                        if (drawer != null)
-                            drawer.openDrawer(GravityCompat.START);
-                    } else {
-                        NAV_DRAWER = 0;
-                        if (drawer != null)
-                            drawer.closeDrawers();
-                    }
+//                    if (NAV_DRAWER == 0) {
+//                        if (drawer != null)
+//                            drawer.openDrawer(GravityCompat.START);
+//                    } else {
+//                        NAV_DRAWER = 0;
+//                        if (drawer != null)
+//                            drawer.closeDrawers();
+//                    }
                     break;
                 case R.id.mapfocus:
                     Double crtLat, crtLng;

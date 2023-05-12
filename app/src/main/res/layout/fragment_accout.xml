@@ -20,16 +20,16 @@
             android:layout_height="@dimen/_40sdp"
             android:background="@color/green"
             android:gravity="center"
-
-            android:text="Profile"
+            android:text="PROFILE"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20sdp"
+            android:textSize="@dimen/_16sdp"
             android:textStyle="bold" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             app:tabIndicatorColor="@color/dark_green"
             app:tabSelectedTextColor="@color/white"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:background="@color/green" />

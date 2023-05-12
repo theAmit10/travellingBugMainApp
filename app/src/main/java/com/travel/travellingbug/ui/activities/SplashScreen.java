@@ -385,8 +385,8 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     public void GoToMainActivity() {
-        Intent mainIntent = new Intent(this, HomeScreenActivity.class);
-//        Intent mainIntent = new Intent(this, MainActivity.class);
+//        Intent mainIntent = new Intent(this, HomeScreenActivity.class);
+        Intent mainIntent = new Intent(this, MainActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(mainIntent);
         finish();

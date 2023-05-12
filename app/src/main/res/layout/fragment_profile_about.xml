@@ -48,7 +48,7 @@
                     android:id="@+id/img_profile"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_50sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_dummy_user"
@@ -60,14 +60,14 @@
 
                 <ImageView
                     android:id="@+id/imageView6"
-                    android:layout_width="@dimen/_20sdp"
+                    android:layout_width="@dimen/_15sdp"
                     android:layout_height="@dimen/_20sdp"
-
                     android:layout_marginEnd="@dimen/_10sdp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_profile"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/txtuserName"
-                    app:srcCompat="@drawable/ic_forward" />
+                    app:srcCompat="@drawable/ic_forward"
+                    app:tint="@color/colorGray" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

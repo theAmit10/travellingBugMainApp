@@ -31,20 +31,20 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.google.android.libraries.places.api.net.PlacesClient;
-import com.travel.travellingbug.ClassLuxApp;
-import com.travel.travellingbug.R;
-import com.travel.travellingbug.helper.SharedHelper;
-import com.travel.travellingbug.ui.adapters.AutoCompleteAdapter;
-import com.travel.travellingbug.models.PlacePredictions;
-import com.travel.travellingbug.utills.Utilities;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.gson.Gson;
+import com.travel.travellingbug.ClassLuxApp;
+import com.travel.travellingbug.R;
+import com.travel.travellingbug.consts.AutoCompleteAdapter;
+import com.travel.travellingbug.helper.SharedHelper;
+import com.travel.travellingbug.models.PlacePredictions;
+import com.travel.travellingbug.utills.Utilities;
 
 import org.json.JSONObject;
 
@@ -73,6 +73,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
     private String GETPLACESHIT = "places_hit";
     private PlacePredictions predictions = new PlacePredictions();
     private Location mLastLocation;
+
     private AutoCompleteAdapter mAutoCompleteAdapter;
     private Handler handler;
     private GoogleApiClient mGoogleApiClient;

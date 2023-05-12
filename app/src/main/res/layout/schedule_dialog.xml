@@ -19,6 +19,7 @@
             android:src="@drawable/done" />
 
         <TextView
+            android:id="@+id/bookingStatusTitleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
@@ -28,6 +29,7 @@
             android:textSize="@dimen/_20sdp" />
 
         <TextView
+            android:id="@+id/bookingStatusSubTitleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/muli_regular"

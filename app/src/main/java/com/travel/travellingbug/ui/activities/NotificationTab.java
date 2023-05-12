@@ -1,5 +1,6 @@
 package com.travel.travellingbug.ui.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.hardware.SensorManager;
 import android.net.Uri;
@@ -59,11 +60,11 @@ public class NotificationTab extends AppCompatActivity {
         backArrow = findViewById(R.id.backArrow);
         recReview = findViewById(R.id.recReview);
         backArrow.setOnClickListener(v -> {
-
-            onBackPressed();
-            if (Jzvd.backPress()) {
-                return;
-            }
+            finish();
+//            onBackPressed();
+//            if (Jzvd.backPress()) {
+//                return;
+//            }
         });
         getNotifications();
 
@@ -172,7 +173,7 @@ public class NotificationTab extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(PostAdapter.MyViewHolder holder, int position) {
+        public void onBindViewHolder(PostAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
             try {
 
                 if (!jsonArray.optJSONObject(position).optString("notification_text").isEmpty()) {

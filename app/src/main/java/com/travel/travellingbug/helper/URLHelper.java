@@ -106,4 +106,7 @@ public interface URLHelper {
     // for preference
     String PREFERENCES = BASE + "api/provider/profile/preference";
 
+    String PUBLISH_A_RIDE = BASE + "api/provider/publishtrip";
+
+
 }
