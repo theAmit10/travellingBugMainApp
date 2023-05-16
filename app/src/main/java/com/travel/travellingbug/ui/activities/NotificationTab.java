@@ -144,7 +144,7 @@ public class NotificationTab extends AppCompatActivity {
         if (Jzvd.backPress()) {
             return;
         }
-        startActivity(new Intent(NotificationTab.this, MainActivity.class));
+        startActivity(new Intent(NotificationTab.this, HomeScreenActivity.class));
         finishAffinity();
     }
 

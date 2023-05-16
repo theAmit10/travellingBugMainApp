@@ -302,11 +302,13 @@ public class ProfileAboutFragment extends Fragment {
 //        }
 
         String emailS = SharedHelper.getKey(getContext(), "email");
-        if (emailS != null && !emailS.equalsIgnoreCase("null")&& !emailS.equalsIgnoreCase("") && emailS.length() > 0) {
+        System.out.println("emailS : "+emailS);
+        System.out.println("emailS : "+emailS.length());
+        if (!emailS.equalsIgnoreCase("null")&& !emailS.equalsIgnoreCase("") && emailS.length() > 0) {
             email.setText(emailS);
             email.setTextColor(getResources().getColor(R.color.dark_gray));
             email.setTypeface(email.getTypeface(), Typeface.BOLD);
-            email.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            email.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_forward_gray, 0);
 //            txtHeaderMob.setText(mobile);
         } else {
             email.setText("Confirm your email");
@@ -315,18 +317,6 @@ public class ProfileAboutFragment extends Fragment {
 //            txtHeaderMob.setText("");
         }
 
-//        String emailS = SharedHelper.getKey(getContext(), "email");
-//        if (emailS != null && !emailS.equalsIgnoreCase("null")&& !emailS.equalsIgnoreCase("") && emailS.length() > 0) {
-//            email.setText("Confirm your email");
-//            email.setTextColor(getResources().getColor(R.color.green));
-//            email.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
-//
-//        } else {
-//            email.setText("Confirm your email");
-//            email.setTextColor(getResources().getColor(R.color.green));
-//            email.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
-//
-//        }
 
         setTextToComponent();
 
@@ -336,7 +326,7 @@ public class ProfileAboutFragment extends Fragment {
             first_name.setText(first_nameS);
             first_name.setTextColor(getResources().getColor(R.color.dark_gray));
             first_name.setTypeface(first_name.getTypeface(), Typeface.BOLD);
-            first_name.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            first_name.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_forward_gray, 0);
 //            txtHeaderMob.setText(mobile);
         } else {
             first_name.setText("Add name");
@@ -350,12 +340,14 @@ public class ProfileAboutFragment extends Fragment {
 //        txtHeaderName.setText(SharedHelper.getKey(context, "first_name"));
 //        last_name.setText(SharedHelper.getKey(context, "last_name"));
         String mobile = SharedHelper.getKey(getContext(), "mobile");
+        System.out.println("mobile : "+mobile);
+        System.out.println("mobile : "+mobile.length());
 
         if (mobile != null && !mobile.equalsIgnoreCase("null") && mobile.length() > 0) {
             mobile_no.setText(mobile);
             mobile_no.setTextColor(getResources().getColor(R.color.dark_gray));
             mobile_no.setTypeface(mobile_no.getTypeface(), Typeface.BOLD);
-            mobile_no.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            mobile_no.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_forward_gray, 0);
 //            txtHeaderMob.setText(mobile);
         } else {
             mobile_no.setText("Add phone number");
@@ -372,11 +364,13 @@ public class ProfileAboutFragment extends Fragment {
 //            service.setText(getString(R.string.no_services));
 
         String TravelPreferenceStatus = SharedHelper.getKey(getContext(), "TravelPreferenceStatus");
-        if (TravelPreferenceStatus != null || !TravelPreferenceStatus.equalsIgnoreCase("0") ) {
+        System.out.println("TravelPreferenceStatus : "+TravelPreferenceStatus);
+        System.out.println("TravelPreferenceStatus : "+TravelPreferenceStatus.length());
+        if (!TravelPreferenceStatus.equalsIgnoreCase("") || !(TravelPreferenceStatus.length() == 0)) {
             addMyPreferencesTv.setText("Travel Preferences");
             addMyPreferencesTv.setTextColor(getResources().getColor(R.color.dark_gray));
             addMyPreferencesTv.setTypeface(addMyPreferencesTv.getTypeface(), Typeface.BOLD);
-            addMyPreferencesTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            addMyPreferencesTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_forward_gray, 0);
 
         } else {
             addMyPreferencesTv.setText("Add Travel Preferences");
@@ -387,11 +381,13 @@ public class ProfileAboutFragment extends Fragment {
 
 
         String bio = SharedHelper.getKey(getContext(), "bio");
-        if (bio != null || !bio.equalsIgnoreCase("null") || !bio.equalsIgnoreCase("") ) {
+        System.out.println("Bio : "+bio);
+        System.out.println("Bio length : "+bio.length());
+        if (!(bio.equalsIgnoreCase("null"))) {
             addAMiniBioTv.setText("Bio");
             addAMiniBioTv.setTextColor(getResources().getColor(R.color.dark_gray));
             addAMiniBioTv.setTypeface(addAMiniBioTv.getTypeface(), Typeface.BOLD);
-            addAMiniBioTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            addAMiniBioTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_forward_gray, 0);
 
         } else {
             addAMiniBioTv.setText("Add a mini bio");
@@ -401,11 +397,13 @@ public class ProfileAboutFragment extends Fragment {
         }
 
         String DocumentStatus = SharedHelper.getKey(getContext(), "DocumentStatus");
-        if (DocumentStatus != null || !DocumentStatus.equalsIgnoreCase("null") || !DocumentStatus.equalsIgnoreCase("") || DocumentStatus.equalsIgnoreCase("yes") ) {
+        System.out.println("DocumentStatus : "+DocumentStatus);
+        System.out.println("DocumentStatus : "+DocumentStatus.length());
+        if (!DocumentStatus.equalsIgnoreCase("null") || !DocumentStatus.equalsIgnoreCase("") || DocumentStatus.equalsIgnoreCase("yes") ) {
             verifyId.setText("Documents");
             verifyId.setTextColor(getResources().getColor(R.color.dark_gray));
             verifyId.setTypeface(verifyId.getTypeface(), Typeface.BOLD);
-            verifyId.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+            verifyId.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_forward_gray, 0);
 
         } else {
             verifyId.setText("Verify ID");
@@ -416,14 +414,14 @@ public class ProfileAboutFragment extends Fragment {
 
 
         String status = SharedHelper.getKey(getContext(), "status");
-        if (status != null && !status.equalsIgnoreCase("null") && status.length() > 0) {
-            titlePAtv.setText(status);
-            titlePAtv.setAllCaps(true);
-            titlePAtv.setTextColor(getResources().getColor(R.color.dark_gray));
-
-        } else {
-            titlePAtv.setText("New Comer");
-        }
+//        if (status != null && !status.equalsIgnoreCase("null") && status.length() > 0) {
+//            titlePAtv.setText(status);
+//            titlePAtv.setAllCaps(true);
+//            titlePAtv.setTextColor(getResources().getColor(R.color.dark_gray));
+//
+//        } else {
+//            titlePAtv.setText("New Comer");
+//        }
 
 
 

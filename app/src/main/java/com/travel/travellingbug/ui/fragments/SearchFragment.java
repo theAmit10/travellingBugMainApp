@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.text.format.DateUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.KeyEvent;
@@ -114,9 +115,11 @@ import com.travel.travellingbug.models.RestInterface;
 import com.travel.travellingbug.models.ServiceGenerator;
 import com.travel.travellingbug.ui.activities.CouponActivity;
 import com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch;
+import com.travel.travellingbug.ui.activities.FindRidesActivity;
 import com.travel.travellingbug.ui.activities.Payment;
 import com.travel.travellingbug.ui.activities.ShowProfile;
 import com.travel.travellingbug.ui.activities.TrackActivity;
+import com.travel.travellingbug.ui.activities.UpdateProfile;
 import com.travel.travellingbug.utills.MapAnimator;
 import com.travel.travellingbug.utills.MapRipple;
 import com.travel.travellingbug.utills.MyTextView;
@@ -152,7 +155,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 
 
-
 public class SearchFragment extends Fragment implements OnMapReadyCallback, LocationListener,
         GoogleMap.OnMarkerDragListener, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, ResponseListener, GoogleMap.OnCameraMoveListener {
@@ -166,6 +168,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     Context context;
     View rootView;
     HomeFragmentListener listener;
+
+    CardView btnRequestRidesCv;
     double wallet_balance;
     String ETA;
     TextView txtSelectedAddressSource;
@@ -227,7 +231,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     Button btnDonePopup;
     LinearLayout lnrApproximate;
     Button btnRequestRideConfirm;
-    Button imgSchedule;
+    Button imgSchedule, btnSearch;
     TextView tvPickUpAddres, tvDropAddres;
     LinearLayout layoutSrcDest;
 
@@ -330,9 +334,19 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     private Marker sourceMarker;
     private Marker destinationMarker;
     private Marker providerMarker;
+
+    boolean push = false;
+    boolean isRunning = false, timerCompleted = false;
+
+    String type = null, datas = null;
+
+    String crt_lat = "", crt_lng = "";
     private boolean isDragging;
 
     TextView calendertv;
+
+    private static int deviceHeight;
+    private static int deviceWidth;
 
     public static PublishFragment newInstance() {
         return new PublishFragment();
@@ -376,6 +390,14 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
         }
 
+        if (bundle != null) {
+            push = bundle.getBoolean("push");
+        }
+        if (push) {
+            isRunning = false;
+        }
+
+
     }
 
     @Override
@@ -386,8 +408,24 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             rootView = inflater.inflate(R.layout.fragment_search, container, false);
             ButterKnife.bind(this, rootView);
 //            getActivity().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
         }
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        deviceHeight = displayMetrics.heightPixels;
+        deviceWidth = displayMetrics.widthPixels;
+        customDialog = new CustomDialog(getActivity());
+        customDialog.setCancelable(true);
+        customDialog.show();
+        //permission to access location
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        } else {
+//            setUpMapIfNeeded();
+            MapsInitializer.initialize(getActivity());
+        }
+
+
         restInterface = ServiceGenerator.createService(RestInterface.class);
         customDialog = new CustomDialog(getActivity());
         if (activity != null && isAdded()) {
@@ -395,6 +433,13 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 customDialog.show();
                 new Handler().postDelayed(() -> {
                     init(rootView);
+
+
+                    getProfile();
+
+
+                    getDocList();
+
                     //permission to access location
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
                             ActivityCompat.checkSelfPermission(getActivity(),
@@ -419,6 +464,27 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             }
         }
 
+
+        if (SharedHelper.getKey(getContext(), "Old_User").equalsIgnoreCase("yes")) {
+            // Setting Name First
+            if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
+                Toast.makeText(getContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), UpdateProfile.class);
+                intent.putExtra("parameter", "first_name");
+                intent.putExtra("value", "");
+                startActivityForResult(intent, 1);
+            }
+
+
+        } else {
+            if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
+                Toast.makeText(getContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), UpdateProfile.class);
+                intent.putExtra("parameter", "first_name");
+                intent.putExtra("value", "");
+                startActivityForResult(intent, 1);
+            }
+        }
 
         calendertv = rootView.findViewById(R.id.calendertv);
         calendertv.setOnClickListener(new View.OnClickListener() {
@@ -453,7 +519,6 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.getDatePicker().setMaxDate((System.currentTimeMillis() - 1000) + (1000 * 60 * 60 * 24 * 7));
                 datePickerDialog.show();
-
 
 
                 Calendar mcurrentTime = Calendar.getInstance();
@@ -508,11 +573,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                 long milliseconds = date.getTime();
                                 if (!DateUtils.isToday(milliseconds)) {
 //                                    timetv.setText(choosedTime);
-                                    System.out.println("time : "+choosedTime);
+                                    System.out.println("time : " + choosedTime);
                                 } else {
                                     if (utils.checktimings(scheduledTime)) {
 //                                        timetv.setText(choosedTime);
-                                        System.out.println("time : "+choosedTime);
+                                        System.out.println("time : " + choosedTime);
                                     } else {
                                         Toast toast = new Toast(getActivity());
                                         Toast.makeText(getActivity(), getString(R.string.different_time), Toast.LENGTH_SHORT).show();
@@ -531,10 +596,137 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         });
 
 
-
         return rootView;
 
 
+    }
+
+    public void getProfile() {
+
+        if (isInternet) {
+            JSONObject object = new JSONObject();
+            JsonObjectRequest jsonObjectRequest = new
+                    JsonObjectRequest(Request.Method.GET, URLHelper.USER_PROFILE_API,
+                            object, response -> {
+                        Log.v("GetProfile", response.toString());
+                        SharedHelper.putKey(getContext(), "id", response.optString("id"));
+                        SharedHelper.putKey(getContext(), "first_name", response.optString("first_name"));
+                        SharedHelper.putKey(getContext(), "last_name", response.optString("last_name"));
+                        SharedHelper.putKey(getContext(), "email", response.optString("email"));
+                        SharedHelper.putKey(getContext(), "picture", URLHelper.BASE + "storage/app/public/" + response.optString("picture"));
+                        SharedHelper.putKey(getContext(), "gender", response.optString("gender"));
+                        SharedHelper.putKey(getContext(), "sos", response.optString("sos"));
+                        SharedHelper.putKey(getContext(), "mobile", response.optString("mobile"));
+                        SharedHelper.putKey(getContext(), "refer_code", response.optString("refer_code"));
+                        SharedHelper.putKey(getContext(), "wallet_balance", response.optString("wallet_balance"));
+                        SharedHelper.putKey(getContext(), "payment_mode", response.optString("payment_mode"));
+                        SharedHelper.putKey(getContext(), "currency", response.optString("currency"));
+
+
+                        //                    SharedHelper.putKey(context, "currency", response.optString("payment_mode"));
+                        SharedHelper.putKey(getContext(), "rating", response.optString("rating"));
+                        SharedHelper.putKey(getContext(), "status", response.optString("status"));
+                        SharedHelper.putKey(getContext(), "ulatitude", response.optString("latitude"));
+                        SharedHelper.putKey(getContext(), "ulongitude", response.optString("longitude"));
+                        SharedHelper.putKey(getContext(), "udevice_token", response.optString("device_token"));
+                        SharedHelper.putKey(getContext(), "bio", response.optString("bio"));
+
+
+                        SharedHelper.putKey(getContext(), "loggedIn", getString(R.string.True));
+                        if (response.optString("avatar").startsWith("http"))
+                            SharedHelper.putKey(getContext(), "picture", response.optString("avatar"));
+                        else
+                            SharedHelper.putKey(getContext(), "picture", URLHelper.BASE + "storage/app/public/" + response.optString("avatar"));
+
+                        if (response.optJSONObject("service") != null) {
+                            try {
+                                JSONObject service = response.optJSONObject("service");
+
+                                SharedHelper.putKey(getContext(), "service_id", service.optString("id"));
+                                SharedHelper.putKey(getContext(), "service_status", service.optString("status"));
+                                SharedHelper.putKey(getContext(), "service_number", service.optString("service_number"));
+                                SharedHelper.putKey(getContext(), "service_model", service.optString("service_model"));
+                                SharedHelper.putKey(getContext(), "service_capacity", service.optString("service_capacity"));
+                                SharedHelper.putKey(getContext(), "service_year", service.optString("service_year"));
+                                SharedHelper.putKey(getContext(), "service_make", service.optString("service_make"));
+                                SharedHelper.putKey(getContext(), "service_name", service.optString("service_name"));
+                                SharedHelper.putKey(getContext(), "service_ac", service.optString("service_ac"));
+                                SharedHelper.putKey(getContext(), "service_color", service.optString("service_color"));
+
+
+                                if (service.optJSONObject("service_type") != null) {
+                                    JSONObject serviceType = service.optJSONObject("service_type");
+                                    SharedHelper.putKey(getContext(), "service", serviceType.optString("name"));
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+
+                    }, error -> {
+                        displayMessage(getString(R.string.something_went_wrong));
+                    }) {
+                        @Override
+                        public Map<String, String> getHeaders() {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+                            headers.put("X-Requested-With", "XMLHttpRequest");
+                            Log.e(TAG, "getHeaders: Token" + SharedHelper.getKey(getContext(), "access_token") + SharedHelper.getKey(getContext(), "token_type"));
+                            headers.put("Authorization", "" + "Bearer" + " " + SharedHelper.getKey(getContext(), "access_token"));
+                            return headers;
+                        }
+                    };
+
+            ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+        } else {
+            displayMessage(getString(R.string.something_went_wrong_net));
+        }
+
+    }
+
+
+    private void getDocList() {
+
+        CustomDialog customDialog = new CustomDialog(getContext());
+        customDialog.setCancelable(false);
+        customDialog.show();
+
+        JsonArrayRequest jsonArrayRequest = new
+                JsonArrayRequest(URLHelper.BASE + "api/provider/document/status",
+                        response -> {
+
+                            if (response != null) {
+                                if (response.length() == 0) {
+                                    SharedHelper.putKey(getContext(), "DocumentStatus", "no");
+                                } else {
+                                    SharedHelper.putKey(getContext(), "DocumentStatus", "yes");
+                                }
+
+                                Log.v("response doc", response + "doc");
+                                Log.v("response doc length", String.valueOf(+response.length()));
+
+
+                            } else {
+                                SharedHelper.putKey(getContext(), "DocumentStatus", "no");
+                            }
+
+                            customDialog.dismiss();
+
+                        }, error -> {
+                    Log.v("DocumentsStatus Error", error.getMessage() + "");
+                    customDialog.dismiss();
+                    displayMessage(getString(R.string.something_went_wrong));
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("X-Requested-With", "XMLHttpRequest");
+                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                        return headers;
+                    }
+                };
+
+        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
     }
 
 
@@ -607,8 +799,26 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         lblPromo = rootView.findViewById(R.id.lblPromo);
         booking_id = rootView.findViewById(R.id.booking_id);
         btnRequestRides = rootView.findViewById(R.id.btnRequestRides);
+        btnSearch = rootView.findViewById(R.id.btnSearch);
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scheduledDate = "";
+                scheduledTime = "";
+                if (!frmSource.getText().toString().equalsIgnoreCase("") &&
+                        !destination.getText().toString().equalsIgnoreCase("") &&
+                        !frmDest.getText().toString().equalsIgnoreCase("")) {
+                    getApproximateFare();
+                    sourceDestLayout.setOnClickListener(new SearchFragment.OnClick());
+                } else {
+                    Toast.makeText(context, "Please enter both pickup and drop locations", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 //        <!--  Driver and service type Details-->
+
 
         lnrSearchAnimation = rootView.findViewById(R.id.lnrSearch);
         lnrProviderPopup = rootView.findViewById(R.id.lnrProviderPopup);
@@ -713,6 +923,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         lblCmfrmDestAddress = rootView.findViewById(R.id.lblCmfrmDestAddress);
         ImgConfrmCabType = rootView.findViewById(R.id.ImgConfrmCabType);
         tvZoneMsg = rootView.findViewById(R.id.tvZoneMsg);
+
+        btnRequestRidesCv = rootView.findViewById(R.id.btnRequestRidesCv);
         // serviceItemPrice =  rootView.findViewById(R.id.serviceItemPrice);
 
 
@@ -952,7 +1164,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
                     String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
                     frmDest.setText(destination_address);
-                }else{
+                } else {
                     frmDest.setText("Going to");
                 }
 
@@ -971,7 +1183,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         try {
             object.put("latitude", latitude);
             object.put("longitude", longitude);
-            Utilities.print("SendRequestUpdate", "" + object.toString());
+            Utilities.print("SendRequestUpdateLocation", "" + object.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -979,7 +1191,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         ClassLuxApp.getInstance().cancelRequestInQueue("send_request");
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.POST,
-                        URLHelper.BASE + "api/user/update/location",
+                        URLHelper.UPDATE_LOCATION_ADMIN,
                         object,
                         response -> {
                             Log.v("uploadRes", response + " ");
@@ -1192,6 +1404,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 destinationBorderImg.setVisibility(View.GONE);
                 sourceDestLayout.setVisibility(View.GONE);
 
+                btnRequestRidesCv.setVisibility(View.VISIBLE);
+
 
                 imgBack.setVisibility(View.VISIBLE);
                 layoutSrcDest.setVisibility(View.GONE);
@@ -1363,7 +1577,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 }
                 if (completeAddress != null) {
                     //mLocationTextView.setText(completeAddress);
-                    txtSelectedAddressSource.setText(completeAddress);
+                    if(txtSelectedAddressSource != null){
+                        txtSelectedAddressSource.setText(completeAddress);
+                    }
                 }
             }
         }
@@ -1796,7 +2012,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         }, error -> {
                     if ((customDialog != null) && (customDialog.isShowing()))
                         customDialog.dismiss();
-                    if(getContext() != null){
+                    if (getContext() != null) {
                         displayMessage(getString(R.string.something_went_wrong));
                     }
 
@@ -1923,7 +2139,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             }
 
                         }, error -> {
-                    if(getContext() != null){
+                    if (getContext() != null) {
                         displayMessage(getString(R.string.something_went_wrong));
                     }
 
@@ -3028,8 +3244,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     if (!frmSource.getText().toString().equalsIgnoreCase("") &&
                             !destination.getText().toString().equalsIgnoreCase("") &&
                             !frmDest.getText().toString().equalsIgnoreCase("")) {
-                        getApproximateFare();
-                        sourceDestLayout.setOnClickListener(new SearchFragment.OnClick());
+                        startActivity(new Intent(getContext(), FindRidesActivity.class));
+//                        getApproximateFare();
+//                        sourceDestLayout.setOnClickListener(new SearchFragment.OnClick());
                     } else {
                         Toast.makeText(context, "Please enter both pickup and drop locations", Toast.LENGTH_SHORT).show();
                     }
@@ -3141,7 +3358,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                 source_lng = "" + cmPosition.target.longitude;
 
                                 mMap.clear();
-                            setValuesForSourceAndDestination();
+                                setValuesForSourceAndDestination();
                                 flowValue = 1;
                                 layoutChanges();
                                 strPickLocation = "";
@@ -3179,7 +3396,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                 dest_lng = "" + cmPosition.target.longitude;
                                 dropLocationName = dest_address;
                                 mMap.clear();
-                            setValuesForSourceAndDestination();
+                                setValuesForSourceAndDestination();
                                 flowValue = 1;
                                 layoutChanges();
                                 strPickLocation = "";

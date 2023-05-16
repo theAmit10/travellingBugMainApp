@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:elevation="@dimen/_10sdp"
-
         android:orientation="horizontal">
 
         <ImageView
@@ -44,17 +44,27 @@
             android:orientation="horizontal">
 
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/text_input_layout"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:elevation="@dimen/_10sdp"
+                android:paddingTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_5sdp">
 
                 <com.travel.travellingbug.utills.MyEditText
-
                     android:id="@+id/editText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/auth_btn_white_low_corner_bg"
+                    android:backgroundTint="@color/colorLightGray"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:padding="@dimen/_10sdp"
+                    tools:ignore="TouchTargetSizeCheck"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>

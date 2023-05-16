@@ -39,50 +39,53 @@
         android:orientation="vertical"
         android:padding="@dimen/_20sdp">
 
-        <LinearLayout
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp"
 
+            android:background="@drawable/auth_btn_gray_bg"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:paddingBottom="@dimen/_5sdp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_layout_title"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTexttitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:background="@android:color/transparent"
+                android:hint="Title"
+                android:paddingBottom="@dimen/_5sdp"
+                tools:ignore="TouchTargetSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <com.travel.travellingbug.utills.MyEditText
 
-                    android:id="@+id/editTexttitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="title"/>
-            </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout_subtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp"
 
+            android:background="@drawable/auth_btn_gray_bg"
+            android:paddingStart="@dimen/_15sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_15sdp"
+            android:paddingBottom="@dimen/_5sdp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_layout_subtitle"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextsubtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <com.travel.travellingbug.utills.MyEditText
-
-                    android:id="@+id/editTextsubtitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="subtitle"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
+                android:background="@android:color/transparent"
+                android:hint="Subtitle"
+                android:paddingBottom="@dimen/_5sdp"
+                tools:ignore="TouchTargetSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.travel.travellingbug.utills.MyButton
             android:id="@+id/btnUpdate"

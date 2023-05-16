@@ -69,11 +69,11 @@
 
         <Button
             android:id="@+id/btnTakePicture"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:background="@drawable/auth_btn_blue_bg"
-            android:backgroundTint="@color/green"
+            android:background="@drawable/auth_btn_green_bg"
+
             android:elevation="@dimen/_10sdp"
             android:fontFamily="@font/montserrat_semibold"
             android:paddingStart="@dimen/_10sdp"

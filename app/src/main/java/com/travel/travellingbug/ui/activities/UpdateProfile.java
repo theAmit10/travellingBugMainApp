@@ -74,8 +74,8 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
 
             toolName.setText(getString(R.string.update_name));
             text_input_layout.setHelperText("This name will be shown to the driver during ride pickup");
-            editText.setHint("Name");
-            text_input_layout.setHint("Enter  Name");
+            editText.setHint("Enter Name");
+//            text_input_layout.setHint("Enter  Name");
             editText.setText(value);
             editText.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
         }
@@ -84,16 +84,17 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
 
             toolName.setText(getString(R.string.update_email));
             text_input_layout.setHelperText("It is updated to the your account");
-            editText.setHint(getString(R.string.email));
-            text_input_layout.setHint(getString(R.string.enter_email));
+            editText.setHint(getString(R.string.enter_email));
+//            text_input_layout.setHint(getString(R.string.enter_email));
             editText.setText(value);
             editText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         }
         if (parameter.equalsIgnoreCase("mobile")) {
 
             toolName.setText(getString(R.string.update_mobile));
-            editText.setHint("Mobile No");
-            text_input_layout.setHint("Enter Mobile No");
+            editText.setHint("Enter Mobile No");
+            text_input_layout.setHelperText("It is updated to the your account");
+//            text_input_layout.setHint("Enter Mobile No");
             editText.setText(value);
             editText.setInputType(InputType.TYPE_CLASS_NUMBER);
         }
@@ -101,8 +102,9 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
 
         if (parameter.equalsIgnoreCase("bio")) {
             toolName.setText("Update a Mini Bio");
-            editText.setHint("Bio");
-            text_input_layout.setHint("Enter Mini Bio");
+            editText.setHint("Enter Mini Bio");
+            text_input_layout.setHelperText("It is updated to the your account");
+//            text_input_layout.setHint("Enter Mini Bio");
 
             editText.setText(value);
             editText.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);

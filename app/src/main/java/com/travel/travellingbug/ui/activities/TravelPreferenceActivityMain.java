@@ -196,6 +196,8 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
                     travelPreferenceRV.setAdapter(verifyIdMainActivityAdapter);
 
                 } else {
+                    if (customDialog != null)
+                        customDialog.dismiss();
                     travelPreferenceRVLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
 
@@ -203,7 +205,7 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
 
 
             }, error -> {
-                displayMessage(getString(R.string.something_went_wrong));
+//                displayMessage(getString(R.string.something_went_wrong));
             }) {
                 @Override
                 public Map<String, String> getHeaders() {

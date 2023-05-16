@@ -254,7 +254,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center_vertical|center"
-                android:text="Add Ride"
+                android:text="ADD RIDE"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14sdp" />
         </LinearLayout>
@@ -321,7 +321,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:background="@color/white"
+                                    android:background="@color/transparent"
                                     android:orientation="vertical">
 
 <!--                                    <LinearLayout-->
@@ -448,6 +448,7 @@
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_1sdp"
+                                    android:visibility="gone"
                                     android:background="@color/colorGray_light" />
 
                                 <LinearLayout
@@ -502,7 +503,7 @@
                                             android:clickable="true"
                                             android:gravity="center"
                                             android:paddingEnd="@dimen/_8sdp"
-                                            android:text="Add Ride"
+                                            android:text="Publish Ride"
                                             android:textColor="@color/button_text_color"
                                             android:textSize="@dimen/_12sdp" />
                                     </androidx.cardview.widget.CardView>
@@ -787,13 +788,13 @@
                                     android:gravity="center"
                                     android:orientation="vertical">
 
-                                    a
+
                                     <com.travel.travellingbug.utills.MyBoldTextView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/_5sdp"
                                         android:layout_marginBottom="@dimen/_10sdp"
-                                        android:text="@string/schedule"
+                                        android:text="Schedule a Ride"
                                         android:textColor="@color/dark_green"
                                         android:textSize="@dimen/_16sdp"
                                         android:textStyle="bold" />
@@ -829,12 +830,13 @@
                                             android:layout_margin="@dimen/_10sdp"
                                             android:layout_weight="1"
                                             android:background="@drawable/auth_btn_green_bg"
+                                            android:backgroundTint="@color/colorLightGray"
                                             android:drawableLeft="@drawable/ic_calender"
                                             android:drawablePadding="@dimen/_10sdp"
-                                            android:drawableTint="@color/white"
+                                            android:drawableTint="@color/black"
                                             android:padding="@dimen/_10sdp"
                                             android:text="Ride Start Date"
-                                            android:textColor="@color/white"
+                                            android:textColor="@color/black"
                                             android:textSize="@dimen/_11sdp"
                                             android:textStyle="bold" />
 
@@ -845,12 +847,13 @@
                                             android:layout_margin="@dimen/_10sdp"
                                             android:layout_weight="1"
                                             android:background="@drawable/auth_btn_green_bg"
+                                            android:backgroundTint="@color/colorLightGray"
                                             android:drawableLeft="@drawable/ic_time"
                                             android:drawablePadding="@dimen/_10sdp"
-                                            android:drawableTint="@color/white"
+                                            android:drawableTint="@color/black"
                                             android:padding="@dimen/_10sdp"
                                             android:text="Ride Start Time"
-                                            android:textColor="@color/white"
+                                            android:textColor="@color/black"
                                             android:textSize="@dimen/_11sdp"
                                             android:textStyle="bold" />
 
@@ -2419,7 +2422,7 @@
                                         <androidx.cardview.widget.CardView
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_margin="@dimen/_10sdp"
+                                            app:cardCornerRadius="@dimen/_10sdp"
                                             app:cardElevation="@dimen/_5sdp">
 
                                             <LinearLayout
@@ -2476,7 +2479,7 @@
                                                         <com.travel.travellingbug.utills.MyTextView
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="wrap_content"
-                                                            android:text="@string/source_location"
+                                                            android:text="Set pickup location"
                                                             android:textColor="@color/colorDarkGray"
                                                             android:textSize="@dimen/_12sdp" />
 
@@ -2508,7 +2511,7 @@
                                                         <com.travel.travellingbug.utills.MyTextView
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="wrap_content"
-                                                            android:text="@string/destination_location"
+                                                            android:text="Set drop location"
                                                             android:textColor="@color/colorDarkGray"
                                                             android:textSize="@dimen/_12sdp" />
 

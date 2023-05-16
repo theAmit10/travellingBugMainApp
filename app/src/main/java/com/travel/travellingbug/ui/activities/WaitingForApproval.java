@@ -38,7 +38,7 @@ public class WaitingForApproval extends AppCompatActivity {
         } else {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         }
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_waiting_for_approval);
 
         token = SharedHelper.getKey(WaitingForApproval.this, "access_token");
@@ -55,7 +55,7 @@ public class WaitingForApproval extends AppCompatActivity {
 
         logoutBtn.setOnClickListener(view -> {
             Intent intent = new Intent(WaitingForApproval.this,
-                    MainActivity.class);
+                    HomeScreenActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             finish();

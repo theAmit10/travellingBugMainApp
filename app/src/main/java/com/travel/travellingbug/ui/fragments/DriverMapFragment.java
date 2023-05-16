@@ -317,12 +317,12 @@ public class DriverMapFragment extends Fragment implements
     ParserTask parserTask;
     boolean normalPlay = false;
     boolean push = false;
+    boolean isRunning = false, timerCompleted = false;
     int NAV_DRAWER = 0;
     DrawerLayout drawer;
     Utilities utils = new Utilities();
     MediaPlayer mPlayer;
     String crt_lat = "", crt_lng = "";
-    boolean isRunning = false, timerCompleted = false;
     ConnectionHelper helper;
     View view;
     boolean doubleBackToExitPressedOnce = false;
@@ -654,6 +654,7 @@ public class DriverMapFragment extends Fragment implements
             view = inflater.inflate(R.layout.fragment_map, container, false);
         }
         ButterKnife.bind(this, view);
+
         findViewById(view);
         service_intent = new Intent(getActivity(), LocationTracking.class);
         helper = new ConnectionHelper(getActivity());
@@ -673,6 +674,8 @@ public class DriverMapFragment extends Fragment implements
             setUpMapIfNeeded();
             MapsInitializer.initialize(getActivity());
         }
+
+
         ha = new Handler();
         if (type != null) {
             checkStatusSchedule();

@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     android:orientation="vertical">
 
     <LinearLayout
@@ -15,15 +14,7 @@
         android:paddingTop="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp">
 
-<!--        <com.travel.travellingbug.utills.MyTextView-->
-<!--            android:id="@+id/datetime"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
 
-<!--            android:paddingBottom="@dimen/_7sdp"-->
-<!--            android:text="January 10- 12:30 PM"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="@dimen/_12sdp" />-->
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -149,8 +140,9 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginStart="-20dp"
             android:text="Complete"
+
             android:rotation="-90"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/_10sdp" />
 
         <LinearLayout
@@ -282,8 +274,8 @@
 
                 <ImageView
                     android:id="@+id/imageView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/ic_circle_green"
@@ -293,7 +285,7 @@
                 <View
                     android:id="@+id/view5"
                     android:layout_width="1dp"
-                    android:layout_height="10dp"
+                    android:layout_height="15dp"
                     android:background="@color/colorDarkGray"
                     app:layout_constraintEnd_toEndOf="@+id/imageView9"
                     app:layout_constraintStart_toStartOf="@+id/imageView9"
@@ -301,8 +293,8 @@
 
                 <ImageView
                     android:id="@+id/imageView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
                     android:src="@drawable/ic_circle_yellow"
                     app:layout_constraintStart_toStartOf="@+id/imageView9"
                     app:layout_constraintTop_toBottomOf="@+id/view5" />
@@ -333,6 +325,7 @@
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_10sdp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView10"
                     app:layout_constraintTop_toBottomOf="@+id/view5" />

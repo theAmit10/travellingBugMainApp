@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -121,7 +122,7 @@ public class OnGoingTrips extends Fragment {
         customDialog.setCancelable(false);
         customDialog.show();
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.UPCOMING_TRIPS, response -> {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.MY_PUBLISH_UPCOMMING_TRIPS, response -> {
 
             Log.v("GetHistoryList", response.toString());
             if (response != null) {
@@ -274,8 +275,19 @@ public class OnGoingTrips extends Fragment {
                 if (!jsonArray.optJSONObject(position).optString("schedule_at", "").isEmpty()) {
                     String form = jsonArray.optJSONObject(position).optString("schedule_at");
                     try {
-                        holder.tripDate.setText(getDate(form) + "th " + getMonth(form) + " " + getYear(form) + "at " + getTime(form));
+                        holder.tripDate.setText(getDate(form) + "th " + getMonth(form) + " " + "at " + getTime(form));
                         holder.tripId.setText(jsonArray.optJSONObject(position).optString("booking_id"));
+
+                        holder.listitemrating.setRating(Float.parseFloat("3.0"));
+
+
+                        holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
+                        holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
+                        if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("PENDING")){
+                            holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
+                        }
+                        holder.status.setText(jsonArray.optJSONObject(position).optString("status"));
+
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
@@ -338,9 +350,11 @@ public class OnGoingTrips extends Fragment {
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
             TextView tripTime, car_name;
-            TextView tripDate, tripAmount, tripId;
+            TextView tripDate, tripAmount, tripId,txtSource,txtDestination,status;
             ImageView tripImg, driver_image;
             Button btnCancel, btnStart;
+
+            RatingBar listitemrating;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
@@ -353,6 +367,10 @@ public class OnGoingTrips extends Fragment {
                 btnCancel = itemView.findViewById(R.id.btnCancel);
                 btnStart = itemView.findViewById(R.id.btnStart);
                 tripId = itemView.findViewById(R.id.tripid);
+                txtDestination = itemView.findViewById(R.id.txtDestination);
+                txtSource = itemView.findViewById(R.id.txtSource);
+                status = itemView.findViewById(R.id.status);
+                listitemrating = itemView.findViewById(R.id.listitemrating);
 
                 itemView.setOnClickListener(view -> {
                     Intent intent = new Intent(getActivity(), HistoryDetails.class);

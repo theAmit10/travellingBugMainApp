@@ -1,15 +1,14 @@
 package com.travel.travellingbug.ui.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.fragment.app.Fragment;
 
 import com.travel.travellingbug.R;
 
@@ -39,7 +38,7 @@ public class HolidayPackageFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_holiday_package, container, false);
 
         webView = view.findViewById(R.id.webviewOrg);
-        url = "https://tejratidukan.com/carpool/";
+        url = "https://travellingbug.in/";
 
         WebViewClient webViewClient  = new WebViewClient();
         webView.setWebViewClient(webViewClient);

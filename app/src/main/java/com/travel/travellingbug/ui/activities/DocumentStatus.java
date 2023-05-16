@@ -153,6 +153,7 @@ public class DocumentStatus extends AppCompatActivity {
                             if (response != null) {
                                 SharedHelper.putKey(getApplicationContext(),"DocumentStatus","yes");
                                 Log.v("response doc", response + "doc");
+                                Log.v("response doc length", String.valueOf(+response.length()));
                                 PostAdapter postAdapter = new PostAdapter(response);
                                 recDocuments.setHasFixedSize(true);
                                 recDocuments.setLayoutManager(new LinearLayoutManager(DocumentStatus.this) {

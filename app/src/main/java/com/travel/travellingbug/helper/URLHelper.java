@@ -13,6 +13,10 @@ public interface URLHelper {
     String GET_NOTIFICATIONS = BASE + "api/provider/notification";
     String UPCOMING_TRIP_DETAILS = BASE + "api/provider/requests/upcoming/details";
     String UPCOMING_TRIPS = BASE + "api/provider/requests/upcoming";
+
+    String MY_PUBLISH_UPCOMMING_TRIPS = BASE + "api/provider/upcoming/trips";
+    String MY_PUBLISH_UPCOMMING_TRIPS_DETAILS = BASE + "api/provider/myupcoming/details";
+
     String CANCEL_REQUEST_API = BASE + "api/provider/cancel";
     String TARGET_API = BASE + "api/provider/target";
     String RESET_PASSWORD = BASE + "api/provider/reset/password";
@@ -107,6 +111,8 @@ public interface URLHelper {
     String PREFERENCES = BASE + "api/provider/profile/preference";
 
     String PUBLISH_A_RIDE = BASE + "api/provider/publishtrip";
+
+    String UPDATE_LOCATION_ADMIN = BASE + "api/provider/profile/location";
 
 
 }

@@ -28,6 +28,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -100,6 +101,8 @@ public class DocUploadActivity extends AppCompatActivity {
     Button adapterButton;
     int totalDocUpload = 0;
     String Profile;
+
+    LinearLayout documentNameLL;
 
     ImageView backArrow;
     TextView txtUploa;
@@ -182,7 +185,8 @@ public class DocUploadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doc_upload);
 
 
-        Toast.makeText(getApplicationContext(), "First Name : "+SharedHelper.getKey(getApplicationContext(),"first_name"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Welcome  "+SharedHelper.getKey(getApplicationContext(),"first_name"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Please upload a document to continue", Toast.LENGTH_LONG).show();
         System.out.println("First Name : "+SharedHelper.getKey(getApplicationContext(),"first_name"));
         // Setting Name First
         if(SharedHelper.getKey(getApplicationContext(),"first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getApplicationContext(),"first_name").equalsIgnoreCase("") || SharedHelper.getKey(getApplicationContext(),"first_name").equalsIgnoreCase(null)){
@@ -219,6 +223,7 @@ public class DocUploadActivity extends AppCompatActivity {
         btpersonalId = findViewById(R.id.btpersonalId);
         btPersonalPic = findViewById(R.id.btPersonalPic);
         recDoc = findViewById(R.id.recDoc);
+
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -268,7 +273,8 @@ public class DocUploadActivity extends AppCompatActivity {
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -370,6 +376,7 @@ public class DocUploadActivity extends AppCompatActivity {
                             responseArray = jsonArray;
                             DocAdapter docAdapter = new DocAdapter(jsonArray);
                             recDoc.setHasFixedSize(true);
+                            recDoc.setNestedScrollingEnabled(false);
                             recDoc.setLayoutManager(new LinearLayoutManager(DocUploadActivity.this) {
                                 @Override
                                 public RecyclerView.LayoutParams generateDefaultLayoutParams() {
@@ -915,6 +922,26 @@ public class DocUploadActivity extends AppCompatActivity {
                         d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
                         d.show();
                     });
+
+                    holder.documentNameLL.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            UploadPosition = position;
+                            adapterImageView = holder.imgShow;
+                            adapterButton = holder.btnUpload;
+                            if (ContextCompat.checkSelfPermission(DocUploadActivity.this, Manifest.permission.CAMERA)
+                                    != PackageManager.PERMISSION_GRANTED) {
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                    requestPermissions(new String[]{Manifest.permission.CAMERA},
+                                            5);
+                                }
+                            }
+                            Dialog d = ImageChoose();
+                            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
+                            d.show();
+                        }
+                    });
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -935,6 +962,8 @@ public class DocUploadActivity extends AppCompatActivity {
             CircleImageView imgShow;
             TextView txtDocumentType;
 
+            LinearLayout documentNameLL;
+
             public MyViewHolder(View itemView) {
                 super(itemView);
 
@@ -943,6 +972,7 @@ public class DocUploadActivity extends AppCompatActivity {
                 chkDocument = itemView.findViewById(R.id.chkDocument);
                 imgShow = itemView.findViewById(R.id.imgShow);
                 txtDocumentType = itemView.findViewById(R.id.txtDocumentType);
+                documentNameLL = itemView.findViewById(R.id.documentNameLL);
 
 
             }

@@ -37,6 +37,7 @@
             android:id="@+id/txtUploa"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
             android:layout_marginTop="15dp"
             android:padding="@dimen/_5sdp"
             android:textStyle="bold"
@@ -51,15 +52,35 @@
             android:id="@+id/recDoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5sdp">
+            android:layout_margin="@dimen/_10sdp">
 
         </androidx.recyclerview.widget.RecyclerView>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_12sdp"
+                android:text="@string/terms_and_condition"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingStart="@dimen/_15sdp"
+            android:paddingStart="@dimen/_10sdp"
             android:paddingTop="@dimen/_7sdp"
             android:paddingEnd="@dimen/_15sdp"
             android:paddingBottom="@dimen/_10sdp">
@@ -355,13 +376,13 @@
             android:id="@+id/btnDone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_40sdp"
-            android:layout_marginEnd="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_15sdp"
             android:background="@drawable/auth_btn_green_bg"
             android:fontFamily="@font/montserrat_semibold"
-            android:text="@string/done_label"
+            android:text="Submit"
             android:textColor="@color/white"
             android:textSize="@dimen/_13sdp" />
 

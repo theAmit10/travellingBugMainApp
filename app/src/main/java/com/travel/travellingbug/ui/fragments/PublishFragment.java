@@ -114,10 +114,12 @@ import com.travel.travellingbug.models.RestInterface;
 import com.travel.travellingbug.models.ServiceGenerator;
 import com.travel.travellingbug.ui.activities.CouponActivity;
 import com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch;
+import com.travel.travellingbug.ui.activities.DocUploadActivity;
 import com.travel.travellingbug.ui.activities.HomeScreenActivity;
 import com.travel.travellingbug.ui.activities.Payment;
 import com.travel.travellingbug.ui.activities.ShowProfile;
 import com.travel.travellingbug.ui.activities.TrackActivity;
+import com.travel.travellingbug.ui.activities.UpdateProfile;
 import com.travel.travellingbug.utills.MapAnimator;
 import com.travel.travellingbug.utills.MapRipple;
 import com.travel.travellingbug.utills.MyTextView;
@@ -392,6 +394,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             notificationTxt = bundle.getString("Notification");
 
         }
+
+
     }
 
     @Override
@@ -408,6 +412,35 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 //
 //        return view;
 
+        getDocList();
+
+        if (SharedHelper.getKey(getContext(), "Old_User").equalsIgnoreCase("yes")) {
+            // Setting Name First
+            if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
+                Toast.makeText(getContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), UpdateProfile.class);
+                intent.putExtra("parameter", "first_name");
+                intent.putExtra("value", "");
+                startActivityForResult(intent, 1);
+            } else if (SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("no")) {
+                Intent intent = new Intent(getContext(), DocUploadActivity.class);
+                startActivity(intent);
+            }
+
+
+        } else {
+            if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
+                Toast.makeText(getContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), UpdateProfile.class);
+                intent.putExtra("parameter", "first_name");
+                intent.putExtra("value", "");
+                startActivityForResult(intent, 1);
+            } else if (SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("no")) {
+                Intent intent = new Intent(getContext(), DocUploadActivity.class);
+                startActivity(intent);
+            }
+        }
+
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_publish, container, false);
             ButterKnife.bind(this, rootView);
@@ -416,6 +449,11 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         }
 
         initComponent(rootView);
+
+
+
+
+
         onClickHandler();
         restInterface = ServiceGenerator.createService(RestInterface.class);
         customDialog = new CustomDialog(getActivity());
@@ -447,6 +485,9 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 //                Toast.makeText(context, "You have already requested to a trip", Toast.LENGTH_SHORT).show();
             }
         }
+
+
+
         return rootView;
 
     }
@@ -587,6 +628,48 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 //        });
     }
 
+    private void getDocList() {
+
+        CustomDialog customDialog = new CustomDialog(getContext());
+        customDialog.setCancelable(false);
+        customDialog.show();
+
+        JsonArrayRequest jsonArrayRequest = new
+                JsonArrayRequest(URLHelper.BASE + "api/provider/document/status",
+                        response -> {
+
+                            if (response != null) {
+                                Log.v("response doc", response + "doc");
+                                Log.v("response doc length", String.valueOf(+response.length()));
+
+                                if(response.length() == 0){
+                                    SharedHelper.putKey(getContext(),"DocumentStatus","no");
+                                }else{
+                                    SharedHelper.putKey(getContext(),"DocumentStatus","yes");
+                                }
+
+
+                            }
+
+                            customDialog.dismiss();
+
+                        }, error -> {
+                    Log.v("DocumentsStatus Error", error.getMessage() + "");
+                    customDialog.dismiss();
+                    displayMessage(getString(R.string.something_went_wrong));
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("X-Requested-With", "XMLHttpRequest");
+                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                        return headers;
+                    }
+                };
+
+        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
+    }
+
     private void initComponent(View view) {
 //        calendertv = view.findViewById(R.id.calendertv);
 //        timetv = view.findViewById(R.id.timetv);
@@ -623,6 +706,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         super.onDetach();
         listener = null;
     }
+
+
 
     private void init(View rootView) {
 
@@ -842,10 +927,10 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         layoutChanges();
 
         //Load animation
-        slide_down = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_down);
-        slide_up = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up);
-        slide_up_top = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up_top);
-        slide_up_down = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up_down);
+        slide_down = AnimationUtils.loadAnimation(getContext(), R.anim.slide_down);
+        slide_up = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up);
+        slide_up_top = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up_top);
+        slide_up_down = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up_down);
         imgNavigate.setOnClickListener(v -> {
             Uri naviUri2 = Uri.parse("http://maps.google.com/maps?"
                     + "saddr=" + source_lat + "," + source_lng
@@ -942,7 +1027,9 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 //                new Handler().postDelayed(() -> getServiceList(), 500);
 //            }
 //        });
-        new Handler().postDelayed(() -> getServiceList(), 500);
+
+
+//        new Handler().postDelayed(() -> getServiceList(), 500);
 //        // checkStatus();
 
     }
@@ -1047,7 +1134,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         ClassLuxApp.getInstance().cancelRequestInQueue("send_request");
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.POST,
-                        URLHelper.BASE + "api/user/update/location",
+                        URLHelper.UPDATE_LOCATION_ADMIN,
                         object,
                         response -> {
                             Log.v("uploadRes", response + " ");
@@ -2241,6 +2328,10 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         TextView bookingStatusSubTitleTv = confirmDialog.findViewById(R.id.bookingStatusSubTitleTv);
         TextView tvDriverMsg = confirmDialog.findViewById(R.id.tvDriverMsg);
 
+        bookingStatusTitleTv.setText("Published Successful");
+
+        bookingStatusSubTitleTv.setText("Your ride has been published successfully ");
+
         tvDriverMsg.setText("");
 
         confirmDialog.show();
@@ -2859,6 +2950,37 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             }
         }
 
+        getDocList();
+
+
+
+        if (SharedHelper.getKey(getContext(), "Old_User").equalsIgnoreCase("yes")) {
+            // Setting Name First
+            if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
+                Toast.makeText(getContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), UpdateProfile.class);
+                intent.putExtra("parameter", "first_name");
+                intent.putExtra("value", "");
+                startActivityForResult(intent, 1);
+            } else if (SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("no")) {
+                Intent intent = new Intent(getContext(), DocUploadActivity.class);
+                startActivity(intent);
+            }
+
+
+        } else {
+            if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
+                Toast.makeText(getContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), UpdateProfile.class);
+                intent.putExtra("parameter", "first_name");
+                intent.putExtra("value", "");
+                startActivityForResult(intent, 1);
+            } else if (SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("no")) {
+                Intent intent = new Intent(getContext(), DocUploadActivity.class);
+                startActivity(intent);
+            }
+        }
+
         getPastTripRate();
     }
 
@@ -3169,7 +3291,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
                                     rcvServiceTypes.setVisibility(View.VISIBLE);
                                     tvZoneMsg.setVisibility(View.GONE);
-                                    getServiceList();
+//                                    getServiceList();
                                 } else {
                                     rcvServiceTypes.setVisibility(View.GONE);
                                     tvZoneMsg.setVisibility(View.VISIBLE);

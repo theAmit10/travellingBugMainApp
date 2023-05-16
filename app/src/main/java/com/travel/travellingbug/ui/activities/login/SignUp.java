@@ -36,7 +36,7 @@ import com.travel.travellingbug.helper.ConnectionHelper;
 import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
-import com.travel.travellingbug.ui.activities.MainActivity;
+import com.travel.travellingbug.ui.activities.HomeScreenActivity;
 import com.travel.travellingbug.ui.activities.OtpVerification;
 import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.utills.Utilities;
@@ -118,6 +118,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
 
                     String phone = ccp.getSelectedCountryCodeWithPlus() + etName.getText().toString();
+
                     SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
                     SharedHelper.putKey(getApplicationContext(), "mobile", phone);
                     Log.v("Phonecode", phone + " ");
@@ -395,11 +396,14 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         JSONObject object = new JSONObject();
         try {
 
+            String phoneID = SharedHelper.getKey(getApplicationContext(), "mobile_number");
+            String phone = phoneID.substring(1,phoneID.length());
+
             object.put("grant_type", "password");
             object.put("client_id", URLHelper.client_id);
             object.put("client_secret", URLHelper.client_secret);
             object.put("email", "");
-            object.put("mobile", SharedHelper.getKey(getApplicationContext(), "mobile_number"));
+            object.put("mobile", phone);
             object.put("scope", "");
             object.put("device_type", "android");
             object.put("device_id", device_UDID);
@@ -431,16 +435,18 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                             Log.e("registerresponse", response + "");
 
                             utils.print("SignInResponse", response.toString());
-                            displayMessage(response.toString());
+//                            displayMessage(response.toString());
                             if (response.optString("msg").equalsIgnoreCase("The mobile has already been taken.")) {
                                 if ((customDialog != null) && (customDialog.isShowing()))
                                     customDialog.dismiss();
 //                                displayMessage("The mobile has already been taken.");
+                                SharedHelper.putKey(getApplicationContext(),"Old_User","yes");
                                 displayMessage("Processing...");
                                 signIn();
                             } else {
 //                                SharedHelper.putKey(getApplicationContext(), "email", etEmail.getText().toString());
 //                                SharedHelper.putKey(getApplicationContext(), "password", etPassword.getText().toString());
+                                SharedHelper.putKey(getApplicationContext(),"Old_User","no");
                                 displayMessage("User Registered Successfully");
                                 signIn();
                             }
@@ -505,13 +511,15 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             JSONObject object = new JSONObject();
             try {
 
+                String phoneID = SharedHelper.getKey(getApplicationContext(), "mobile_number");
+                String phone = phoneID.substring(1,phoneID.length());
 
                 object.put("grant_type", "password");
                 object.put("client_id", URLHelper.client_id);
                 object.put("client_secret", URLHelper.client_secret);
 //                object.put("email", SharedHelper.getKey(getApplicationContext(), "email"));
 //                object.put("password", SharedHelper.getKey(getApplicationContext(), "password"));
-                object.put("mobile", SharedHelper.getKey(getApplicationContext(), "mobile_number"));
+                object.put("mobile", phone);
                 object.put("password", "12345678");
                 object.put("scope", "");
                 object.put("device_type", "android");
@@ -658,6 +666,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
+
+
     private void GoToBeginActivity() {
         if (customDialog != null && customDialog.isShowing())
             customDialog.dismiss();
@@ -670,7 +680,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     public void GoToMainActivity() {
         if (customDialog != null && customDialog.isShowing())
             customDialog.dismiss();
-        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+
+        Intent mainIntent = new Intent(getApplicationContext(), HomeScreenActivity.class);
         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(mainIntent);
         finish();
