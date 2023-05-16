@@ -9,10 +9,12 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,12 +60,16 @@ import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
+import com.travel.travellingbug.listeners.Connect;
 import com.travel.travellingbug.ui.activities.login.LoginActivity;
 import com.travel.travellingbug.ui.adapters.MainActivityViewPagerAdapter;
+import com.travel.travellingbug.ui.fragments.AccoutFragment;
 import com.travel.travellingbug.ui.fragments.DriverMapFragment;
-import com.travel.travellingbug.ui.fragments.Help;
+import com.travel.travellingbug.ui.fragments.HolidayPackageFragment;
+import com.travel.travellingbug.ui.fragments.PublishFragment;
 import com.travel.travellingbug.ui.fragments.SearchFragment;
 import com.travel.travellingbug.ui.fragments.SummaryFragment;
+import com.travel.travellingbug.ui.fragments.YourRideFragment;
 import com.travel.travellingbug.utills.CustomTypefaceSpan;
 import com.travel.travellingbug.utills.ResponseListener;
 import com.travel.travellingbug.utills.Utilities;
@@ -111,8 +117,6 @@ public class HomeScreenActivity extends AppCompatActivity implements
     private NotificationManager notificationManager;
 
 
-
-
     private String[] titles = {"Search", "Publish", "Your Ride", "Holiday", "Account"};
 
     private int[] tabIcons = {
@@ -139,21 +143,165 @@ public class HomeScreenActivity extends AppCompatActivity implements
         if (SharedHelper.getKey(context, "login_by").equals("facebook"))
             FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_home_screen);
+
+
         settingFragmentViewPager();
 
+        int HeightWin = getNavigationBarHeight();
+        System.out.println("height : "+HeightWin );
+
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()) {
+                    case 1:
+                        HomeScreenActivity.this.runOnUiThread(() -> {
+                            fragment = new PublishFragment();
+                            FragmentManager manager = getSupportFragmentManager();
+                            @SuppressLint("CommitTransaction")
+                            FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.replace(R.id.content, fragment);
+                            transaction.commit();
+                            fragmentManager = getSupportFragmentManager();
+                        });
+                        GoToFragment();
+                        break;
+                    case 2:
+
+                        HomeScreenActivity.this.runOnUiThread(() -> {
+                            fragment = new YourRideFragment();
+                            FragmentManager manager = getSupportFragmentManager();
+                            @SuppressLint("CommitTransaction")
+                            FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.replace(R.id.content, fragment);
+                            transaction.commit();
+                            fragmentManager = getSupportFragmentManager();
+                        });
+                        GoToFragment();
+                        break;
+
+                    case 3:
+
+                        HomeScreenActivity.this.runOnUiThread(() -> {
+                            fragment = new HolidayPackageFragment();
+                            FragmentManager manager = getSupportFragmentManager();
+                            @SuppressLint("CommitTransaction")
+                            FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.replace(R.id.content, fragment);
+                            transaction.commit();
+                            fragmentManager = getSupportFragmentManager();
+                        });
+                        GoToFragment();
+                        break;
+
+                    case 4:
+
+                        HomeScreenActivity.this.runOnUiThread(() -> {
+                            fragment = new AccoutFragment();
+                            FragmentManager manager = getSupportFragmentManager();
+                            @SuppressLint("CommitTransaction")
+                            FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.replace(R.id.content, fragment);
+                            transaction.commit();
+                            fragmentManager = getSupportFragmentManager();
+                        });
+                        GoToFragment();
+                        break;
+                    case 0:
+                    default:
+                        HomeScreenActivity.this.runOnUiThread(() -> {
+                            fragment = new SearchFragment();
+                            FragmentManager manager = getSupportFragmentManager();
+                            @SuppressLint("CommitTransaction")
+                            FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.replace(R.id.content, fragment);
+                            transaction.commit();
+                            fragmentManager = getSupportFragmentManager();
+                        });
+                        GoToFragment();
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
         Bundle extras = getIntent().getExtras();
-        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager = (NotificationManager)
+
+                getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancelAll();
 
         if (extras != null) {
             push = extras.getBoolean("push");
         }
 
+        map();
+
+        Connect.addMyBooleanListener(() -> Toast.makeText(
+
+                        getApplication(),
+                        "Changed", Toast.LENGTH_SHORT).
+
+                show());
+
+        loadNavHeader();
+
+        setUpNavigationView();
+
+        navHeader.setOnClickListener(view ->
+
+        {
+            drawer.closeDrawers();
+            new Handler().postDelayed(() -> startActivity(new Intent(activity,
+                    Profile.class)), 250);
+        });
+        if (
+
+                getIntent().
+
+                        getStringExtra("status") != null) {
+            statustg = getIntent().getStringExtra("status");
+        }
 
 
     }
 
+    private int getNavigationBarHeight() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            DisplayMetrics metrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            int usableHeight = metrics.heightPixels;
+            getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+            int realHeight = metrics.heightPixels;
+            if (realHeight > usableHeight)
+                return realHeight - usableHeight;
+            else
+                return 0;
+        }
+        return 0;
+    }
+
     private void settingFragmentViewPager() {
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        navHeader = navigationView.getHeaderView(0);
+        txtName = navHeader.findViewById(R.id.usernameTxt);
+        approvaltxt = navHeader.findViewById(R.id.status_txt);
+        imgProfile = navHeader.findViewById(R.id.img_profile);
+        tvRate = navHeader.findViewById(R.id.tvRate);
+        status = navHeader.findViewById(R.id.status);
+
+
         viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabLayout);
         viewPagerAdapter = new MainActivityViewPagerAdapter(this);
@@ -162,7 +310,6 @@ public class HomeScreenActivity extends AppCompatActivity implements
         viewPager.setUserInputEnabled(false);
 
         viewPager.setAdapter(viewPagerAdapter);
-
 
 
         new TabLayoutMediator(tabLayout, viewPager, ((tab, position) -> tab.setIcon(tabIcons[position]))).attach();
@@ -187,7 +334,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
             switch (menuItem.getItemId()) {
                 case R.id.nav_home:
                     if (CURRENT_TAG != TAG_HOME) {
-                        fragment = new DriverMapFragment();
+                        fragment = new SearchFragment();
                         GoToFragment();
                     } else {
                         drawer.closeDrawers();
@@ -222,7 +369,6 @@ public class HomeScreenActivity extends AppCompatActivity implements
                             NotificationTab.class)), 250);
 
 
-
                     break;
                 case R.id.nav_wallet:
                     navItemIndex = 2;
@@ -241,18 +387,22 @@ public class HomeScreenActivity extends AppCompatActivity implements
                     //GoToFragment();
                     break;
                 case R.id.nav_help:
-                    navItemIndex = 3;
-                    CURRENT_TAG = TAG_HELP;
-                    fragment = new Help();
+//                    navItemIndex = 3;
+//                    CURRENT_TAG = TAG_HELP;
+//                    fragment = new Help();
+//                    drawer.closeDrawers();
+//                    new Handler().postDelayed(() -> {
+//                        FragmentManager manager4 = getSupportFragmentManager();
+//                        @SuppressLint("CommitTransaction")
+//                        FragmentTransaction transaction2 = manager4.beginTransaction();
+//                        transaction2.replace(R.id.content, fragment);
+//                        transaction2.addToBackStack(null);
+//                        transaction2.commit();
+//                    }, 250);
+
                     drawer.closeDrawers();
-                    new Handler().postDelayed(() -> {
-                        FragmentManager manager4 = getSupportFragmentManager();
-                        @SuppressLint("CommitTransaction")
-                        FragmentTransaction transaction2 = manager4.beginTransaction();
-                        transaction2.replace(R.id.content, fragment);
-                        transaction2.addToBackStack(null);
-                        transaction2.commit();
-                    }, 250);
+                    new Handler().postDelayed(() -> startActivity(new Intent(HomeScreenActivity.this,
+                            HelpActivity.class)), 250);
 
                     //GoToFragment();
                     break;
@@ -357,7 +507,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
             if (navItemIndex != 0) {
                 navItemIndex = 0;
                 CURRENT_TAG = TAG_HOME;
-                fragment = new DriverMapFragment();
+                fragment = new SearchFragment();
                 GoToFragment();
                 return;
             } else {
@@ -371,7 +521,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
 
     private void map() {
         HomeScreenActivity.this.runOnUiThread(() -> {
-            fragment = new DriverMapFragment();
+            fragment = new SearchFragment();
             FragmentManager manager = getSupportFragmentManager();
             @SuppressLint("CommitTransaction")
             FragmentTransaction transaction = manager.beginTransaction();

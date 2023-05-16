@@ -412,7 +412,11 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 //
 //        return view;
 
-        getDocList();
+        if(getContext() != null){
+            getDocList();
+
+        }
+
 
         if (SharedHelper.getKey(getContext(), "Old_User").equalsIgnoreCase("yes")) {
             // Setting Name First
@@ -1094,8 +1098,11 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 source_lng = "" + longitude;
                 source_address = currentAddress;
                 current_address = currentAddress;
-                frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
-                frmSource.setText(currentAddress);
+
+                if (frmSource.getContext() != null){
+                    frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
+                    frmSource.setText(currentAddress);
+                }
 
                 // setting previous destination data
                 if (!SharedHelper.getKey(getContext(), "destination_latitude").equalsIgnoreCase("")) {

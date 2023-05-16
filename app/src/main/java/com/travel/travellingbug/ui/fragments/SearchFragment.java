@@ -60,6 +60,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -3450,14 +3451,14 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     layoutChanges();
                     break;
                 case R.id.imgMenu:
-//                    if (NAV_DRAWER == 0) {
-//                        if (drawer != null)
-//                            drawer.openDrawer(GravityCompat.START);
-//                    } else {
-//                        NAV_DRAWER = 0;
-//                        if (drawer != null)
-//                            drawer.closeDrawers();
-//                    }
+                    if (NAV_DRAWER == 0) {
+                        if (drawer != null)
+                            drawer.openDrawer(GravityCompat.START);
+                    } else {
+                        NAV_DRAWER = 0;
+                        if (drawer != null)
+                            drawer.closeDrawers();
+                    }
                     break;
                 case R.id.mapfocus:
                     Double crtLat, crtLng;
