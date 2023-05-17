@@ -124,7 +124,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
             R.drawable.publish,
             R.drawable.bg_car,
             R.drawable.bn_holiday_package,
-            R.drawable.bn_account
+            R.drawable.ic_person
     };
     MainActivityViewPagerAdapter viewPagerAdapter;
 
@@ -342,7 +342,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
                     break;
                 case R.id.nav_profile:
                     drawer.closeDrawers();
-                    new Handler().postDelayed(() -> startActivity(new Intent(activity, Profile.class)),
+                    new Handler().postDelayed(() -> startActivity(new Intent(activity, DriverProfileActivity.class)),
                             250);
                     break;
                 case R.id.nav_document:
@@ -409,7 +409,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
                 case R.id.nav_earnings:
                     drawer.closeDrawers();
                     new Handler().postDelayed(() -> startActivity(new Intent(activity,
-                            EarningActivity.class)), 250);
+                            MainActivity.class)), 250);
                     break;
                 case R.id.nav_share:
                     drawer.closeDrawers();

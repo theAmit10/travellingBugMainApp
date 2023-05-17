@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/fiveStar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:drawableRight="@drawable/ic_star"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/fiveStarProgress"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:max="100"
+                    android:progress="56"/>
+
+                <TextView
+                    android:id="@+id/fiveStarTotalVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:text="56"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/fourStar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:drawableRight="@drawable/ic_star"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/fourStarProgress"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:max="100"
+                    android:progress="96"/>
+
+                <TextView
+                    android:id="@+id/fourStarTotalVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="96"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/threeStar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:drawableRight="@drawable/ic_star"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/threeStarProgress"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:max="100"
+                    android:progress="76"/>
+
+                <TextView
+                    android:id="@+id/threeStarTotalVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="76"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/twoStar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:drawableRight="@drawable/ic_star"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/twoStarProgress"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:max="100"
+                    android:progress="26"/>
+
+                <TextView
+                    android:id="@+id/twoStarTotalVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="26"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/oneStar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:drawableRight="@drawable/ic_star"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:id="@+id/oneStarProgress"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:max="100"
+                    android:progress="6"/>
+
+                <TextView
+                    android:id="@+id/oneStarTotalVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/view8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@color/colorGray_light" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragmentDriverReviewRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:listitem="@layout/design_driver_profile_reviews"
+                    />
+
+                <TextView
+                    android:id="@+id/fragmentDriverReviewRvNoReviewFound"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:text="No Review found." />
+
+
+            </RelativeLayout>
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <Button
+                        android:id="@+id/chatButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_40sdp"
+
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/auth_btn_white_low_corner_bg"
+                        android:text="Message"
+                        android:textAllCaps="false"
+                        android:textColor="@color/green"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <Button
+                        android:id="@+id/continueButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/auth_btn_green_bg"
+                        android:text="Continue"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

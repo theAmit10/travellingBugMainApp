@@ -14,7 +14,7 @@
         android:paddingTop="@dimen/_10sdp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profileImgeIv"
+            android:id="@+id/profileImageIv"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_60sdp"
             android:layout_marginEnd="@dimen/_10sdp"
@@ -35,7 +35,7 @@
             >
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/profileNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="David Johnson"
@@ -59,7 +59,7 @@
                 android:max="5" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/reviewCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-35dp"
@@ -137,7 +137,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view5" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/fromTv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -152,7 +152,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/destinationTv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"

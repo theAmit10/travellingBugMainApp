@@ -1,5 +1,6 @@
 package com.travel.travellingbug.ui.fragments;
 
+
 import android.Manifest;
 import android.animation.Animator;
 import android.annotation.SuppressLint;
@@ -107,6 +108,7 @@ import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.DataParser;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
+import com.travel.travellingbug.helper.VolleyMultipartRequest;
 import com.travel.travellingbug.models.CardInfo;
 import com.travel.travellingbug.models.Driver;
 import com.travel.travellingbug.models.GetUserRate;
@@ -116,10 +118,8 @@ import com.travel.travellingbug.models.RestInterface;
 import com.travel.travellingbug.models.ServiceGenerator;
 import com.travel.travellingbug.ui.activities.CouponActivity;
 import com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch;
-import com.travel.travellingbug.ui.activities.FindRidesActivity;
 import com.travel.travellingbug.ui.activities.Payment;
 import com.travel.travellingbug.ui.activities.ShowProfile;
-import com.travel.travellingbug.ui.activities.TrackActivity;
 import com.travel.travellingbug.ui.activities.UpdateProfile;
 import com.travel.travellingbug.utills.MapAnimator;
 import com.travel.travellingbug.utills.MapRipple;
@@ -2158,12 +2158,72 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
     }
 
+    public void sendRequestToGetProvider(){
+        customDialog = new CustomDialog(getActivity());
+        customDialog.setCancelable(false);
+        customDialog.show();
+
+
+        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLHelper.SEND_REQUEST_API_PROVIDER, response -> {
+            customDialog.dismiss();
+            String res = new String(response.data);
+
+            Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
+            System.out.println("res data length : "+res.length());
+            System.out.println("res data of provider : "+res);
+            //displayMessage(getString(R.string.update_success));
+
+
+        }, error -> {
+            displayMessage(getString(R.string.something_went_wrong));
+            customDialog.dismiss();
+        }) {
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("s_latitude", source_lat);
+                params.put("s_longitude", source_lng);
+                params.put("d_latitude",dest_lat );
+                params.put("d_longitude", dest_lng);
+                params.put("s_address", source_address);
+                params.put("d_address", dest_address);
+//                params.put("service_type","2" );
+//                params.put("distance","0" );
+//                params.put("schedule_date",scheduledDate );
+//                params.put("schedule_time",scheduledTime );
+//                params.put("use_wallet", "0");
+//                params.put("payment_mode","CASH" );
+                params.put("service_type","2" );
+                params.put("distance","0" );
+                params.put("schedule_date","y" );
+                params.put("schedule_time","y" );
+                params.put("upcoming", "1");
+                params.put("use_wallet", "0");
+                params.put("payment_mode","CASH" );
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                return headers;
+            }
+        };
+        ClassLuxApp.getInstance().addToRequestQueue(volleyMultipartRequest);
+
+    }
+
     public void sendRequest() {
 
 
         customDialog.setCancelable(false);
         if (customDialog != null)
             customDialog.show();
+
+        SharedHelper.putKey(context, "service_type","2");
+        SharedHelper.putKey(context, "distance","0");
 
         JSONObject object = new JSONObject();
         try {
@@ -2176,21 +2236,26 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             object.put("service_type", SharedHelper.getKey(context, "service_type"));
             object.put("distance", SharedHelper.getKey(context, "distance"));
 
-            object.put("schedule_date", scheduledDate);
-            object.put("schedule_time", scheduledTime);
+//            object.put("schedule_date", scheduledDate);
+//            object.put("schedule_time", scheduledTime);
+            object.put("schedule_date", "y");
+            object.put("schedule_time", "y");
+            object.put("upcoming", "1");
+            object.put("use_wallet", "0");
+            object.put("payment_mode", "CASH");
 
 
-            if (chkWallet.isChecked()) {
-                object.put("use_wallet", 1);
-            } else {
-                object.put("use_wallet", 0);
-            }
-            if (SharedHelper.getKey(context, "payment_mode").equals("CASH")) {
-                object.put("payment_mode", SharedHelper.getKey(context, "payment_mode"));
-            } else {
-                object.put("payment_mode", SharedHelper.getKey(context, "payment_mode"));
-                object.put("card_id", SharedHelper.getKey(context, "card_id"));
-            }
+//            if (chkWallet.isChecked()) {
+//                object.put("use_wallet", 1);
+//            } else {
+//                object.put("use_wallet", 0);
+//            }
+//            if (SharedHelper.getKey(context, "payment_mode").equals("CASH")) {
+//                object.put("payment_mode", SharedHelper.getKey(context, "payment_mode"));
+//            } else {
+//                object.put("payment_mode", SharedHelper.getKey(context, "payment_mode"));
+//                object.put("card_id", SharedHelper.getKey(context, "card_id"));
+//            }
             Utilities.print("SendRequestInput", "" + object.toString());
         } catch (Exception e) {
             e.printStackTrace();
@@ -2199,52 +2264,57 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         ClassLuxApp.getInstance().cancelRequestInQueue("send_request");
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.POST,
-                        URLHelper.SEND_REQUEST_API,
+                        URLHelper.SEND_REQUEST_API_PROVIDER,
                         object,
                         response -> {
+                            Toast.makeText(activity, "Success", Toast.LENGTH_SHORT).show();
                             btnRequestRideConfirm.setEnabled(true);
                             if (response != null) {
                                 Utilities.print("SendRequestResponse", response.toString());
-                                if ((customDialog != null) && (customDialog.isShowing()))
-                                    customDialog.dismiss();
-
-                                if (response.toString().contains("error")) {
-                                    Toast.makeText(getActivity(), response.optString("error"), Toast.LENGTH_LONG).show();
-                                } else if (response.optString("request_id", "").equals("")) {
-                                    if (response.optString("message").equalsIgnoreCase("Ride Scheduled")) {
-                                        flowValue = 0;
-                                        layoutChanges();
-
-                                        showConfirmDialog();
-//                                       utils.showAlert(getActivity(),"Your booking has been confirmed ," +
-//                                               " you will get driver details 30 Min before of your booking");
-                                    } else {
-                                        displayMessage(response.optString("message"));
-                                    }
-                                } else {
-                                    SharedHelper.putKey(context, "current_status", "");
-                                    SharedHelper.putKey(context, "request_id", "" + response.optString("request_id"));
-                                    scheduleTrip = !scheduledDate.equalsIgnoreCase("") && !scheduledTime.equalsIgnoreCase("");
-                                    // flowValue = 3;
-                                    //layoutChanges();
-                                    flowValue = 0;
-                                    layoutChanges();
-
-                                    Intent intent = new Intent(getActivity(), TrackActivity.class);
-                                    intent.putExtra("flowValue", 3);
-                                    startActivity(intent);
-                                }
+//                                if ((customDialog != null) && (customDialog.isShowing()))
+//                                    customDialog.dismiss();
+//
+//                                if (response.toString().contains("error")) {
+//                                    Toast.makeText(getActivity(), response.optString("error"), Toast.LENGTH_LONG).show();
+//                                } else if (response.optString("request_id", "").equals("")) {
+//                                    if (response.optString("message").equalsIgnoreCase("Ride Scheduled")) {
+//                                        flowValue = 0;
+//                                        layoutChanges();
+//
+//                                        showConfirmDialog();
+////                                       utils.showAlert(getActivity(),"Your booking has been confirmed ," +
+////                                               " you will get driver details 30 Min before of your booking");
+//                                    } else {
+//                                        displayMessage(response.optString("message"));
+//                                    }
+//                                } else {
+//                                    SharedHelper.putKey(context, "current_status", "");
+//                                    SharedHelper.putKey(context, "request_id", "" + response.optString("request_id"));
+//                                    scheduleTrip = !scheduledDate.equalsIgnoreCase("") && !scheduledTime.equalsIgnoreCase("");
+//                                    // flowValue = 3;
+//                                    //layoutChanges();
+//                                    flowValue = 0;
+//                                    layoutChanges();
+//
+//                                    Intent intent = new Intent(getActivity(), TrackActivity.class);
+//                                    intent.putExtra("flowValue", 3);
+//                                    startActivity(intent);
+//                                }
                             }
                         }, error -> {
                     if ((customDialog != null) && (customDialog.isShowing()))
                         customDialog.dismiss();
                     displayMessage(getString(R.string.something_went_wrong));
+                    displayMessage(error.getMessage());
+                    System.out.println("error : "+error.getMessage());
+                    System.out.println("error : "+error.getCause());
                 }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         HashMap<String, String> headers = new HashMap<String, String>();
                         headers.put("X-Requested-With", "XMLHttpRequest");
-                        headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " " + SharedHelper.getKey(context, "access_token"));
+//                        headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " " + SharedHelper.getKey(context, "access_token"));
+                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
                         return headers;
                     }
                 };
@@ -3245,8 +3315,17 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     if (!frmSource.getText().toString().equalsIgnoreCase("") &&
                             !destination.getText().toString().equalsIgnoreCase("") &&
                             !frmDest.getText().toString().equalsIgnoreCase("")) {
-                        startActivity(new Intent(getContext(), FindRidesActivity.class));
+//                        startActivity(new Intent(getContext(), FindRidesActivity.class));
 //                        getApproximateFare();
+                        frmDest.setOnClickListener(null);
+                        frmSource.setOnClickListener(null);
+//                    sourceDestLayout.setClickable(false);
+                        SharedHelper.putKey(context, "name", "");
+                        scheduledDate = "";
+                        scheduledTime = "";
+                        btnRequestRideConfirm.setEnabled(true);
+//                        sendRequest();
+                        sendRequestToGetProvider();
 //                        sourceDestLayout.setOnClickListener(new SearchFragment.OnClick());
                     } else {
                         Toast.makeText(context, "Please enter both pickup and drop locations", Toast.LENGTH_SHORT).show();

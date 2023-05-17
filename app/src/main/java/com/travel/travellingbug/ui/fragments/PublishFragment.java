@@ -157,10 +157,10 @@ import retrofit2.Callback;
 
 public class PublishFragment extends Fragment implements OnMapReadyCallback, LocationListener,
         GoogleMap.OnMarkerDragListener, GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener, ResponseListener, GoogleMap.OnCameraMoveListener  {
+        GoogleApiClient.OnConnectionFailedListener, ResponseListener, GoogleMap.OnCameraMoveListener {
 
 
-    TextView calendertv,timetv,frmSource,frmDest;
+    TextView calendertv, timetv, frmSource, frmDest;
 
     private static final String TAG = "PublishFragment";
     DatePickerDialog datePickerDialog;
@@ -174,12 +174,9 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     int PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST = 18945;
 
 
-
-
-
 //    #########################
 
-//    private static final String TAG = "UserMapFragment";
+    //    private static final String TAG = "UserMapFragment";
     private static final int REQUEST_LOCATION = 1450;
     private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
     private final int ADD_CARD_CODE = 435;
@@ -192,18 +189,18 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     String ETA;
     TextView txtSelectedAddressSource;
     String isPaid = "", paymentMode = "";
-//    Utilities utils = new Utilities();
+    //    Utilities utils = new Utilities();
     int flowValue = 0;
     DrawerLayout drawer;
     int NAV_DRAWER = 0;
     String reqStatus = "";
-//    int PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST = 18945;
+    //    int PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST = 18945;
     String feedBackRating;
     double height;
     double width;
     String strPickLocation = "", strPickType = "";
     int click = 1;
-//    boolean afterToday = false;
+    //    boolean afterToday = false;
     boolean pick_first = true;
     Driver driver;
     //        <!-- Map frame -->
@@ -222,7 +219,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     ImageView imgMenu, mapfocus, imgBack, shadowBack;
     View tripLine;
     ImageView destinationBorderImg;
-//    TextView frmSource, frmDest;
+    //    TextView frmSource, frmDest;
     CardView srcDestLayout;
     LinearLayout sourceDestLayout;
     LinearLayout lnrRequestProviders;
@@ -236,7 +233,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     TextView lblPaymentType, lblPromo, booking_id;
     //    Button btnRequestRides;
     TextView btnRequestRides;
-//    String scheduledDate = "";
+    //    String scheduledDate = "";
 //    String scheduledTime = "";
     String cancalReason = "";
     LinearLayout lnrHidePopup, lnrProviderPopup, lnrPriceBase, lnrPricemin, lnrPricekm;
@@ -263,7 +260,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     TextView scheduleDate;
     TextView scheduleTime;
     Button scheduleBtn;
-//    DatePickerDialog datePickerDialog;
+    //    DatePickerDialog datePickerDialog;
     LocationRequest mLocationRequest;
     RelativeLayout lnrWaitingForProviders;
     TextView lblNoMatch;
@@ -355,8 +352,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     private boolean isDragging;
 
 
-
-    public  PublishFragment() {
+    public PublishFragment() {
         // Required empty public constructor
 
     }
@@ -412,7 +408,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 //
 //        return view;
 
-        if(getContext() != null){
+        if (getContext() != null) {
             getDocList();
 
         }
@@ -455,9 +451,6 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         initComponent(rootView);
 
 
-
-
-
         onClickHandler();
         restInterface = ServiceGenerator.createService(RestInterface.class);
         customDialog = new CustomDialog(getActivity());
@@ -489,7 +482,6 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 //                Toast.makeText(context, "You have already requested to a trip", Toast.LENGTH_SHORT).show();
             }
         }
-
 
 
         return rootView;
@@ -646,10 +638,10 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                 Log.v("response doc", response + "doc");
                                 Log.v("response doc length", String.valueOf(+response.length()));
 
-                                if(response.length() == 0){
-                                    SharedHelper.putKey(getContext(),"DocumentStatus","no");
-                                }else{
-                                    SharedHelper.putKey(getContext(),"DocumentStatus","yes");
+                                if (response.length() == 0) {
+                                    SharedHelper.putKey(getContext(), "DocumentStatus", "no");
+                                } else {
+                                    SharedHelper.putKey(getContext(), "DocumentStatus", "yes");
                                 }
 
 
@@ -660,7 +652,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                         }, error -> {
                     Log.v("DocumentsStatus Error", error.getMessage() + "");
                     customDialog.dismiss();
-                    displayMessage(getString(R.string.something_went_wrong));
+                    displayMessage(getActivity().getString(R.string.something_went_wrong));
                 }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
@@ -682,8 +674,6 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         frmDest = view.findViewById(R.id.frmDest);
 
     }
-
-
 
 
     @Override
@@ -710,7 +700,6 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         super.onDetach();
         listener = null;
     }
-
 
 
     private void init(View rootView) {
@@ -922,7 +911,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
 
 // commenting below line for testing
-        if(ivTopFav != null){
+        if (ivTopFav != null) {
             ivTopFav.setOnClickListener(view -> saveAddressDialog());
         }
 
@@ -1099,7 +1088,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 source_address = currentAddress;
                 current_address = currentAddress;
 
-                if (frmSource.getContext() != null){
+                if (frmSource.getContext() != null) {
                     frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
                     frmSource.setText(currentAddress);
                 }
@@ -1114,7 +1103,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
                     String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
                     frmDest.setText(destination_address);
-                }else{
+                } else {
                     frmDest.setText("Going to");
                 }
 
@@ -1960,7 +1949,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                         }, error -> {
                     if ((customDialog != null) && (customDialog.isShowing()))
                         customDialog.dismiss();
-                    displayMessage(getString(R.string.something_went_wrong));
+                    displayMessage(getActivity().getString(R.string.something_went_wrong));
                 }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
@@ -2023,7 +2012,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                         }, error -> {
                     if ((customDialog != null) && (customDialog.isShowing()))
                         customDialog.dismiss();
-                    displayMessage(getString(R.string.something_went_wrong));
+                    displayMessage(getActivity().getString(R.string.something_went_wrong));
 
                 }) {
                     @Override
@@ -2084,7 +2073,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                             }
 
                         }, error -> {
-                    displayMessage(getString(R.string.something_went_wrong));
+                    displayMessage(getActivity().getString(R.string.something_went_wrong));
                 }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
@@ -2184,7 +2173,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                     if ((customDialog != null) && (customDialog.isShowing()))
                         customDialog.dismiss();
                     displayMessage(getString(R.string.something_went_wrong));
-                    System.out.println("Error : "+error.toString());
+                    System.out.println("Error : " + error.toString());
 
                 }) {
 
@@ -2194,8 +2183,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                         HashMap<String, String> headers = new HashMap<String, String>();
                         headers.put("X-Requested-With", "XMLHttpRequest");
                         headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
-                        System.out.println("token type : "+SharedHelper.getKey(context, "token_type"));
-                        System.out.println("access_token  : "+SharedHelper.getKey(context, "access_token"));
+                        System.out.println("token type : " + SharedHelper.getKey(context, "token_type"));
+                        System.out.println("access_token  : " + SharedHelper.getKey(context, "access_token"));
 
                         return headers;
                     }
@@ -2283,7 +2272,6 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 //                        return headers;
 //                    }
 //                };
-
 
 
 //        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLHelper.PUBLISH_A_RIDE, response -> {
@@ -2588,7 +2576,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     }
 
     public void statusCheck() {
-        if(getActivity() != null){
+        if (getActivity() != null) {
             final LocationManager manager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
             if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 enableLoc();
@@ -2960,7 +2948,6 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         getDocList();
 
 
-
         if (SharedHelper.getKey(getContext(), "Old_User").equalsIgnoreCase("yes")) {
             // Setting Name First
             if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
@@ -3218,7 +3205,9 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     }
 
     public void displayMessage(String toastString) {
-        Toasty.info(getActivity(), toastString, Toasty.LENGTH_SHORT, true).show();
+
+        Toasty.info(getContext(), toastString, Toasty.LENGTH_SHORT, true).show();
+
     }
 
     private void confirmFinalPayment(String totalFee) {
@@ -3478,7 +3467,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                 source_lng = "" + cmPosition.target.longitude;
 
                                 mMap.clear();
-                            setValuesForSourceAndDestination();
+                                setValuesForSourceAndDestination();
                                 flowValue = 1;
                                 layoutChanges();
                                 strPickLocation = "";
@@ -3516,7 +3505,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                 dest_lng = "" + cmPosition.target.longitude;
                                 dropLocationName = dest_address;
                                 mMap.clear();
-                            setValuesForSourceAndDestination();
+                                setValuesForSourceAndDestination();
                                 flowValue = 1;
                                 layoutChanges();
                                 strPickLocation = "";
@@ -3659,7 +3648,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                     int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                     int minute = mcurrentTime.get(Calendar.MINUTE);
                     TimePickerDialog mTimePicker;
-                    mTimePicker = new TimePickerDialog(activity,AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new TimePickerDialog.OnTimeSetListener() {
+                    mTimePicker = new TimePickerDialog(activity, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new TimePickerDialog.OnTimeSetListener() {
                         int callCount = 0;   //To track number of calls to onTimeSet()
 
                         @Override

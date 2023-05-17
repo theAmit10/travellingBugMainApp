@@ -65,6 +65,8 @@ public interface URLHelper {
     String GET_PROVIDERS_LIST_API = BASE + "api/user/show/providers";
 
     String SEND_REQUEST_API = BASE + "api/user/send/request";
+    String SEND_REQUEST_API_PROVIDER = BASE + "api/provider/send/request";
+
 
 
 //    #####################################
