@@ -118,6 +118,7 @@ import com.travel.travellingbug.models.RestInterface;
 import com.travel.travellingbug.models.ServiceGenerator;
 import com.travel.travellingbug.ui.activities.CouponActivity;
 import com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch;
+import com.travel.travellingbug.ui.activities.FindRidesActivity;
 import com.travel.travellingbug.ui.activities.Payment;
 import com.travel.travellingbug.ui.activities.ShowProfile;
 import com.travel.travellingbug.ui.activities.UpdateProfile;
@@ -491,41 +492,14 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         calendertv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR); // current year
-                int mMonth = c.get(Calendar.MONTH); // current month
-                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
-                // date picker dialog
-                datePickerDialog = new DatePickerDialog(getActivity(), android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,
-                        (view, year, monthOfYear, dayOfMonth) -> {
-
-                            // set day of month , month and year value in the edit text
-                            String choosedMonth = "";
-                            String choosedDate = "";
-                            String choosedDateFormat = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
-                            scheduledDate = choosedDateFormat;
-                            try {
-                                choosedMonth = utils.getMonth(choosedDateFormat);
-                            } catch (ParseException e) {
-                                e.printStackTrace();
-                            }
-                            if (dayOfMonth < 10) {
-                                choosedDate = "0" + dayOfMonth;
-                            } else {
-                                choosedDate = "" + dayOfMonth;
-                            }
-                            afterToday = Utilities.isAfterToday(year, monthOfYear, dayOfMonth);
-                            calendertv.setText(choosedDate + " " + choosedMonth + " " + year);
-                        }, mYear, mMonth, mDay);
-                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-                datePickerDialog.getDatePicker().setMaxDate((System.currentTimeMillis() - 1000) + (1000 * 60 * 60 * 24 * 7));
-                datePickerDialog.show();
 
 
                 Calendar mcurrentTime = Calendar.getInstance();
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
+
+
                 mTimePicker = new TimePickerDialog(getActivity(), android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new TimePickerDialog.OnTimeSetListener() {
                     int callCount = 0;   //To track number of calls to onTimeSet()
 
@@ -593,6 +567,39 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 }, hour, minute, false);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
                 mTimePicker.show();
+
+
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR); // current year
+                int mMonth = c.get(Calendar.MONTH); // current month
+                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                datePickerDialog = new DatePickerDialog(getActivity(), android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,
+                        (view, year, monthOfYear, dayOfMonth) -> {
+
+                            // set day of month , month and year value in the edit text
+                            String choosedMonth = "";
+                            String choosedDate = "";
+                            String choosedDateFormat = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                            scheduledDate = choosedDateFormat;
+                            try {
+                                choosedMonth = utils.getMonth(choosedDateFormat);
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                            if (dayOfMonth < 10) {
+                                choosedDate = "0" + dayOfMonth;
+                            } else {
+                                choosedDate = "" + dayOfMonth;
+                            }
+                            afterToday = Utilities.isAfterToday(year, monthOfYear, dayOfMonth);
+                            calendertv.setText(choosedDate + " " + choosedMonth + " " + year);
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                datePickerDialog.getDatePicker().setMaxDate((System.currentTimeMillis() - 1000) + (1000 * 60 * 60 * 24 * 7));
+                datePickerDialog.show();
+
+
             }
         });
 
@@ -1203,7 +1210,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         HashMap<String, String> headers = new HashMap<String, String>();
                         headers.put("X-Requested-With", "XMLHttpRequest");
-                        headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " " + SharedHelper.getKey(context, "access_token"));
+//                        headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " " + SharedHelper.getKey(context, "access_token"));
+                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
                         return headers;
                     }
                 };
@@ -1403,7 +1411,10 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             } else if (flowValue == 1) {
                 frmSource.setVisibility(View.VISIBLE);
                 destinationBorderImg.setVisibility(View.GONE);
-                sourceDestLayout.setVisibility(View.GONE);
+//                sourceDestLayout.setVisibility(View.GONE);
+                sourceDestLayout.setVisibility(View.VISIBLE);
+                btnSearch.setVisibility(View.GONE);
+
 
                 btnRequestRidesCv.setVisibility(View.VISIBLE);
 
@@ -1578,7 +1589,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 }
                 if (completeAddress != null) {
                     //mLocationTextView.setText(completeAddress);
-                    if(txtSelectedAddressSource != null){
+                    if (txtSelectedAddressSource != null) {
                         txtSelectedAddressSource.setText(completeAddress);
                     }
                 }
@@ -2158,7 +2169,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
     }
 
-    public void sendRequestToGetProvider(){
+    public void sendRequestToGetProvider() {
         customDialog = new CustomDialog(getActivity());
         customDialog.setCancelable(false);
         customDialog.show();
@@ -2169,8 +2180,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             String res = new String(response.data);
 
             Toast.makeText(getContext(), res, Toast.LENGTH_SHORT).show();
-            System.out.println("res data length : "+res.length());
-            System.out.println("res data of provider : "+res);
+            System.out.println("res data length : " + res.length());
+            System.out.println("res data of provider : " + res);
             //displayMessage(getString(R.string.update_success));
 
 
@@ -2183,7 +2194,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 Map<String, String> params = new HashMap<>();
                 params.put("s_latitude", source_lat);
                 params.put("s_longitude", source_lng);
-                params.put("d_latitude",dest_lat );
+                params.put("d_latitude", dest_lat);
                 params.put("d_longitude", dest_lng);
                 params.put("s_address", source_address);
                 params.put("d_address", dest_address);
@@ -2193,13 +2204,13 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                params.put("schedule_time",scheduledTime );
 //                params.put("use_wallet", "0");
 //                params.put("payment_mode","CASH" );
-                params.put("service_type","2" );
-                params.put("distance","0" );
-                params.put("schedule_date","y" );
-                params.put("schedule_time","y" );
+                params.put("service_type", "2");
+                params.put("distance", "0");
+                params.put("schedule_date", "y");
+                params.put("schedule_time", "y");
                 params.put("upcoming", "1");
                 params.put("use_wallet", "0");
-                params.put("payment_mode","CASH" );
+                params.put("payment_mode", "CASH");
                 return params;
             }
 
@@ -2222,8 +2233,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         if (customDialog != null)
             customDialog.show();
 
-        SharedHelper.putKey(context, "service_type","2");
-        SharedHelper.putKey(context, "distance","0");
+        SharedHelper.putKey(context, "service_type", "2");
+        SharedHelper.putKey(context, "distance", "0");
 
         JSONObject object = new JSONObject();
         try {
@@ -2306,8 +2317,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         customDialog.dismiss();
                     displayMessage(getString(R.string.something_went_wrong));
                     displayMessage(error.getMessage());
-                    System.out.println("error : "+error.getMessage());
-                    System.out.println("error : "+error.getCause());
+                    System.out.println("error : " + error.getMessage());
+                    System.out.println("error : " + error.getCause());
                 }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {
@@ -3310,25 +3321,49 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
                     break;
                 case R.id.btnRequestRides:
-                    scheduledDate = "";
-                    scheduledTime = "";
+//                    scheduledDate = "";
+//                    scheduledTime = "";
+
+                    System.out.println("calendertext : " + calendertv.getText().toString());
+
                     if (!frmSource.getText().toString().equalsIgnoreCase("") &&
                             !destination.getText().toString().equalsIgnoreCase("") &&
-                            !frmDest.getText().toString().equalsIgnoreCase("")) {
+                            !frmDest.getText().toString().equalsIgnoreCase("") &&
+                            !calendertv.getText().toString().equalsIgnoreCase("Today")) {
 //                        startActivity(new Intent(getContext(), FindRidesActivity.class));
 //                        getApproximateFare();
                         frmDest.setOnClickListener(null);
                         frmSource.setOnClickListener(null);
 //                    sourceDestLayout.setClickable(false);
                         SharedHelper.putKey(context, "name", "");
-                        scheduledDate = "";
-                        scheduledTime = "";
+
                         btnRequestRideConfirm.setEnabled(true);
+                        Intent intent3 = new Intent(getActivity(), FindRidesActivity.class);
+
+                        intent3.putExtra("s_latitude", source_lat);
+                        intent3.putExtra("s_longitude", source_lng);
+                        intent3.putExtra("d_latitude", dest_lat);
+                        intent3.putExtra("d_longitude", dest_lng);
+                        intent3.putExtra("s_address", source_address);
+                        intent3.putExtra("d_address", dest_address);
+                        intent3.putExtra("service_type", "2");
+                        intent3.putExtra("distance", "0");
+                        intent3.putExtra("schedule_date", scheduledDate);
+                        intent3.putExtra("schedule_time", scheduledTime);
+                        intent3.putExtra("upcoming", "1");
+                        intent3.putExtra("use_wallet", "0");
+                        intent3.putExtra("payment_mode", "CASH");
+
+
+                        startActivity(intent3);
+
+
 //                        sendRequest();
-                        sendRequestToGetProvider();
+
+//                        sendRequestToGetProvider();
 //                        sourceDestLayout.setOnClickListener(new SearchFragment.OnClick());
                     } else {
-                        Toast.makeText(context, "Please enter both pickup and drop locations", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Please select date and time", Toast.LENGTH_SHORT).show();
                     }
                     break;
                 case R.id.schedule_ride:
@@ -3440,6 +3475,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                 mMap.clear();
                                 setValuesForSourceAndDestination();
                                 flowValue = 1;
+
                                 layoutChanges();
                                 strPickLocation = "";
                                 strPickType = "";

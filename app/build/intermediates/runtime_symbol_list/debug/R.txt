@@ -5133,6 +5133,7 @@ int id design_navigation_view 0x7f0a01be
 int id dest_border_img 0x7f0a01bf
 int id destination 0x7f0a01c0
 int id destinationLayer 0x7f0a01c1
+int id destinationTv 0x7f0a0642
 int id details 0x7f0a01c2
 int id dialog_button 0x7f0a01c3
 int id dimensions 0x7f0a01c4
@@ -5271,6 +5272,7 @@ int id frmDestination 0x7f0a023f
 int id frmProgressBar 0x7f0a0240
 int id frmSource 0x7f0a0241
 int id from 0x7f0a0242
+int id fromTv 0x7f0a0643
 int id frost 0x7f0a0243
 int id fullAdressETL 0x7f0a0244
 int id fullAdressInput 0x7f0a0245
@@ -5762,6 +5764,7 @@ int id primary_button 0x7f0a0424
 int id privacyPolicyTextView 0x7f0a0425
 int id privateCarCheckBox 0x7f0a0426
 int id profileImgeIv 0x7f0a0427
+int id profileNameTv 0x7f0a0645
 int id profileTv 0x7f0a0428
 int id profile_detail_layout 0x7f0a0429
 int id profile_image 0x7f0a042a
@@ -5820,6 +5823,7 @@ int id returnTimeVal 0x7f0a062f
 int id revenue_card 0x7f0a045d
 int id revenue_txt 0x7f0a045e
 int id reverseSawtooth 0x7f0a045f
+int id reviewCount 0x7f0a0646
 int id rg 0x7f0a0460
 int id rgLocationChooser 0x7f0a0461
 int id rides_card 0x7f0a0462

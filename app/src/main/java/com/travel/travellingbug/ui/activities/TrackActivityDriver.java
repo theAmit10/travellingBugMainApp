@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.SharedHelper;
 
-public class TrackActivity extends AppCompatActivity {
+public class TrackActivityDriver extends AppCompatActivity {
 
 
     String url;
@@ -33,7 +33,7 @@ public class TrackActivity extends AppCompatActivity {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         }
 
-        setContentView(R.layout.activity_track);
+        setContentView(R.layout.activity_track_driver);
         myWebView = findViewById(R.id.webView);
         url = getIntent().getStringExtra("address");
 //        url="<iframe src="+url+"></iframe>";

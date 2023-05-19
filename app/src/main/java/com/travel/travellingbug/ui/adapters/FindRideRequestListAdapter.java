@@ -22,7 +22,7 @@ public class FindRideRequestListAdapter {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            profileImageIv = itemView.findViewById(R.id.profileImageIv);
+            profileImageIv = itemView.findViewById(R.id.driver_image);
             profileNameTv = itemView.findViewById(R.id.profileNameTv);
             reviewCount = itemView.findViewById(R.id.reviewCount);
             fare = itemView.findViewById(R.id.fare);

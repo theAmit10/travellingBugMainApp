@@ -97,9 +97,9 @@
                 android:drawableTint="@color/dark_gray"
                 android:fontFamily="@font/montserrat_medium"
                 android:maxLines="1"
-                android:textSize="@dimen/_9sdp"
                 android:text="20 june, 2023"
-                android:textColor="@color/dark_gray" />
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/_9sdp" />
 
             <TextView
                 android:id="@+id/time"
@@ -107,13 +107,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:drawableLeft="@drawable/ic_time"
-                android:fontFamily="@font/montserrat_medium"
                 android:drawablePadding="@dimen/_5sdp"
-                android:textSize="@dimen/_9sdp"
                 android:drawableTint="@color/dark_gray"
+                android:fontFamily="@font/montserrat_medium"
                 android:maxLines="1"
                 android:text="11:30 PM"
-                android:textColor="@color/dark_gray" />
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/_9sdp" />
 
         </LinearLayout>
     </LinearLayout>
@@ -123,270 +123,96 @@
         android:layout_height="2dp"
         android:background="@color/colorGray" />
 
-    <RelativeLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:visibility="gone"
-        android:layout_height="wrap_content">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/findRideRequestRv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </androidx.recyclerview.widget.RecyclerView>
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:padding="@dimen/_10sdp"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingStart="@dimen/_10sdp"
-            android:paddingEnd="@dimen/_10sdp"
-            android:paddingTop="@dimen/_10sdp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profileImgeIv"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/people"
-                app:civ_border_color="@color/green"
-                app:civ_border_width="@dimen/_2sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imageView6"
-                app:layout_constraintTop_toTopOf="@+id/namePAtv" />
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
+                    android:id="@+id/findRideRequestRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </RelativeLayout>
+
+
+            <LinearLayout
+
+                android:id="@+id/errorLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_5sdp"
+                android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:layout_weight="1"
-                >
+                android:padding="@dimen/_5sdp">
 
-                <TextView
-                    android:id="@+id/textView5"
+
+                <RelativeLayout
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="David Johnson"
-                    android:drawableRight="@drawable/ic_green_tick"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                    android:layout_centerInParent="true">
 
-                <RatingBar
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
 
-                    android:id="@+id/listitemrating"
-                    style="@android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:scaleX=".3"
-                    android:scaleY=".3"
-                    android:transformPivotX="0dp"
-                    android:transformPivotY="0dp"
-                    android:isIndicator="true"
-                    android:max="5" />
+                        <ImageView
+                            android:id="@+id/error_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_184sdp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:background="@drawable/no_data_found"
+                            android:scaleType="centerCrop" />
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-35dp"
-                    android:text="( 115 Reviews )"
-                    android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_8sdp" />
-            </LinearLayout>
+                        <com.travel.travellingbug.utills.MyBoldTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:gravity="center"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:text="No Rides Found"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_16sdp"
+                            android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="@dimen/_90sdp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/fare"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:maxLines="1"
-                    android:text="₹ 1200"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
-                    android:textStyle="bold"
-                    />
-                <TextView
-                    android:id="@+id/availableSeat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:maxLines="1"
-                    android:text="3 Seat left"
-                    android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_10sdp"
 
-                    />
+                        <com.travel.travellingbug.utills.MyTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/error_image"
+                            android:gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:text="Currently, no driver available try after sometime. "
+                            android:textColor="@color/colorDarkGray"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
 
             </LinearLayout>
-
-
 
         </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_height="wrap_content">
+    </androidx.core.widget.NestedScrollView>
 
-
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="@dimen/_10sdp"
-                android:layout_height="@dimen/_10sdp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_circle_green"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:id="@+id/view5"
-                android:layout_width="1dp"
-                android:layout_height="10dp"
-                android:background="@color/colorDarkGray"
-                app:layout_constraintEnd_toEndOf="@+id/imageView9"
-                app:layout_constraintStart_toStartOf="@+id/imageView9"
-                app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
-            <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="@dimen/_10sdp"
-                android:layout_height="@dimen/_10sdp"
-                android:src="@drawable/ic_circle_yellow"
-                app:layout_constraintStart_toStartOf="@+id/imageView9"
-                app:layout_constraintTop_toBottomOf="@+id/view5" />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:maxLines="1"
-                android:text="Plot A2, Sector 38 A, Noida, \nIndia"
-                android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_9sdp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView9"
-                app:layout_constraintTop_toTopOf="@+id/imageView9" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:maxLines="1"
-                android:text="Flat No-83, Dwarka Sector 12"
-                android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_9sdp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView10"
-                app:layout_constraintTop_toBottomOf="@+id/view5" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
-            android:orientation="horizontal"
-            android:padding="@dimen/_10sdp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-
-
-                <TextView
-                    android:id="@+id/startTimeVal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10:00 am"
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/_10sdp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-
-
-                <TextView
-                    android:id="@+id/carTypeVal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Honda Civic | white "
-                    android:textColor="@color/green"
-                    android:textSize="@dimen/_10sdp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/details"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_22sdp"
-                android:text="Details"
-                android:textSize="@dimen/_8sdp"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:background="@drawable/auth_btn_green_bg"/>
-
-            <Button
-                android:id="@+id/request"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_22sdp"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:text="Request"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_8sdp"
-                android:textAllCaps="false"
-                android:background="@drawable/auth_btn_green_bg"/>
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <View
-        android:layout_marginTop="-20dp"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/colorGray" />
 
 </LinearLayout>

@@ -118,7 +118,7 @@ import com.travel.travellingbug.ui.activities.DocUploadActivity;
 import com.travel.travellingbug.ui.activities.HomeScreenActivity;
 import com.travel.travellingbug.ui.activities.Payment;
 import com.travel.travellingbug.ui.activities.ShowProfile;
-import com.travel.travellingbug.ui.activities.TrackActivity;
+import com.travel.travellingbug.ui.activities.TrackActivityDriver;
 import com.travel.travellingbug.ui.activities.UpdateProfile;
 import com.travel.travellingbug.utills.MapAnimator;
 import com.travel.travellingbug.utills.MapRipple;
@@ -1089,7 +1089,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 current_address = currentAddress;
 
                 if (frmSource.getContext() != null) {
-                    frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
+                    frmSource.setTextColor(getContext().getResources().getColor(R.color.dark_gray));
                     frmSource.setText(currentAddress);
                 }
 
@@ -1141,7 +1141,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         HashMap<String, String> headers = new HashMap<String, String>();
                         headers.put("X-Requested-With", "XMLHttpRequest");
-                        headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " " + SharedHelper.getKey(context, "access_token"));
+//                        headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " " + SharedHelper.getKey(context, "access_token"));
+                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
                         return headers;
                     }
                 };
@@ -2164,7 +2165,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                     flowValue = 0;
                                     layoutChanges();
 
-                                    Intent intent = new Intent(getActivity(), TrackActivity.class);
+                                    Intent intent = new Intent(getActivity(), TrackActivityDriver.class);
                                     intent.putExtra("flowValue", 3);
                                     startActivity(intent);
                                 }

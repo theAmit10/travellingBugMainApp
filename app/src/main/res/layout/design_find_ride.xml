@@ -14,14 +14,14 @@
         android:paddingTop="@dimen/_10sdp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profileImageIv"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:id="@+id/driver_image"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:scaleType="centerCrop"
             android:src="@drawable/people"
-            app:civ_border_color="@color/green"
+            app:civ_border_color="@color/colorLightGray"
             app:civ_border_width="@dimen/_2sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView6"
@@ -43,27 +43,24 @@
                 android:drawablePadding="@dimen/_10sdp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_11sdp" />
 
             <RatingBar
-
                 android:id="@+id/listitemrating"
-                style="@android:attr/ratingBarStyleSmall"
+                style="?attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleX=".3"
-                android:scaleY=".3"
-                android:transformPivotX="0dp"
-                android:transformPivotY="0dp"
+                android:layout_gravity="start"
+
                 android:isIndicator="true"
-                android:max="5" />
+                android:numStars="5"
+                android:progressTint="#FFCA28" />
 
             <TextView
                 android:id="@+id/reviewCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-35dp"
-                android:text="( 115 Reviews )"
+                android:text="( 15 Reviews )"
                 android:textColor="@color/colorDarkGray"
                 android:textSize="@dimen/_8sdp" />
         </LinearLayout>
@@ -82,7 +79,7 @@
                 android:maxLines="1"
                 android:text="₹ 1200"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_11sdp"
                 android:textStyle="bold"
                  />
             <TextView
@@ -106,6 +103,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
         android:layout_height="wrap_content">
 
 
@@ -140,7 +139,7 @@
             android:id="@+id/fromTv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/_32sdp"
             android:layout_marginEnd="10dp"
             android:maxLines="1"
             android:text="Plot A2, Sector 38 A, Noida, \nIndia"
@@ -155,7 +154,7 @@
             android:id="@+id/destinationTv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/_32sdp"
             android:layout_marginEnd="10dp"
             android:maxLines="1"
             android:text="Flat No-83, Dwarka Sector 12"
@@ -173,7 +172,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:orientation="horizontal"
         android:padding="@dimen/_10sdp">
 
@@ -214,7 +214,7 @@
                 android:layout_height="wrap_content"
                 android:text="Honda Civic | white "
                 android:textColor="@color/green"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_10sdp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -242,5 +242,11 @@
 
 
     </LinearLayout>
+
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorGray" />
 
 </LinearLayout>
