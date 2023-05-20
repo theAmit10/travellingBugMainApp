@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.travel.travellingbug.ui.activities.TrackActivity"
+            android:exported="false" />
+        <activity
             android:name="com.travel.travellingbug.ui.activities.RideRequestDetailsActivity"
             android:exported="false" />
         <activity
@@ -393,7 +396,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.travel.travellingbug.ui.activities.TrackActivity"
+            android:name="com.travel.travellingbug.ui.activities.TrackActivityDriver"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

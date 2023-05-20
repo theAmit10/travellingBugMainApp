@@ -14,6 +14,12 @@
     <!--    <string name="fb_login_protocol_scheme">fb1234</string>-->
     <string name="facebook_client_token" translatable="false">cbfdf46067ccb2b946042442da953184</string>
 
+    <string name="arrived" translatable="false">&Provider; has arrived at your location</string>
+    <string name="picked_up" translatable="false">you are on &service;</string>
+    <string name="share" translatable="false">Share</string>
+    <string name="no_drivers_found" translatable="false">No drivers available to take your trip</string>
+    <string name="driver_busy" translatable="false">Your trip was cancelled by the driver.Please contact us for support</string>
+
 
     <!--Navigation Drawer -->
     <string name="navigation_drawer_open">Open navigation drawer</string>

@@ -17,15 +17,15 @@ import java.lang.Override;
 public class LoginActivity_ViewBinding implements Unbinder {
   private LoginActivity target;
 
-  private View view7f0a03c0;
+  private View view7f0a03d6;
 
-  private View view7f0a0113;
+  private View view7f0a0116;
 
-  private View view7f0a0112;
+  private View view7f0a0115;
 
-  private View view7f0a05c6;
+  private View view7f0a05f6;
 
-  private View view7f0a05b9;
+  private View view7f0a05e8;
 
   @UiThread
   public LoginActivity_ViewBinding(LoginActivity target) {
@@ -42,7 +42,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
     target.ccp = Utils.findRequiredViewAsType(source, R.id.ccp, "field 'ccp'", CountryCodePicker.class);
     view = Utils.findRequiredView(source, R.id.nextIcon, "field 'nextIcon' and method 'btnLoginClick'");
     target.nextIcon = Utils.castView(view, R.id.nextIcon, "field 'nextIcon'", Button.class);
-    view7f0a03c0 = view;
+    view7f0a03d6 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -51,7 +51,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
     });
     target.mobile_no = Utils.findRequiredViewAsType(source, R.id.mobile_no, "field 'mobile_no'", EditText.class);
     view = Utils.findRequiredView(source, R.id.btnGoogle, "method 'btnGoogleClick'");
-    view7f0a0113 = view;
+    view7f0a0116 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -59,7 +59,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.btnFb, "method 'btnFbClick'");
-    view7f0a0112 = view;
+    view7f0a0115 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -67,7 +67,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.txtSignUp, "method 'txtSignUpClick'");
-    view7f0a05c6 = view;
+    view7f0a05f6 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -75,7 +75,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.txtForget, "method 'txtForgetClick'");
-    view7f0a05b9 = view;
+    view7f0a05e8 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -97,15 +97,15 @@ public class LoginActivity_ViewBinding implements Unbinder {
     target.nextIcon = null;
     target.mobile_no = null;
 
-    view7f0a03c0.setOnClickListener(null);
-    view7f0a03c0 = null;
-    view7f0a0113.setOnClickListener(null);
-    view7f0a0113 = null;
-    view7f0a0112.setOnClickListener(null);
-    view7f0a0112 = null;
-    view7f0a05c6.setOnClickListener(null);
-    view7f0a05c6 = null;
-    view7f0a05b9.setOnClickListener(null);
-    view7f0a05b9 = null;
+    view7f0a03d6.setOnClickListener(null);
+    view7f0a03d6 = null;
+    view7f0a0116.setOnClickListener(null);
+    view7f0a0116 = null;
+    view7f0a0115.setOnClickListener(null);
+    view7f0a0115 = null;
+    view7f0a05f6.setOnClickListener(null);
+    view7f0a05f6 = null;
+    view7f0a05e8.setOnClickListener(null);
+    view7f0a05e8 = null;
   }
 }

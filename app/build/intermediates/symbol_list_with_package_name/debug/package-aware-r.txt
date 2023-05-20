@@ -1445,6 +1445,7 @@ color common_google_signin_btn_tint
 color confirmcolor
 color content_background
 color control_normal_color_default
+color cpb_white
 color dark_gray
 color dark_green
 color darker_blue
@@ -2037,6 +2038,7 @@ color teal_700
 color test
 color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
+color text_color_black
 color text_color_white
 color theme
 color timer_text_color
@@ -3547,9 +3549,11 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable destination_icon
 drawable destination_location
+drawable destination_marker
 drawable done
 drawable done_background_color
 drawable done_background_color_dark
+drawable dot
 drawable driver_accepted
 drawable driving_car
 drawable driving_imge_two
@@ -4278,6 +4282,7 @@ drawable jz_title_bg
 drawable jz_volume_icon
 drawable jz_volume_progress_bg
 drawable left_chat
+drawable loading
 drawable loading_gif
 drawable location_waves
 drawable login_views
@@ -4587,6 +4592,7 @@ drawable powered_by_google_dark
 drawable powered_by_google_light
 drawable primary_color_rect_shape
 drawable profile_work
+drawable provider
 drawable provider_marker
 drawable publish
 drawable quantum_ic_arrow_back_grey600_24
@@ -4626,12 +4632,14 @@ drawable simple_button_background
 drawable sos
 drawable source_location
 drawable square_desti
+drawable squre
 drawable summary_
 drawable test_custom_background
 drawable toast_frame
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable top_shadow
+drawable topbg
 drawable triangle
 drawable up_down
 drawable user_marker
@@ -4849,6 +4857,7 @@ id addVehicleTv
 id add_money_card
 id add_source_card_entry_widget
 id add_source_error_container
+id addressTxt
 id addressType
 id adjust_height
 id adjust_width
@@ -4953,6 +4962,7 @@ id btnCall
 id btnCancel
 id btnCancelRide
 id btnCancelTrip
+id btnChat
 id btnDone
 id btnDonePopup
 id btnFb
@@ -5225,6 +5235,7 @@ id et_name_aaw
 id et_phone_number_aaw
 id et_postal_code_aaw
 id et_state_aaw
+id etaTxt
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -5349,6 +5360,7 @@ id imgDestClose
 id imgDestination
 id imgDoc
 id imgDropped
+id imgEditDestination
 id imgFull
 id imgGoodConduct
 id imgLicense
@@ -5461,6 +5473,7 @@ id lblEta
 id lblExtraPrice
 id lblModelNumber
 id lblNoMatch
+id lblPaymentChanges
 id lblPaymentType
 id lblPaymentTypeInvoice
 id lblPriceKm
@@ -5478,6 +5491,7 @@ id lblTaxPrice
 id lblTime
 id lblTitle
 id lblTotalPrice
+id lblTotalPrices
 id lblType
 id lblWithdrawAmount
 id lblWithdrawDateTime
@@ -5527,6 +5541,7 @@ id lnrApproximate
 id lnrComments
 id lnrEarnings
 id lnrErrorLayout
+id lnrFlow
 id lnrGoOffline
 id lnrHidePopup
 id lnrInvoice
@@ -5774,6 +5789,7 @@ id progress_bar
 id progress_bar_as
 id progress_circular
 id progress_horizontal
+id promoLayout
 id promo_code
 id provider_map
 id radio
@@ -6110,6 +6126,7 @@ id tripid
 id tripsAndFareCV
 id tuesday
 id tvAddressLocation
+id tvCancel
 id tvCancelDialog
 id tvComment
 id tvCommision
@@ -6125,6 +6142,8 @@ id tvLocationWork
 id tvLocationWorkAddress
 id tvName
 id tvNumber
+id tvPaymentLabel
+id tvPromo
 id tvProviderName
 id tvRate
 id tvResend
@@ -6174,6 +6193,7 @@ id txtComment
 id txtComments
 id txtDateTime
 id txtDestination
+id txtDiscount
 id txtDocomentName
 id txtDocumentName
 id txtDocumentType
@@ -6189,6 +6209,7 @@ id txtNotes
 id txtNotification
 id txtPassword
 id txtPickLocation
+id txtPickUpNotes
 id txtPickup
 id txtReview
 id txtSatus
@@ -6416,6 +6437,7 @@ layout activity_stripe
 layout activity_terms_and_condition
 layout activity_terms_of_use
 layout activity_track
+layout activity_track_driver
 layout activity_travel_preference
 layout activity_travel_preference_main
 layout activity_update_preference
@@ -6461,12 +6483,15 @@ layout com_facebook_device_auth_dialog_fragment
 layout com_facebook_login_fragment
 layout com_facebook_smart_device_dialog_fragment
 layout com_facebook_tooltip_bubble
+layout confirm_payment
+layout confirm_ride_dialog
 layout country_autocomplete_textview
 layout country_picker
 layout coupon_list_item
 layout custom_dialog
 layout custom_info_contents
 layout custom_list_document_adapter
+layout custom_marker
 layout date_picker_dialog
 layout date_picker_done_button
 layout date_picker_header_view
@@ -6826,6 +6851,7 @@ string app_name
 string appbar_scrolling_view_behavior
 string approved
 string arbic
+string arrived
 string arriving
 string bank_details
 string bank_name
@@ -6978,6 +7004,7 @@ string documents
 string done
 string done_label
 string driver
+string driver_busy
 string driver_denied_to_come
 string driver_is_not_moving
 string driver_is_on_the_way
@@ -7145,6 +7172,7 @@ string no
 string no_address
 string no_comment
 string no_comments
+string no_drivers_found
 string no_notification_found
 string no_payment_methods
 string no_result_found
@@ -7187,6 +7215,7 @@ string payment_method_add_new_card
 string payment_methods
 string phone_number
 string pick_up
+string picked_up
 string pickup_location
 string pin_location
 string place_autocomplete_clear_button
@@ -7264,6 +7293,7 @@ string selected_payment_mode
 string selection_radius_multiplier
 string send
 string server_down
+string share
 string skip
 string something_went_wrong
 string something_went_wrong_net

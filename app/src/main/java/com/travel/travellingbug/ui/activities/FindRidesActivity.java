@@ -458,7 +458,7 @@ public class FindRidesActivity extends AppCompatActivity {
 
 //                    flowValue = 0;
 //                    layoutChanges();
-                    Intent intent = new Intent(getApplicationContext(), TrackActivityDriver.class);
+                    Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
                     intent.putExtra("flowValue", 3);
                     startActivity(intent);
 
