@@ -116,5 +116,7 @@ public interface URLHelper {
 
     String UPDATE_LOCATION_ADMIN = BASE + "api/provider/profile/location";
 
+    String BOOK_FOR_UPCOMMING_TRIPS = BASE +  "api/provider/upcoming/checkupcoming";
+
 
 }

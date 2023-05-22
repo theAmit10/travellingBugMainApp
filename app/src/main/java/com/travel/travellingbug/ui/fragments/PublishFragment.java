@@ -2074,7 +2074,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                             }
 
                         }, error -> {
-                    displayMessage(getActivity().getString(R.string.something_went_wrong));
+                    displayMessage("Something went wrong");
                 }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {

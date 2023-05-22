@@ -1732,6 +1732,10 @@
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\mipmap-hdpi\\ic_map_current_location.png"
     },
     {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_pasenger_data.xml.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\design_pasenger_data.xml"
+    },
+    {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_placeholder.png.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable\\placeholder.png"
     },

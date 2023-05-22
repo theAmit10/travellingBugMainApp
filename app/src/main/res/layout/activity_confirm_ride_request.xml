@@ -26,12 +26,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="-20dp"
             android:fontFamily="@font/montserrat_medium"
-            android:gravity="center"
-            android:text="Confirm Ride Request"
+            android:text="CONFIRM RIDE REQUEST"
             android:textColor="@color/white"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_12sdp" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -54,8 +52,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profileImgeIv"
-                    android:layout_width="@dimen/_60sdp"
-                    android:layout_height="@dimen/_60sdp"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_50sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:scaleType="centerCrop"
@@ -75,7 +73,7 @@
                     >
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/nameTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="David Johnson"
@@ -83,17 +81,17 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
+                        android:textSize="@dimen/_13sdp" />
 
 
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/carModelAndColor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Honda Civic | white "
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_9sdp" />
                 </LinearLayout>
 
 
@@ -106,23 +104,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Location "
-                android:layout_marginStart="@dimen/_80sdp"
+                android:layout_marginStart="@dimen/_70sdp"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_13sdp"
+                android:textSize="@dimen/_12sdp"
                 android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 >
 
 
                 <ImageView
                     android:id="@+id/imageView9"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="10dp"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/ic_circle_green"
                     app:layout_constraintStart_toStartOf="parent"
@@ -139,8 +137,8 @@
 
                 <ImageView
                     android:id="@+id/imageView10"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
                     android:src="@drawable/ic_circle_yellow"
                     app:layout_constraintStart_toStartOf="@+id/imageView9"
                     app:layout_constraintTop_toBottomOf="@+id/view5" />
@@ -149,22 +147,22 @@
                     android:id="@+id/textView8"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_35sdp"
+                    android:layout_marginStart="@dimen/_30sdp"
                     android:layout_marginEnd="10dp"
                     android:maxLines="1"
                     android:text="Pickup location"
                     android:textColor="@color/colorGray"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
                     app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
                 <TextView
-                    android:id="@+id/textView10a"
+                    android:id="@+id/pickupLocation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_35sdp"
+                    android:layout_marginStart="@dimen/_30sdp"
                     android:layout_marginEnd="10dp"
                     android:maxLines="1"
                     android:text="Plot A2, Sector 38 A, Noida, \nIndia"
@@ -172,14 +170,15 @@
                     android:textSize="@dimen/_10sdp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/dropLocation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_35sdp"
+                    android:layout_marginStart="@dimen/_30sdp"
                     android:layout_marginEnd="10dp"
                     android:maxLines="1"
                     android:text="Flat No-83, Dwarka Sector 12"
@@ -195,13 +194,13 @@
                     android:id="@+id/textView11"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_35sdp"
+                    android:layout_marginStart="@dimen/_30sdp"
                     android:maxLines="1"
                     android:text="Drop location"
                     android:textColor="@color/colorGray"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/textView9"
+                    app:layout_constraintEnd_toEndOf="@+id/dropLocation"
                     app:layout_constraintStart_toEndOf="@+id/imageView10"
                     app:layout_constraintTop_toBottomOf="@+id/view5" />
 
@@ -219,20 +218,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date &amp; Timings"
-                android:layout_marginStart="@dimen/_80sdp"
+                android:layout_marginStart="@dimen/_70sdp"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_13sdp"
+                android:textSize="@dimen/_12sdp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/date"
+                    android:textSize="@dimen/_8sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
@@ -247,7 +247,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_40sdp"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/dark_gray"
                     android:fontFamily="@font/montserrat_medium"
@@ -260,6 +260,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:drawableLeft="@drawable/ic_time"
                     android:fontFamily="@font/montserrat_medium"
                     android:drawablePadding="@dimen/_30sdp"
@@ -272,7 +273,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_40sdp"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/dark_gray"
                     android:fontFamily="@font/montserrat_medium"
@@ -293,15 +294,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Fare &amp; Seat Confirmation"
-                android:layout_marginStart="@dimen/_80sdp"
+                android:layout_marginStart="@dimen/_70sdp"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_13sdp"
+                android:textSize="@dimen/_12sdp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:orientation="vertical">
 
                 <TextView
@@ -309,6 +311,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
+                    android:textSize="@dimen/_8sdp"
                     android:drawableLeft="@drawable/fare"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/colorGray"
@@ -320,10 +323,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_40sdp"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/dark_gray"
                     android:fontFamily="@font/montserrat_medium"
+
                     android:maxLines="1"
                     android:text="RS. 1500"
                     android:textColor="@color/dark_gray" />
@@ -337,19 +341,21 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/colorGray"
+                    android:textSize="@dimen/_8sdp"
                     android:maxLines="1"
-                    android:text="Seats"
+                    android:text="Numbers of seats"
                     android:textColor="@color/colorGray" />
                 <TextView
                     android:id="@+id/seatVal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:layout_marginStart="@dimen/_50sdp"
+                    android:layout_marginStart="@dimen/_40sdp"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/dark_gray"
                     android:fontFamily="@font/montserrat_medium"
                     android:maxLines="1"
+
                     android:text="3 Seat"
                     android:textColor="@color/dark_gray" />
 
@@ -370,6 +376,7 @@
         >
 
         <Button
+            android:id="@+id/confirmBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"

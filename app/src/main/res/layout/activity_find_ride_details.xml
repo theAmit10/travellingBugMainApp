@@ -36,8 +36,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-
             <TextView
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_width="match_parent"
@@ -49,60 +47,19 @@
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_medium"
-                android:paddingStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="Vikas"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_medium"
-                android:paddingStart="@dimen/_5sdp"
-                android:paddingEnd="@dimen/_5sdp"
-                android:text="New Delhi -> Jaipur"
-                android:drawableRight="@drawable/ic_forward_gray"
-                android:drawableTint="@color/green"
-                android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_10sdp"
-                android:textStyle="bold" />
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_medium"
-                android:paddingStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="Vinay"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_medium"
-                android:paddingStart="@dimen/_5sdp"
-                android:paddingEnd="@dimen/_5sdp"
-                android:text="New Delhi -> Jaipur"
-                android:drawableRight="@drawable/ic_forward_gray"
-                android:drawableTint="@color/green"
-                android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_10sdp"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content">
 
-            <ListView
-                android:id="@+id/passengerLV"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/passengerRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp">
+                </androidx.recyclerview.widget.RecyclerView>
+            </RelativeLayout>
 
-            </ListView>
 
             <TextView
                 android:layout_width="match_parent"

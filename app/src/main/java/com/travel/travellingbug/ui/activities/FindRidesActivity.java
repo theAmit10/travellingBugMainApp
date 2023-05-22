@@ -51,6 +51,11 @@ public class FindRidesActivity extends AppCompatActivity {
     Button details, request;
     CustomDialog customDialog;
 
+    String noofseat="",request_id="";
+
+    String sc_address = "",dc_address="",s_profileImage="",s_name="",s_carModleAndColor="",s_date="",s_time="",s_fare="",s_seat="",s_id="";
+
+
     boolean scheduleTrip = false;
 
     RecyclerView recyclerView;
@@ -375,6 +380,7 @@ public class FindRidesActivity extends AppCompatActivity {
 
                         holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
                         holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
+                        request_id = jsonArray.optJSONObject(position).optString("id");
 //                        if (jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("PENDING")) {
 //                            holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
 //                        }
@@ -435,34 +441,110 @@ public class FindRidesActivity extends AppCompatActivity {
             holder.request.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SharedHelper.putKey(getApplicationContext(), "current_status", "");
+
+
+//                    SharedHelper.putKey(getApplicationContext(), "current_status", "");
+//                    Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
+//                    SharedHelper.putKey(getApplicationContext(), "current_status", "");
+//                    SharedHelper.putKey(getApplicationContext(), "request_id", "80");
+//                    Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
+//                    intent.putExtra("flowValue", 3);
+//
+//                    intent.putExtra("s_address",jsonArray.optJSONObject(position).optString("s_address"));
+//
+//
+//                    startActivity(intent);
+
+
+                    try {
+                        if (!jsonArray.optJSONObject(position).optString("schedule_at", "").isEmpty()) {
+                            String form = jsonArray.optJSONObject(position).optString("schedule_at");
+                            try {
+                                s_date = getDate(form) + "th " + getMonth(form) + " " + getYear(form);
+                                s_time = getTime(form);
+
+//                                holder.tripDate.setText(getDate(form) + "th " + getMonth(form) + " " + "at " + getTime(form));
+//                                holder.listitemrating.setRating(Float.parseFloat("3.0"));
+//                                holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
+//                                holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
+
+                                sc_address = jsonArray.optJSONObject(position).optString("s_address");
+                                dc_address = jsonArray.optJSONObject(position).optString("d_address");
+                                s_id = jsonArray.optJSONObject(position).optString("id");
+
+
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
+                        if (serviceObj != null) {
+//                            holder.car_name.setText(serviceObj.optString("name"));
+                            s_carModleAndColor = serviceObj.optString("name");
+
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("provider");
+                        if (serviceObj != null) {
+
+//                            Picasso.get().load(URLHelper.BASE + "storage/app/public/" + serviceObj.optString("avatar"))
+//                                    .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
+//                            holder.profileNameTv.setText(serviceObj.optString("first_name"));
+
+                            s_profileImage = URLHelper.BASE + "storage/app/public/" + serviceObj.optString("avatar");
+                            s_name = serviceObj.optString("first_name");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+
                     Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
-//                    try {
-////                        SharedHelper.putKey(getApplicationContext(), "request_id", "" + jsonArray.get(0).toString().optJSONObject("id"));
-//                    } catch (JSONException e) {
-//                        throw new RuntimeException(e);
-//                    }
-//                    scheduleTrip = !scheduledDate.equalsIgnoreCase("") && !scheduledTime.equalsIgnoreCase("");
-                    // flowValue = 3;
-                    //layoutChanges();
-//                    flowValue = 0;
-//                    layoutChanges();
+
+                    s_fare = "1100";
+                    s_seat = "2";
+
+                    Intent intent = new Intent(getApplicationContext(), ConfirmRideRequestActivity.class);
 
 
+                    intent.putExtra("s_address",jsonArray.optJSONObject(position).optString("s_address"));
+                    intent.putExtra("d_address",dc_address);
+                    intent.putExtra("s_profileImage",s_profileImage);
+                    intent.putExtra("s_name",s_name);
+                    intent.putExtra("s_carModleAndColor",s_carModleAndColor);
+                    intent.putExtra("s_date",s_date);
+                    intent.putExtra("s_time",s_time);
+                    intent.putExtra("s_fare",s_fare);
+                    intent.putExtra("s_seat",s_seat);
+                    intent.putExtra("s_id",s_id);
 
-                    SharedHelper.putKey(getApplicationContext(), "current_status", "");
-                    SharedHelper.putKey(getApplicationContext(), "request_id", "80");
-//                    scheduleTrip = !scheduledDate.equalsIgnoreCase("") && !scheduledTime.equalsIgnoreCase("");
-                    // flowValue = 3;
-                    //layoutChanges();
 
-//                    flowValue = 0;
-//                    layoutChanges();
-                    Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
-                    intent.putExtra("flowValue", 3);
                     startActivity(intent);
 
 
+
+
+
+                }
+            });
+
+
+            holder.details.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(FindRidesActivity.this, FindRideDetails.class);
+                    intent.putExtra("noofseat","2");
+                    intent.putExtra("request_id",request_id);
+                    startActivity(intent);
                 }
             });
 

@@ -5006,6 +5006,7 @@ id cancel_action
 id cancel_button
 id cancel_card
 id cancel_txt
+id carModelAndColor
 id carType
 id carTypeVal
 id car_name
@@ -5081,6 +5082,7 @@ id com_facebook_smart_instructions_or
 id com_facebook_tooltip_bubble_view_bottom_pointer
 id com_facebook_tooltip_bubble_view_text_body
 id com_facebook_tooltip_bubble_view_top_pointer
+id confirmBtn
 id confirmNewPassword
 id confirmNewPasswordET
 id confirm_button
@@ -5180,6 +5182,7 @@ id driverCompleted
 id driverPicked
 id driver_image
 id driveraccepted
+id dropLocation
 id dropdown_menu
 id duration_image_tip
 id duration_progressbar
@@ -5646,6 +5649,7 @@ id my_featured_image
 id my_pager
 id my_tablayout
 id namePAtv
+id nameTv
 id nav_document
 id nav_earnings
 id nav_help
@@ -5713,7 +5717,7 @@ id parentLayout
 id parentPanel
 id parentRelative
 id parent_matrix
-id passengerLV
+id passengerRV
 id password_toggle
 id path
 id pathRelative
@@ -5742,6 +5746,7 @@ id pickUpData
 id pickUpDataVal
 id pickUpTime
 id pickUpTimeVal
+id pickupLocation
 id pin
 id place_autocomplete_clear_button
 id place_autocomplete_powered_by_google
@@ -5771,6 +5776,8 @@ id places_autocomplete_search_button
 id places_autocomplete_search_input
 id places_autocomplete_try_again
 id places_autocomplete_try_again_progress
+id plocation
+id pname
 id position
 id postLayout
 id postalAddresstv
@@ -6020,7 +6027,6 @@ id textStart
 id textTop
 id textView
 id textView1
-id textView10a
 id textView11
 id textView2
 id textView3
@@ -6029,7 +6035,6 @@ id textView5
 id textView6
 id textView7
 id textView8
-id textView9
 id textViewAccountName
 id textViewAccountNumber
 id textViewBankName
@@ -6512,6 +6517,7 @@ layout design_navigation_item_separator
 layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
+layout design_pasenger_data
 layout design_ride_request
 layout design_text_input_end_icon
 layout design_text_input_start_icon

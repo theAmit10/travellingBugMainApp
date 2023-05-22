@@ -96,7 +96,6 @@ import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.models.User;
 import com.travel.travellingbug.ui.activities.DocUploadActivity;
-import com.travel.travellingbug.ui.activities.DocumentUpload;
 import com.travel.travellingbug.ui.activities.HomeScreenActivity;
 import com.travel.travellingbug.ui.activities.Profile;
 import com.travel.travellingbug.ui.activities.ShowProfile;
@@ -578,21 +577,21 @@ public class DriverMapFragment extends Fragment implements
         TextView leavingtv = view.findViewById(R.id.leavingtv);
         TextView goingtv = view.findViewById(R.id.goingtv);
 
-        leavingtv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), DocUploadActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        goingtv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), DocumentUpload.class);
-                startActivity(intent);
-            }
-        });
+//        leavingtv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(), DocUploadActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        goingtv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(), DocumentUpload.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
     }

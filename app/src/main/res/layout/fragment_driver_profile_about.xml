@@ -90,7 +90,7 @@
                     app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/dropLocation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"

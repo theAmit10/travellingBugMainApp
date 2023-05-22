@@ -225,7 +225,7 @@
                     app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
                 <TextView
-                    android:id="@+id/textView10a"
+                    android:id="@+id/pickupLocation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_35sdp"
@@ -240,7 +240,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/dropLocation"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_35sdp"
@@ -265,7 +265,7 @@
                     android:textColor="@color/colorGray"
                     android:textSize="@dimen/_10sdp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="@+id/textView9"
+                    app:layout_constraintEnd_toEndOf="@+id/dropLocation"
                     app:layout_constraintStart_toEndOf="@+id/imageView10"
                     app:layout_constraintTop_toBottomOf="@+id/view5" />
 

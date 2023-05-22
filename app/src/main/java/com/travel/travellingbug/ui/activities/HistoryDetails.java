@@ -228,10 +228,11 @@ public class HistoryDetails extends AppCompatActivity {
             } else {
                 paymentTypeImg.setImageResource(R.drawable.visa_icon);
             }
-            if (response.optJSONObject(0).optJSONObject("user").optString("picture").startsWith("http"))
-                Picasso.get().load(response.optJSONObject(0).optJSONObject("user").optString("picture")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
-            else
-                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + response.optJSONObject(0).optJSONObject("user").optString("picture")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
+
+//            if (response.optJSONObject(0).optJSONObject("user").optString("picture").startsWith("http"))
+//                Picasso.get().load(response.optJSONObject(0).optJSONObject("user").optString("picture")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
+//            else
+//                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + response.optJSONObject(0).optJSONObject("user").optString("picture")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
             final JSONArray res = response;
             tripProviderImg.setOnClickListener(v -> {
                 JSONObject jsonObject = res.optJSONObject(0).optJSONObject("user");
@@ -451,7 +452,7 @@ public class HistoryDetails extends AppCompatActivity {
                 JsonArrayRequest(URLHelper.UPCOMING_TRIP_DETAILS + "?request_id=" +
                         jsonObject.optString("id"),
                         response -> {
-                            setDetails(response);
+//                            setDetails(response);
 
                             history_response = response.toString();
                             Log.e("Get Upcoming Details", history_response);

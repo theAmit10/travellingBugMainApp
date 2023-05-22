@@ -2771,8 +2771,10 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         if (ContextCompat.checkSelfPermission(context,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,
-                    mLocationRequest, this);
+            if(mGoogleApiClient.isConnected()){
+                LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,
+                        mLocationRequest, this);
+            }
         }
     }
 
