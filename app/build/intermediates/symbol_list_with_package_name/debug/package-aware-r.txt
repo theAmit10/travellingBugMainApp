@@ -3430,6 +3430,7 @@ drawable back_white
 drawable backarrow
 drawable background
 drawable banned
+drawable baseline_add
 drawable bg
 drawable bg_car
 drawable bg_toggle_checked
@@ -3486,6 +3487,7 @@ drawable ccp_ic_arrow_drop_down
 drawable ccp_selectable_bg
 drawable chat
 drawable chat_support
+drawable circle_cornor_edge_bg
 drawable circle_icon
 drawable circle_leaving
 drawable collapse
@@ -4310,6 +4312,7 @@ drawable messenger_button_white_bg_round
 drawable messenger_button_white_bg_selector
 drawable middle_box
 drawable middle_boxmirror
+drawable minus
 drawable money1
 drawable ms9_ambient_shadow_z1
 drawable ms9_ambient_shadow_z10
@@ -4850,6 +4853,7 @@ id addCard
 id addCountryCode
 id addCountryName
 id addMyPreferencesTv
+id addPassenger
 id addPostalAddressTv
 id addPreferences
 id addStop
@@ -5650,6 +5654,7 @@ id my_pager
 id my_tablayout
 id namePAtv
 id nameTv
+id nametv
 id nav_document
 id nav_earnings
 id nav_help
@@ -5675,6 +5680,7 @@ id newPassword
 id newPasswordET
 id new_password
 id new_password_lay
+id nextBtn
 id nextIcon
 id nice_video_player
 id noBankDetailsFoundLayout
@@ -5718,6 +5724,7 @@ id parentPanel
 id parentRelative
 id parent_matrix
 id passengerRV
+id passengerVal
 id password_toggle
 id path
 id pathRelative
@@ -5813,6 +5820,7 @@ id rat05UserRating
 id rateRider
 id ratingProvider
 id ratingProviderRate
+id ratingVal
 id ratingtv
 id ratio
 id razor_layout
@@ -5837,6 +5845,7 @@ id recycler_countryDialog
 id registerLayout
 id registerTextview
 id rejectBtn
+id removePassenger
 id replay_text
 id request
 id resend
@@ -5850,6 +5859,7 @@ id reverseSawtooth
 id reviewCount
 id rg
 id rgLocationChooser
+id rideRequestRv
 id rides_card
 id right
 id rightToLeft
@@ -5876,6 +5886,7 @@ id rv_image_pick
 id rv_shipping_methods_ssmw
 id rv_top_divider
 id rv_video_pick
+id saddress
 id satellite
 id saturday
 id saveBTN
@@ -6250,6 +6261,7 @@ id up
 id uploadLicense
 id uploadsever
 id useLogo
+id userName
 id userRating
 id user_name
 id user_total_ride_distanse
@@ -6448,6 +6460,7 @@ layout activity_travel_preference_main
 layout activity_update_preference
 layout activity_update_profile
 layout activity_user_chat
+layout activity_user_profile
 layout activity_user_review
 layout activity_vehicle_details_brand
 layout activity_vehicle_details_color
@@ -6504,6 +6517,7 @@ layout date_picker_selected_date
 layout date_picker_view_animator
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
+layout design_driver_profile_reviews
 layout design_find_ride
 layout design_intro_view_pager
 layout design_layout_snackbar
@@ -6518,6 +6532,7 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_pasenger_data
+layout design_passenger_number
 layout design_ride_request
 layout design_text_input_end_icon
 layout design_text_input_start_icon
@@ -6551,6 +6566,8 @@ layout fragment_publish
 layout fragment_search
 layout fragment_soruce_and_destination
 layout fragment_summary
+layout fragment_user_profile_about
+layout fragment_user_profile_review
 layout fragment_your_ride
 layout fragment_your_trips
 layout image

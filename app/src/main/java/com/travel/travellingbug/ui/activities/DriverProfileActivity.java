@@ -15,7 +15,7 @@ public class DriverProfileActivity extends AppCompatActivity {
     ViewPager2 viewPager;
     TabLayout tabLayout;
     DriverProfileViewPagerAdapter profileViewPagerAdapter;
-    private String[] titles = {"ABOUT", "ACCOUNT"};
+    private String[] titles = {"ABOUT", "REVIEWS"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

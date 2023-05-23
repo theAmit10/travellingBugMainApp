@@ -123,6 +123,7 @@ public class PastTrips extends Fragment {
 
         }, error -> {
             customDialog.dismiss();
+            errorLayout.setVisibility(View.VISIBLE);
             displayMessage(getString(R.string.something_went_wrong));
         }) {
             @Override

@@ -15,8 +15,8 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profileImgeIv"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:scaleType="centerCrop"
@@ -34,7 +34,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/nametv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/ic_green_tick"
@@ -44,57 +44,67 @@
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold" />
 
-            <RatingBar
-
-                android:id="@+id/listitemrating"
-                style="@android:attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:isIndicator="true"
-                android:max="5"
-                android:scaleX=".3"
-                android:scaleY=".3"
-                android:transformPivotX="0dp"
-                android:transformPivotY="0dp" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-45dp"
-                android:text="( 115 Reviews )"
-                android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_8sdp" />
+                <RatingBar
+                    android:id="@+id/listitemrating"
+                    style="?attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:isIndicator="true"
+
+                    android:numStars="5"
+                    android:progressTint="#FFCA28" />
+
+                <TextView
+                    android:id="@+id/ratingVal"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="( 115 Reviews )"
+                    android:textColor="@color/colorDarkGray"
+                    android:textSize="@dimen/_7sdp" />
+
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="@dimen/_90sdp"
             android:layout_height="wrap_content"
-
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/fare"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:gravity="right"
                 android:maxLines="1"
                 android:text="₹ 1200"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_10sdp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/availableSeat"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:maxLines="1"
                 android:text="3 Seat"
                 android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_9sdp"
 
                 />
 
@@ -114,7 +124,7 @@
             android:layout_width="@dimen/_10sdp"
             android:layout_height="@dimen/_10sdp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+
             android:src="@drawable/ic_circle_green"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -137,17 +147,19 @@
             app:layout_constraintTop_toBottomOf="@+id/view5" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/saddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="@dimen/_32sdp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:maxLines="1"
             android:text="Plot A2, Sector 38 A, Noida, \nIndia"
             android:textColor="@color/colorDarkGray"
             android:textSize="@dimen/_8sdp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.224"
             app:layout_constraintStart_toEndOf="@+id/imageView9"
             app:layout_constraintTop_toTopOf="@+id/imageView9" />
 
@@ -155,8 +167,8 @@
             android:id="@+id/dropLocation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="@dimen/_32sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:maxLines="1"
             android:text="Flat No-83, Dwarka Sector 12"
             android:textColor="@color/colorDarkGray"
@@ -176,7 +188,6 @@
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
         android:orientation="horizontal"
         android:padding="@dimen/_10sdp">
 
@@ -193,6 +204,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="25 Feb 10:00 am"
+
                 android:textColor="@color/green"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold" />
@@ -203,7 +215,7 @@
         <Button
             android:id="@+id/rejectBtn"
             android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_height="@dimen/_25sdp"
             android:background="@drawable/cornor_edge_bg"
 
             android:text="Reject"
@@ -214,7 +226,7 @@
         <Button
             android:id="@+id/acceptBtn"
             android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_20sdp"
+            android:layout_height="@dimen/_25sdp"
             android:layout_marginStart="@dimen/_5sdp"
             android:background="@drawable/auth_btn_green_bg"
             android:text="Accept"
@@ -229,6 +241,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1sdp"
         android:background="@color/colorGray"
-        android:layout_margin="@dimen/_10sdp"/>
+        />
 
 </LinearLayout>

@@ -3429,6 +3429,7 @@ int drawable back_white 0x7f08006a
 int drawable backarrow 0x7f08006b
 int drawable background 0x7f08006c
 int drawable banned 0x7f08006d
+int drawable baseline_add 0x7f08054f
 int drawable bg 0x7f08006e
 int drawable bg_car 0x7f08006f
 int drawable bg_toggle_checked 0x7f080070
@@ -3485,6 +3486,7 @@ int drawable ccp_ic_arrow_drop_down 0x7f0800a2
 int drawable ccp_selectable_bg 0x7f0800a3
 int drawable chat 0x7f0800a4
 int drawable chat_support 0x7f0800a5
+int drawable circle_cornor_edge_bg 0x7f080550
 int drawable circle_icon 0x7f0800a6
 int drawable circle_leaving 0x7f0800a7
 int drawable collapse 0x7f0800a8
@@ -4309,6 +4311,7 @@ int drawable messenger_button_white_bg_round 0x7f0803d7
 int drawable messenger_button_white_bg_selector 0x7f0803d8
 int drawable middle_box 0x7f0803d9
 int drawable middle_boxmirror 0x7f0803da
+int drawable minus 0x7f080551
 int drawable money1 0x7f0803db
 int drawable ms9_ambient_shadow_z1 0x7f0803dc
 int drawable ms9_ambient_shadow_z10 0x7f0803dd
@@ -4849,6 +4852,7 @@ int id addCard 0x7f0a009f
 int id addCountryCode 0x7f0a00a0
 int id addCountryName 0x7f0a00a1
 int id addMyPreferencesTv 0x7f0a00a2
+int id addPassenger 0x7f0a065f
 int id addPostalAddressTv 0x7f0a00a3
 int id addPreferences 0x7f0a00a4
 int id addStop 0x7f0a00a5
@@ -5649,6 +5653,7 @@ int id my_pager 0x7f0a03ba
 int id my_tablayout 0x7f0a03bb
 int id namePAtv 0x7f0a03bc
 int id nameTv 0x7f0a0656
+int id nametv 0x7f0a065b
 int id nav_document 0x7f0a03bd
 int id nav_earnings 0x7f0a03be
 int id nav_help 0x7f0a03bf
@@ -5674,6 +5679,7 @@ int id newPassword 0x7f0a03d2
 int id newPasswordET 0x7f0a03d3
 int id new_password 0x7f0a03d4
 int id new_password_lay 0x7f0a03d5
+int id nextBtn 0x7f0a0660
 int id nextIcon 0x7f0a03d6
 int id nice_video_player 0x7f0a03d7
 int id noBankDetailsFoundLayout 0x7f0a03d8
@@ -5717,6 +5723,7 @@ int id parentPanel 0x7f0a03fd
 int id parentRelative 0x7f0a03fe
 int id parent_matrix 0x7f0a03ff
 int id passengerRV 0x7f0a0658
+int id passengerVal 0x7f0a0661
 int id password_toggle 0x7f0a0401
 int id path 0x7f0a0402
 int id pathRelative 0x7f0a0403
@@ -5812,6 +5819,7 @@ int id rat05UserRating 0x7f0a0459
 int id rateRider 0x7f0a045a
 int id ratingProvider 0x7f0a045b
 int id ratingProviderRate 0x7f0a045c
+int id ratingVal 0x7f0a065c
 int id ratingtv 0x7f0a045d
 int id ratio 0x7f0a045e
 int id razor_layout 0x7f0a045f
@@ -5836,6 +5844,7 @@ int id recycler_countryDialog 0x7f0a0471
 int id registerLayout 0x7f0a0472
 int id registerTextview 0x7f0a0473
 int id rejectBtn 0x7f0a0474
+int id removePassenger 0x7f0a0662
 int id replay_text 0x7f0a0475
 int id request 0x7f0a0476
 int id resend 0x7f0a0477
@@ -5849,6 +5858,7 @@ int id reverseSawtooth 0x7f0a047e
 int id reviewCount 0x7f0a047f
 int id rg 0x7f0a0480
 int id rgLocationChooser 0x7f0a0481
+int id rideRequestRv 0x7f0a065d
 int id rides_card 0x7f0a0482
 int id right 0x7f0a0483
 int id rightToLeft 0x7f0a0484
@@ -5875,6 +5885,7 @@ int id rv_image_pick 0x7f0a0498
 int id rv_shipping_methods_ssmw 0x7f0a0499
 int id rv_top_divider 0x7f0a049a
 int id rv_video_pick 0x7f0a049b
+int id saddress 0x7f0a065e
 int id satellite 0x7f0a049c
 int id saturday 0x7f0a049d
 int id saveBTN 0x7f0a049e
@@ -6249,6 +6260,7 @@ int id up 0x7f0a060f
 int id uploadLicense 0x7f0a0610
 int id uploadsever 0x7f0a0611
 int id useLogo 0x7f0a0612
+int id userName 0x7f0a0663
 int id userRating 0x7f0a0613
 int id user_name 0x7f0a0614
 int id user_total_ride_distanse 0x7f0a0615
@@ -6447,6 +6459,7 @@ int layout activity_travel_preference_main 0x7f0d0053
 int layout activity_update_preference 0x7f0d0054
 int layout activity_update_profile 0x7f0d0055
 int layout activity_user_chat 0x7f0d0056
+int layout activity_user_profile 0x7f0d0155
 int layout activity_user_review 0x7f0d0057
 int layout activity_vehicle_details_brand 0x7f0d0058
 int layout activity_vehicle_details_color 0x7f0d0059
@@ -6503,6 +6516,7 @@ int layout date_picker_selected_date 0x7f0d0089
 int layout date_picker_view_animator 0x7f0d008a
 int layout design_bottom_navigation_item 0x7f0d008b
 int layout design_bottom_sheet_dialog 0x7f0d008c
+int layout design_driver_profile_reviews 0x7f0d0156
 int layout design_find_ride 0x7f0d008d
 int layout design_intro_view_pager 0x7f0d008e
 int layout design_layout_snackbar 0x7f0d008f
@@ -6517,6 +6531,7 @@ int layout design_navigation_item_subheader 0x7f0d0097
 int layout design_navigation_menu 0x7f0d0098
 int layout design_navigation_menu_item 0x7f0d0099
 int layout design_pasenger_data 0x7f0d0153
+int layout design_passenger_number 0x7f0d0154
 int layout design_ride_request 0x7f0d009a
 int layout design_text_input_end_icon 0x7f0d009b
 int layout design_text_input_start_icon 0x7f0d009c
@@ -6550,6 +6565,8 @@ int layout fragment_publish 0x7f0d00b7
 int layout fragment_search 0x7f0d00b8
 int layout fragment_soruce_and_destination 0x7f0d00b9
 int layout fragment_summary 0x7f0d00ba
+int layout fragment_user_profile_about 0x7f0d0157
+int layout fragment_user_profile_review 0x7f0d0158
 int layout fragment_your_ride 0x7f0d00bb
 int layout fragment_your_trips 0x7f0d00bc
 int layout image 0x7f0d00bd

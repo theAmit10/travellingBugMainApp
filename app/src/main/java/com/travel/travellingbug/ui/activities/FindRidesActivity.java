@@ -131,6 +131,9 @@ public class FindRidesActivity extends AppCompatActivity {
         upcoming = getIntent().getStringExtra("upcoming");
         use_wallet = getIntent().getStringExtra("use_wallet");
         payment_mode = getIntent().getStringExtra("payment_mode");
+        s_seat = getIntent().getStringExtra("seat_count");
+        noofseat = getIntent().getStringExtra("seat_count");
+
 
 
     }
@@ -511,7 +514,7 @@ public class FindRidesActivity extends AppCompatActivity {
                     Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
 
                     s_fare = "1100";
-                    s_seat = "2";
+
 
                     Intent intent = new Intent(getApplicationContext(), ConfirmRideRequestActivity.class);
 
@@ -542,7 +545,7 @@ public class FindRidesActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(FindRidesActivity.this, FindRideDetails.class);
-                    intent.putExtra("noofseat","2");
+                    intent.putExtra("noofseat",noofseat);
                     intent.putExtra("request_id",request_id);
                     startActivity(intent);
                 }

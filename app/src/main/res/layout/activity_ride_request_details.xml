@@ -39,6 +39,7 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:gravity="center_vertical"
                     android:text="RIDE REQUEST"
+                    android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12sdp" />
             </LinearLayout>
@@ -72,7 +73,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/nametv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawableRight="@drawable/ic_green_tick"
@@ -97,7 +98,7 @@
                         android:transformPivotY="0dp" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/ratingVal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-45dp"
@@ -132,11 +133,11 @@
                     android:layout_height="wrap_content"
 
                     android:drawableLeft="@drawable/ic_profile"
-                    android:drawablePadding="@dimen/_10sdp"
                     android:drawableTint="@color/green"
+                    android:drawablePadding="@dimen/_10sdp"
                     android:text="VIEW PROFILE"
                     android:textColor="@color/green"
-                    android:textSize="@dimen/_14sdp"
+                    android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
                 <View
@@ -156,7 +157,7 @@
                     android:drawablePadding="@dimen/_10sdp"
                     android:text="CHAT"
                     android:textColor="@color/green"
-                    android:textSize="@dimen/_14sdp"
+                    android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -184,18 +185,18 @@
 
                 <ImageView
                     android:id="@+id/imageView9"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:src="@drawable/ic_circle_green"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
                     android:id="@+id/view5"
-                    android:layout_width="1dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/_1sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:background="@color/colorDarkGray"
                     app:layout_constraintEnd_toEndOf="@+id/imageView9"
                     app:layout_constraintStart_toStartOf="@+id/imageView9"
@@ -203,8 +204,8 @@
 
                 <ImageView
                     android:id="@+id/imageView10"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
                     android:src="@drawable/ic_circle_yellow"
                     app:layout_constraintStart_toStartOf="@+id/imageView9"
                     app:layout_constraintTop_toBottomOf="@+id/view5" />
@@ -419,12 +420,12 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
                     android:layout_weight="1"
-                    android:background="@drawable/auth_btn_green_bg"
-                    android:backgroundTint="@color/red"
+                    android:background="@drawable/cornor_edge_bg"
                     android:text="Reject"
+                    android:textStyle="bold"
                     android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_8sdp"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/_10sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/acceptBtn" />
@@ -437,9 +438,9 @@
                     android:layout_weight="1"
                     android:background="@drawable/auth_btn_green_bg"
                     android:text="Accept"
+                    android:textStyle="bold"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_8sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>

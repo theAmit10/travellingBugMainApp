@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.SearchFragment"
-   >
+    tools:context=".ui.fragments.SearchFragment">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -63,10 +62,10 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="gone"
                             android:layout_weight="1"
                             android:background="@color/white"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rcvServiceTypes"
@@ -95,7 +94,7 @@
                                 android:background="@color/view_bg"
                                 android:visibility="gone" />
 
-<!--                            // Cash-->
+                            <!--                            // Cash-->
 
                             <RelativeLayout
                                 android:id="@+id/paymentLayout"
@@ -167,8 +166,8 @@
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_1sdp"
-                            android:visibility="gone"
-                            android:background="@color/calbg" />
+                            android:background="@color/calbg"
+                            android:visibility="gone" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -181,8 +180,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="@dimen/_5sdp"
-                                android:visibility="gone"
                                 android:layout_weight="1"
+                                android:visibility="gone"
                                 app:cardBackgroundColor="@color/colorPrimary"
                                 app:cardCornerRadius="10dp"
                                 app:cardElevation="@dimen/_5sdp">
@@ -191,10 +190,9 @@
                                     android:id="@+id/btnRequestRides"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_40sdp"
-
                                     android:layout_gravity="center"
                                     android:gravity="center"
-                                    android:text="Search"
+                                    android:text="Continue"
                                     android:textColor="@color/button_text_color"
                                     android:textSize="@dimen/_12sdp" />
                             </androidx.cardview.widget.CardView>
@@ -202,16 +200,15 @@
                             <View
                                 android:layout_width="@dimen/_1sdp"
                                 android:layout_height="match_parent"
-                                android:visibility="gone"
                                 android:background="@color/white"
-                                />
+                                android:visibility="gone" />
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_40sdp"
                                 android:layout_gravity="center"
-                                android:visibility="gone"
                                 android:layout_weight="1"
+                                android:visibility="gone"
                                 app:cardBackgroundColor="@color/colorPrimary"
                                 app:cardCornerRadius="0dp"
                                 app:cardElevation="@dimen/_5sdp">
@@ -1554,8 +1551,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/mapfocus"
-                            android:layout_marginTop="@dimen/_20sdp"
                             android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:elevation="@dimen/_5sdp">
 
@@ -2472,9 +2469,6 @@
         </FrameLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-
-
 
 
 </FrameLayout>

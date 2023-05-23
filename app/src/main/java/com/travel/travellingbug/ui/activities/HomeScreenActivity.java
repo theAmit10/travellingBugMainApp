@@ -20,6 +20,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -116,6 +118,8 @@ public class HomeScreenActivity extends AppCompatActivity implements
     private boolean shouldLoadHomeFragOnBackPress = true;
     private NotificationManager notificationManager;
 
+    Animation slide_down, slide_up, slide_up_top, slide_up_down;
+
 
     private String[] titles = {"Search", "Publish", "Your Ride", "Holiday", "Account"};
 
@@ -150,6 +154,11 @@ public class HomeScreenActivity extends AppCompatActivity implements
         int HeightWin = getNavigationBarHeight();
         System.out.println("height : "+HeightWin );
 
+        slide_down = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
+        slide_up = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
+        slide_up_top = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up_top);
+        slide_up_down = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up_down);
+
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -161,6 +170,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
                             FragmentManager manager = getSupportFragmentManager();
                             @SuppressLint("CommitTransaction")
                             FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                             transaction.replace(R.id.content, fragment);
                             transaction.commit();
                             fragmentManager = getSupportFragmentManager();
@@ -174,6 +184,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
                             FragmentManager manager = getSupportFragmentManager();
                             @SuppressLint("CommitTransaction")
                             FragmentTransaction transaction = manager.beginTransaction();
+                            transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.slide_out_right);
                             transaction.replace(R.id.content, fragment);
                             transaction.commit();
                             fragmentManager = getSupportFragmentManager();

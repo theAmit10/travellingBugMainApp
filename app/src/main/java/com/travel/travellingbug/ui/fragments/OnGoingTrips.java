@@ -23,16 +23,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
-import com.travel.travellingbug.ui.activities.HistoryDetails;
-import com.travel.travellingbug.ui.activities.MainActivity;
-import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.helper.ConnectionHelper;
 import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
-import com.squareup.picasso.Picasso;
+import com.travel.travellingbug.ui.activities.HistoryDetails;
+import com.travel.travellingbug.ui.activities.MainActivity;
+import com.travel.travellingbug.ui.activities.RideRequest;
+import com.travel.travellingbug.ui.activities.SplashScreen;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,6 +62,8 @@ public class OnGoingTrips extends Fragment {
 
     LinearLayout toolbar;
     ImageView backImg;
+
+    String noofseat="",request_id="";
 
 
     public OnGoingTrips() {
@@ -149,6 +152,7 @@ public class OnGoingTrips extends Fragment {
 
         }, error -> {
             customDialog.dismiss();
+            errorLayout.setVisibility(View.VISIBLE);
             displayMessage(getString(R.string.something_went_wrong));
         }) {
             @Override
@@ -280,6 +284,8 @@ public class OnGoingTrips extends Fragment {
 
                         holder.listitemrating.setRating(Float.parseFloat("3.0"));
 
+                         request_id = jsonArray.optJSONObject(position).optString("id");
+
 
                         holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
                         holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
@@ -373,14 +379,26 @@ public class OnGoingTrips extends Fragment {
                 listitemrating = itemView.findViewById(R.id.listitemrating);
 
                 itemView.setOnClickListener(view -> {
+                    Intent intent = new Intent(getActivity(), RideRequest.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("noofseat","2");
+                    intent.putExtra("request_id",request_id);
+                    startActivity(intent);
+
+                });
+
+                itemView.setOnLongClickListener(view -> {
                     Intent intent = new Intent(getActivity(), HistoryDetails.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     Log.e("Intent", "" + jsonArray.optJSONObject(getAdapterPosition()).toString());
                     intent.putExtra("post_value", jsonArray.optJSONObject(getAdapterPosition()).toString());
                     intent.putExtra("tag", "upcoming_trips");
                     startActivity(intent);
-
+                    return true;
                 });
+
+
+
             }
         }
     }

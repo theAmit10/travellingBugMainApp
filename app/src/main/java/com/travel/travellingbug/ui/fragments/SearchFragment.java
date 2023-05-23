@@ -37,6 +37,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
@@ -97,6 +98,7 @@ import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.maps.android.ui.IconGenerator;
 import com.koushikdutta.ion.Ion;
 import com.skyfishjy.library.RippleBackground;
@@ -213,6 +215,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     RecyclerView rcvServiceTypes;
     ImageView imgPaymentType;
 
+    int passenger_number = 1;
+
 
     //       <!--1. Request to providers -->
     ImageView imgSos;
@@ -283,6 +287,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     RelativeLayout rtlStaticMarker;
     ImageView imgDestination;
     TextView btnDone;
+    TextView persontv;
     CameraPosition cmPosition;
     String current_lat = "", current_lng = "", current_address = "", source_lat = "",
             source_lng = "", source_address = "",
@@ -349,6 +354,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
     private static int deviceHeight;
     private static int deviceWidth;
+
+    String passangerStr = "";
 
     public static PublishFragment newInstance() {
         return new PublishFragment();
@@ -436,10 +443,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 new Handler().postDelayed(() -> {
                     init(rootView);
 
-
                     getProfile();
-
-
                     getDocList();
 
                     //permission to access location
@@ -845,6 +849,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         lblProviderDesc = rootView.findViewById(R.id.lblProviderDesc);
 
         btnDonePopup = rootView.findViewById(R.id.btnDonePopup);
+        persontv = rootView.findViewById(R.id.persontv);
 
 
 //         <!--2. Approximate Rate ...-->
@@ -980,6 +985,14 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         lnrInvoice.setOnClickListener(new OnClick());
         lnrRateProvider.setOnClickListener(new OnClick());
         lnrWaitingForProviders.setOnClickListener(new OnClick());
+
+
+        persontv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAddPasengerDialog();
+            }
+        });
 
 //        ivNavigation.setOnClickListener(view -> {
 //            if ((source_lat != null && source_lng != null) &&
@@ -2346,6 +2359,69 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         });
     }
 
+    private void showAddPasengerDialog() {
+
+        Dialog confirmDialog = new Dialog(getContext());
+        confirmDialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+        confirmDialog.setContentView(R.layout.design_passenger_number);
+
+
+
+        TextView passengerVal = confirmDialog.findViewById(R.id.passengerVal);
+        ImageView removePassenger = confirmDialog.findViewById(R.id.removePassenger);
+        ImageView addPassenger = confirmDialog.findViewById(R.id.addPassenger);
+        ImageView backArrow = confirmDialog.findViewById(R.id.backArrow);
+
+        FloatingActionButton nextBtn = confirmDialog.findViewById(R.id.nextBtn);
+
+        passangerStr = String.valueOf(passenger_number);
+
+        passengerVal.setText(passangerStr);
+
+
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDialog.dismiss();
+            }
+        });
+
+        removePassenger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(passenger_number == 1){
+                    Toast.makeText(getContext(), "Minimum one passenger", Toast.LENGTH_SHORT).show();
+                }else{
+                    passenger_number -= 1;
+                    passangerStr = String.valueOf(passenger_number);
+                }
+
+                passengerVal.setText(passangerStr);
+
+            }
+        });
+
+        addPassenger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                passenger_number += 1;
+                passangerStr = String.valueOf(passenger_number);
+                passengerVal.setText(passangerStr);
+            }
+        });
+
+
+        confirmDialog.show();
+        nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDialog.dismiss();
+                persontv.setText(""+passengerVal.getText());
+                Toast.makeText(getContext(), "Taken Seat : "+passengerVal.getText(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     public void cancelRequest() {
 
         customDialog.setCancelable(false);
@@ -2771,7 +2847,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         if (ContextCompat.checkSelfPermission(context,
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-            if(mGoogleApiClient.isConnected()){
+            if (mGoogleApiClient.isConnected()) {
                 LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient,
                         mLocationRequest, this);
             }
@@ -3161,7 +3237,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             customDialog.dismiss();
                         Utilities.print("Save Location Response", response.toString());
                         SharedHelper.putKey(context, type + "_address", addressLocation);
-                        // callSuccess();
+//                         callSuccess();
+
                     }, error -> {
                 if ((customDialog != null) && customDialog.isShowing())
                     customDialog.dismiss();
@@ -3355,6 +3432,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         intent3.putExtra("upcoming", "1");
                         intent3.putExtra("use_wallet", "0");
                         intent3.putExtra("payment_mode", "CASH");
+                        intent3.putExtra("seat_count", persontv.getText());
 
 
                         startActivity(intent3);

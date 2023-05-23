@@ -397,22 +397,11 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-//        View view =  inflater.inflate(R.layout.fragment_publish, container, false);
-//
-//
-//        initComponent(view);
-//        onClickHandler();
-//
-//
-//
-//        return view;
 
         if (getContext() != null) {
             getDocList();
 
         }
-
 
         if (SharedHelper.getKey(getContext(), "Old_User").equalsIgnoreCase("yes")) {
             // Setting Name First
@@ -449,7 +438,6 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         }
 
         initComponent(rootView);
-
 
         onClickHandler();
         restInterface = ServiceGenerator.createService(RestInterface.class);
