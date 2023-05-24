@@ -63,7 +63,7 @@ public class OnGoingTrips extends Fragment {
     LinearLayout toolbar;
     ImageView backImg;
 
-    String noofseat="",request_id="";
+    String noofseat = "", request_id = "", s_address = "", d_address = "", s_date = "", s_time = "";
 
 
     public OnGoingTrips() {
@@ -127,7 +127,7 @@ public class OnGoingTrips extends Fragment {
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.MY_PUBLISH_UPCOMMING_TRIPS, response -> {
 
-            Log.v("GetHistoryList", response.toString());
+            Log.v("GetPublishedList", response.toString());
             if (response != null) {
                 upcomingsAdapter = new UpcomingsAdapter(response);
                 //  recyclerView.setHasFixedSize(true);
@@ -274,22 +274,27 @@ public class OnGoingTrips extends Fragment {
 
         @Override
         public void onBindViewHolder(UpcomingsAdapter.MyViewHolder holder, final int position) {
+
+            Log.e("Published Data : ", "" + jsonArray.optJSONObject(position).toString());
+
             Picasso.get().load(jsonArray.optJSONObject(position).optString("static_map")).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(holder.tripImg);
             try {
                 if (!jsonArray.optJSONObject(position).optString("schedule_at", "").isEmpty()) {
                     String form = jsonArray.optJSONObject(position).optString("schedule_at");
                     try {
                         holder.tripDate.setText(getDate(form) + "th " + getMonth(form) + " " + "at " + getTime(form));
+
+                        s_date = getDate(form) + "th " + getMonth(form) + " " + getYear(form);
+                        s_time = getTime(form);
+
                         holder.tripId.setText(jsonArray.optJSONObject(position).optString("booking_id"));
 
                         holder.listitemrating.setRating(Float.parseFloat("3.0"));
-
-                         request_id = jsonArray.optJSONObject(position).optString("id");
-
+                        request_id = jsonArray.optJSONObject(position).optString("id");
 
                         holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
                         holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
-                        if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("PENDING")){
+                        if (jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("PENDING")) {
                             holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
                         }
                         holder.status.setText(jsonArray.optJSONObject(position).optString("status"));
@@ -308,6 +313,21 @@ public class OnGoingTrips extends Fragment {
                     //holder.tripAmount.setText(SharedHelper.getKey(context, "currency")+serviceObj.optString("price"));
                     Picasso.get().load(serviceObj.optString("image"))
                             .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            // getting firstname
+            try {
+                JSONObject providerObj = jsonArray.getJSONObject(position).optJSONObject("provider");
+                if (providerObj != null) {
+                    holder.name.setText(providerObj.optString("first_name"));
+
+                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerObj.optString("avatar"))
+                            .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
+
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -346,6 +366,24 @@ public class OnGoingTrips extends Fragment {
                 startActivity(i);
             });
 
+
+            holder.pContainer.setOnClickListener(view -> {
+                Intent intent = new Intent(getActivity(), RideRequest.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                request_id = jsonArray.optJSONObject(position).optString("id");
+                s_address = jsonArray.optJSONObject(position).optString("s_address");
+                d_address = jsonArray.optJSONObject(position).optString("d_address");
+
+                Toast.makeText(getContext(), "" + request_id, Toast.LENGTH_SHORT).show();
+                intent.putExtra("request_id", request_id);
+                intent.putExtra("s_address", s_address);
+                intent.putExtra("d_address", d_address);
+                intent.putExtra("s_date", s_date);
+                intent.putExtra("s_time", s_time);
+                startActivity(intent);
+
+            });
+
         }
 
         @Override
@@ -355,12 +393,14 @@ public class OnGoingTrips extends Fragment {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView tripTime, car_name;
-            TextView tripDate, tripAmount, tripId,txtSource,txtDestination,status;
+            TextView tripTime, car_name, name, rateVal;
+            TextView tripDate, tripAmount, tripId, txtSource, txtDestination, status;
             ImageView tripImg, driver_image;
             Button btnCancel, btnStart;
 
             RatingBar listitemrating;
+
+            LinearLayout pContainer;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
@@ -377,15 +417,19 @@ public class OnGoingTrips extends Fragment {
                 txtSource = itemView.findViewById(R.id.txtSource);
                 status = itemView.findViewById(R.id.status);
                 listitemrating = itemView.findViewById(R.id.listitemrating);
+                name = itemView.findViewById(R.id.name);
+                rateVal = itemView.findViewById(R.id.rateVal);
+                pContainer = itemView.findViewById(R.id.pContainer);
 
-                itemView.setOnClickListener(view -> {
-                    Intent intent = new Intent(getActivity(), RideRequest.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("noofseat","2");
-                    intent.putExtra("request_id",request_id);
-                    startActivity(intent);
-
-                });
+//                itemView.setOnClickListener(view -> {
+//                    Intent intent = new Intent(getActivity(), RideRequest.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    Toast.makeText(getContext(), ""+request_id, Toast.LENGTH_SHORT).show();
+//                    intent.putExtra("noofseat","2");
+//                    intent.putExtra("request_id",request_id);
+//                    startActivity(intent);
+//
+//                });
 
                 itemView.setOnLongClickListener(view -> {
                     Intent intent = new Intent(getActivity(), HistoryDetails.class);
@@ -396,7 +440,6 @@ public class OnGoingTrips extends Fragment {
                     startActivity(intent);
                     return true;
                 });
-
 
 
             }

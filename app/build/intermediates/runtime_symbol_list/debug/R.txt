@@ -5219,6 +5219,7 @@ int id end_padder 0x7f0a0209
 int id enterAlways 0x7f0a020a
 int id enterAlwaysCollapsed 0x7f0a020b
 int id errorLayout 0x7f0a020c
+int id errorLayoutRl 0x7f0a0665
 int id error_image 0x7f0a020d
 int id etComment 0x7f0a020e
 int id etComplaint 0x7f0a020f
@@ -5361,6 +5362,7 @@ int id img03Status3 0x7f0a0296
 int id img03User 0x7f0a0297
 int id img05User 0x7f0a0298
 int id imgBack 0x7f0a0299
+int id imgBackTitle 0x7f0a0664
 int id imgCurrentLoc 0x7f0a029a
 int id imgDestClose 0x7f0a029b
 int id imgDestination 0x7f0a029c
@@ -5651,6 +5653,7 @@ int id my_caption_title 0x7f0a03b8
 int id my_featured_image 0x7f0a03b9
 int id my_pager 0x7f0a03ba
 int id my_tablayout 0x7f0a03bb
+int id name 0x7f0a0666
 int id namePAtv 0x7f0a03bc
 int id nameTv 0x7f0a0656
 int id nametv 0x7f0a065b
@@ -5714,6 +5717,7 @@ int id outline 0x7f0a03f4
 int id outward 0x7f0a03f5
 int id overshoot 0x7f0a03f6
 int id p 0x7f0a03f7
+int id pContainer 0x7f0a0668
 int id packed 0x7f0a03f8
 int id page 0x7f0a03f9
 int id parallax 0x7f0a03fa
@@ -5805,6 +5809,7 @@ int id progress_horizontal 0x7f0a044b
 int id promoLayout 0x7f0a044c
 int id promo_code 0x7f0a044d
 int id provider_map 0x7f0a044e
+int id rContainer 0x7f0a0669
 int id radio 0x7f0a044f
 int id radioBank 0x7f0a0450
 int id radioButton 0x7f0a0451
@@ -5817,6 +5822,7 @@ int id rat02UserRating 0x7f0a0457
 int id rat03UserRating 0x7f0a0458
 int id rat05UserRating 0x7f0a0459
 int id rateRider 0x7f0a045a
+int id rateVal 0x7f0a0667
 int id ratingProvider 0x7f0a045b
 int id ratingProviderRate 0x7f0a045c
 int id ratingVal 0x7f0a065c
@@ -6532,6 +6538,7 @@ int layout design_navigation_menu 0x7f0d0098
 int layout design_navigation_menu_item 0x7f0d0099
 int layout design_pasenger_data 0x7f0d0153
 int layout design_passenger_number 0x7f0d0154
+int layout design_progress_bar 0x7f0d0159
 int layout design_ride_request 0x7f0d009a
 int layout design_text_input_end_icon 0x7f0d009b
 int layout design_text_input_start_icon 0x7f0d009c

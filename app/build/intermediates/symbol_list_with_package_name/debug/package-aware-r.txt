@@ -5220,6 +5220,7 @@ id end_padder
 id enterAlways
 id enterAlwaysCollapsed
 id errorLayout
+id errorLayoutRl
 id error_image
 id etComment
 id etComplaint
@@ -5362,6 +5363,7 @@ id img03Status3
 id img03User
 id img05User
 id imgBack
+id imgBackTitle
 id imgCurrentLoc
 id imgDestClose
 id imgDestination
@@ -5652,6 +5654,7 @@ id my_caption_title
 id my_featured_image
 id my_pager
 id my_tablayout
+id name
 id namePAtv
 id nameTv
 id nametv
@@ -5715,6 +5718,7 @@ id outline
 id outward
 id overshoot
 id p
+id pContainer
 id packed
 id page
 id parallax
@@ -5806,6 +5810,7 @@ id progress_horizontal
 id promoLayout
 id promo_code
 id provider_map
+id rContainer
 id radio
 id radioBank
 id radioButton
@@ -5818,6 +5823,7 @@ id rat02UserRating
 id rat03UserRating
 id rat05UserRating
 id rateRider
+id rateVal
 id ratingProvider
 id ratingProviderRate
 id ratingVal
@@ -6533,6 +6539,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_pasenger_data
 layout design_passenger_number
+layout design_progress_bar
 layout design_ride_request
 layout design_text_input_end_icon
 layout design_text_input_start_icon

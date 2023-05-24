@@ -1195,7 +1195,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         builder.setTitle(context.getString(R.string.app_name))
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.drawable.app_logo_org)
                 .setMessage(getString(R.string.emaergeny_call))
                 .setCancelable(false);
         builder.setPositiveButton(getString(R.string.yes), (dialog, which) -> {

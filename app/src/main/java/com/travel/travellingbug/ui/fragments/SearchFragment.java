@@ -200,6 +200,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     Marker marker;
     Double latitude, longitude;
     String currentAddress;
+
+    TextView imgBackTitle;
     GoogleApiClient mGoogleApiClient;
     //        <!-- Source and Destination Layout-->
     LinearLayout sourceAndDestinationLayout;
@@ -473,13 +475,15 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
         if (SharedHelper.getKey(getContext(), "Old_User").equalsIgnoreCase("yes")) {
             // Setting Name First
-            if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
-                Toast.makeText(getContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getContext(), UpdateProfile.class);
-                intent.putExtra("parameter", "first_name");
-                intent.putExtra("value", "");
-                startActivityForResult(intent, 1);
-            }
+//            if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
+//                Toast.makeText(getContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
+//                Intent intent = new Intent(getContext(), UpdateProfile.class);
+//                intent.putExtra("parameter", "first_name");
+//                intent.putExtra("value", "");
+//                startActivityForResult(intent, 1);
+//            }
+
+            System.out.println("OldUser : "+SharedHelper.getKey(getContext(), "Old_User"));
 
 
         } else {
@@ -811,7 +815,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         lblPromo = rootView.findViewById(R.id.lblPromo);
         booking_id = rootView.findViewById(R.id.booking_id);
         btnRequestRides = rootView.findViewById(R.id.btnRequestRides);
+        imgBackTitle = rootView.findViewById(R.id.imgBackTitle);
         btnSearch = rootView.findViewById(R.id.btnSearch);
+
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1430,6 +1436,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
 
                 btnRequestRidesCv.setVisibility(View.VISIBLE);
+//                imgBackTitle.setVisibility(View.VISIBLE);
 
 
                 imgBack.setVisibility(View.VISIBLE);

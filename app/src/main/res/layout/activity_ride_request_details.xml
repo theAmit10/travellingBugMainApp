@@ -39,9 +39,9 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:gravity="center_vertical"
                     android:text="RIDE REQUEST"
-                    android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -69,6 +69,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -83,28 +84,33 @@
                         android:textSize="@dimen/_14sdp"
                         android:textStyle="bold" />
 
-
-                    <RatingBar
-
-                        android:id="@+id/listitemrating"
-                        style="@android:attr/ratingBarStyleSmall"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:isIndicator="true"
-                        android:max="5"
-                        android:scaleX=".3"
-                        android:scaleY=".3"
-                        android:transformPivotX="0dp"
-                        android:transformPivotY="0dp" />
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/ratingVal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="-45dp"
-                        android:text="( 115 Reviews )"
-                        android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_8sdp" />
+                        <RatingBar
+                            android:id="@+id/listitemrating"
+                            style="?attr/ratingBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:isIndicator="true"
+                            android:numStars="5"
+                            android:progressTint="#FFCA28" />
+
+                        <TextView
+                            android:id="@+id/ratingVal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="@dimen/_5sdp"
+                            android:paddingEnd="@dimen/_5sdp"
+                            android:text="( 115 Reviews )"
+                            android:textColor="@color/colorDarkGray"
+                            android:textSize="@dimen/_7sdp" />
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
@@ -133,8 +139,8 @@
                     android:layout_height="wrap_content"
 
                     android:drawableLeft="@drawable/ic_profile"
-                    android:drawableTint="@color/green"
                     android:drawablePadding="@dimen/_10sdp"
+                    android:drawableTint="@color/green"
                     android:text="VIEW PROFILE"
                     android:textColor="@color/green"
                     android:textSize="@dimen/_12sdp"
@@ -153,7 +159,7 @@
                     android:id="@+id/chatTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_whatapp"
+                    android:drawableLeft="@drawable/ic_profile"
                     android:drawablePadding="@dimen/_10sdp"
                     android:text="CHAT"
                     android:textColor="@color/green"
@@ -422,10 +428,10 @@
                     android:layout_weight="1"
                     android:background="@drawable/cornor_edge_bg"
                     android:text="Reject"
-                    android:textStyle="bold"
                     android:textAllCaps="false"
                     android:textColor="@color/red"
                     android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/acceptBtn" />
@@ -438,9 +444,9 @@
                     android:layout_weight="1"
                     android:background="@drawable/auth_btn_green_bg"
                     android:text="Accept"
-                    android:textStyle="bold"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
             </LinearLayout>

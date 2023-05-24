@@ -1,5 +1,6 @@
 package com.travel.travellingbug.ui.activities;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,12 +12,25 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
+import com.travel.travellingbug.helper.CustomDialog;
+import com.travel.travellingbug.helper.SharedHelper;
+import com.travel.travellingbug.helper.URLHelper;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RideRequestDetailsActivity extends AppCompatActivity {
 
-    String first_name = "",rating = "",rating_val = "",profile_image = "",user_id = "",s_address = "",d_address = "",pick_up_date = "",pick_up_time = "",noofseat = "",fare = "",request_id = "",tag = "";
+    String first_name = "",rating = "",rating_val = "",profile_image = "",user_id = "",s_address = "",d_address = "",pick_up_date = "",pick_up_time = "",noofseat = "",fare = "",request_id = "",tag = "",person_id="",status="";
     ImageView backArrow,profileImgeIv;
+
+    CustomDialog customDialog;
     RatingBar listitemrating;
     TextView nametv,ratingVal,viewProfileTv,chatTv,pickupLocation,dropLocation,pickUpDataVal,pickUpTimeVal,fareVal,seatVal;
     Button rejectBtn,acceptBtn;
@@ -47,6 +61,28 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
 
         fareVal.setText(fare);
         seatVal.setText(noofseat);
+
+
+//        if(!status.equalsIgnoreCase("Pending")){
+//            System.out.println("if");
+//            System.out.println("! pending : "+!status.equalsIgnoreCase("Pending"));
+//            if(status.equalsIgnoreCase("ACCEPTED")){
+//                System.out.println("ACCEPTED : "+jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("ACCEPTED"));
+//                holder.acceptBtn.setText("ACCEPTED");
+//                holder.acceptBtn.setVisibility(View.VISIBLE);
+//                holder.rejectBtn.setVisibility(View.GONE);
+//
+//            }else if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED")){
+//                System.out.println("CANCELLED : "+jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED"));
+//                holder.rejectBtn.setText("CANCELLED");
+//                holder.rejectBtn.setVisibility(View.VISIBLE);
+//                holder.acceptBtn.setVisibility(View.GONE);
+//            }
+//        }else {
+//            System.out.println("else");
+//            holder.acceptBtn.setVisibility(View.VISIBLE);
+//            holder.rejectBtn.setVisibility(View.VISIBLE);
+//        }
     }
 
     private void clickHandlerComponent() {
@@ -61,7 +97,7 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(RideRequestDetailsActivity.this, "Accepted", Toast.LENGTH_SHORT).show();
+                acceptRequest(person_id);
             }
         });
 
@@ -69,7 +105,7 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         rejectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(RideRequestDetailsActivity.this, "Rejected", Toast.LENGTH_SHORT).show();
+                cancelRequest(person_id);
             }
         });
 
@@ -106,6 +142,150 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         acceptBtn = findViewById(R.id.acceptBtn);
     }
 
+    private void acceptRequest(String id){
+        System.out.println("Accepting Request... ");
+        customDialog = new CustomDialog(this);
+        customDialog.setCancelable(false);
+        customDialog.show();
+        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.ACCEPT_REQUEST , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                if(response != null){
+                    customDialog.dismiss();
+                    showAcceptedDialog();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                customDialog.dismiss();
+                Toast.makeText(RideRequestDetailsActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+
+        }) {
+
+
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id",id);
+                return params;
+            }
+
+
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                return headers;
+            }
+
+        };
+
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+    }
+
+    private void cancelRequest(String id){
+        System.out.println("Cancelling Request... ");
+        customDialog = new CustomDialog(this);
+        customDialog.setCancelable(false);
+        customDialog.show();
+        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.CANCEL_REQUEST , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                if(response != null){
+                    customDialog.dismiss();
+                    showCanceldDialog();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                customDialog.dismiss();
+                Toast.makeText(RideRequestDetailsActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+
+        }) {
+
+
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id",id);
+                return params;
+            }
+
+
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                return headers;
+            }
+
+        };
+
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+    }
+
+    private void showAcceptedDialog() {
+
+//        AlertDialog alertDialog = new AlertDialog.Builder(FirstActivity.getInstance()).create();
+        Dialog confirmDialog = new Dialog(this);
+        confirmDialog.setContentView(R.layout.schedule_dialog);
+
+        TextView tvDone = confirmDialog.findViewById(R.id.tvDone);
+        TextView bookingStatusTitleTv = confirmDialog.findViewById(R.id.bookingStatusTitleTv);
+        TextView bookingStatusSubTitleTv = confirmDialog.findViewById(R.id.bookingStatusSubTitleTv);
+        TextView tvDriverMsg = confirmDialog.findViewById(R.id.tvDriverMsg);
+
+        bookingStatusTitleTv.setText("Accepted");
+
+        bookingStatusSubTitleTv.setText("Ride Request has been Accepted successfully ");
+
+        tvDriverMsg.setText("");
+
+        confirmDialog.show();
+        tvDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDialog.dismiss();
+            }
+        });
+    }
+
+    private void showCanceldDialog() {
+
+//        AlertDialog alertDialog = new AlertDialog.Builder(FirstActivity.getInstance()).create();
+        Dialog confirmDialog = new Dialog(this);
+        confirmDialog.setContentView(R.layout.schedule_dialog);
+
+        TextView tvDone = confirmDialog.findViewById(R.id.tvDone);
+        TextView bookingStatusTitleTv = confirmDialog.findViewById(R.id.bookingStatusTitleTv);
+        TextView bookingStatusSubTitleTv = confirmDialog.findViewById(R.id.bookingStatusSubTitleTv);
+        TextView tvDriverMsg = confirmDialog.findViewById(R.id.tvDriverMsg);
+
+        bookingStatusTitleTv.setText("Cancelled");
+
+        bookingStatusSubTitleTv.setText("Ride Request has been Cancelled successfully");
+
+        tvDriverMsg.setText("");
+
+        confirmDialog.show();
+        tvDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDialog.dismiss();
+            }
+        });
+    }
+
     private void getIntentData() {
 
         first_name = getIntent().getStringExtra("first_name");
@@ -121,5 +301,7 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         fare = getIntent().getStringExtra("fare");
         request_id = getIntent().getStringExtra("request_id");
         tag = getIntent().getStringExtra("tag");
+        person_id = getIntent().getStringExtra("person_id");
+        status = getIntent().getStringExtra("status");
     }
 }
