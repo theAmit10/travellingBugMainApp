@@ -63,26 +63,26 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         seatVal.setText(noofseat);
 
 
-//        if(!status.equalsIgnoreCase("Pending")){
-//            System.out.println("if");
-//            System.out.println("! pending : "+!status.equalsIgnoreCase("Pending"));
-//            if(status.equalsIgnoreCase("ACCEPTED")){
-//                System.out.println("ACCEPTED : "+jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("ACCEPTED"));
-//                holder.acceptBtn.setText("ACCEPTED");
-//                holder.acceptBtn.setVisibility(View.VISIBLE);
-//                holder.rejectBtn.setVisibility(View.GONE);
-//
-//            }else if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED")){
-//                System.out.println("CANCELLED : "+jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED"));
-//                holder.rejectBtn.setText("CANCELLED");
-//                holder.rejectBtn.setVisibility(View.VISIBLE);
-//                holder.acceptBtn.setVisibility(View.GONE);
-//            }
-//        }else {
-//            System.out.println("else");
-//            holder.acceptBtn.setVisibility(View.VISIBLE);
-//            holder.rejectBtn.setVisibility(View.VISIBLE);
-//        }
+        if(!status.equalsIgnoreCase("Pending")){
+            System.out.println("if");
+            System.out.println("! pending : "+!status.equalsIgnoreCase("Pending"));
+            if(status.equalsIgnoreCase("ACCEPTED")){
+                System.out.println("ACCEPTED : "+status.equalsIgnoreCase("ACCEPTED"));
+                acceptBtn.setText("ACCEPTED");
+                acceptBtn.setVisibility(View.VISIBLE);
+                rejectBtn.setVisibility(View.GONE);
+
+            }else if(status.equalsIgnoreCase("CANCELLED")){
+                System.out.println("CANCELLED : "+status.equalsIgnoreCase("CANCELLED"));
+                rejectBtn.setText("CANCELLED");
+                rejectBtn.setVisibility(View.VISIBLE);
+                acceptBtn.setVisibility(View.GONE);
+            }
+        }else {
+            System.out.println("else");
+            acceptBtn.setVisibility(View.VISIBLE);
+            rejectBtn.setVisibility(View.VISIBLE);
+        }
     }
 
     private void clickHandlerComponent() {

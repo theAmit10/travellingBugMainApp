@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.SearchFragment">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
@@ -57,21 +55,197 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:orientation="vertical"
-                        android:visibility="visible">
+                        >
+
+                        <View
+                            android:id="@+id/partationTopHoriView"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_3sdp"
+                            android:layout_margin="@dimen/_15sdp"
+                            android:visibility="gone"
+                            android:background="@drawable/auth_btn_green_bg"
+                            android:layout_gravity="center"
+
+                            />
 
                         <LinearLayout
+                            android:id="@+id/bottomSourceDestinationLL"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="@color/white"
+                            android:background="@drawable/auth_btn_white_low_corner_bg"
                             android:orientation="vertical"
-                            android:visibility="gone">
+                            android:visibility="gone"
+                           >
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                app:cardCornerRadius="@dimen/_10sdp"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:layout_height="wrap_content">
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+
+                                    <ImageView
+                                        android:id="@+id/imageView11"
+                                        android:layout_width="@dimen/_15sdp"
+                                        android:layout_height="@dimen/_15sdp"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:src="@drawable/circle_leaving"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/partationTopHoriView" />
+
+                                    <com.travel.travellingbug.utills.MyTextView
+                                        android:id="@+id/frmSourceBottom"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:maxLines="1"
+                                        android:padding="@dimen/_5sdp"
+                                        android:paddingStart="@dimen/_10sdp"
+                                        android:paddingEnd="@dimen/_10sdp"
+                                        android:text="Leaving From"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/_11sdp"
+                                        android:textStyle="bold"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toEndOf="@+id/imageView11"
+                                        app:layout_constraintTop_toTopOf="@+id/imageView11" />
+
+
+                                    <View
+                                        android:id="@+id/partationView"
+                                        android:layout_width="@dimen/_1sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:layout_marginStart="@dimen/_6sdp"
+                                        android:background="@color/black"
+                                        app:layout_constraintStart_toStartOf="@+id/imageView11"
+                                        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+
+                                    <View
+                                        android:id="@+id/partationHoriView"
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/_1sdp"
+                                        android:layout_marginStart="@dimen/_15sdp"
+                                        android:layout_marginEnd="@dimen/_15sdp"
+                                        android:background="@color/colorLightGray"
+                                        app:layout_constraintBottom_toTopOf="@+id/frmDestinationBottom"
+                                        app:layout_constraintStart_toStartOf="@+id/frmSourceBottom"
+                                        app:layout_constraintEnd_toEndOf="@+id/frmDestinationBottom"
+                                        app:layout_constraintTop_toBottomOf="@+id/frmSourceBottom" />
+
+
+                                    <ImageView
+                                        android:id="@+id/imageView12"
+                                        android:layout_width="@dimen/_15sdp"
+                                        android:layout_height="@dimen/_15sdp"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:src="@drawable/destination_location"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/partationView"
+                                        app:tint="@color/green" />
+
+                                    <com.travel.travellingbug.utills.MyTextView
+                                        android:id="@+id/frmDestinationBottom"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="@dimen/_10sdp"
+                                        android:maxLines="1"
+                                        android:paddingStart="@dimen/_10sdp"
+                                        android:paddingEnd="@dimen/_10sdp"
+                                        android:text="Leaving From"
+                                        android:padding="@dimen/_5sdp"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/_11sdp"
+                                        android:textStyle="bold"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toEndOf="@+id/imageView12"
+                                        app:layout_constraintTop_toTopOf="@+id/imageView12" />
+
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+                            </androidx.cardview.widget.CardView>
+
+
+                            <TextView
+                                android:id="@+id/paymentTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                android:fontFamily="@font/muli_semibold"
+                                android:text="Payment Method"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_18sdp" />
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/paymentCardView"
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_80sdp"
+                                app:cardBackgroundColor="@color/white"
+                                app:cardCornerRadius="@dimen/_8sdp"
+                                app:cardElevation="@dimen/_1sdp"
+                                app:contentPadding="@dimen/_10sdp">
+
+                                <LinearLayout
+                                    android:id="@+id/cash_layout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/_44sdp"
+                                        android:layout_height="@dimen/_44sdp"
+                                        android:src="@drawable/cash_payment" />
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical"
+                                        android:paddingStart="@dimen/_10sdp">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:fontFamily="@font/muli_semibold"
+                                            android:text="Cash"
+                                            android:textColor="@color/black"
+                                            android:textSize="@dimen/_15sdp" />
+
+
+                                    </LinearLayout>
+
+                                    <RadioButton
+                                        android:id="@+id/chkCash"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:checked="true"
+                                        android:buttonTint="@color/colorPrimary" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+
+
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rcvServiceTypes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:visibility="gone"
                                 android:layout_marginTop="@dimen/_10sdp"
                                 android:layout_marginBottom="@dimen/_7sdp"
                                 android:orientation="horizontal" />
@@ -91,6 +265,7 @@
                                 android:layout_height="1dp"
                                 android:layout_marginTop="@dimen/_1sdp"
                                 android:layout_marginBottom="1dp"
+
                                 android:background="@color/view_bg"
                                 android:visibility="gone" />
 
@@ -170,61 +345,166 @@
                             android:visibility="gone" />
 
                         <LinearLayout
+                            android:id="@+id/showingProgressLL"
+                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
-                            <androidx.cardview.widget.CardView
-                                android:id="@+id/btnRequestRidesCv"
+                            <ImageView
+                                android:id="@+id/my_featured_image"
+                                android:layout_width="@dimen/_200sdp"
+                                android:layout_height="@dimen/_150sdp"
+                                android:layout_gravity="center_horizontal"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/intro_five"/>
+
+                            <TextView
+                                android:id="@+id/my_caption_title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="@dimen/_5sdp"
-                                android:layout_weight="1"
-                                android:visibility="gone"
-                                app:cardBackgroundColor="@color/colorPrimary"
-                                app:cardCornerRadius="10dp"
-                                app:cardElevation="@dimen/_5sdp">
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:layout_marginBottom="@dimen/_20sdp"
+                                android:text="Hold on!! we are searching for nearby driver for you"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14sdp"
+                                />
 
-                                <com.travel.travellingbug.utills.MyBoldTextView
-                                    android:id="@+id/btnRequestRides"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:layout_gravity="center"
-                                    android:gravity="center"
-                                    android:text="Continue"
-                                    android:textColor="@color/button_text_color"
-                                    android:textSize="@dimen/_12sdp" />
-                            </androidx.cardview.widget.CardView>
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_20sdp"
+                                android:id="@+id/progress"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:layout_marginBottom="@dimen/_20sdp"
+                                android:max="100"
+                                android:progress="50"/>
 
-                            <View
-                                android:layout_width="@dimen/_1sdp"
-                                android:layout_height="match_parent"
-                                android:background="@color/white"
-                                android:visibility="gone" />
 
-                            <androidx.cardview.widget.CardView
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/btnRequestRidesCv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            android:orientation="horizontal">
+
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:layout_margin="@dimen/_5sdp"-->
+<!--                                app:cardBackgroundColor="@color/colorPrimary"-->
+<!--                                app:cardCornerRadius="10dp"-->
+<!--                                app:cardElevation="@dimen/_5sdp">-->
+
+<!--                               -->
+<!--                            </androidx.cardview.widget.CardView>-->
+
+                            <com.travel.travellingbug.utills.MyBoldTextView
+                                android:id="@+id/btnRequestRides"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_40sdp"
                                 android:layout_gravity="center"
-                                android:layout_weight="1"
+                                android:gravity="center"
                                 android:visibility="gone"
-                                app:cardBackgroundColor="@color/colorPrimary"
-                                app:cardCornerRadius="0dp"
-                                app:cardElevation="@dimen/_5sdp">
+                                android:layout_margin="@dimen/_10sdp"
+                                android:text="Book Ride"
+                                android:background="@drawable/auth_btn_green_bg"
+                                android:textColor="@color/button_text_color"
+                                android:textSize="@dimen/_12sdp" />
+
+                            <com.travel.travellingbug.utills.MyBoldTextView
+                                android:id="@+id/btnShowPaymentTv"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_gravity="center"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:gravity="center"
+                                android:visibility="gone"
+                                android:text="Continue"
+                                android:background="@drawable/auth_btn_green_bg"
+                                android:textColor="@color/button_text_color"
+                                android:textSize="@dimen/_12sdp" />
+
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="@dimen/_40sdp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                app:cardBackgroundColor="@color/colorPrimary"-->
+<!--                                app:cardCornerRadius="10dp"-->
+<!--                                app:cardElevation="@dimen/_5sdp">-->
+
+<!--                                -->
+<!--                            </androidx.cardview.widget.CardView>-->
+
+                            <com.travel.travellingbug.utills.MyTextView
+                                android:id="@+id/schedule_ride"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_gravity="center"
+                                android:layout_margin="@dimen/_10sdp"
+                                android:background="@drawable/auth_btn_green_bg"
+                                android:clickable="true"
+                                android:visibility="gone"
+                                android:gravity="center"
+                                android:paddingEnd="@dimen/_8sdp"
+                                android:text="Next"
+                                android:textColor="@color/button_text_color"
+                                android:textSize="@dimen/_12sdp" />
+
+
+                            <LinearLayout
+                                android:id="@+id/showingProgressLLTextViewContainer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:visibility="gone"
+                                android:orientation="horizontal">
+
 
                                 <com.travel.travellingbug.utills.MyTextView
-                                    android:id="@+id/schedule_ride"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="55dp"
+                                    android:id="@+id/cancel_ride_sp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_40sdp"
                                     android:layout_gravity="center"
+                                    android:layout_weight="1"
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:background="@drawable/auth_btn_green_bg"
                                     android:clickable="true"
                                     android:gravity="center"
                                     android:paddingEnd="@dimen/_8sdp"
-                                    android:text="@string/schedule"
+                                    android:text="Cancel Ride"
                                     android:textColor="@color/button_text_color"
                                     android:textSize="@dimen/_12sdp" />
-                            </androidx.cardview.widget.CardView>
+
+
+                                <com.travel.travellingbug.utills.MyTextView
+                                    android:id="@+id/continue_ride_sp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="@dimen/_10sdp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/auth_btn_green_bg"
+                                    android:clickable="true"
+                                    android:gravity="center"
+                                    android:paddingEnd="@dimen/_8sdp"
+                                    android:text="Continue"
+                                    android:textColor="@color/button_text_color"
+                                    android:textSize="@dimen/_12sdp" />
+
+
+
+
+                            </LinearLayout>
 
 
                         </LinearLayout>
@@ -1464,13 +1744,13 @@
                                 android:id="@+id/imgBackTitle"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
                                 android:text="Payment"
-                                android:visibility="gone"
-                                android:textStyle="bold"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12sdp"
-                                android:layout_marginStart="@dimen/_10sdp"
-                                android:layout_marginTop="@dimen/_10sdp"/>
+                                android:textStyle="bold"
+                                android:visibility="gone" />
 
                             <LinearLayout
                                 android:id="@+id/layoutSrcDest"

@@ -18,7 +18,7 @@
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
             android:layout_weight="0"
-            android:padding="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
             app:srcCompat="@drawable/back"
             app:tint="@color/green" />
 
@@ -33,7 +33,7 @@
         android:paddingBottom="@dimen/_10sdp"
         android:paddingStart="@dimen/_25sdp"
         android:paddingEnd="@dimen/_20sdp"
-        android:text="So haw many passenger you take ?"
+        android:text="So how many passenger you take ?"
         android:textColor="@color/black"
         android:textSize="@dimen/_18sdp"
         android:textStyle="bold" />

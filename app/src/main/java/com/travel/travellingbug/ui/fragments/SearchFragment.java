@@ -15,7 +15,10 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.location.Address;
@@ -70,6 +73,14 @@ import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.akexorcist.googledirection.DirectionCallback;
+import com.akexorcist.googledirection.GoogleDirection;
+import com.akexorcist.googledirection.constant.TransportMode;
+import com.akexorcist.googledirection.model.Direction;
+import com.akexorcist.googledirection.model.Leg;
+import com.akexorcist.googledirection.model.Route;
+import com.akexorcist.googledirection.model.Step;
+import com.akexorcist.googledirection.util.DirectionConverter;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
@@ -164,16 +175,24 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         GoogleApiClient.OnConnectionFailedListener, ResponseListener, GoogleMap.OnCameraMoveListener {
 
     private static final String TAG = "UserMapFragment";
+
     private static final int REQUEST_LOCATION = 1450;
     private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
     private final int ADD_CARD_CODE = 435;
     public String PreviousStatus = "";
     Activity activity;
     Context context;
+
+    LinearLayout showingProgressLLTextViewContainer;
+    TextView cancel_ride_sp;
+    TextView continue_ride_sp;
+    LinearLayout showingProgressLL;
+
+    TextView frmSourceBottom, frmDestinationBottom,btnShowPaymentTv;
     View rootView;
     HomeFragmentListener listener;
 
-    CardView btnRequestRidesCv;
+    LinearLayout btnRequestRidesCv, bottomSourceDestinationLL;
     double wallet_balance;
     String ETA;
     TextView txtSelectedAddressSource;
@@ -219,6 +238,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
     int passenger_number = 1;
 
+    String etaDur = "0";
+
 
     //       <!--1. Request to providers -->
     ImageView imgSos;
@@ -247,6 +268,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     CheckBox chkWallet;
     TextView lblEta, lblDis;
     TextView lblType;
+    TextView paymentTextView;
+    CardView paymentCardView;
     TextView lblApproxAmount, surgeDiscount, surgeTxt;
     View lineView;
     LinearLayout ScheduleLayout;
@@ -303,6 +326,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     int currentPostion = 0;
     CustomDialog customDialog;
     TextView tvZoneMsg;
+
+    View partationTopHoriView;
     //MArkers
     Marker availableProviders;
     ArrayList<LatLng> points = new ArrayList<LatLng>();
@@ -343,6 +368,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     private Marker sourceMarker;
     private Marker destinationMarker;
     private Marker providerMarker;
+
 
     boolean push = false;
     boolean isRunning = false, timerCompleted = false;
@@ -483,7 +509,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                startActivityForResult(intent, 1);
 //            }
 
-            System.out.println("OldUser : "+SharedHelper.getKey(getContext(), "Old_User"));
+            System.out.println("OldUser : " + SharedHelper.getKey(getContext(), "Old_User"));
 
 
         } else {
@@ -943,7 +969,22 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         ImgConfrmCabType = rootView.findViewById(R.id.ImgConfrmCabType);
         tvZoneMsg = rootView.findViewById(R.id.tvZoneMsg);
 
+        frmSourceBottom = rootView.findViewById(R.id.frmSourceBottom);
+        frmDestinationBottom = rootView.findViewById(R.id.frmDestinationBottom);
+
         btnRequestRidesCv = rootView.findViewById(R.id.btnRequestRidesCv);
+        bottomSourceDestinationLL = rootView.findViewById(R.id.bottomSourceDestinationLL);
+
+        paymentTextView = rootView.findViewById(R.id.paymentTextView);
+        paymentCardView = rootView.findViewById(R.id.paymentCardView);
+        btnShowPaymentTv = rootView.findViewById(R.id.btnShowPaymentTv);
+        showingProgressLL = rootView.findViewById(R.id.showingProgressLL);
+
+
+        showingProgressLLTextViewContainer = rootView.findViewById(R.id.showingProgressLLTextViewContainer);
+        cancel_ride_sp = rootView.findViewById(R.id.cancel_ride_sp);
+        continue_ride_sp = rootView.findViewById(R.id.continue_ride_sp);
+        partationTopHoriView = rootView.findViewById(R.id.partationTopHoriView);
         // serviceItemPrice =  rootView.findViewById(R.id.serviceItemPrice);
 
 
@@ -953,6 +994,151 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         cardInfo.setCardType("CASH");
         cardInfo.setLastFour("CASH");
         cardInfoArrayList.add(cardInfo);
+
+
+        btnShowPaymentTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paymentTextView.setVisibility(View.VISIBLE);
+                paymentCardView.setVisibility(View.VISIBLE);
+                showingProgressLLTextViewContainer.setVisibility(View.VISIBLE);
+                btnRequestRides.setVisibility(View.VISIBLE);
+                partationTopHoriView.setVisibility(View.VISIBLE);
+                schedule_ride.setVisibility(View.GONE);
+                btnShowPaymentTv.setVisibility(View.GONE);
+
+            }
+        });
+
+        continue_ride_sp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                System.out.println("calendertext : " + calendertv.getText().toString());
+
+                if (!frmSource.getText().toString().equalsIgnoreCase("") &&
+                        !destination.getText().toString().equalsIgnoreCase("") &&
+                        !frmDest.getText().toString().equalsIgnoreCase("") &&
+                        !calendertv.getText().toString().equalsIgnoreCase("Today")) {
+
+                    frmDest.setOnClickListener(null);
+                    frmSource.setOnClickListener(null);
+
+                    SharedHelper.putKey(context, "name", "");
+                    schedule_ride.setVisibility(View.GONE);
+                    sourceDestLayout.setVisibility(View.GONE);
+                    lnrRequestProviders.setVisibility(View.VISIBLE);
+                    btnRequestRideConfirm.setEnabled(true);
+
+                    Intent intent3 = new Intent(getActivity(), FindRidesActivity.class);
+
+                    intent3.putExtra("s_latitude", source_lat);
+                    intent3.putExtra("s_longitude", source_lng);
+                    intent3.putExtra("d_latitude", dest_lat);
+                    intent3.putExtra("d_longitude", dest_lng);
+                    intent3.putExtra("s_address", source_address);
+                    intent3.putExtra("d_address", dest_address);
+                    intent3.putExtra("service_type", "2");
+                    intent3.putExtra("distance", "0");
+                    intent3.putExtra("schedule_date", scheduledDate);
+                    intent3.putExtra("schedule_time", scheduledTime);
+                    intent3.putExtra("upcoming", "1");
+                    intent3.putExtra("use_wallet", "0");
+                    intent3.putExtra("payment_mode", "CASH");
+                    intent3.putExtra("seat_count", persontv.getText());
+                    startActivity(intent3);
+
+                } else {
+                    Toast.makeText(context, "Please select date and time", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+//        schedule_ride.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if (!frmSource.getText().toString().equalsIgnoreCase("") &&
+//                        !destination.getText().toString().equalsIgnoreCase("") &&
+//                        !frmDest.getText().toString().equalsIgnoreCase("") &&
+//                        !calendertv.getText().toString().equalsIgnoreCase("Today")) {
+//
+//                    getApproximateFare();
+//                    frmDest.setOnClickListener(null);
+//                    frmSource.setOnClickListener(null);
+//                    SharedHelper.putKey(context, "name", "");
+//                    sourceDestLayout.setVisibility(View.GONE);
+//                    lnrRequestProviders.setVisibility(View.VISIBLE);
+//                    bottomSourceDestinationLL.setVisibility(View.VISIBLE);
+//                    btnShowPaymentTv.setVisibility(View.VISIBLE);
+//                    schedule_ride.setVisibility(View.GONE);
+//
+//
+//                    btnRequestRideConfirm.setEnabled(true);
+//                    try {
+//                        System.out.println("tracking path Started :");
+//                        trackPickToDest();
+//                    } catch (Exception e) {
+//                        System.out.println("tracking path error :" + e.getMessage());
+//                    }
+//
+//                } else {
+//                    Toast.makeText(context, "Please select date and time", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//
+//        btnRequestRides.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                System.out.println("calendertext : " + calendertv.getText().toString());
+//
+//                if (!frmSource.getText().toString().equalsIgnoreCase("") &&
+//                        !destination.getText().toString().equalsIgnoreCase("") &&
+//                        !frmDest.getText().toString().equalsIgnoreCase("") &&
+//                        !calendertv.getText().toString().equalsIgnoreCase("Today")) {
+////                        startActivity(new Intent(getContext(), FindRidesActivity.class));
+////                        getApproximateFare();
+//                    frmDest.setOnClickListener(null);
+//                    frmSource.setOnClickListener(null);
+////                    sourceDestLayout.setClickable(false);
+//                    SharedHelper.putKey(context, "name", "");
+//                    sourceDestLayout.setVisibility(View.GONE);
+//                    lnrRequestProviders.setVisibility(View.VISIBLE);
+//                    btnRequestRideConfirm.setEnabled(true);
+//
+//                    Intent intent3 = new Intent(getActivity(), FindRidesActivity.class);
+//
+//                    intent3.putExtra("s_latitude", source_lat);
+//                    intent3.putExtra("s_longitude", source_lng);
+//                    intent3.putExtra("d_latitude", dest_lat);
+//                    intent3.putExtra("d_longitude", dest_lng);
+//                    intent3.putExtra("s_address", source_address);
+//                    intent3.putExtra("d_address", dest_address);
+//                    intent3.putExtra("service_type", "2");
+//                    intent3.putExtra("distance", "0");
+//                    intent3.putExtra("schedule_date", scheduledDate);
+//                    intent3.putExtra("schedule_time", scheduledTime);
+//                    intent3.putExtra("upcoming", "1");
+//                    intent3.putExtra("use_wallet", "0");
+//                    intent3.putExtra("payment_mode", "CASH");
+//                    intent3.putExtra("seat_count", persontv.getText());
+//                    startActivity(intent3);
+//
+//
+////                        sendRequest();
+//
+////                        sendRequestToGetProvider();
+////                        sourceDestLayout.setOnClickListener(new SearchFragment.OnClick());
+//                } else {
+//                    Toast.makeText(context, "Please select date and time", Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//        });
 
         schedule_ride.setOnClickListener(new OnClick());
         btnRequestRides.setOnClickListener(new OnClick());
@@ -1008,6 +1194,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //        });
 
         ivTopFav.setOnClickListener(view -> saveAddressDialog());
+
+
+
 
         flowValue = 0;
         layoutChanges();
@@ -1436,6 +1625,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
 
                 btnRequestRidesCv.setVisibility(View.VISIBLE);
+                schedule_ride.setVisibility(View.VISIBLE);
+//                partationTopHoriView.setVisibility(View.VISIBLE);
+//                bottomSourceDestinationLL.setVisibility(View.VISIBLE);
 //                imgBackTitle.setVisibility(View.VISIBLE);
 
 
@@ -2373,7 +2565,6 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         confirmDialog.setContentView(R.layout.design_passenger_number);
 
 
-
         TextView passengerVal = confirmDialog.findViewById(R.id.passengerVal);
         ImageView removePassenger = confirmDialog.findViewById(R.id.removePassenger);
         ImageView addPassenger = confirmDialog.findViewById(R.id.addPassenger);
@@ -2396,9 +2587,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         removePassenger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(passenger_number == 1){
+                if (passenger_number == 1) {
                     Toast.makeText(getContext(), "Minimum one passenger", Toast.LENGTH_SHORT).show();
-                }else{
+                } else {
                     passenger_number -= 1;
                     passangerStr = String.valueOf(passenger_number);
                 }
@@ -2423,8 +2614,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             @Override
             public void onClick(View v) {
                 confirmDialog.dismiss();
-                persontv.setText(""+passengerVal.getText());
-                Toast.makeText(getContext(), "Taken Seat : "+passengerVal.getText(), Toast.LENGTH_SHORT).show();
+                persontv.setText("" + passengerVal.getText());
+                Toast.makeText(getContext(), "Taken Seat : " + passengerVal.getText(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -2477,11 +2668,15 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             if (!source_lat.equalsIgnoreCase("")) {
                 if (!source_address.equalsIgnoreCase("")) {
                     frmSource.setText(source_address);
+                    frmSourceBottom.setText(source_address);
+
                 } else {
                     frmSource.setText(current_address);
+                    frmSourceBottom.setText(source_address);
                 }
             } else {
                 frmSource.setText(current_address);
+                frmSourceBottom.setText(source_address);
             }
 
             /***************************************CHANGES HERE TO HIDE SOURCE ADDRESS AND DESTINATION ADDRESS TEXTVIEW***********************************************/
@@ -2491,6 +2686,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                frmDestination.setVisibility(View.GONE);
 //                sourceDestLayout.setVisibility(View.VISIBLE);
                 frmDest.setText(dest_address);
+                frmDestinationBottom.setText(dest_address);
+
 
             }
 
@@ -3418,31 +3615,39 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             !calendertv.getText().toString().equalsIgnoreCase("Today")) {
 //                        startActivity(new Intent(getContext(), FindRidesActivity.class));
 //                        getApproximateFare();
-                        frmDest.setOnClickListener(null);
-                        frmSource.setOnClickListener(null);
+//                        frmDest.setOnClickListener(null);
+//                        frmSource.setOnClickListener(null);
 //                    sourceDestLayout.setClickable(false);
-                        SharedHelper.putKey(context, "name", "");
-
+//                        SharedHelper.putKey(context, "name", "");
+                        schedule_ride.setVisibility(View.GONE);
+                        sourceDestLayout.setVisibility(View.GONE);
+                        lnrRequestProviders.setVisibility(View.VISIBLE);
                         btnRequestRideConfirm.setEnabled(true);
-                        Intent intent3 = new Intent(getActivity(), FindRidesActivity.class);
+                        paymentTextView.setVisibility(View.GONE);
+                        paymentCardView.setVisibility(View.GONE);
+                        bottomSourceDestinationLL.setVisibility(View.GONE);
+                        btnRequestRides.setVisibility(View.GONE);
+                        showingProgressLLTextViewContainer.setVisibility(View.VISIBLE);
+                        showingProgressLL.setVisibility(View.VISIBLE);
+                        partationTopHoriView.setVisibility(View.VISIBLE);
 
-                        intent3.putExtra("s_latitude", source_lat);
-                        intent3.putExtra("s_longitude", source_lng);
-                        intent3.putExtra("d_latitude", dest_lat);
-                        intent3.putExtra("d_longitude", dest_lng);
-                        intent3.putExtra("s_address", source_address);
-                        intent3.putExtra("d_address", dest_address);
-                        intent3.putExtra("service_type", "2");
-                        intent3.putExtra("distance", "0");
-                        intent3.putExtra("schedule_date", scheduledDate);
-                        intent3.putExtra("schedule_time", scheduledTime);
-                        intent3.putExtra("upcoming", "1");
-                        intent3.putExtra("use_wallet", "0");
-                        intent3.putExtra("payment_mode", "CASH");
-                        intent3.putExtra("seat_count", persontv.getText());
-
-
-                        startActivity(intent3);
+//                        Intent intent3 = new Intent(getActivity(), FindRidesActivity.class);
+//
+//                        intent3.putExtra("s_latitude", source_lat);
+//                        intent3.putExtra("s_longitude", source_lng);
+//                        intent3.putExtra("d_latitude", dest_lat);
+//                        intent3.putExtra("d_longitude", dest_lng);
+//                        intent3.putExtra("s_address", source_address);
+//                        intent3.putExtra("d_address", dest_address);
+//                        intent3.putExtra("service_type", "2");
+//                        intent3.putExtra("distance", "0");
+//                        intent3.putExtra("schedule_date", scheduledDate);
+//                        intent3.putExtra("schedule_time", scheduledTime);
+//                        intent3.putExtra("upcoming", "1");
+//                        intent3.putExtra("use_wallet", "0");
+//                        intent3.putExtra("payment_mode", "CASH");
+//                        intent3.putExtra("seat_count", persontv.getText());
+//                        startActivity(intent3);
 
 
 //                        sendRequest();
@@ -3454,16 +3659,82 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     }
                     break;
                 case R.id.schedule_ride:
+
+
                     if (!frmSource.getText().toString().equalsIgnoreCase("") &&
                             !destination.getText().toString().equalsIgnoreCase("") &&
-                            !frmDest.getText().toString().equalsIgnoreCase("")) {
-//                        getApproximateFare();
-                        flowValue = 7;
-                        layoutChanges();
+                            !frmDest.getText().toString().equalsIgnoreCase("") &&
+                            !calendertv.getText().toString().equalsIgnoreCase("Today")) {
+
+                        getApproximateFare();
+//                        frmDest.setOnClickListener(null);
+//                        frmSource.setOnClickListener(null);
+//                        SharedHelper.putKey(context, "name", "");
+//                        sourceDestLayout.setVisibility(View.GONE);
+//                        lnrRequestProviders.setVisibility(View.VISIBLE);
+//                        bottomSourceDestinationLL.setVisibility(View.VISIBLE);
+//                        btnRequestRides.setVisibility(View.VISIBLE);
+//                        schedule_ride.setVisibility(View.GONE);
+
+
+                        partationTopHoriView.setVisibility(View.VISIBLE);
+
+                        frmDest.setOnClickListener(null);
+                        frmSource.setOnClickListener(null);
+                        SharedHelper.putKey(context, "name", "");
+                        sourceDestLayout.setVisibility(View.GONE);
+                        lnrRequestProviders.setVisibility(View.VISIBLE);
+                        bottomSourceDestinationLL.setVisibility(View.VISIBLE);
+                        btnShowPaymentTv.setVisibility(View.VISIBLE);
+                        schedule_ride.setVisibility(View.GONE);
+
+
+
+                        btnRequestRideConfirm.setEnabled(true);
+                        try {
+                            System.out.println("tracking path Started :");
+                            trackPickToDest();
+                        } catch (Exception e) {
+                            System.out.println("tracking path error :" + e.getMessage());
+                        }
+//                        Intent intent3 = new Intent(getActivity(), FindRidesActivity.class);
+//
+//                        intent3.putExtra("s_latitude", source_lat);
+//                        intent3.putExtra("s_longitude", source_lng);
+//                        intent3.putExtra("d_latitude", dest_lat);
+//                        intent3.putExtra("d_longitude", dest_lng);
+//                        intent3.putExtra("s_address", source_address);
+//                        intent3.putExtra("d_address", dest_address);
+//                        intent3.putExtra("service_type", "2");
+//                        intent3.putExtra("distance", "0");
+//                        intent3.putExtra("schedule_date", scheduledDate);
+//                        intent3.putExtra("schedule_time", scheduledTime);
+//                        intent3.putExtra("upcoming", "1");
+//                        intent3.putExtra("use_wallet", "0");
+//                        intent3.putExtra("payment_mode", "CASH");
+//                        intent3.putExtra("seat_count", persontv.getText());
+//                        startActivity(intent3);
+
+
+//                        sendRequest();
+
+//                        sendRequestToGetProvider();
+//                        sourceDestLayout.setOnClickListener(new SearchFragment.OnClick());
                     } else {
-                        Toast.makeText(context, "Please enter both pickup and drop locations",
-                                Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Please select date and time", Toast.LENGTH_SHORT).show();
                     }
+
+
+//                    if (!frmSource.getText().toString().equalsIgnoreCase("") &&
+//                            !destination.getText().toString().equalsIgnoreCase("") &&
+//                            !frmDest.getText().toString().equalsIgnoreCase("")) {
+////                        getApproximateFare();
+//                        flowValue = 7;
+//                        layoutChanges();
+//                    } else {
+//                        Toast.makeText(context, "Please enter both pickup and drop locations",
+//                                Toast.LENGTH_SHORT).show();
+//                    }
                     break;
                 case R.id.btnRequestRideConfirm:
                     frmDest.setOnClickListener(null);
@@ -3560,6 +3831,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                 source_lng = "" + cmPosition.target.longitude;
 
                                 mMap.clear();
+
                                 setValuesForSourceAndDestination();
                                 flowValue = 1;
 
@@ -3808,6 +4080,194 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     break;
             }
         }
+    }
+
+    public String convertHours(int runtime) {
+        int hours = runtime / 60;
+        int minutes = runtime % 60; // 5 in this case.
+        return hours + "h " + minutes + " m";
+    }
+
+    private Bitmap createDrawableFromView(Context context, View view) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        view.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT));
+        view.measure(displayMetrics.widthPixels, displayMetrics.heightPixels);
+        view.layout(0, 0, displayMetrics.widthPixels, displayMetrics.heightPixels);
+        view.buildDrawingCache();
+        Bitmap bitmap = Bitmap.createBitmap(view.getMeasuredWidth(), view.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        view.draw(canvas);
+        return bitmap;
+    }
+
+    private int dpToPx(Context context, float dpValue) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return Math.round(dpValue * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
+
+    private void setCameraWithCoordinationBounds(Route route) {
+        LatLng southwest = route.getBound().getSouthwestCoordination().getCoordination();
+        LatLng northeast = route.getBound().getNortheastCoordination().getCoordination();
+        LatLngBounds bounds = new LatLngBounds(southwest, northeast);
+        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
+    }
+
+    private void trackPickToDest() throws Exception {
+
+        GoogleDirection.withServerKey(getString(R.string.google_map_api))
+                .from(new LatLng(Double.parseDouble(source_lat), Double.parseDouble(source_lng)))
+                .to(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)))
+                .transportMode(TransportMode.DRIVING)
+                .execute(new DirectionCallback() {
+
+                    @Override
+                    public void onDirectionSuccess(Direction direction, String rawBody) {
+                        try {
+                            if (direction != null) {
+                                if (direction.isOK()) {
+                                    Log.v("rawBody", rawBody + "");
+                                    Log.v("direction", direction + "");
+
+                                    float totalDistance = 0;
+                                    int totalDuration = 0;
+                                    mMap.clear();
+                                    Route route = direction.getRouteList().get(0);
+                                    int legCount = route.getLegList().size();
+                                    for (int index = 0; index < legCount; index++) {
+                                        Leg leg = route.getLegList().get(index);
+                                        try {
+                                            totalDistance = totalDistance + Float.parseFloat(leg.getDistance().getText().replace("km", "").replace("m", "").trim());
+                                        } catch (NumberFormatException ne) {
+                                            ne.printStackTrace();
+                                        }
+//                                totalDistance =0;
+                                        if (leg.getDuration().getText().contains("hour")) {
+                                            Log.v("splithour", leg.getDuration().getText().split("hour")[0] + " ");
+                                            totalDuration = totalDuration + 60 * Integer.parseInt(leg.getDuration().getText()
+                                                    .split("hour")[0].trim());
+
+                                        } else if (leg.getDuration().getText().contains("hours")) {
+                                            totalDuration = totalDuration + 60 * Integer.parseInt(leg.getDuration().getText()
+                                                    .split("hours")[0].trim().replace("m", ""));
+                                        } else if (leg.getDuration().getText().contains("mins")) {
+                                            totalDuration = totalDuration + Integer.parseInt(leg.getDuration().getText()
+                                                    .replace("hour", "").replace("mins", "").replace("m", "").trim());
+                                        } else {
+                                            totalDuration = totalDuration + 0;
+                                        }
+
+
+                                        if (reqStatus.equals("PICKEDUP") || reqStatus.equals("DROPPED")) {
+                                            Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.user_markers);
+                                            Bitmap icon1 = BitmapFactory.decodeResource(getResources(), R.drawable.provider);
+                                            mMap.addMarker(new MarkerOptions()
+                                                    .icon(BitmapDescriptorFactory.fromBitmap(icon1))
+                                                    .rotation(360)
+                                                    .flat(true)
+                                                    .anchor(0.5f, 0.5f)
+                                                    .position(leg.getStartLocation().getCoordination()));
+                                            if (index == legCount - 1) {
+                                                mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(icon)).position(leg.getEndLocation().getCoordination()));
+                                            }
+                                            List<Step> stepList = leg.getStepList();
+                                            ArrayList<PolylineOptions> polylineOptionList = DirectionConverter.createTransitPolyline(getContext(), stepList, 3, getResources().getColor(R.color.dark_green), 2, Color.GRAY);
+                                            for (PolylineOptions polylineOption : polylineOptionList) {
+                                                mMap.addPolyline(polylineOption);
+                                            }
+                                            if (pickUpLocationName != null) {
+                                            }
+
+                                            if (dest_address != null) {
+                                                View marker_view2 = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(com.gsanthosh91.decoderoutekey.R.layout.custom_marker, null);
+                                                TextView addressDes = marker_view2.findViewById(com.gsanthosh91.decoderoutekey.R.id.addressTxt);
+//                                                TextView addressDes = marker_view2.findViewById();
+                                                TextView etaTxt = marker_view2.findViewById(com.gsanthosh91.decoderoutekey.R.id.etaTxt);
+                                                etaTxt.setVisibility(View.VISIBLE);
+                                                addressDes.setText(dropLocationName);
+                                                if (totalDuration > 60) {
+                                                    etaTxt.setText(convertHours(totalDuration));
+                                                } else {
+                                                    etaTxt.setText(totalDuration + " mins");
+                                                }
+                                                etaDur = totalDuration + "";
+                                                MarkerOptions marker_opt_des = new MarkerOptions().position(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)));
+                                                marker_opt_des.icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(context, marker_view2))).anchor(0.00f, 0.20f);
+                                                destinationMarker = mMap.addMarker(marker_opt_des);
+                                            }
+                                        } else {
+//                                            Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.destination_marker);
+                                            Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.destination_location);
+                                            Bitmap icon1 = BitmapFactory.decodeResource(getResources(), R.drawable.user_markers);
+                                            mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(icon1)).position(leg.getStartLocation().getCoordination()));
+                                            if (index == legCount - 1) {
+                                                mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(icon)).position(leg.getEndLocation().getCoordination()));
+                                            }
+                                            List<Step> stepList = leg.getStepList();
+                                            ArrayList<PolylineOptions> polylineOptionList = DirectionConverter.createTransitPolyline(getContext(), stepList, 3, getResources().getColor(R.color.dark_green), 2, Color.GRAY);
+                                            for (PolylineOptions polylineOption : polylineOptionList) {
+                                                mMap.addPolyline(polylineOption);
+                                            }
+                                            if (pickUpLocationName != null) {
+                                            }
+
+                                            if (dest_address != null) {
+                                                View marker_view2 = ((LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(com.gsanthosh91.decoderoutekey.R.layout.custom_marker, null);
+                                                TextView addressDes = marker_view2.findViewById(com.gsanthosh91.decoderoutekey.R.id.addressTxt);
+                                                TextView etaTxt = marker_view2.findViewById(com.gsanthosh91.decoderoutekey.R.id.etaTxt);
+                                                etaTxt.setVisibility(View.VISIBLE);
+                                                addressDes.setText(pickUpLocationName);
+                                                if (totalDuration > 60) {
+                                                    etaTxt.setText(convertHours(totalDuration));
+                                                } else {
+                                                    etaTxt.setText(totalDuration + " mins");
+                                                }
+
+                                                etaDur = totalDuration + "";
+                                                MarkerOptions marker_opt_des = new MarkerOptions().position(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)));
+                                                marker_opt_des.icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(context, marker_view2))).anchor(0.00f, 0.20f);
+                                                destinationMarker = mMap.addMarker(marker_opt_des);
+                                            }
+                                        }
+
+                                    }
+
+                                    mMap.setOnCameraIdleListener(() -> {
+                                        if (sourceMarker != null) {
+                                            String lat = String.valueOf(sourceLatLng.latitude);
+                                            String lng = String.valueOf(sourceLatLng.longitude);
+                                            if (((lat != null) && !lat.equals("") && !lat.isEmpty() && !lat.equalsIgnoreCase("0,0")) &&
+                                                    ((lng != null) && !lng.equals("") && !lng.isEmpty() && !lng.equalsIgnoreCase("0,0"))) {
+                                                Point PickupPoint = mMap.getProjection().toScreenLocation(new LatLng(sourceLatLng.latitude, sourceLatLng.longitude));
+                                                sourceMarker.setAnchor(PickupPoint.x < dpToPx(context, 200) ? 0.00f : 1.00f, PickupPoint.y < dpToPx(context, 100) ? 0.20f : 1.20f);
+                                            }
+
+                                        }
+                                        if (destinationMarker != null) {
+                                            if (((dest_lat != null) && !dest_lat.equals("") && !dest_lat.isEmpty() && !dest_lat.equalsIgnoreCase("0,0")) &&
+                                                    ((dest_lng != null) && !dest_lng.equals("") && !dest_lng.isEmpty() && !dest_lng.equalsIgnoreCase("0,0"))) {
+                                                Point PickupPoint = mMap.getProjection().toScreenLocation(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)));
+                                                destinationMarker.setAnchor(PickupPoint.x < dpToPx(context, 200) ? 0.00f : 1.00f, PickupPoint.y < dpToPx(context, 100) ? 0.20f : 1.20f);
+                                            }
+                                        }
+                                    });
+                                    lblCmfrmSourceAddress.setText(pickUpLocationName);
+                                    lblDis.setText(totalDistance + " km");
+                                    lblEta.setText(totalDuration + " min");
+                                    setCameraWithCoordinationBounds(route);
+                                }
+                            }
+                        } catch (NullPointerException ne) {
+                            ne.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onDirectionFailure(Throwable t) {
+                        // Do something
+                    }
+                });
+
     }
 
     private class ServiceListAdapter extends RecyclerView.Adapter<SearchFragment.ServiceListAdapter.MyViewHolder> {

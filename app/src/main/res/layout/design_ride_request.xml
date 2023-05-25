@@ -215,7 +215,7 @@
 
         <Button
             android:id="@+id/rejectBtn"
-            android:layout_width="@dimen/_50sdp"
+            android:layout_width="@dimen/_55sdp"
             android:layout_height="@dimen/_25sdp"
             android:background="@drawable/cornor_edge_bg"
             android:text="Reject"
@@ -227,7 +227,7 @@
 
         <Button
             android:id="@+id/acceptBtn"
-            android:layout_width="@dimen/_50sdp"
+            android:layout_width="@dimen/_55sdp"
             android:layout_height="@dimen/_25sdp"
             android:layout_marginStart="@dimen/_5sdp"
             android:padding="@dimen/_3sdp"

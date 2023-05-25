@@ -3549,6 +3549,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable destination_green_icon
 drawable destination_icon
 drawable destination_location
 drawable destination_marker
@@ -4924,6 +4925,7 @@ id booking_id
 id bottom
 id bottomCardViews
 id bottomLayout
+id bottomSourceDestinationLL
 id bottom_progress
 id bottom_seek_progress
 id bounce
@@ -4979,6 +4981,7 @@ id btnRequestRidesCv
 id btnSave
 id btnSearch
 id btnSend
+id btnShowPaymentTv
 id btnSignUp
 id btnSignUps
 id btnStart
@@ -5009,6 +5012,7 @@ id cancelButton
 id cancel_action
 id cancel_button
 id cancel_card
+id cancel_ride_sp
 id cancel_txt
 id carModelAndColor
 id carType
@@ -5051,6 +5055,7 @@ id chip1
 id chip2
 id chip3
 id chip_group
+id chkCash
 id chkDocument
 id chkGoodConduct
 id chkMotorInspectCertificate
@@ -5100,6 +5105,7 @@ id content
 id contentPanel
 id contiguous
 id continueButton
+id continue_ride_sp
 id continuousVelocity
 id coordinator
 id copyrightTextView
@@ -5289,8 +5295,10 @@ id frenchRB
 id friday
 id frmDest
 id frmDestination
+id frmDestinationBottom
 id frmProgressBar
 id frmSource
+id frmSourceBottom
 id from
 id fromTv
 id frost
@@ -5341,6 +5349,8 @@ id image
 id imageView
 id imageView1
 id imageView10
+id imageView11
+id imageView12
 id imageView2
 id imageView3
 id imageView4
@@ -5727,6 +5737,9 @@ id parentLayout
 id parentPanel
 id parentRelative
 id parent_matrix
+id partationHoriView
+id partationTopHoriView
+id partationView
 id passengerRV
 id passengerVal
 id password_toggle
@@ -5734,9 +5747,11 @@ id path
 id pathRelative
 id payPal_layout
 id paymentCV
+id paymentCardView
 id paymentDescription
 id paymentLayout
 id paymentRefundsTv
+id paymentTextView
 id paymentTitle
 id paymentType
 id paymentTypeImg
@@ -5802,6 +5817,7 @@ id profileNameTv
 id profileTv
 id profile_detail_layout
 id profile_image
+id progress
 id progressBar
 id progress_bar
 id progress_bar_as
@@ -5952,6 +5968,8 @@ id shortcut
 id showCustom
 id showHome
 id showTitle
+id showingProgressLL
+id showingProgressLLTextViewContainer
 id simpleRipple
 id sin
 id skipCollapsed

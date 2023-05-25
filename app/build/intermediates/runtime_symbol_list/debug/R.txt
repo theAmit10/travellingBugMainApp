@@ -3548,6 +3548,7 @@ int drawable design_ic_visibility 0x7f0800df
 int drawable design_ic_visibility_off 0x7f0800e0
 int drawable design_password_eye 0x7f0800e1
 int drawable design_snackbar_background 0x7f0800e2
+int drawable destination_green_icon 0x7f080552
 int drawable destination_icon 0x7f0800e3
 int drawable destination_location 0x7f0800e4
 int drawable destination_marker 0x7f08054a
@@ -4923,6 +4924,7 @@ int id booking_id 0x7f0a00e4
 int id bottom 0x7f0a00e5
 int id bottomCardViews 0x7f0a00e6
 int id bottomLayout 0x7f0a00e7
+int id bottomSourceDestinationLL 0x7f0a0671
 int id bottom_progress 0x7f0a00e8
 int id bottom_seek_progress 0x7f0a00e9
 int id bounce 0x7f0a00ea
@@ -4978,6 +4980,7 @@ int id btnRequestRidesCv 0x7f0a011b
 int id btnSave 0x7f0a011c
 int id btnSearch 0x7f0a011d
 int id btnSend 0x7f0a011e
+int id btnShowPaymentTv 0x7f0a0672
 int id btnSignUp 0x7f0a011f
 int id btnSignUps 0x7f0a0120
 int id btnStart 0x7f0a0121
@@ -5008,6 +5011,7 @@ int id cancelButton 0x7f0a0139
 int id cancel_action 0x7f0a013a
 int id cancel_button 0x7f0a013b
 int id cancel_card 0x7f0a013c
+int id cancel_ride_sp 0x7f0a0676
 int id cancel_txt 0x7f0a013d
 int id carModelAndColor 0x7f0a0653
 int id carType 0x7f0a013e
@@ -5050,6 +5054,7 @@ int id chip1 0x7f0a0162
 int id chip2 0x7f0a0163
 int id chip3 0x7f0a0164
 int id chip_group 0x7f0a0165
+int id chkCash 0x7f0a0673
 int id chkDocument 0x7f0a0166
 int id chkGoodConduct 0x7f0a0167
 int id chkMotorInspectCertificate 0x7f0a0168
@@ -5099,6 +5104,7 @@ int id content 0x7f0a0192
 int id contentPanel 0x7f0a0193
 int id contiguous 0x7f0a0194
 int id continueButton 0x7f0a0195
+int id continue_ride_sp 0x7f0a0677
 int id continuousVelocity 0x7f0a0196
 int id coordinator 0x7f0a0197
 int id copyrightTextView 0x7f0a0198
@@ -5288,8 +5294,10 @@ int id frenchRB 0x7f0a024c
 int id friday 0x7f0a024d
 int id frmDest 0x7f0a024e
 int id frmDestination 0x7f0a024f
+int id frmDestinationBottom 0x7f0a066a
 int id frmProgressBar 0x7f0a0250
 int id frmSource 0x7f0a0251
+int id frmSourceBottom 0x7f0a066b
 int id from 0x7f0a0252
 int id fromTv 0x7f0a0253
 int id frost 0x7f0a0254
@@ -5340,6 +5348,8 @@ int id image 0x7f0a0280
 int id imageView 0x7f0a0281
 int id imageView1 0x7f0a0282
 int id imageView10 0x7f0a0283
+int id imageView11 0x7f0a066c
+int id imageView12 0x7f0a066d
 int id imageView2 0x7f0a0284
 int id imageView3 0x7f0a0285
 int id imageView4 0x7f0a0286
@@ -5726,6 +5736,9 @@ int id parentLayout 0x7f0a03fc
 int id parentPanel 0x7f0a03fd
 int id parentRelative 0x7f0a03fe
 int id parent_matrix 0x7f0a03ff
+int id partationHoriView 0x7f0a066e
+int id partationTopHoriView 0x7f0a066f
+int id partationView 0x7f0a0670
 int id passengerRV 0x7f0a0658
 int id passengerVal 0x7f0a0661
 int id password_toggle 0x7f0a0401
@@ -5733,9 +5746,11 @@ int id path 0x7f0a0402
 int id pathRelative 0x7f0a0403
 int id payPal_layout 0x7f0a0404
 int id paymentCV 0x7f0a0405
+int id paymentCardView 0x7f0a0674
 int id paymentDescription 0x7f0a0406
 int id paymentLayout 0x7f0a0407
 int id paymentRefundsTv 0x7f0a0408
+int id paymentTextView 0x7f0a0675
 int id paymentTitle 0x7f0a0409
 int id paymentType 0x7f0a040a
 int id paymentTypeImg 0x7f0a040b
@@ -5801,6 +5816,7 @@ int id profileNameTv 0x7f0a0443
 int id profileTv 0x7f0a0444
 int id profile_detail_layout 0x7f0a0445
 int id profile_image 0x7f0a0446
+int id progress 0x7f0a0678
 int id progressBar 0x7f0a0447
 int id progress_bar 0x7f0a0448
 int id progress_bar_as 0x7f0a0449
@@ -5951,6 +5967,8 @@ int id shortcut 0x7f0a04d3
 int id showCustom 0x7f0a04d4
 int id showHome 0x7f0a04d5
 int id showTitle 0x7f0a04d6
+int id showingProgressLL 0x7f0a0679
+int id showingProgressLLTextViewContainer 0x7f0a067a
 int id simpleRipple 0x7f0a04d7
 int id sin 0x7f0a04d8
 int id skipCollapsed 0x7f0a04d9
