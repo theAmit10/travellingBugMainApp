@@ -98,7 +98,7 @@
                                         android:layout_marginTop="@dimen/_10sdp"
                                         android:src="@drawable/circle_leaving"
                                         app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toBottomOf="@+id/partationTopHoriView" />
+                                        app:layout_constraintTop_toTopOf="parent" />
 
                                     <com.travel.travellingbug.utills.MyTextView
                                         android:id="@+id/frmSourceBottom"

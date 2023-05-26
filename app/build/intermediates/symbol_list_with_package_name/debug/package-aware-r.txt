@@ -4857,7 +4857,10 @@ id addMyPreferencesTv
 id addPassenger
 id addPostalAddressTv
 id addPreferences
+id addRideTitle
 id addStop
+id addStopOverLL
+id addStopOverTv
 id addVehicleTv
 id add_money_card
 id add_source_card_entry_widget
@@ -5577,6 +5580,7 @@ id lnrSearch
 id lnrTitle
 id lnrWaitingForProviders
 id loading
+id location
 id logo
 id logoutBtn
 id logoutTv
@@ -6014,6 +6018,8 @@ id status
 id status_bar_latest_event_content
 id status_txt
 id stop
+id stopOverTitleTv
+id stopoverRv
 id stretch
 id strokeRipple
 id submenuarrow
@@ -6434,6 +6440,7 @@ layout activity_chat_app_item_view
 layout activity_complaints
 layout activity_confirm_ride_request
 layout activity_coupon
+layout activity_custom_stop_over_location
 layout activity_doc_upload
 layout activity_document_status
 layout activity_document_upload
@@ -6559,6 +6566,8 @@ layout design_pasenger_data
 layout design_passenger_number
 layout design_progress_bar
 layout design_ride_request
+layout design_stopover
+layout design_stopover_rv
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout design_travel_preference

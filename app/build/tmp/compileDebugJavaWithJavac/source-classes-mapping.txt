@@ -1,29 +1,29 @@
-com/travel/travellingbug/utills/RouteEvaluator.java
- com.travel.travellingbug.utills.RouteEvaluator
-com/travel/travellingbug/utills/Typefaces.java
- com.travel.travellingbug.utills.Typefaces
+com/travel/travellingbug/models/PlacePredictions.java
+ com.travel.travellingbug.models.PlacePredictions
+com/travel/travellingbug/models/RestInterface.java
+ com.travel.travellingbug.models.RestInterface
 com/travel/travellingbug/models/DocListItemModel.java
  com.travel.travellingbug.models.DocListItemModel
 com/travel/travellingbug/models/ChatList.java
  com.travel.travellingbug.models.ChatList
-com/travel/travellingbug/models/CardDetails.java
- com.travel.travellingbug.models.CardDetails
+com/travel/travellingbug/utills/RouteEvaluator.java
+ com.travel.travellingbug.utills.RouteEvaluator
 com/travel/travellingbug/helper/SharedHelperImage.java
  com.travel.travellingbug.helper.SharedHelperImage
-com/travel/travellingbug/models/PaymentRequest.java
- com.travel.travellingbug.models.PaymentRequest
+com/travel/travellingbug/models/CardDetails.java
+ com.travel.travellingbug.models.CardDetails
 com/travel/travellingbug/ui/fragments/RoundCornerDrawable.java
  com.travel.travellingbug.ui.fragments.RoundCornerDrawable
+com/travel/travellingbug/utills/Typefaces.java
+ com.travel.travellingbug.utills.Typefaces
 com/travel/travellingbug/models/WithdrawAmount.java
  com.travel.travellingbug.models.WithdrawAmount
-com/travel/travellingbug/models/GetUserRate.java
- com.travel.travellingbug.models.GetUserRate
 com/travel/travellingbug/ui/adapters/ProfileViewPagerAdapter.java
  com.travel.travellingbug.ui.adapters.ProfileViewPagerAdapter
-com/travel/travellingbug/utills/FontCache.java
- com.travel.travellingbug.utills.FontCache
-com/travel/travellingbug/utills/ResponseListener.java
- com.travel.travellingbug.utills.ResponseListener
+com/travel/travellingbug/helper/URLHelper.java
+ com.travel.travellingbug.helper.URLHelper
+com/travel/travellingbug/models/GetUserRate.java
+ com.travel.travellingbug.models.GetUserRate
 com/travel/travellingbug/utills/MapAnimator.java
  com.travel.travellingbug.utills.MapAnimator
  com.travel.travellingbug.utills.MapAnimator$1
@@ -31,8 +31,8 @@ com/travel/travellingbug/utills/MapAnimator.java
  com.travel.travellingbug.utills.MapAnimator$3
  com.travel.travellingbug.utills.MapAnimator$4
  com.travel.travellingbug.utills.MapAnimator$5
-com/travel/travellingbug/models/IntroModel.java
- com.travel.travellingbug.models.IntroModel
+com/travel/travellingbug/utills/FontCache.java
+ com.travel.travellingbug.utills.FontCache
 com/travel/travellingbug/consts/PlacesAutoCompleteAdapter.java
  com.travel.travellingbug.consts.PlacesAutoCompleteAdapter
  com.travel.travellingbug.consts.PlacesAutoCompleteAdapter$1
@@ -46,16 +46,16 @@ com/travel/travellingbug/ui/adapters/DriverProfileViewPagerAdapter.java
 com/travel/travellingbug/models/Driver.java
  com.travel.travellingbug.models.Driver
  com.travel.travellingbug.models.Driver$1
-com/travel/travellingbug/utills/CustomTypefaceSpan.java
- com.travel.travellingbug.utills.CustomTypefaceSpan
+com/travel/travellingbug/models/IntroModel.java
+ com.travel.travellingbug.models.IntroModel
 com/travel/travellingbug/models/ServiceGenerator.java
  com.travel.travellingbug.models.ServiceGenerator
 com/travel/travellingbug/models/PlaceAutoComplete.java
  com.travel.travellingbug.models.PlaceAutoComplete
 com/travel/travellingbug/helper/ConnectionHelper.java
  com.travel.travellingbug.helper.ConnectionHelper
-com/travel/travellingbug/helper/URLHelper.java
- com.travel.travellingbug.helper.URLHelper
+com/travel/travellingbug/utills/CustomTypefaceSpan.java
+ com.travel.travellingbug.utills.CustomTypefaceSpan
 com/travel/travellingbug/fcm/MyBroadcastReceiver.java
  com.travel.travellingbug.fcm.MyBroadcastReceiver
 com/travel/travellingbug/utills/LocationTracking.java
@@ -66,10 +66,10 @@ com/travel/travellingbug/utills/MyButton.java
  com.travel.travellingbug.utills.MyButton
 com/travel/travellingbug/models/PostUserRate.java
  com.travel.travellingbug.models.PostUserRate
-com/travel/travellingbug/helper/SharedHelper.java
- com.travel.travellingbug.helper.SharedHelper
-com/travel/travellingbug/models/RestInterface.java
- com.travel.travellingbug.models.RestInterface
+com/travel/travellingbug/utills/ResponseListener.java
+ com.travel.travellingbug.utills.ResponseListener
+com/travel/travellingbug/ui/adapters/YourRideViewPagerAdapter.java
+ com.travel.travellingbug.ui.adapters.YourRideViewPagerAdapter
 com/travel/travellingbug/helper/BitmapCompletion.java
  com.travel.travellingbug.helper.BitmapCompletion
 com/travel/travellingbug/models/User.java
@@ -80,14 +80,14 @@ com/travel/travellingbug/models/PassengerDataModel.java
 com/travel/travellingbug/models/MPesaNumber.java
  com.travel.travellingbug.models.MPesaNumber
  com.travel.travellingbug.models.MPesaNumber$1
-com/travel/travellingbug/helper/AppHelper.java
- com.travel.travellingbug.helper.AppHelper
+com/travel/travellingbug/helper/SharedHelper.java
+ com.travel.travellingbug.helper.SharedHelper
 com/travel/travellingbug/utills/MyEditText.java
  com.travel.travellingbug.utills.MyEditText
 com/travel/travellingbug/listeners/ConnectionChangeListener.java
  com.wedrive.driver.Listeners.ConnectionChangeListener
-com/travel/travellingbug/consts/PlaceAPI.java
- com.travel.travellingbug.consts.PlaceAPI
+com/travel/travellingbug/models/PaymentRequest.java
+ com.travel.travellingbug.models.PaymentRequest
 com/travel/travellingbug/utills/MyTextView.java
  com.travel.travellingbug.utills.MyTextView
 com/travel/travellingbug/BuildConfig.java
@@ -96,35 +96,37 @@ com/travel/travellingbug/utills/MyCheckbox.java
  com.travel.travellingbug.utills.MyCheckbox
 com/travel/travellingbug/models/PaymentResponse.java
  com.travel.travellingbug.models.PaymentResponse
-com/travel/travellingbug/chat/PageTransformer.java
- com.travel.travellingbug.chat.PageTransformer
 com/travel/travellingbug/models/DocumentItem.java
  com.travel.travellingbug.models.DocumentItem
-com/travel/travellingbug/listeners/Connect.java
- com.travel.travellingbug.listeners.Connect
+com/travel/travellingbug/consts/PlaceAPI.java
+ com.travel.travellingbug.consts.PlaceAPI
 com/travel/travellingbug/helper/VolleyMultipartRequest.java
  com.travel.travellingbug.helper.VolleyMultipartRequest
  com.travel.travellingbug.helper.VolleyMultipartRequest$DataPart
-com/travel/travellingbug/models/VerifyIdMainActivityModel.java
- com.travel.travellingbug.models.VerifyIdMainActivityModel
+com/travel/travellingbug/listeners/Connect.java
+ com.travel.travellingbug.listeners.Connect
+com/travel/travellingbug/chat/PageTransformer.java
+ com.travel.travellingbug.chat.PageTransformer
 com/travel/travellingbug/ui/activities/GifImageView.java
  com.travel.travellingbug.ui.activities.GifImageView
-com/travel/travellingbug/models/DefaultConstants.java
- com.travel.travellingbug.models.DefaultConstants
 com/travel/travellingbug/models/ChangeDestRequest.java
  com.travel.travellingbug.models.ChangeDestRequest
+com/travel/travellingbug/models/DefaultConstants.java
+ com.travel.travellingbug.models.DefaultConstants
 com/travel/travellingbug/models/ChatAppMsgDTO.java
  com.travel.travellingbug.models.ChatAppMsgDTO
-com/travel/travellingbug/utills/MyBoldTextView.java
- com.travel.travellingbug.utills.MyBoldTextView
+com/travel/travellingbug/models/VerifyIdMainActivityModel.java
+ com.travel.travellingbug.models.VerifyIdMainActivityModel
 com/travel/travellingbug/helper/DataParser.java
  com.travel.travellingbug.helper.DataParser
-com/travel/travellingbug/ui/adapters/YourRideViewPagerAdapter.java
- com.travel.travellingbug.ui.adapters.YourRideViewPagerAdapter
+com/travel/travellingbug/helper/AppHelper.java
+ com.travel.travellingbug.helper.AppHelper
+com/travel/travellingbug/utills/MyBoldTextView.java
+ com.travel.travellingbug.utills.MyBoldTextView
 com/travel/travellingbug/helper/BitmapWorkerTask.java
  com.travel.travellingbug.helper.BitmapWorkerTask
-com/travel/travellingbug/models/PlacePredictions.java
- com.travel.travellingbug.models.PlacePredictions
+com/travel/travellingbug/models/StopOverModel.java
+ com.travel.travellingbug.models.StopOverModel
 com/travel/travellingbug/ui/activities/TravelPreferenceActivity.java
  com.travel.travellingbug.ui.activities.TravelPreferenceActivity
  com.travel.travellingbug.ui.activities.TravelPreferenceActivity$1
@@ -177,6 +179,9 @@ com/travel/travellingbug/ui/activities/IntroScreen.java
  com.travel.travellingbug.ui.activities.IntroScreen$The_slide_timer$1
 com/travel/travellingbug/ui/activities/Payment.java
  com.travel.travellingbug.ui.activities.Payment
+com/travel/travellingbug/ui/adapters/StepOverAdapter.java
+ com.travel.travellingbug.ui.adapters.StepOverAdapter
+ com.travel.travellingbug.ui.adapters.StepOverAdapter$ViewHolder
 com/travel/travellingbug/ui/fragments/YourRideFragment.java
  com.travel.travellingbug.ui.fragments.YourRideFragment
 com/travel/travellingbug/ui/activities/login/FaceBookLoginActivity.java
@@ -243,6 +248,21 @@ com/travel/travellingbug/ui/activities/TravelPreferenceActivityMain.java
 com/travel/travellingbug/ui/adapters/UserLocationAdapter.java
  com.travel.travellingbug.ui.adapters.UserLocationAdapter
  com.travel.travellingbug.ui.adapters.UserLocationAdapter$MyViewHolder
+com/travel/travellingbug/ui/activities/CustomStopOverLocation.java
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$1
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$2
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$3
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$3$1
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$4
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$4$1
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$4$1$1
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$4$1$2
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$5
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$5$1
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$5$1$1
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$5$1$2
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$6
 com/travel/travellingbug/ui/fragments/UserProfileReviewFragment.java
  com.travel.travellingbug.ui.fragments.UserProfileReviewFragment
 com/travel/travellingbug/ui/activities/RideRequest.java
@@ -689,6 +709,11 @@ com/travel/travellingbug/ui/fragments/PublishFragment.java
  com.travel.travellingbug.ui.fragments.PublishFragment$2
  com.travel.travellingbug.ui.fragments.PublishFragment$20
  com.travel.travellingbug.ui.fragments.PublishFragment$21
+ com.travel.travellingbug.ui.fragments.PublishFragment$22
+ com.travel.travellingbug.ui.fragments.PublishFragment$23
+ com.travel.travellingbug.ui.fragments.PublishFragment$24
+ com.travel.travellingbug.ui.fragments.PublishFragment$25
+ com.travel.travellingbug.ui.fragments.PublishFragment$26
  com.travel.travellingbug.ui.fragments.PublishFragment$3
  com.travel.travellingbug.ui.fragments.PublishFragment$4
  com.travel.travellingbug.ui.fragments.PublishFragment$5
