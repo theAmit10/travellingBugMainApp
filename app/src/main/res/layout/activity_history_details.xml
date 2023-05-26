@@ -144,7 +144,7 @@
                             android:layout_height="@dimen/_24sdp"
                             android:padding="10dp"
                             android:src="@drawable/pick_up_location"
-                            android:tint="@color/colorPrimary" />
+                            app:tint="@color/colorPrimary" />
 
                         <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/tripSource"
@@ -167,7 +167,7 @@
                             android:layout_height="@dimen/_24sdp"
                             android:padding="10dp"
                             android:src="@drawable/destination_icon"
-                            android:tint="@color/colorPrimary" />
+                            app:tint="@color/colorPrimary" />
 
                         <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/tripDestination"
@@ -190,6 +190,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
                         android:orientation="horizontal">
 
                         <com.travel.travellingbug.utills.MyBoldTextView
@@ -197,20 +198,21 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="5dp"
+                            android:layout_weight="1"
                             android:text="@string/booking_id"
                             android:textColor="@color/black_text_color"
                             android:textSize="@dimen/_12sdp" />
 
                         <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/trip_id"
-                            android:layout_width="match_parent"
+                            android:layout_width="@dimen/_50sdp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="5dp"
+                            android:layout_weight="1"
                             android:layout_marginBottom="@dimen/_5sdp"
-                            android:gravity="end"
-                            android:paddingEnd="@dimen/_20sdp"
-                            android:text=""
+                            android:gravity="center_vertical|end"
+                            android:text="abcd"
                             android:textSize="@dimen/_12sdp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -225,7 +227,7 @@
                         android:orientation="horizontal">
 
                         <com.travel.travellingbug.utills.MyBoldTextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/payment_methods"
@@ -234,9 +236,11 @@
 
                         <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/paymentType"
-                            android:layout_width="wrap_content"
+                            android:layout_width="@dimen/_50sdp"
                             android:layout_height="wrap_content"
-                            android:gravity="center_vertical|start"
+                            android:layout_weight="1"
+                            android:text="abcd"
+                            android:gravity="center_vertical | end"
                             android:textColor="@color/black_text_color"
                             android:textSize="@dimen/_12sdp" />
                     </LinearLayout>
@@ -259,8 +263,8 @@
 
                         <com.travel.travellingbug.utills.MyBoldTextView
 
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center_vertical|start"
                             android:text="Fare"
@@ -269,11 +273,11 @@
 
                         <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/tripAmount"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginEnd="16dp"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical|end"
+                            android:text="abcd"
+                            android:gravity="center_vertical | end"
                             android:textColor="@color/black_text_color"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -328,7 +332,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="50"
-            android:background="@android:color/holo_green_light"
+            android:background="@drawable/auth_btn_green_bg"
             android:elevation="@dimen/_5sdp"
             android:text="@string/start_ride"
             android:textAllCaps="true"
@@ -343,7 +347,8 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="50"
-            android:background="@android:color/holo_red_dark"
+            android:background="@drawable/auth_btn_green_bg"
+            android:backgroundTint="@android:color/holo_red_dark"
             android:elevation="@dimen/_5sdp"
             android:text="@string/cancel_ride"
             android:textAllCaps="true"

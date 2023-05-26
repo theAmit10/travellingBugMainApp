@@ -623,15 +623,15 @@ public class FindRidesActivity extends AppCompatActivity {
                 details = itemView.findViewById(R.id.details);
                 request = itemView.findViewById(R.id.request);
 
-                itemView.setOnClickListener(view -> {
-                    Intent intent = new Intent(getApplicationContext(), HistoryDetails.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    Log.e("Intent", "" + jsonArray.optJSONObject(getAdapterPosition()).toString());
-                    intent.putExtra("post_value", jsonArray.optJSONObject(getAdapterPosition()).toString());
-                    intent.putExtra("tag", "upcoming_trips");
-                    startActivity(intent);
-
-                });
+//                itemView.setOnClickListener(view -> {
+//                    Intent intent = new Intent(getApplicationContext(), HistoryDetails.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    Log.e("Intent", "" + jsonArray.optJSONObject(getAdapterPosition()).toString());
+//                    intent.putExtra("post_value", jsonArray.optJSONObject(getAdapterPosition()).toString());
+//                    intent.putExtra("tag", "upcoming_trips");
+//                    startActivity(intent);
+//
+//                });
             }
         }
     }

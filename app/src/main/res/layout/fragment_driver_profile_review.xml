@@ -20,6 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:paddingStart="@dimen/_10sdp"
@@ -40,7 +41,7 @@
                 <ProgressBar
 
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="@dimen/_200sdp"
+                    android:layout_width="@dimen/_170sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:padding="@dimen/_5sdp"
                     android:id="@+id/fiveStarProgress"
@@ -67,6 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:paddingStart="@dimen/_10sdp"
@@ -87,7 +89,7 @@
                 <ProgressBar
 
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="@dimen/_200sdp"
+                    android:layout_width="@dimen/_170sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:padding="@dimen/_5sdp"
                     android:id="@+id/fourStarProgress"
@@ -114,6 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:paddingStart="@dimen/_10sdp"
@@ -134,7 +137,7 @@
                 <ProgressBar
 
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="@dimen/_200sdp"
+                    android:layout_width="@dimen/_170sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:padding="@dimen/_5sdp"
                     android:id="@+id/threeStarProgress"
@@ -159,6 +162,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:paddingStart="@dimen/_10sdp"
@@ -179,7 +183,7 @@
                 <ProgressBar
 
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="@dimen/_200sdp"
+                    android:layout_width="@dimen/_170sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:padding="@dimen/_5sdp"
                     android:id="@+id/twoStarProgress"
@@ -206,6 +210,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:paddingStart="@dimen/_10sdp"
@@ -226,7 +231,7 @@
                 <ProgressBar
 
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="@dimen/_200sdp"
+                    android:layout_width="@dimen/_170sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:padding="@dimen/_5sdp"
                     android:id="@+id/oneStarProgress"

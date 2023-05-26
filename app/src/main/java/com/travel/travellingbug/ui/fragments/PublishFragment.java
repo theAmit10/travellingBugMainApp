@@ -1180,7 +1180,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 current_address = currentAddress;
 
                 if (frmSource.getContext() != null) {
-                    frmSource.setTextColor(getContext().getResources().getColor(R.color.dark_gray));
+                    frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
                     frmSource.setText(currentAddress);
                 }
 

@@ -1,5 +1,6 @@
 package com.travel.travellingbug.ui.activities;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,10 +19,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.Login;
 import com.travel.travellingbug.R;
@@ -31,7 +36,6 @@ import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.models.User;
 import com.travel.travellingbug.utills.Utilities;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,7 +63,9 @@ public class HistoryDetails extends AppCompatActivity {
     TextView tripAmount;
     TextView tripDate;
     TextView paymentType;
-    TextView tripComments;
+    Fragment fragment;
+    public static FragmentManager fragmentManager;
+    TextView tripComments,trip_id;
     TextView tripProviderName;
     TextView tripSource;
     TextView tripDestination;
@@ -75,6 +81,9 @@ public class HistoryDetails extends AppCompatActivity {
     Utilities utils = new Utilities();
     String history_response;
 
+
+    String booking_id = "", request_id = "", s_date = "", s_time = "", status = "", payment_mode = "", s_address = "", d_address = "", estimated_fare = "", verification_code = "", static_map = "", first_name = "", mobile = "", avatar = "", rating = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +96,9 @@ public class HistoryDetails extends AppCompatActivity {
 
         setContentView(R.layout.activity_history_details);
         findViewByIdAndInitialize();
+
+        getIntentData();
+
         try {
             Intent intent = getIntent();
             String post_details = intent.getExtras().getString("post_value");
@@ -113,7 +125,61 @@ public class HistoryDetails extends AppCompatActivity {
                 lblTitle.setText(getString(R.string.upcoming_rides));
             }
         }
+
+        SetDetailInComponent();
+
         backArrow.setOnClickListener(view -> onBackPressed());
+    }
+
+    private void SetDetailInComponent() {
+
+
+        String replacedStr = static_map.replaceAll("google_map_key", getResources().getString(R.string.google_map_api));
+        Picasso.get().load(replacedStr)
+                .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(tripImg);
+
+        System.out.println("static_map "+static_map);
+        System.out.println("static_map replacedStr "+replacedStr);
+
+        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + avatar)
+                .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(tripProviderImg);
+
+        tripProviderName.setText(first_name);
+
+        tripProviderRating.setRating(Float.parseFloat(rating));
+
+        tripDate.setText(s_date);
+
+        tripSource.setText(s_address);
+
+        tripDestination.setText(d_address);
+
+        trip_id.setText(booking_id);
+
+        paymentType.setText(payment_mode);
+
+        tripAmount.setText(estimated_fare);
+
+
+    }
+
+    private void getIntentData() {
+
+        request_id = getIntent().getStringExtra("request_id");
+        s_address = getIntent().getStringExtra("s_address");
+        d_address = getIntent().getStringExtra("d_address");
+        s_date = getIntent().getStringExtra("s_date");
+        s_time = getIntent().getStringExtra("s_time");
+        status = getIntent().getStringExtra("status");
+        payment_mode = getIntent().getStringExtra("payment_mode");
+        estimated_fare = getIntent().getStringExtra("estimated_fare");
+        verification_code = getIntent().getStringExtra("verification_code");
+        static_map = getIntent().getStringExtra("static_map");
+        first_name = getIntent().getStringExtra("first_name");
+        rating = getIntent().getStringExtra("rating");
+        avatar = getIntent().getStringExtra("avatar");
+        booking_id = getIntent().getStringExtra("booking_id");
+
     }
 
     public void findViewByIdAndInitialize() {
@@ -140,6 +206,7 @@ public class HistoryDetails extends AppCompatActivity {
 
         btnCancelRide = findViewById(R.id.btnCancelRide);
         btnStartRide = findViewById(R.id.btnStartRide);
+        trip_id = findViewById(R.id.trip_id);
         lnrComments = findViewById(R.id.lnrComments);
         backArrow = findViewById(R.id.backArrow);
 
@@ -186,11 +253,35 @@ public class HistoryDetails extends AppCompatActivity {
             }
             array.put(req);
             Log.e("TAG", "REQ: " + array);
+            Log.e("History", "Details REQ: " + array);
             Intent i = new Intent(getApplication(), MainActivity.class);
+
+//            HistoryDetails.this.runOnUiThread(() -> {
+//                fragment = new YourRideFragment();
+//                FragmentManager manager = getSupportFragmentManager();
+//                @SuppressLint("CommitTransaction")
+//                FragmentTransaction transaction = manager.beginTransaction();
+//                transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.slide_out_right);
+//                transaction.replace(R.id.content, fragment);
+//                transaction.commit();
+//                fragmentManager = getSupportFragmentManager();
+//            });
+//            GoToFragment();
             i.putExtra("datas", array.toString());
             i.putExtra("type", "SCHEDULED");
             startActivity(i);
             finish();
+        });
+    }
+
+    public void GoToFragment() {
+        HistoryDetails.this.runOnUiThread(() -> {
+//            drawer.closeDrawers();
+            FragmentManager manager = getSupportFragmentManager();
+            @SuppressLint("CommitTransaction")
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.content, fragment);
+            transaction.commit();
         });
     }
 
@@ -320,10 +411,15 @@ public class HistoryDetails extends AppCompatActivity {
                         } else {
                             paymentTypeImg.setImageResource(R.drawable.visa_icon);
                         }
-                        if (response.optJSONObject(0).optJSONObject("user").optString("picture").startsWith("http"))
-                            Picasso.get().load(response.optJSONObject(0).optJSONObject("user").optString("picture")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
-                        else
-                            Picasso.get().load(URLHelper.BASE + "storage/app/public/" + response.optJSONObject(0).optJSONObject("user").optString("picture")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
+
+                        if (response.optJSONObject(0).optJSONObject("user").optString("picture") != null) {
+                            if (response.optJSONObject(0).optJSONObject("user").optString("picture").startsWith("http"))
+                                Picasso.get().load(response.optJSONObject(0).optJSONObject("user").optString("picture")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
+                            else
+                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + response.optJSONObject(0).optJSONObject("user").optString("picture")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
+                        }
+
+
                         final JSONArray res = response;
                         tripProviderImg.setOnClickListener(v -> {
                             JSONObject jsonObject = res.optJSONObject(0).optJSONObject("user");

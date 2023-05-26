@@ -2862,10 +2862,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     }
 
     public void statusCheck() {
-        final LocationManager manager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-
-        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            enableLoc();
+        if (getActivity() != null){
+            final LocationManager manager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+            if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                enableLoc();
+            }
         }
     }
 

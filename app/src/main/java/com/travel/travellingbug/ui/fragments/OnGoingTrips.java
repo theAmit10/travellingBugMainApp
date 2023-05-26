@@ -65,6 +65,8 @@ public class OnGoingTrips extends Fragment {
 
     String noofseat = "", request_id = "", s_address = "", d_address = "", s_date = "", s_time = "";
 
+    String booking_id="",status="",payment_mode="",estimated_fare="",verification_code="",static_map="",first_name="",mobile="",avatar="",rating="";
+
 
     public OnGoingTrips() {
         // Required empty public constructor
@@ -384,6 +386,79 @@ public class OnGoingTrips extends Fragment {
 
             });
 
+
+            holder.pContainer.setOnLongClickListener(view -> {
+                Intent intent = new Intent(getActivity(), HistoryDetails.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
+                intent.putExtra("post_value", jsonArray.optJSONObject(position).toString());
+                intent.putExtra("tag", "upcoming_trips");
+
+                request_id = jsonArray.optJSONObject(position).optString("id");
+
+                s_address = jsonArray.optJSONObject(position).optString("s_address");
+
+                d_address = jsonArray.optJSONObject(position).optString("d_address");
+
+                booking_id = jsonArray.optJSONObject(position).optString("booking_id");
+
+                status = jsonArray.optJSONObject(position).optString("status");
+
+                if(jsonArray.optJSONObject(position).optString("payment_mode") != null){
+                    payment_mode = jsonArray.optJSONObject(position).optString("payment_mode");
+                }
+
+                if(jsonArray.optJSONObject(position).optString("estimated_fare") != null){
+                    estimated_fare = jsonArray.optJSONObject(position).optString("estimated_fare");
+
+                }
+
+                if(jsonArray.optJSONObject(position).optString("verification_code") != null){
+                    verification_code = jsonArray.optJSONObject(position).optString("verification_code");
+                }
+
+                if(jsonArray.optJSONObject(position).optString("static_map") != null){
+                    static_map = jsonArray.optJSONObject(position).optString("static_map");
+                }
+
+
+                // getting firstname
+                try {
+                    JSONObject providerObj = jsonArray.getJSONObject(position).optJSONObject("provider");
+                    if (providerObj != null) {
+
+                        first_name  = providerObj.optString("first_name");
+                        rating  = providerObj.optString("rating");
+                        avatar = providerObj.optString("avatar");
+
+//                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerObj.optString("avatar"))
+//                                .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                intent.putExtra("request_id", request_id);
+                intent.putExtra("s_address", s_address);
+                intent.putExtra("d_address", d_address);
+                intent.putExtra("booking_id", booking_id);
+                intent.putExtra("s_date", s_date);
+                intent.putExtra("s_time", s_time);
+                intent.putExtra("status", status);
+                intent.putExtra("payment_mode", payment_mode);
+                intent.putExtra("estimated_fare", estimated_fare);
+                intent.putExtra("verification_code", verification_code);
+                intent.putExtra("static_map", static_map);
+                intent.putExtra("first_name", first_name);
+                intent.putExtra("rating", rating);
+                intent.putExtra("avatar", avatar);
+
+                startActivity(intent);
+                return true;
+            });
+
         }
 
         @Override
@@ -431,15 +506,15 @@ public class OnGoingTrips extends Fragment {
 //
 //                });
 
-                itemView.setOnLongClickListener(view -> {
-                    Intent intent = new Intent(getActivity(), HistoryDetails.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    Log.e("Intent", "" + jsonArray.optJSONObject(getAdapterPosition()).toString());
-                    intent.putExtra("post_value", jsonArray.optJSONObject(getAdapterPosition()).toString());
-                    intent.putExtra("tag", "upcoming_trips");
-                    startActivity(intent);
-                    return true;
-                });
+//                itemView.setOnLongClickListener(view -> {
+//                    Intent intent = new Intent(getActivity(), HistoryDetails.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    Log.e("Intent", "" + jsonArray.optJSONObject(getAdapterPosition()).toString());
+//                    intent.putExtra("post_value", jsonArray.optJSONObject(getAdapterPosition()).toString());
+//                    intent.putExtra("tag", "upcoming_trips");
+//                    startActivity(intent);
+//                    return true;
+//                });
 
 
             }
