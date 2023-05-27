@@ -4994,6 +4994,7 @@ id btnSubmitReview
 id btnTakePicture
 id btnUpdate
 id btnUpload
+id btnViewInvoice
 id btn_01_status
 id btn_02_accept
 id btn_02_reject
@@ -5332,6 +5333,7 @@ id header_title
 id helpTv
 id hideable
 id hindiRB
+id historyContainerLL
 id home
 id homeAsUp
 id honorRequest
@@ -5481,6 +5483,7 @@ id lblAmount
 id lblApproxAmount
 id lblBasePrice
 id lblBasePricePopup
+id lblBookingID
 id lblCalculationType
 id lblCapacity
 id lblCmfrmDestAddress
@@ -5578,6 +5581,7 @@ id lnrRateProvider
 id lnrRequestProviders
 id lnrSearch
 id lnrTitle
+id lnrUpcomingLayout
 id lnrWaitingForProviders
 id loading
 id location
@@ -6457,6 +6461,7 @@ layout activity_google_login
 layout activity_help
 layout activity_history
 layout activity_history_details
+layout activity_history_details_user
 layout activity_home_screen
 layout activity_intro
 layout activity_intro_screen

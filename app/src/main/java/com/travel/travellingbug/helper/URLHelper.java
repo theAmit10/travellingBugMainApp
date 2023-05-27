@@ -128,6 +128,12 @@ public interface URLHelper {
 
     String CANCEL_REQUEST = BASE +  "api/provider/canceltrip";
 
+    String GET_DETAILS_OF_ONE_USER = BASE + "api/provider/userprofile";
+
+    String CANCEL_PUBLISHED_RIDE = BASE + "api/provider/cancel";
+
+
+
 
 
 

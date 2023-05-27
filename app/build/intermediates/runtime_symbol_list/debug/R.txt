@@ -4993,6 +4993,7 @@ int id btnSubmitReview 0x7f0a012b
 int id btnTakePicture 0x7f0a012c
 int id btnUpdate 0x7f0a012d
 int id btnUpload 0x7f0a012e
+int id btnViewInvoice 0x7f0a067f
 int id btn_01_status 0x7f0a012f
 int id btn_02_accept 0x7f0a0130
 int id btn_02_reject 0x7f0a0131
@@ -5331,6 +5332,7 @@ int id header_title 0x7f0a027d
 int id helpTv 0x7f0a027e
 int id hideable 0x7f0a027f
 int id hindiRB 0x7f0a0280
+int id historyContainerLL 0x7f0a067e
 int id home 0x7f0a0281
 int id homeAsUp 0x7f0a0282
 int id honorRequest 0x7f0a0283
@@ -5480,6 +5482,7 @@ int id lblAmount 0x7f0a0312
 int id lblApproxAmount 0x7f0a0313
 int id lblBasePrice 0x7f0a0314
 int id lblBasePricePopup 0x7f0a0315
+int id lblBookingID 0x7f0a0680
 int id lblCalculationType 0x7f0a0316
 int id lblCapacity 0x7f0a0317
 int id lblCmfrmDestAddress 0x7f0a0318
@@ -5577,6 +5580,7 @@ int id lnrRateProvider 0x7f0a0373
 int id lnrRequestProviders 0x7f0a0374
 int id lnrSearch 0x7f0a0375
 int id lnrTitle 0x7f0a0376
+int id lnrUpcomingLayout 0x7f0a0681
 int id lnrWaitingForProviders 0x7f0a0377
 int id loading 0x7f0a0378
 int id location 0x7f0a0379
@@ -6456,6 +6460,7 @@ int layout activity_google_login 0x7f0d0032
 int layout activity_help 0x7f0d0033
 int layout activity_history 0x7f0d0034
 int layout activity_history_details 0x7f0d0035
+int layout activity_history_details_user 0x7f0d015d
 int layout activity_home_screen 0x7f0d0036
 int layout activity_intro 0x7f0d0037
 int layout activity_intro_screen 0x7f0d0038

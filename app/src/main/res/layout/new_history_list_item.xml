@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:id="@+id/historyContainerLL"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
@@ -168,7 +169,7 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/people"
+                    android:src="@drawable/ic_dummy_user"
                     app:civ_border_color="@color/colorLightGray"
                     app:civ_border_width="@dimen/_2sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -183,10 +184,10 @@
                     >
 
                     <TextView
-                        android:id="@+id/textView5"
+                        android:id="@+id/userName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="David Johnson"
+                        android:text=""
                         android:drawableRight="@drawable/ic_green_tick"
                         android:drawablePadding="@dimen/_10sdp"
                         android:textStyle="bold"
@@ -219,11 +220,11 @@
                         android:progressTint="#FFCA28" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/ratingVal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-5dp"
-                        android:text="( 115 Reviews )"
+                        android:text=""
                         android:textColor="@color/colorDarkGray"
                         android:textSize="@dimen/_8sdp" />
                 </LinearLayout>
@@ -306,7 +307,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:maxLines="1"
-                    android:text="Plot A2, Sector 38 A, Noida, \nIndia"
+                    android:text=""
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_10sdp"
                     android:textStyle="bold"
@@ -321,7 +322,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:maxLines="1"
-                    android:text="Flat No-83, Dwarka Sector 12"
+                    android:text=""
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_10sdp"
                     android:textStyle="bold"

@@ -41,6 +41,9 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".ui.activities.HistoryDetailsUser"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.CustomStopOverLocation"
             android:exported="false" />
         <activity

@@ -113,8 +113,8 @@ com/travel/travellingbug/models/PostUserRate.java
  com.travel.travellingbug.models.PostUserRate
 com/travel/travellingbug/ui/activities/DriverProfileActivity.java
  com.travel.travellingbug.ui.activities.DriverProfileActivity
-com/travel/travellingbug/ui/adapters/YourRideViewPagerAdapter.java
- com.travel.travellingbug.ui.adapters.YourRideViewPagerAdapter
+com/travel/travellingbug/models/ChatList.java
+ com.travel.travellingbug.models.ChatList
 com/travel/travellingbug/helper/BitmapCompletion.java
  com.travel.travellingbug.helper.BitmapCompletion
 com/travel/travellingbug/models/User.java
@@ -127,9 +127,8 @@ com/travel/travellingbug/ui/activities/VerifyIdActivity.java
 com/travel/travellingbug/models/MPesaNumber.java
  com.travel.travellingbug.models.MPesaNumber
  com.travel.travellingbug.models.MPesaNumber$1
-com/travel/travellingbug/ui/activities/HistoryActivity.java
- com.travel.travellingbug.ui.activities.HistoryActivity
- com.travel.travellingbug.ui.activities.HistoryActivity$SampleFragmentPagerAdapter
+com/travel/travellingbug/models/DocListItemModel.java
+ com.travel.travellingbug.models.DocListItemModel
 com/travel/travellingbug/ui/activities/RideRequestDetailsActivity.java
  com.travel.travellingbug.ui.activities.RideRequestDetailsActivity
  com.travel.travellingbug.ui.activities.RideRequestDetailsActivity$1
@@ -187,6 +186,13 @@ com/travel/travellingbug/ui/fragments/UserProfileReviewFragment.java
  com.travel.travellingbug.ui.fragments.UserProfileReviewFragment
 com/travel/travellingbug/listeners/Connect.java
  com.travel.travellingbug.listeners.Connect
+com/travel/travellingbug/ui/activities/HistoryDetailsUser.java
+ com.travel.travellingbug.ui.activities.HistoryDetailsUser
+ com.travel.travellingbug.ui.activities.HistoryDetailsUser$1
+ com.travel.travellingbug.ui.activities.HistoryDetailsUser$2
+ com.travel.travellingbug.ui.activities.HistoryDetailsUser$3
+ com.travel.travellingbug.ui.activities.HistoryDetailsUser$4
+ com.travel.travellingbug.ui.activities.HistoryDetailsUser$5
 com/travel/travellingbug/ui/activities/RideRequest.java
  com.travel.travellingbug.ui.activities.RideRequest
  com.travel.travellingbug.ui.activities.RideRequest$1
@@ -295,10 +301,11 @@ com/travel/travellingbug/ui/activities/login/GoogleLoginActivity.java
  com.travel.travellingbug.ui.activities.login.GoogleLoginActivity
 com/travel/travellingbug/ui/fragments/UserProfileAboutFragment.java
  com.travel.travellingbug.ui.fragments.UserProfileAboutFragment
-com/travel/travellingbug/ui/fragments/SummaryFragment.java
- com.travel.travellingbug.ui.fragments.SummaryFragment
- com.travel.travellingbug.ui.fragments.SummaryFragment$1
- com.travel.travellingbug.ui.fragments.SummaryFragment$2
+com/travel/travellingbug/ui/activities/FindRideDetails.java
+ com.travel.travellingbug.ui.activities.FindRideDetails
+ com.travel.travellingbug.ui.activities.FindRideDetails$1
+ com.travel.travellingbug.ui.activities.FindRideDetails$2
+ com.travel.travellingbug.ui.activities.FindRideDetails$3
 com/travel/travellingbug/consts/PlaceAPI.java
  com.travel.travellingbug.consts.PlaceAPI
 com/travel/travellingbug/chat/PageTransformer.java
@@ -325,12 +332,15 @@ com/travel/travellingbug/models/RestInterface.java
  com.travel.travellingbug.models.RestInterface
 com/travel/travellingbug/ui/activities/ChangePasswordActivity.java
  com.travel.travellingbug.ui.activities.ChangePasswordActivity
-com/travel/travellingbug/ui/fragments/OnGoingTrips.java
- com.travel.travellingbug.ui.fragments.OnGoingTrips
- com.travel.travellingbug.ui.fragments.OnGoingTrips$1
- com.travel.travellingbug.ui.fragments.OnGoingTrips$2
- com.travel.travellingbug.ui.fragments.OnGoingTrips$UpcomingsAdapter
- com.travel.travellingbug.ui.fragments.OnGoingTrips$UpcomingsAdapter$MyViewHolder
+com/travel/travellingbug/ui/fragments/PastTrips.java
+ com.travel.travellingbug.ui.fragments.PastTrips
+ com.travel.travellingbug.ui.fragments.PastTrips$1
+ com.travel.travellingbug.ui.fragments.PastTrips$2
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$1
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$2
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$3
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$MyViewHolder
 com/travel/travellingbug/ui/adapters/PaymentListAdapter.java
  com.travel.travellingbug.ui.adapters.PaymentListAdapter
  com.travel.travellingbug.ui.adapters.PaymentListAdapter$1
@@ -715,18 +725,18 @@ com/travel/travellingbug/ui/fragments/SearchFragment.java
 com/travel/travellingbug/ui/activities/login/ChangePassword.java
  com.travel.travellingbug.ui.activities.login.ChangePassword
  com.travel.travellingbug.ui.activities.login.ChangePassword$1
-com/travel/travellingbug/models/ChatList.java
- com.travel.travellingbug.models.ChatList
-com/travel/travellingbug/models/DocListItemModel.java
- com.travel.travellingbug.models.DocListItemModel
-com/travel/travellingbug/ui/activities/FindRideDetails.java
- com.travel.travellingbug.ui.activities.FindRideDetails
- com.travel.travellingbug.ui.activities.FindRideDetails$1
- com.travel.travellingbug.ui.activities.FindRideDetails$2
- com.travel.travellingbug.ui.activities.FindRideDetails$3
-com/travel/travellingbug/ui/fragments/PastTrips.java
- com.travel.travellingbug.ui.fragments.PastTrips
- com.travel.travellingbug.ui.fragments.PastTrips$1
- com.travel.travellingbug.ui.fragments.PastTrips$2
- com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter
- com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$MyViewHolder
+com/travel/travellingbug/ui/adapters/YourRideViewPagerAdapter.java
+ com.travel.travellingbug.ui.adapters.YourRideViewPagerAdapter
+com/travel/travellingbug/ui/fragments/SummaryFragment.java
+ com.travel.travellingbug.ui.fragments.SummaryFragment
+ com.travel.travellingbug.ui.fragments.SummaryFragment$1
+ com.travel.travellingbug.ui.fragments.SummaryFragment$2
+com/travel/travellingbug/ui/activities/HistoryActivity.java
+ com.travel.travellingbug.ui.activities.HistoryActivity
+ com.travel.travellingbug.ui.activities.HistoryActivity$SampleFragmentPagerAdapter
+com/travel/travellingbug/ui/fragments/OnGoingTrips.java
+ com.travel.travellingbug.ui.fragments.OnGoingTrips
+ com.travel.travellingbug.ui.fragments.OnGoingTrips$1
+ com.travel.travellingbug.ui.fragments.OnGoingTrips$2
+ com.travel.travellingbug.ui.fragments.OnGoingTrips$UpcomingsAdapter
+ com.travel.travellingbug.ui.fragments.OnGoingTrips$UpcomingsAdapter$MyViewHolder

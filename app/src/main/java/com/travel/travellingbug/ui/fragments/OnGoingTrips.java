@@ -192,13 +192,13 @@ public class OnGoingTrips extends Fragment {
         customDialog.show();
         JSONObject object = new JSONObject();
         try {
-            object.put("id", request_id);
+            object.put("request_id", request_id);
             object.put("cancel_reason", "");
         } catch (Exception e) {
             e.printStackTrace();
         }
         Log.e("objectcancel", object + "obj");
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URLHelper.CANCEL_REQUEST_API, object, response -> {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URLHelper.CANCEL_PUBLISHED_RIDE, object, response -> {
             Log.e("CancelRequestResponse", response.toString());
             customDialog.dismiss();
             getUpcomingList();
@@ -296,10 +296,17 @@ public class OnGoingTrips extends Fragment {
 
                         holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
                         holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
+                        holder.status.setText(jsonArray.optJSONObject(position).optString("status"));
+
                         if (jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("PENDING")) {
                             holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
+                        } else if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED")){
+                            holder.btnCancel.setVisibility(View.GONE);
+                            holder.status.setBackgroundResource(R.drawable.auth_btn_gray_bg);
                         }
-                        holder.status.setText(jsonArray.optJSONObject(position).optString("status"));
+
+
+
 
                     } catch (ParseException e) {
                         e.printStackTrace();
@@ -327,7 +334,7 @@ public class OnGoingTrips extends Fragment {
                     holder.name.setText(providerObj.optString("first_name"));
 
                     Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerObj.optString("avatar"))
-                            .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
+                            .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.driver_image);
 
 
                 }
@@ -388,6 +395,7 @@ public class OnGoingTrips extends Fragment {
 
 
             holder.pContainer.setOnLongClickListener(view -> {
+
                 Intent intent = new Intent(getActivity(), HistoryDetails.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());

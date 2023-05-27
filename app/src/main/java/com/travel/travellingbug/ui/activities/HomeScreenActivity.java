@@ -370,8 +370,9 @@ public class HomeScreenActivity extends AppCompatActivity implements
                     break;
                 case R.id.nav_withdraw:
                     drawer.closeDrawers();
-                    new Handler().postDelayed(() -> startActivity(new Intent(HomeScreenActivity.this,
-                            WithdrawActivity.class)), 250);
+                    Intent intent = new Intent(HomeScreenActivity.this,TrackActivity.class);
+                    intent.putExtra("flowValue", 3);
+                    startActivity(intent);
 
                     break;
                 case R.id.nav_notification:

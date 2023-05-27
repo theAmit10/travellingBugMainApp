@@ -10,27 +10,33 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
-import com.travel.travellingbug.ui.activities.HistoryDetails;
-import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.helper.ConnectionHelper;
 import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
+import com.travel.travellingbug.ui.activities.HistoryDetailsUser;
+import com.travel.travellingbug.ui.activities.SplashScreen;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,6 +56,12 @@ public class PastTrips extends Fragment {
     ConnectionHelper helper;
     CustomDialog customDialog;
     View rootView;
+
+    String userId="",userName="",rating="",ratingVal="",vehicleDetails="",userProfileImage="";
+
+    String noofseat = "", request_id = "", s_address = "", d_address = "", s_date = "", s_time = "";
+
+    String booking_id="",status="",payment_mode="",estimated_fare="",verification_code="",static_map="",first_name="",mobile="",avatar="";
 
     ImageView backImg;
     LinearLayout toolbar;
@@ -223,7 +235,7 @@ public class PastTrips extends Fragment {
 
         @SuppressLint("NotifyDataSetChanged")
         @Override
-        public void onBindViewHolder(PostAdapter.MyViewHolder holder, int position) {
+        public void onBindViewHolder(PostAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
             try {
 
                 for(int i=0; i<jsonArray.length(); i++){
@@ -232,6 +244,83 @@ public class PastTrips extends Fragment {
 
                 holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
                 holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
+
+//                userId="",userName="",rating="",ratingVal="",vehicleDetails="";
+
+                userId = jsonArray.optJSONObject(position).optString("user_id");
+
+                // Getting other details of profile
+
+                StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        System.out.println("size : "+response.length());
+                        System.out.println("data : "+response);
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            if (response != null) {
+                                System.out.println("data : "+jsonObject.toString());
+                                userName = jsonObject.optString("first_name");
+                                userProfileImage = jsonObject.optString("avatar");
+                                rating = jsonObject.optString("rating");
+                                ratingVal = jsonObject.optString("rating");
+
+
+//                                userName = itemView.findViewById(R.id.userName);
+//                                ratingVal = itemView.findViewById(R.id.ratingVal);
+//                                listitemrating = itemView.findViewById(R.id.listitemrating);
+//                                profileImgeIv = itemView.findViewById(R.id.profileImgeIv);
+
+                                holder.userName.setText(userName);
+                                holder.ratingVal.setText("( "+jsonObject.optString("rating") +" Reviews )");
+                                holder.listitemrating.setRating(Float.parseFloat(ratingVal));
+
+                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + userProfileImage)
+                                        .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.profileImgeIv);
+
+
+                            }
+
+
+
+                        } catch (JSONException e) {
+                            displayMessage(e.toString());
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                    }
+
+                }) {
+
+
+                    @Override
+                    public Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<>();
+                        params.put("id", jsonArray.optJSONObject(position).optString("user_id"));
+                        return params;
+                    }
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("X-Requested-With", "XMLHttpRequest");
+                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                        return headers;
+                    }
+
+                };
+
+                ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+
 
                 holder.status.setText(jsonArray.optJSONObject(position).optString("status"));
                 if(holder.status.equals("COMPLETED")){
@@ -243,7 +332,9 @@ public class PastTrips extends Fragment {
                 }else if(holder.status.equals("CANCELLED")){
                     holder.rateRider.setVisibility(View.GONE);
                     holder.status.setText("Cancelled");
-                    holder.status.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.colorGray));
+
+//                    holder.status.setBackgroundColor(getResources().getColor(R.color.colorGray));
+                    holder.status.getBackground().setTint(getResources().getColor(R.color.colorGray));
                     notifyDataSetChanged();
                 }
 
@@ -259,6 +350,88 @@ public class PastTrips extends Fragment {
                 e.printStackTrace();
             }
 
+
+            holder.historyContainerLL.setOnClickListener(view -> {
+//                Intent intent = new Intent(getActivity(), HistoryDetails.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
+//                intent.putExtra("post_value", jsonArray.optJSONObject(position).toString());
+//                intent.putExtra("tag", "past_trips");
+//                startActivity(intent);
+
+                Toast.makeText(getContext(), "user id: "+jsonArray.optJSONObject(position).optString("user_id") , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "id: "+jsonArray.optJSONObject(position).optString("id") , Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), HistoryDetailsUser.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
+                intent.putExtra("post_value", jsonArray.optJSONObject(position).toString());
+                intent.putExtra("tag", "past_trips");
+
+//                request_id = jsonArray.optJSONObject(position).optString("id");
+//
+//                s_address = jsonArray.optJSONObject(position).optString("s_address");
+//
+//                d_address = jsonArray.optJSONObject(position).optString("d_address");
+//
+//                booking_id = jsonArray.optJSONObject(position).optString("booking_id");
+//
+//                status = jsonArray.optJSONObject(position).optString("status");
+//
+//                if(jsonArray.optJSONObject(position).optString("payment_mode") != null){
+//                    payment_mode = jsonArray.optJSONObject(position).optString("payment_mode");
+//                }
+//
+//                if(jsonArray.optJSONObject(position).optString("estimated_fare") != null){
+//                    estimated_fare = jsonArray.optJSONObject(position).optString("estimated_fare");
+//
+//                }
+//
+//                if(jsonArray.optJSONObject(position).optString("verification_code") != null){
+//                    verification_code = jsonArray.optJSONObject(position).optString("verification_code");
+//                }else{
+//                    verification_code = "0000";
+//                }
+//
+//                if(jsonArray.optJSONObject(position).optString("static_map") != null){
+//                    static_map = jsonArray.optJSONObject(position).optString("static_map");
+//                }
+//
+//
+////                // getting firstname
+////                try {
+////                    JSONObject providerObj = jsonArray.getJSONObject(position).optJSONObject("provider");
+////                    if (providerObj != null) {
+////
+////                        first_name  = providerObj.optString("first_name");
+////                        rating  = providerObj.optString("rating");
+////                        avatar = providerObj.optString("avatar");
+////
+////
+////                    }
+////                } catch (JSONException e) {
+////                    e.printStackTrace();
+////                }
+//
+//
+//                intent.putExtra("request_id", request_id);
+//                intent.putExtra("s_address", s_address);
+//                intent.putExtra("d_address", d_address);
+//                intent.putExtra("booking_id", booking_id);
+//                intent.putExtra("s_date", s_date);
+//                intent.putExtra("s_time", s_time);
+//                intent.putExtra("status", status);
+//                intent.putExtra("payment_mode", payment_mode);
+//                intent.putExtra("estimated_fare", estimated_fare);
+//                intent.putExtra("verification_code", verification_code);
+//                intent.putExtra("static_map", static_map);
+//                intent.putExtra("first_name", userName);
+//                intent.putExtra("rating", rating);
+//                intent.putExtra("avatar", userProfileImage);
+
+                startActivity(intent);
+
+            });
+
         }
 
         @Override
@@ -268,8 +441,14 @@ public class PastTrips extends Fragment {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView datetime, txtSource, txtDestination, status;
+            TextView datetime, txtSource, txtDestination, status,userName,ratingVal;
+
+            RatingBar listitemrating;
+
+            ImageView profileImgeIv;
             Button rateRider;
+
+            LinearLayout historyContainerLL;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
@@ -279,15 +458,20 @@ public class PastTrips extends Fragment {
                 txtDestination = itemView.findViewById(R.id.txtDestination);
                 status = itemView.findViewById(R.id.status);
                 rateRider = itemView.findViewById(R.id.rateRider);
+                userName = itemView.findViewById(R.id.userName);
+                ratingVal = itemView.findViewById(R.id.ratingVal);
+                listitemrating = itemView.findViewById(R.id.listitemrating);
+                profileImgeIv = itemView.findViewById(R.id.profileImgeIv);
+                historyContainerLL = itemView.findViewById(R.id.historyContainerLL);
 
-                itemView.setOnClickListener(view -> {
-                    Intent intent = new Intent(getActivity(), HistoryDetails.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    Log.e("Intent", "" + jsonArray.optJSONObject(getAdapterPosition()).toString());
-                    intent.putExtra("post_value", jsonArray.optJSONObject(getAdapterPosition()).toString());
-                    intent.putExtra("tag", "past_trips");
-                    startActivity(intent);
-                });
+//                itemView.setOnClickListener(view -> {
+//                    Intent intent = new Intent(getActivity(), HistoryDetails.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    Log.e("Intent", "" + jsonArray.optJSONObject(getAdapterPosition()).toString());
+//                    intent.putExtra("post_value", jsonArray.optJSONObject(getAdapterPosition()).toString());
+//                    intent.putExtra("tag", "past_trips");
+//                    startActivity(intent);
+//                });
 
             }
         }
