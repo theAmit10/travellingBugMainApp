@@ -89,6 +89,8 @@ public interface URLHelper {
 
     String REQUEST_STATUS_CHECK_API = BASE + "api/user/request/check";
 
+    String REQUEST_STATUS_CHECK_API_PROVIDER = BASE + "api/provider/request/check";
+
 
     String VALID_ZONE = BASE + "api/user/getvalidzone";
 
@@ -131,6 +133,30 @@ public interface URLHelper {
     String GET_DETAILS_OF_ONE_USER = BASE + "api/provider/userprofile";
 
     String CANCEL_PUBLISHED_RIDE = BASE + "api/provider/cancel";
+
+    String GET_ALL_RIDES = BASE + "api/provider/myallrides";
+
+    String GET_VEHICLE_DETAILS = BASE + "api/provider/profile/vehicle";
+
+    String UPDATE_SINGLE_USER_RIDE_STATUS_BY_PROVIDER = BASE + "api/provider/changestatusbyprovider";
+
+    String ADD_VERIFICATION_CODE = BASE + "api/provider/addverificationcode";
+
+    String CHECK_VERIFICATION_CODE = BASE + "api/provider/checkverificationcode";
+
+    String PAYMENT_REQUEST_BY_USER = BASE + "api/provider/payment/now";
+
+    String PAYMENT_APPROVED_BY_PROVIDER = BASE + "api/provider/changepaymentstatus";
+
+    String ESTIMATED_FARE_AND_DISTANCE = BASE + "api/provider/estimated/fare";
+
+    String RATE_TO_USER = BASE + "api/provider/rate/user";
+
+    String RATE_TO_PROVIDER = BASE + "api/provider/rate/provider";
+
+    String CHAT_API = BASE + "api/provider/firebase/sendchat";
+
+
 
 
 

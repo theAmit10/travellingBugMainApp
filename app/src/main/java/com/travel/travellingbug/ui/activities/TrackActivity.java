@@ -2,6 +2,7 @@ package com.travel.travellingbug.ui.activities;
 
 import android.Manifest;
 import android.animation.Animator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -66,7 +67,10 @@ import com.akexorcist.googledirection.model.Step;
 import com.akexorcist.googledirection.util.DirectionConverter;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -134,6 +138,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -252,6 +257,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     @BindView(R.id.btnCancelTrip)
     TextView btnCancelTrip;
 
+    String request_id_from_trip = "";
     /// Invoice layout
     @BindView(R.id.lnrInvoice)
     LinearLayout lnrInvoice;
@@ -342,7 +348,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     LocationRequest mLocationRequest;
     RippleBackground rippleBackground;
 
+    JSONObject providerJsonObject;
+
     CameraPosition cmPosition;
+
+    JSONObject estimatedFareJsonObj;
+
     String current_lat = "", current_lng = "", current_address = "", source_lat = "", source_lng = "", source_address = "",
             dest_lat = "", dest_lng = "", dest_address = "";
     //Internet
@@ -381,6 +392,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
     @butterknife.OnClick(R.id.btnChat)
     void callbtnChat() {
+
+
 
         Intent intentChat = new Intent(context, UserChatActivity.class);
         intentChat.putExtra("requestId", current_chat_requestID);
@@ -478,6 +491,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     @butterknife.OnClick(R.id.btnSubmitReview)
     void btnSubmitReviewClick() {
         submitReviewCall();
+
     }
 
 //    @butterknife.OnClick(R.id.btnPayNow)
@@ -575,9 +589,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         context = TrackActivity.this;
         helper = new ConnectionHelper(getApplicationContext());
         isInternet = helper.isConnectingToInternet();
+
+        request_id_from_trip = getIntent().getStringExtra("request_id_from_trip");
         statusCheck();
 
-        checkStatus();
+//        checkStatus();
+        checkTripStatus();
         handleCheckStatus = new Handler();
         //check status every 3 sec
         handleCheckStatus.postDelayed(new Runnable() {
@@ -585,7 +602,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
             public void run() {
                 if (helper.isConnectingToInternet()) {
 
-                    checkStatus();
+//                    checkStatus();
+                    checkTripStatus();
                     Utilities.print("Handler", "Called");
                     if (alert != null && alert.isShowing()) {
                         alert.dismiss();
@@ -701,13 +719,69 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         lblPaymentType.setOnClickListener(v -> showChooser());
     }
 
-//    @OnClick(R.id.txtPickUpNotes)
-//    public void spcialiNotesClcik() {
-//
-//        Intent intentPickuP = new Intent(TrackActivity.this, PickUpNotes.class);
-//        intentPickuP.putExtra("request_id", current_chat_requestID + "");
-//        startActivity(intentPickuP);
-//    }
+    @OnClick(R.id.txtPickUpNotes)
+    public void spcialiNotesClcik() {
+
+        Intent intentPickuP = new Intent(TrackActivity.this, PickUpNotes.class);
+        intentPickuP.putExtra("request_id", current_chat_requestID + "");
+        startActivity(intentPickuP);
+
+
+    }
+
+    private void addVerificationCode(String rideId, String user_id, String code) {
+
+        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.ADD_VERIFICATION_CODE, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    if (response != null) {
+                        System.out.println("data : " + jsonObject.toString());
+                        displayMessage("Verification Code Added.");
+
+                    }
+
+                } catch (JSONException e) {
+                    displayMessage(e.toString());
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+            }
+
+        }) {
+
+
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("rideid", rideId);
+                params.put("user_id", user_id);
+                params.put("code", code);
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                return headers;
+            }
+
+        };
+
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+    }
 
     @Override
     protected void onDestroy() {
@@ -817,7 +891,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         builder.setTitle(getString(R.string.app_name))
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.drawable.app_logo_org)
                 .setMessage("GPS is disabled in your device. Enable it?")
                 .setCancelable(false)
                 .setPositiveButton("Enable GPS",
@@ -1156,6 +1230,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
                 lnrInvoice.startAnimation(slide_up);
                 lnrInvoice.setVisibility(View.VISIBLE);
+
+//                lnrInvoiceSu.setVisibility(View.VISIBLE);
             } else if (flowValue == 6) {
 
                 lnrRateProvider.startAnimation(slide_up);
@@ -1213,47 +1289,132 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     }
 
     public void submitReviewCall() {
+        System.out.println("REVIEW TO PROVIDER : "+request_id_from_trip+" | "+feedBackRating+" | "+txtComments.getText().toString());
+
+        rateToProvider(request_id_from_trip,feedBackRating,txtComments.getText().toString());
+
+//        customDialog = new CustomDialog(context);
+//        customDialog.setCancelable(false);
+//        if (customDialog != null)
+//            customDialog.show();
+//
+//        JSONObject object = new JSONObject();
+//        try {
+//            object.put("request_id", SharedHelper.getKey(context, "request_id"));
+//            object.put("rating", feedBackRating);
+//            object.put("comment", "" + txtComments.getText().toString());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URLHelper.RATE_PROVIDER_API, object, response -> {
+//            Utilities.print("SubmitRequestResponse", response.toString());
+//            utils.hideKeypad(context, activity.getCurrentFocus());
+//            if ((customDialog != null) && (customDialog.isShowing()))
+//                customDialog.dismiss();
+//            // destination.setText("");
+//            // frmDest.setText("");
+//            SharedHelper.putKey(context, "service_type_Car_Ambulance", "");
+//            Intent goMain = new Intent(activity, MainActivity.class);
+//            goMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//            activity.startActivity(goMain);
+//        }, error -> {
+//            if ((customDialog != null) && (customDialog.isShowing()))
+//                customDialog.dismiss();
+//            displayMessage(getString(R.string.places_try_again));
+//        }) {
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//                HashMap<String, String> headers = new HashMap<String, String>();
+//                headers.put("X-Requested-With", "XMLHttpRequest");
+//                headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type")
+//                        + " " + SharedHelper.getKey(context, "access_token"));
+//                return headers;
+//            }
+//        };
+//
+//        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+
+
+
+    }
+
+    private void rateToProvider(String request_id, String rating, String comment) {
 
         customDialog = new CustomDialog(context);
         customDialog.setCancelable(false);
         if (customDialog != null)
             customDialog.show();
-
-        JSONObject object = new JSONObject();
-        try {
-            object.put("request_id", SharedHelper.getKey(context, "request_id"));
-            object.put("rating", feedBackRating);
-            object.put("comment", "" + txtComments.getText().toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URLHelper.RATE_PROVIDER_API, object, response -> {
-            Utilities.print("SubmitRequestResponse", response.toString());
-            utils.hideKeypad(context, activity.getCurrentFocus());
-            if ((customDialog != null) && (customDialog.isShowing()))
-                customDialog.dismiss();
-            // destination.setText("");
-            // frmDest.setText("");
-            SharedHelper.putKey(context, "service_type_Car_Ambulance", "");
-            Intent goMain = new Intent(activity, MainActivity.class);
-            goMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            activity.startActivity(goMain);
-        }, error -> {
-            if ((customDialog != null) && (customDialog.isShowing()))
-                customDialog.dismiss();
-            displayMessage(getString(R.string.places_try_again));
-        }) {
+        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.RATE_TO_PROVIDER, new Response.Listener<String>() {
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
+            public void onResponse(String response) {
+                customDialog.dismiss();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    if (response != null) {
+                        System.out.println("data : " + jsonObject.toString());
+
+                        if (jsonObject.optString("message").equalsIgnoreCase("Request Completed!")) {
+                            Toast.makeText(getApplicationContext(), "Rated Successfully", Toast.LENGTH_SHORT).show();
+                            utils.hideKeypad(context, activity.getCurrentFocus());
+                            if ((customDialog != null) && (customDialog.isShowing()))
+                                customDialog.dismiss();
+                            SharedHelper.putKey(getApplicationContext(), "addRating","yes");
+                            // destination.setText("");
+                            // frmDest.setText("");
+                            SharedHelper.putKey(context, "service_type_Car_Ambulance", "");
+                            Intent goMain = new Intent(activity, MainActivity.class);
+                            goMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            activity.startActivity(goMain);
+                        }
+
+                    }
+
+                } catch (JSONException e) {
+                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                    if ((customDialog != null) && (customDialog.isShowing()))
+                        customDialog.dismiss();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if ((customDialog != null) && (customDialog.isShowing()))
+                    customDialog.dismiss();
+                Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error Found : " + error, Toast.LENGTH_SHORT).show();
+//                destinationLayer.setVisibility(View.GONE);
+//                layoutinfo.setVisibility(View.VISIBLE);
+            }
+
+        }) {
+
+
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("request_id", request_id);
+                params.put("rating", rating);
+                params.put("comment", comment);
+
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("X-Requested-With", "XMLHttpRequest");
-                headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type")
-                        + " " + SharedHelper.getKey(context, "access_token"));
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
                 return headers;
             }
+
         };
 
-        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
     }
 
     private void showCancelRideDialog() {
@@ -1507,15 +1668,809 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
     }
 
+    private void checkTripStatus() {
+
+        try {
+            System.out.println("checking status");
+            Utilities.print("Handler", "Inside");
+
+            if (isInternet) {
+                final StringRequest request = new StringRequest(Request.Method.GET, URLHelper.GET_ALL_RIDES, new Response.Listener<String>() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onResponse(String response) {
+                        SharedHelper.putKey(context, "req_status", "");
+                        System.out.println("checking status response : " + response.toString());
+
+                        if (response != null) {
+                            try {
+                                if (customDialog != null && customDialog.isShowing()) {
+                                    customDialog.dismiss();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            SharedHelper.putKey(context, "req_status", "");
+
+                            reqStatus = "";
+                            Utilities.print("Response", "" + response.toString());
+
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                if (jsonArray.length() > 0) {
+                                    System.out.println(" checking abc length  : " + jsonArray.length());
+
+                                    for (int i = 0; i < jsonArray.length(); i++) {
+                                        JSONObject jsonObject = jsonArray.optJSONObject(i);
+
+                                        if (jsonObject.optString("request_id").equalsIgnoreCase(request_id_from_trip)) {
+                                            System.out.println(" checking index : " + i);
+                                            System.out.println(" checking index request_id_from_trip : " + request_id_from_trip);
+                                            System.out.println(" checking index jsonObject.optString(\"request_id\") : " + jsonObject.optString("request_id"));
+                                            System.out.println(" checking index jsonObj : " + jsonObject.toString());
+
+
+                                            JSONObject requestStatusCheckObject = jsonObject;
+                                            System.out.println("requestStatusCheckObject : " + requestStatusCheckObject);
+
+
+                                            JSONObject tripsJsonObj = requestStatusCheckObject.getJSONObject("trip");
+                                            JSONObject prioviderJsonObj = tripsJsonObj.getJSONObject("provider");
+                                            JSONObject service_typeJsonObj = tripsJsonObj.getJSONObject("service_type");
+                                            JSONObject provider_serviceJsonObj = tripsJsonObj.getJSONObject("provider_service");
+
+
+                                            //Driver Detail
+                                            if (tripsJsonObj.optJSONObject("provider") != null) {
+                                                current_chat_requestID = tripsJsonObj.optString("id");
+                                                currentProviderID = tripsJsonObj.optJSONObject("provider").optString("id");
+                                                userID = tripsJsonObj.optString("id");
+                                                driver = new Driver();
+                                                providerFirstName = tripsJsonObj.optJSONObject("provider").optString("first_name");
+                                                driver.setFname(tripsJsonObj.optJSONObject("provider").optString("first_name"));
+                                                // driver.setLname(requestStatusCheckObject.optJSONObject("provider").optString("last_name"));
+                                                driver.setEmail(tripsJsonObj.optJSONObject("provider").optString("email"));
+                                                driver.setMobile(tripsJsonObj.optJSONObject("provider").optString("mobile"));
+                                                driver.setImg(tripsJsonObj.optJSONObject("provider").optString("avatar"));
+                                                driver.setRating(tripsJsonObj.optJSONObject("provider").optString("rating"));
+                                            }
+
+
+                                            JSONArray filterJsonArray = tripsJsonObj.optJSONArray("filters");
+                                            System.out.println("filtera array length : " + filterJsonArray.length());
+                                            System.out.println("filtera array data : " + filterJsonArray.toString());
+                                            System.out.println("UPSTATUS reqStatus : " + reqStatus);
+
+                                            if (filterJsonArray != null && filterJsonArray.length() > 0) {
+                                                JSONObject filterJsonObject = filterJsonArray.getJSONObject(0);
+
+                                                String status = filterJsonObject.optString("provider_status");
+                                                reqStatus = filterJsonObject.optString("provider_status");
+
+                                                System.out.println("UPSTATUS reqStatus two : " + reqStatus);
+                                                System.out.println("UPSTATUS ps : " + filterJsonObject.optString("provider_status"));
+                                                System.out.println("UPSTATUS status : " + status);
+                                                System.out.println("UPSTATUS reqStatus : " + reqStatus);
+
+
+                                                SharedHelper.putKey(context, "req_status", filterJsonObject.optString("provider_status"));
+                                                String wallet = tripsJsonObj.optString("use_wallet");
+                                                if (status.equalsIgnoreCase("STARTED")
+                                                        || status.equalsIgnoreCase("ARRIVED")) {
+                                                    source_lat = tripsJsonObj.optString("latitude");
+                                                    source_lng = tripsJsonObj.optString("longitude");
+                                                    dest_lat = tripsJsonObj.optString("s_latitude");
+                                                    dest_lng = tripsJsonObj.optString("s_longitude");
+                                                    Toast.makeText(TrackActivity.this, "STARTED Zone", Toast.LENGTH_SHORT).show();
+                                                    setValuesForSourceAndDestination();
+
+                                                } else if (status.equalsIgnoreCase("PICKEDUP")) {
+                                                    source_lat = tripsJsonObj.optString("latitude");
+                                                    source_lng = tripsJsonObj.optString("longitude");
+                                                    dest_lat = tripsJsonObj.optString("d_latitude");
+                                                    dest_lng = tripsJsonObj.optString("d_longitude");
+                                                    setValuesForSourceAndDestination();
+                                                    Toast.makeText(TrackActivity.this, "PICKEDUP", Toast.LENGTH_SHORT).show();
+
+                                                } else {
+                                                    source_lat = tripsJsonObj.optString("s_latitude");
+                                                    source_lng = tripsJsonObj.optString("s_longitude");
+                                                    dest_lat = tripsJsonObj.optString("d_latitude");
+                                                    dest_lng = tripsJsonObj.optString("d_longitude");
+                                                    Toast.makeText(TrackActivity.this, "ELSE", Toast.LENGTH_SHORT).show();
+                                                    setValuesForSourceAndDestination();
+
+                                                }
+
+                                                pickUpLocationName = tripsJsonObj.optString("s_address");
+                                                dropLocationName = tripsJsonObj.optString("d_address");
+                                                setValuesForSourceAndDestination();
+
+
+                                                // surge price
+                                                if (tripsJsonObj.optString("surge").equalsIgnoreCase("1")) {
+                                                    lblSurgePrice.setVisibility(View.VISIBLE);
+                                                } else {
+                                                    lblSurgePrice.setVisibility(View.GONE);
+                                                }
+
+                                                Utilities.print("PreviousStatus", "" + PreviousStatus);
+//                                                PreviousStatus ="ACCEPTED";
+                                                Toast.makeText(TrackActivity.this, "Prev : " + PreviousStatus, Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(TrackActivity.this, "status : " + status, Toast.LENGTH_SHORT).show();
+                                                System.out.println("checking status PreviousStatus" + PreviousStatus);
+                                                System.out.println("checking status status" + status);
+
+//                                                trackPickToDest();
+
+
+                                                if (!PreviousStatus.equalsIgnoreCase(status)) {
+                                                    mMap.clear();
+                                                    PreviousStatus = status;
+                                                    flowValue = 8;
+                                                    layoutChanges();
+                                                    SharedHelper.putKey(context, "request_id", "" + tripsJsonObj.optString("id"));
+                                                    reCreateMap();
+
+                                                    Utilities.print("ResponseStatus", "SavedCurrentStatus: " + CurrentStatus + " Status: " + status);
+                                                    switch (status) {
+                                                        case "SEARCHING":
+                                                            show(lnrWaitingForProviders);
+                                                            //rippleBackground.startRippleAnimation();
+                                                            strTag = "search_completed";
+                                                            if (!source_lat.equalsIgnoreCase("") && !source_lng.equalsIgnoreCase("")) {
+                                                                LatLng myLocation1 = new LatLng(Double.parseDouble(source_lat),
+                                                                        Double.parseDouble(source_lng));
+                                                                CameraPosition cameraPosition1 = new CameraPosition.Builder().target(myLocation1).zoom(16).build();
+                                                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition1));
+                                                            }
+                                                            break;
+                                                        case "CANCELLED":
+                                                            strTag = "";
+                                                            imgSos.setVisibility(View.GONE);
+                                                            break;
+                                                        case "ACCEPTED":
+                                                            driveraccepted.setVisibility(View.VISIBLE);
+                                                            driverArrived.setVisibility(View.GONE);
+                                                            driverPicked.setVisibility(View.GONE);
+                                                            driverCompleted.setVisibility(View.GONE);
+                                                            txtdriveraccpted.setText(getString(R.string.arriving));
+                                                            imgarrived.setImageResource(R.drawable.arriveddisable);
+                                                            imgPicked.setImageResource(R.drawable.pickeddisable);
+                                                            imgDropped.setImageResource(R.drawable.complete);
+
+                                                            strTag = "ride_accepted";
+                                                            try {
+                                                                JSONObject provider = tripsJsonObj.getJSONObject("provider");
+//                                                                JSONObject provider = providerJsonObject;
+                                                                JSONObject service_type = tripsJsonObj.getJSONObject("service_type");
+                                                                JSONObject provider_service = tripsJsonObj.getJSONObject("provider_service");
+                                                                SharedHelper.putKey(context, "provider_mobile_no", "" + provider.optString("mobile"));
+                                                                lblProvider.setText(provider.optString("first_name"));
+
+
+                                                                if (provider.optString("avatar").startsWith("http"))
+                                                                    Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                else
+                                                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                lblServiceRequested.setText(service_type.optString("name"));
+                                                                lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
+                                                                Picasso.get().load(service_type.optString("image"))
+                                                                        .placeholder(R.drawable.car_select).error(R.drawable.car_select)
+                                                                        .into(imgServiceRequested);
+                                                                ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                                //                                                lblDis.setText(service_type.optString("distance")+" km");
+                                                                //                                                lblEta.setText(service_type.optString("minute")+" min");
+                                                                lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
+
+                                                                lblCmfrmSourceAddress.setText(pickUpLocationName);
+                                                                lblCmfrmDestAddress.setText(dropLocationName);
+                                                                //lnrAfterAcceptedStatus.setVisibility(View.GONE);
+
+                                                                AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+                                                                show(lnrProviderAccepted);
+                                                                flowValue = 9;
+                                                                layoutChanges();
+                                                            } catch (Exception e) {
+                                                                e.printStackTrace();
+                                                            }
+                                                            break;
+                                                        case "STARTED":
+                                                            strTag = "ride_started";
+
+                                                            Random random = new Random();
+                                                            String otp_code = String.format("%04d", random.nextInt(10000));
+                                                            System.out.printf("OTP : " + otp_code);
+                                                            txtPickUpNotes.setText(otp_code);
+                                                            addVerificationCode(filterJsonObject.optString("request_id"), filterJsonObject.optString("user_id"), otp_code);
+
+                                                            showStartedDialog(tripsJsonObj);
+                                                            Toast.makeText(TrackActivity.this, "Case : Started", Toast.LENGTH_SHORT).show();
+
+                                                            break;
+
+                                                        case "ARRIVED":
+                                                            if ((confirmDialog != null) && (confirmDialog.isShowing()))
+                                                                confirmDialog.dismiss();
+                                                            driveraccepted.setVisibility(View.GONE);
+                                                            driverArrived.setVisibility(View.VISIBLE);
+                                                            driverPicked.setVisibility(View.GONE);
+                                                            driverCompleted.setVisibility(View.GONE);
+                                                            txtdriverArrived.setText(getString(R.string.arrived));
+                                                            imgarrived.setImageResource(R.drawable.arriveddisable);
+                                                            imgPicked.setImageResource(R.drawable.pickeddisable);
+                                                            imgDropped.setImageResource(R.drawable.complete);
+
+                                                            once = true;
+                                                            strTag = "ride_arrived";
+                                                            Utilities.print("MyTest", "ARRIVED");
+                                                            try {
+                                                                Utilities.print("MyTest", "ARRIVED TRY");
+                                                                JSONObject provider = tripsJsonObj.getJSONObject("provider");
+//                                                                JSONObject provider = providerJsonObject;
+                                                                JSONObject service_type = tripsJsonObj.getJSONObject("service_type");
+                                                                JSONObject provider_service = tripsJsonObj.getJSONObject("provider_service");
+                                                                lblProvider.setText(provider.optString("first_name"));
+
+//                                                                Random random = new Random();
+//                                                                String otp_code = String.format("%04d", random.nextInt(10000));
+//                                                                System.out.printf("OTP : " + otp_code);
+//                                                                txtPickUpNotes.setText(otp_code);
+//
+//                                                                addVerificationCode(filterJsonObject.optString("request_id"), filterJsonObject.optString("user_id"), otp_code);
+
+                                                                if (provider.optString("avatar").startsWith("http"))
+                                                                    Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                else
+                                                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                lblServiceRequested.setText(service_type.optString("name"));
+                                                                lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
+                                                                Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+                                                                ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+
+                                                                //                                                lblDis.setText(service_type.optString("distance")+" km");
+                                                                //                                                lblEta.setText(service_type.optString("minute")+" min");
+                                                                lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
+
+                                                                lblCmfrmSourceAddress.setText(pickUpLocationName);
+                                                                lblCmfrmDestAddress.setText(dropLocationName);
+
+
+                                                                AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+                                                                flowValue = 4;
+                                                                layoutChanges();
+                                                            } catch (Exception e) {
+                                                                Utilities.print("MyTest", "ARRIVED CATCH");
+                                                                e.printStackTrace();
+                                                            }
+
+                                                            Toast.makeText(TrackActivity.this, "Case : Arrived", Toast.LENGTH_SHORT).show();
+                                                            break;
+
+                                                        case "PICKEDUP":
+                                                            if ((confirmDialog != null) && (confirmDialog.isShowing()))
+                                                                confirmDialog.dismiss();
+
+                                                            driveraccepted.setVisibility(View.GONE);
+//                                        driverArrived.setVisibility(View.GONE);
+                                                            driverArrived.setVisibility(View.VISIBLE);
+                                                            driverPicked.setVisibility(View.VISIBLE);
+                                                            driverCompleted.setVisibility(View.GONE);
+                                                            txtdriverpicked.setText(getString(R.string.picked_up));
+                                                            imgarrived.setImageResource(R.drawable.arriveddisable);
+                                                            imgPicked.setImageResource(R.drawable.pickeddisable);
+                                                            imgDropped.setImageResource(R.drawable.complete);
+                                                            once = true;
+                                                            strTag = "ride_picked";
+                                                            try {
+                                                                JSONObject provider = tripsJsonObj.getJSONObject("provider");
+                                                                JSONObject service_type = tripsJsonObj.getJSONObject("service_type");
+                                                                JSONObject provider_service = tripsJsonObj.getJSONObject("provider_service");
+                                                                lblProvider.setText(provider.optString("first_name"));
+
+                                                                if (provider.optString("avatar").startsWith("http"))
+                                                                    Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                else
+                                                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                lblServiceRequested.setText(service_type.optString("name"));
+                                                                lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
+                                                                Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+                                                                ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+
+                                                                //                                                lblDis.setText(service_type.optString("distance")+" km");
+                                                                //                                                lblEta.setText(service_type.optString("minute")+" min");
+                                                                lblApproxAmount.setText(service_type.optString("fixed"));
+                                                                lblCmfrmSourceAddress.setText(pickUpLocationName);
+                                                                lblCmfrmDestAddress.setText(dropLocationName);
+
+
+                                                                imgSos.setVisibility(View.VISIBLE);
+                                                                //imgShareRide.setVisibility(View.VISIBLE);
+
+
+                                                                btnCancelTrip.setText(getString(R.string.share));
+                                                                btnCancelTrip.setTextColor(getResources().getColor(R.color.quantum_googgreen));
+                                                                AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+                                                                flowValue = 4;
+                                                                layoutChanges();
+                                                            } catch (Exception e) {
+                                                                e.printStackTrace();
+                                                            }
+                                                            Toast.makeText(TrackActivity.this, "Case : Arrived", Toast.LENGTH_SHORT).show();
+                                                            break;
+
+                                                        case "DROPPED":
+                                                            driveraccepted.setVisibility(View.GONE);
+                                                            driverArrived.setVisibility(View.GONE);
+                                                            driverPicked.setVisibility(View.GONE);
+                                                            driverCompleted.setVisibility(View.VISIBLE);
+                                                            txtdrivercompleted.setText(getString(R.string.trip_completed));
+                                                            imgarrived.setImageResource(R.drawable.arriveddisable);
+                                                            imgPicked.setImageResource(R.drawable.pickeddisable);
+                                                            imgDropped.setImageResource(R.drawable.complete);
+                                                            once = true;
+                                                            strTag = "";
+                                                            imgSos.setVisibility(View.VISIBLE);
+
+                                                            lblPaymentType.setEnabled(false);
+                                                            //imgShareRide.setVisibility(View.VISIBLE);
+                                                            try {
+                                                                JSONObject provider = tripsJsonObj.optJSONObject("provider");
+//                                                                JSONObject provider = providerJsonObject;
+                                                                if (filterJsonObject.optString("payment_status").equalsIgnoreCase("Pending")) {
+                                                                    System.out.println("dropped");
+                                                                    System.out.println("dropped status : " + filterJsonObject.optString("payment_status"));
+
+
+                                                                    StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + tripsJsonObj.optString("s_latitude") + "&s_longitude=" + tripsJsonObj.optString("s_longitude") + "&d_latitude=" + tripsJsonObj.optString("d_latitude") + "&d_longitude=" + tripsJsonObj.optString("d_longitude") + "&service_type=2", new Response.Listener<String>() {
+                                                                        @Override
+                                                                        public void onResponse(String response) {
+
+
+                                                                            try {
+                                                                                JSONObject jsonObject = new JSONObject(response);
+                                                                                estimatedFareJsonObj = new JSONObject(response);
+
+                                                                                if (response != null) {
+                                                                                    System.out.println("payment details estimated data : " + jsonObject.toString());
+                                                                                    jsonObject.optString("estimated_fare");
+                                                                                    jsonObject.optString("distance");
+                                                                                    jsonObject.optString("time");
+                                                                                    jsonObject.optString("tax_price");
+                                                                                    jsonObject.optString("base_price");
+                                                                                    jsonObject.optString("discount");
+                                                                                    jsonObject.optString("currency");
+
+                                                                                    String con = jsonObject.optString("currency") + " ";
+
+
+//                                                                                    txt04InvoiceId.setText(status.optString("booking_id"));
+//                                                                                    txt04BasePrice.setText(con + jsonObject.optString("base_price"));
+//                                                                                    txt04Distance.setText(jsonObject.optString("distance") + " KM");
+//                                                                                    txt04Tax.setText(con + jsonObject.optString("tax_price"));
+//                                                                                    txt04Total.setText(con + jsonObject.optString("estimated_fare"));
+//                                                                                    txt04PaymentMode.setText("CASH");
+//                                                                                    txt04Commision.setText(con + jsonObject.optString("discount"));
+//                                                                                    txtTotal.setText(con + jsonObject.optString("estimated_fare"));
+//                                                                                    paymentTypeImg.setImageResource(R.drawable.money1);
+//                                                                                    btn_confirm_payment.setVisibility(View.VISIBLE);
+
+
+//                                                                                    JSONObject payment = requestStatusCheckObject.optJSONObject("payment");
+//                                                                    isPaid = requestStatusCheckObject.optString("paid");
+                                                                                    isPaid = filterJsonObject.optString("payment_status");
+//
+//                                                                    paymentMode = requestStatusCheckObject.optString("payment_mode");
+                                                                                    paymentMode = "CASH";
+                                                                                    lblBasePrice.setText(con + jsonObject.optString("base_price"));
+                                                                                    lblTaxPrice.setText(con + jsonObject.optString("tax_price"));
+                                                                                    lblDistancePrice.setText(jsonObject.optString("distance") + " KM");
+
+//                                                                    if (payment.optString("discount") != null) {
+//                                                                        promoLayout.setVisibility(View.VISIBLE);
+//                                                                        txtDiscount.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("discount"));
+//                                                                    }
+                                                                                    //lblCommision.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("commision"));
+                                                                                    lblTotalPrice.setText(con + jsonObject.optString("estimated_fare"));
+                                                                                    SharedHelper.putKey(TrackActivity.this, "total_price",
+                                                                                            jsonObject.optString("estimated_fare"));
+
+
+                                                                                    System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+
+                                                                                }
+
+                                                                            } catch (
+                                                                                    JSONException e) {
+                                                                                Toast.makeText(getApplicationContext(), "error: dropped", Toast.LENGTH_SHORT).show();
+                                                                                Toast.makeText(getApplicationContext(), "error" + e, Toast.LENGTH_SHORT).show();
+                                                                                Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                                                                                System.out.println(" Error  : " + e.getMessage());
+                                                                                System.out.println(" Error  : " + e.getCause());
+                                                                                System.out.println(" Error : " + e);
+                                                                                e.printStackTrace();
+                                                                            }
+
+
+                                                                        }
+                                                                    }, new Response.ErrorListener() {
+                                                                        @Override
+                                                                        public void onErrorResponse(VolleyError error) {
+
+                                                                            Toast.makeText(getApplicationContext(), "Error Drop", Toast.LENGTH_SHORT).show();
+                                                                            Toast.makeText(getApplicationContext(), "Error Found payment details :" + error, Toast.LENGTH_SHORT).show();
+                                                                            Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                                                                            System.out.println(" Error  : " + error.getMessage());
+                                                                            System.out.println(" Error  : " + error.getCause());
+                                                                            System.out.println(" Error : " + error);
+                                                                            error.printStackTrace();
+                                                                        }
+
+                                                                    }) {
+
+
+                                                                        @Override
+                                                                        public Map<String, String> getHeaders() {
+                                                                            HashMap<String, String> headers = new HashMap<String, String>();
+                                                                            headers.put("X-Requested-With", "XMLHttpRequest");
+                                                                            headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                                                                            return headers;
+                                                                        }
+
+                                                                    };
+
+                                                                    ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+//                                                                    JSONObject payment = requestStatusCheckObject.optJSONObject("payment");
+////                                                                    isPaid = requestStatusCheckObject.optString("paid");
+//                                                                    isPaid = String.valueOf(0);
+////
+////                                                                    paymentMode = requestStatusCheckObject.optString("payment_mode");
+//                                                                    paymentMode = "CASH";
+//                                                                    lblBasePrice.setText(SharedHelper.getKey(context, "currency") + "" + filterJsonObject.optString("total_amount"));
+//                                                                    lblTaxPrice.setText("10 tex");
+//                                                                    lblDistancePrice.setText("distanceVal");
+//
+////                                                                    if (payment.optString("discount") != null) {
+////                                                                        promoLayout.setVisibility(View.VISIBLE);
+////                                                                        txtDiscount.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("discount"));
+////                                                                    }
+//                                                                    //lblCommision.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("commision"));
+//                                                                    lblTotalPrice.setText(SharedHelper.getKey(context, "currency") + ""
+//                                                                            + filterJsonObject.optString("total_amount"));
+//                                                                    SharedHelper.putKey(TrackActivity.this, "total_price",
+//                                                                            payment.optString("total"));
+                                                                }
+
+
+                                                                if (tripsJsonObj.optString("booking_id") != null &&
+                                                                        !tripsJsonObj.optString("booking_id").equalsIgnoreCase("")) {
+                                                                    booking_id.setText(tripsJsonObj.optString("booking_id"));
+                                                                    tvPaymentLabel.setText(provider.optString("first_name") + ", owes");
+                                                                } else {
+                                                                    booking_id.setVisibility(View.VISIBLE);
+                                                                }
+
+                                                                System.out.println("ispaid : " + isPaid);
+                                                                paymentMode = "CASH";
+                                                                if (filterJsonObject.optString("payment_status").equalsIgnoreCase("Pending") && paymentMode.equalsIgnoreCase("CASH")) {
+                                                                    btnPayNow.setVisibility(View.GONE);
+                                                                    System.out.println("ispaid : " + isPaid);
+                                                                    isPaid = filterJsonObject.optString("payment_status");
+                                                                    System.out.println("ispaid : " + isPaid);
+                                                                    flowValue = 5;
+                                                                    layoutChanges();
+                                                                    lblPaymentType.setEnabled(false);
+                                                                    imgPaymentTypeInvoice.setImageResource(R.drawable.money1);
+                                                                    lblPaymentTypeInvoice.setText(getString(R.string.cash));
+                                                                } else if (filterJsonObject.optString("payment_status").equalsIgnoreCase("Pending") && paymentMode.equalsIgnoreCase("CASH")
+                                                                        && wallet.equalsIgnoreCase("1")) {
+                                                                    btnPayNow.setVisibility(View.GONE);
+                                                                    flowValue = 5;
+                                                                    layoutChanges();
+                                                                    lblPaymentType.setEnabled(false);
+                                                                    imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+                                                                    lblPaymentTypeInvoice.setText(getString(R.string.cash_wallet));
+                                                                } else if (filterJsonObject.optString("payment_status").equalsIgnoreCase("Pending") && paymentMode.equalsIgnoreCase("CARD")) {
+                                                                    btnPayNow.setVisibility(View.VISIBLE);
+                                                                    flowValue = 5;
+                                                                    layoutChanges();
+                                                                    imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+                                                                    lblPaymentTypeInvoice.setText(getString(R.string.card));
+                                                                    lblPaymentType.setEnabled(false);
+                                                                } else if (filterJsonObject.optString("payment_status").equalsIgnoreCase("Pending") && paymentMode.equalsIgnoreCase("PAYPAL")) {
+                                                                    btnPayNow.setVisibility(View.VISIBLE);
+                                                                    flowValue = 5;
+                                                                    layoutChanges();
+                                                                    imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+                                                                    lblPaymentTypeInvoice.setText("PAYPAL");
+                                                                    lblPaymentType.setText("PAYPAL");
+                                                                    lblPaymentType.setEnabled(false);
+                                                                    txtpaiddriver.setVisibility(View.GONE);
+                                                                } else if (filterJsonObject.optString("payment_status").equalsIgnoreCase("Pending") && paymentMode.equalsIgnoreCase("RAZORPAY")) {
+                                                                    btnPayNow.setVisibility(View.VISIBLE);
+                                                                    flowValue = 5;
+                                                                    layoutChanges();
+                                                                    imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+                                                                    lblPaymentTypeInvoice.setText("RAZORPAY");
+                                                                    lblPaymentType.setText("RAZORPAY");
+                                                                    lblPaymentType.setEnabled(false);
+                                                                    txtpaiddriver.setVisibility(View.GONE);
+                                                                } else if (filterJsonObject.optString("payment_status").equalsIgnoreCase("success")) {
+                                                                    btnPayNow.setVisibility(View.GONE);
+                                                                    SharedHelper.putKey(getApplicationContext(), "addRating","yes");
+                                                                    lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
+                                                                    if (provider.optString("avatar").startsWith("http"))
+                                                                        Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                    else
+                                                                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                    flowValue = 6;
+                                                                    layoutChanges();
+                                                                }
+
+                                                            } catch (Exception e) {
+                                                                Log.v("Dropped Error", e.getLocalizedMessage() + "  ");
+                                                                e.printStackTrace();
+                                                            }
+                                                            if ((confirmDialog != null) && (confirmDialog.isShowing()))
+                                                                confirmDialog.dismiss();
+
+                                                            SharedHelper.putKey(getApplicationContext(), "addRating","no");
+                                                            Toast.makeText(getApplicationContext(), "DROPPED WORKING", Toast.LENGTH_SHORT).show();
+
+                                                            break;
+
+                                                        case "COMPLETED":
+                                                                btnPayNow.setVisibility(View.GONE);
+                                                                SharedHelper.putKey(getApplicationContext(), "addRating","yes");
+                                                                lblProviderName.setText(getString(R.string.rate_provider) + " " + providerJsonObject.optString("first_name"));
+                                                                if (providerJsonObject.optString("avatar").startsWith("http"))
+                                                                    Picasso.get().load(providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                else
+                                                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                flowValue = 6;
+                                                                layoutChanges();
+
+                                                            if(SharedHelper.getKey(getApplicationContext(),"addRating").equalsIgnoreCase("no")){
+                                                                if (filterJsonObject.optString("payment_status").equalsIgnoreCase("success")) {
+                                                                    btnPayNow.setVisibility(View.GONE);
+                                                                    SharedHelper.putKey(getApplicationContext(), "addRating","yes");
+                                                                    lblProviderName.setText(getString(R.string.rate_provider) + " " + providerJsonObject.optString("first_name"));
+                                                                    if (providerJsonObject.optString("avatar").startsWith("http"))
+                                                                        Picasso.get().load(providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                    else
+                                                                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                    flowValue = 6;
+                                                                    layoutChanges();
+                                                                }
+                                                            }
+                                                            else {
+                                                                layoutdriverstatus.setVisibility(View.GONE);
+                                                                //                                            driveraccepted.setVisibility(View.GONE);
+                                                                //                                            driverArrived.setVisibility(View.GONE);
+                                                                //                                            driverPicked.setVisibility(View.GONE);
+                                                                //                                            driverCompleted.setVisibility(View.VISIBLE);
+                                                                //                                            txtdriveraccpted.setText(getString(R.string.arriving));
+                                                                //                                            imgarrived.setImageResource(R.drawable.arriveddisable);
+                                                                //                                            imgPicked.setImageResource(R.drawable.pickeddisable);
+                                                                //                                            imgDropped.setImageResource(R.drawable.complete);
+                                                                strTag = "";
+                                                                try {
+                                                                    if (filterJsonObject.optString("payment_status") != null) {
+//                                                                    JSONObject payment = requestStatusCheckObject.optJSONObject("payment");
+
+
+//                                                                        System.out.println("payment details estimated data : " + jsonObject.toString());
+//                                                                        jsonObject.optString("estimated_fare");
+//                                                                        jsonObject.optString("distance");
+//                                                                        jsonObject.optString("time");
+//                                                                        jsonObject.optString("tax_price");
+//                                                                        jsonObject.optString("base_price");
+//                                                                        jsonObject.optString("discount");
+//                                                                        jsonObject.optString("currency");
+
+                                                                        lblBasePrice.setText(estimatedFareJsonObj.optString("currency") + ""
+                                                                                + estimatedFareJsonObj.optString("base_price"));
+                                                                        lblTaxPrice.setText(estimatedFareJsonObj.optString("currency") + ""
+                                                                                + estimatedFareJsonObj.optString("tax_price"));
+                                                                        lblDistancePrice.setText(estimatedFareJsonObj.optString("currency") + ""
+                                                                                + estimatedFareJsonObj.optString("distance"));
+                                                                        lblTotalPrice.setText(estimatedFareJsonObj.optString("currency") + ""
+                                                                                + estimatedFareJsonObj.optString("estimated_fare"));
+                                                                    }
+//                                                                JSONObject provider = requestStatusCheckObject.optJSONObject("provider");
+                                                                    JSONObject provider = providerJsonObject;
+//                                                                isPaid = requestStatusCheckObject.optString("paid");
+                                                                    isPaid = filterJsonObject.optString("payment_status");
+                                                                    paymentMode = "CASH";
+                                                                    imgSos.setVisibility(View.GONE);
+                                                                    //imgShareRide.setVisibility(View.GONE);
+                                                                    // lblCommision.setText(payment.optString("commision"));
+                                                                    if (filterJsonObject.optString("payment_status").equalsIgnoreCase("Pending") && paymentMode.equalsIgnoreCase("CASH")) {
+                                                                        flowValue = 5;
+                                                                        layoutChanges();
+                                                                        btnPayNow.setVisibility(View.GONE);
+                                                                        imgPaymentTypeInvoice.setImageResource(R.drawable.money1);
+                                                                        lblPaymentTypeInvoice.setText(getString(R.string.cash_wallet));
+                                                                    } else if (filterJsonObject.optString("payment_status").equalsIgnoreCase("Pending") && paymentMode.equalsIgnoreCase("CARD")) {
+                                                                        flowValue = 5;
+                                                                        layoutChanges();
+                                                                        imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+                                                                        lblPaymentTypeInvoice.setText(getString(R.string.card));
+                                                                        btnPayNow.setVisibility(View.VISIBLE);
+                                                                    } else if (filterJsonObject.optString("payment_status").equalsIgnoreCase("success")) {
+                                                                        btnPayNow.setVisibility(View.GONE);
+                                                                        lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
+                                                                        if (provider.optString("avatar").startsWith("http"))
+                                                                            Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
+                                                                        else
+                                                                            Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
+                                                                        flowValue = 6;
+                                                                        layoutChanges();
+                                                                        //imgPaymentTypeInvoice.setImageResource(R.drawable.visa);
+                                                                        // lblPaymentTypeInvoice.setText("CARD");
+                                                                    }
+                                                                } catch (Exception e) {
+                                                                    e.printStackTrace();
+                                                                }
+
+                                                            }
+
+
+
+                                                            if ((confirmDialog != null) && (confirmDialog.isShowing()))
+                                                                confirmDialog.dismiss();
+                                                            break;
+                                                    }
+                                                }
+
+
+//                                                if ("ACCEPTED".equals(status) || "STARTED".equals(status) ||
+//                                                        "ARRIVED".equals(status) || "PICKEDUP".equals(status) || "DROPPED".equals(status)) {
+//                                                    //                                    utils.print("Livenavigation", "" + status);
+//                                                    //                                    utils.print("Destination Current Lat", "" + requestStatusCheckObject.getJSONObject("provider").optString("latitude"));
+//                                                    //                                    utils.print("Destination Current Lng", "" + requestStatusCheckObject.getJSONObject("provider").optString("longitude"));
+//                                                    liveNavigation(status, requestStatusCheckObject.getJSONObject("provider").optString("latitude"),
+//                                                            requestStatusCheckObject.getJSONObject("provider").optString("longitude"));
+//                                                }
+
+
+                                            }
+
+
+                                            String status = reqStatus;
+
+                                            if ("ACCEPTED".equals(status) || "STARTED".equals(status) ||
+                                                    "ARRIVED".equals(status) || "PICKEDUP".equals(status) || "DROPPED".equals(status)) {
+                                                //                                    utils.print("Livenavigation", "" + status);
+                                                //                                    utils.print("Destination Current Lat", "" + requestStatusCheckObject.getJSONObject("provider").optString("latitude"));
+                                                //                                    utils.print("Destination Current Lng", "" + requestStatusCheckObject.getJSONObject("provider").optString("longitude"));
+                                                liveNavigation(status, prioviderJsonObj.optString("latitude"),
+                                                        prioviderJsonObj.optString("longitude"));
+                                            }
+
+
+                                        }
+
+
+                                    }
+                                } else if (PreviousStatus.equalsIgnoreCase("SEARCHING")) {
+                                    SharedHelper.putKey(context, "current_status", "");
+                                    if (scheduledDate != null && scheduledTime != null && !scheduledDate.equalsIgnoreCase("")
+                                            && !scheduledTime.equalsIgnoreCase("")) {
+                                   /* Toast.makeText(context, getString(R.string.schdule_accept), Toast.LENGTH_SHORT).show();
+                                    if (scheduleTrip){
+                                        Intent intent = new Intent(activity,HistoryActivity.class);
+                                        intent.putExtra("tag","upcoming");
+                                        startActivity(intent);
+                                    }*/
+                                    } else {
+                                        Toast.makeText(context, getString(R.string.no_drivers_found), Toast.LENGTH_SHORT).show();
+                                        strTag = "";
+                                        PreviousStatus = "";
+                                        flowValue = 0;
+                                 /*
+                                layoutChanges();
+                                mMap.clear();
+                                mapClear();*/
+                                        Intent intent = new Intent(activity, MainActivity.class);
+                                        startActivity(intent);
+                                    }
+                                } else if (PreviousStatus.equalsIgnoreCase("STARTED")) {
+                                    SharedHelper.putKey(context, "current_status", "");
+                                    Toast.makeText(context, getString(R.string.driver_busy), Toast.LENGTH_SHORT).show();
+                                    strTag = "";
+                                    PreviousStatus = "";
+                                    Intent intent = new Intent(activity, MainActivity.class);
+                                    startActivity(intent);
+                               /* flowValue = 0;
+                                layoutChanges();
+                                mMap.clear();
+                                mapClear();*/
+                                } else if (PreviousStatus.equalsIgnoreCase("ARRIVED")) {
+                                    SharedHelper.putKey(context, "current_status", "");
+                                    Toast.makeText(context, getString(R.string.driver_busy), Toast.LENGTH_SHORT).show();
+                                    strTag = "";
+                                    PreviousStatus = "";
+                               /* flowValue = 0;
+                                layoutChanges();
+                                mMap.clear();
+                                mapClear();*/
+                                    Intent intent = new Intent(activity, MainActivity.class);
+                                    startActivity(intent);
+                                } else if (PreviousStatus.equalsIgnoreCase("SEARCHING") && response != null
+                                        && response.length() > 0) {
+                                    Toast.makeText(context, getString(R.string.no_drivers_found), Toast.LENGTH_SHORT).show();
+                                    strTag = "";
+                                    PreviousStatus = "";
+                                    flowValue = 0;
+                                 /*
+                                layoutChanges();
+                                mMap.clear();
+                                mapClear();*/
+                                    Intent intent = new Intent(activity, MainActivity.class);
+                                    startActivity(intent);
+                                }
+
+                            } catch (Exception e) {
+                                System.out.println(" checking Error data not found : " + e.getMessage());
+                                System.out.println(" checking Error data not found : " + e.getCause());
+                                System.out.println(" checking Error data not found : " + e);
+                                e.printStackTrace();
+                            }
+
+
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                        System.out.println(" Error  : " + error.getMessage());
+                        System.out.println(" Error  : " + error.getCause());
+                        System.out.println(" Error : " + error);
+                        error.printStackTrace();
+                    }
+
+                }) {
+
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("X-Requested-With", "XMLHttpRequest");
+                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                        return headers;
+                    }
+
+                };
+
+                ClassLuxApp.getInstance().addToRequestQueue(request);
+
+            } else {
+                Log.e("nointerner", "nointernet");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
     private void checkStatus() {
         try {
 
+            System.out.println("checking status");
             Utilities.print("Handler", "Inside");
             if (isInternet) {
 
                 final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,
-                        URLHelper.REQUEST_STATUS_CHECK_API, null, response -> {
+                        URLHelper.REQUEST_STATUS_CHECK_API_PROVIDER, null, response -> {
                     SharedHelper.putKey(context, "req_status", "");
+                    System.out.println("checking status response : " + response.toString());
                     try {
                         if (customDialog != null && customDialog.isShowing()) {
                             customDialog.dismiss();
@@ -1529,408 +2484,1252 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                     if (response.optJSONArray("data") != null && response.optJSONArray("data").length() > 0) {
                         Utilities.print("response", "not null");
                         try {
-                            Log.i(TAG, "Check onResponse : " + response.toString(1));
+//                            Log.i(TAG, "Check onResponse : " + response.toString(1));
 
                             JSONArray requestStatusCheck = response.optJSONArray("data");
-                            JSONObject requestStatusCheckObject = requestStatusCheck.getJSONObject(0);
-                            //Driver Detail
-                            if (requestStatusCheckObject.optJSONObject("provider") != null) {
-                                current_chat_requestID = requestStatusCheckObject.optString("id");
-                                currentProviderID = requestStatusCheckObject.optJSONObject("provider").optString("id");
-                                userID = requestStatusCheckObject.optJSONObject("user").optString("id");
-                                driver = new Driver();
-                                providerFirstName = requestStatusCheckObject.optJSONObject("provider").optString("first_name");
-                                driver.setFname(requestStatusCheckObject.optJSONObject("provider").optString("first_name"));
-                                // driver.setLname(requestStatusCheckObject.optJSONObject("provider").optString("last_name"));
-                                driver.setEmail(requestStatusCheckObject.optJSONObject("provider").optString("email"));
-                                driver.setMobile(requestStatusCheckObject.optJSONObject("provider").optString("mobile"));
-                                driver.setImg(requestStatusCheckObject.optJSONObject("provider").optString("avatar"));
-                                driver.setRating(requestStatusCheckObject.optJSONObject("provider").optString("rating"));
-                            }
-                            String status = requestStatusCheckObject.optString("status");
-                            reqStatus = requestStatusCheckObject.optString("status");
+//                            JSONObject requestStatusCheckObject = requestStatusCheck.getJSONObject(0);
 
 
-                            SharedHelper.putKey(context, "req_status", requestStatusCheckObject.optString("status"));
-                            String wallet = requestStatusCheckObject.optString("use_wallet");
-                            if (status.equalsIgnoreCase("STARTED")
-                                    || status.equalsIgnoreCase("ARRIVED")) {
-                                source_lat = requestStatusCheckObject.optJSONObject("provider").optString("latitude");
-                                source_lng = requestStatusCheckObject.optJSONObject("provider").optString("longitude");
-                                dest_lat = requestStatusCheckObject.optString("s_latitude");
-                                dest_lng = requestStatusCheckObject.optString("s_longitude");
-                                setValuesForSourceAndDestination();
+                            for (int i = 0; i < requestStatusCheck.length(); i++) {
 
-                            } else if (status.equalsIgnoreCase("PICKEDUP")) {
-                                source_lat = requestStatusCheckObject.optJSONObject("provider").optString("latitude");
-                                source_lng = requestStatusCheckObject.optJSONObject("provider").optString("longitude");
-                                dest_lat = requestStatusCheckObject.optString("d_latitude");
-                                dest_lng = requestStatusCheckObject.optString("d_longitude");
-                                setValuesForSourceAndDestination();
-
-                            } else {
-                                source_lat = requestStatusCheckObject.optString("s_latitude");
-                                source_lng = requestStatusCheckObject.optString("s_longitude");
-                                dest_lat = requestStatusCheckObject.optString("d_latitude");
-                                dest_lng = requestStatusCheckObject.optString("d_longitude");
-                                setValuesForSourceAndDestination();
-
-                            }
-                            pickUpLocationName = requestStatusCheckObject.optString("s_address");
-                            dropLocationName = requestStatusCheckObject.optString("d_address");
-                            setValuesForSourceAndDestination();
+                                System.out.println("filter total data : " + requestStatusCheck.length());
+                                System.out.println("filter requestStatusCheck.getJSONObject(i).optString(\"id\") : " + requestStatusCheck.getJSONObject(i).optString("id"));
+                                System.out.println("filter data :" + request_id_from_trip);
 
 
-                            // surge price
-                            if (requestStatusCheckObject.optString("surge").equalsIgnoreCase("1")) {
-                                lblSurgePrice.setVisibility(View.VISIBLE);
-                            } else {
-                                lblSurgePrice.setVisibility(View.GONE);
-                            }
+                                if (requestStatusCheck.getJSONObject(i).optString("id").equalsIgnoreCase(request_id_from_trip)) {
+                                    System.out.println("filter data match :" + requestStatusCheck.getJSONObject(i).optString("id").equalsIgnoreCase(request_id_from_trip));
 
-                            Utilities.print("PreviousStatus", "" + PreviousStatus);
+                                    JSONObject requestStatusCheckObject = requestStatusCheck.getJSONObject(i);
 
-                            if (!PreviousStatus.equals(status)) {
-                                mMap.clear();
-                                PreviousStatus = status;
-                                flowValue = 8;
-                                layoutChanges();
-                                SharedHelper.putKey(context, "request_id", "" + requestStatusCheckObject.optString("id"));
-                                reCreateMap();
-                                Utilities.print("ResponseStatus", "SavedCurrentStatus: " + CurrentStatus + " Status: " + status);
-                                switch (status) {
-                                    case "SEARCHING":
-                                        show(lnrWaitingForProviders);
-                                        //rippleBackground.startRippleAnimation();
-                                        strTag = "search_completed";
-                                        if (!source_lat.equalsIgnoreCase("") && !source_lng.equalsIgnoreCase("")) {
-                                            LatLng myLocation1 = new LatLng(Double.parseDouble(source_lat),
-                                                    Double.parseDouble(source_lng));
-                                            CameraPosition cameraPosition1 = new CameraPosition.Builder().target(myLocation1).zoom(16).build();
-                                            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition1));
+
+                                    //Driver Detail
+                                    if (requestStatusCheckObject.optJSONObject("provider") != null) {
+                                        current_chat_requestID = requestStatusCheckObject.optString("id");
+                                        currentProviderID = requestStatusCheckObject.optJSONObject("provider").optString("id");
+
+//                                if(requestStatusCheckObject.optJSONObject("user").optString("id") != null){
+//                                    userID = requestStatusCheckObject.optJSONObject("user").optString("id");
+//                                }else{
+                                        userID = requestStatusCheckObject.optString("id");
+//                                }
+                                        driver = new Driver();
+                                        providerFirstName = requestStatusCheckObject.optJSONObject("provider").optString("first_name");
+                                        driver.setFname(requestStatusCheckObject.optJSONObject("provider").optString("first_name"));
+                                        // driver.setLname(requestStatusCheckObject.optJSONObject("provider").optString("last_name"));
+                                        driver.setEmail(requestStatusCheckObject.optJSONObject("provider").optString("email"));
+                                        driver.setMobile(requestStatusCheckObject.optJSONObject("provider").optString("mobile"));
+                                        driver.setImg(requestStatusCheckObject.optJSONObject("provider").optString("avatar"));
+                                        driver.setRating(requestStatusCheckObject.optJSONObject("provider").optString("rating"));
+                                    }
+
+                                    JSONArray filterJsonArray = requestStatusCheckObject.optJSONArray("filters");
+                                    System.out.println("filtera array length : " + filterJsonArray.length());
+                                    System.out.println("filtera array data : " + filterJsonArray.toString());
+                                    System.out.println("UPSTATUS reqStatus : " + reqStatus);
+
+                                    if (filterJsonArray != null && filterJsonArray.length() > 0) {
+                                        JSONObject filterJsonObject = filterJsonArray.getJSONObject(0);
+
+                                        String status = filterJsonObject.optString("provider_status");
+                                        reqStatus = filterJsonObject.optString("provider_status");
+
+                                        System.out.println("UPSTATUS ps : " + filterJsonObject.optString("provider_status"));
+                                        System.out.println("UPSTATUS status : " + status);
+                                        System.out.println("UPSTATUS reqStatus : " + reqStatus);
+
+
+                                        SharedHelper.putKey(context, "req_status", filterJsonObject.optString("provider_status"));
+                                        String wallet = requestStatusCheckObject.optString("use_wallet");
+                                        if (status.equalsIgnoreCase("STARTED")
+                                                || status.equalsIgnoreCase("ARRIVED")) {
+                                            source_lat = requestStatusCheckObject.optJSONObject("provider").optString("latitude");
+                                            source_lng = requestStatusCheckObject.optJSONObject("provider").optString("longitude");
+                                            dest_lat = requestStatusCheckObject.optString("s_latitude");
+                                            dest_lng = requestStatusCheckObject.optString("s_longitude");
+                                            setValuesForSourceAndDestination();
+
+                                        } else if (status.equalsIgnoreCase("PICKEDUP")) {
+                                            source_lat = requestStatusCheckObject.optJSONObject("provider").optString("latitude");
+                                            source_lng = requestStatusCheckObject.optJSONObject("provider").optString("longitude");
+                                            dest_lat = requestStatusCheckObject.optString("d_latitude");
+                                            dest_lng = requestStatusCheckObject.optString("d_longitude");
+                                            setValuesForSourceAndDestination();
+
+                                        } else {
+                                            source_lat = requestStatusCheckObject.optString("s_latitude");
+                                            source_lng = requestStatusCheckObject.optString("s_longitude");
+                                            dest_lat = requestStatusCheckObject.optString("d_latitude");
+                                            dest_lng = requestStatusCheckObject.optString("d_longitude");
+                                            setValuesForSourceAndDestination();
+
                                         }
-                                        break;
-                                    case "CANCELLED":
-                                        strTag = "";
-                                        imgSos.setVisibility(View.GONE);
-                                        break;
-                                    case "ACCEPTED":
-                                        driveraccepted.setVisibility(View.VISIBLE);
-                                        driverArrived.setVisibility(View.GONE);
-                                        driverPicked.setVisibility(View.GONE);
-                                        driverCompleted.setVisibility(View.GONE);
-                                        txtdriveraccpted.setText(getString(R.string.arriving));
-                                        imgarrived.setImageResource(R.drawable.arriveddisable);
-                                        imgPicked.setImageResource(R.drawable.pickeddisable);
-                                        imgDropped.setImageResource(R.drawable.complete);
-
-                                        strTag = "ride_accepted";
-                                        try {
-                                            JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
-                                            JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
-                                            JSONObject provider_service = requestStatusCheckObject.getJSONObject("provider_service");
-                                            SharedHelper.putKey(context, "provider_mobile_no", "" + provider.optString("mobile"));
-                                            lblProvider.setText(provider.optString("first_name"));
+                                        pickUpLocationName = requestStatusCheckObject.optString("s_address");
+                                        dropLocationName = requestStatusCheckObject.optString("d_address");
+                                        setValuesForSourceAndDestination();
 
 
-                                            if (provider.optString("avatar").startsWith("http"))
-                                                Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
-                                            else
-                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
-                                            lblServiceRequested.setText(service_type.optString("name"));
-                                            lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
-                                            Picasso.get().load(service_type.optString("image"))
-                                                    .placeholder(R.drawable.car_select).error(R.drawable.car_select)
-                                                    .into(imgServiceRequested);
-                                            ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
-                                            //                                                lblDis.setText(service_type.optString("distance")+" km");
-                                            //                                                lblEta.setText(service_type.optString("minute")+" min");
-                                            lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
+                                        // surge price
+                                        if (requestStatusCheckObject.optString("surge").equalsIgnoreCase("1")) {
+                                            lblSurgePrice.setVisibility(View.VISIBLE);
+                                        } else {
+                                            lblSurgePrice.setVisibility(View.GONE);
+                                        }
 
-                                            lblCmfrmSourceAddress.setText(pickUpLocationName);
-                                            lblCmfrmDestAddress.setText(dropLocationName);
-                                            //lnrAfterAcceptedStatus.setVisibility(View.GONE);
+                                        Utilities.print("PreviousStatus", "" + PreviousStatus);
+                                        System.out.println("checking status PreviousStatus" + PreviousStatus);
 
-                                            AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
-                                            show(lnrProviderAccepted);
-                                            flowValue = 9;
+
+                                        if (!PreviousStatus.equals(status)) {
+                                            mMap.clear();
+                                            PreviousStatus = status;
+                                            flowValue = 8;
                                             layoutChanges();
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-                                        break;
-                                    case "STARTED":
-                                        strTag = "ride_started";
-                                        showStartedDialog(requestStatusCheckObject);
+                                            SharedHelper.putKey(context, "request_id", "" + requestStatusCheckObject.optString("id"));
+                                            reCreateMap();
+                                            Utilities.print("ResponseStatus", "SavedCurrentStatus: " + CurrentStatus + " Status: " + status);
+                                            switch (status) {
+                                                case "SEARCHING":
+                                                    show(lnrWaitingForProviders);
+                                                    //rippleBackground.startRippleAnimation();
+                                                    strTag = "search_completed";
+                                                    if (!source_lat.equalsIgnoreCase("") && !source_lng.equalsIgnoreCase("")) {
+                                                        LatLng myLocation1 = new LatLng(Double.parseDouble(source_lat),
+                                                                Double.parseDouble(source_lng));
+                                                        CameraPosition cameraPosition1 = new CameraPosition.Builder().target(myLocation1).zoom(16).build();
+                                                        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition1));
+                                                    }
+                                                    break;
+                                                case "CANCELLED":
+                                                    strTag = "";
+                                                    imgSos.setVisibility(View.GONE);
+                                                    break;
+                                                case "ACCEPTED":
+                                                    driveraccepted.setVisibility(View.VISIBLE);
+                                                    driverArrived.setVisibility(View.GONE);
+                                                    driverPicked.setVisibility(View.GONE);
+                                                    driverCompleted.setVisibility(View.GONE);
+                                                    txtdriveraccpted.setText(getString(R.string.arriving));
+                                                    imgarrived.setImageResource(R.drawable.arriveddisable);
+                                                    imgPicked.setImageResource(R.drawable.pickeddisable);
+                                                    imgDropped.setImageResource(R.drawable.complete);
 
-                                        break;
-
-                                    case "ARRIVED":
-                                        if ((confirmDialog != null) && (confirmDialog.isShowing()))
-                                            confirmDialog.dismiss();
-                                        driveraccepted.setVisibility(View.GONE);
-                                        driverArrived.setVisibility(View.VISIBLE);
-                                        driverPicked.setVisibility(View.GONE);
-                                        driverCompleted.setVisibility(View.GONE);
-                                        txtdriverArrived.setText(getString(R.string.arrived));
-                                        imgarrived.setImageResource(R.drawable.arriveddisable);
-                                        imgPicked.setImageResource(R.drawable.pickeddisable);
-                                        imgDropped.setImageResource(R.drawable.complete);
-
-                                        once = true;
-                                        strTag = "ride_arrived";
-                                        Utilities.print("MyTest", "ARRIVED");
-                                        try {
-                                            Utilities.print("MyTest", "ARRIVED TRY");
-                                            JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
-                                            JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
-                                            JSONObject provider_service = requestStatusCheckObject.getJSONObject("provider_service");
-                                            lblProvider.setText(provider.optString("first_name"));
-
-                                            if (provider.optString("avatar").startsWith("http"))
-                                                Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
-                                            else
-                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
-                                            lblServiceRequested.setText(service_type.optString("name"));
-                                            lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
-                                            Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
-                                            ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
-
-                                            //                                                lblDis.setText(service_type.optString("distance")+" km");
-                                            //                                                lblEta.setText(service_type.optString("minute")+" min");
-                                            lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
-
-                                            lblCmfrmSourceAddress.setText(pickUpLocationName);
-                                            lblCmfrmDestAddress.setText(dropLocationName);
+                                                    strTag = "ride_accepted";
+                                                    try {
+                                                        JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
+                                                        JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
+                                                        JSONObject provider_service = requestStatusCheckObject.getJSONObject("provider_service");
+                                                        SharedHelper.putKey(context, "provider_mobile_no", "" + provider.optString("mobile"));
+                                                        lblProvider.setText(provider.optString("first_name"));
 
 
-                                            AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
-                                            flowValue = 4;
-                                            layoutChanges();
-                                        } catch (Exception e) {
-                                            Utilities.print("MyTest", "ARRIVED CATCH");
-                                            e.printStackTrace();
-                                        }
-                                        break;
+                                                        if (provider.optString("avatar").startsWith("http"))
+                                                            Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                        else
+                                                            Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                        lblServiceRequested.setText(service_type.optString("name"));
+                                                        lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
+                                                        Picasso.get().load(service_type.optString("image"))
+                                                                .placeholder(R.drawable.car_select).error(R.drawable.car_select)
+                                                                .into(imgServiceRequested);
+                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                        //                                                lblDis.setText(service_type.optString("distance")+" km");
+                                                        //                                                lblEta.setText(service_type.optString("minute")+" min");
+                                                        lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
 
-                                    case "PICKEDUP":
-                                        if ((confirmDialog != null) && (confirmDialog.isShowing()))
-                                            confirmDialog.dismiss();
+                                                        lblCmfrmSourceAddress.setText(pickUpLocationName);
+                                                        lblCmfrmDestAddress.setText(dropLocationName);
+                                                        //lnrAfterAcceptedStatus.setVisibility(View.GONE);
 
-                                        driveraccepted.setVisibility(View.GONE);
-                                        driverArrived.setVisibility(View.GONE);
-                                        driverPicked.setVisibility(View.VISIBLE);
-                                        driverCompleted.setVisibility(View.GONE);
-                                        txtdriverpicked.setText(getString(R.string.picked_up));
-                                        imgarrived.setImageResource(R.drawable.arriveddisable);
-                                        imgPicked.setImageResource(R.drawable.pickeddisable);
-                                        imgDropped.setImageResource(R.drawable.complete);
-                                        once = true;
-                                        strTag = "ride_picked";
-                                        try {
-                                            JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
-                                            JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
-                                            JSONObject provider_service = requestStatusCheckObject.getJSONObject("provider_service");
-                                            lblProvider.setText(provider.optString("first_name"));
+                                                        AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+                                                        show(lnrProviderAccepted);
+                                                        flowValue = 9;
+                                                        layoutChanges();
+                                                    } catch (Exception e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                    break;
+                                                case "STARTED":
+                                                    strTag = "ride_started";
+                                                    showStartedDialog(requestStatusCheckObject);
 
-                                            if (provider.optString("avatar").startsWith("http"))
-                                                Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
-                                            else
-                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
-                                            lblServiceRequested.setText(service_type.optString("name"));
-                                            lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
-                                            Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
-                                            ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                    break;
 
-                                            //                                                lblDis.setText(service_type.optString("distance")+" km");
-                                            //                                                lblEta.setText(service_type.optString("minute")+" min");
-                                            lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
-                                            lblCmfrmSourceAddress.setText(pickUpLocationName);
-                                            lblCmfrmDestAddress.setText(dropLocationName);
+                                                case "ARRIVED":
+                                                    if ((confirmDialog != null) && (confirmDialog.isShowing()))
+                                                        confirmDialog.dismiss();
+                                                    driveraccepted.setVisibility(View.GONE);
+                                                    driverArrived.setVisibility(View.VISIBLE);
+                                                    driverPicked.setVisibility(View.GONE);
+                                                    driverCompleted.setVisibility(View.GONE);
+                                                    txtdriverArrived.setText(getString(R.string.arrived));
+                                                    imgarrived.setImageResource(R.drawable.arriveddisable);
+                                                    imgPicked.setImageResource(R.drawable.pickeddisable);
+                                                    imgDropped.setImageResource(R.drawable.complete);
+
+                                                    once = true;
+                                                    strTag = "ride_arrived";
+                                                    Utilities.print("MyTest", "ARRIVED");
+                                                    try {
+                                                        Utilities.print("MyTest", "ARRIVED TRY");
+                                                        JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
+                                                        JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
+                                                        JSONObject provider_service = requestStatusCheckObject.getJSONObject("provider_service");
+                                                        lblProvider.setText(provider.optString("first_name"));
+
+                                                        if (provider.optString("avatar").startsWith("http"))
+                                                            Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                        else
+                                                            Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                        lblServiceRequested.setText(service_type.optString("name"));
+                                                        lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
+                                                        Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+
+                                                        //                                                lblDis.setText(service_type.optString("distance")+" km");
+                                                        //                                                lblEta.setText(service_type.optString("minute")+" min");
+                                                        lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
+
+                                                        lblCmfrmSourceAddress.setText(pickUpLocationName);
+                                                        lblCmfrmDestAddress.setText(dropLocationName);
 
 
-                                            imgSos.setVisibility(View.VISIBLE);
-                                            //imgShareRide.setVisibility(View.VISIBLE);
+                                                        AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+                                                        flowValue = 4;
+                                                        layoutChanges();
+                                                    } catch (Exception e) {
+                                                        Utilities.print("MyTest", "ARRIVED CATCH");
+                                                        e.printStackTrace();
+                                                    }
+                                                    break;
 
-                                            btnCancelTrip.setText(getString(R.string.share));
-                                            btnCancelTrip.setTextColor(getResources().getColor(R.color.quantum_googgreen));
-                                            AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
-                                            flowValue = 4;
-                                            layoutChanges();
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-                                        break;
+                                                case "PICKEDUP":
+                                                    if ((confirmDialog != null) && (confirmDialog.isShowing()))
+                                                        confirmDialog.dismiss();
 
-                                    case "DROPPED":
-                                        driveraccepted.setVisibility(View.GONE);
-                                        driverArrived.setVisibility(View.GONE);
-                                        driverPicked.setVisibility(View.GONE);
-                                        driverCompleted.setVisibility(View.VISIBLE);
-                                        txtdrivercompleted.setText(getString(R.string.trip_completed));
-                                        imgarrived.setImageResource(R.drawable.arriveddisable);
-                                        imgPicked.setImageResource(R.drawable.pickeddisable);
-                                        imgDropped.setImageResource(R.drawable.complete);
-                                        once = true;
-                                        strTag = "";
-                                        imgSos.setVisibility(View.VISIBLE);
-                                        lblPaymentType.setEnabled(false);
-                                        //imgShareRide.setVisibility(View.VISIBLE);
-                                        try {
-                                            JSONObject provider = requestStatusCheckObject.optJSONObject("provider");
-                                            if (requestStatusCheckObject.optJSONObject("payment") != null) {
-                                                JSONObject payment = requestStatusCheckObject.optJSONObject("payment");
-                                                isPaid = requestStatusCheckObject.optString("paid");
-                                                paymentMode = requestStatusCheckObject.optString("payment_mode");
-                                                lblBasePrice.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("fixed"));
-                                                lblTaxPrice.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("tax"));
-                                                lblDistancePrice.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("distance"));
-                                                if (payment.optString("discount") != null) {
-                                                    promoLayout.setVisibility(View.VISIBLE);
-                                                    txtDiscount.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("discount"));
-                                                }
-                                                //lblCommision.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("commision"));
-                                                lblTotalPrice.setText(SharedHelper.getKey(context, "currency") + ""
-                                                        + payment.optString("total"));
-                                                SharedHelper.putKey(TrackActivity.this, "total_price",
-                                                        payment.optString("total"));
+                                                    driveraccepted.setVisibility(View.GONE);
+//                                        driverArrived.setVisibility(View.GONE);
+                                                    driverArrived.setVisibility(View.VISIBLE);
+                                                    driverPicked.setVisibility(View.VISIBLE);
+                                                    driverCompleted.setVisibility(View.GONE);
+                                                    txtdriverpicked.setText(getString(R.string.picked_up));
+                                                    imgarrived.setImageResource(R.drawable.arriveddisable);
+                                                    imgPicked.setImageResource(R.drawable.pickeddisable);
+                                                    imgDropped.setImageResource(R.drawable.complete);
+                                                    once = true;
+                                                    strTag = "ride_picked";
+                                                    try {
+                                                        JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
+                                                        JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
+                                                        JSONObject provider_service = requestStatusCheckObject.getJSONObject("provider_service");
+                                                        lblProvider.setText(provider.optString("first_name"));
+
+                                                        if (provider.optString("avatar").startsWith("http"))
+                                                            Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                        else
+                                                            Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                        lblServiceRequested.setText(service_type.optString("name"));
+                                                        lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
+                                                        Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+
+                                                        //                                                lblDis.setText(service_type.optString("distance")+" km");
+                                                        //                                                lblEta.setText(service_type.optString("minute")+" min");
+                                                        lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
+                                                        lblCmfrmSourceAddress.setText(pickUpLocationName);
+                                                        lblCmfrmDestAddress.setText(dropLocationName);
+
+
+                                                        imgSos.setVisibility(View.VISIBLE);
+                                                        //imgShareRide.setVisibility(View.VISIBLE);
+
+                                                        btnCancelTrip.setText(getString(R.string.share));
+                                                        btnCancelTrip.setTextColor(getResources().getColor(R.color.quantum_googgreen));
+                                                        AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+                                                        flowValue = 4;
+                                                        layoutChanges();
+                                                    } catch (Exception e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                    break;
+
+                                                case "DROPPED":
+                                                    driveraccepted.setVisibility(View.GONE);
+                                                    driverArrived.setVisibility(View.GONE);
+                                                    driverPicked.setVisibility(View.GONE);
+                                                    driverCompleted.setVisibility(View.VISIBLE);
+                                                    txtdrivercompleted.setText(getString(R.string.trip_completed));
+                                                    imgarrived.setImageResource(R.drawable.arriveddisable);
+                                                    imgPicked.setImageResource(R.drawable.pickeddisable);
+                                                    imgDropped.setImageResource(R.drawable.complete);
+                                                    once = true;
+                                                    strTag = "";
+                                                    imgSos.setVisibility(View.VISIBLE);
+                                                    lblPaymentType.setEnabled(false);
+                                                    //imgShareRide.setVisibility(View.VISIBLE);
+                                                    try {
+                                                        JSONObject provider = requestStatusCheckObject.optJSONObject("provider");
+                                                        if (requestStatusCheckObject.optJSONObject("payment") != null) {
+                                                            JSONObject payment = requestStatusCheckObject.optJSONObject("payment");
+                                                            isPaid = requestStatusCheckObject.optString("paid");
+                                                            paymentMode = requestStatusCheckObject.optString("payment_mode");
+                                                            lblBasePrice.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("fixed"));
+                                                            lblTaxPrice.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("tax"));
+                                                            lblDistancePrice.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("distance"));
+                                                            if (payment.optString("discount") != null) {
+                                                                promoLayout.setVisibility(View.VISIBLE);
+                                                                txtDiscount.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("discount"));
+                                                            }
+                                                            //lblCommision.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("commision"));
+                                                            lblTotalPrice.setText(SharedHelper.getKey(context, "currency") + ""
+                                                                    + payment.optString("total"));
+                                                            SharedHelper.putKey(TrackActivity.this, "total_price",
+                                                                    payment.optString("total"));
+                                                        }
+                                                        if (requestStatusCheckObject.optString("booking_id") != null &&
+                                                                !requestStatusCheckObject.optString("booking_id").equalsIgnoreCase("")) {
+                                                            booking_id.setText(requestStatusCheckObject.optString("booking_id"));
+                                                            tvPaymentLabel.setText(SharedHelper.getKey(TrackActivity.this, "first_name").split(",")[0] + " owes");
+                                                        } else {
+                                                            booking_id.setVisibility(View.GONE);
+                                                        }
+                                                        if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CASH")) {
+                                                            btnPayNow.setVisibility(View.GONE);
+                                                            flowValue = 5;
+                                                            layoutChanges();
+                                                            lblPaymentType.setEnabled(false);
+                                                            imgPaymentTypeInvoice.setImageResource(R.drawable.money1);
+                                                            lblPaymentTypeInvoice.setText(getString(R.string.cash));
+                                                        } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CASH")
+                                                                && wallet.equalsIgnoreCase("1")) {
+                                                            btnPayNow.setVisibility(View.GONE);
+                                                            flowValue = 5;
+                                                            layoutChanges();
+                                                            lblPaymentType.setEnabled(false);
+                                                            imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+                                                            lblPaymentTypeInvoice.setText(getString(R.string.cash_wallet));
+                                                        } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CARD")) {
+                                                            btnPayNow.setVisibility(View.VISIBLE);
+                                                            flowValue = 5;
+                                                            layoutChanges();
+                                                            imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+                                                            lblPaymentTypeInvoice.setText(getString(R.string.card));
+                                                            lblPaymentType.setEnabled(false);
+                                                        } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("PAYPAL")) {
+                                                            btnPayNow.setVisibility(View.VISIBLE);
+                                                            flowValue = 5;
+                                                            layoutChanges();
+                                                            imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+                                                            lblPaymentTypeInvoice.setText("PAYPAL");
+                                                            lblPaymentType.setText("PAYPAL");
+                                                            lblPaymentType.setEnabled(false);
+                                                            txtpaiddriver.setVisibility(View.GONE);
+                                                        } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("RAZORPAY")) {
+                                                            btnPayNow.setVisibility(View.VISIBLE);
+                                                            flowValue = 5;
+                                                            layoutChanges();
+                                                            imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+                                                            lblPaymentTypeInvoice.setText("RAZORPAY");
+                                                            lblPaymentType.setText("RAZORPAY");
+                                                            lblPaymentType.setEnabled(false);
+                                                            txtpaiddriver.setVisibility(View.GONE);
+                                                        } else if (isPaid.equalsIgnoreCase("1")) {
+                                                            btnPayNow.setVisibility(View.GONE);
+                                                            lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
+                                                            if (provider.optString("avatar").startsWith("http"))
+                                                                Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                            else
+                                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                            flowValue = 6;
+                                                            layoutChanges();
+                                                        }
+
+                                                    } catch (Exception e) {
+                                                        Log.v("Dropped Error", e.getLocalizedMessage() + "  ");
+                                                        e.printStackTrace();
+                                                    }
+                                                    if ((confirmDialog != null) && (confirmDialog.isShowing()))
+                                                        confirmDialog.dismiss();
+                                                    break;
+
+                                                case "COMPLETED":
+                                                    layoutdriverstatus.setVisibility(View.GONE);
+                                                    //                                            driveraccepted.setVisibility(View.GONE);
+                                                    //                                            driverArrived.setVisibility(View.GONE);
+                                                    //                                            driverPicked.setVisibility(View.GONE);
+                                                    //                                            driverCompleted.setVisibility(View.VISIBLE);
+                                                    //                                            txtdriveraccpted.setText(getString(R.string.arriving));
+                                                    //                                            imgarrived.setImageResource(R.drawable.arriveddisable);
+                                                    //                                            imgPicked.setImageResource(R.drawable.pickeddisable);
+                                                    //                                            imgDropped.setImageResource(R.drawable.complete);
+                                                    strTag = "";
+                                                    try {
+                                                        if (requestStatusCheckObject.optJSONObject("payment") != null) {
+                                                            JSONObject payment = requestStatusCheckObject.optJSONObject("payment");
+                                                            lblBasePrice.setText(SharedHelper.getKey(context, "currency") + ""
+                                                                    + payment.optString("fixed"));
+                                                            lblTaxPrice.setText(SharedHelper.getKey(context, "currency") + ""
+                                                                    + payment.optString("tax"));
+                                                            lblDistancePrice.setText(SharedHelper.getKey(context, "currency") + ""
+                                                                    + payment.optString("distance"));
+                                                            lblTotalPrice.setText(SharedHelper.getKey(context, "currency") + ""
+                                                                    + payment.optString("total"));
+                                                        }
+                                                        JSONObject provider = requestStatusCheckObject.optJSONObject("provider");
+                                                        isPaid = requestStatusCheckObject.optString("paid");
+                                                        paymentMode = requestStatusCheckObject.optString("payment_mode");
+                                                        imgSos.setVisibility(View.GONE);
+                                                        //imgShareRide.setVisibility(View.GONE);
+                                                        // lblCommision.setText(payment.optString("commision"));
+                                                        if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CASH")) {
+                                                            flowValue = 5;
+                                                            layoutChanges();
+                                                            btnPayNow.setVisibility(View.GONE);
+                                                            imgPaymentTypeInvoice.setImageResource(R.drawable.money1);
+                                                            lblPaymentTypeInvoice.setText(getString(R.string.cash_wallet));
+                                                        } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CARD")) {
+                                                            flowValue = 5;
+                                                            layoutChanges();
+                                                            imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+                                                            lblPaymentTypeInvoice.setText(getString(R.string.card));
+                                                            btnPayNow.setVisibility(View.VISIBLE);
+                                                        } else if (isPaid.equalsIgnoreCase("1")) {
+                                                            btnPayNow.setVisibility(View.GONE);
+                                                            lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
+                                                            if (provider.optString("avatar").startsWith("http"))
+                                                                Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
+                                                            else
+                                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
+                                                            flowValue = 6;
+                                                            layoutChanges();
+                                                            //imgPaymentTypeInvoice.setImageResource(R.drawable.visa);
+                                                            // lblPaymentTypeInvoice.setText("CARD");
+                                                        }
+                                                    } catch (Exception e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                    if ((confirmDialog != null) && (confirmDialog.isShowing()))
+                                                        confirmDialog.dismiss();
+                                                    break;
                                             }
-                                            if (requestStatusCheckObject.optString("booking_id") != null &&
-                                                    !requestStatusCheckObject.optString("booking_id").equalsIgnoreCase("")) {
-                                                booking_id.setText(requestStatusCheckObject.optString("booking_id"));
-                                                tvPaymentLabel.setText(SharedHelper.getKey(TrackActivity.this, "first_name").split(",")[0] + " owes");
-                                            } else {
-                                                booking_id.setVisibility(View.GONE);
-                                            }
-                                            if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CASH")) {
-                                                btnPayNow.setVisibility(View.GONE);
-                                                flowValue = 5;
-                                                layoutChanges();
-                                                lblPaymentType.setEnabled(false);
-                                                imgPaymentTypeInvoice.setImageResource(R.drawable.money1);
-                                                lblPaymentTypeInvoice.setText(getString(R.string.cash));
-                                            } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CASH")
-                                                    && wallet.equalsIgnoreCase("1")) {
-                                                btnPayNow.setVisibility(View.GONE);
-                                                flowValue = 5;
-                                                layoutChanges();
-                                                lblPaymentType.setEnabled(false);
-                                                imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
-                                                lblPaymentTypeInvoice.setText(getString(R.string.cash_wallet));
-                                            } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CARD")) {
-                                                btnPayNow.setVisibility(View.VISIBLE);
-                                                flowValue = 5;
-                                                layoutChanges();
-                                                imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
-                                                lblPaymentTypeInvoice.setText(getString(R.string.card));
-                                                lblPaymentType.setEnabled(false);
-                                            } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("PAYPAL")) {
-                                                btnPayNow.setVisibility(View.VISIBLE);
-                                                flowValue = 5;
-                                                layoutChanges();
-                                                imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
-                                                lblPaymentTypeInvoice.setText("PAYPAL");
-                                                lblPaymentType.setText("PAYPAL");
-                                                lblPaymentType.setEnabled(false);
-                                                txtpaiddriver.setVisibility(View.GONE);
-                                            } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("RAZORPAY")) {
-                                                btnPayNow.setVisibility(View.VISIBLE);
-                                                flowValue = 5;
-                                                layoutChanges();
-                                                imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
-                                                lblPaymentTypeInvoice.setText("RAZORPAY");
-                                                lblPaymentType.setText("RAZORPAY");
-                                                lblPaymentType.setEnabled(false);
-                                                txtpaiddriver.setVisibility(View.GONE);
-                                            } else if (isPaid.equalsIgnoreCase("1")) {
-                                                btnPayNow.setVisibility(View.GONE);
-                                                lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
-                                                if (provider.optString("avatar").startsWith("http"))
-                                                    Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
-                                                else
-                                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
-                                                flowValue = 6;
-                                                layoutChanges();
-                                            }
-
-                                        } catch (Exception e) {
-                                            Log.v("Dropped Error", e.getLocalizedMessage() + "  ");
-                                            e.printStackTrace();
                                         }
-                                        if ((confirmDialog != null) && (confirmDialog.isShowing()))
-                                            confirmDialog.dismiss();
-                                        break;
 
-                                    case "COMPLETED":
-                                        layoutdriverstatus.setVisibility(View.GONE);
-                                        //                                            driveraccepted.setVisibility(View.GONE);
-                                        //                                            driverArrived.setVisibility(View.GONE);
-                                        //                                            driverPicked.setVisibility(View.GONE);
-                                        //                                            driverCompleted.setVisibility(View.VISIBLE);
-                                        //                                            txtdriveraccpted.setText(getString(R.string.arriving));
-                                        //                                            imgarrived.setImageResource(R.drawable.arriveddisable);
-                                        //                                            imgPicked.setImageResource(R.drawable.pickeddisable);
-                                        //                                            imgDropped.setImageResource(R.drawable.complete);
-                                        strTag = "";
-                                        try {
-                                            if (requestStatusCheckObject.optJSONObject("payment") != null) {
-                                                JSONObject payment = requestStatusCheckObject.optJSONObject("payment");
-                                                lblBasePrice.setText(SharedHelper.getKey(context, "currency") + ""
-                                                        + payment.optString("fixed"));
-                                                lblTaxPrice.setText(SharedHelper.getKey(context, "currency") + ""
-                                                        + payment.optString("tax"));
-                                                lblDistancePrice.setText(SharedHelper.getKey(context, "currency") + ""
-                                                        + payment.optString("distance"));
-                                                lblTotalPrice.setText(SharedHelper.getKey(context, "currency") + ""
-                                                        + payment.optString("total"));
-                                            }
-                                            JSONObject provider = requestStatusCheckObject.optJSONObject("provider");
-                                            isPaid = requestStatusCheckObject.optString("paid");
-                                            paymentMode = requestStatusCheckObject.optString("payment_mode");
-                                            imgSos.setVisibility(View.GONE);
-                                            //imgShareRide.setVisibility(View.GONE);
-                                            // lblCommision.setText(payment.optString("commision"));
-                                            if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CASH")) {
-                                                flowValue = 5;
-                                                layoutChanges();
-                                                btnPayNow.setVisibility(View.GONE);
-                                                imgPaymentTypeInvoice.setImageResource(R.drawable.money1);
-                                                lblPaymentTypeInvoice.setText(getString(R.string.cash_wallet));
-                                            } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CARD")) {
-                                                flowValue = 5;
-                                                layoutChanges();
-                                                imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
-                                                lblPaymentTypeInvoice.setText(getString(R.string.card));
-                                                btnPayNow.setVisibility(View.VISIBLE);
-                                            } else if (isPaid.equalsIgnoreCase("1")) {
-                                                btnPayNow.setVisibility(View.GONE);
-                                                lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
-                                                if (provider.optString("avatar").startsWith("http"))
-                                                    Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
-                                                else
-                                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
-                                                flowValue = 6;
-                                                layoutChanges();
-                                                //imgPaymentTypeInvoice.setImageResource(R.drawable.visa);
-                                                // lblPaymentTypeInvoice.setText("CARD");
-                                            }
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
+
+                                        if ("ACCEPTED".equals(status) || "STARTED".equals(status) ||
+                                                "ARRIVED".equals(status) || "PICKEDUP".equals(status) || "DROPPED".equals(status)) {
+                                            //                                    utils.print("Livenavigation", "" + status);
+                                            //                                    utils.print("Destination Current Lat", "" + requestStatusCheckObject.getJSONObject("provider").optString("latitude"));
+                                            //                                    utils.print("Destination Current Lng", "" + requestStatusCheckObject.getJSONObject("provider").optString("longitude"));
+                                            liveNavigation(status, requestStatusCheckObject.getJSONObject("provider").optString("latitude"),
+                                                    requestStatusCheckObject.getJSONObject("provider").optString("longitude"));
                                         }
-                                        if ((confirmDialog != null) && (confirmDialog.isShowing()))
-                                            confirmDialog.dismiss();
-                                        break;
+
+
+                                    }
+
+
+                                    String status = reqStatus;
+//                                    reqStatus = requestStatusCheckObject.optString("status");
+
+
+//                                    SharedHelper.putKey(context, "req_status", requestStatusCheckObject.optString("status"));
+//                                    String wallet = requestStatusCheckObject.optString("use_wallet");
+//                                    if (status.equalsIgnoreCase("STARTED")
+//                                            || status.equalsIgnoreCase("ARRIVED")) {
+//                                        source_lat = requestStatusCheckObject.optJSONObject("provider").optString("latitude");
+//                                        source_lng = requestStatusCheckObject.optJSONObject("provider").optString("longitude");
+//                                        dest_lat = requestStatusCheckObject.optString("s_latitude");
+//                                        dest_lng = requestStatusCheckObject.optString("s_longitude");
+//                                        setValuesForSourceAndDestination();
+//
+//                                    } else if (status.equalsIgnoreCase("PICKEDUP")) {
+//                                        source_lat = requestStatusCheckObject.optJSONObject("provider").optString("latitude");
+//                                        source_lng = requestStatusCheckObject.optJSONObject("provider").optString("longitude");
+//                                        dest_lat = requestStatusCheckObject.optString("d_latitude");
+//                                        dest_lng = requestStatusCheckObject.optString("d_longitude");
+//                                        setValuesForSourceAndDestination();
+//
+//                                    } else {
+//                                        source_lat = requestStatusCheckObject.optString("s_latitude");
+//                                        source_lng = requestStatusCheckObject.optString("s_longitude");
+//                                        dest_lat = requestStatusCheckObject.optString("d_latitude");
+//                                        dest_lng = requestStatusCheckObject.optString("d_longitude");
+//                                        setValuesForSourceAndDestination();
+//
+//                                    }
+//                                    pickUpLocationName = requestStatusCheckObject.optString("s_address");
+//                                    dropLocationName = requestStatusCheckObject.optString("d_address");
+//                                    setValuesForSourceAndDestination();
+//
+//
+//
+//                                    // surge price
+//                                    if (requestStatusCheckObject.optString("surge").equalsIgnoreCase("1")) {
+//                                        lblSurgePrice.setVisibility(View.VISIBLE);
+//                                    } else {
+//                                        lblSurgePrice.setVisibility(View.GONE);
+//                                    }
+//
+//                                    Utilities.print("PreviousStatus", "" + PreviousStatus);
+//                                    System.out.println("checking status PreviousStatus"+PreviousStatus);
+//
+//
+//                                    if (!PreviousStatus.equals(status)) {
+//                                        mMap.clear();
+//                                        PreviousStatus = status;
+//                                        flowValue = 8;
+//                                        layoutChanges();
+//                                        SharedHelper.putKey(context, "request_id", "" + requestStatusCheckObject.optString("id"));
+//                                        reCreateMap();
+//                                        Utilities.print("ResponseStatus", "SavedCurrentStatus: " + CurrentStatus + " Status: " + status);
+//                                        switch (status) {
+//                                            case "SEARCHING":
+//                                                show(lnrWaitingForProviders);
+//                                                //rippleBackground.startRippleAnimation();
+//                                                strTag = "search_completed";
+//                                                if (!source_lat.equalsIgnoreCase("") && !source_lng.equalsIgnoreCase("")) {
+//                                                    LatLng myLocation1 = new LatLng(Double.parseDouble(source_lat),
+//                                                            Double.parseDouble(source_lng));
+//                                                    CameraPosition cameraPosition1 = new CameraPosition.Builder().target(myLocation1).zoom(16).build();
+//                                                    mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition1));
+//                                                }
+//                                                break;
+//                                            case "CANCELLED":
+//                                                strTag = "";
+//                                                imgSos.setVisibility(View.GONE);
+//                                                break;
+//                                            case "ACCEPTED":
+//                                                driveraccepted.setVisibility(View.VISIBLE);
+//                                                driverArrived.setVisibility(View.GONE);
+//                                                driverPicked.setVisibility(View.GONE);
+//                                                driverCompleted.setVisibility(View.GONE);
+//                                                txtdriveraccpted.setText(getString(R.string.arriving));
+//                                                imgarrived.setImageResource(R.drawable.arriveddisable);
+//                                                imgPicked.setImageResource(R.drawable.pickeddisable);
+//                                                imgDropped.setImageResource(R.drawable.complete);
+//
+//                                                strTag = "ride_accepted";
+//                                                try {
+//                                                    JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
+//                                                    JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
+//                                                    JSONObject provider_service = requestStatusCheckObject.getJSONObject("provider_service");
+//                                                    SharedHelper.putKey(context, "provider_mobile_no", "" + provider.optString("mobile"));
+//                                                    lblProvider.setText(provider.optString("first_name"));
+//
+//
+//                                                    if (provider.optString("avatar").startsWith("http"))
+//                                                        Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                    else
+//                                                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                    lblServiceRequested.setText(service_type.optString("name"));
+//                                                    lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
+//                                                    Picasso.get().load(service_type.optString("image"))
+//                                                            .placeholder(R.drawable.car_select).error(R.drawable.car_select)
+//                                                            .into(imgServiceRequested);
+//                                                    ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+//                                                    //                                                lblDis.setText(service_type.optString("distance")+" km");
+//                                                    //                                                lblEta.setText(service_type.optString("minute")+" min");
+//                                                    lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
+//
+//                                                    lblCmfrmSourceAddress.setText(pickUpLocationName);
+//                                                    lblCmfrmDestAddress.setText(dropLocationName);
+//                                                    //lnrAfterAcceptedStatus.setVisibility(View.GONE);
+//
+//                                                    AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+//                                                    show(lnrProviderAccepted);
+//                                                    flowValue = 9;
+//                                                    layoutChanges();
+//                                                } catch (Exception e) {
+//                                                    e.printStackTrace();
+//                                                }
+//                                                break;
+//                                            case "STARTED":
+//                                                strTag = "ride_started";
+//                                                showStartedDialog(requestStatusCheckObject);
+//
+//                                                break;
+//
+//                                            case "ARRIVED":
+//                                                if ((confirmDialog != null) && (confirmDialog.isShowing()))
+//                                                    confirmDialog.dismiss();
+//                                                driveraccepted.setVisibility(View.GONE);
+//                                                driverArrived.setVisibility(View.VISIBLE);
+//                                                driverPicked.setVisibility(View.GONE);
+//                                                driverCompleted.setVisibility(View.GONE);
+//                                                txtdriverArrived.setText(getString(R.string.arrived));
+//                                                imgarrived.setImageResource(R.drawable.arriveddisable);
+//                                                imgPicked.setImageResource(R.drawable.pickeddisable);
+//                                                imgDropped.setImageResource(R.drawable.complete);
+//
+//                                                once = true;
+//                                                strTag = "ride_arrived";
+//                                                Utilities.print("MyTest", "ARRIVED");
+//                                                try {
+//                                                    Utilities.print("MyTest", "ARRIVED TRY");
+//                                                    JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
+//                                                    JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
+//                                                    JSONObject provider_service = requestStatusCheckObject.getJSONObject("provider_service");
+//                                                    lblProvider.setText(provider.optString("first_name"));
+//
+//                                                    if (provider.optString("avatar").startsWith("http"))
+//                                                        Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                    else
+//                                                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                    lblServiceRequested.setText(service_type.optString("name"));
+//                                                    lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
+//                                                    Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+//                                                    ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+//
+//                                                    //                                                lblDis.setText(service_type.optString("distance")+" km");
+//                                                    //                                                lblEta.setText(service_type.optString("minute")+" min");
+//                                                    lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
+//
+//                                                    lblCmfrmSourceAddress.setText(pickUpLocationName);
+//                                                    lblCmfrmDestAddress.setText(dropLocationName);
+//
+//
+//                                                    AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+//                                                    flowValue = 4;
+//                                                    layoutChanges();
+//                                                } catch (Exception e) {
+//                                                    Utilities.print("MyTest", "ARRIVED CATCH");
+//                                                    e.printStackTrace();
+//                                                }
+//                                                break;
+//
+//                                            case "PICKEDUP":
+//                                                if ((confirmDialog != null) && (confirmDialog.isShowing()))
+//                                                    confirmDialog.dismiss();
+//
+//                                                driveraccepted.setVisibility(View.GONE);
+////                                        driverArrived.setVisibility(View.GONE);
+//                                                driverArrived.setVisibility(View.VISIBLE);
+//                                                driverPicked.setVisibility(View.VISIBLE);
+//                                                driverCompleted.setVisibility(View.GONE);
+//                                                txtdriverpicked.setText(getString(R.string.picked_up));
+//                                                imgarrived.setImageResource(R.drawable.arriveddisable);
+//                                                imgPicked.setImageResource(R.drawable.pickeddisable);
+//                                                imgDropped.setImageResource(R.drawable.complete);
+//                                                once = true;
+//                                                strTag = "ride_picked";
+//                                                try {
+//                                                    JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
+//                                                    JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
+//                                                    JSONObject provider_service = requestStatusCheckObject.getJSONObject("provider_service");
+//                                                    lblProvider.setText(provider.optString("first_name"));
+//
+//                                                    if (provider.optString("avatar").startsWith("http"))
+//                                                        Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                    else
+//                                                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                    lblServiceRequested.setText(service_type.optString("name"));
+//                                                    lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
+//                                                    Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+//                                                    ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+//
+//                                                    //                                                lblDis.setText(service_type.optString("distance")+" km");
+//                                                    //                                                lblEta.setText(service_type.optString("minute")+" min");
+//                                                    lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
+//                                                    lblCmfrmSourceAddress.setText(pickUpLocationName);
+//                                                    lblCmfrmDestAddress.setText(dropLocationName);
+//
+//
+//                                                    imgSos.setVisibility(View.VISIBLE);
+//                                                    //imgShareRide.setVisibility(View.VISIBLE);
+//
+//                                                    btnCancelTrip.setText(getString(R.string.share));
+//                                                    btnCancelTrip.setTextColor(getResources().getColor(R.color.quantum_googgreen));
+//                                                    AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+//                                                    flowValue = 4;
+//                                                    layoutChanges();
+//                                                } catch (Exception e) {
+//                                                    e.printStackTrace();
+//                                                }
+//                                                break;
+//
+//                                            case "DROPPED":
+//                                                driveraccepted.setVisibility(View.GONE);
+//                                                driverArrived.setVisibility(View.GONE);
+//                                                driverPicked.setVisibility(View.GONE);
+//                                                driverCompleted.setVisibility(View.VISIBLE);
+//                                                txtdrivercompleted.setText(getString(R.string.trip_completed));
+//                                                imgarrived.setImageResource(R.drawable.arriveddisable);
+//                                                imgPicked.setImageResource(R.drawable.pickeddisable);
+//                                                imgDropped.setImageResource(R.drawable.complete);
+//                                                once = true;
+//                                                strTag = "";
+//                                                imgSos.setVisibility(View.VISIBLE);
+//                                                lblPaymentType.setEnabled(false);
+//                                                //imgShareRide.setVisibility(View.VISIBLE);
+//                                                try {
+//                                                    JSONObject provider = requestStatusCheckObject.optJSONObject("provider");
+//                                                    if (requestStatusCheckObject.optJSONObject("payment") != null) {
+//                                                        JSONObject payment = requestStatusCheckObject.optJSONObject("payment");
+//                                                        isPaid = requestStatusCheckObject.optString("paid");
+//                                                        paymentMode = requestStatusCheckObject.optString("payment_mode");
+//                                                        lblBasePrice.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("fixed"));
+//                                                        lblTaxPrice.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("tax"));
+//                                                        lblDistancePrice.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("distance"));
+//                                                        if (payment.optString("discount") != null) {
+//                                                            promoLayout.setVisibility(View.VISIBLE);
+//                                                            txtDiscount.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("discount"));
+//                                                        }
+//                                                        //lblCommision.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("commision"));
+//                                                        lblTotalPrice.setText(SharedHelper.getKey(context, "currency") + ""
+//                                                                + payment.optString("total"));
+//                                                        SharedHelper.putKey(TrackActivity.this, "total_price",
+//                                                                payment.optString("total"));
+//                                                    }
+//                                                    if (requestStatusCheckObject.optString("booking_id") != null &&
+//                                                            !requestStatusCheckObject.optString("booking_id").equalsIgnoreCase("")) {
+//                                                        booking_id.setText(requestStatusCheckObject.optString("booking_id"));
+//                                                        tvPaymentLabel.setText(SharedHelper.getKey(TrackActivity.this, "first_name").split(",")[0] + " owes");
+//                                                    } else {
+//                                                        booking_id.setVisibility(View.GONE);
+//                                                    }
+//                                                    if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CASH")) {
+//                                                        btnPayNow.setVisibility(View.GONE);
+//                                                        flowValue = 5;
+//                                                        layoutChanges();
+//                                                        lblPaymentType.setEnabled(false);
+//                                                        imgPaymentTypeInvoice.setImageResource(R.drawable.money1);
+//                                                        lblPaymentTypeInvoice.setText(getString(R.string.cash));
+//                                                    } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CASH")
+//                                                            && wallet.equalsIgnoreCase("1")) {
+//                                                        btnPayNow.setVisibility(View.GONE);
+//                                                        flowValue = 5;
+//                                                        layoutChanges();
+//                                                        lblPaymentType.setEnabled(false);
+//                                                        imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+//                                                        lblPaymentTypeInvoice.setText(getString(R.string.cash_wallet));
+//                                                    } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CARD")) {
+//                                                        btnPayNow.setVisibility(View.VISIBLE);
+//                                                        flowValue = 5;
+//                                                        layoutChanges();
+//                                                        imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+//                                                        lblPaymentTypeInvoice.setText(getString(R.string.card));
+//                                                        lblPaymentType.setEnabled(false);
+//                                                    } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("PAYPAL")) {
+//                                                        btnPayNow.setVisibility(View.VISIBLE);
+//                                                        flowValue = 5;
+//                                                        layoutChanges();
+//                                                        imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+//                                                        lblPaymentTypeInvoice.setText("PAYPAL");
+//                                                        lblPaymentType.setText("PAYPAL");
+//                                                        lblPaymentType.setEnabled(false);
+//                                                        txtpaiddriver.setVisibility(View.GONE);
+//                                                    } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("RAZORPAY")) {
+//                                                        btnPayNow.setVisibility(View.VISIBLE);
+//                                                        flowValue = 5;
+//                                                        layoutChanges();
+//                                                        imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+//                                                        lblPaymentTypeInvoice.setText("RAZORPAY");
+//                                                        lblPaymentType.setText("RAZORPAY");
+//                                                        lblPaymentType.setEnabled(false);
+//                                                        txtpaiddriver.setVisibility(View.GONE);
+//                                                    } else if (isPaid.equalsIgnoreCase("1")) {
+//                                                        btnPayNow.setVisibility(View.GONE);
+//                                                        lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
+//                                                        if (provider.optString("avatar").startsWith("http"))
+//                                                            Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                        else
+//                                                            Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                        flowValue = 6;
+//                                                        layoutChanges();
+//                                                    }
+//
+//                                                } catch (Exception e) {
+//                                                    Log.v("Dropped Error", e.getLocalizedMessage() + "  ");
+//                                                    e.printStackTrace();
+//                                                }
+//                                                if ((confirmDialog != null) && (confirmDialog.isShowing()))
+//                                                    confirmDialog.dismiss();
+//                                                break;
+//
+//                                            case "COMPLETED":
+//                                                layoutdriverstatus.setVisibility(View.GONE);
+//                                                //                                            driveraccepted.setVisibility(View.GONE);
+//                                                //                                            driverArrived.setVisibility(View.GONE);
+//                                                //                                            driverPicked.setVisibility(View.GONE);
+//                                                //                                            driverCompleted.setVisibility(View.VISIBLE);
+//                                                //                                            txtdriveraccpted.setText(getString(R.string.arriving));
+//                                                //                                            imgarrived.setImageResource(R.drawable.arriveddisable);
+//                                                //                                            imgPicked.setImageResource(R.drawable.pickeddisable);
+//                                                //                                            imgDropped.setImageResource(R.drawable.complete);
+//                                                strTag = "";
+//                                                try {
+//                                                    if (requestStatusCheckObject.optJSONObject("payment") != null) {
+//                                                        JSONObject payment = requestStatusCheckObject.optJSONObject("payment");
+//                                                        lblBasePrice.setText(SharedHelper.getKey(context, "currency") + ""
+//                                                                + payment.optString("fixed"));
+//                                                        lblTaxPrice.setText(SharedHelper.getKey(context, "currency") + ""
+//                                                                + payment.optString("tax"));
+//                                                        lblDistancePrice.setText(SharedHelper.getKey(context, "currency") + ""
+//                                                                + payment.optString("distance"));
+//                                                        lblTotalPrice.setText(SharedHelper.getKey(context, "currency") + ""
+//                                                                + payment.optString("total"));
+//                                                    }
+//                                                    JSONObject provider = requestStatusCheckObject.optJSONObject("provider");
+//                                                    isPaid = requestStatusCheckObject.optString("paid");
+//                                                    paymentMode = requestStatusCheckObject.optString("payment_mode");
+//                                                    imgSos.setVisibility(View.GONE);
+//                                                    //imgShareRide.setVisibility(View.GONE);
+//                                                    // lblCommision.setText(payment.optString("commision"));
+//                                                    if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CASH")) {
+//                                                        flowValue = 5;
+//                                                        layoutChanges();
+//                                                        btnPayNow.setVisibility(View.GONE);
+//                                                        imgPaymentTypeInvoice.setImageResource(R.drawable.money1);
+//                                                        lblPaymentTypeInvoice.setText(getString(R.string.cash_wallet));
+//                                                    } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CARD")) {
+//                                                        flowValue = 5;
+//                                                        layoutChanges();
+//                                                        imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+//                                                        lblPaymentTypeInvoice.setText(getString(R.string.card));
+//                                                        btnPayNow.setVisibility(View.VISIBLE);
+//                                                    } else if (isPaid.equalsIgnoreCase("1")) {
+//                                                        btnPayNow.setVisibility(View.GONE);
+//                                                        lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
+//                                                        if (provider.optString("avatar").startsWith("http"))
+//                                                            Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
+//                                                        else
+//                                                            Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
+//                                                        flowValue = 6;
+//                                                        layoutChanges();
+//                                                        //imgPaymentTypeInvoice.setImageResource(R.drawable.visa);
+//                                                        // lblPaymentTypeInvoice.setText("CARD");
+//                                                    }
+//                                                } catch (Exception e) {
+//                                                    e.printStackTrace();
+//                                                }
+//                                                if ((confirmDialog != null) && (confirmDialog.isShowing()))
+//                                                    confirmDialog.dismiss();
+//                                                break;
+//                                        }
+//                                    }
+//
+//
+//
+//
+//                                    if ("ACCEPTED".equals(status) || "STARTED".equals(status) ||
+//                                            "ARRIVED".equals(status) || "PICKEDUP".equals(status) || "DROPPED".equals(status)) {
+//                                        //                                    utils.print("Livenavigation", "" + status);
+//                                        //                                    utils.print("Destination Current Lat", "" + requestStatusCheckObject.getJSONObject("provider").optString("latitude"));
+//                                        //                                    utils.print("Destination Current Lng", "" + requestStatusCheckObject.getJSONObject("provider").optString("longitude"));
+//                                        liveNavigation(status, requestStatusCheckObject.getJSONObject("provider").optString("latitude"),
+//                                                requestStatusCheckObject.getJSONObject("provider").optString("longitude"));
+//                                    }
+
+
                                 }
                             }
 
-                            if ("ACCEPTED".equals(status) || "STARTED".equals(status) ||
-                                    "ARRIVED".equals(status) || "PICKEDUP".equals(status) || "DROPPED".equals(status)) {
-                                //                                    utils.print("Livenavigation", "" + status);
-                                //                                    utils.print("Destination Current Lat", "" + requestStatusCheckObject.getJSONObject("provider").optString("latitude"));
-                                //                                    utils.print("Destination Current Lng", "" + requestStatusCheckObject.getJSONObject("provider").optString("longitude"));
-                                liveNavigation(status, requestStatusCheckObject.getJSONObject("provider").optString("latitude"),
-                                        requestStatusCheckObject.getJSONObject("provider").optString("longitude"));
-                            }
+
+//                            //Driver Detail
+//                            if (requestStatusCheckObject.optJSONObject("provider") != null) {
+//                                current_chat_requestID = requestStatusCheckObject.optString("id");
+//                                currentProviderID = requestStatusCheckObject.optJSONObject("provider").optString("id");
+//
+////                                if(requestStatusCheckObject.optJSONObject("user").optString("id") != null){
+////                                    userID = requestStatusCheckObject.optJSONObject("user").optString("id");
+////                                }else{
+//                                    userID = requestStatusCheckObject.optString("id");
+////                                }
+//                                driver = new Driver();
+//                                providerFirstName = requestStatusCheckObject.optJSONObject("provider").optString("first_name");
+//                                driver.setFname(requestStatusCheckObject.optJSONObject("provider").optString("first_name"));
+//                                // driver.setLname(requestStatusCheckObject.optJSONObject("provider").optString("last_name"));
+//                                driver.setEmail(requestStatusCheckObject.optJSONObject("provider").optString("email"));
+//                                driver.setMobile(requestStatusCheckObject.optJSONObject("provider").optString("mobile"));
+//                                driver.setImg(requestStatusCheckObject.optJSONObject("provider").optString("avatar"));
+//                                driver.setRating(requestStatusCheckObject.optJSONObject("provider").optString("rating"));
+//                            }
+//                            String status = requestStatusCheckObject.optString("status");
+//                            reqStatus = requestStatusCheckObject.optString("status");
+//
+//
+//                            SharedHelper.putKey(context, "req_status", requestStatusCheckObject.optString("status"));
+//                            String wallet = requestStatusCheckObject.optString("use_wallet");
+//                            if (status.equalsIgnoreCase("STARTED")
+//                                    || status.equalsIgnoreCase("ARRIVED")) {
+//                                source_lat = requestStatusCheckObject.optJSONObject("provider").optString("latitude");
+//                                source_lng = requestStatusCheckObject.optJSONObject("provider").optString("longitude");
+//                                dest_lat = requestStatusCheckObject.optString("s_latitude");
+//                                dest_lng = requestStatusCheckObject.optString("s_longitude");
+//                                setValuesForSourceAndDestination();
+//
+//                            } else if (status.equalsIgnoreCase("PICKEDUP")) {
+//                                source_lat = requestStatusCheckObject.optJSONObject("provider").optString("latitude");
+//                                source_lng = requestStatusCheckObject.optJSONObject("provider").optString("longitude");
+//                                dest_lat = requestStatusCheckObject.optString("d_latitude");
+//                                dest_lng = requestStatusCheckObject.optString("d_longitude");
+//                                setValuesForSourceAndDestination();
+//
+//                            } else {
+//                                source_lat = requestStatusCheckObject.optString("s_latitude");
+//                                source_lng = requestStatusCheckObject.optString("s_longitude");
+//                                dest_lat = requestStatusCheckObject.optString("d_latitude");
+//                                dest_lng = requestStatusCheckObject.optString("d_longitude");
+//                                setValuesForSourceAndDestination();
+//
+//                            }
+//                            pickUpLocationName = requestStatusCheckObject.optString("s_address");
+//                            dropLocationName = requestStatusCheckObject.optString("d_address");
+//                            setValuesForSourceAndDestination();
+
+//
+//                            // surge price
+//                            if (requestStatusCheckObject.optString("surge").equalsIgnoreCase("1")) {
+//                                lblSurgePrice.setVisibility(View.VISIBLE);
+//                            } else {
+//                                lblSurgePrice.setVisibility(View.GONE);
+//                            }
+//
+//                            Utilities.print("PreviousStatus", "" + PreviousStatus);
+//                            System.out.println("checking status PreviousStatus"+PreviousStatus);
+
+//                            if (!PreviousStatus.equals(status)) {
+//                                mMap.clear();
+//                                PreviousStatus = status;
+//                                flowValue = 8;
+//                                layoutChanges();
+//                                SharedHelper.putKey(context, "request_id", "" + requestStatusCheckObject.optString("id"));
+//                                reCreateMap();
+//                                Utilities.print("ResponseStatus", "SavedCurrentStatus: " + CurrentStatus + " Status: " + status);
+//                                switch (status) {
+//                                    case "SEARCHING":
+//                                        show(lnrWaitingForProviders);
+//                                        //rippleBackground.startRippleAnimation();
+//                                        strTag = "search_completed";
+//                                        if (!source_lat.equalsIgnoreCase("") && !source_lng.equalsIgnoreCase("")) {
+//                                            LatLng myLocation1 = new LatLng(Double.parseDouble(source_lat),
+//                                                    Double.parseDouble(source_lng));
+//                                            CameraPosition cameraPosition1 = new CameraPosition.Builder().target(myLocation1).zoom(16).build();
+//                                            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition1));
+//                                        }
+//                                        break;
+//                                    case "CANCELLED":
+//                                        strTag = "";
+//                                        imgSos.setVisibility(View.GONE);
+//                                        break;
+//                                    case "ACCEPTED":
+//                                        driveraccepted.setVisibility(View.VISIBLE);
+//                                        driverArrived.setVisibility(View.GONE);
+//                                        driverPicked.setVisibility(View.GONE);
+//                                        driverCompleted.setVisibility(View.GONE);
+//                                        txtdriveraccpted.setText(getString(R.string.arriving));
+//                                        imgarrived.setImageResource(R.drawable.arriveddisable);
+//                                        imgPicked.setImageResource(R.drawable.pickeddisable);
+//                                        imgDropped.setImageResource(R.drawable.complete);
+//
+//                                        strTag = "ride_accepted";
+//                                        try {
+//                                            JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
+//                                            JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
+//                                            JSONObject provider_service = requestStatusCheckObject.getJSONObject("provider_service");
+//                                            SharedHelper.putKey(context, "provider_mobile_no", "" + provider.optString("mobile"));
+//                                            lblProvider.setText(provider.optString("first_name"));
+//
+//
+//                                            if (provider.optString("avatar").startsWith("http"))
+//                                                Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                            else
+//                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                            lblServiceRequested.setText(service_type.optString("name"));
+//                                            lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
+//                                            Picasso.get().load(service_type.optString("image"))
+//                                                    .placeholder(R.drawable.car_select).error(R.drawable.car_select)
+//                                                    .into(imgServiceRequested);
+//                                            ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+//                                            //                                                lblDis.setText(service_type.optString("distance")+" km");
+//                                            //                                                lblEta.setText(service_type.optString("minute")+" min");
+//                                            lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
+//
+//                                            lblCmfrmSourceAddress.setText(pickUpLocationName);
+//                                            lblCmfrmDestAddress.setText(dropLocationName);
+//                                            //lnrAfterAcceptedStatus.setVisibility(View.GONE);
+//
+//                                            AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+//                                            show(lnrProviderAccepted);
+//                                            flowValue = 9;
+//                                            layoutChanges();
+//                                        } catch (Exception e) {
+//                                            e.printStackTrace();
+//                                        }
+//                                        break;
+//                                    case "STARTED":
+//                                        strTag = "ride_started";
+//                                        showStartedDialog(requestStatusCheckObject);
+//
+//                                        break;
+//
+//                                    case "ARRIVED":
+//                                        if ((confirmDialog != null) && (confirmDialog.isShowing()))
+//                                            confirmDialog.dismiss();
+//                                        driveraccepted.setVisibility(View.GONE);
+//                                        driverArrived.setVisibility(View.VISIBLE);
+//                                        driverPicked.setVisibility(View.GONE);
+//                                        driverCompleted.setVisibility(View.GONE);
+//                                        txtdriverArrived.setText(getString(R.string.arrived));
+//                                        imgarrived.setImageResource(R.drawable.arriveddisable);
+//                                        imgPicked.setImageResource(R.drawable.pickeddisable);
+//                                        imgDropped.setImageResource(R.drawable.complete);
+//
+//                                        once = true;
+//                                        strTag = "ride_arrived";
+//                                        Utilities.print("MyTest", "ARRIVED");
+//                                        try {
+//                                            Utilities.print("MyTest", "ARRIVED TRY");
+//                                            JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
+//                                            JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
+//                                            JSONObject provider_service = requestStatusCheckObject.getJSONObject("provider_service");
+//                                            lblProvider.setText(provider.optString("first_name"));
+//
+//                                            if (provider.optString("avatar").startsWith("http"))
+//                                                Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                            else
+//                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                            lblServiceRequested.setText(service_type.optString("name"));
+//                                            lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
+//                                            Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+//                                            ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+//
+//                                            //                                                lblDis.setText(service_type.optString("distance")+" km");
+//                                            //                                                lblEta.setText(service_type.optString("minute")+" min");
+//                                            lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
+//
+//                                            lblCmfrmSourceAddress.setText(pickUpLocationName);
+//                                            lblCmfrmDestAddress.setText(dropLocationName);
+//
+//
+//                                            AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+//                                            flowValue = 4;
+//                                            layoutChanges();
+//                                        } catch (Exception e) {
+//                                            Utilities.print("MyTest", "ARRIVED CATCH");
+//                                            e.printStackTrace();
+//                                        }
+//                                        break;
+//
+//                                    case "PICKEDUP":
+//                                        if ((confirmDialog != null) && (confirmDialog.isShowing()))
+//                                            confirmDialog.dismiss();
+//
+//                                        driveraccepted.setVisibility(View.GONE);
+////                                        driverArrived.setVisibility(View.GONE);
+//                                        driverArrived.setVisibility(View.VISIBLE);
+//                                        driverPicked.setVisibility(View.VISIBLE);
+//                                        driverCompleted.setVisibility(View.GONE);
+//                                        txtdriverpicked.setText(getString(R.string.picked_up));
+//                                        imgarrived.setImageResource(R.drawable.arriveddisable);
+//                                        imgPicked.setImageResource(R.drawable.pickeddisable);
+//                                        imgDropped.setImageResource(R.drawable.complete);
+//                                        once = true;
+//                                        strTag = "ride_picked";
+//                                        try {
+//                                            JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
+//                                            JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
+//                                            JSONObject provider_service = requestStatusCheckObject.getJSONObject("provider_service");
+//                                            lblProvider.setText(provider.optString("first_name"));
+//
+//                                            if (provider.optString("avatar").startsWith("http"))
+//                                                Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                            else
+//                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                            lblServiceRequested.setText(service_type.optString("name"));
+//                                            lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
+//                                            Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+//                                            ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+//
+//                                            //                                                lblDis.setText(service_type.optString("distance")+" km");
+//                                            //                                                lblEta.setText(service_type.optString("minute")+" min");
+//                                            lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
+//                                            lblCmfrmSourceAddress.setText(pickUpLocationName);
+//                                            lblCmfrmDestAddress.setText(dropLocationName);
+//
+//
+//                                            imgSos.setVisibility(View.VISIBLE);
+//                                            //imgShareRide.setVisibility(View.VISIBLE);
+//
+//                                            btnCancelTrip.setText(getString(R.string.share));
+//                                            btnCancelTrip.setTextColor(getResources().getColor(R.color.quantum_googgreen));
+//                                            AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+//                                            flowValue = 4;
+//                                            layoutChanges();
+//                                        } catch (Exception e) {
+//                                            e.printStackTrace();
+//                                        }
+//                                        break;
+//
+//                                    case "DROPPED":
+//                                        driveraccepted.setVisibility(View.GONE);
+//                                        driverArrived.setVisibility(View.GONE);
+//                                        driverPicked.setVisibility(View.GONE);
+//                                        driverCompleted.setVisibility(View.VISIBLE);
+//                                        txtdrivercompleted.setText(getString(R.string.trip_completed));
+//                                        imgarrived.setImageResource(R.drawable.arriveddisable);
+//                                        imgPicked.setImageResource(R.drawable.pickeddisable);
+//                                        imgDropped.setImageResource(R.drawable.complete);
+//                                        once = true;
+//                                        strTag = "";
+//                                        imgSos.setVisibility(View.VISIBLE);
+//                                        lblPaymentType.setEnabled(false);
+//                                        //imgShareRide.setVisibility(View.VISIBLE);
+//                                        try {
+//                                            JSONObject provider = requestStatusCheckObject.optJSONObject("provider");
+//                                            if (requestStatusCheckObject.optJSONObject("payment") != null) {
+//                                                JSONObject payment = requestStatusCheckObject.optJSONObject("payment");
+//                                                isPaid = requestStatusCheckObject.optString("paid");
+//                                                paymentMode = requestStatusCheckObject.optString("payment_mode");
+//                                                lblBasePrice.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("fixed"));
+//                                                lblTaxPrice.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("tax"));
+//                                                lblDistancePrice.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("distance"));
+//                                                if (payment.optString("discount") != null) {
+//                                                    promoLayout.setVisibility(View.VISIBLE);
+//                                                    txtDiscount.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("discount"));
+//                                                }
+//                                                //lblCommision.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("commision"));
+//                                                lblTotalPrice.setText(SharedHelper.getKey(context, "currency") + ""
+//                                                        + payment.optString("total"));
+//                                                SharedHelper.putKey(TrackActivity.this, "total_price",
+//                                                        payment.optString("total"));
+//                                            }
+//                                            if (requestStatusCheckObject.optString("booking_id") != null &&
+//                                                    !requestStatusCheckObject.optString("booking_id").equalsIgnoreCase("")) {
+//                                                booking_id.setText(requestStatusCheckObject.optString("booking_id"));
+//                                                tvPaymentLabel.setText(SharedHelper.getKey(TrackActivity.this, "first_name").split(",")[0] + " owes");
+//                                            } else {
+//                                                booking_id.setVisibility(View.GONE);
+//                                            }
+//                                            if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CASH")) {
+//                                                btnPayNow.setVisibility(View.GONE);
+//                                                flowValue = 5;
+//                                                layoutChanges();
+//                                                lblPaymentType.setEnabled(false);
+//                                                imgPaymentTypeInvoice.setImageResource(R.drawable.money1);
+//                                                lblPaymentTypeInvoice.setText(getString(R.string.cash));
+//                                            } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CASH")
+//                                                    && wallet.equalsIgnoreCase("1")) {
+//                                                btnPayNow.setVisibility(View.GONE);
+//                                                flowValue = 5;
+//                                                layoutChanges();
+//                                                lblPaymentType.setEnabled(false);
+//                                                imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+//                                                lblPaymentTypeInvoice.setText(getString(R.string.cash_wallet));
+//                                            } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CARD")) {
+//                                                btnPayNow.setVisibility(View.VISIBLE);
+//                                                flowValue = 5;
+//                                                layoutChanges();
+//                                                imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+//                                                lblPaymentTypeInvoice.setText(getString(R.string.card));
+//                                                lblPaymentType.setEnabled(false);
+//                                            } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("PAYPAL")) {
+//                                                btnPayNow.setVisibility(View.VISIBLE);
+//                                                flowValue = 5;
+//                                                layoutChanges();
+//                                                imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+//                                                lblPaymentTypeInvoice.setText("PAYPAL");
+//                                                lblPaymentType.setText("PAYPAL");
+//                                                lblPaymentType.setEnabled(false);
+//                                                txtpaiddriver.setVisibility(View.GONE);
+//                                            } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("RAZORPAY")) {
+//                                                btnPayNow.setVisibility(View.VISIBLE);
+//                                                flowValue = 5;
+//                                                layoutChanges();
+//                                                imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+//                                                lblPaymentTypeInvoice.setText("RAZORPAY");
+//                                                lblPaymentType.setText("RAZORPAY");
+//                                                lblPaymentType.setEnabled(false);
+//                                                txtpaiddriver.setVisibility(View.GONE);
+//                                            } else if (isPaid.equalsIgnoreCase("1")) {
+//                                                btnPayNow.setVisibility(View.GONE);
+//                                                lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
+//                                                if (provider.optString("avatar").startsWith("http"))
+//                                                    Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                else
+//                                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                flowValue = 6;
+//                                                layoutChanges();
+//                                            }
+//
+//                                        } catch (Exception e) {
+//                                            Log.v("Dropped Error", e.getLocalizedMessage() + "  ");
+//                                            e.printStackTrace();
+//                                        }
+//                                        if ((confirmDialog != null) && (confirmDialog.isShowing()))
+//                                            confirmDialog.dismiss();
+//                                        break;
+//
+//                                    case "COMPLETED":
+//                                        layoutdriverstatus.setVisibility(View.GONE);
+//                                        //                                            driveraccepted.setVisibility(View.GONE);
+//                                        //                                            driverArrived.setVisibility(View.GONE);
+//                                        //                                            driverPicked.setVisibility(View.GONE);
+//                                        //                                            driverCompleted.setVisibility(View.VISIBLE);
+//                                        //                                            txtdriveraccpted.setText(getString(R.string.arriving));
+//                                        //                                            imgarrived.setImageResource(R.drawable.arriveddisable);
+//                                        //                                            imgPicked.setImageResource(R.drawable.pickeddisable);
+//                                        //                                            imgDropped.setImageResource(R.drawable.complete);
+//                                        strTag = "";
+//                                        try {
+//                                            if (requestStatusCheckObject.optJSONObject("payment") != null) {
+//                                                JSONObject payment = requestStatusCheckObject.optJSONObject("payment");
+//                                                lblBasePrice.setText(SharedHelper.getKey(context, "currency") + ""
+//                                                        + payment.optString("fixed"));
+//                                                lblTaxPrice.setText(SharedHelper.getKey(context, "currency") + ""
+//                                                        + payment.optString("tax"));
+//                                                lblDistancePrice.setText(SharedHelper.getKey(context, "currency") + ""
+//                                                        + payment.optString("distance"));
+//                                                lblTotalPrice.setText(SharedHelper.getKey(context, "currency") + ""
+//                                                        + payment.optString("total"));
+//                                            }
+//                                            JSONObject provider = requestStatusCheckObject.optJSONObject("provider");
+//                                            isPaid = requestStatusCheckObject.optString("paid");
+//                                            paymentMode = requestStatusCheckObject.optString("payment_mode");
+//                                            imgSos.setVisibility(View.GONE);
+//                                            //imgShareRide.setVisibility(View.GONE);
+//                                            // lblCommision.setText(payment.optString("commision"));
+//                                            if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CASH")) {
+//                                                flowValue = 5;
+//                                                layoutChanges();
+//                                                btnPayNow.setVisibility(View.GONE);
+//                                                imgPaymentTypeInvoice.setImageResource(R.drawable.money1);
+//                                                lblPaymentTypeInvoice.setText(getString(R.string.cash_wallet));
+//                                            } else if (isPaid.equalsIgnoreCase("0") && paymentMode.equalsIgnoreCase("CARD")) {
+//                                                flowValue = 5;
+//                                                layoutChanges();
+//                                                imgPaymentTypeInvoice.setImageResource(R.drawable.visa_icon);
+//                                                lblPaymentTypeInvoice.setText(getString(R.string.card));
+//                                                btnPayNow.setVisibility(View.VISIBLE);
+//                                            } else if (isPaid.equalsIgnoreCase("1")) {
+//                                                btnPayNow.setVisibility(View.GONE);
+//                                                lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
+//                                                if (provider.optString("avatar").startsWith("http"))
+//                                                    Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
+//                                                else
+//                                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
+//                                                flowValue = 6;
+//                                                layoutChanges();
+//                                                //imgPaymentTypeInvoice.setImageResource(R.drawable.visa);
+//                                                // lblPaymentTypeInvoice.setText("CARD");
+//                                            }
+//                                        } catch (Exception e) {
+//                                            e.printStackTrace();
+//                                        }
+//                                        if ((confirmDialog != null) && (confirmDialog.isShowing()))
+//                                            confirmDialog.dismiss();
+//                                        break;
+//                                }
+//                            }
+
+//                            if ("ACCEPTED".equals(status) || "STARTED".equals(status) ||
+//                                    "ARRIVED".equals(status) || "PICKEDUP".equals(status) || "DROPPED".equals(status)) {
+//                                //                                    utils.print("Livenavigation", "" + status);
+//                                //                                    utils.print("Destination Current Lat", "" + requestStatusCheckObject.getJSONObject("provider").optString("latitude"));
+//                                //                                    utils.print("Destination Current Lng", "" + requestStatusCheckObject.getJSONObject("provider").optString("longitude"));
+//                                liveNavigation(status, requestStatusCheckObject.getJSONObject("provider").optString("latitude"),
+//                                        requestStatusCheckObject.getJSONObject("provider").optString("longitude"));
+//                            }
                         } catch (Exception e) {
                             e.printStackTrace();
                             displayMessage(getString(R.string.something_went_wrong));
@@ -2012,9 +3811,11 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                 SharedHelper.getKey(context, "token_type")
                                 + " " + SharedHelper.getKey(context, "access_token"));
 
-                        headers.put("Authorization", "" +
-                                SharedHelper.getKey(context, "token_type")
-                                + " " + SharedHelper.getKey(context, "access_token"));
+//                        headers.put("Authorization", "" +
+//                                SharedHelper.getKey(context, "token_type")
+//                                + " " + SharedHelper.getKey(context, "access_token"));
+
+                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
                         return headers;
                     }
                 };
@@ -2049,7 +3850,11 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         TextView tvCancel = confirmDialog.findViewById(R.id.tvCancel);
         TextView tvDone = confirmDialog.findViewById(R.id.tvDone);
         TextView tvDriverMsg = confirmDialog.findViewById(R.id.tvDriverMsg);
-        tvDriverMsg.setText(getString(R.string.driver_will_pickup) + etaDur + " minutes.");
+        TextView titleTv = confirmDialog.findViewById(R.id.titleTv);
+        TextView subTitleTv = confirmDialog.findViewById(R.id.subTitleTv);
+        subTitleTv.setVisibility(View.VISIBLE);
+        titleTv.setText("Ride Started");
+        tvDriverMsg.setText(getString(R.string.driver_will_pickup)  + " few minutes.");
 
         tvCancel.setOnClickListener(v -> {
             confirmDialog.dismiss();
@@ -2057,6 +3862,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         });
 
         tvDone.setOnClickListener(v -> {
+
             layoutdriverstatus.setVisibility(View.VISIBLE);
             driveraccepted.setVisibility(View.VISIBLE);
             driverArrived.setVisibility(View.GONE);
@@ -2091,12 +3897,14 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
                 flowValue = 4;
                 layoutChanges();
-                if (!requestStatusCheckObject.optString("schedule_at").equalsIgnoreCase("null")) {
-                    SharedHelper.putKey(context, "current_status", "");
-                    Intent intent = new Intent(TrackActivity.this, HistoryActivity.class);
-                    intent.putExtra("tag", "upcoming");
-                    startActivity(intent);
-                }
+
+
+//                if (!requestStatusCheckObject.optString("schedule_at").equalsIgnoreCase("null")) {
+//                    SharedHelper.putKey(context, "current_status", "");
+//                    Intent intent = new Intent(TrackActivity.this, HistoryActivity.class);
+//                    intent.putExtra("tag", "upcoming");
+//                    startActivity(intent);
+//                }
             } catch (Exception e) {
                 e.printStackTrace();
             }

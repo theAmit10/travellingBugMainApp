@@ -21,7 +21,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:scaleType="centerCrop"
-            android:src="@drawable/people"
+            android:src="@drawable/ic_dummy_user"
             app:civ_border_color="@color/colorGray"
             app:civ_border_width="@dimen/_2sdp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -49,11 +49,15 @@ import es.dmoral.toasty.Toasty;
 public class FindRidesActivity extends AppCompatActivity {
 
     Button details, request;
+
+
+    String noofseat = "", request_id = "";
+
     CustomDialog customDialog;
 
-    String noofseat="",request_id="";
+    ImageView backArrow;
 
-    String sc_address = "",dc_address="",s_profileImage="",s_name="",s_carModleAndColor="",s_date="",s_time="",s_fare="",s_seat="",s_id="";
+    String sc_address = "", dc_address = "", s_profileImage = "", s_name = "", s_carModleAndColor = "", s_date = "", s_time = "", s_fare = "", s_seat = "", s_id = "";
 
 
     boolean scheduleTrip = false;
@@ -104,6 +108,21 @@ public class FindRidesActivity extends AppCompatActivity {
 //                showConfirmDialog();
 //            }
 //        });
+
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FindRidesActivity.this, HomeScreenActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(FindRidesActivity.this, HomeScreenActivity.class);
+        startActivity(intent);
     }
 
     private void initData() {
@@ -113,6 +132,7 @@ public class FindRidesActivity extends AppCompatActivity {
         from = findViewById(R.id.from);
         destination = findViewById(R.id.destination);
         errorLayout = findViewById(R.id.errorLayout);
+        backArrow = findViewById(R.id.backArrow);
 
     }
 
@@ -133,7 +153,6 @@ public class FindRidesActivity extends AppCompatActivity {
         payment_mode = getIntent().getStringExtra("payment_mode");
         s_seat = getIntent().getStringExtra("seat_count");
         noofseat = getIntent().getStringExtra("seat_count");
-
 
 
     }
@@ -171,22 +190,30 @@ public class FindRidesActivity extends AppCompatActivity {
     }
 
     public void sendRequestToGetProvider() {
+
+
+        customDialog = new CustomDialog(this);
+        customDialog.setCancelable(false);
+        customDialog.show();
+
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.SEND_REQUEST_API_PROVIDER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                customDialog.dismiss();
+                customDialog.cancel();
 
-                System.out.println("size : "+response.length());
-                System.out.println("data : "+response);
+                System.out.println("size : " + response.length());
+                System.out.println("data : " + response);
 
                 try {
                     JSONArray jsonArray = new JSONArray(response);
-                    System.out.println("size : "+jsonArray.length());
-                    System.out.println("data : "+jsonArray);
-                    System.out.println("data : "+jsonArray.getString(0));
+                    System.out.println("size : " + jsonArray.length());
+                    System.out.println("data : " + jsonArray);
+                    System.out.println("data : " + jsonArray.getString(0));
 
 
                     if (response != null) {
-                        System.out.println("data : "+jsonArray.getString(0));
+                        System.out.println("data : " + jsonArray.getString(0));
                         upcomingsAdapter = new FindRidesActivity.UpcomingsAdapter(jsonArray);
                         //  recyclerView.setHasFixedSize(true);
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext().getApplicationContext());
@@ -194,7 +221,7 @@ public class FindRidesActivity extends AppCompatActivity {
                         recyclerView.setItemAnimator(new DefaultItemAnimator());
                         if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
                             recyclerView.setVisibility(View.VISIBLE);
-                    errorLayout.setVisibility(View.GONE);
+                            errorLayout.setVisibility(View.GONE);
                             recyclerView.setAdapter(upcomingsAdapter);
                         } else {
 //                    errorLayout.setVisibility(View.VISIBLE);
@@ -202,14 +229,14 @@ public class FindRidesActivity extends AppCompatActivity {
                         }
 
                     } else {
-                errorLayout.setVisibility(View.VISIBLE);
-                        recyclerView.setVisibility(View.GONE);
+//                errorLayout.setVisibility(View.VISIBLE);
+//                        recyclerView.setVisibility(View.GONE);
                     }
 
-                    for(int i=0 ; i<jsonArray.length(); i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        System.out.println("data : "+jsonObject.toString());
-                        System.out.println("data : "+jsonObject.getString("s_address"));
+                        System.out.println("data : " + jsonObject.toString());
+                        System.out.println("data : " + jsonObject.getString("s_address"));
                     }
 
                 } catch (JSONException e) {
@@ -225,6 +252,8 @@ public class FindRidesActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(FindRidesActivity.this, "Error Found", Toast.LENGTH_SHORT).show();
+                customDialog.dismiss();
+                customDialog.cancel();
             }
 
         }) {
@@ -249,6 +278,7 @@ public class FindRidesActivity extends AppCompatActivity {
                 params.put("payment_mode", payment_mode);
                 return params;
             }
+
             @Override
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<String, String>();
@@ -260,7 +290,6 @@ public class FindRidesActivity extends AppCompatActivity {
         };
 
         ClassLuxApp.getInstance().addToRequestQueue(request);
-
 
 
     }
@@ -295,6 +324,52 @@ public class FindRidesActivity extends AppCompatActivity {
         cal.setTime(d);
         String timeName = new SimpleDateFormat("hh:mm a").format(cal.getTime());
         return timeName;
+    }
+
+    public void getVehicleDetails() {
+        customDialog = new CustomDialog(this);
+        customDialog.setCancelable(false);
+        customDialog.show();
+
+        // Getting User details
+        StringRequest request = new StringRequest(Request.Method.GET, URLHelper.GET_VEHICLE_DETAILS, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObjectUser = new JSONObject(response);
+
+                    if (response != null) {
+                        System.out.println("data : " + jsonObjectUser.toString());
+
+                        JSONObject jsonObject = new JSONObject(response);
+
+                        jsonObject.optString("service_model");
+
+
+
+                    }
+                } catch (JSONException e) {
+                    displayMessage(e.toString());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println("error : " + error);
+            }
+
+        }) {
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                return headers;
+            }
+        };
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
     }
 
     public void getUpcomingList() {
@@ -510,7 +585,6 @@ public class FindRidesActivity extends AppCompatActivity {
                     }
 
 
-
                     Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
 
                     s_fare = "1100";
@@ -519,22 +593,19 @@ public class FindRidesActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), ConfirmRideRequestActivity.class);
 
 
-                    intent.putExtra("s_address",jsonArray.optJSONObject(position).optString("s_address"));
-                    intent.putExtra("d_address",dc_address);
-                    intent.putExtra("s_profileImage",s_profileImage);
-                    intent.putExtra("s_name",s_name);
-                    intent.putExtra("s_carModleAndColor",s_carModleAndColor);
-                    intent.putExtra("s_date",s_date);
-                    intent.putExtra("s_time",s_time);
-                    intent.putExtra("s_fare",s_fare);
-                    intent.putExtra("s_seat",s_seat);
-                    intent.putExtra("s_id",s_id);
+                    intent.putExtra("s_address", jsonArray.optJSONObject(position).optString("s_address"));
+                    intent.putExtra("d_address", dc_address);
+                    intent.putExtra("s_profileImage", s_profileImage);
+                    intent.putExtra("s_name", s_name);
+                    intent.putExtra("s_carModleAndColor", s_carModleAndColor);
+                    intent.putExtra("s_date", s_date);
+                    intent.putExtra("s_time", s_time);
+                    intent.putExtra("s_fare", s_fare);
+                    intent.putExtra("s_seat", s_seat);
+                    intent.putExtra("s_id", s_id);
 
 
                     startActivity(intent);
-
-
-
 
 
                 }
@@ -545,8 +616,16 @@ public class FindRidesActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(FindRidesActivity.this, FindRideDetails.class);
-                    intent.putExtra("noofseat",noofseat);
-                    intent.putExtra("request_id",request_id);
+                    intent.putExtra("noofseat", noofseat);
+                    intent.putExtra("request_id", jsonArray.optJSONObject(position).optString("id"));
+                    startActivity(intent);
+                }
+            });
+
+            holder.driver_image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(FindRidesActivity.this, DriverProfileActivity.class);
                     startActivity(intent);
                 }
             });
@@ -587,9 +666,9 @@ public class FindRidesActivity extends AppCompatActivity {
 
 
             ImageView profileImageIv;
-            TextView profileNameTv,reviewCount,fare,availableSeat,fromTv,destinationTv,startTimeVal,carTypeVal;
+            TextView profileNameTv, reviewCount, fare, availableSeat, fromTv, destinationTv, startTimeVal, carTypeVal;
             RatingBar listitemrating;
-            Button details,request;
+            Button details, request;
 
 
             public MyViewHolder(View itemView) {
@@ -607,7 +686,6 @@ public class FindRidesActivity extends AppCompatActivity {
 //                txtSource = itemView.findViewById(R.id.txtSource);
 //                status = itemView.findViewById(R.id.status);
 //                listitemrating = itemView.findViewById(R.id.listitemrating);
-
 
 
                 driver_image = itemView.findViewById(R.id.driver_image);

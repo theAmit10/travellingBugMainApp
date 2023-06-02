@@ -371,7 +371,9 @@ public class MainActivity extends AppCompatActivity {
                 GoToFragment();
                 return;
             } else {
-                System.exit(0);
+                Intent intent = new Intent(MainActivity.this, HomeScreenActivity.class);
+                startActivity(intent);
+//                System.exit(0);
             }
         }
 

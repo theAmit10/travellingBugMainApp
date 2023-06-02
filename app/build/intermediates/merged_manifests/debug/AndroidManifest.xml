@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.travel.travellingbug.ui.activities.PickUpNotes"
+            android:exported="false" />
+        <activity
             android:name="com.travel.travellingbug.ui.activities.HistoryDetailsUser"
             android:exported="false" />
         <activity

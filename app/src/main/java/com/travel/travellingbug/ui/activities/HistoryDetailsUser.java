@@ -93,6 +93,8 @@ public class HistoryDetailsUser extends AppCompatActivity {
     Driver driver;
     String reason = "";
 
+    String request_id = "";
+
     Button btnViewInvoice, btnCall;
 
     @Override
@@ -107,10 +109,13 @@ public class HistoryDetailsUser extends AppCompatActivity {
         setContentView(R.layout.activity_history_details_user);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         findViewByIdAndInitialize();
+
+
         try {
             Intent intent = getIntent();
             String post_details = intent.getStringExtra("post_value");
             tag = intent.getStringExtra("tag");
+            request_id = getIntent().getStringExtra("request_id");
             jsonObject = new JSONObject(post_details);
         } catch (Exception e) {
             jsonObject = null;
@@ -409,6 +414,11 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                     driver.setEmail(providerObj.optString("email"));
                                     driver.setImg(providerObj.optString("avatar"));
                                     driver.setRating(providerObj.optString("rating"));
+
+                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerObj.optString("avatar"))
+                                            .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
+
+
                                 }
                                 if (jsonArray.optJSONObject(i).optString("booking_id") != null &&
                                         !jsonArray.optJSONObject(i).optString("booking_id").equalsIgnoreCase("")) {
@@ -417,7 +427,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                 }
                                 String form;
                                 if (tag.equalsIgnoreCase("past_trips")) {
-                                    form = jsonArray.optJSONObject(i).optString("assigned_at");
+                                    form = jsonArray.optJSONObject(i).optString("schedule_at");
                                 } else {
                                     form = jsonArray.optJSONObject(i).optString("schedule_at");
                                 }
@@ -449,20 +459,26 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                 } else {
                                     paymentTypeImg.setImageResource(R.drawable.visa_icon);
                                 }
-                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonArray.optJSONObject(i).optJSONObject("provider").optString("avatar"))
-                                        .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
+
+
+
+//                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonArray.optJSONObject(i).optJSONObject("provider").optString("avatar"))
+//                                        .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
+//
+
                                 if (jsonArray.optJSONObject(i).optJSONObject("rating") != null &&
                                         !jsonArray.optJSONObject(i).optJSONObject("rating").optString("provider_comment").equalsIgnoreCase("")) {
                                     tripComments.setText(jsonArray.optJSONObject(i).optJSONObject("rating").optString("provider_comment", ""));
                                 } else {
                                     tripComments.setText(getString(R.string.no_comments));
                                 }
-                                if (jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating") != null
-                                        && !jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating").equalsIgnoreCase("")) {
-                                    tripProviderRating.setRating(Float.parseFloat(jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating")));
-                                } else {
-                                    tripProviderRating.setRating(i);
-                                }
+
+//                                if (jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating") != null
+//                                        && !jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating").equalsIgnoreCase("")) {
+//                                    tripProviderRating.setRating(Float.parseFloat(jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating")));
+//                                } else {
+//                                    tripProviderRating.setRating(i);
+//                                }
 
                                 tripProviderName.setText(jsonArray.optJSONObject(i).optJSONObject("provider").optString("first_name"));
 
@@ -535,7 +551,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
             @Override
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("request_id", jsonObject.optString("id"));
+                params.put("request_id", request_id);
                 return params;
             }
 

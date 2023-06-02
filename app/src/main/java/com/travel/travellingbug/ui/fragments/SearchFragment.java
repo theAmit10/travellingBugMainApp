@@ -1367,7 +1367,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 source_lng = "" + longitude;
                 source_address = currentAddress;
                 current_address = currentAddress;
-                frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
+                if(getContext() != null){
+                    frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
+                }
                 frmSource.setText(currentAddress);
 
                 // setting previous destination data

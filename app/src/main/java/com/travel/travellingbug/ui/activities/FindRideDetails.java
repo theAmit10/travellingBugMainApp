@@ -1,6 +1,9 @@
 package com.travel.travellingbug.ui.activities;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +34,11 @@ public class FindRideDetails extends AppCompatActivity {
     RecyclerView passengerRV;
     ArrayList<PassengerDataModel> list;
 
+    ImageView backArrow;
+
     String noofseat="",request_id="";
+
+    TextView allAvailabelSeatTv;
 
 
     @Override
@@ -43,6 +50,13 @@ public class FindRideDetails extends AppCompatActivity {
         getPassengerData();
         setDataRecyclerView();
 
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     private void getIntentData() {
@@ -51,7 +65,7 @@ public class FindRideDetails extends AppCompatActivity {
     }
 
     private void getPassengerData() {
-        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.BOOK_FOR_UPCOMMING_TRIPS, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.UPCOMMING_TRIPS_DETAILS_ONE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -60,34 +74,71 @@ public class FindRideDetails extends AppCompatActivity {
                 String location;
 
                 try {
-                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = new JSONArray(response);
 
-                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
-                    location = jsonObject1.optString("s_address") +" -> "+ jsonObject1.optString("d_address");
+                    if(jsonArray.length() > 0){
 
+                        JSONObject jsonObject = jsonArray.getJSONObject(0);
 
-//                    JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
+                        JSONArray filtersJsonArray = jsonObject.getJSONArray("filters");
 
-                    JSONArray filterArray = jsonObject1.getJSONArray("filters");
+                        location = jsonArray.getJSONObject(0).optString("s_address") +" -> "+ jsonArray.getJSONObject(0).optString("d_address");
+                        System.out.println("location "+location);
 
-                    System.out.println("filter length : "+filterArray.length());
+                        if(filtersJsonArray != null && filtersJsonArray.length() > 0 ){
+                            System.out.println("filter length : "+filtersJsonArray.length());
 
-                    if(filterArray != null ){
-                        String name;
+                            for(int i=0; i<filtersJsonArray.length(); i++){
+                                String name;
+                                if(!filtersJsonArray.getJSONObject(i).optString("status").equalsIgnoreCase("CANCELLED")){
+                                    name = filtersJsonArray.getJSONObject(i).optString("first_name");
+                                    System.out.println("name opt : "+name);
+                                    name = filtersJsonArray.getJSONObject(i).getString("first_name");
+                                    System.out.println("name get : "+name);
+                                    list.add(new PassengerDataModel(name,location));
+                                }
+                            }
 
-                        for(int i=0;i<filterArray.length();i++){
-                            name = filterArray.getJSONObject(i).optString("first_name");
-                            System.out.println("name: "+name);
-                            name = filterArray.getJSONObject(i).getString("first_name");
-                            System.out.println("name: "+name);
+                            PassengerDataAdapter passengerDataAdapter = new PassengerDataAdapter(getApplicationContext(), list);
+                            passengerRV.setAdapter(passengerDataAdapter);
 
-                            list.add(new PassengerDataModel(name,location));
+                        }else {
+                            allAvailabelSeatTv.setVisibility(View.VISIBLE);
+                            passengerRV.setVisibility(View.GONE);
                         }
 
-                        PassengerDataAdapter passengerDataAdapter = new PassengerDataAdapter(getApplicationContext(), list);
-                        passengerRV.setAdapter(passengerDataAdapter);
 
                     }
+//                    JSONObject jsonObject = new JSONObject(response);
+//
+//                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
+//                    location = jsonObject1.optString("s_address") +" -> "+ jsonObject1.optString("d_address");
+//
+//
+////                    JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
+//
+//                    JSONArray filterArray = jsonObject1.getJSONArray("filters");
+//
+//                    System.out.println("filter length : "+filterArray.length());
+
+//                    if(filterArray != null ){
+//                        String name;
+//
+//                        for(int i=0;i<filterArray.length();i++){
+//
+//                            if(!filterArray.getJSONObject(i).optString("status").equalsIgnoreCase("CANCELLED")){
+//                                name = filterArray.getJSONObject(i).optString("first_name");
+//                                System.out.println("name opt : "+name);
+//                                name = filterArray.getJSONObject(i).getString("first_name");
+//                                System.out.println("name get : "+name);
+//                                list.add(new PassengerDataModel(name,location));
+//                            }
+//                        }
+//
+//                        PassengerDataAdapter passengerDataAdapter = new PassengerDataAdapter(getApplicationContext(), list);
+//                        passengerRV.setAdapter(passengerDataAdapter);
+//
+//                    }
 
 
 
@@ -153,7 +204,6 @@ public class FindRideDetails extends AppCompatActivity {
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("request_id",request_id);
-                params.put("noofseat", noofseat);
                 return params;
             }
             @Override
@@ -194,6 +244,8 @@ public class FindRideDetails extends AppCompatActivity {
 
     private void initData() {
         passengerRV = findViewById(R.id.passengerRV);
+        allAvailabelSeatTv = findViewById(R.id.allAvailabelSeatTv);
+        backArrow = findViewById(R.id.backArrow);
     }
 
 

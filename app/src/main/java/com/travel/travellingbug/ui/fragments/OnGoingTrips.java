@@ -21,8 +21,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
@@ -250,6 +253,59 @@ public class OnGoingTrips extends Fragment {
         return timeName;
     }
 
+    private void updateStatusForSingleUserRide(String rideId, String status){
+
+        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.UPDATE_SINGLE_USER_RIDE_STATUS_BY_PROVIDER, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    if (response != null) {
+                        System.out.println("data : "+jsonObject.toString());
+                        if(jsonObject.optString("id") != null){
+                            System.out.println("STATUS UPDATED OF REQUEST ID : "+jsonObject.optString("id"));
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    displayMessage(e.toString());
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
+            }
+
+        }) {
+
+
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("rideid", rideId);
+                params.put("status", status);
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                return headers;
+            }
+
+        };
+
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+    }
+
     private class UpcomingsAdapter extends RecyclerView.Adapter<UpcomingsAdapter.MyViewHolder> {
         JSONArray jsonArray;
 
@@ -358,6 +414,9 @@ public class OnGoingTrips extends Fragment {
 
             holder.btnStart.setOnClickListener(view -> {
                 //Toast.makeText(getActivity(),"Start Ride",Toast.LENGTH_SHORT).show();
+
+                updateStatusForSingleUserRide(jsonArray.optJSONObject(position).optString("id"),"STARTED");
+
                 Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
                 JSONArray array = new JSONArray();
                 JSONObject req = new JSONObject();
@@ -371,6 +430,7 @@ public class OnGoingTrips extends Fragment {
                 Log.e("TAG", "REQ: " + array);
                 Intent i = new Intent(getActivity(), MainActivity.class);
                 i.putExtra("datas", array.toString());
+                i.putExtra("ride_request_id", request_id);
                 i.putExtra("type", "SCHEDULED");
                 startActivity(i);
             });
@@ -383,12 +443,23 @@ public class OnGoingTrips extends Fragment {
                 s_address = jsonArray.optJSONObject(position).optString("s_address");
                 d_address = jsonArray.optJSONObject(position).optString("d_address");
 
+
+                String form = jsonArray.optJSONObject(position).optString("schedule_at");
+                try {
+                    s_date = getDate(form) + "th " + getMonth(form) + " " + getYear(form);
+                    s_time = getTime(form);
+                } catch (ParseException e) {
+                    Toast.makeText(getContext(), "something went wrong", Toast.LENGTH_SHORT).show();
+                }
+
+
                 Toast.makeText(getContext(), "" + request_id, Toast.LENGTH_SHORT).show();
                 intent.putExtra("request_id", request_id);
                 intent.putExtra("s_address", s_address);
                 intent.putExtra("d_address", d_address);
                 intent.putExtra("s_date", s_date);
                 intent.putExtra("s_time", s_time);
+                intent.putExtra("seat_left", jsonArray.optJSONObject(position).optString("availablecapacity"));
                 startActivity(intent);
 
             });
@@ -447,6 +518,29 @@ public class OnGoingTrips extends Fragment {
                     e.printStackTrace();
                 }
 
+//                try {
+//                    JSONArray filterJsonArray = jsonArray.getJSONObject(position).optJSONArray("filters");
+//
+//                    if (filterJsonArray != null || filterJsonArray.length() > 0) {
+//
+//                        for(int i=0 ;i<filterJsonArray.length(); i++){
+//                            JSONObject filterJsonObj = filterJsonArray.getJSONObject(i);
+//
+//                            if()
+//                        }
+//
+//                        first_name  = providerObj.optString("first_name");
+//                        rating  = providerObj.optString("rating");
+//                        avatar = providerObj.optString("avatar");
+//
+////                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerObj.optString("avatar"))
+////                                .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
+//
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+
 
                 intent.putExtra("request_id", request_id);
                 intent.putExtra("s_address", s_address);
@@ -462,6 +556,7 @@ public class OnGoingTrips extends Fragment {
                 intent.putExtra("first_name", first_name);
                 intent.putExtra("rating", rating);
                 intent.putExtra("avatar", avatar);
+                intent.putExtra("current_trip_user_id", jsonArray.optJSONObject(position).optString("user_id"));
 
                 startActivity(intent);
                 return true;

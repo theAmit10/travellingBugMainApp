@@ -128,6 +128,10 @@
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_pickupbg.webp.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable\\pickupbg.webp"
+    },
+    {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_border_stroke_black.xml.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable\\border_stroke_black.xml"
     },
@@ -150,6 +154,10 @@
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_edit_black_24dp.xml.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable\\ic_edit_black_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_whatsapp.xml.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable\\ic_whatsapp.xml"
     },
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_up.xml.flat",
@@ -260,12 +268,12 @@
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\fragment_your_trips.xml"
     },
     {
-        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_lanuage.png.flat",
-        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable-mdpi\\ic_lanuage.png"
-    },
-    {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_provider_marker.png.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_provider_marker.png"
+    },
+    {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_lanuage.png.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable-mdpi\\ic_lanuage.png"
     },
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_back_icon.png.flat",
@@ -560,6 +568,10 @@
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\review_item.xml"
     },
     {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_send.png.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable\\ic_send.png"
+    },
+    {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_otpverification.xml.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable-v21\\ic_otpverification.xml"
     },
@@ -700,6 +712,10 @@
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\anim\\slide_down.xml"
     },
     {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_call_request_passenger.xml.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\design_call_request_passenger.xml"
+    },
+    {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_home.png.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_home.png"
     },
@@ -802,6 +818,10 @@
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_verify_id_main.xml.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\design_verify_id_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_testing_provider_layout.xml.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\testing_provider_layout.xml"
     },
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rate1.webp.flat",
@@ -1002,6 +1022,10 @@
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_mail.png.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_mail.png"
+    },
+    {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_testing_layout.xml.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\testing_layout.xml"
     },
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_earning.png.flat",
@@ -1738,6 +1762,10 @@
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_withdraw.xml.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable\\ic_withdraw.xml"
+    },
+    {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pick_up_notes.xml.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\activity_pick_up_notes.xml"
     },
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_driver_profile.xml.flat",

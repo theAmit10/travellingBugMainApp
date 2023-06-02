@@ -16,6 +16,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.CustomDialog;
@@ -61,6 +62,9 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
 
         fareVal.setText(fare);
         seatVal.setText(noofseat);
+
+        Picasso.get().load(profile_image)
+                .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(profileImgeIv);
 
 
         if(!status.equalsIgnoreCase("Pending")){

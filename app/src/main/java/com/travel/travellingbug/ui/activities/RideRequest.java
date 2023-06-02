@@ -1,5 +1,6 @@
 package com.travel.travellingbug.ui.activities;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.CustomDialog;
@@ -50,7 +52,7 @@ public class RideRequest extends AppCompatActivity {
     RelativeLayout errorLayout;
     RideRequest.UpcomingsAdapter upcomingsAdapter;
 
-    String noofseat="",request_id="", person_id="",s_address="",d_address="",s_date = "",s_time = "";
+    String noofseat="",request_id="", person_id="",s_address="",d_address="",s_date = "",s_time = "",seat_left = "", profile_image = "";
 
 
 
@@ -347,6 +349,7 @@ public class RideRequest extends AppCompatActivity {
         request_id = getIntent().getStringExtra("request_id");
         s_date = getIntent().getStringExtra("s_date");
         s_time = getIntent().getStringExtra("s_time");
+        seat_left = getIntent().getStringExtra("seat_left");
 
         System.out.println("request_id : "+request_id);
     }
@@ -377,20 +380,87 @@ public class RideRequest extends AppCompatActivity {
 
 
         @Override
-        public void onBindViewHolder(RideRequest.UpcomingsAdapter.MyViewHolder holder, final int position) {
+        public void onBindViewHolder(RideRequest.UpcomingsAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
             holder.saddress.setText(s_address);
             holder.dropLocation.setText(d_address);
 
             try {
                 if (!jsonArray.optJSONObject(position).optString("first_name", "").isEmpty()) {
-//                    String form = jsonArray.optJSONObject(position).optString("first_name");
-                    //                        holder.tripDate.setText(getDate(form) + "th " + getMonth(form) + " " + "at " + getTime(form));
-//                        holder.tripId.setText(jsonArray.optJSONObject(position).optString("booking_id"));
+
+
 
                     holder.listitemrating.setRating(Float.parseFloat("3.0"));
                     holder.nametv.setText(jsonArray.optJSONObject(position).optString("first_name"));
                     person_id = jsonArray.optJSONObject(position).optString("id");
+
+
+
+                    holder.startTimeVal.setText(s_date + " "+s_time);
+                    holder.availableSeat.setText(seat_left +" Seat left");
+
+
+
+
+
+                    // Getting other details of profile
+
+                    StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                            System.out.println("size : "+response.length());
+                            System.out.println("data : "+response);
+
+                            try {
+                                JSONObject jsonObject = new JSONObject(response);
+
+                                if (response != null) {
+                                    System.out.println("data : "+jsonObject.toString());
+
+
+                                    profile_image = URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar");
+
+
+                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar"))
+                                            .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.profileImgeIv);
+
+
+                                }
+
+
+                            } catch (JSONException e) {
+
+                            }
+
+
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }) {
+
+
+                        @Override
+                        public Map<String, String> getParams() {
+                            Map<String, String> params = new HashMap<>();
+                            params.put("id", jsonArray.optJSONObject(position).optString("user_id"));
+                            return params;
+                        }
+                        @Override
+                        public Map<String, String> getHeaders() {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+                            headers.put("X-Requested-With", "XMLHttpRequest");
+                            headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                            return headers;
+                        }
+
+                    };
+
+                    ClassLuxApp.getInstance().addToRequestQueue(request);
 
                     if(!jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("Pending")){
                         System.out.println("if");
@@ -472,7 +542,7 @@ public class RideRequest extends AppCompatActivity {
                 intent.putExtra("first_name", jsonArray.optJSONObject(position).optString("first_name"));
                 intent.putExtra("rating", "3");
                 intent.putExtra("rating_val", "(12 Reviews)");
-                intent.putExtra("profile_image", "rating");
+                intent.putExtra("profile_image", profile_image);
                 intent.putExtra("user_id", jsonArray.optJSONObject(position).optString("user_id"));
                 intent.putExtra("s_address", s_address);
                 intent.putExtra("d_address", d_address);

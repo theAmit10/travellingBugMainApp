@@ -33,6 +33,7 @@ import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.ui.activities.HistoryDetailsUser;
 import com.travel.travellingbug.ui.activities.SplashScreen;
+import com.travel.travellingbug.ui.activities.TrackActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -108,7 +109,7 @@ public class PastTrips extends Fragment {
         customDialog.setCancelable(false);
         customDialog.show();
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.GET_HISTORY_API, response -> {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.GET_ALL_RIDES, response -> {
 
             if (response != null) {
                 postAdapter = new PostAdapter(response);
@@ -242,12 +243,28 @@ public class PastTrips extends Fragment {
                     System.out.println("History data : "+jsonArray.get(i));
                 }
 
-                holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
-                holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
+//                JSONObject jsonObjectTrip = new JSONObject(String.valueOf(jsonArray.getJSONObject(position).getJSONObject("trip")));
+                JSONObject jsonObjectTrip = jsonArray.getJSONObject(position).optJSONObject("trip");
 
-//                userId="",userName="",rating="",ratingVal="",vehicleDetails="";
+                holder.txtSource.setText(jsonObjectTrip.optString("s_address"));
+                holder.txtDestination.setText(jsonObjectTrip.optString("d_address"));
 
-                userId = jsonArray.optJSONObject(position).optString("user_id");
+                if (!jsonObjectTrip.optString("schedule_at", "").isEmpty()) {
+                    String form = jsonObjectTrip.optString("schedule_at");
+                    try {
+                        holder.datetime.setText(getDate(form) + "th " + getMonth(form) + " at " + getTime(form));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+//                holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
+//                holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
+
+
+
+                userId = jsonObjectTrip.optString("user_id");
 
                 // Getting other details of profile
 
@@ -304,7 +321,7 @@ public class PastTrips extends Fragment {
                     @Override
                     public Map<String, String> getParams() {
                         Map<String, String> params = new HashMap<>();
-                        params.put("id", jsonArray.optJSONObject(position).optString("user_id"));
+                        params.put("id", userId);
                         return params;
                     }
                     @Override
@@ -338,17 +355,22 @@ public class PastTrips extends Fragment {
                     notifyDataSetChanged();
                 }
 
-                if (!jsonArray.optJSONObject(position).optString("assigned_at", "").isEmpty()) {
-                    String form = jsonArray.optJSONObject(position).optString("assigned_at");
-                    try {
-                        holder.datetime.setText(getDate(form) + "th " + getMonth(form) + " at " + getTime(form));
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+            holder.historyContainerLL.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Intent intent = new Intent(getContext(), TrackActivity.class);
+                    intent.putExtra("flowValue", 3);
+                    intent.putExtra("request_id_from_trip", jsonArray.optJSONObject(position).optString("request_id"));
+                    startActivity(intent);
+
+                    return true;
+                }
+            });
 
 
             holder.historyContainerLL.setOnClickListener(view -> {
@@ -362,6 +384,7 @@ public class PastTrips extends Fragment {
                 Toast.makeText(getContext(), "user id: "+jsonArray.optJSONObject(position).optString("user_id") , Toast.LENGTH_SHORT).show();
                 Toast.makeText(getContext(), "id: "+jsonArray.optJSONObject(position).optString("id") , Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), HistoryDetailsUser.class);
+                intent.putExtra("request_id",jsonArray.optJSONObject(position).optString("request_id"));
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
                 intent.putExtra("post_value", jsonArray.optJSONObject(position).toString());

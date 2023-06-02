@@ -372,6 +372,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
                     drawer.closeDrawers();
                     Intent intent = new Intent(HomeScreenActivity.this,TrackActivity.class);
                     intent.putExtra("flowValue", 3);
+                    intent.putExtra("request_id_from_trip", "121");
                     startActivity(intent);
 
                     break;

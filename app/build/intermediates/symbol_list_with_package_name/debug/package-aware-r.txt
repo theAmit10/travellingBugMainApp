@@ -4216,6 +4216,7 @@ drawable ic_profile
 drawable ic_referrals
 drawable ic_ring
 drawable ic_search
+drawable ic_send
 drawable ic_send_black_24dp
 drawable ic_star
 drawable ic_summary
@@ -4228,6 +4229,7 @@ drawable ic_user_name
 drawable ic_visa
 drawable ic_visa_template_32
 drawable ic_whatapp
+drawable ic_whatsapp
 drawable ic_withdraw
 drawable ic_wrong
 drawable icon_google
@@ -4585,6 +4587,7 @@ drawable pickeddisable
 drawable pickup
 drawable pickup_drop_icon
 drawable pickup_select
+drawable pickupbg
 drawable placeholder
 drawable placeholder_image
 drawable places_autocomplete_toolbar_shadow
@@ -4874,6 +4877,7 @@ id airConditionerVal
 id alertTitle
 id aligned
 id all
+id allAvailabelSeatTv
 id allStates
 id always
 id amountEditText
@@ -4977,6 +4981,7 @@ id btnDonePopup
 id btnFb
 id btnGoogle
 id btnLogout
+id btnNotest
 id btnPayNow
 id btnRequestRideConfirm
 id btnRequestRides
@@ -5236,6 +5241,7 @@ id etComment
 id etComplaint
 id etDate
 id etEmail
+id etMsg
 id etName
 id etNames
 id etPassword
@@ -5270,6 +5276,7 @@ id fill_horizontal
 id fill_parent
 id fill_vertical
 id filled
+id filterImage
 id findRideRequestRv
 id firstNameETL
 id firstNameInput
@@ -5327,6 +5334,7 @@ id group_divider
 id grouping
 id groups
 id guideline
+id header
 id headerLayout
 id header_lay
 id header_title
@@ -5748,6 +5756,7 @@ id parent_matrix
 id partationHoriView
 id partationTopHoriView
 id partationView
+id passengerCallRv
 id passengerRV
 id passengerVal
 id password_toggle
@@ -5776,6 +5785,7 @@ id perSeatPerKm
 id perSeatPerKmVal
 id percent
 id persontv
+id phoneTv
 id pickUpData
 id pickUpDataVal
 id pickUpTime
@@ -6026,6 +6036,7 @@ id stopOverTitleTv
 id stopoverRv
 id stretch
 id strokeRipple
+id subTitleTv
 id submenuarrow
 id submitButton
 id submit_area
@@ -6119,6 +6130,7 @@ id title
 id titleDividerNoCustom
 id titlePAtv
 id titleTPtv
+id titleTv
 id titleVIMtv
 id title_template
 id title_txt
@@ -6475,6 +6487,7 @@ layout activity_otp_verify_forget_password
 layout activity_payment
 layout activity_payment_methods
 layout activity_personal_details
+layout activity_pick_up_notes
 layout activity_privacy_policy
 layout activity_profile
 layout activity_profile_picture
@@ -6553,6 +6566,7 @@ layout date_picker_selected_date
 layout date_picker_view_animator
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
+layout design_call_request_passenger
 layout design_driver_profile_reviews
 layout design_find_ride
 layout design_intro_view_pager
@@ -6732,6 +6746,8 @@ layout test_toolbar
 layout test_toolbar_custom_background
 layout test_toolbar_elevation
 layout test_toolbar_surface
+layout testing_layout
+layout testing_provider_layout
 layout text_view_with_line_height_from_appearance
 layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style

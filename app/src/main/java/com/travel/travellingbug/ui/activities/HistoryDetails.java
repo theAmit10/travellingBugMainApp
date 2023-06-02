@@ -24,8 +24,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.Login;
@@ -83,6 +86,8 @@ public class HistoryDetails extends AppCompatActivity {
 
 
     String booking_id = "", request_id = "", s_date = "", s_time = "", status = "", payment_mode = "", s_address = "", d_address = "", estimated_fare = "", verification_code = "", static_map = "", first_name = "", mobile = "", avatar = "", rating = "";
+
+    String current_trip_user_id = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,6 +184,60 @@ public class HistoryDetails extends AppCompatActivity {
         rating = getIntent().getStringExtra("rating");
         avatar = getIntent().getStringExtra("avatar");
         booking_id = getIntent().getStringExtra("booking_id");
+        current_trip_user_id = getIntent().getStringExtra("current_trip_user_id");
+
+    }
+
+    private void updateStatusForSingleUserRide(String rideId, String status){
+
+        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.UPDATE_SINGLE_USER_RIDE_STATUS_BY_PROVIDER, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    if (response != null) {
+                        System.out.println("data : "+jsonObject.toString());
+                        if(jsonObject.optString("id") != null){
+                            System.out.println("STATUS UPDATED OF REQUEST ID : "+jsonObject.optString("id"));
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    displayMessage(e.toString());
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+            }
+
+        }) {
+
+
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("rideid", rideId);
+                params.put("status", status);
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                return headers;
+            }
+
+        };
+
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+
 
     }
 
@@ -230,8 +289,11 @@ public class HistoryDetails extends AppCompatActivity {
         });
 
         btnStartRide.setOnClickListener(view -> {
+
+            updateStatusForSingleUserRide(request_id,"STARTED");
             Toast.makeText(getApplication(), "Start Ride", Toast.LENGTH_SHORT).show();
             String res = null;
+
             try {
                 JSONArray array = new JSONArray(history_response);
                 for (int i = 0; i < array.length(); i++) {
@@ -268,6 +330,8 @@ public class HistoryDetails extends AppCompatActivity {
 //            });
 //            GoToFragment();
             i.putExtra("datas", array.toString());
+            i.putExtra("current_trip_request_id", request_id);
+            i.putExtra("current_trip_user_id", current_trip_user_id);
             i.putExtra("type", "SCHEDULED");
             startActivity(i);
             finish();
@@ -544,6 +608,9 @@ public class HistoryDetails extends AppCompatActivity {
         customDialog.setCancelable(false);
         customDialog.show();
 
+        Toast.makeText(getApplicationContext(), "ID : "+jsonObject.optString("id"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Intent ID : "+request_id, Toast.LENGTH_SHORT).show();
+
         JsonArrayRequest jsonArrayRequest = new
                 JsonArrayRequest(URLHelper.UPCOMING_TRIP_DETAILS + "?request_id=" +
                         jsonObject.optString("id"),
@@ -551,8 +618,8 @@ public class HistoryDetails extends AppCompatActivity {
 //                            setDetails(response);
 
                             history_response = response.toString();
-                            Log.e("Get Upcoming Details", history_response);
-                            utils.print("Get Upcoming Details", response.toString());
+                            Log.e("Trip Details", history_response);
+                            utils.print("Trip Details", response.toString());
                             customDialog.dismiss();
                             parentLayout.setVisibility(View.VISIBLE);
 
@@ -570,6 +637,82 @@ public class HistoryDetails extends AppCompatActivity {
                 };
 
         ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
+
+
+
+//
+//        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.UPCOMMING_TRIPS_DETAILS_ONE, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//
+//
+//                try {
+//                    JSONArray jsonArray = new JSONArray(response);
+//                    System.out.println("size : " + jsonArray.length());
+//                    System.out.println("data : " + jsonArray);
+//                    System.out.println("data : " + jsonArray.getString(0));
+//
+//                    history_response = jsonArray.toString();
+//                    Log.e("Trip Details", history_response);
+//                    utils.print("Trip Details", jsonArray.toString());
+//                    customDialog.dismiss();
+//                    parentLayout.setVisibility(View.VISIBLE);
+//
+//                    Log.v("GetPaymentList Details", jsonArray.toString());
+//                    if (jsonArray != null && jsonArray.length() > 0) {
+//                        for (int i = 0; i < jsonArray.length(); i++) {
+//                            if (jsonArray.optJSONObject(i) != null) {
+//
+//
+//
+//
+//
+//                            }
+//                        }
+//
+//                    }
+//                    if ((customDialog != null) && (customDialog.isShowing()))
+//                        customDialog.dismiss();
+//                    parentLayout.setVisibility(View.VISIBLE);
+//
+//                } catch (JSONException e) {
+//
+//                    displayMessage(e.toString());
+//
+//                }
+//
+//
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(HistoryDetails.this, "Error Found", Toast.LENGTH_SHORT).show();
+//            }
+//
+//        }) {
+//
+//
+//            @Override
+//            public Map<String, String> getParams() {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("request_id", jsonObject.optString("id"));
+//                return params;
+//            }
+//
+//            @Override
+//            public Map<String, String> getHeaders() {
+//                HashMap<String, String> headers = new HashMap<String, String>();
+//                headers.put("X-Requested-With", "XMLHttpRequest");
+//                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+//                return headers;
+//            }
+//
+//        };
+//
+//        ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+
     }
 
 

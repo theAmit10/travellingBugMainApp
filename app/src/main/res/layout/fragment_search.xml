@@ -2204,9 +2204,15 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-
                                     android:elevation="@dimen/_5sdp"
                                     android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:layout_gravity="center_vertical"
+                                        android:layout_marginStart="@dimen/_15sdp"
+                                        android:src="@drawable/ic_calender"/>
 
                                     <com.travel.travellingbug.utills.MyTextView
                                         android:id="@+id/calendertv"
@@ -2214,8 +2220,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_margin="@dimen/_5sdp"
                                         android:layout_weight="1"
-                                        android:drawableLeft="@drawable/ic_calender"
-                                        android:drawablePadding="@dimen/_10sdp"
+
                                         android:padding="@dimen/_10sdp"
                                         android:text="Today"
                                         android:textColor="@color/black"
@@ -2235,11 +2240,11 @@
                                         android:layout_height="wrap_content"
                                         android:layout_margin="@dimen/_5sdp"
                                         android:drawableLeft="@drawable/ic_person"
-                                        android:drawablePadding="@dimen/_5sdp"
                                         android:padding="@dimen/_10sdp"
+
                                         android:text="1"
                                         android:textColor="@color/colorDarkGray"
-                                        android:textSize="@dimen/_13sdp"
+                                        android:textSize="@dimen/_12sdp"
                                         android:textStyle="bold" />
 
 
