@@ -122,6 +122,9 @@
             android:name="com.travel.travellingbug.ui.activities.VehicleDetailsColorActivity"
             android:exported="false" />
         <activity
+            android:name="com.travel.travellingbug.ui.activities.DriverProfileActivity"
+            android:exported="false" />
+        <activity
             android:name="com.travel.travellingbug.ui.activities.VehicleDetailsTypeActivity"
             android:exported="false" />
         <activity

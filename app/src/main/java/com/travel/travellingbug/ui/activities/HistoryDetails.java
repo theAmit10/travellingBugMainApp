@@ -239,6 +239,54 @@ public class HistoryDetails extends AppCompatActivity {
         ClassLuxApp.getInstance().addToRequestQueue(request);
 
 
+        StringRequest requestAll = new StringRequest(Request.Method.POST, URLHelper.UPDATE_ALL_USER_RIDE_STATUS_BY_PROVIDER, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    if (response != null) {
+                        System.out.println("data : "+jsonObject.toString());
+                        if(jsonObject.optString("id") != null){
+                            System.out.println("STATUS UPDATED OF REQUEST ID : "+jsonObject.optString("id"));
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    displayMessage(e.toString());
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+            }
+
+        }) {
+
+
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("rideid", rideId);
+                return params;
+            }
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                return headers;
+            }
+
+        };
+
+        ClassLuxApp.getInstance().addToRequestQueue(requestAll);
+
+
     }
 
     public void findViewByIdAndInitialize() {

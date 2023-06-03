@@ -95,6 +95,9 @@
             android:name=".ui.activities.VehicleDetailsColorActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.activities.DriverProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.VehicleDetailsTypeActivity"
             android:exported="false" />
         <activity

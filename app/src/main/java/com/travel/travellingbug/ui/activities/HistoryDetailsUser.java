@@ -259,6 +259,71 @@ public class HistoryDetailsUser extends AppCompatActivity {
         }
     }
 
+    private void updateStatusForSingleUserRide(String rideId, String status) {
+        customDialog = new CustomDialog(context);
+        customDialog.setCancelable(false);
+        if (customDialog != null)
+            customDialog.show();
+        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.CHANGE_STATUS_BY_USER, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if ((customDialog != null) && (customDialog.isShowing()))
+                    customDialog.dismiss();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    if (response != null) {
+                        System.out.println("data : " + jsonObject.toString());
+
+                        Toast.makeText(HistoryDetailsUser.this, "Successfully cancelled", Toast.LENGTH_SHORT).show();
+
+//                        jsonObject.optString("error");
+                        if (jsonObject.optString("id") != null) {
+                            System.out.println("STATUS UPDATED OF REQUEST ID : " + jsonObject.optString("id"));
+                        }
+                    }
+
+                } catch (JSONException e) {
+                    displayMessage(e.toString());
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                if ((customDialog != null) && (customDialog.isShowing()))
+                    customDialog.dismiss();
+            }
+
+        }) {
+
+
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("rideid", rideId);
+                params.put("status", status);
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                return headers;
+            }
+
+        };
+
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+    }
+
     private void showreasonDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         View view = LayoutInflater.from(context).inflate(R.layout.cancel_dialog, null);
@@ -270,7 +335,9 @@ public class HistoryDetailsUser extends AppCompatActivity {
                 .setCancelable(true);
         submitBtn.setOnClickListener(v -> {
             reason = reasonEtxt.getText().toString();
-            cancelRequest();
+//            cancelRequest();
+            updateStatusForSingleUserRide(request_id, "CANCELLED");
+
         });
         AlertDialog alert = builder.create();
         alert.show();
@@ -405,6 +472,9 @@ public class HistoryDetailsUser extends AppCompatActivity {
                             if (jsonArray.optJSONObject(i) != null) {
 //                            Picasso.get().load(jsonArray.optJSONObject(0).optString("static_map")).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(tripImg);
                                 Log.e("History Details", "onResponse: Currency" + SharedHelper.getKey(context, "currency"));
+
+
+
                                 JSONObject providerObj = jsonArray.optJSONObject(i).optJSONObject("provider");
                                 if (providerObj != null) {
                                     driver = new Driver();
@@ -459,6 +529,15 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                 } else {
                                     paymentTypeImg.setImageResource(R.drawable.visa_icon);
                                 }
+
+
+                                JSONArray filterJsonArray = jsonArray.optJSONObject(i).optJSONArray("filters");
+
+//                                if(filterJsonArray.length() > 0){
+//
+//                                }
+
+
 
 
 

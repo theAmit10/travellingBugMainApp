@@ -68,6 +68,8 @@ public class OnGoingTrips extends Fragment {
 
     String noofseat = "", request_id = "", s_address = "", d_address = "", s_date = "", s_time = "";
 
+    String fare= "";
+
     String booking_id="",status="",payment_mode="",estimated_fare="",verification_code="",static_map="",first_name="",mobile="",avatar="",rating="";
 
 
@@ -347,6 +349,8 @@ public class OnGoingTrips extends Fragment {
 
                         holder.tripId.setText(jsonArray.optJSONObject(position).optString("booking_id"));
 
+                        holder.availableSeat.setText(jsonArray.optJSONObject(position).optString("availablecapacity") +" Seat left");
+
                         holder.listitemrating.setRating(Float.parseFloat("3.0"));
                         request_id = jsonArray.optJSONObject(position).optString("id");
 
@@ -375,6 +379,7 @@ public class OnGoingTrips extends Fragment {
                 JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
                 if (serviceObj != null) {
                     holder.car_name.setText(serviceObj.optString("name"));
+                    holder.tripAmount.setText("₹ "+serviceObj.optString("fixed"));
                     //holder.tripAmount.setText(SharedHelper.getKey(context, "currency")+serviceObj.optString("price"));
                     Picasso.get().load(serviceObj.optString("image"))
                             .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
@@ -383,11 +388,18 @@ public class OnGoingTrips extends Fragment {
                 e.printStackTrace();
             }
 
+
+
             // getting firstname
             try {
                 JSONObject providerObj = jsonArray.getJSONObject(position).optJSONObject("provider");
                 if (providerObj != null) {
                     holder.name.setText(providerObj.optString("first_name"));
+                    if(providerObj.optString("rating") != null){
+                        holder.listitemrating.setRating(Float.parseFloat(providerObj.optString("rating")));
+                        holder.rateVal.setText("( " +providerObj.optString("rating")+" Reviews )");
+
+                    }
 
                     Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerObj.optString("avatar"))
                             .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.driver_image);
@@ -453,12 +465,31 @@ public class OnGoingTrips extends Fragment {
                 }
 
 
+
+                try {
+                    JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
+                    if (serviceObj != null) {
+
+//                        holder.tripAmount.setText("₹ "+serviceObj.optString("fixed"));
+                        if(serviceObj.optString("fixed") != null){
+                            fare = "₹ "+serviceObj.optString("fixed");
+                        }
+                        //holder.tripAmount.setText(SharedHelper.getKey(context, "currency")+serviceObj.optString("price"));
+//                        Picasso.get().load(serviceObj.optString("image"))
+//                                .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
                 Toast.makeText(getContext(), "" + request_id, Toast.LENGTH_SHORT).show();
                 intent.putExtra("request_id", request_id);
                 intent.putExtra("s_address", s_address);
                 intent.putExtra("d_address", d_address);
                 intent.putExtra("s_date", s_date);
                 intent.putExtra("s_time", s_time);
+                intent.putExtra("fare", fare);
                 intent.putExtra("seat_left", jsonArray.optJSONObject(position).optString("availablecapacity"));
                 startActivity(intent);
 
@@ -576,6 +607,8 @@ public class OnGoingTrips extends Fragment {
             ImageView tripImg, driver_image;
             Button btnCancel, btnStart;
 
+            TextView availableSeat;
+
             RatingBar listitemrating;
 
             LinearLayout pContainer;
@@ -598,6 +631,9 @@ public class OnGoingTrips extends Fragment {
                 name = itemView.findViewById(R.id.name);
                 rateVal = itemView.findViewById(R.id.rateVal);
                 pContainer = itemView.findViewById(R.id.pContainer);
+                availableSeat = itemView.findViewById(R.id.availableSeat);
+
+
 
 //                itemView.setOnClickListener(view -> {
 //                    Intent intent = new Intent(getActivity(), RideRequest.class);

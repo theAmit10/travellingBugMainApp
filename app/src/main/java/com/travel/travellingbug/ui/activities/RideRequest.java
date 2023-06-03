@@ -52,7 +52,9 @@ public class RideRequest extends AppCompatActivity {
     RelativeLayout errorLayout;
     RideRequest.UpcomingsAdapter upcomingsAdapter;
 
-    String noofseat="",request_id="", person_id="",s_address="",d_address="",s_date = "",s_time = "",seat_left = "", profile_image = "";
+    String noofseat="",request_id="", person_id="",s_address="",d_address="",s_date = "",s_time = "",seat_left = "", profile_image = "",fare = "";
+
+    String rating="0";
 
 
 
@@ -350,6 +352,7 @@ public class RideRequest extends AppCompatActivity {
         s_date = getIntent().getStringExtra("s_date");
         s_time = getIntent().getStringExtra("s_time");
         seat_left = getIntent().getStringExtra("seat_left");
+        fare = getIntent().getStringExtra("fare");
 
         System.out.println("request_id : "+request_id);
     }
@@ -384,13 +387,14 @@ public class RideRequest extends AppCompatActivity {
 
             holder.saddress.setText(s_address);
             holder.dropLocation.setText(d_address);
+            holder.fare.setText(fare);
 
             try {
                 if (!jsonArray.optJSONObject(position).optString("first_name", "").isEmpty()) {
 
 
 
-                    holder.listitemrating.setRating(Float.parseFloat("3.0"));
+//                    holder.listitemrating.setRating(Float.parseFloat("3.0"));
                     holder.nametv.setText(jsonArray.optJSONObject(position).optString("first_name"));
                     person_id = jsonArray.optJSONObject(position).optString("id");
 
@@ -420,6 +424,13 @@ public class RideRequest extends AppCompatActivity {
 
 
                                     profile_image = URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar");
+
+                                    if(jsonObject.optString("rating") != null){
+                                        holder.listitemrating.setRating(Float.parseFloat(jsonObject.optString("rating")));
+                                        holder.ratingVal.setText("( "+Float.parseFloat(jsonObject.optString("rating"))+" Reviews )");
+
+                                        rating =""+ Float.parseFloat(jsonObject.optString("rating"));
+                                    }
 
 
                                     Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar"))
@@ -540,8 +551,8 @@ public class RideRequest extends AppCompatActivity {
                 Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
                 intent.putExtra("post_value", jsonArray.optJSONObject(position).toString());
                 intent.putExtra("first_name", jsonArray.optJSONObject(position).optString("first_name"));
-                intent.putExtra("rating", "3");
-                intent.putExtra("rating_val", "(12 Reviews)");
+                intent.putExtra("rating", rating);
+                intent.putExtra("rating_val", "( "+rating+" Reviews )");
                 intent.putExtra("profile_image", profile_image);
                 intent.putExtra("user_id", jsonArray.optJSONObject(position).optString("user_id"));
                 intent.putExtra("s_address", s_address);
@@ -549,7 +560,7 @@ public class RideRequest extends AppCompatActivity {
                 intent.putExtra("pick_up_date",s_date );
                 intent.putExtra("pick_up_time", s_time);
                 intent.putExtra("noofseat", jsonArray.optJSONObject(position).optString("noofseats"));
-                intent.putExtra("fare", "1100");
+                intent.putExtra("fare", fare);
                 intent.putExtra("request_id", jsonArray.optJSONObject(position).optString(request_id));
                 intent.putExtra("tag", "RideRequestDetails");
                 intent.putExtra("person_id",jsonArray.optJSONObject(position).optString("id"));

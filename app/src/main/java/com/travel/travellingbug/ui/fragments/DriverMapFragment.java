@@ -107,6 +107,7 @@ import com.travel.travellingbug.ui.activities.PickUpNotes;
 import com.travel.travellingbug.ui.activities.Profile;
 import com.travel.travellingbug.ui.activities.ShowProfile;
 import com.travel.travellingbug.ui.activities.SplashScreen;
+import com.travel.travellingbug.ui.adapters.ItemClickListener;
 import com.travel.travellingbug.ui.adapters.PassengerCallAdapter;
 import com.travel.travellingbug.utills.LocationTracking;
 import com.travel.travellingbug.utills.Utilities;
@@ -149,6 +150,8 @@ public class DriverMapFragment extends Fragment implements
     private static SupportMapFragment mapFragment = null;
     private static int deviceHeight;
     private static int deviceWidth;
+
+    int selected_user = 0;
 
     @BindView(R.id.btnSearch)
     Button btnSearch;
@@ -268,6 +271,8 @@ public class DriverMapFragment extends Fragment implements
     TextView txt04InvoiceId;
     @BindView(R.id.txtTotal)
     TextView txtTotal;
+
+    ItemClickListener itemClickListener;
 
     String passenger_user_id = "";
     @BindView(R.id.txt04BasePrice)
@@ -769,6 +774,13 @@ public class DriverMapFragment extends Fragment implements
         TextView leavingtv = view.findViewById(R.id.leavingtv);
         TextView goingtv = view.findViewById(R.id.goingtv);
         passengerCallRv = view.findViewById(R.id.passengerCallRv);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+
+        passengerCallRv.setLayoutManager(linearLayoutManager);
+        passengerCallRv.setNestedScrollingEnabled(false);
+
+
         txtPickUpNotes = view.findViewById(R.id.txtPickUpNotes);
 
         txtPickUpNotes.setOnClickListener(new View.OnClickListener() {
@@ -1861,6 +1873,7 @@ public class DriverMapFragment extends Fragment implements
 //    }
 
     private void addAllPassengerDataToView() {
+
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.UPCOMMING_TRIPS_DETAILS_ONE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -1894,6 +1907,9 @@ public class DriverMapFragment extends Fragment implements
 
                                     passenger_user_id = filtersJsonArray.getJSONObject(i).getString("user_id");
 
+                                    JSONObject filterJsonObject = filtersJsonArray.getJSONObject(i);
+
+
 
                                     // Getting User details
                                     StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
@@ -1912,8 +1928,42 @@ public class DriverMapFragment extends Fragment implements
                                                     System.out.println("data username : " + jsonObjectUser.optString("first_name"));
                                                     userProfileImage = jsonObjectUser.optString("avatar");
 
-                                                    passengerCallModelArrayList.add(new PassengerCallModel(jsonObjectUser.optString("avatar"), jsonObjectUser.optString("id")));
-                                                    PassengerCallAdapter passengerCallAdapter = new PassengerCallAdapter(getContext(), passengerCallModelArrayList);
+
+
+                                                    if(passengerCallModelArrayList.size() < filtersJsonArray.length()){
+
+//                                                        this.image = image;
+//                                                        this.request_id = request_id;
+//                                                        this.provider_id = provider_id;
+//                                                        this.status = status;
+//                                                        this.provider_status = provider_status;
+//                                                        this.noofseats = noofseats;
+//                                                        this.verification_code = verification_code;
+//                                                        this.total_amount = total_amount;
+//                                                        this.payment_status = payment_status;
+//                                                        this.payment_mode = payment_mode;
+
+
+                                                        PassengerCallModel passengerCallModel = new PassengerCallModel();
+                                                        passengerCallModel.setImage(jsonObjectUser.optString("avatar"));
+                                                        passengerCallModel.setRequest_id(filterJsonObject.optString("request_id"));
+                                                        passengerCallModel.setProvider_id(filterJsonObject.optString("provider_id"));
+                                                        passengerCallModel.setStatus(filterJsonObject.optString("status"));
+                                                        passengerCallModel.setProvider_status(filterJsonObject.optString("provider_status"));
+                                                        passengerCallModel.setNoofseats(filterJsonObject.optString("noofseats"));
+                                                        passengerCallModel.setVerification_code(filterJsonObject.optString("verification_code"));
+                                                        passengerCallModel.setTotal_amount(filterJsonObject.optString("total_amount"));
+                                                        passengerCallModel.setPayment_status(filterJsonObject.optString("payment_status"));
+                                                        passengerCallModel.setPayment_mode("CASH");
+                                                        passengerCallModel.setUser_id(filterJsonObject.optString("user_id"));
+
+                                                        passengerCallModelArrayList.add(passengerCallModel);
+                                                        Toast.makeText(getContext(), "Added passenger details", Toast.LENGTH_SHORT).show();
+
+//                                                        passengerCallModelArrayList.add(new PassengerCallModel(jsonObjectUser.optString("avatar"), jsonObjectUser.optString("id")));
+                                                    }
+
+                                                    PassengerCallAdapter passengerCallAdapter = new PassengerCallAdapter(getContext(), passengerCallModelArrayList,itemClickListener);
                                                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
                                                     passengerCallRv.setAdapter(passengerCallAdapter);
                                                     passengerCallRv.setLayoutManager(linearLayoutManager);
@@ -2078,9 +2128,8 @@ public class DriverMapFragment extends Fragment implements
 
             if (helper.isConnectingToInternet()) {
 
-                String url = URLHelper.BASE + "api/provider/trip?latitude=" + crt_lat + "&longitude=" + crt_lng;
+                String url = URLHelper.BASE + "api/provider/trip?latitude=" + crt_lat + "&longitude=" + crt_lng+"&id="+current_trip_request_id;
                 Log.e(TAG, "URL:" + url);
-
                 utils.print("Destination Current Lat", "" + crt_lat);
                 utils.print("Destination Current Lng", "" + crt_lng);
 
@@ -2089,14 +2138,11 @@ public class DriverMapFragment extends Fragment implements
                         errorLayout.setVisibility(View.GONE);
                     }
                     Log.e("Schedule CheckStatus", "" + response.toString());
-
                     JSONArray requestJsonArray = response.optJSONArray("requests");
                     System.out.println("REQUEST LENGTH : " + requestJsonArray.length());
 
 
                     if (response.optJSONArray("requests").length() > 0) {
-
-
                         if (requestJsonArray.length() > 0) {
                             for (int i = 0; i < requestJsonArray.length(); i++) {
                                 try {
@@ -2117,19 +2163,76 @@ public class DriverMapFragment extends Fragment implements
                                                 System.out.println("REQUEST OBJ ONE : " + jsonObject.toString());
                                                 System.out.println("REQUEST OBJ ONE booking_id : " + jsonObject.optString("booking_id"));
 
-
                                                 bookingId = jsonObject.optString("booking_id");
                                                 address = jsonObject.optString("s_address");
                                                 daddress = jsonObject.optString("d_address");
+
+                                                itemClickListener=new ItemClickListener() {
+                                                    @Override
+                                                    public void onClick(int position, PassengerCallModel user) {
+
+                                                        System.out.println("CLICKED USER DETAILS : "+user.getUser_id());
+                                                        Toast.makeText(getContext(), "CLICKED USER DETAILS : "+user.getUser_id(), Toast.LENGTH_SHORT).show();
+                                                        userId = user.getUser_id();
+
+                                                        selected_user =  position;
+
+                                                        // Display toast
+                                                        Toast.makeText(getContext(),"Position : "
+                                                                +position +" || Value : "+value,Toast.LENGTH_SHORT).show();
+                                                    }
+                                                };
 
                                                 JSONArray filterArray = jsonObject.getJSONArray("filters");
                                                 if (jsonObject.getJSONArray("filters") != null) {
                                                     System.out.println("REQUEST OBJ ONE filterArray : " + filterArray.length());
                                                     if (filterArray.length() > 0) {
                                                         for (int j = 0; j < filterArray.length(); j++) {
-                                                            JSONObject filterJsonObj = filterArray.getJSONObject(j);
+                                                            JSONObject filterJsonObj = filterArray.getJSONObject(selected_user);
 
                                                             userId = filterJsonObj.optString("user_id");
+
+//                                                            addAllPassengerDataToView();
+
+
+                                                            System.out.println("length passengerCallModelArrayList : "+passengerCallModelArrayList.size());
+                                                            System.out.println("length filterArray.length() : "+filterArray.length());
+
+                                                            if(passengerCallModelArrayList.size() < filterArray.length()) {
+                                                                System.out.println("length passengerCallModelArrayList org : "+passengerCallModelArrayList.size());
+                                                                System.out.println("length filterArray.length() org : "+filterArray.length());
+
+                                                                PassengerCallModel passengerCallModel = new PassengerCallModel();
+//                                                                passengerCallModel.setImage(filterJsonObj.optString("avatar"));
+                                                                passengerCallModel.setRequest_id(filterJsonObj.optString("request_id"));
+                                                                passengerCallModel.setProvider_id(filterJsonObj.optString("provider_id"));
+                                                                passengerCallModel.setStatus(filterJsonObj.optString("status"));
+                                                                passengerCallModel.setProvider_status(filterJsonObj.optString("provider_status"));
+                                                                passengerCallModel.setNoofseats(filterJsonObj.optString("noofseats"));
+                                                                passengerCallModel.setVerification_code(filterJsonObj.optString("verification_code"));
+                                                                passengerCallModel.setTotal_amount(filterJsonObj.optString("total_amount"));
+                                                                passengerCallModel.setPayment_status(filterJsonObj.optString("payment_status"));
+                                                                passengerCallModel.setPayment_mode("CASH");
+                                                                passengerCallModel.setUser_id(filterJsonObj.optString("user_id"));
+
+                                                                passengerCallModelArrayList.add(passengerCallModel);
+                                                                Toast.makeText(getContext(), "Added passenger details", Toast.LENGTH_SHORT).show();
+
+
+
+                                                                PassengerCallAdapter passengerCallAdapter = new PassengerCallAdapter(getContext(), passengerCallModelArrayList, itemClickListener);
+                                                                passengerCallRv.setAdapter(passengerCallAdapter);
+
+
+                                                            }
+
+//                                                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+//                                                            passengerCallRv.setLayoutManager(linearLayoutManager);
+//                                                            passengerCallRv.setNestedScrollingEnabled(false);
+
+                                                            if(filterArray.length() == 1){
+                                                                passengerCallRv.setVisibility(View.GONE);
+                                                            }
 
 
                                                             System.out.println("userid : " + userId);
@@ -2233,7 +2336,7 @@ public class DriverMapFragment extends Fragment implements
 
                                                                                             } else if (filterJsonObj.optString("provider_status").equals("STARTED")) {
 //                                                        setValuesTo_ll_03_contentLayer_service_flow(statusResponses, response);
-                                                                                                setValuesTo_ll_03_contentLayer_service_flow(statusResponses, statusResponse);
+                                                                                                setValuesTo_ll_03_contentLayer_service_flow(requestJsonArray, jsonObject);
 
                                                                                                 ll_03_contentLayer_service_flow.setVisibility(View.VISIBLE);
                                                                                                 try {
@@ -3437,106 +3540,141 @@ public class DriverMapFragment extends Fragment implements
 //        statusResponse = jsonObject;
 //        request_id = jsonObject.optString("id");
 
-        addAllPassengerDataToView();
+//        addAllPassengerDataToView();
 
 
-        JSONObject statusResponse = new JSONObject();
+        itemClickListener=new ItemClickListener() {
+            @Override
+            public void onClick(int position, PassengerCallModel user) {
+
+                System.out.println("CLICKED USER DETAILS : "+user.getUser_id());
+                Toast.makeText(getContext(), "CLICKED USER DETAILS : "+user.getUser_id(), Toast.LENGTH_SHORT).show();
+                // Display toast
+                Toast.makeText(getContext(),"Position : "
+                        +position +" || Value : "+value,Toast.LENGTH_SHORT).show();
+            }
+        };
+
+
+//        JSONObject statusResponse = new JSONObject();
+        JSONObject statusResponse = responess;
 
         Log.e(TAG, "Driver array statusResponse: " + statusResponse);
         Log.e(TAG, "Driver obj statusResponse: " + statusResponse);
-        try {
-            statusResponse = status.getJSONObject(0).getJSONObject("request");
-            lblCmfrmSourceAddress.setText(statusResponse.optString("s_address"));
-            lblCmfrmDestAddress.setText(statusResponse.optString("d_address"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        //            statusResponse = status.getJSONObject(0).getJSONObject("request");
+        statusResponse = responess;
+        lblCmfrmSourceAddress.setText(statusResponse.optString("s_address"));
+        lblCmfrmDestAddress.setText(statusResponse.optString("d_address"));
 
         //            statusResponse = status.getJSONObject(0).getJSONObject("request");
         lblCmfrmSourceAddress.setText(responess.optString("s_address"));
         lblCmfrmDestAddress.setText(responess.optString("d_address"));
-//        Toast.makeText(getContext(), "Driver Dest Address : "+responess.optString("s_address"), Toast.LENGTH_SHORT).show();
+
 
 
 //        userId = filterJsonObj.optString("user_id");
+        JSONArray filterJsonArray = statusResponse.optJSONArray("filters");
+        for(int i=0 ; i< filterJsonArray.length(); i++)
+        {
+            try {
+                JSONObject filterJsonOBj = filterJsonArray.getJSONObject(i);
+
+                if(filterJsonOBj.optString("user_id").equalsIgnoreCase(userId)){
 
 
-        // Getting User details
-        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
 
-                System.out.println("Adding User ride data");
+                    // Getting User details
+                    StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
 
-                try {
-                    JSONObject jsonObjectUser = new JSONObject(response);
+                            System.out.println("Adding User ride data");
 
-                    if (response != null) {
-                        System.out.println("data : " + jsonObjectUser.toString());
-                        txt03UserName.setText(jsonObjectUser.optString("first_name"));
-                        userProfileImage = jsonObjectUser.optString("avatar");
-                        rating = jsonObjectUser.optString("rating");
-                        ratingVal = jsonObjectUser.optString("rating");
+                            try {
+                                JSONObject jsonObjectUser = new JSONObject(response);
 
-
-                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonObjectUser.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(img03User);
+                                if (response != null) {
+                                    System.out.println("data : " + jsonObjectUser.toString());
+                                    txt03UserName.setText(jsonObjectUser.optString("first_name"));
+                                    userProfileImage = jsonObjectUser.optString("avatar");
+                                    rating = jsonObjectUser.optString("rating");
+                                    ratingVal = jsonObjectUser.optString("rating");
 
 
-                        if (jsonObjectUser.optString("mobile") != null) {
-                            SharedHelper.putKey(getActivity(), "provider_mobile_no", "" + jsonObjectUser.optString("mobile"));
-                        } else {
-                            SharedHelper.putKey(getActivity(), "provider_mobile_no", "");
-                        }
+                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonObjectUser.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(img03User);
 
-                        img03User.setOnClickListener(v -> {
+
+                                    if (jsonObjectUser.optString("mobile") != null) {
+                                        SharedHelper.putKey(getActivity(), "provider_mobile_no", "" + jsonObjectUser.optString("mobile"));
+                                    } else {
+                                        SharedHelper.putKey(getActivity(), "provider_mobile_no", "");
+                                    }
+
+                                    img03User.setOnClickListener(v -> {
 //                            Intent intent = new Intent(getActivity(), ShowProfile.class);
 //                            intent.putExtra("user", userProfile);
 //                            startActivity(intent);
-                            Toast.makeText(getContext(), "" + txt03UserName.getText(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getContext(), "" + txt03UserName.getText(), Toast.LENGTH_SHORT).show();
 
-                        });
+                                    });
 
-                        if (jsonObjectUser.optString("rating") != null) {
-                            System.out.println("user rating : " + jsonObjectUser.optString("rating"));
+                                    if (jsonObjectUser.optString("rating") != null) {
+                                        System.out.println("user rating : " + jsonObjectUser.optString("rating"));
+
+                                    }
+
+                                }
+
+
+                            } catch (JSONException e) {
+                                displayMessage(e.toString());
+                            }
+
 
                         }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                        }
 
-                    }
+                    }) {
 
 
-                } catch (JSONException e) {
-                    displayMessage(e.toString());
+                        @Override
+                        public Map<String, String> getParams() {
+                            Map<String, String> params = new HashMap<>();
+                            params.put("id", userId);
+                            return params;
+                        }
+
+                        @Override
+                        public Map<String, String> getHeaders() {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+                            headers.put("X-Requested-With", "XMLHttpRequest");
+                            headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                            return headers;
+                        }
+
+                    };
+
+                    ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+
+
+
                 }
 
 
+            } catch (JSONException e) {
+                System.out.println("ERROR : "+e.getCause());
+                e.printStackTrace();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
-            }
-
-        }) {
+        }
 
 
-            @Override
-            public Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("id", userId);
-                return params;
-            }
 
-            @Override
-            public Map<String, String> getHeaders() {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("X-Requested-With", "XMLHttpRequest");
-                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
-                return headers;
-            }
-
-        };
-
-        ClassLuxApp.getInstance().addToRequestQueue(request);
 
 
 //        try {
@@ -3589,11 +3727,11 @@ public class DriverMapFragment extends Fragment implements
 
 //        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonObjectUser.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(img03User);
 
-        PassengerCallAdapter passengerCallAdapter = new PassengerCallAdapter(getContext(), passengerCallModelArrayList);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
-        passengerCallRv.setAdapter(passengerCallAdapter);
-        passengerCallRv.setLayoutManager(linearLayoutManager);
-        passengerCallRv.setNestedScrollingEnabled(false);
+//        PassengerCallAdapter passengerCallAdapter = new PassengerCallAdapter(getContext(), passengerCallModelArrayList);
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+//        passengerCallRv.setAdapter(passengerCallAdapter);
+//        passengerCallRv.setLayoutManager(linearLayoutManager);
+//        passengerCallRv.setNestedScrollingEnabled(false);
 
 
     }

@@ -203,6 +203,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     Context context;
     View rootView;
     SearchFragment.HomeFragmentListener listener;
+
+    CheckBox privateCarCheckBox;
     double wallet_balance;
     String ETA;
     TextView txtSelectedAddressSource;
@@ -265,6 +267,9 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     TextView btnRequestRides;
 
     LinearLayout addStopOverLL;
+
+    String scheduledTimeR = "";
+
     //    String scheduledDate = "";
 //    String scheduledTime = "";
     String cancalReason = "";
@@ -297,6 +302,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     RelativeLayout lnrWaitingForProviders;
     TextView lblNoMatch;
     ImageView imgCenter;
+
+    String scheduledDateR = "";
 
     RelativeLayout paymentLayout;
 
@@ -762,6 +769,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         txtSelectedAddressSource = rootView.findViewById(R.id.txtSelectedAddressSource);
         ivTopFav = rootView.findViewById(R.id.ivTopFav);
         addStopOverLL = rootView.findViewById(R.id.addStopOverLL);
+        privateCarCheckBox = rootView.findViewById(R.id.privateCarCheckBox);
 
 //        <!-- Request to providers-->
 
@@ -885,6 +893,139 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         ImgConfrmCabType = rootView.findViewById(R.id.ImgConfrmCabType);
         tvZoneMsg = rootView.findViewById(R.id.tvZoneMsg);
         // serviceItemPrice =  rootView.findViewById(R.id.serviceItemPrice);
+
+       privateCarCheckBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+           if(privateCarCheckBox.isChecked()){
+
+               try {
+                   Calendar mcurrentTime = Calendar.getInstance();
+                   int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                   int minute = mcurrentTime.get(Calendar.MINUTE);
+                   TimePickerDialog mTimePicker;
+
+
+                   mTimePicker = new TimePickerDialog(getActivity(), android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new TimePickerDialog.OnTimeSetListener() {
+                       int callCount = 0;   //To track number of calls to onTimeSet()
+
+                       @Override
+                       public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+
+                           if (callCount == 0) {
+                               String choosedHour = "";
+                               String choosedMinute = "";
+                               String choosedTimeZone = "";
+                               String choosedTime = "";
+
+                               scheduledTimeR = selectedHour + ":" + selectedMinute;
+
+                               if (selectedHour > 12) {
+                                   choosedTimeZone = "PM";
+                                   selectedHour = selectedHour - 12;
+                                   if (selectedHour < 10) {
+                                       choosedHour = "0" + selectedHour;
+                                   } else {
+                                       choosedHour = "" + selectedHour;
+                                   }
+                               } else {
+                                   choosedTimeZone = "AM";
+                                   if (selectedHour < 10) {
+                                       choosedHour = "0" + selectedHour;
+                                   } else {
+                                       choosedHour = "" + selectedHour;
+                                   }
+                               }
+
+                               if (selectedMinute < 10) {
+                                   choosedMinute = "0" + selectedMinute;
+                               } else {
+                                   choosedMinute = "" + selectedMinute;
+                               }
+                               choosedTime = choosedHour + ":" + choosedMinute + " " + choosedTimeZone;
+
+                               if (scheduledDateR != "" && scheduledTimeR != "") {
+                                   Date date = null;
+                                   try {
+                                       date = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(scheduledDateR);
+                                   } catch (ParseException e) {
+                                       e.printStackTrace();
+                                   }
+                                   long milliseconds = date.getTime();
+                                   if (!DateUtils.isToday(milliseconds)) {
+//                                    timetv.setText(choosedTime);
+                                       System.out.println("time : " + choosedTime);
+                                   } else {
+                                       if (utils.checktimings(scheduledTimeR)) {
+//                                        timetv.setText(choosedTime);
+                                           System.out.println("time : " + choosedTime);
+                                       } else {
+                                           Toast toast = new Toast(getActivity());
+                                           Toast.makeText(getActivity(), getString(R.string.different_time), Toast.LENGTH_SHORT).show();
+                                       }
+                                   }
+                               } else {
+                                   Toast.makeText(getActivity(), getString(R.string.choose_date_time), Toast.LENGTH_SHORT).show();
+                               }
+                           }
+                           callCount++;
+                       }
+                   }, hour, minute, false);//Yes 24 hour time
+                   mTimePicker.setTitle("Select Time");
+                   mTimePicker.show();
+
+
+                   final Calendar c = Calendar.getInstance();
+                   int mYear = c.get(Calendar.YEAR); // current year
+                   int mMonth = c.get(Calendar.MONTH); // current month
+                   int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                   // date picker dialog
+                   datePickerDialog = new DatePickerDialog(getActivity(), android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,
+                           (view, year, monthOfYear, dayOfMonth) -> {
+
+                               // set day of month , month and year value in the edit text
+                               String choosedMonth = "";
+                               String choosedDate = "";
+                               String choosedDateFormat = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+                               scheduledDateR = choosedDateFormat;
+                               try {
+                                   choosedMonth = utils.getMonth(choosedDateFormat);
+                               } catch (ParseException e) {
+                                   e.printStackTrace();
+                               }
+                               if (dayOfMonth < 10) {
+                                   choosedDate = "0" + dayOfMonth;
+                               } else {
+                                   choosedDate = "" + dayOfMonth;
+                               }
+                               afterToday = Utilities.isAfterToday(year, monthOfYear, dayOfMonth);
+                               System.out.println("RETURN TIME : "+choosedDate + " " + choosedMonth + " " + year);
+//                        calendertv.setText(choosedDate + " " + choosedMonth + " " + year);
+                           }, mYear, mMonth, mDay);
+                   datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                   datePickerDialog.getDatePicker().setMaxDate((System.currentTimeMillis() - 1000) + (1000 * 60 * 60 * 24 * 7));
+                   datePickerDialog.show();
+
+               }catch (Exception e){
+                   System.out.println("ERROR ON RETURN DATE");
+               }
+
+
+           }
+       });
+
+
+        privateCarCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(privateCarCheckBox.isChecked()){
+                    System.out.println("Checked");
+                } else {
+                    System.out.println("Un-Checked");
+                }
+            }
+        });
+
+
+
 
 
 //        getCards();

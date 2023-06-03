@@ -57,6 +57,8 @@ public class FindRidesActivity extends AppCompatActivity {
 
     ImageView backArrow;
 
+    TextView date,time;
+
     String sc_address = "", dc_address = "", s_profileImage = "", s_name = "", s_carModleAndColor = "", s_date = "", s_time = "", s_fare = "", s_seat = "", s_id = "";
 
 
@@ -91,6 +93,9 @@ public class FindRidesActivity extends AppCompatActivity {
     private void setDataOnComponent() {
         from.setText(s_address);
         destination.setText(d_address);
+
+        date.setText(schedule_date);
+        time.setText(schedule_time);
     }
 
     private void clickHandler() {
@@ -133,6 +138,9 @@ public class FindRidesActivity extends AppCompatActivity {
         destination = findViewById(R.id.destination);
         errorLayout = findViewById(R.id.errorLayout);
         backArrow = findViewById(R.id.backArrow);
+
+        time = findViewById(R.id.time);
+        date = findViewById(R.id.date);
 
     }
 
@@ -622,13 +630,14 @@ public class FindRidesActivity extends AppCompatActivity {
                 }
             });
 
-            holder.driver_image.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(FindRidesActivity.this, DriverProfileActivity.class);
-                    startActivity(intent);
-                }
-            });
+//            holder.driver_image.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(FindRidesActivity.this, DriverProfileActivity.class);
+//                    intent.putExtra("user_id",jsonArray.optJSONObject(position).optString("user_id"));
+//                    startActivity(intent);
+//                }
+//            });
 
 //            holder.btnStart.setOnClickListener(view -> {
 //                //Toast.makeText(getActivity(),"Start Ride",Toast.LENGTH_SHORT).show();

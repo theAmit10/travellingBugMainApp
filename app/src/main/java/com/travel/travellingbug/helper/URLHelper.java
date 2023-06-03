@@ -140,6 +140,8 @@ public interface URLHelper {
 
     String UPDATE_SINGLE_USER_RIDE_STATUS_BY_PROVIDER = BASE + "api/provider/changestatusbyprovider";
 
+    String UPDATE_ALL_USER_RIDE_STATUS_BY_PROVIDER = BASE + "api/provider/ride_started";
+
     String ADD_VERIFICATION_CODE = BASE + "api/provider/addverificationcode";
 
     String CHECK_VERIFICATION_CODE = BASE + "api/provider/checkverificationcode";
@@ -155,6 +157,8 @@ public interface URLHelper {
     String RATE_TO_PROVIDER = BASE + "api/provider/rate/provider";
 
     String CHAT_API = BASE + "api/provider/firebase/sendchat";
+
+    String CHANGE_STATUS_BY_USER = "api/provider/changestatusbyuser";
 
 
 

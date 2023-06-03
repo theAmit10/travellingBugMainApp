@@ -3,7 +3,6 @@ package com.travel.travellingbug.ui.fragments;
 
 import android.Manifest;
 import android.animation.Animator;
-import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -34,7 +33,6 @@ import android.provider.Settings;
 import android.text.format.DateUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.SparseBooleanArray;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,7 +68,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.akexorcist.googledirection.DirectionCallback;
@@ -459,6 +456,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         } else {
 //            setUpMapIfNeeded();
+            if( customDialog.isShowing()){
+                customDialog.dismiss();
+            }
             MapsInitializer.initialize(getActivity());
         }
 
@@ -1302,7 +1302,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                new Handler().postDelayed(() -> getServiceList(), 500);
 //            }
 //        });
-        new Handler().postDelayed(() -> getServiceList(), 500);
+//        new Handler().postDelayed(() -> getServiceList(), 500);
 //        // checkStatus();
 
     }
@@ -1386,7 +1386,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     frmDest.setText("Going to");
                 }
 
-                getProvidersList("");
+//                getProvidersList("");
                 value++;
                 if ((customDialog != null) && (customDialog.isShowing()))
                     customDialog.dismiss();
@@ -2227,11 +2227,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                 customDialog.dismiss();
                             if (response.length() > 0) {
                                 currentPostion = 0;
-                                ServiceListAdapter serviceListAdapter = new ServiceListAdapter(response);
-                                rcvServiceTypes.setLayoutManager(new LinearLayoutManager(activity,
-                                        LinearLayoutManager.HORIZONTAL, false));
-                                rcvServiceTypes.setAdapter(serviceListAdapter);
-                                getProvidersList(SharedHelper.getKey(context, "service_type"));
+//                                ServiceListAdapter serviceListAdapter = new ServiceListAdapter(response);
+//                                rcvServiceTypes.setLayoutManager(new LinearLayoutManager(activity,
+//                                        LinearLayoutManager.HORIZONTAL, false));
+//                                rcvServiceTypes.setAdapter(serviceListAdapter);
+//                                getProvidersList(SharedHelper.getKey(context, "service_type"));
                             }
                             mMap.clear();
                             setValuesForSourceAndDestination();
@@ -2320,68 +2320,68 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
     }
 
-    void getProvidersList(String strTag) {
-        String providers_request = URLHelper.GET_PROVIDERS_LIST_API + "?" +
-                "latitude=" + current_lat +
-                "&longitude=" + current_lng +
-                "&service=" + strTag;
-
-        for (int i = 0; i < lstProviderMarkers.size(); i++) {
-            lstProviderMarkers.get(i).remove();
-        }
-
-        JsonArrayRequest jsonArrayRequest = new
-                JsonArrayRequest(providers_request,
-                        response -> {
-                            Utilities.print("GetProvidersList", response.toString());
-                            LatLngBounds.Builder builder = new LatLngBounds.Builder();
-                            for (int i = 0; i < response.length(); i++) {
-                                try {
-                                    JSONObject jsonObj = response.getJSONObject(i);
-                                    Utilities.print("GetProvidersList", jsonObj.getString("latitude")
-                                            + "," + jsonObj.getString("longitude"));
-                                    if (!jsonObj.getString("latitude").equalsIgnoreCase("")
-                                            && !jsonObj.getString("longitude").equalsIgnoreCase("")) {
-
-                                        Double proLat = Double.parseDouble(jsonObj.getString("latitude"));
-                                        Double proLng = Double.parseDouble(jsonObj.getString("longitude"));
-
-                                        Float rotation = 0.0f;
-
-                                        MarkerOptions markerOptions = new MarkerOptions()
-                                                .anchor(0.5f, 0.75f)
-                                                .position(new LatLng(proLat, proLng))
-                                                .rotation(rotation)
-                                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_provider_marker));
-
-                                        lstProviderMarkers.add(mMap.addMarker(markerOptions));
-
-                                        builder.include(new LatLng(proLat, proLng));
-                                    }
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-
-                        }, error -> {
-                    if (getContext() != null) {
-                        displayMessage(getString(R.string.something_went_wrong));
-                    }
-
-                }) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("X-Requested-With", "XMLHttpRequest");
-                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
-                        return headers;
-                    }
-                };
-
-        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
-
-    }
+//    void getProvidersList(String strTag) {
+//        String providers_request = URLHelper.GET_PROVIDERS_LIST_API + "?" +
+//                "latitude=" + current_lat +
+//                "&longitude=" + current_lng +
+//                "&service=" + strTag;
+//
+//        for (int i = 0; i < lstProviderMarkers.size(); i++) {
+//            lstProviderMarkers.get(i).remove();
+//        }
+//
+//        JsonArrayRequest jsonArrayRequest = new
+//                JsonArrayRequest(providers_request,
+//                        response -> {
+//                            Utilities.print("GetProvidersList", response.toString());
+//                            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+//                            for (int i = 0; i < response.length(); i++) {
+//                                try {
+//                                    JSONObject jsonObj = response.getJSONObject(i);
+//                                    Utilities.print("GetProvidersList", jsonObj.getString("latitude")
+//                                            + "," + jsonObj.getString("longitude"));
+//                                    if (!jsonObj.getString("latitude").equalsIgnoreCase("")
+//                                            && !jsonObj.getString("longitude").equalsIgnoreCase("")) {
+//
+//                                        Double proLat = Double.parseDouble(jsonObj.getString("latitude"));
+//                                        Double proLng = Double.parseDouble(jsonObj.getString("longitude"));
+//
+//                                        Float rotation = 0.0f;
+//
+//                                        MarkerOptions markerOptions = new MarkerOptions()
+//                                                .anchor(0.5f, 0.75f)
+//                                                .position(new LatLng(proLat, proLng))
+//                                                .rotation(rotation)
+//                                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_provider_marker));
+//
+//                                        lstProviderMarkers.add(mMap.addMarker(markerOptions));
+//
+//                                        builder.include(new LatLng(proLat, proLng));
+//                                    }
+//
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//
+//                        }, error -> {
+//                    if (getContext() != null) {
+//                        displayMessage(getString(R.string.something_went_wrong));
+//                    }
+//
+//                }) {
+//                    @Override
+//                    public Map<String, String> getHeaders() throws AuthFailureError {
+//                        HashMap<String, String> headers = new HashMap<String, String>();
+//                        headers.put("X-Requested-With", "XMLHttpRequest");
+//                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
+//                        return headers;
+//                    }
+//                };
+//
+//        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
+//
+//    }
 
     public void sendRequestToGetProvider() {
         customDialog = new CustomDialog(getActivity());
@@ -2944,7 +2944,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             frmDest.setText("");
             mapClear();
             flowValue = 0;
-            getProvidersList("");
+//            getProvidersList("");
             layoutChanges();
             if (!current_lat.equalsIgnoreCase("") && !current_lng.equalsIgnoreCase("")) {
                 LatLng myLocation = new LatLng(Double.parseDouble(current_lat), Double.parseDouble(current_lng));
@@ -3351,11 +3351,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             if (response.length() > 0) {
                 currentPostion = 0;
 
-                ServiceListAdapter serviceListAdapter = new ServiceListAdapter(response);
-                rcvServiceTypes.setLayoutManager(new LinearLayoutManager(activity,
-                        LinearLayoutManager.HORIZONTAL, false));
-                rcvServiceTypes.setAdapter(serviceListAdapter);
-                getProvidersList(SharedHelper.getKey(context, "service_type"));
+//                ServiceListAdapter serviceListAdapter = new ServiceListAdapter(response);
+//                rcvServiceTypes.setLayoutManager(new LinearLayoutManager(activity,
+//                        LinearLayoutManager.HORIZONTAL, false));
+//                rcvServiceTypes.setAdapter(serviceListAdapter);
+////                getProvidersList(SharedHelper.getKey(context, "service_type"));
             } else {
                 displayMessage(getString(R.string.no_service));
             }
@@ -3546,7 +3546,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
                                     rcvServiceTypes.setVisibility(View.VISIBLE);
                                     tvZoneMsg.setVisibility(View.GONE);
-                                    getServiceList();
+//                                    getServiceList();
                                 } else {
                                     rcvServiceTypes.setVisibility(View.GONE);
                                     tvZoneMsg.setVisibility(View.VISIBLE);
@@ -3898,7 +3898,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         flowValue = 0;
                         isRequestProviderScreen = false;
                         sourceDestLayout.setVisibility(View.VISIBLE);
-                        getProvidersList("");
+//                        getProvidersList("");
                         frmSource.setOnClickListener(new SearchFragment.OnClick());
                         frmDest.setOnClickListener(new SearchFragment.OnClick());
                         sourceDestLayout.setOnClickListener(null);
@@ -3908,7 +3908,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             LatLng myLocation = new LatLng(Double.parseDouble(current_lat), Double.parseDouble(current_lng));
                             CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(16).build();
                             mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-                            getProvidersList("");
+//                            getProvidersList("");
                             sourceDestLayout.setVisibility(View.VISIBLE);
                         }
                     } else if (lnrApproximate.getVisibility() == View.VISIBLE) {
@@ -4273,141 +4273,141 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
     }
 
-    private class ServiceListAdapter extends RecyclerView.Adapter<SearchFragment.ServiceListAdapter.MyViewHolder> {
-        JSONArray jsonArray;
-        int selectedPosition;
-        private SparseBooleanArray selectedItems;
-
-        public ServiceListAdapter(JSONArray array) {
-            this.jsonArray = array;
-        }
-
-
-        @Override
-        public SearchFragment.ServiceListAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            @SuppressLint("InflateParams")
-            View view = LayoutInflater.from(getActivity())
-                    .inflate(R.layout.service_type_list_item, null);
-            return new SearchFragment.ServiceListAdapter.MyViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(SearchFragment.ServiceListAdapter.MyViewHolder holder, final int position) {
-            Utilities.print("Title: ", "" +
-                    jsonArray.optJSONObject(position).optString("name")
-                    + " Image: " + jsonArray.optJSONObject(position).optString("image")
-                    + " Grey_Image:" + jsonArray.optJSONObject(position).optString("grey_image"));
-
-            holder.serviceItem.setText(jsonArray.optJSONObject(position).optString("name"));
-            System.out.println("POSITION IS CALLEDD " + position);
-
-
-            if (position == 0) {
-                getNewApproximateFare(jsonArray.optJSONObject(position)
-                        .optString("id"), holder.serviceItemPrice);
-            }
-
-            if (position == 1) {
-                getNewApproximateFare(jsonArray.optJSONObject(position)
-                        .optString("id"), holder.serviceItemPrice);
-            }
-            if (position == 2) {
-                getNewApproximateFare(jsonArray.optJSONObject(position)
-                        .optString("id"), holder.serviceItemPrice);
-            }
-            if (position == 3) {
-                getNewApproximateFare(jsonArray.optJSONObject(position)
-                        .optString("id"), holder.serviceItemPrice);
-            }
-            if (position == 4) {
-                getNewApproximateFare(jsonArray.optJSONObject(position)
-                        .optString("id"), holder.serviceItemPrice);
-            }
-
-
-            if (position == currentPostion) {
-                SharedHelper.putKey(context, "service_type", "" +
-                        jsonArray.optJSONObject(position).optString("id"));
-                Picasso.get().load(URLHelper.BASE + jsonArray
-                                .optJSONObject(position).optString("image"))
-                        .placeholder(R.drawable.car_select)
-                        .error(R.drawable.car_select).into(holder.serviceImg);
-                holder.selector_background.setBackgroundResource(R.drawable.selected_service_item);
-                holder.serviceItem.setTextColor(getResources().getColor(R.color.text_color_white));
-                holder.serviceCapacity.setText(jsonArray.optJSONObject(position).optString("capacity"));
-//                holder.serviceCapacity.setBackgroundResource(R.drawable.normal_service_item);
-                Picasso.get().load(URLHelper.BASE + jsonArray.optJSONObject(position).optString("image"))
-                        .placeholder(R.drawable.car_select)
-                        .error(R.drawable.car_select).into(ImgConfrmCabType);
-//                getApproximateFareSchedule();
-
-            } else {
-                //SharedHelper.putKey(context, "service_type", "" + jsonArray.optJSONObject(position).optString("id"));
-                Picasso.get().load(URLHelper.BASE + jsonArray.optJSONObject(position).optString("image"))
-                        .placeholder(R.drawable.car_select)
-                        .error(R.drawable.car_select).into(holder.serviceImg);
-                holder.selector_background.setBackgroundResource(R.drawable.normal_service_item);
-//                holder.selector_background.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                holder.serviceItem.setTextColor(getResources().getColor(R.color.black));
-                holder.serviceCapacity.setText(jsonArray.optJSONObject(position).optString("capacity"));
-
-//                getApproximateFareSchedule();
-            }
-
-
-            holder.linearLayoutOfList.setTag(position);
-
-            holder.linearLayoutOfList.setOnClickListener(view -> {
-                if (position == currentPostion) {
-                    try {
-                        lnrHidePopup.setVisibility(View.VISIBLE);
-                        // showProviderPopup(jsonArray.getJSONObject(position));
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                currentPostion = Integer.parseInt(view.getTag().toString());
-                SharedHelper.putKey(context, "service_type", "" + jsonArray.optJSONObject(currentPostion).optString("id"));
-                SharedHelper.putKey(context, "name", "" + jsonArray.optJSONObject(currentPostion).optString("name"));
-                try {
-                    notifyDataSetChanged();
-                } catch (NullPointerException ne) {
-                    ne.printStackTrace();
-                }
-
-                Utilities.print("service_typeCurrentPosition", "" + SharedHelper.getKey(context, "service_type"));
-                Utilities.print("Service name", "" + SharedHelper.getKey(context, "name"));
-                getProvidersList(SharedHelper.getKey(context, "service_type"));
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return jsonArray.length();
-        }
-
-        public class MyViewHolder extends RecyclerView.ViewHolder {
-
-            TextView serviceItem, serviceCapacity;
-            MyTextView serviceItemPrice;
-            CircleImageView serviceImg;
-            LinearLayout linearLayoutOfList;
-            FrameLayout selector_background;
-
-            public MyViewHolder(View itemView) {
-                super(itemView);
-                serviceItem = itemView.findViewById(R.id.serviceItem);
-                serviceCapacity = itemView.findViewById(R.id.serviceCapacity);
-                serviceImg = itemView.findViewById(R.id.serviceImg);
-                linearLayoutOfList = itemView.findViewById(R.id.LinearLayoutOfList);
-                selector_background = itemView.findViewById(R.id.selector_background);
-                serviceItemPrice = itemView.findViewById(R.id.serviceItemPrice);
-                height = itemView.getHeight();
-                width = itemView.getWidth();
-            }
-        }
-    }
+//    private class ServiceListAdapter extends RecyclerView.Adapter<SearchFragment.ServiceListAdapter.MyViewHolder> {
+//        JSONArray jsonArray;
+//        int selectedPosition;
+//        private SparseBooleanArray selectedItems;
+//
+//        public ServiceListAdapter(JSONArray array) {
+//            this.jsonArray = array;
+//        }
+//
+//
+//        @Override
+//        public SearchFragment.ServiceListAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//            @SuppressLint("InflateParams")
+//            View view = LayoutInflater.from(getActivity())
+//                    .inflate(R.layout.service_type_list_item, null);
+//            return new SearchFragment.ServiceListAdapter.MyViewHolder(view);
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(SearchFragment.ServiceListAdapter.MyViewHolder holder, final int position) {
+//            Utilities.print("Title: ", "" +
+//                    jsonArray.optJSONObject(position).optString("name")
+//                    + " Image: " + jsonArray.optJSONObject(position).optString("image")
+//                    + " Grey_Image:" + jsonArray.optJSONObject(position).optString("grey_image"));
+//
+//            holder.serviceItem.setText(jsonArray.optJSONObject(position).optString("name"));
+//            System.out.println("POSITION IS CALLEDD " + position);
+//
+//
+//            if (position == 0) {
+//                getNewApproximateFare(jsonArray.optJSONObject(position)
+//                        .optString("id"), holder.serviceItemPrice);
+//            }
+//
+//            if (position == 1) {
+//                getNewApproximateFare(jsonArray.optJSONObject(position)
+//                        .optString("id"), holder.serviceItemPrice);
+//            }
+//            if (position == 2) {
+//                getNewApproximateFare(jsonArray.optJSONObject(position)
+//                        .optString("id"), holder.serviceItemPrice);
+//            }
+//            if (position == 3) {
+//                getNewApproximateFare(jsonArray.optJSONObject(position)
+//                        .optString("id"), holder.serviceItemPrice);
+//            }
+//            if (position == 4) {
+//                getNewApproximateFare(jsonArray.optJSONObject(position)
+//                        .optString("id"), holder.serviceItemPrice);
+//            }
+//
+//
+//            if (position == currentPostion) {
+//                SharedHelper.putKey(context, "service_type", "" +
+//                        jsonArray.optJSONObject(position).optString("id"));
+//                Picasso.get().load(URLHelper.BASE + jsonArray
+//                                .optJSONObject(position).optString("image"))
+//                        .placeholder(R.drawable.car_select)
+//                        .error(R.drawable.car_select).into(holder.serviceImg);
+//                holder.selector_background.setBackgroundResource(R.drawable.selected_service_item);
+//                holder.serviceItem.setTextColor(getResources().getColor(R.color.text_color_white));
+//                holder.serviceCapacity.setText(jsonArray.optJSONObject(position).optString("capacity"));
+////                holder.serviceCapacity.setBackgroundResource(R.drawable.normal_service_item);
+//                Picasso.get().load(URLHelper.BASE + jsonArray.optJSONObject(position).optString("image"))
+//                        .placeholder(R.drawable.car_select)
+//                        .error(R.drawable.car_select).into(ImgConfrmCabType);
+////                getApproximateFareSchedule();
+//
+//            } else {
+//                //SharedHelper.putKey(context, "service_type", "" + jsonArray.optJSONObject(position).optString("id"));
+//                Picasso.get().load(URLHelper.BASE + jsonArray.optJSONObject(position).optString("image"))
+//                        .placeholder(R.drawable.car_select)
+//                        .error(R.drawable.car_select).into(holder.serviceImg);
+//                holder.selector_background.setBackgroundResource(R.drawable.normal_service_item);
+////                holder.selector_background.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+//                holder.serviceItem.setTextColor(getResources().getColor(R.color.black));
+//                holder.serviceCapacity.setText(jsonArray.optJSONObject(position).optString("capacity"));
+//
+////                getApproximateFareSchedule();
+//            }
+//
+//
+//            holder.linearLayoutOfList.setTag(position);
+//
+//            holder.linearLayoutOfList.setOnClickListener(view -> {
+//                if (position == currentPostion) {
+//                    try {
+//                        lnrHidePopup.setVisibility(View.VISIBLE);
+//                        // showProviderPopup(jsonArray.getJSONObject(position));
+//
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//                currentPostion = Integer.parseInt(view.getTag().toString());
+//                SharedHelper.putKey(context, "service_type", "" + jsonArray.optJSONObject(currentPostion).optString("id"));
+//                SharedHelper.putKey(context, "name", "" + jsonArray.optJSONObject(currentPostion).optString("name"));
+//                try {
+//                    notifyDataSetChanged();
+//                } catch (NullPointerException ne) {
+//                    ne.printStackTrace();
+//                }
+//
+//                Utilities.print("service_typeCurrentPosition", "" + SharedHelper.getKey(context, "service_type"));
+//                Utilities.print("Service name", "" + SharedHelper.getKey(context, "name"));
+////                getProvidersList(SharedHelper.getKey(context, "service_type"));
+//            });
+//        }
+//
+//        @Override
+//        public int getItemCount() {
+//            return jsonArray.length();
+//        }
+//
+//        public class MyViewHolder extends RecyclerView.ViewHolder {
+//
+//            TextView serviceItem, serviceCapacity;
+//            MyTextView serviceItemPrice;
+//            CircleImageView serviceImg;
+//            LinearLayout linearLayoutOfList;
+//            FrameLayout selector_background;
+//
+//            public MyViewHolder(View itemView) {
+//                super(itemView);
+//                serviceItem = itemView.findViewById(R.id.serviceItem);
+//                serviceCapacity = itemView.findViewById(R.id.serviceCapacity);
+//                serviceImg = itemView.findViewById(R.id.serviceImg);
+//                linearLayoutOfList = itemView.findViewById(R.id.LinearLayoutOfList);
+//                selector_background = itemView.findViewById(R.id.selector_background);
+//                serviceItemPrice = itemView.findViewById(R.id.serviceItemPrice);
+//                height = itemView.getHeight();
+//                width = itemView.getWidth();
+//            }
+//        }
+//    }
 
     // Fetches data from url passed
     private class FetchUrl extends AsyncTask<String, Void, String> {
