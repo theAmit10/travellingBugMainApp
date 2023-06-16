@@ -753,7 +753,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Soething went wrong", Toast.LENGTH_SHORT).show();
             }
 
         }) {
@@ -1372,7 +1372,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                     }
 
                 } catch (JSONException e) {
-                    Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Soething went wrong", Toast.LENGTH_SHORT).show();
                     if ((customDialog != null) && (customDialog.isShowing()))
                         customDialog.dismiss();
                 }
@@ -1384,8 +1384,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
             public void onErrorResponse(VolleyError error) {
                 if ((customDialog != null) && (customDialog.isShowing()))
                     customDialog.dismiss();
-                Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "Error Found : " + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Error Found : " + error, Toast.LENGTH_SHORT).show();
 //                destinationLayer.setVisibility(View.GONE);
 //                layoutinfo.setVisibility(View.VISIBLE);
             }
@@ -1777,7 +1777,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                     source_lng = tripsJsonObj.optString("s_longitude");
                                                     dest_lat = tripsJsonObj.optString("d_latitude");
                                                     dest_lng = tripsJsonObj.optString("d_longitude");
-                                                    Toast.makeText(TrackActivity.this, "ELSE", Toast.LENGTH_SHORT).show();
+//                                                    Toast.makeText(TrackActivity.this, "ELSE", Toast.LENGTH_SHORT).show();
                                                     setValuesForSourceAndDestination();
 
                                                 }
@@ -1796,8 +1796,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
                                                 Utilities.print("PreviousStatus", "" + PreviousStatus);
 //                                                PreviousStatus ="ACCEPTED";
-                                                Toast.makeText(TrackActivity.this, "Prev : " + PreviousStatus, Toast.LENGTH_SHORT).show();
-                                                Toast.makeText(TrackActivity.this, "status : " + status, Toast.LENGTH_SHORT).show();
+//                                                Toast.makeText(TrackActivity.this, "Prev : " + PreviousStatus, Toast.LENGTH_SHORT).show();
+//                                                Toast.makeText(TrackActivity.this, "status : " + status, Toast.LENGTH_SHORT).show();
                                                 System.out.println("checking status PreviousStatus" + PreviousStatus);
                                                 System.out.println("checking status status" + status);
 
@@ -1885,7 +1885,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                             addVerificationCode(filterJsonObject.optString("request_id"), filterJsonObject.optString("user_id"), otp_code);
 
                                                             showStartedDialog(tripsJsonObj);
-                                                            Toast.makeText(TrackActivity.this, "Case : Started", Toast.LENGTH_SHORT).show();
+//                                                            Toast.makeText(TrackActivity.this, "Case : Started", Toast.LENGTH_SHORT).show();
 
                                                             break;
 
@@ -1944,7 +1944,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                 e.printStackTrace();
                                                             }
 
-                                                            Toast.makeText(TrackActivity.this, "Case : Arrived", Toast.LENGTH_SHORT).show();
+//                                                            Toast.makeText(TrackActivity.this, "Case : Arrived", Toast.LENGTH_SHORT).show();
                                                             break;
 
                                                         case "PICKEDUP":
@@ -1996,7 +1996,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                             } catch (Exception e) {
                                                                 e.printStackTrace();
                                                             }
-                                                            Toast.makeText(TrackActivity.this, "Case : Arrived", Toast.LENGTH_SHORT).show();
+//                                                            Toast.makeText(TrackActivity.this, "Case : Arrived", Toast.LENGTH_SHORT).show();
                                                             break;
 
                                                         case "DROPPED":
@@ -2082,9 +2082,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
                                                                             } catch (
                                                                                     JSONException e) {
-                                                                                Toast.makeText(getApplicationContext(), "error: dropped", Toast.LENGTH_SHORT).show();
-                                                                                Toast.makeText(getApplicationContext(), "error" + e, Toast.LENGTH_SHORT).show();
-                                                                                Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+//                                                                                Toast.makeText(getApplicationContext(), "error: dropped", Toast.LENGTH_SHORT).show();
+//                                                                                Toast.makeText(getApplicationContext(), "error" + e, Toast.LENGTH_SHORT).show();
+                                                                                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                                                                                 System.out.println(" Error  : " + e.getMessage());
                                                                                 System.out.println(" Error  : " + e.getCause());
                                                                                 System.out.println(" Error : " + e);
@@ -2097,9 +2097,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                         @Override
                                                                         public void onErrorResponse(VolleyError error) {
 
-                                                                            Toast.makeText(getApplicationContext(), "Error Drop", Toast.LENGTH_SHORT).show();
-                                                                            Toast.makeText(getApplicationContext(), "Error Found payment details :" + error, Toast.LENGTH_SHORT).show();
-                                                                            Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+//                                                                            Toast.makeText(getApplicationContext(), "Error Drop", Toast.LENGTH_SHORT).show();
+//                                                                            Toast.makeText(getApplicationContext(), "Error Found payment details :" + error, Toast.LENGTH_SHORT).show();
+                                                                            Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                                                                             System.out.println(" Error  : " + error.getMessage());
                                                                             System.out.println(" Error  : " + error.getCause());
                                                                             System.out.println(" Error : " + error);
@@ -2217,7 +2217,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                 confirmDialog.dismiss();
 
                                                             SharedHelper.putKey(getApplicationContext(), "addRating","no");
-                                                            Toast.makeText(getApplicationContext(), "DROPPED WORKING", Toast.LENGTH_SHORT).show();
+//                                                            Toast.makeText(getApplicationContext(), "DROPPED WORKING", Toast.LENGTH_SHORT).show();
 
                                                             break;
 
@@ -2428,7 +2428,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                         System.out.println(" Error  : " + error.getMessage());
                         System.out.println(" Error  : " + error.getCause());
                         System.out.println(" Error : " + error);

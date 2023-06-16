@@ -129,6 +129,7 @@ import com.travel.travellingbug.models.ServiceGenerator;
 import com.travel.travellingbug.ui.activities.CouponActivity;
 import com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch;
 import com.travel.travellingbug.ui.activities.FindRidesActivity;
+import com.travel.travellingbug.ui.activities.HomeScreenActivity;
 import com.travel.travellingbug.ui.activities.Payment;
 import com.travel.travellingbug.ui.activities.ShowProfile;
 import com.travel.travellingbug.ui.activities.UpdateProfile;
@@ -2269,7 +2270,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 + "&s_longitude=" + source_lng
                 + "&d_latitude=" + dest_lat
                 + "&d_longitude=" + dest_lng
-                + "&service_type=" + SharedHelper.getKey(context, "service_type");
+                + "&service_type=" + "2";
         System.out.println("getNewApproximateFare getNewApproximateFare " + constructedURL);
         JsonObjectRequest jsonObjectRequest = new
                 JsonObjectRequest(Request.Method.GET,
@@ -3894,38 +3895,41 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     }
                     break;
                 case R.id.imgBack:
-                    if (lnrRequestProviders.getVisibility() == View.VISIBLE) {
-                        flowValue = 0;
-                        isRequestProviderScreen = false;
-                        sourceDestLayout.setVisibility(View.VISIBLE);
-//                        getProvidersList("");
-                        frmSource.setOnClickListener(new SearchFragment.OnClick());
-                        frmDest.setOnClickListener(new SearchFragment.OnClick());
-                        sourceDestLayout.setOnClickListener(null);
-                        if (!current_lat.equalsIgnoreCase("") && !current_lng.equalsIgnoreCase("")) {
-                            destinationBorderImg.setVisibility(View.VISIBLE);
-                            //verticalView.setVisibility(View.GONE);
-                            LatLng myLocation = new LatLng(Double.parseDouble(current_lat), Double.parseDouble(current_lng));
-                            CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(16).build();
-                            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-//                            getProvidersList("");
-                            sourceDestLayout.setVisibility(View.VISIBLE);
-                        }
-                    } else if (lnrApproximate.getVisibility() == View.VISIBLE) {
-                        isRequestProviderScreen = true;
-                        frmSource.setOnClickListener(new SearchFragment.OnClick());
-                        frmDest.setOnClickListener(new SearchFragment.OnClick());
-                        sourceDestLayout.setOnClickListener(null);
-                        flowValue = 1;
-                    } else if (lnrWaitingForProviders.getVisibility() == View.VISIBLE) {
-                        sourceDestLayout.setVisibility(View.GONE);
-                        isRequestProviderScreen = false;
-                        flowValue = 1;
-                    } else if (ScheduleLayout.getVisibility() == View.VISIBLE) {
-                        isRequestProviderScreen = false;
-                        flowValue = 1;
-                    }
-                    layoutChanges();
+                    Intent intent3 = new Intent(getContext(), HomeScreenActivity.class);
+                    startActivity(intent3);
+
+//                    if (lnrRequestProviders.getVisibility() == View.VISIBLE) {
+//                        flowValue = 0;
+//                        isRequestProviderScreen = false;
+//                        sourceDestLayout.setVisibility(View.VISIBLE);
+////                        getProvidersList("");
+//                        frmSource.setOnClickListener(new SearchFragment.OnClick());
+//                        frmDest.setOnClickListener(new SearchFragment.OnClick());
+//                        sourceDestLayout.setOnClickListener(null);
+//                        if (!current_lat.equalsIgnoreCase("") && !current_lng.equalsIgnoreCase("")) {
+//                            destinationBorderImg.setVisibility(View.VISIBLE);
+//                            //verticalView.setVisibility(View.GONE);
+//                            LatLng myLocation = new LatLng(Double.parseDouble(current_lat), Double.parseDouble(current_lng));
+//                            CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(16).build();
+//                            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+////                            getProvidersList("");
+//                            sourceDestLayout.setVisibility(View.VISIBLE);
+//                        }
+//                    } else if (lnrApproximate.getVisibility() == View.VISIBLE) {
+//                        isRequestProviderScreen = true;
+//                        frmSource.setOnClickListener(new SearchFragment.OnClick());
+//                        frmDest.setOnClickListener(new SearchFragment.OnClick());
+//                        sourceDestLayout.setOnClickListener(null);
+//                        flowValue = 1;
+//                    } else if (lnrWaitingForProviders.getVisibility() == View.VISIBLE) {
+//                        sourceDestLayout.setVisibility(View.GONE);
+//                        isRequestProviderScreen = false;
+//                        flowValue = 1;
+//                    } else if (ScheduleLayout.getVisibility() == View.VISIBLE) {
+//                        isRequestProviderScreen = false;
+//                        flowValue = 1;
+//                    }
+//                    layoutChanges();
                     break;
                 case R.id.imgMenu:
                     if (NAV_DRAWER == 0) {

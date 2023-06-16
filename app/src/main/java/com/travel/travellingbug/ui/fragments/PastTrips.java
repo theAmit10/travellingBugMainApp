@@ -58,11 +58,11 @@ public class PastTrips extends Fragment {
     CustomDialog customDialog;
     View rootView;
 
-    String userId="",userName="",rating="",ratingVal="",vehicleDetails="",userProfileImage="";
+    String userId = "", userName = "", rating = "", ratingVal = "", vehicleDetails = "", userProfileImage = "";
 
     String noofseat = "", request_id = "", s_address = "", d_address = "", s_date = "", s_time = "";
 
-    String booking_id="",status="",payment_mode="",estimated_fare="",verification_code="",static_map="",first_name="",mobile="",avatar="";
+    String booking_id = "", status = "", payment_mode = "", estimated_fare = "", verification_code = "", static_map = "", first_name = "", mobile = "", avatar = "";
 
     ImageView backImg;
     LinearLayout toolbar;
@@ -239,8 +239,8 @@ public class PastTrips extends Fragment {
         public void onBindViewHolder(PostAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
             try {
 
-                for(int i=0; i<jsonArray.length(); i++){
-                    System.out.println("History data : "+jsonArray.get(i));
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    System.out.println("History data : " + jsonArray.get(i));
                 }
 
 //                JSONObject jsonObjectTrip = new JSONObject(String.valueOf(jsonArray.getJSONObject(position).getJSONObject("trip")));
@@ -253,15 +253,24 @@ public class PastTrips extends Fragment {
                     String form = jsonObjectTrip.optString("schedule_at");
                     try {
                         holder.datetime.setText(getDate(form) + "th " + getMonth(form) + " at " + getTime(form));
+                        holder.availableSeat.setText(jsonObjectTrip.optString("availablecapacity")+" Seat left");
+
+
+
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 }
 
+                JSONObject jsonObjectServiceType = jsonObjectTrip.optJSONObject("service_type");
+                holder.fare.setText("₹ "+jsonObjectServiceType.optString("fixed"));
+                holder.carTypeVal.setText(jsonObjectServiceType.optString("name"));
+
+
+
 
 //                holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
 //                holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
-
 
 
                 userId = jsonObjectTrip.optString("user_id");
@@ -272,14 +281,14 @@ public class PastTrips extends Fragment {
                     @Override
                     public void onResponse(String response) {
 
-                        System.out.println("size : "+response.length());
-                        System.out.println("data : "+response);
+                        System.out.println("size : " + response.length());
+                        System.out.println("data : " + response);
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
 
                             if (response != null) {
-                                System.out.println("data : "+jsonObject.toString());
+                                System.out.println("data : " + jsonObject.toString());
                                 userName = jsonObject.optString("first_name");
                                 userProfileImage = jsonObject.optString("avatar");
                                 rating = jsonObject.optString("rating");
@@ -292,7 +301,7 @@ public class PastTrips extends Fragment {
 //                                profileImgeIv = itemView.findViewById(R.id.profileImgeIv);
 
                                 holder.userName.setText(userName);
-                                holder.ratingVal.setText("( "+jsonObject.optString("rating") +" Reviews )");
+                                holder.ratingVal.setText("( " + jsonObject.optString("rating") + " Reviews )");
                                 holder.listitemrating.setRating(Float.parseFloat(ratingVal));
 
                                 Picasso.get().load(URLHelper.BASE + "storage/app/public/" + userProfileImage)
@@ -300,7 +309,6 @@ public class PastTrips extends Fragment {
 
 
                             }
-
 
 
                         } catch (JSONException e) {
@@ -324,6 +332,7 @@ public class PastTrips extends Fragment {
                         params.put("id", userId);
                         return params;
                     }
+
                     @Override
                     public Map<String, String> getHeaders() {
                         HashMap<String, String> headers = new HashMap<String, String>();
@@ -337,16 +346,14 @@ public class PastTrips extends Fragment {
                 ClassLuxApp.getInstance().addToRequestQueue(request);
 
 
-
-
                 holder.status.setText(jsonArray.optJSONObject(position).optString("status"));
-                if(holder.status.equals("COMPLETED")){
+                if (holder.status.equals("COMPLETED")) {
                     holder.rateRider.setVisibility(View.VISIBLE);
                     holder.status.setText("Completed");
                     notifyDataSetChanged();
                     holder.status.setBackgroundColor(getResources().getColor(R.color.quantum_yellow));
 
-                }else if(holder.status.equals("CANCELLED")){
+                } else if (holder.status.equals("CANCELLED")) {
                     holder.rateRider.setVisibility(View.GONE);
                     holder.status.setText("Cancelled");
 
@@ -381,10 +388,10 @@ public class PastTrips extends Fragment {
 //                intent.putExtra("tag", "past_trips");
 //                startActivity(intent);
 
-                Toast.makeText(getContext(), "user id: "+jsonArray.optJSONObject(position).optString("user_id") , Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "id: "+jsonArray.optJSONObject(position).optString("id") , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "user id: " + jsonArray.optJSONObject(position).optString("user_id"), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "id: " + jsonArray.optJSONObject(position).optString("id"), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), HistoryDetailsUser.class);
-                intent.putExtra("request_id",jsonArray.optJSONObject(position).optString("request_id"));
+                intent.putExtra("request_id", jsonArray.optJSONObject(position).optString("request_id"));
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
                 intent.putExtra("post_value", jsonArray.optJSONObject(position).toString());
@@ -464,7 +471,7 @@ public class PastTrips extends Fragment {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView datetime, txtSource, txtDestination, status,userName,ratingVal;
+            TextView datetime, txtSource, txtDestination, status, userName, ratingVal, availableSeat, fare, carTypeVal;
 
             RatingBar listitemrating;
 
@@ -486,6 +493,10 @@ public class PastTrips extends Fragment {
                 listitemrating = itemView.findViewById(R.id.listitemrating);
                 profileImgeIv = itemView.findViewById(R.id.profileImgeIv);
                 historyContainerLL = itemView.findViewById(R.id.historyContainerLL);
+
+                carTypeVal = itemView.findViewById(R.id.carTypeVal);
+                fare = itemView.findViewById(R.id.fare);
+                availableSeat = itemView.findViewById(R.id.availableSeat);
 
 //                itemView.setOnClickListener(view -> {
 //                    Intent intent = new Intent(getActivity(), HistoryDetails.class);

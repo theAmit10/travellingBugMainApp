@@ -513,6 +513,9 @@ public class DriverMapFragment extends Fragment implements
                             mapClear();
                             clearVisibility();
                             mMap.clear();
+
+                            startActivity(new Intent(getContext(), HomeScreenActivity.class));
+
                         }
 
                     }
@@ -2543,7 +2546,7 @@ public class DriverMapFragment extends Fragment implements
                                                                                                 LocationTracking.distance = 0.0f;
                                                                                             } else if (filterJsonObj.optString("provider_status").equals("COMPLETED") && filterJsonObj.optString("payment_status").equals("success")) {
 
-                                                                                                Toast.makeText(getContext(), "Everything Complete", Toast.LENGTH_SHORT).show();
+//                                                                                                Toast.makeText(getContext(), "Everything Complete", Toast.LENGTH_SHORT).show();
                                                                                                 if (ll_05_contentLayer_feedback.getVisibility() == View.VISIBLE) {
                                                                                                     ll_05_contentLayer_feedback.setVisibility(View.GONE);
                                                                                                 }
@@ -3548,7 +3551,7 @@ public class DriverMapFragment extends Fragment implements
             public void onClick(int position, PassengerCallModel user) {
 
                 System.out.println("CLICKED USER DETAILS : "+user.getUser_id());
-                Toast.makeText(getContext(), "CLICKED USER DETAILS : "+user.getUser_id(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "CLICKED USER DETAILS : "+user.getUser_id(), Toast.LENGTH_SHORT).show();
                 // Display toast
                 Toast.makeText(getContext(),"Position : "
                         +position +" || Value : "+value,Toast.LENGTH_SHORT).show();
@@ -3614,7 +3617,7 @@ public class DriverMapFragment extends Fragment implements
 //                            Intent intent = new Intent(getActivity(), ShowProfile.class);
 //                            intent.putExtra("user", userProfile);
 //                            startActivity(intent);
-                                        Toast.makeText(getContext(), "" + txt03UserName.getText(), Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(getContext(), "" + txt03UserName.getText(), Toast.LENGTH_SHORT).show();
 
                                     });
 
@@ -3635,7 +3638,7 @@ public class DriverMapFragment extends Fragment implements
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Something went Wrong", Toast.LENGTH_SHORT).show();
                         }
 
                     }) {
@@ -3812,7 +3815,8 @@ public class DriverMapFragment extends Fragment implements
                     }
 
                 } catch (JSONException e) {
-                    Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
                 }
 
 
@@ -3820,9 +3824,10 @@ public class DriverMapFragment extends Fragment implements
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
 
-                Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "Error Found payment details :"+error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Error Found payment details :"+error, Toast.LENGTH_SHORT).show();
             }
 
         }) {
@@ -3975,15 +3980,18 @@ public class DriverMapFragment extends Fragment implements
 
 
                 } catch (JSONException e) {
-                    Toast.makeText(getContext(), "Error"+e, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "Error"+e, Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
                 }
+
 
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+
             }
 
         }) {

@@ -196,17 +196,20 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.nav_home:
-                    if (CURRENT_TAG != TAG_HOME) {
-                        fragment = new DriverMapFragment();
-                        GoToFragment();
-                    } else {
-                        drawer.closeDrawers();
-                    }
+//                    if (CURRENT_TAG != TAG_HOME) {
+//                        fragment = new DriverMapFragment();
+//                        GoToFragment();
+//                    } else {
+//                        drawer.closeDrawers();
+//                    }
+                    drawer.closeDrawers();
+                    Intent intent = new Intent(MainActivity.this, HomeScreenActivity.class);
+                    startActivity(intent);
                     break;
                 case R.id.nav_profile:
-                    drawer.closeDrawers();
-                    new Handler().postDelayed(() -> startActivity(new Intent(activity, Profile.class)),
-                            250);
+//                    drawer.closeDrawers();
+//                    new Handler().postDelayed(() -> startActivity(new Intent(activity, Profile.class)),
+//                            250);
                     break;
                 case R.id.nav_document:
 

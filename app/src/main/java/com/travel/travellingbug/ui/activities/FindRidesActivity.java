@@ -284,6 +284,9 @@ public class FindRidesActivity extends AppCompatActivity {
                 params.put("upcoming", upcoming);
                 params.put("use_wallet", use_wallet);
                 params.put("payment_mode", payment_mode);
+
+                System.out.println("PARAMS : "+params.toString());
+
                 return params;
             }
 
@@ -466,6 +469,10 @@ public class FindRidesActivity extends AppCompatActivity {
 
                         holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
                         holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
+                        holder.availableSeat.setText(jsonArray.optJSONObject(position).optString("availablecapacity")+" Seat left");
+                        holder.fare.setText("₹ "+jsonArray.optJSONObject(position).optString("estimated_fare"));
+
+
                         request_id = jsonArray.optJSONObject(position).optString("id");
 //                        if (jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("PENDING")) {
 //                            holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
@@ -504,6 +511,12 @@ public class FindRidesActivity extends AppCompatActivity {
                             .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
 
                     holder.profileNameTv.setText(serviceObj.optString("first_name"));
+
+                   if(serviceObj.optString("rating") != null){
+                       holder.listitemrating.setRating(Float.parseFloat(serviceObj.optString("rating")));
+                       holder.reviewCount.setText("( "+serviceObj.optString("rating") +" Reviews )");
+                   }
+
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -595,7 +608,7 @@ public class FindRidesActivity extends AppCompatActivity {
 
                     Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
 
-                    s_fare = "1100";
+
 
 
                     Intent intent = new Intent(getApplicationContext(), ConfirmRideRequestActivity.class);
@@ -608,7 +621,7 @@ public class FindRidesActivity extends AppCompatActivity {
                     intent.putExtra("s_carModleAndColor", s_carModleAndColor);
                     intent.putExtra("s_date", s_date);
                     intent.putExtra("s_time", s_time);
-                    intent.putExtra("s_fare", s_fare);
+                    intent.putExtra("s_fare", "₹ "+jsonArray.optJSONObject(position).optString("estimated_fare"));
                     intent.putExtra("s_seat", s_seat);
                     intent.putExtra("s_id", s_id);
 

@@ -76,12 +76,14 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:gravity="center_vertical"
+
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+
                 android:fontFamily="@font/montserrat_semibold"
                 android:text="Expiry Date :"
                 android:textColor="@color/black"

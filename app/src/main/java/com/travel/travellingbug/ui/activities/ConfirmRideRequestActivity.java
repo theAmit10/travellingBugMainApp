@@ -18,6 +18,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
+import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 
@@ -29,7 +30,7 @@ import es.dmoral.toasty.Toasty;
 public class ConfirmRideRequestActivity extends AppCompatActivity {
 
     Button confirmBtn;
-    ImageView profileImgeIv;
+    ImageView profileImgeIv,backArrow;
     TextView nameTv, carModelAndColor, pickupLocation, dropLocation, dateVal, timeVal, fareVal, seatVal;
 
     String sc_address = "", dc_address = "", s_profileImage = "", s_name = "", s_carModleAndColor = "", s_date = "", s_time = "", s_fare = "", s_seat = "", s_id = "";
@@ -57,7 +58,7 @@ public class ConfirmRideRequestActivity extends AppCompatActivity {
         dropLocation.setText(dc_address);
         dateVal.setText(s_date);
         timeVal.setText(s_time);
-        fareVal.setText("₹" + s_fare);
+        fareVal.setText(s_fare);
         seatVal.setText(s_seat + " Seats");
 
     }
@@ -92,6 +93,13 @@ public class ConfirmRideRequestActivity extends AppCompatActivity {
 
         });
 
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     private void showConfirmDialog() {
@@ -123,10 +131,14 @@ public class ConfirmRideRequestActivity extends AppCompatActivity {
 
     private void sendRequestToPublisher() {
 
+        CustomDialog customDialog = new CustomDialog(ConfirmRideRequestActivity.this);
+        customDialog.show();
+
 
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.BOOK_FOR_UPCOMMING_TRIPS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                customDialog.dismiss();
 
                 System.out.println("size : " + response.length());
                 System.out.println("data : " + response);
@@ -138,6 +150,7 @@ public class ConfirmRideRequestActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                customDialog.dismiss();
                 Toast.makeText(ConfirmRideRequestActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
             }
         }) {
@@ -179,5 +192,6 @@ public class ConfirmRideRequestActivity extends AppCompatActivity {
         timeVal = findViewById(R.id.timeVal);
         fareVal = findViewById(R.id.fareVal);
         seatVal = findViewById(R.id.seatVal);
+        backArrow = findViewById(R.id.backArrow);
     }
 }

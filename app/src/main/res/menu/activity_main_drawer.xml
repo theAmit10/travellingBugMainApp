@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
-        <items
+        <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_home"
+            android:icon="@drawable/nb_home"
             android:title="@string/home" />
         <item
             android:id="@+id/nav_profile"
@@ -12,33 +12,36 @@
             android:visible="false" />
         <item
             android:id="@+id/nav_yourtrips"
-            android:icon="@drawable/ic_history"
+            android:icon="@drawable/nb_history"
             android:title="@string/history" />
         <item
             android:id="@+id/nav_earnings"
             android:icon="@drawable/ic_earning"
+            android:visible="false"
             android:title="@string/earnings" />
 
         <item
             android:id="@+id/nav_document"
-            android:icon="@drawable/ic_document"
+            android:icon="@drawable/nb_document"
             android:title="@string/documents" />
 
         <item
             android:id="@+id/nav_wallet"
-            android:icon="@drawable/ic_summary"
+            android:icon="@drawable/nb_summary"
+
             android:title="@string/summary" />
         <item
             android:id="@+id/nav_notification"
-            android:icon="@drawable/ic_notification"
+            android:icon="@drawable/nb_notification"
             android:title="@string/notifications" />
         <item
             android:id="@+id/nav_withdraw"
             android:icon="@drawable/ic_withdraw"
+            android:visible="false"
             android:title="@string/withdraw" />
         <item
             android:id="@+id/nav_help"
-            android:icon="@drawable/ic_complaint"
+            android:icon="@drawable/nb_help"
             android:title="@string/help" />
         <item
             android:id="@+id/nav_share"

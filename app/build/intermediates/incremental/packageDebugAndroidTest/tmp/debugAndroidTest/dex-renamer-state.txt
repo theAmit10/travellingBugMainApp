@@ -1,0 +1,10 @@
+#Sat Jun 03 18:29:32 IST 2023
+path.2=3/classes.dex
+path.1=0/classes.dex
+path.0=classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+base.2=C\:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\3\\classes.dex
+base.1=C\:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex
+base.0=C\:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeExtDexDebugAndroidTest\\classes.dex

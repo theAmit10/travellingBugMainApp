@@ -4561,6 +4561,12 @@ drawable mtrl_tabs_default_indicator
 drawable nav
 drawable nav_button
 drawable navigation_empty_icon
+drawable nb_document
+drawable nb_help
+drawable nb_history
+drawable nb_home
+drawable nb_notification
+drawable nb_summary
 drawable new_wallet
 drawable newuser
 drawable no_data_found

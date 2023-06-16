@@ -733,24 +733,29 @@ public class DocUploadActivity extends AppCompatActivity {
 
         btOk.setOnClickListener(v -> {
 
+            etDate.setText("10 10 2050");
+
             if (etDate.getText().toString().isEmpty()) {
                 etDate.setError("Please select expiry date");
             } else {
-                documentUri = cameraImageUri;
-                new BitmapWorkerTask(DocUploadActivity.this, adapterImageView,
-                        "add_revenue").execute(cameraImageUri);
+            documentUri = cameraImageUri;
+            new BitmapWorkerTask(DocUploadActivity.this, adapterImageView,
+                    "add_revenue").execute(cameraImageUri);
 
-                try {
-                    adapterButton.setVisibility(View.GONE);
-                    adapterImageView.setVisibility(View.VISIBLE);
-                    saveProfileAccount(responseArray.getJSONObject(UploadPosition).getString("name"),
-                            AppHelper.getFileDataFromDrawable(ivShow.getDrawable()),
-                            responseArray.getJSONObject(UploadPosition).getString("id"), etDate.getText().toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                dialog.dismiss();
+            try {
+                adapterButton.setVisibility(View.GONE);
+                adapterImageView.setVisibility(View.VISIBLE);
+                saveProfileAccount(responseArray.getJSONObject(UploadPosition).getString("name"),
+                        AppHelper.getFileDataFromDrawable(ivShow.getDrawable()),
+                        responseArray.getJSONObject(UploadPosition).getString("id"), etDate.getText().toString());
+//                        responseArray.getJSONObject(UploadPosition).getString("id"), "10-10-2050");
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
+            dialog.dismiss();
+        }
 
 
         });
@@ -802,6 +807,7 @@ public class DocUploadActivity extends AppCompatActivity {
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
             String myFormat = "yyyy-MM-dd"; //In which you need put here
             SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+//            etDate.setText("2050-07-16");
             etDate.setText(sdf.format(myCalendar.getTime()));
 
         };
@@ -842,6 +848,7 @@ public class DocUploadActivity extends AppCompatActivity {
             if (etDate.getText().toString().isEmpty()) {
                 etDate.setError("Please select expiry date");
             } else {
+                Toast.makeText(this, "Processing", Toast.LENGTH_SHORT).show();
 
 
                 try {

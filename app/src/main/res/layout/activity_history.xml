@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:tabBackground="@color/colorPrimary"
-            app:tabIndicatorColor="#969696"
+            app:tabIndicatorColor="@color/white"
             app:tabIndicatorHeight="3dp"
             app:tabMode="fixed"
             app:tabSelectedTextColor="@color/text_color_white"
@@ -23,6 +23,7 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
+            android:padding="@dimen/_5sdp"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@android:color/white" />

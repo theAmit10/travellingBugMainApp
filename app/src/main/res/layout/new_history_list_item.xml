@@ -401,6 +401,7 @@
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:layout_marginStart="@dimen/_5sdp"
+                    android:visibility="gone"
                     android:text="Rate Now"
                     android:textColor="@color/white"
                     android:textStyle="bold"

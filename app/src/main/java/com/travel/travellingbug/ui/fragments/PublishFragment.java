@@ -134,7 +134,6 @@ import com.travel.travellingbug.ui.activities.DocUploadActivity;
 import com.travel.travellingbug.ui.activities.HomeScreenActivity;
 import com.travel.travellingbug.ui.activities.Payment;
 import com.travel.travellingbug.ui.activities.ShowProfile;
-import com.travel.travellingbug.ui.activities.TrackActivityDriver;
 import com.travel.travellingbug.ui.activities.UpdateProfile;
 import com.travel.travellingbug.ui.adapters.StepOverAdapter;
 import com.travel.travellingbug.utills.MapAnimator;
@@ -205,6 +204,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     SearchFragment.HomeFragmentListener listener;
 
     CheckBox privateCarCheckBox;
+    String privateCarCheckBoxVal = "0";
     double wallet_balance;
     String ETA;
     TextView txtSelectedAddressSource;
@@ -942,6 +942,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                }
                                choosedTime = choosedHour + ":" + choosedMinute + " " + choosedTimeZone;
 
+
                                if (scheduledDateR != "" && scheduledTimeR != "") {
                                    Date date = null;
                                    try {
@@ -956,6 +957,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                    } else {
                                        if (utils.checktimings(scheduledTimeR)) {
 //                                        timetv.setText(choosedTime);
+                                           privateCarCheckBoxVal = "1";
                                            System.out.println("time : " + choosedTime);
                                        } else {
                                            Toast toast = new Toast(getActivity());
@@ -1231,7 +1233,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         new androidx.appcompat.app.AlertDialog.Builder(getContext())
                 .setTitle("Confirmation")
                 .setMessage("Do you really want to Exit Cab Services?")
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.drawable.app_logo_org)
                 .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> getActivity().finish())
                 .setNegativeButton(android.R.string.no, null).show();
     }
@@ -1320,24 +1322,30 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 source_address = currentAddress;
                 current_address = currentAddress;
 
-                if (frmSource.getContext() != null) {
-                    frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
-                    frmSource.setText(currentAddress);
+                try {
+                    if (frmSource.getContext() != null) {
+                        frmSource.setTextColor(requireActivity().getResources().getColor(R.color.dark_gray));
+                        frmSource.setText(currentAddress);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error : " + e.getCause());
+                    e.printStackTrace();
                 }
 
-                // setting previous destination data
-                if (!SharedHelper.getKey(getContext(), "destination_latitude").equalsIgnoreCase("")) {
-                    String destination_latitude = SharedHelper.getKey(getContext(), "destination_latitude");
-                    String destination_longitude = SharedHelper.getKey(getContext(), "destination_longitude");
 
-                    Double dlat = Double.valueOf(destination_latitude);
-                    Double dlong = Double.valueOf(destination_longitude);
-
-                    String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
-                    frmDest.setText(destination_address);
-                } else {
-                    frmDest.setText("Going to");
-                }
+//                // setting previous destination data
+//                if (!SharedHelper.getKey(getContext(), "destination_latitude").equalsIgnoreCase("")) {
+//                    String destination_latitude = SharedHelper.getKey(getContext(), "destination_latitude");
+//                    String destination_longitude = SharedHelper.getKey(getContext(), "destination_longitude");
+//
+//                    Double dlat = Double.valueOf(destination_latitude);
+//                    Double dlong = Double.valueOf(destination_longitude);
+//
+//                    String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
+//                    frmDest.setText(destination_address);
+//                } else {
+                frmDest.setText("Going to");
+//            }
 
                 getProvidersList("");
                 value++;
@@ -2488,10 +2496,30 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             object.put("service_type", "2");
             object.put("distance", "0");
 
+//            if(SharedHelper.getKey(getContext(),"PUBLISHED_DISTANCE") != null){
+//                object.put("distance", SharedHelper.getKey(getContext(),"PUBLISHED_DISTANCE"));
+//            }else{
+//                object.put("distance", "0");
+//            }
+
+
             object.put("schedule_date", scheduledDate);
             object.put("schedule_time", scheduledTime);
             object.put("use_wallet", "0");
             object.put("payment_mode", "CASH");
+
+            if(privateCarCheckBox.isChecked()){
+                object.put("isreturn", "1");
+            }else{
+                object.put("isreturn", "0");
+            }
+            object.put("returnschedule_date", scheduledDateR);
+            object.put("returnschedule_time", scheduledTimeR);
+
+//            JSONArray stopOverJsonArray = {"lat": "91.88","lng": "41.66","area": "Area1"},{"lat": "94.88","lng": "52.66","area": "Area2"}
+//            stopOverJsonArray.put({"lat""91.88","lng": "41.66","area": "Area1"})
+
+//            object.put("stopover", );
 
 //            if (chkWallet.isChecked()) {
 //                object.put("use_wallet", 1);
@@ -2524,38 +2552,49 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                 if ((customDialog != null) && (customDialog.isShowing()))
                                     customDialog.dismiss();
 
-                                if (response.toString().contains("error")) {
-                                    Toast.makeText(getActivity(), response.optString("error"), Toast.LENGTH_LONG).show();
-                                } else if (response.optString("request_id", "").equals("")) {
-                                    if (response.optString("message").equalsIgnoreCase("Ride has been published. ")) {
-                                        flowValue = 0;
-                                        layoutChanges();
-
-                                        showConfirmDialog();
-//                                       utils.showAlert(getActivity(),"Your booking has been confirmed ," +
-//                                               " you will get driver details 30 Min before of your booking");
-                                    } else {
-                                        displayMessage(response.optString("message"));
-                                    }
-                                } else {
-                                    SharedHelper.putKey(context, "current_status", "");
-                                    SharedHelper.putKey(context, "request_id", "" + response.optString("request_id"));
-                                    scheduleTrip = !scheduledDate.equalsIgnoreCase("") && !scheduledTime.equalsIgnoreCase("");
-                                    // flowValue = 3;
-                                    //layoutChanges();
+                                if (response.optString("message").equalsIgnoreCase("Ride has been published. ")) {
                                     flowValue = 0;
                                     layoutChanges();
-
-                                    Intent intent = new Intent(getActivity(), TrackActivityDriver.class);
-                                    intent.putExtra("flowValue", 3);
-                                    startActivity(intent);
+                                    showConfirmDialog();
+                                } else {
+                                    displayMessage(response.optString("message"));
                                 }
+
+//                                if (response.toString().contains("error")) {
+//                                    Toast.makeText(getActivity(), response.optString("error"), Toast.LENGTH_LONG).show();
+//                                } else if (response.optString("request_id", "").equals("")) {
+//                                    if (response.optString("message").equalsIgnoreCase("Ride has been published. ")) {
+//                                        flowValue = 0;
+//                                        layoutChanges();
+//
+//                                        showConfirmDialog();
+////                                       utils.showAlert(getActivity(),"Your booking has been confirmed ," +
+////                                               " you will get driver details 30 Min before of your booking");
+//                                    } else {
+//                                        displayMessage(response.optString("message"));
+//                                    }
+//                                } else {
+//                                    SharedHelper.putKey(context, "current_status", "");
+//                                    SharedHelper.putKey(context, "request_id", "" + response.optString("request_id"));
+//                                    scheduleTrip = !scheduledDate.equalsIgnoreCase("") && !scheduledTime.equalsIgnoreCase("");
+//                                    // flowValue = 3;
+//                                    //layoutChanges();
+//                                    flowValue = 0;
+//                                    layoutChanges();
+//
+//                                    Intent intent = new Intent(getActivity(), TrackActivityDriver.class);
+//                                    intent.putExtra("flowValue", 3);
+//                                    startActivity(intent);
+//                                }
+
                             }
                         }, error -> {
                     if ((customDialog != null) && (customDialog.isShowing()))
                         customDialog.dismiss();
                     displayMessage(getString(R.string.something_went_wrong));
                     System.out.println("Error : " + error.toString());
+                    System.out.println("Error : " + error.getMessage());
+                    System.out.println("Error : " + error.getCause());
 
                 }) {
 
@@ -4261,6 +4300,9 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                         Leg leg = route.getLegList().get(index);
                                         try {
                                             totalDistance = totalDistance + Float.parseFloat(leg.getDistance().getText().replace("km", "").replace("m", "").trim());
+                                            Toast.makeText(getContext(), "DISTANCE : "+totalDistance, Toast.LENGTH_SHORT).show();
+                                            SharedHelper.putKey(getContext(),"PUBLISHED_DISTANCE",totalDistance+" KM");
+
                                         } catch (NumberFormatException ne) {
                                             ne.printStackTrace();
                                         }
@@ -4294,6 +4336,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                                 mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromBitmap(icon)).position(leg.getEndLocation().getCoordination()));
                                             }
                                             List<Step> stepList = leg.getStepList();
+
                                             ArrayList<PolylineOptions> polylineOptionList = DirectionConverter.createTransitPolyline(getContext(), stepList, 3, getResources().getColor(R.color.dark_green), 2, Color.GRAY);
                                             for (PolylineOptions polylineOption : polylineOptionList) {
                                                 mMap.addPolyline(polylineOption);

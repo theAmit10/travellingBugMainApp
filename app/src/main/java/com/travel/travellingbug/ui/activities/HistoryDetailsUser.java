@@ -97,6 +97,8 @@ public class HistoryDetailsUser extends AppCompatActivity {
 
     Button btnViewInvoice, btnCall;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -278,10 +280,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
 
                         Toast.makeText(HistoryDetailsUser.this, "Successfully cancelled", Toast.LENGTH_SHORT).show();
 
-//                        jsonObject.optString("error");
-                        if (jsonObject.optString("id") != null) {
-                            System.out.println("STATUS UPDATED OF REQUEST ID : " + jsonObject.optString("id"));
-                        }
+
                     }
 
                 } catch (JSONException e) {
@@ -329,7 +328,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
         View view = LayoutInflater.from(context).inflate(R.layout.cancel_dialog, null);
         final EditText reasonEtxt = view.findViewById(R.id.reason_etxt);
         Button submitBtn = view.findViewById(R.id.submit_btn);
-        builder.setIcon(R.mipmap.ic_launcher)
+        builder.setIcon(R.drawable.app_logo_org)
                 .setTitle(R.string.app_name)
                 .setView(view)
                 .setCancelable(true);
@@ -666,6 +665,10 @@ public class HistoryDetailsUser extends AppCompatActivity {
                     paymentType.setText(response.optJSONObject(0).optString("payment_mode"));
                     String form = response.optJSONObject(0).optString("schedule_at");
                     JSONObject providerObj = response.optJSONObject(0).optJSONObject("provider");
+
+                    tripProviderRating.setRating(Float.parseFloat(providerObj.optString("rating")));
+
+
                     if (response.optJSONObject(0).optString("booking_id") != null &&
                             !response.optJSONObject(0).optString("booking_id").equalsIgnoreCase("")) {
                         booking_id.setText(response.optJSONObject(0).optString("booking_id"));
@@ -689,6 +692,8 @@ public class HistoryDetailsUser extends AppCompatActivity {
                     } else {
                         paymentTypeImg.setImageResource(R.drawable.visa_icon);
                     }
+
+
 
                     if (response.optJSONObject(0).optJSONObject("provider") != null) {
                         if (response.optJSONObject(0).optJSONObject("provider").optString("avatar") != null)

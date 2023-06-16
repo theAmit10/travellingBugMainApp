@@ -269,13 +269,13 @@ public class HomeScreenActivity extends AppCompatActivity implements
 
         setUpNavigationView();
 
-        navHeader.setOnClickListener(view ->
-
-        {
-            drawer.closeDrawers();
-            new Handler().postDelayed(() -> startActivity(new Intent(activity,
-                    Profile.class)), 250);
-        });
+//        navHeader.setOnClickListener(view ->
+//
+//        {
+//            drawer.closeDrawers();
+//            new Handler().postDelayed(() -> startActivity(new Intent(activity,
+//                    UserProfileActivity.class)), 250);
+//        });
         if (
 
                 getIntent().
@@ -370,10 +370,10 @@ public class HomeScreenActivity extends AppCompatActivity implements
                     break;
                 case R.id.nav_withdraw:
                     drawer.closeDrawers();
-                    Intent intent = new Intent(HomeScreenActivity.this,TrackActivity.class);
-                    intent.putExtra("flowValue", 3);
-                    intent.putExtra("request_id_from_trip", "121");
-                    startActivity(intent);
+//                    Intent intent = new Intent(HomeScreenActivity.this,TrackActivity.class);
+//                    intent.putExtra("flowValue", 3);
+//                    intent.putExtra("request_id_from_trip", "121");
+//                    startActivity(intent);
 
                     break;
                 case R.id.nav_notification:
@@ -422,7 +422,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
                 case R.id.nav_earnings:
                     drawer.closeDrawers();
                     new Handler().postDelayed(() -> startActivity(new Intent(activity,
-                            MainActivity.class)), 250);
+                            EarningActivity.class)), 250);
                     break;
                 case R.id.nav_share:
                     drawer.closeDrawers();
