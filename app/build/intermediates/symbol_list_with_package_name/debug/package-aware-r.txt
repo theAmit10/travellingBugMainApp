@@ -6494,6 +6494,7 @@ layout activity_payment
 layout activity_payment_methods
 layout activity_personal_details
 layout activity_pick_up_notes
+layout activity_preference_title
 layout activity_privacy_policy
 layout activity_profile
 layout activity_profile_picture

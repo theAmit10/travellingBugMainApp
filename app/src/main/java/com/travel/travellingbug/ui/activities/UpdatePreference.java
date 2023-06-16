@@ -32,7 +32,7 @@ public class UpdatePreference extends AppCompatActivity {
     ImageView backArrow;
     TextView toolName;
     String parameter, value;
-    String title, subtitle, id;
+    String title, subtitle, id,title_id;
     EditText editTexttitle,editTextsubtitle;
     TextInputLayout text_input_layout_title,text_input_layout_subtitle;
     Button btnUpdate;
@@ -140,7 +140,7 @@ public class UpdatePreference extends AppCompatActivity {
             @Override
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("title", editTexttitle.getText().toString());
+                params.put("title", title_id);
                 params.put("subtitle", editTextsubtitle.getText().toString());
                 params.put("id", id);
                 return params;
@@ -212,6 +212,7 @@ public class UpdatePreference extends AppCompatActivity {
         id = getIntent().getStringExtra("id");
         title = getIntent().getStringExtra("title");
         subtitle = getIntent().getStringExtra("subtitle");
+        title_id = getIntent().getStringExtra("title_id");
 
         editTexttitle.setText(title);
         editTextsubtitle.setText(subtitle);

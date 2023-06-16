@@ -6493,6 +6493,7 @@ int layout activity_payment 0x7f0d0041
 int layout activity_payment_methods 0x7f0d0042
 int layout activity_personal_details 0x7f0d0043
 int layout activity_pick_up_notes 0x7f0d0044
+int layout activity_preference_title 0x7f0d0162
 int layout activity_privacy_policy 0x7f0d0045
 int layout activity_profile 0x7f0d0046
 int layout activity_profile_picture 0x7f0d0047

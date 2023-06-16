@@ -60,6 +60,8 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
     String subTitle = "";
     String id = "";
 
+    String title_id = "";
+
     ImageView backArrow;
 
     Button addPreferences;
@@ -112,7 +114,14 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
         addPreferences.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), UpdatePreference.class);
+//                Intent intent = new Intent(v.getContext(), UpdatePreference.class);
+//                intent.putExtra("id", "0");
+//                intent.putExtra("title", "Title");
+//                intent.putExtra("subtitle", "Subtitle");
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                startActivity(intent);
+
+                Intent intent = new Intent(v.getContext(), PreferenceTitle.class);
                 intent.putExtra("id", "0");
                 intent.putExtra("title", "Title");
                 intent.putExtra("subtitle", "Subtitle");
@@ -180,9 +189,10 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
                             titles = jsonObjectPreference.optString("title");
                             subTitle = jsonObjectPreference.optString("subtitle");
                             id = jsonObjectPreference.optString("id");
+                            title_id = jsonObjectPreference.optString("title_id");
 
 
-                            list.add(new VerifyIdMainActivityModel(titles, subTitle, id));
+                            list.add(new VerifyIdMainActivityModel(titles, subTitle, id,title_id));
 
 
                         } catch (JSONException e) {

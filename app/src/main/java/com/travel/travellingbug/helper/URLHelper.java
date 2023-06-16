@@ -158,7 +158,9 @@ public interface URLHelper {
 
     String CHAT_API = BASE + "api/provider/firebase/sendchat";
 
-    String CHANGE_STATUS_BY_USER = "api/provider/changestatusbyuser";
+    String CHANGE_STATUS_BY_USER = BASE +  "api/provider/changestatusbyuser";
+
+    String PREFERENCES_TITLE = BASE +  "api/provider/profile/preferencetitle";
 
 
 

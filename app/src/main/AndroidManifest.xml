@@ -41,6 +41,9 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".ui.activities.PreferenceTitle"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.PickUpNotes"
             android:exported="false" />
         <activity
