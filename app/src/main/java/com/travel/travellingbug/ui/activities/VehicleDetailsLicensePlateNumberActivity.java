@@ -1,7 +1,5 @@
 package com.travel.travellingbug.ui.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -9,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -31,6 +31,8 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
 
     FloatingActionButton floatingActionButton;
     TextInputEditText licenseNumberETL;
+
+    String license_number = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,11 +125,20 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
     }
 
     private void clickHandlerOnComponent() {
+
+
+        if(!licenseNumberETL.getText().toString().equalsIgnoreCase("") || !licenseNumberETL.getText().toString().equalsIgnoreCase(null)){
+            license_number = licenseNumberETL.getText().toString();
+
+        }
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(VehicleDetailsLicensePlateNumberActivity.this, VehicleDetailsBrandActivity.class);
-                startActivity(intent);
+                if(!license_number.equalsIgnoreCase("")){
+                    Intent intent = new Intent(VehicleDetailsLicensePlateNumberActivity.this, VehicleDetailsBrandActivity.class);
+                    intent.putExtra("license_number",license_number);
+                    startActivity(intent);
+                }
             }
         });
     }

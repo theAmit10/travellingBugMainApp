@@ -4,22 +4,23 @@
     android:orientation="vertical"
     android:layout_height="wrap_content">
 
-    <TextView
+    <CheckBox
         android:id="@+id/location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Delhi"
+
         android:maxLines="1"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         android:textColor="@color/black"
         android:textSize="@dimen/_10sdp"
-        android:textStyle="bold"/>
+        />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/colorGreyLight"
-        android:layout_margin="@dimen/_10sdp"/>
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/_1sdp"-->
+<!--        android:background="@color/colorGreyLight"-->
+<!--        android:layout_margin="@dimen/_10sdp"/>-->
 
 </LinearLayout>

@@ -5886,6 +5886,7 @@ id rectangle
 id rectangles
 id recyclerChat
 id recyclerView
+id recyclerViewPreference
 id recyclerWithdraw
 id recycler_countryDialog
 id registerLayout
@@ -6174,6 +6175,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id travelDays
+id travelPreferenceCheckBox
 id travelPreferenceRV
 id travelPreferenceRVLayout
 id travelPreferencesLV
@@ -6509,6 +6511,7 @@ layout activity_splash
 layout activity_stripe
 layout activity_terms_and_condition
 layout activity_terms_of_use
+layout activity_testing
 layout activity_track
 layout activity_track_driver
 layout activity_travel_preference
@@ -6597,6 +6600,7 @@ layout design_stopover_rv
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout design_travel_preference
+layout design_travel_preference_find_ride_detials
 layout design_vehicle_brand
 layout design_vehicle_model
 layout design_vehicle_type

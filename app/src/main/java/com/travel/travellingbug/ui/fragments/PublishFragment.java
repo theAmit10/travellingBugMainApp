@@ -2086,6 +2086,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
                 if (strPickLocationSO.equalsIgnoreCase("yes")) {
                     pick_firstSO = true;
+//                    commenting below line for testing
                     mMap.clear();
                     flowValue = 9;
                     layoutChanges();

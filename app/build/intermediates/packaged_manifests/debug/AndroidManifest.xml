@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.travel.travellingbug.ui.activities.TestingActivity"
+            android:exported="false" />
+        <activity
             android:name="com.travel.travellingbug.ui.activities.PreferenceTitle"
             android:exported="false" />
         <activity

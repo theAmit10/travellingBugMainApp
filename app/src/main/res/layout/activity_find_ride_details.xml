@@ -55,9 +55,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/passengerRV"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </androidx.recyclerview.widget.RecyclerView>
+                    android:layout_height="wrap_content" />
 
                 <com.travel.travellingbug.utills.MyBoldTextView
                     android:id="@+id/allAvailabelSeatTv"
@@ -92,9 +90,37 @@
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold" />
 
+<!--            <RelativeLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/travelPreferenceFindRideRV"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    tools:listitem="@layout/design_travel_preference_find_ride_detials"-->
+<!--                    tools:itemCount="3"-->
+<!--                    android:layout_height="wrap_content">-->
+
+<!--                </androidx.recyclerview.widget.RecyclerView>-->
+
+
+<!--            </RelativeLayout>-->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewPreference"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <CheckBox
@@ -115,6 +141,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <CheckBox
