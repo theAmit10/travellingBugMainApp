@@ -2,7 +2,6 @@ package com.travel.travellingbug.ui.activities;
 
 import static com.travel.travellingbug.ClassLuxApp.getContext;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -101,9 +100,9 @@ public class FindRideDetails extends AppCompatActivity {
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                finish();
-                Intent intent = new Intent(getContext(), TestingActivity.class);
-                startActivity(intent);
+                finish();
+//                Intent intent = new Intent(getContext(), TestingActivity.class);
+//                startActivity(intent);
             }
         });
 

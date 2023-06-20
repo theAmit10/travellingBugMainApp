@@ -360,6 +360,9 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
         txtDestination.setSelection(txtDestination.getText().length());
 
         mAutoCompleteList.setOnItemClickListener((parent, view, position, id) -> {
+//            Toast.makeText(this, ""+mLastLocation.getProvider(), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, ""+mLastLocation.getLatitude(), Toast.LENGTH_SHORT).show();
+//            System.out.println("lat wasu "+mLastLocation.getLatitude()+ " Long : "+mLastLocation.getLongitude());
             if (txtaddressSource.getText().toString().equalsIgnoreCase("")) {
                 try {
                     AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
@@ -383,6 +386,13 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
             } else {
                 setGoogleAddress(position);
             }
+
+
+
+
+
+
+
         });
         backArrow.setOnClickListener(v -> {
             finish();
@@ -452,6 +462,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
         urlString.append("&key=" + getResources().getString(R.string.google_map_api));
 
         Log.d("FINAL URL:::   ", urlString.toString());
+
         return urlString.toString();
     }
 
@@ -474,6 +485,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
             if (mLastLocation != null) {
                 latitude = mLastLocation.getLatitude();
                 longitude = mLastLocation.getLongitude();
+
             }
 
         } catch (SecurityException e) {
@@ -535,6 +547,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                 if (placePredictions != null) {
                     intent.putExtra("Location Address", placePredictions);
                     intent.putExtra("pick_location", "no");
+                    Toast.makeText(CustomGooglePlacesSearch.this, ""+placePredictions.getPlaces(), Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK, intent);
                 } else {
                     setResult(RESULT_CANCELED, intent);

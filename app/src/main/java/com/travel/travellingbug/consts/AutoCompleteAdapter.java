@@ -45,10 +45,13 @@ public class AutoCompleteAdapter extends ArrayAdapter<PlaceAutoComplete> {
             holder = (ViewHolder) rowView.getTag();
         /***** Get each Model object from ArrayList ********/
         holder.Place = Places.get(position);
+
+
         StringTokenizer st = new StringTokenizer(holder.Place.getPlaceDesc(), ",");
         /************  Set Model values in Holder elements ***********/
 
         holder.name.setText(st.nextToken());
+//        Toast.makeText(getContext(), "name : "+st, Toast.LENGTH_SHORT).show();
 //        SharedHelper.putKey(getContext(),"destination_location",st.nextToken());
         String desc_detail = "";
         for (int i = 1; i < st.countTokens(); i++) {
@@ -59,6 +62,20 @@ public class AutoCompleteAdapter extends ArrayAdapter<PlaceAutoComplete> {
             }
         }
         holder.location.setText(desc_detail);
+
+//        holder.name.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Toast.makeText(getContext(), ""+holder.name.getText(), Toast.LENGTH_SHORT).show();
+////                Toast.makeText(getContext(), ""+holder.location.getText(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), ""+Places.get(position).toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), ""+Places.get(position).getPlaceDesc(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), ""+Places.get(position).getPlaceID(), Toast.LENGTH_SHORT).show();
+//                Places.get(position).
+//
+//            }
+//        });
+//        Toast.makeText(getContext(), "location : "+desc_detail, Toast.LENGTH_SHORT).show();
         return rowView;
     }
 

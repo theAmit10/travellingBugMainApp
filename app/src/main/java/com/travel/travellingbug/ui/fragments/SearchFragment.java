@@ -854,7 +854,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 if (!frmSource.getText().toString().equalsIgnoreCase("") &&
                         !destination.getText().toString().equalsIgnoreCase("") &&
                         !frmDest.getText().toString().equalsIgnoreCase("")) {
-                    getApproximateFare();
+//                    getApproximateFare();
                     sourceDestLayout.setOnClickListener(new SearchFragment.OnClick());
                 } else {
                     Toast.makeText(context, "Please enter both pickup and drop locations", Toast.LENGTH_SHORT).show();
@@ -1008,6 +1008,14 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 schedule_ride.setVisibility(View.GONE);
                 btnShowPaymentTv.setVisibility(View.GONE);
 
+            }
+        });
+
+        cancel_ride_sp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent3 = new Intent(getContext(), HomeScreenActivity.class);
+                startActivity(intent3);
             }
         });
 
@@ -1370,6 +1378,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 current_address = currentAddress;
                 if(getContext() != null){
                     frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
+                    frmDest.setTextColor(getResources().getColor(R.color.dark_gray));
                 }
                 frmSource.setText(currentAddress);
 
@@ -1553,6 +1562,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             utils.hideKeypad(getActivity(), getActivity().getCurrentFocus());
             if (lnrApproximate.getVisibility() == View.VISIBLE) {
                 lnrApproximate.startAnimation(slide_down);
+
             } else if (ScheduleLayout.getVisibility() == View.VISIBLE) {
                 ScheduleLayout.startAnimation(slide_down);
 //                lnrRequestProviders.setVisibility(View.GONE);
@@ -2001,6 +2011,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             source_lng = "" + placePredictions.strSourceLongitude;
                             source_address = placePredictions.strSourceAddress;
 
+                            Toast.makeText(getContext(), "SA : "+source_address, Toast.LENGTH_SHORT).show();
+
                             if (!placePredictions.strSourceLatitude.equalsIgnoreCase("")
                                     && !placePredictions.strSourceLongitude.equalsIgnoreCase("")) {
                                 double latitude = Double.parseDouble(placePredictions.strSourceLatitude);
@@ -2259,67 +2271,67 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         Log.i(TAG, "getServiceList: " + jsonArrayRequest.getUrl());
     }
 
-    public void getApproximateFare() {
-
-        customDialog.setCancelable(false);
-        if (customDialog != null)
-            customDialog.show();
-        JSONObject object = new JSONObject();
-        String constructedURL = URLHelper.ESTIMATED_FARE_DETAILS_API + "" +
-                "?s_latitude=" + source_lat
-                + "&s_longitude=" + source_lng
-                + "&d_latitude=" + dest_lat
-                + "&d_longitude=" + dest_lng
-                + "&service_type=" + "2";
-        System.out.println("getNewApproximateFare getNewApproximateFare " + constructedURL);
-        JsonObjectRequest jsonObjectRequest = new
-                JsonObjectRequest(Request.Method.GET,
-                        constructedURL,
-                        object,
-                        response -> {
-                            if (response != null) {
-                                if ((customDialog != null) && (customDialog.isShowing()))
-                                    customDialog.dismiss();
-                                if (!response.optString("estimated_fare").equalsIgnoreCase("")) {
-                                    Utilities.print("ApproximateResponse", response.toString());
-                                    SharedHelper.putKey(context, "estimated_fare", response.optString("estimated_fare"));
-                                    SharedHelper.putKey(context, "distance", response.optString("distance"));
-                                    SharedHelper.putKey(context, "eta_time", response.optString("time"));
-                                    SharedHelper.putKey(context, "surge", response.optString("surge"));
-                                    SharedHelper.putKey(context, "surge_value", response.optString("surge_value"));
-                                    setValuesForApproximateLayout();
-                                    double wallet_balance = response.optDouble("wallet_balance");
-                                    SharedHelper.putKey(context, "wallet_balance", "" + response.optDouble("wallet_balance"));
-
-                                    if (!Double.isNaN(wallet_balance) && wallet_balance > 0) {
-                                        lineView.setVisibility(View.GONE);
-                                        chkWallet.setVisibility(View.GONE);
-                                    } else {
-                                        lineView.setVisibility(View.GONE);
-                                        chkWallet.setVisibility(View.GONE);
-                                    }
-                                    flowValue = 2;
-                                    layoutChanges();
-                                }
-                            }
-                        }, error -> {
-                    if ((customDialog != null) && (customDialog.isShowing()))
-                        customDialog.dismiss();
-                    displayMessage(getString(R.string.something_went_wrong));
-
-                }) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("X-Requested-With", "XMLHttpRequest");
-                        headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " " + SharedHelper.getKey(context, "access_token"));
-                        return headers;
-                    }
-                };
-
-        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
-
-    }
+//    public void getApproximateFare() {
+//
+//        customDialog.setCancelable(false);
+//        if (customDialog != null)
+//            customDialog.show();
+//        JSONObject object = new JSONObject();
+//        String constructedURL = URLHelper.ESTIMATED_FARE_DETAILS_API + "" +
+//                "?s_latitude=" + source_lat
+//                + "&s_longitude=" + source_lng
+//                + "&d_latitude=" + dest_lat
+//                + "&d_longitude=" + dest_lng
+//                + "&service_type=" + "2";
+//        System.out.println("getNewApproximateFare getNewApproximateFare " + constructedURL);
+//        JsonObjectRequest jsonObjectRequest = new
+//                JsonObjectRequest(Request.Method.GET,
+//                        constructedURL,
+//                        object,
+//                        response -> {
+//                            if (response != null) {
+//                                if ((customDialog != null) && (customDialog.isShowing()))
+//                                    customDialog.dismiss();
+//                                if (!response.optString("estimated_fare").equalsIgnoreCase("")) {
+//                                    Utilities.print("ApproximateResponse", response.toString());
+//                                    SharedHelper.putKey(context, "estimated_fare", response.optString("estimated_fare"));
+//                                    SharedHelper.putKey(context, "distance", response.optString("distance"));
+//                                    SharedHelper.putKey(context, "eta_time", response.optString("time"));
+//                                    SharedHelper.putKey(context, "surge", response.optString("surge"));
+//                                    SharedHelper.putKey(context, "surge_value", response.optString("surge_value"));
+//                                    setValuesForApproximateLayout();
+//                                    double wallet_balance = response.optDouble("wallet_balance");
+//                                    SharedHelper.putKey(context, "wallet_balance", "" + response.optDouble("wallet_balance"));
+//
+//                                    if (!Double.isNaN(wallet_balance) && wallet_balance > 0) {
+//                                        lineView.setVisibility(View.GONE);
+//                                        chkWallet.setVisibility(View.GONE);
+//                                    } else {
+//                                        lineView.setVisibility(View.GONE);
+//                                        chkWallet.setVisibility(View.GONE);
+//                                    }
+//                                    flowValue = 2;
+//                                    layoutChanges();
+//                                }
+//                            }
+//                        }, error -> {
+//                    if ((customDialog != null) && (customDialog.isShowing()))
+//                        customDialog.dismiss();
+//                    displayMessage(getString(R.string.something_went_wrong));
+//
+//                }) {
+//                    @Override
+//                    public Map<String, String> getHeaders() throws AuthFailureError {
+//                        HashMap<String, String> headers = new HashMap<String, String>();
+//                        headers.put("X-Requested-With", "XMLHttpRequest");
+//                        headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " " + SharedHelper.getKey(context, "access_token"));
+//                        return headers;
+//                    }
+//                };
+//
+//        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+//
+//    }
 
 //    void getProvidersList(String strTag) {
 //        String providers_request = URLHelper.GET_PROVIDERS_LIST_API + "?" +
@@ -3670,7 +3682,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             !frmDest.getText().toString().equalsIgnoreCase("") &&
                             !calendertv.getText().toString().equalsIgnoreCase("Today")) {
 
-                        getApproximateFare();
+//                        getApproximateFare();
 //                        frmDest.setOnClickListener(null);
 //                        frmSource.setOnClickListener(null);
 //                        SharedHelper.putKey(context, "name", "");
@@ -3690,6 +3702,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         lnrRequestProviders.setVisibility(View.VISIBLE);
                         bottomSourceDestinationLL.setVisibility(View.VISIBLE);
                         btnShowPaymentTv.setVisibility(View.VISIBLE);
+                        btnShowPaymentTv.startAnimation(slide_up);
                         schedule_ride.setVisibility(View.GONE);
 
 
