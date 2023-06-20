@@ -54,7 +54,7 @@ public class StepOverAdapter extends RecyclerView.Adapter<StepOverAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         StopOverModel stopOverModel = list.get(position);
-        holder.location.setText(stopOverModel.getLocation());
+        holder.location.setText(stopOverModel.getArea());
 
         JSONArray jsonArray = new JSONArray();
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URLHelper.PREFERENCES,
@@ -74,7 +74,7 @@ public class StepOverAdapter extends RecyclerView.Adapter<StepOverAdapter.ViewHo
 //                        jsonObjectPreference.optString("title");
 
                         if(jsonObjectPreference.optString("title") != null){
-                            if(stopOverModel.getLocation().equalsIgnoreCase(jsonObjectPreference.optString("title"))){
+                            if(stopOverModel.getArea().equalsIgnoreCase(jsonObjectPreference.optString("title"))){
                                 holder.location.setChecked(true);
                             }
                         }

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +38,7 @@ public class FRDAdapter extends RecyclerView.Adapter<FRDAdapter.ViewHolder> {
         FRDModel frdModel = list.get(position);
 
 
-        holder.travelPreferenceCheckBox.setText(frdModel.getTitle());
+//        holder.travelPreferenceCheckBox.setText(frdModel.getTitle());
 
         System.out.println("frdModel data : "+frdModel.getTitle());
 
@@ -51,11 +50,11 @@ public class FRDAdapter extends RecyclerView.Adapter<FRDAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        CheckBox travelPreferenceCheckBox;
+//        CheckBox travelPreferenceCheckBox;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            travelPreferenceCheckBox = itemView.findViewById(R.id.travelPreferenceCheckBox);
+//            travelPreferenceCheckBox = itemView.findViewById(R.id.travelPreferenceCheckBox);
         }
     }
 }

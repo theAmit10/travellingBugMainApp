@@ -394,52 +394,63 @@
                                                 android:layout_height="wrap_content"
                                                 android:orientation="vertical">
 
-                                                <TextView
-                                                    android:id="@+id/stopOverTitleTv"
-                                                    android:visibility="gone"
+                                                <androidx.core.widget.NestedScrollView
                                                     android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:fontFamily="@font/montserrat_semibold"
-                                                    android:paddingTop="@dimen/_10sdp"
-                                                    android:paddingStart="@dimen/_20sdp"
-                                                    android:paddingEnd="@dimen/_20sdp"
-                                                    android:text="STOPOVERS"
-                                                    android:textColor="@color/black"
-                                                    android:textSize="@dimen/_14sdp"
-                                                    android:textStyle="bold" />
-
-                                                <RelativeLayout
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_marginStart="@dimen/_20sdp"
-                                                    android:layout_marginTop="@dimen/_20sdp"
-                                                    android:layout_marginEnd="@dimen/_20sdp"
-                                                    >
-
-                                                    <androidx.recyclerview.widget.RecyclerView
-                                                        android:id="@+id/stopoverRv"
+                                                    android:layout_height="wrap_content">
+                                                    <LinearLayout
                                                         android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
-                                                        tools:itemCount="2"
-                                                        tools:listitem="@layout/design_stopover_rv">
+                                                        android:orientation="vertical">
 
-                                                    </androidx.recyclerview.widget.RecyclerView>
-                                                </RelativeLayout>
+                                                        <TextView
+                                                            android:id="@+id/stopOverTitleTv"
+                                                            android:visibility="gone"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/montserrat_semibold"
+                                                            android:paddingTop="@dimen/_10sdp"
+                                                            android:paddingStart="@dimen/_20sdp"
+                                                            android:paddingEnd="@dimen/_20sdp"
+                                                            android:text="STOPOVERS"
+                                                            android:textColor="@color/black"
+                                                            android:textSize="@dimen/_14sdp"
+                                                            android:textStyle="bold" />
 
-                                                <TextView
-                                                    android:id="@+id/addStopOverTv"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:paddingTop="@dimen/_10sdp"
-                                                    android:paddingBottom="@dimen/_10sdp"
-                                                    android:paddingStart="@dimen/_12sdp"
-                                                    android:drawableLeft="@drawable/ic_add"
-                                                    android:drawablePadding="@dimen/_3sdp"
-                                                    android:paddingEnd="@dimen/_20sdp"
-                                                    android:text="Add stopovers"
-                                                    android:textColor="@color/green"
-                                                    android:textSize="@dimen/_12sdp"
-                                                     />
+                                                        <RelativeLayout
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_marginStart="@dimen/_20sdp"
+                                                            android:layout_marginTop="@dimen/_20sdp"
+                                                            android:layout_marginEnd="@dimen/_20sdp"
+                                                            >
+
+                                                            <androidx.recyclerview.widget.RecyclerView
+                                                                android:id="@+id/stopoverRv"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="wrap_content"
+                                                                tools:itemCount="2"
+                                                                tools:listitem="@layout/design_stopover_rv">
+
+                                                            </androidx.recyclerview.widget.RecyclerView>
+                                                        </RelativeLayout>
+
+                                                        <TextView
+                                                            android:id="@+id/addStopOverTv"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:paddingTop="@dimen/_10sdp"
+                                                            android:paddingBottom="@dimen/_10sdp"
+                                                            android:paddingStart="@dimen/_12sdp"
+                                                            android:drawableLeft="@drawable/ic_add"
+                                                            android:drawablePadding="@dimen/_3sdp"
+                                                            android:paddingEnd="@dimen/_20sdp"
+                                                            android:text="Add stopovers"
+                                                            android:textColor="@color/green"
+                                                            android:textSize="@dimen/_12sdp"
+                                                            />
+
+                                                    </LinearLayout>
+                                                </androidx.core.widget.NestedScrollView>
 
 
                                             </LinearLayout>

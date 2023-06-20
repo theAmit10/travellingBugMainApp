@@ -391,7 +391,7 @@ public class DocUploadActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                    }, error -> Log.v("DocUploadActivity", error.getMessage())) {
+                    }, error -> Log.v("DocUploadActivity", error.getMessage()+"")) {
                         @Override
                         public java.util.Map<String, String> getHeaders() throws AuthFailureError {
                             HashMap<String, String> headers = new HashMap<>();

@@ -36,9 +36,9 @@ public class TravelPreferenceFindRideDetialsAdapter extends RecyclerView.Adapter
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        TravelPreferenceFindRideDetialsModel travelPreferenceFindRideDetialsModel = list.get(position);
-        System.out.println("ADAPTER VAL : "+travelPreferenceFindRideDetialsModel.getTitle());
-        holder.title.setText(travelPreferenceFindRideDetialsModel.getTitle());
+//        TravelPreferenceFindRideDetialsModel travelPreferenceFindRideDetialsModel = list.get(position);
+//        System.out.println("ADAPTER VAL : "+travelPreferenceFindRideDetialsModel.getTitle());
+//        holder.title.setText(travelPreferenceFindRideDetialsModel.getTitle());
 
 //        holder.description.setText(verifyIdMainActivityModel.getDescription());
 
@@ -57,7 +57,7 @@ public class TravelPreferenceFindRideDetialsAdapter extends RecyclerView.Adapter
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            title = itemView.findViewById(R.id.travelPreferenceCheckBox);
+//            title = itemView.findViewById(R.id.travelPreferenceCheckBox);
 //            description = itemView.findViewById(R.id.descriptionVIMtv);
         }
     }

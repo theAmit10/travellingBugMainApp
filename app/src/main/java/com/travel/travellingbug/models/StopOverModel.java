@@ -1,17 +1,40 @@
 package com.travel.travellingbug.models;
 
 public class StopOverModel {
-    String location;
+    String lat, lng;
+    String area;
 
-    public StopOverModel(String location) {
-        this.location = location;
+    public StopOverModel(String lat, String lng, String area) {
+        this.lat = lat;
+        this.lng = lng;
+        this.area = area;
     }
 
-    public String getLocation() {
-        return location;
+    public StopOverModel(String area) {
+        this.area = area;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
     }
 }

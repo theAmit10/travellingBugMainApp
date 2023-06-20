@@ -62,22 +62,16 @@ com/travel/travellingbug/utills/MapAnimator.java
  com.travel.travellingbug.utills.MapAnimator$5
 com/travel/travellingbug/ui/activities/Payment.java
  com.travel.travellingbug.ui.activities.Payment
-com/travel/travellingbug/ui/fragments/PastTrips.java
- com.travel.travellingbug.ui.fragments.PastTrips
- com.travel.travellingbug.ui.fragments.PastTrips$1
- com.travel.travellingbug.ui.fragments.PastTrips$2
- com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter
- com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$1
- com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$2
- com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$3
- com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$4
- com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$MyViewHolder
+com/travel/travellingbug/ui/adapters/FRDAdapter.java
+ com.travel.travellingbug.ui.adapters.FRDAdapter
+ com.travel.travellingbug.ui.adapters.FRDAdapter$ViewHolder
 com/travel/travellingbug/consts/PlacesAutoCompleteAdapter.java
  com.travel.travellingbug.consts.PlacesAutoCompleteAdapter
  com.travel.travellingbug.consts.PlacesAutoCompleteAdapter$1
-com/travel/travellingbug/ui/activities/login/ChangePassword.java
- com.travel.travellingbug.ui.activities.login.ChangePassword
- com.travel.travellingbug.ui.activities.login.ChangePassword$1
+com/travel/travellingbug/ui/adapters/StepOverAdapter.java
+ com.travel.travellingbug.ui.adapters.StepOverAdapter
+ com.travel.travellingbug.ui.adapters.StepOverAdapter$1
+ com.travel.travellingbug.ui.adapters.StepOverAdapter$ViewHolder
 com/travel/travellingbug/ui/adapters/UserProfileViewPagerAdapter.java
  com.travel.travellingbug.ui.adapters.UserProfileViewPagerAdapter
 com/travel/travellingbug/ui/fragments/YourRideFragment.java
@@ -109,10 +103,9 @@ com/travel/travellingbug/Login.java
  com.travel.travellingbug.Login$8
  com.travel.travellingbug.Login$9
  com.travel.travellingbug.Login$RetrieveTokenTask
-com/travel/travellingbug/ui/adapters/StepOverAdapter.java
- com.travel.travellingbug.ui.adapters.StepOverAdapter
- com.travel.travellingbug.ui.adapters.StepOverAdapter$1
- com.travel.travellingbug.ui.adapters.StepOverAdapter$ViewHolder
+com/travel/travellingbug/consts/AutoCompleteAdapter.java
+ com.travel.travellingbug.consts.AutoCompleteAdapter
+ com.travel.travellingbug.consts.AutoCompleteAdapter$ViewHolder
 com/travel/travellingbug/fcm/MyBroadcastReceiver.java
  com.travel.travellingbug.fcm.MyBroadcastReceiver
 com/travel/travellingbug/utills/LocationTracking.java
@@ -183,13 +176,21 @@ com/travel/travellingbug/models/PaymentResponse.java
 com/travel/travellingbug/ui/adapters/UserLocationAdapter.java
  com.travel.travellingbug.ui.adapters.UserLocationAdapter
  com.travel.travellingbug.ui.adapters.UserLocationAdapter$MyViewHolder
-com/travel/travellingbug/ui/activities/FindRideDetails.java
- com.travel.travellingbug.ui.activities.FindRideDetails
- com.travel.travellingbug.ui.activities.FindRideDetails$1
- com.travel.travellingbug.ui.activities.FindRideDetails$2
- com.travel.travellingbug.ui.activities.FindRideDetails$3
- com.travel.travellingbug.ui.activities.FindRideDetails$4
- com.travel.travellingbug.ui.activities.FindRideDetails$5
+com/travel/travellingbug/ui/activities/CustomStopOverLocation.java
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$1
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$2
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$3
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$3$1
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$4
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$4$1
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$4$1$1
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$4$1$2
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$5
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$5$1
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$5$1$1
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$5$1$2
+ com.travel.travellingbug.ui.activities.CustomStopOverLocation$6
 com/travel/travellingbug/ui/fragments/UserProfileReviewFragment.java
  com.travel.travellingbug.ui.fragments.UserProfileReviewFragment
 com/travel/travellingbug/listeners/Connect.java
@@ -240,9 +241,21 @@ com/travel/travellingbug/ui/activities/VehicleDetailsModelActivity.java
  com.travel.travellingbug.ui.activities.VehicleDetailsModelActivity$1
 com/travel/travellingbug/ui/activities/ChangeAddressAdtivityTwo.java
  com.travel.travellingbug.ui.activities.ChangeAddressAdtivityTwo
-com/travel/travellingbug/ui/activities/TestingActivity.java
- com.travel.travellingbug.ui.activities.TestingActivity
- com.travel.travellingbug.ui.activities.TestingActivity$1
+com/travel/travellingbug/ui/activities/CustomGooglePlacesSearch.java
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$1
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$2
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$3
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$3$1
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$4
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$4$1
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$4$1$1
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$4$1$2
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$5
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$5$1
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$5$1$1
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$5$1$2
+ com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$6
 com/travel/travellingbug/ui/activities/FavouritePlaceSearch.java
  com.travel.travellingbug.ui.activities.FavouritePlaceSearch
  com.travel.travellingbug.ui.activities.FavouritePlaceSearch$1
@@ -314,9 +327,21 @@ com/travel/travellingbug/consts/PlaceAPI.java
  com.travel.travellingbug.consts.PlaceAPI
 com/travel/travellingbug/chat/PageTransformer.java
  com.travel.travellingbug.chat.PageTransformer
-com/travel/travellingbug/ui/adapters/FRDAdapter.java
- com.travel.travellingbug.ui.adapters.FRDAdapter
- com.travel.travellingbug.ui.adapters.FRDAdapter$ViewHolder
+com/travel/travellingbug/ui/activities/FindRidesActivity.java
+ com.travel.travellingbug.ui.activities.FindRidesActivity
+ com.travel.travellingbug.ui.activities.FindRidesActivity$1
+ com.travel.travellingbug.ui.activities.FindRidesActivity$2
+ com.travel.travellingbug.ui.activities.FindRidesActivity$3
+ com.travel.travellingbug.ui.activities.FindRidesActivity$4
+ com.travel.travellingbug.ui.activities.FindRidesActivity$5
+ com.travel.travellingbug.ui.activities.FindRidesActivity$6
+ com.travel.travellingbug.ui.activities.FindRidesActivity$7
+ com.travel.travellingbug.ui.activities.FindRidesActivity$8
+ com.travel.travellingbug.ui.activities.FindRidesActivity$9
+ com.travel.travellingbug.ui.activities.FindRidesActivity$UpcomingsAdapter
+ com.travel.travellingbug.ui.activities.FindRidesActivity$UpcomingsAdapter$1
+ com.travel.travellingbug.ui.activities.FindRidesActivity$UpcomingsAdapter$2
+ com.travel.travellingbug.ui.activities.FindRidesActivity$UpcomingsAdapter$MyViewHolder
 com/travel/travellingbug/ui/fragments/Help.java
  com.travel.travellingbug.ui.fragments.Help
  com.travel.travellingbug.ui.fragments.Help$1
@@ -362,8 +387,8 @@ com/travel/travellingbug/ui/activities/ComplaintsAcivity.java
 com/travel/travellingbug/ui/activities/CouponActivity.java
  com.travel.travellingbug.ui.activities.CouponActivity
  com.travel.travellingbug.ui.activities.CouponActivity$1
-com/travel/travellingbug/models/ChatList.java
- com.travel.travellingbug.models.ChatList
+com/travel/travellingbug/models/DocListItemModel.java
+ com.travel.travellingbug.models.DocListItemModel
 com/travel/travellingbug/ui/activities/ProfilePictureActivity.java
  com.travel.travellingbug.ui.activities.ProfilePictureActivity
  com.travel.travellingbug.ui.activities.ProfilePictureActivity$1
@@ -538,8 +563,9 @@ com/travel/travellingbug/ui/activities/UserProfileActivity.java
  com.travel.travellingbug.ui.activities.UserProfileActivity$1
  com.travel.travellingbug.ui.activities.UserProfileActivity$2
  com.travel.travellingbug.ui.activities.UserProfileActivity$3
-com/travel/travellingbug/models/DocListItemModel.java
- com.travel.travellingbug.models.DocListItemModel
+com/travel/travellingbug/ui/activities/TestingActivity.java
+ com.travel.travellingbug.ui.activities.TestingActivity
+ com.travel.travellingbug.ui.activities.TestingActivity$1
 com/travel/travellingbug/ui/adapters/DocListAdapter.java
  com.travel.travellingbug.ui.adapters.DocListAdapter
  com.travel.travellingbug.ui.adapters.DocListAdapter$MyViewHolder
@@ -590,40 +616,13 @@ com/travel/travellingbug/ui/activities/LegalActivity.java
  com.travel.travellingbug.ui.activities.LegalActivity
 com/travel/travellingbug/ui/fragments/HolidayPackageFragment.java
  com.travel.travellingbug.ui.fragments.HolidayPackageFragment
-com/travel/travellingbug/ui/activities/TrackActivity.java
- com.travel.travellingbug.ui.activities.TrackActivity
- com.travel.travellingbug.ui.activities.TrackActivity$1
- com.travel.travellingbug.ui.activities.TrackActivity$10
- com.travel.travellingbug.ui.activities.TrackActivity$11
- com.travel.travellingbug.ui.activities.TrackActivity$12
- com.travel.travellingbug.ui.activities.TrackActivity$13
- com.travel.travellingbug.ui.activities.TrackActivity$14
- com.travel.travellingbug.ui.activities.TrackActivity$15
- com.travel.travellingbug.ui.activities.TrackActivity$15$1
- com.travel.travellingbug.ui.activities.TrackActivity$15$2
- com.travel.travellingbug.ui.activities.TrackActivity$15$3
- com.travel.travellingbug.ui.activities.TrackActivity$16
- com.travel.travellingbug.ui.activities.TrackActivity$17
- com.travel.travellingbug.ui.activities.TrackActivity$18
- com.travel.travellingbug.ui.activities.TrackActivity$19
- com.travel.travellingbug.ui.activities.TrackActivity$2
- com.travel.travellingbug.ui.activities.TrackActivity$20
- com.travel.travellingbug.ui.activities.TrackActivity$21
- com.travel.travellingbug.ui.activities.TrackActivity$22
- com.travel.travellingbug.ui.activities.TrackActivity$23
- com.travel.travellingbug.ui.activities.TrackActivity$24
- com.travel.travellingbug.ui.activities.TrackActivity$25
- com.travel.travellingbug.ui.activities.TrackActivity$3
- com.travel.travellingbug.ui.activities.TrackActivity$4
- com.travel.travellingbug.ui.activities.TrackActivity$5
- com.travel.travellingbug.ui.activities.TrackActivity$6
- com.travel.travellingbug.ui.activities.TrackActivity$7
- com.travel.travellingbug.ui.activities.TrackActivity$8
- com.travel.travellingbug.ui.activities.TrackActivity$9
- com.travel.travellingbug.ui.activities.TrackActivity$FetchUrl
- com.travel.travellingbug.ui.activities.TrackActivity$ParserTask
+com/travel/travellingbug/models/ChatList.java
+ com.travel.travellingbug.models.ChatList
 com/travel/travellingbug/helper/DataParser.java
  com.travel.travellingbug.helper.DataParser
+com/travel/travellingbug/ui/adapters/StepOverOrgAdapter.java
+ com.travel.travellingbug.ui.adapters.StepOverOrgAdapter
+ com.travel.travellingbug.ui.adapters.StepOverOrgAdapter$ViewHolder
 com/travel/travellingbug/ClassLuxApp.java
  com.travel.travellingbug.ClassLuxApp
 com/travel/travellingbug/models/ChatAppMsgDTO.java
@@ -713,54 +712,58 @@ com/travel/travellingbug/ui/activities/MainActivity.java
  com.travel.travellingbug.ui.activities.MainActivity$5
 com/travel/travellingbug/ui/adapters/ProfileViewPagerAdapter.java
  com.travel.travellingbug.ui.adapters.ProfileViewPagerAdapter
-com/travel/travellingbug/ui/activities/FindRidesActivity.java
- com.travel.travellingbug.ui.activities.FindRidesActivity
- com.travel.travellingbug.ui.activities.FindRidesActivity$1
- com.travel.travellingbug.ui.activities.FindRidesActivity$2
- com.travel.travellingbug.ui.activities.FindRidesActivity$3
- com.travel.travellingbug.ui.activities.FindRidesActivity$4
- com.travel.travellingbug.ui.activities.FindRidesActivity$5
- com.travel.travellingbug.ui.activities.FindRidesActivity$6
- com.travel.travellingbug.ui.activities.FindRidesActivity$7
- com.travel.travellingbug.ui.activities.FindRidesActivity$8
- com.travel.travellingbug.ui.activities.FindRidesActivity$9
- com.travel.travellingbug.ui.activities.FindRidesActivity$UpcomingsAdapter
- com.travel.travellingbug.ui.activities.FindRidesActivity$UpcomingsAdapter$1
- com.travel.travellingbug.ui.activities.FindRidesActivity$UpcomingsAdapter$2
- com.travel.travellingbug.ui.activities.FindRidesActivity$UpcomingsAdapter$MyViewHolder
-com/travel/travellingbug/consts/AutoCompleteAdapter.java
- com.travel.travellingbug.consts.AutoCompleteAdapter
- com.travel.travellingbug.consts.AutoCompleteAdapter$ViewHolder
-com/travel/travellingbug/ui/activities/CustomStopOverLocation.java
- com.travel.travellingbug.ui.activities.CustomStopOverLocation
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$1
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$2
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$3
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$3$1
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$4
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$4$1
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$4$1$1
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$4$1$2
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$5
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$5$1
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$5$1$1
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$5$1$2
- com.travel.travellingbug.ui.activities.CustomStopOverLocation$6
-com/travel/travellingbug/ui/activities/CustomGooglePlacesSearch.java
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$1
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$2
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$3
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$3$1
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$4
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$4$1
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$4$1$1
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$4$1$2
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$5
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$5$1
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$5$1$1
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$5$1$2
- com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch$6
+com/travel/travellingbug/ui/fragments/PastTrips.java
+ com.travel.travellingbug.ui.fragments.PastTrips
+ com.travel.travellingbug.ui.fragments.PastTrips$1
+ com.travel.travellingbug.ui.fragments.PastTrips$2
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$1
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$2
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$3
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$4
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$MyViewHolder
+com/travel/travellingbug/ui/activities/TrackActivity.java
+ com.travel.travellingbug.ui.activities.TrackActivity
+ com.travel.travellingbug.ui.activities.TrackActivity$1
+ com.travel.travellingbug.ui.activities.TrackActivity$10
+ com.travel.travellingbug.ui.activities.TrackActivity$11
+ com.travel.travellingbug.ui.activities.TrackActivity$12
+ com.travel.travellingbug.ui.activities.TrackActivity$13
+ com.travel.travellingbug.ui.activities.TrackActivity$14
+ com.travel.travellingbug.ui.activities.TrackActivity$15
+ com.travel.travellingbug.ui.activities.TrackActivity$15$1
+ com.travel.travellingbug.ui.activities.TrackActivity$15$2
+ com.travel.travellingbug.ui.activities.TrackActivity$15$3
+ com.travel.travellingbug.ui.activities.TrackActivity$16
+ com.travel.travellingbug.ui.activities.TrackActivity$17
+ com.travel.travellingbug.ui.activities.TrackActivity$18
+ com.travel.travellingbug.ui.activities.TrackActivity$19
+ com.travel.travellingbug.ui.activities.TrackActivity$2
+ com.travel.travellingbug.ui.activities.TrackActivity$20
+ com.travel.travellingbug.ui.activities.TrackActivity$21
+ com.travel.travellingbug.ui.activities.TrackActivity$22
+ com.travel.travellingbug.ui.activities.TrackActivity$23
+ com.travel.travellingbug.ui.activities.TrackActivity$24
+ com.travel.travellingbug.ui.activities.TrackActivity$25
+ com.travel.travellingbug.ui.activities.TrackActivity$3
+ com.travel.travellingbug.ui.activities.TrackActivity$4
+ com.travel.travellingbug.ui.activities.TrackActivity$5
+ com.travel.travellingbug.ui.activities.TrackActivity$6
+ com.travel.travellingbug.ui.activities.TrackActivity$7
+ com.travel.travellingbug.ui.activities.TrackActivity$8
+ com.travel.travellingbug.ui.activities.TrackActivity$9
+ com.travel.travellingbug.ui.activities.TrackActivity$FetchUrl
+ com.travel.travellingbug.ui.activities.TrackActivity$ParserTask
+com/travel/travellingbug/ui/activities/FindRideDetails.java
+ com.travel.travellingbug.ui.activities.FindRideDetails
+ com.travel.travellingbug.ui.activities.FindRideDetails$1
+ com.travel.travellingbug.ui.activities.FindRideDetails$2
+ com.travel.travellingbug.ui.activities.FindRideDetails$3
+ com.travel.travellingbug.ui.activities.FindRideDetails$4
+ com.travel.travellingbug.ui.activities.FindRideDetails$5
+com/travel/travellingbug/ui/activities/login/ChangePassword.java
+ com.travel.travellingbug.ui.activities.login.ChangePassword
+ com.travel.travellingbug.ui.activities.login.ChangePassword$1
 com/travel/travellingbug/ui/activities/HomeScreenActivity.java
  com.travel.travellingbug.ui.activities.HomeScreenActivity
  com.travel.travellingbug.ui.activities.HomeScreenActivity$1
