@@ -48,17 +48,14 @@ public class UserProfileAboutFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-
         View view = inflater.inflate(R.layout.fragment_user_profile_about, container, false);
 
 
-
         initData(view);
-        user_id  = getActivity().getIntent().getStringExtra("user_id");
-        if(getActivity().getIntent().getStringExtra("user_id") != null){
+        user_id = getActivity().getIntent().getStringExtra("user_id");
+        if (getActivity().getIntent().getStringExtra("user_id") != null) {
             getProfileData(user_id);
         }
-
 
 
         return view;
@@ -72,14 +69,24 @@ public class UserProfileAboutFragment extends Fragment {
             @Override
             public void onResponse(String response) {
 
-                System.out.println("size : "+response.length());
-                System.out.println("data : "+response);
+                System.out.println("size : " + response.length());
+                System.out.println("data : " + response);
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
 
                     if (response != null) {
-                        System.out.println("data : "+jsonObject.toString());
+                        System.out.println("data : " + jsonObject.toString());
+
+                        if (jsonObject.optString("email").equalsIgnoreCase("")) {
+                            emailTv.setText("No email Available");
+                        } else {
+                            emailTv.setText(jsonObject.optString("email"));
+                        }
+
+                        if (jsonObject.optString("mobile") != null) {
+                            phoneTv.setText(jsonObject.optString("mobile"));
+                        }
 
 
 //                        userName.setText(jsonObject.optString("first_name"));
@@ -93,7 +100,7 @@ public class UserProfileAboutFragment extends Fragment {
 
 
                 } catch (JSONException e) {
-
+                    e.printStackTrace();
                 }
 
 
@@ -101,6 +108,7 @@ public class UserProfileAboutFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
                 Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
             }
 
@@ -113,6 +121,7 @@ public class UserProfileAboutFragment extends Fragment {
                 params.put("id", user_id);
                 return params;
             }
+
             @Override
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<String, String>();
@@ -125,6 +134,7 @@ public class UserProfileAboutFragment extends Fragment {
 
         ClassLuxApp.getInstance().addToRequestQueue(request);
     }
+
     private void initData(View view) {
         phoneTv = view.findViewById(R.id.phoneTv);
         emailTv = view.findViewById(R.id.emailTv);

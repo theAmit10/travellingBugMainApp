@@ -94,6 +94,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
     String reason = "";
 
     String request_id = "";
+    String user_id = "";
 
     Button btnViewInvoice, btnCall;
 
@@ -118,6 +119,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
             String post_details = intent.getStringExtra("post_value");
             tag = intent.getStringExtra("tag");
             request_id = getIntent().getStringExtra("request_id");
+            user_id = getIntent().getStringExtra("user_id");
             jsonObject = new JSONObject(post_details);
         } catch (Exception e) {
             jsonObject = null;
@@ -271,13 +273,13 @@ public class HistoryDetailsUser extends AppCompatActivity {
             public void onResponse(String response) {
                 if ((customDialog != null) && (customDialog.isShowing()))
                     customDialog.dismiss();
+                finish();
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
 
                     if (response != null) {
                         System.out.println("data : " + jsonObject.toString());
-
                         Toast.makeText(HistoryDetailsUser.this, "Successfully cancelled", Toast.LENGTH_SHORT).show();
 
 
@@ -335,6 +337,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
         submitBtn.setOnClickListener(v -> {
             reason = reasonEtxt.getText().toString();
 //            cancelRequest();
+
             updateStatusForSingleUserRide(request_id, "CANCELLED");
 
         });
@@ -494,6 +497,44 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                     booking_id.setText(jsonArray.optJSONObject(i).optString("booking_id"));
                                     lblBookingID.setText(jsonArray.optJSONObject(i).optString("booking_id"));
                                 }
+
+                                if(jsonArray.optJSONObject(i).optString("status").equalsIgnoreCase("CANCELLED")){
+                                    try {
+                                        btnCancelRide.setText("Service Cancelled");
+                                        btnCall.setVisibility(View.GONE);
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                }
+
+
+                                JSONArray filterJsonArray = jsonArray.optJSONObject(i).optJSONArray("filters");
+                                for(int j=0; j<filterJsonArray.length(); j++){
+                                    JSONObject filterJsonObj = filterJsonArray.getJSONObject(i);
+                                    System.out.println("filter cancelled status user_id given 1 : "+user_id);
+
+                                    if(filterJsonObj.optString("user_id").equalsIgnoreCase(user_id)){
+                                        System.out.println("filter cancelled status user_id given 2 : "+user_id);
+                                        System.out.println("filter cancelled status user_id found 2 : "+filterJsonObj.optString("user_id"));
+                                        if(filterJsonObj.optString("status").equalsIgnoreCase("CANCELLED")){
+                                            try {
+                                                btnCancelRide.setText("Service Cancelled");
+                                                btnCall.setVisibility(View.GONE);
+                                                System.out.println("filter cancelled status : "+filterJsonObj.optString("status"));
+                                                System.out.println("filter cancelled status user_id given : "+user_id);
+                                                System.out.println("filter cancelled status user_id found : "+filterJsonObj.optString("user_id"));
+                                                Toast.makeText(getApplicationContext(), "Service Cancelled", Toast.LENGTH_SHORT).show();
+                                            }catch (Exception e){
+                                                e.printStackTrace();
+                                            }
+                                        }
+
+                                    }
+
+                                }
+
+
+
                                 String form;
                                 if (tag.equalsIgnoreCase("past_trips")) {
                                     form = jsonArray.optJSONObject(i).optString("schedule_at");
@@ -530,7 +571,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                 }
 
 
-                                JSONArray filterJsonArray = jsonArray.optJSONObject(i).optJSONArray("filters");
+//                                JSONArray filterJsonArray = jsonArray.optJSONObject(i).optJSONArray("filters");
 
 //                                if(filterJsonArray.length() > 0){
 //
@@ -551,14 +592,15 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                     tripComments.setText(getString(R.string.no_comments));
                                 }
 
-//                                if (jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating") != null
-//                                        && !jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating").equalsIgnoreCase("")) {
-//                                    tripProviderRating.setRating(Float.parseFloat(jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating")));
-//                                } else {
-//                                    tripProviderRating.setRating(i);
-//                                }
+                                if (jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating") != null
+                                        && !jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating").equalsIgnoreCase("")) {
+                                    tripProviderRating.setRating(Float.parseFloat(jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating")));
+                                } else {
+                                    tripProviderRating.setRating(i);
+                                }
 
                                 tripProviderName.setText(jsonArray.optJSONObject(i).optJSONObject("provider").optString("first_name"));
+
 
 
                                 if (jsonArray.optJSONObject(i).optString("s_address") == null || jsonArray.optJSONObject(i).optString("d_address") == null || jsonArray.optJSONObject(i).optString("d_address").equals("") || jsonArray.optJSONObject(i).optString("s_address").equals("")) {

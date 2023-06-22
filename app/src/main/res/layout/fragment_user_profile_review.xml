@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -19,11 +18,11 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-
-                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp">
 
@@ -31,36 +30,35 @@
                     android:id="@+id/fiveStar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5"
                     android:drawableRight="@drawable/ic_star"
-                    android:drawableTint="@color/quantum_yellow"
                     android:drawablePadding="@dimen/_10sdp"
+                    android:drawableTint="@color/quantum_yellow"
+                    android:text="5"
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
                 <ProgressBar
 
+                    android:id="@+id/fiveStarProgress"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="@dimen/_170sdp"
                     android:layout_height="@dimen/_20sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:id="@+id/fiveStarProgress"
+
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:max="100"
-                    android:progress="56"/>
+                    android:padding="@dimen/_5sdp" />
 
                 <TextView
                     android:id="@+id/fiveStarTotalVal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:text="56"
+                    android:text=""
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
-
 
 
             </LinearLayout>
@@ -68,10 +66,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp">
 
@@ -79,36 +77,34 @@
                     android:id="@+id/fourStar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4"
                     android:drawableRight="@drawable/ic_star"
-                    android:drawableTint="@color/quantum_yellow"
                     android:drawablePadding="@dimen/_10sdp"
+                    android:drawableTint="@color/quantum_yellow"
+                    android:text="4"
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
                 <ProgressBar
 
+                    android:id="@+id/fourStarProgress"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="@dimen/_170sdp"
                     android:layout_height="@dimen/_20sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:id="@+id/fourStarProgress"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:max="100"
-                    android:progress="96"/>
+                    android:padding="@dimen/_5sdp" />
 
                 <TextView
                     android:id="@+id/fourStarTotalVal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="96"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:text=""
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
-
 
 
             </LinearLayout>
@@ -116,10 +112,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp">
 
@@ -127,32 +123,31 @@
                     android:id="@+id/threeStar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3"
                     android:drawableRight="@drawable/ic_star"
-                    android:drawableTint="@color/quantum_yellow"
                     android:drawablePadding="@dimen/_10sdp"
+                    android:drawableTint="@color/quantum_yellow"
+                    android:text="3"
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
                 <ProgressBar
 
+                    android:id="@+id/threeStarProgress"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="@dimen/_170sdp"
                     android:layout_height="@dimen/_20sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:id="@+id/threeStarProgress"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:max="100"
-                    android:progress="76"/>
+                    android:padding="@dimen/_5sdp" />
 
                 <TextView
                     android:id="@+id/threeStarTotalVal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="76"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:text=""
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
@@ -162,10 +157,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp">
 
@@ -173,36 +168,34 @@
                     android:id="@+id/twoStar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2"
-                    android:drawableTint="@color/quantum_yellow"
                     android:drawableRight="@drawable/ic_star"
                     android:drawablePadding="@dimen/_10sdp"
+                    android:drawableTint="@color/quantum_yellow"
+                    android:text="2"
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
                 <ProgressBar
 
+                    android:id="@+id/twoStarProgress"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="@dimen/_170sdp"
                     android:layout_height="@dimen/_20sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:id="@+id/twoStarProgress"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:max="100"
-                    android:progress="26"/>
+                    android:padding="@dimen/_5sdp" />
 
                 <TextView
                     android:id="@+id/twoStarTotalVal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="26"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:text=""
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
-
 
 
             </LinearLayout>
@@ -210,10 +203,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp">
 
@@ -221,32 +214,31 @@
                     android:id="@+id/oneStar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"
-                    android:drawableTint="@color/quantum_yellow"
                     android:drawableRight="@drawable/ic_star"
                     android:drawablePadding="@dimen/_10sdp"
+                    android:drawableTint="@color/quantum_yellow"
+                    android:text="1"
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
                 <ProgressBar
 
+                    android:id="@+id/oneStarProgress"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="@dimen/_170sdp"
                     android:layout_height="@dimen/_20sdp"
-                    android:padding="@dimen/_5sdp"
-                    android:id="@+id/oneStarProgress"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:max="100"
-                    android:progress="6"/>
+                    android:padding="@dimen/_5sdp" />
 
                 <TextView
                     android:id="@+id/oneStarTotalVal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="6"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:text=""
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
@@ -264,86 +256,83 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/fragmentDriverReviewRV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:listitem="@layout/design_driver_profile_reviews"
-                    />
+                    tools:itemCount="2"
+                    tools:listitem="@layout/design_driver_profile_reviews" />
 
                 <TextView
                     android:id="@+id/fragmentDriverReviewRvNoReviewFound"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:text="No Review found." />
+                    android:gravity="center"
+                    android:text="No Review found."
+                    android:visibility="gone" />
 
 
             </RelativeLayout>
-
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/_10sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <Button
-                        android:id="@+id/chatButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_40sdp"
-
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/auth_btn_white_low_corner_bg"
-                        android:text="Message"
-                        android:textAllCaps="false"
-                        android:textColor="@color/green"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <Button
-                        android:id="@+id/continueButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="@dimen/_40sdp"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/auth_btn_green_bg"
-                        android:text="Continue"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-
-
-                </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </LinearLayout>
 
 
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/_10sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/chatButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_40sdp"
+
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="@drawable/auth_btn_white_low_corner_bg"
+                android:text="Message"
+                android:textAllCaps="false"
+                android:textColor="@color/green"
+                android:textSize="@dimen/_12sdp" />
+
+            <Button
+                android:id="@+id/continueButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="@drawable/auth_btn_green_bg"
+                android:text="Continue"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp" />
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>

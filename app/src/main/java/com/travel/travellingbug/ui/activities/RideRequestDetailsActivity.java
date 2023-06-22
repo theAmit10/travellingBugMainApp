@@ -49,44 +49,51 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
     }
 
     private void setDataOnComponent() {
-        listitemrating.setRating(2f);
 
-        nametv.setText(first_name);
-        ratingVal.setText(rating_val);
+        try {
+            listitemrating.setRating(Float.parseFloat(rating));
 
-        pickupLocation.setText(s_address);
-        dropLocation.setText(d_address);
+            nametv.setText(first_name);
+            ratingVal.setText(rating_val);
 
-        pickUpDataVal.setText(pick_up_date);
-        pickUpTimeVal.setText(pick_up_time);
+            pickupLocation.setText(s_address);
+            dropLocation.setText(d_address);
 
-        fareVal.setText(fare);
-        seatVal.setText(noofseat);
+            pickUpDataVal.setText(pick_up_date);
+            pickUpTimeVal.setText(pick_up_time);
 
-        Picasso.get().load(profile_image)
-                .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(profileImgeIv);
+            fareVal.setText(fare);
+            seatVal.setText(noofseat);
+
+            Picasso.get().load(profile_image)
+                    .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(profileImgeIv);
 
 
-        if(!status.equalsIgnoreCase("Pending")){
-            System.out.println("if");
-            System.out.println("! pending : "+!status.equalsIgnoreCase("Pending"));
-            if(status.equalsIgnoreCase("ACCEPTED")){
-                System.out.println("ACCEPTED : "+status.equalsIgnoreCase("ACCEPTED"));
-                acceptBtn.setText("ACCEPTED");
+            if(!status.equalsIgnoreCase("Pending")){
+                System.out.println("if");
+                System.out.println("! pending : "+!status.equalsIgnoreCase("Pending"));
+                if(status.equalsIgnoreCase("ACCEPTED")){
+                    System.out.println("ACCEPTED : "+status.equalsIgnoreCase("ACCEPTED"));
+                    acceptBtn.setText("ACCEPTED");
+                    acceptBtn.setVisibility(View.VISIBLE);
+                    rejectBtn.setVisibility(View.GONE);
+
+                }else if(status.equalsIgnoreCase("CANCELLED")){
+                    System.out.println("CANCELLED : "+status.equalsIgnoreCase("CANCELLED"));
+                    rejectBtn.setText("CANCELLED");
+                    rejectBtn.setVisibility(View.VISIBLE);
+                    acceptBtn.setVisibility(View.GONE);
+                }
+            }else {
+                System.out.println("else");
                 acceptBtn.setVisibility(View.VISIBLE);
-                rejectBtn.setVisibility(View.GONE);
-
-            }else if(status.equalsIgnoreCase("CANCELLED")){
-                System.out.println("CANCELLED : "+status.equalsIgnoreCase("CANCELLED"));
-                rejectBtn.setText("CANCELLED");
                 rejectBtn.setVisibility(View.VISIBLE);
-                acceptBtn.setVisibility(View.GONE);
             }
-        }else {
-            System.out.println("else");
-            acceptBtn.setVisibility(View.VISIBLE);
-            rejectBtn.setVisibility(View.VISIBLE);
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
     }
 
     private void clickHandlerComponent() {
@@ -116,7 +123,13 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         viewProfileTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RideRequestDetailsActivity.this, UserProfileActivity.class));
+                Intent intent = new Intent(RideRequestDetailsActivity.this, UserProfileActivity.class);
+                intent.putExtra("first_name",first_name);
+                intent.putExtra("rating",rating);
+                intent.putExtra("rating_val",rating_val);
+                intent.putExtra("profile_image",profile_image);
+                intent.putExtra("user_id",user_id);
+                startActivity(intent);
             }
         });
 

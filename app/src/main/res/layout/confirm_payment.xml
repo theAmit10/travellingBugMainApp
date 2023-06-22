@@ -34,7 +34,7 @@
                     android:id="@+id/tvPaymentLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/muli_semibold"
+
                     android:text="Rajan owes"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14sdp" />
@@ -43,7 +43,7 @@
                     android:id="@+id/lblTotalPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/muli_semibold"
+
                     android:text="$ 77.60"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_32sdp" />
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:fontFamily="@font/muli_semibold"
+
                 android:text="@string/promocode_applied"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14sdp"
@@ -70,7 +70,7 @@
         android:layout_marginBottom="@dimen/_10sdp"
         android:backgroundTint="@color/colorPrimary"
         android:drawableStart="@drawable/right_arrow_new"
-        android:fontFamily="@font/muli_semibold"
+
         android:text="@string/complete"
         android:textColor="@color/white"
         android:textSize="@dimen/_14sdp" />

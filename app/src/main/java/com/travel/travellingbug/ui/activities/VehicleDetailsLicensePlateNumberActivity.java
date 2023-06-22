@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -42,7 +44,7 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
         initComponent();
         clickHandlerOnComponent();
 
-        licenseNumberETL.setText(SharedHelper.getKey(getApplicationContext(),"service_number"));
+        licenseNumberETL.setText(SharedHelper.getKey(getApplicationContext(), "service_number"));
 
     }
 
@@ -127,18 +129,36 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
     private void clickHandlerOnComponent() {
 
 
-        if(!licenseNumberETL.getText().toString().equalsIgnoreCase("") || !licenseNumberETL.getText().toString().equalsIgnoreCase(null)){
-            license_number = licenseNumberETL.getText().toString();
+        license_number = licenseNumberETL.getText().toString();
 
-        }
+        licenseNumberETL.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                license_number = licenseNumberETL.getText().toString();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                license_number = licenseNumberETL.getText().toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!license_number.equalsIgnoreCase("")){
-                    Intent intent = new Intent(VehicleDetailsLicensePlateNumberActivity.this, VehicleDetailsBrandActivity.class);
-                    intent.putExtra("license_number",license_number);
-                    startActivity(intent);
-                }
+                Toast.makeText(VehicleDetailsLicensePlateNumberActivity.this, "Processing ", Toast.LENGTH_SHORT).show();
+
+
+                Intent intent = new Intent(VehicleDetailsLicensePlateNumberActivity.this, VehicleDetailsBrandActivity.class);
+                intent.putExtra("license_number", license_number);
+                startActivity(intent);
+
             }
         });
     }

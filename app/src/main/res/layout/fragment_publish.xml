@@ -253,7 +253,7 @@
                 android:id="@+id/addRideTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:gravity="center_vertical|center"
                 android:text="ADD RIDE"
                 android:textColor="@color/white"
@@ -407,7 +407,7 @@
                                                             android:visibility="gone"
                                                             android:layout_width="match_parent"
                                                             android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/montserrat_semibold"
+
                                                             android:paddingTop="@dimen/_10sdp"
                                                             android:paddingStart="@dimen/_20sdp"
                                                             android:paddingEnd="@dimen/_20sdp"
@@ -1649,7 +1649,7 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_weight="1"
-                                            android:fontFamily="@font/muli_regular"
+
                                             android:text="@string/total"
                                             android:textColor="@color/white"
                                             android:textSize="@dimen/_16sdp" />
@@ -1676,7 +1676,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="@dimen/_5sdp"
-                                        android:fontFamily="@font/muli_regular"
+
                                         android:padding="@dimen/_5sdp"
                                         android:text="@string/paid_driver"
                                         android:textColor="@color/white"
@@ -1756,7 +1756,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/_5sdp"
-                                        android:fontFamily="@font/muli_semibold"
+
                                         android:gravity="center_horizontal"
                                         android:text="@string/rate_provider"
                                         android:textColor="@color/white"
@@ -1804,7 +1804,7 @@
                                         android:layout_marginEnd="@dimen/_10sdp"
                                         android:layout_marginBottom="@dimen/_5sdp"
                                         android:backgroundTint="@color/white"
-                                        android:fontFamily="@font/muli_regular"
+
                                         android:gravity="start"
                                         android:hint="@string/write_your_comment"
                                         android:maxLines="3"
@@ -1870,7 +1870,7 @@
                                         android:id="@+id/txtdriveraccpted"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/muli_regular"
+
                                         android:gravity="center"
                                         android:padding="@dimen/_7sdp"
                                         android:text="@string/driver_is_on_the_way"
@@ -1924,7 +1924,7 @@
                                         android:id="@+id/txtdriverArrived"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/muli_regular"
+
                                         android:gravity="center"
                                         android:padding="@dimen/_7sdp"
                                         android:textColor="@color/white"
@@ -1975,7 +1975,7 @@
                                         android:id="@+id/txtdriverpicked"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/muli_regular"
+
                                         android:gravity="center"
                                         android:padding="@dimen/_7sdp"
                                         android:textColor="@color/white"
@@ -2026,7 +2026,7 @@
                                         android:id="@+id/txtdrivercompleted"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:fontFamily="@font/muli_regular"
+
                                         android:gravity="center"
                                         android:padding="@dimen/_7sdp"
                                         android:textColor="@color/white"
@@ -2163,7 +2163,7 @@
                                                 android:id="@+id/tvSourcePoint"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:fontFamily="@font/muli_semibold"
+
                                                 android:maxLines="1"
                                                 android:text=""
                                                 android:textColor="@color/cardview_dark_background"
@@ -2191,7 +2191,7 @@
                                                 android:id="@+id/tvDroppoint"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:fontFamily="@font/muli_semibold"
+
                                                 android:maxLines="1"
                                                 android:text=""
                                                 android:textColor="@color/cardview_dark_background"
@@ -2304,7 +2304,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="1"
                                                 android:buttonTint="@color/white"
-                                                android:fontFamily="@font/muli_regular"
+
                                                 android:gravity="center"
                                                 android:text="@string/change_destination"
                                                 android:textColor="@color/white"
@@ -2316,7 +2316,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="1"
                                                 android:buttonTint="@color/white"
-                                                android:fontFamily="@font/muli_regular"
+
                                                 android:gravity="center"
                                                 android:text="@string/add_stop"
                                                 android:textColor="@color/white"
@@ -2328,7 +2328,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="1"
                                                 android:buttonTint="@color/white"
-                                                android:fontFamily="@font/muli_regular"
+
                                                 android:gravity="center"
                                                 android:text="@string/round_trip"
                                                 android:textColor="@color/white"
@@ -2360,7 +2360,7 @@
                                                     android:layout_height="wrap_content"
                                                     android:drawablePadding="@dimen/_10sdp"
                                                     android:ellipsize="end"
-                                                    android:fontFamily="@font/muli_regular"
+
                                                     android:gravity="center_vertical"
                                                     android:maxLines="1"
                                                     android:text="@string/enter_destination"
@@ -2415,7 +2415,7 @@
                                     <!--                                        android:layout_width="match_parent"-->
                                     <!--                                        android:layout_height="@dimen/_30sdp"-->
                                     <!--                                        android:ellipsize="end"-->
-                                    <!--                                        android:fontFamily="@font/muli_regular"-->
+                                    <!--                                        -->
                                     <!--                                        android:gravity="center|start"-->
                                     <!--                                        android:maxLines="1"-->
                                     <!--                                        android:layout_weight="1"-->
@@ -2573,6 +2573,7 @@
                                                         <com.travel.travellingbug.utills.MyTextView
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="wrap_content"
+                                                            android:fontFamily="@font/nunito_variablefont_wght"
                                                             android:text="Set pickup location"
                                                             android:textColor="@color/colorDarkGray"
                                                             android:textSize="@dimen/_12sdp" />
@@ -2606,6 +2607,7 @@
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="wrap_content"
                                                             android:text="Set drop location"
+                                                            android:fontFamily="@font/nunito_variablefont_wght"
                                                             android:textColor="@color/colorDarkGray"
                                                             android:textSize="@dimen/_12sdp" />
 
@@ -2780,7 +2782,7 @@
                                 android:id="@+id/btnDone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_semibold"
+
                                 android:paddingTop="@dimen/_10sdp"
                                 android:paddingBottom="@dimen/_25sdp"
                                 android:text="Apply"
@@ -2930,7 +2932,7 @@
                                                 android:layout_marginBottom="@dimen/_10sdp"
                                                 android:layout_weight="1"
                                                 android:ellipsize="end"
-                                                android:fontFamily="@font/muli_regular"
+
                                                 android:maxLines="2"
                                                 android:text="Anamika Enclave"
                                                 android:textColor="@color/black"
@@ -2942,7 +2944,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="1"
                                                 android:ellipsize="end"
-                                                android:fontFamily="@font/muli_regular"
+
                                                 android:maxLines="2"
                                                 android:textColor="@color/black"
                                                 android:textSize="@dimen/_12sdp" />
@@ -2996,7 +2998,7 @@
                                             <TextView
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:fontFamily="@font/muli_semibold"
+
                                                 android:text="Distance"
                                                 android:textColor="@color/cancel_ride_color"
                                                 android:textSize="@dimen/_12sdp" />
@@ -3005,7 +3007,7 @@
                                                 android:id="@+id/lblDis"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:fontFamily="@font/muli_semibold"
+
                                                 android:gravity="end"
                                                 android:textColor="@color/black"
                                                 android:textSize="@dimen/_12sdp" />
@@ -3022,7 +3024,7 @@
                                             <TextView
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:fontFamily="@font/muli_semibold"
+
                                                 android:text="Time"
                                                 android:textColor="@color/cancel_ride_color"
                                                 android:textSize="@dimen/_12sdp" />
@@ -3048,7 +3050,7 @@
                                             <TextView
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:fontFamily="@font/muli_semibold"
+
                                                 android:text="Price"
                                                 android:textColor="@color/cancel_ride_color"
                                                 android:textSize="@dimen/_12sdp" />
@@ -3057,7 +3059,7 @@
                                                 android:id="@+id/lblApproxAmount"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:fontFamily="@font/muli_semibold"
+
                                                 android:gravity="end"
                                                 android:textColor="@color/black"
                                                 android:textSize="@dimen/_12sdp" />
@@ -3099,7 +3101,7 @@
                                         android:layout_height="@dimen/_40sdp"
                                         android:layout_weight="1"
                                         android:background="@drawable/red_color_rect_shape"
-                                        android:fontFamily="@font/muli_semibold"
+
                                         android:text="CONFIRM"
 
                                         android:textColor="@color/button_text_color"

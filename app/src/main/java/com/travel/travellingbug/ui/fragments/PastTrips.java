@@ -19,11 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
@@ -245,6 +241,7 @@ public class PastTrips extends Fragment {
 
 //                JSONObject jsonObjectTrip = new JSONObject(String.valueOf(jsonArray.getJSONObject(position).getJSONObject("trip")));
                 JSONObject jsonObjectTrip = jsonArray.getJSONObject(position).optJSONObject("trip");
+                JSONObject providerJsonObject = jsonObjectTrip.optJSONObject("provider");
 
                 holder.txtSource.setText(jsonObjectTrip.optString("s_address"));
                 holder.txtDestination.setText(jsonObjectTrip.optString("d_address"));
@@ -268,99 +265,141 @@ public class PastTrips extends Fragment {
 
 
 
+                try {
+                    holder.userName.setText(providerJsonObject.optString("first_name"));
+                    holder.ratingVal.setText("( " + providerJsonObject.optString("rating") + " Reviews )");
+                    holder.listitemrating.setRating(Float.parseFloat(providerJsonObject.optString("rating")));
+
+                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerJsonObject.optString("avatar"))
+                            .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.profileImgeIv);
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+
+
 
 //                holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
 //                holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
 
 
-                userId = jsonObjectTrip.optString("user_id");
+//                userId = jsonObjectTrip.optString("user_id");
 
                 // Getting other details of profile
 
-                StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+//                StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//
+//                        System.out.println("size : " + response.length());
+//                        System.out.println("data : " + response);
+//
+//                        try {
+//                            JSONObject jsonObject = new JSONObject(response);
+//
+//                            if (response != null) {
+//                                System.out.println("data : " + jsonObject.toString());
+//                                userName = jsonObject.optString("first_name");
+//                                userProfileImage = jsonObject.optString("avatar");
+//                                rating = jsonObject.optString("rating");
+//                                ratingVal = jsonObject.optString("rating");
+//
+//
+////                                userName = itemView.findViewById(R.id.userName);
+////                                ratingVal = itemView.findViewById(R.id.ratingVal);
+////                                listitemrating = itemView.findViewById(R.id.listitemrating);
+////                                profileImgeIv = itemView.findViewById(R.id.profileImgeIv);
+//
+//                                holder.userName.setText(jsonObject.optString("first_name"));
+//                                holder.ratingVal.setText("( " + jsonObject.optString("rating") + " Reviews )");
+//                                holder.listitemrating.setRating(Float.parseFloat(jsonObject.optString("rating")));
+//
+//                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar"))
+//                                        .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.profileImgeIv);
+//
+//
+//                            }
+//
+//
+//                        } catch (JSONException e) {
+//                            displayMessage(e.toString());
+//                        }
+//
+//
+//                    }
+//                }, new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
+//                    }
+//
+//                }) {
+//
+//
+//                    @Override
+//                    public Map<String, String> getParams() {
+//                        Map<String, String> params = new HashMap<>();
+//                        params.put("id", providerJsonObject.optString("id"));
+//                        return params;
+//                    }
+//
+//                    @Override
+//                    public Map<String, String> getHeaders() {
+//                        HashMap<String, String> headers = new HashMap<String, String>();
+//                        headers.put("X-Requested-With", "XMLHttpRequest");
+//                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+//                        return headers;
+//                    }
+//
+//                };
+//
+//                ClassLuxApp.getInstance().addToRequestQueue(request);
 
-                        System.out.println("size : " + response.length());
-                        System.out.println("data : " + response);
 
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
+//                holder.status.setText(jsonArray.optJSONObject(position).optString("status"));
 
-                            if (response != null) {
-                                System.out.println("data : " + jsonObject.toString());
-                                userName = jsonObject.optString("first_name");
-                                userProfileImage = jsonObject.optString("avatar");
-                                rating = jsonObject.optString("rating");
-                                ratingVal = jsonObject.optString("rating");
+//                if (jsonArray.optJSONObject(position).optJSONObject("trip").optString("status").equalsIgnoreCase("PENDING")) {
+//                    holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
+//                    holder.status.setText(jsonArray.optJSONObject(position).optJSONObject("trip").optString("status"));
+//
+//                } else if(jsonArray.optJSONObject(position).optJSONObject("trip").optString("status").equalsIgnoreCase("CANCELLED")){
+//                    holder.status.setBackgroundResource(R.drawable.auth_btn_gray_bg);
+//                    holder.status.setText(jsonArray.optJSONObject(position).optJSONObject("trip").optString("status"));
+//                }else {
+//                    holder.status.setText(jsonArray.optJSONObject(position).optJSONObject("trip").optString("status"));
+//                }
 
+                if (jsonObjectTrip.optString("status").equalsIgnoreCase("PENDING")) {
+                    holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
+                    holder.status.setText(jsonObjectTrip.optString("status"));
 
-//                                userName = itemView.findViewById(R.id.userName);
-//                                ratingVal = itemView.findViewById(R.id.ratingVal);
-//                                listitemrating = itemView.findViewById(R.id.listitemrating);
-//                                profileImgeIv = itemView.findViewById(R.id.profileImgeIv);
-
-                                holder.userName.setText(userName);
-                                holder.ratingVal.setText("( " + jsonObject.optString("rating") + " Reviews )");
-                                holder.listitemrating.setRating(Float.parseFloat(ratingVal));
-
-                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + userProfileImage)
-                                        .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.profileImgeIv);
-
-
-                            }
-
-
-                        } catch (JSONException e) {
-                            displayMessage(e.toString());
-                        }
-
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
-                    }
-
-                }) {
-
-
-                    @Override
-                    public Map<String, String> getParams() {
-                        Map<String, String> params = new HashMap<>();
-                        params.put("id", userId);
-                        return params;
-                    }
-
-                    @Override
-                    public Map<String, String> getHeaders() {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("X-Requested-With", "XMLHttpRequest");
-                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
-                        return headers;
-                    }
-
-                };
-
-                ClassLuxApp.getInstance().addToRequestQueue(request);
-
-
-                holder.status.setText(jsonArray.optJSONObject(position).optString("status"));
-                if (holder.status.equals("COMPLETED")) {
-                    holder.rateRider.setVisibility(View.VISIBLE);
-                    holder.status.setText("Completed");
-                    notifyDataSetChanged();
-                    holder.status.setBackgroundColor(getResources().getColor(R.color.quantum_yellow));
-
-                } else if (holder.status.equals("CANCELLED")) {
-                    holder.rateRider.setVisibility(View.GONE);
-                    holder.status.setText("Cancelled");
-
-//                    holder.status.setBackgroundColor(getResources().getColor(R.color.colorGray));
-                    holder.status.getBackground().setTint(getResources().getColor(R.color.colorGray));
-                    notifyDataSetChanged();
+                } else if(jsonObjectTrip.optString("status").equalsIgnoreCase("CANCELLED")){
+                    holder.status.setBackgroundResource(R.drawable.auth_btn_gray_bg);
+                    holder.status.setText(jsonObjectTrip.optString("status"));
+                }else if(jsonObjectTrip.optString("status").equalsIgnoreCase("STARTED")){
+                    holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
+                    holder.status.setText(jsonObjectTrip.optString("status"));
+                }else {
+                    holder.status.setText(jsonObjectTrip.optString("status"));
+                    holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
                 }
+
+
+//                if (holder.status.equals("COMPLETED")) {
+//                    holder.rateRider.setVisibility(View.VISIBLE);
+//                    holder.status.setText("Completed");
+////                    notifyDataSetChanged();
+//                    holder.status.setBackgroundColor(getResources().getColor(R.color.quantum_yellow));
+//
+//                } else if (holder.status.equals("CANCELLED")) {
+//                    holder.rateRider.setVisibility(View.GONE);
+//                    holder.status.setText("Cancelled");
+//
+////                    holder.status.setBackgroundColor(getResources().getColor(R.color.colorGray));
+//                    holder.status.getBackground().setTint(getResources().getColor(R.color.colorGray));
+//                    notifyDataSetChanged();
+//                }
 
 
             } catch (Exception e) {
@@ -392,6 +431,7 @@ public class PastTrips extends Fragment {
                 Toast.makeText(getContext(), "id: " + jsonArray.optJSONObject(position).optString("id"), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), HistoryDetailsUser.class);
                 intent.putExtra("request_id", jsonArray.optJSONObject(position).optString("request_id"));
+                intent.putExtra("user_id" , jsonArray.optJSONObject(position).optString("user_id"));
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
                 intent.putExtra("post_value", jsonArray.optJSONObject(position).toString());

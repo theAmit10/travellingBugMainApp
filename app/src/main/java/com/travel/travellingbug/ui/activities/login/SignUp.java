@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -60,7 +61,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
     private String socialUrl, loginType;
 
-    Button btnGoogle,btnFb;
+    Button btnGoogle, btnFb;
+
+    private Handler ha;
 
 
     String TAG = "SignUp";
@@ -73,7 +76,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     Utilities utils = new Utilities();
 
     CountryCodePicker ccp;
-    String device_token, device_UDID,mobile;
+    String device_token, device_UDID, mobile;
     //    Button btnFb,btnGoogle;
     Dialog dialog;
     private MaterialSpinner spRegister;
@@ -86,7 +89,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         } else {
             getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
         }
-
 
 
         setContentView(R.layout.activity_sign_up);
@@ -111,8 +113,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                 if (etName.getText().toString().equals("") ||
                         etName.getText().toString().equalsIgnoreCase(getString(R.string.first_name))) {
                     displayMessage("Phone Number Required");
-                }
-                else if (isInternet) {
+                } else if (isInternet) {
 
                     dialog = new Dialog(SignUp.this, R.style.AppTheme_NoActionBar);
 
@@ -128,14 +129,12 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 //                    startActivityForResult(intent, APP_REQUEST_CODE);
 
 
-
-
                 } else {
                     displayMessage(getString(R.string.something_went_wrong_net));
                 }
             }
 
-    });
+        });
 
         btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,7 +150,28 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             }
         });
 
-}
+
+
+        refreshAccessToken();
+
+    }
+
+    private void refreshAccessToken() {
+
+        ha = new Handler();
+
+        //check status every 3 sec
+        ha.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getAccessToken();
+                ha.postDelayed(this, 3000);
+            }
+        }, 3000);
+    }
+
+    private void getAccessToken() {
+    }
 
     @SuppressLint("HardwareIds")
     public void getToken() {
@@ -329,7 +349,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         Log.e(TAG, "onActivityResult");
         if (data != null) {
             if (requestCode == APP_REQUEST_CODE) { // confirm that this response matches your request
-                if(dialog != null ){
+                if (dialog != null) {
                     dialog.dismiss();
                 }
                 registerAPI();
@@ -397,7 +417,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         try {
 
             String phoneID = SharedHelper.getKey(getApplicationContext(), "mobile_number");
-            String phone = phoneID.substring(1,phoneID.length());
+            String phone = phoneID.substring(1, phoneID.length());
 
             object.put("grant_type", "password");
             object.put("client_id", URLHelper.client_id);
@@ -421,7 +441,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 //            object.put("email", "9876543516");
 
 
-
             utils.print("InputToRegisterAPI", "" + object);
 
         } catch (JSONException e) {
@@ -440,13 +459,13 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                                 if ((customDialog != null) && (customDialog.isShowing()))
                                     customDialog.dismiss();
 //                                displayMessage("The mobile has already been taken.");
-                                SharedHelper.putKey(getApplicationContext(),"Old_User","yes");
+                                SharedHelper.putKey(getApplicationContext(), "Old_User", "yes");
                                 displayMessage("Processing...");
                                 signIn();
                             } else {
 //                                SharedHelper.putKey(getApplicationContext(), "email", etEmail.getText().toString());
 //                                SharedHelper.putKey(getApplicationContext(), "password", etPassword.getText().toString());
-                                SharedHelper.putKey(getApplicationContext(),"Old_User","no");
+                                SharedHelper.putKey(getApplicationContext(), "Old_User", "no");
                                 displayMessage("User Registered Successfully");
                                 signIn();
                             }
@@ -480,7 +499,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         dialog.show();
 
 
-
         ImageView imgBack = dialog.findViewById(R.id.imgBack);
         CountryCodePicker ccp = dialog.findViewById(R.id.ccp);
         ImageButton nextIcon = dialog.findViewById(R.id.nextIcon);
@@ -512,7 +530,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             try {
 
                 String phoneID = SharedHelper.getKey(getApplicationContext(), "mobile_number");
-                String phone = phoneID.substring(1,phoneID.length());
+                String phone = phoneID.substring(1, phoneID.length());
 
                 object.put("grant_type", "password");
                 object.put("client_id", URLHelper.client_id);
@@ -529,11 +547,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 //                object.put("device_token", "" + "eqbYFHiiQgKyQ86Lmx0EUZ:APA91bFSv48-EnMOeasV7LW5g1i0fQnL3TzP82J5-fV8jIMOT4WKrbuRMNK6uAF4B2fB7iXf_jaFXRq7h8dXtq1gIrvtggnIfgEXt3CHy5iqOSsQ_iOcs9GqbYNV6m7R57_hCUhWH4mC");
                 object.put("logged_in", "1");
                 utils.print("InputToLoginAPI", "" + object);
-
-
-
-
-
 
 
             } catch (JSONException e) {
@@ -665,7 +678,6 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             displayMessage(getString(R.string.something_went_wrong_net));
         }
     }
-
 
 
     private void GoToBeginActivity() {

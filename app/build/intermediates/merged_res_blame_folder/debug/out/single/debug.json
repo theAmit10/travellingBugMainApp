@@ -108,6 +108,10 @@
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\design_find_ride.xml"
     },
     {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\font_nunito_italic_variablefont_wght.ttf.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\font\\nunito_italic_variablefont_wght.ttf"
+    },
+    {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_person.xml.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable\\ic_person.xml"
     },
@@ -550,6 +554,10 @@
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_source_location.png.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable\\source_location.png"
+    },
+    {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\font_nunito_variablefont_wght.ttf.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\font\\nunito_variablefont_wght.ttf"
     },
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_top_shadow.xml.flat",
@@ -1118,6 +1126,10 @@
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_doc_upload.xml.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\activity_doc_upload.xml"
+    },
+    {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_stopover_rv_org.xml.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\design_stopover_rv_org.xml"
     },
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_your_ride.xml.flat",

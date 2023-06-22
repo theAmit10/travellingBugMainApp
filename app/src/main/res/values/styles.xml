@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/green</item>
         <item name="colorPrimaryDark">@color/dark_green</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:fontFamily">@font/nunito_variablefont_wght</item>
         <item name="otpViewStyle">@style/OtpWidget.OtpView</item>
     </style>
 

@@ -1,6 +1,7 @@
 package com.travel.travellingbug.ui.activities;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -36,11 +37,14 @@ public class UserProfileActivity extends AppCompatActivity {
 
     ImageView profileImgeIv;
 
+    ImageView backArrow;
+
     TextView userName,ratingVal;
 
     RatingBar listitemrating;
 
     String user_id = "";
+    String first_name = "",rating = "",rating_val = "",profile_image = "";
     UserProfileViewPagerAdapter profileViewPagerAdapter;
     private String[] titles = {"ABOUT", "REVIEWS"};
 
@@ -50,14 +54,43 @@ public class UserProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_profile);
 
         initComponent();
+        getIntentData();
+
         clickHandlerComponent();
         tabLayoutController();
 
+
+
+    }
+
+    private void getIntentData() {
+
+
         user_id  = getIntent().getStringExtra("user_id");
-        if(getIntent().getStringExtra("user_id") != null){
-            getProfileData(user_id);
+        first_name  = getIntent().getStringExtra("first_name");
+        rating  = getIntent().getStringExtra("rating");
+        rating_val  = getIntent().getStringExtra("rating_val");
+        profile_image  = getIntent().getStringExtra("profile_image");
+
+        System.out.println("intent data : "+user_id+" , "+first_name+" , "+rating+" , "+rating_val+" , "+profile_image+" , ");
+
+
+
+        try {
+            ratingVal.setText(rating_val);
+            listitemrating.setRating(Float.parseFloat(rating));
+            Picasso.get().load(profile_image)
+                    .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(profileImgeIv);
+
+            userName.setText(first_name);
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
+
+//        if(getIntent().getStringExtra("user_id") != null){
+//            getProfileData(user_id);
+//        }
     }
 
     private void getProfileData(String user_id) {
@@ -89,7 +122,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
 
                 } catch (JSONException e) {
-
+                    e.printStackTrace();
                 }
 
 
@@ -134,6 +167,12 @@ public class UserProfileActivity extends AppCompatActivity {
     }
 
     private void clickHandlerComponent() {
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initComponent() {
@@ -143,6 +182,8 @@ public class UserProfileActivity extends AppCompatActivity {
         profileImgeIv = findViewById(R.id.profileImgeIv);
         userName = findViewById(R.id.userName);
         ratingVal = findViewById(R.id.ratingVal);
+        listitemrating = findViewById(R.id.listitemrating);
+        backArrow = findViewById(R.id.backArrow);
 
 
     }

@@ -158,21 +158,30 @@ public class UserReview extends AppCompatActivity implements View.OnClickListene
         public void onBindViewHolder(PostAdapter.MyViewHolder holder, int position) {
             try {
 
-                if (!jsonArray.optJSONObject(position).optString("user_comment").isEmpty()) {
-                    holder.txtComment.setText(jsonArray.optJSONObject(position).optString("user_comment"));
-                } else {
-                    holder.txtComment.setText("No Comment");
-                }
-                holder.userRating.setRating(Float.parseFloat(jsonArray.optJSONObject(position).optString("user_rating")));
-
-                if (!jsonArray.optJSONObject(position).optString("created_at", "").isEmpty()) {
-                    String form = jsonArray.optJSONObject(position).optString("created_at");
+                if(!jsonArray.optJSONObject(position).optString("user_rating").toString().equalsIgnoreCase("0")){
                     try {
-                        holder.txtDateTime.setText(getYear(form));
-                    } catch (ParseException e) {
+                        if (!jsonArray.optJSONObject(position).optString("user_comment").isEmpty()) {
+                            holder.txtComment.setText(jsonArray.optJSONObject(position).optString("user_comment"));
+                        } else {
+                            holder.txtComment.setText("No Comment");
+                        }
+                        holder.userRating.setRating(Float.parseFloat(jsonArray.optJSONObject(position).optString("user_rating")));
+
+                        if (!jsonArray.optJSONObject(position).optString("created_at", "").isEmpty()) {
+                            String form = jsonArray.optJSONObject(position).optString("created_at");
+                            try {
+                                holder.txtDateTime.setText(getYear(form));
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }catch (Exception e){
                         e.printStackTrace();
                     }
                 }
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }

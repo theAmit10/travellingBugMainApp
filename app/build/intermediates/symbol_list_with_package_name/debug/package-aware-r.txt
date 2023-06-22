@@ -4700,6 +4700,8 @@ font montserrat_semibold
 font montserrat_thin
 font muli_regular
 font muli_semibold
+font nunito_italic_variablefont_wght
+font nunito_variablefont_wght
 id AFRIKAANS
 id ALT
 id ARABIC
@@ -5763,6 +5765,8 @@ id partationHoriView
 id partationTopHoriView
 id partationView
 id passengerCallRv
+id passengerCallRvLinearLayout
+id passengerCallRvRelativeLayout
 id passengerRV
 id passengerVal
 id password_toggle
@@ -6596,6 +6600,7 @@ layout design_progress_bar
 layout design_ride_request
 layout design_stopover
 layout design_stopover_rv
+layout design_stopover_rv_org
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout design_travel_preference

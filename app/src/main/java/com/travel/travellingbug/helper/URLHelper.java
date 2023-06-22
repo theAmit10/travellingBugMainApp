@@ -162,6 +162,10 @@ public interface URLHelper {
 
     String PREFERENCES_TITLE = BASE +  "api/provider/profile/preferencetitle";
 
+    String CHANGES_STATUS_BY_FILTER_ID_BY_PROVIDER = BASE +  "api/provider/changestatus";
+
+    String USER_REVIEW_HISTORY = BASE +"api/provider/userreviewhistory";
+
 
 
 

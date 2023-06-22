@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/muli_semibold"
+
                 android:paddingStart="@dimen/_12sdp"
                 android:text="Payment Method"
                 android:textColor="@color/white"
@@ -82,7 +82,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/muli_semibold"
+
                         android:text="Cash"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_18sdp" />
@@ -90,7 +90,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/muli_semibold"
+
                         android:text="Default Payment Method"
                         android:textSize="@dimen/_12sdp" />
 
@@ -139,7 +139,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:fontFamily="@font/muli_semibold"
+
                             android:text="@string/action_wallet"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_16sdp" />
@@ -148,7 +148,7 @@
                             android:id="@+id/tvaddAmt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/muli_semibold"
+
                             android:text="@string/add_money"
                             android:textColor="@color/colorAccent"
                             android:textSize="@dimen/_12sdp" />
@@ -158,7 +158,7 @@
                         android:id="@+id/tvWalletAmt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/muli_semibold"
+
                         android:text="@string/wallet_balance"
                         android:textSize="@dimen/_11sdp" />
 
@@ -265,7 +265,7 @@
             android:backgroundTint="@color/colorPrimary"
             android:drawableStart="@drawable/ic_add_circle_outline_black_24dp"
             android:drawableTint="@color/white"
-            android:fontFamily="@font/muli_semibold"
+
             android:text="Add new card"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp" />

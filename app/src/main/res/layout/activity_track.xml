@@ -162,7 +162,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:ellipsize="end"
-                                android:fontFamily="@font/muli_semibold"
+
                                 android:maxLength="25"
                                 android:text="@string/sample_name"
                                 android:textColor="@color/black"
@@ -237,7 +237,7 @@
                                 android:layout_marginBottom="@dimen/_10sdp"
                                 android:layout_weight="1"
                                 android:ellipsize="end"
-                                android:fontFamily="@font/muli_semibold"
+
 
                                 android:maxLines="2"
                                 android:text="Anamika Enclave"
@@ -257,7 +257,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:ellipsize="end"
-                                    android:fontFamily="@font/muli_semibold"
+
                                     android:maxLines="2"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_12sdp" />
@@ -334,7 +334,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_semibold"
+
                                 android:text="Distance"
                                 android:textColor="@color/cancel_ride_color"
                                 android:textSize="@dimen/_12sdp" />
@@ -343,7 +343,7 @@
                                 android:id="@+id/lblDis"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_semibold"
+
                                 android:gravity="end"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12sdp" />
@@ -360,7 +360,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_semibold"
+
                                 android:text="Time"
                                 android:textColor="@color/cancel_ride_color"
                                 android:textSize="@dimen/_12sdp" />
@@ -369,7 +369,7 @@
                                 android:id="@+id/lblEta"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_semibold"
+
                                 android:gravity="end"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12sdp" />
@@ -397,7 +397,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/_2sdp"
                                     android:background="@color/white"
-                                    android:fontFamily="@font/muli_semibold"
+
                                     android:text="@string/cancel_ride"
                                     android:textColor="@android:color/holo_red_dark"
                                     android:textSize="@dimen/_10sdp" />
@@ -416,7 +416,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_semibold"
+
                                 android:text="Price"
                                 android:textColor="@color/cancel_ride_color"
                                 android:textSize="@dimen/_12sdp" />
@@ -425,7 +425,7 @@
                                 android:id="@+id/lblApproxAmount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/muli_semibold"
+
                                 android:gravity="end"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12sdp" />
@@ -465,7 +465,7 @@
                     <!--                            android:layout_height="@dimen/_38sdp"-->
                     <!--                            android:layout_weight="1"-->
                     <!--                            android:layout_margin="@dimen/_10sdp"-->
-                    <!--                            android:fontFamily="@font/muli_semibold"-->
+                    <!--                            -->
                     <!--                            android:background="@drawable/red_color_rect_shape"-->
                     <!--                            android:text="@string/cancel_trip"-->
                     <!--                            android:textColor="@color/button_text_color"-->
@@ -517,7 +517,7 @@
 <!--                                android:layout_height="wrap_content"-->
 <!--                                android:layout_marginTop="@dimen/_5sdp"-->
 <!--                                android:ellipsize="end"-->
-<!--                                android:fontFamily="@font/muli_semibold"-->
+<!--                                -->
 <!--                                android:maxLength="25"-->
 <!--                                android:text="@string/sample_name"-->
 <!--                                android:textColor="@color/black"-->
@@ -603,7 +603,7 @@
 <!--                                android:layout_marginBottom="@dimen/_10sdp"-->
 <!--                                android:layout_weight="1"-->
 <!--                                android:ellipsize="end"-->
-<!--                                android:fontFamily="@font/muli_semibold"-->
+<!--                                -->
 
 <!--                                android:maxLines="2"-->
 <!--                                android:text="Anamika Enclave"-->
@@ -623,7 +623,7 @@
 <!--                                    android:layout_height="wrap_content"-->
 <!--                                    android:layout_weight="1"-->
 <!--                                    android:ellipsize="end"-->
-<!--                                    android:fontFamily="@font/muli_semibold"-->
+<!--                                    -->
 <!--                                    android:maxLines="2"-->
 <!--                                    android:textColor="@color/black"-->
 <!--                                    android:textSize="@dimen/_12sdp" />-->
@@ -699,7 +699,7 @@
 <!--                            <TextView-->
 <!--                                android:layout_width="wrap_content"-->
 <!--                                android:layout_height="wrap_content"-->
-<!--                                android:fontFamily="@font/muli_semibold"-->
+<!--                                -->
 <!--                                android:text="Distance"-->
 <!--                                android:textColor="@color/cancel_ride_color"-->
 <!--                                android:textSize="@dimen/_12sdp" />-->
@@ -708,7 +708,7 @@
 <!--                                android:id="@+id/lblDis"-->
 <!--                                android:layout_width="wrap_content"-->
 <!--                                android:layout_height="wrap_content"-->
-<!--                                android:fontFamily="@font/muli_semibold"-->
+<!--                                -->
 <!--                                android:gravity="end"-->
 <!--                                android:textColor="@color/black"-->
 <!--                                android:textSize="@dimen/_12sdp" />-->
@@ -725,7 +725,7 @@
 <!--                            <TextView-->
 <!--                                android:layout_width="wrap_content"-->
 <!--                                android:layout_height="wrap_content"-->
-<!--                                android:fontFamily="@font/muli_semibold"-->
+<!--                                -->
 <!--                                android:text="Time"-->
 <!--                                android:textColor="@color/cancel_ride_color"-->
 <!--                                android:textSize="@dimen/_12sdp" />-->
@@ -734,7 +734,7 @@
 <!--                                android:id="@+id/lblEta"-->
 <!--                                android:layout_width="wrap_content"-->
 <!--                                android:layout_height="wrap_content"-->
-<!--                                android:fontFamily="@font/muli_semibold"-->
+<!--                                -->
 <!--                                android:gravity="end"-->
 <!--                                android:textColor="@color/black"-->
 <!--                                android:textSize="@dimen/_12sdp" />-->
@@ -762,7 +762,7 @@
 <!--                                    android:layout_height="wrap_content"-->
 <!--                                    android:layout_margin="@dimen/_2sdp"-->
 <!--                                    android:background="@color/white"-->
-<!--                                    android:fontFamily="@font/muli_semibold"-->
+<!--                                    -->
 <!--                                    android:text="@string/cancel_ride"-->
 <!--                                    android:textColor="@android:color/holo_red_dark"-->
 <!--                                    android:textSize="@dimen/_10sdp" />-->
@@ -781,7 +781,7 @@
 <!--                            <TextView-->
 <!--                                android:layout_width="wrap_content"-->
 <!--                                android:layout_height="wrap_content"-->
-<!--                                android:fontFamily="@font/muli_semibold"-->
+<!--                                -->
 <!--                                android:text="Price"-->
 <!--                                android:textColor="@color/cancel_ride_color"-->
 <!--                                android:textSize="@dimen/_12sdp" />-->
@@ -790,7 +790,7 @@
 <!--                                android:id="@+id/lblApproxAmount"-->
 <!--                                android:layout_width="wrap_content"-->
 <!--                                android:layout_height="wrap_content"-->
-<!--                                android:fontFamily="@font/muli_semibold"-->
+<!--                                -->
 <!--                                android:gravity="end"-->
 <!--                                android:textColor="@color/black"-->
 <!--                                android:textSize="@dimen/_12sdp" />-->
@@ -854,7 +854,7 @@
 <!--                    &lt;!&ndash;                            android:layout_height="@dimen/_38sdp"&ndash;&gt;-->
 <!--                    &lt;!&ndash;                            android:layout_weight="1"&ndash;&gt;-->
 <!--                    &lt;!&ndash;                            android:layout_margin="@dimen/_10sdp"&ndash;&gt;-->
-<!--                    &lt;!&ndash;                            android:fontFamily="@font/muli_semibold"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            &ndash;&gt;-->
 <!--                    &lt;!&ndash;                            android:background="@drawable/red_color_rect_shape"&ndash;&gt;-->
 <!--                    &lt;!&ndash;                            android:text="@string/cancel_trip"&ndash;&gt;-->
 <!--                    &lt;!&ndash;                            android:textColor="@color/button_text_color"&ndash;&gt;-->
@@ -1095,7 +1095,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/muli_semibold"
+
                                 android:text="@string/total"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/_12sdp" />
@@ -1187,7 +1187,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/_2sdp"
-                            android:fontFamily="@font/muli_semibold"
+
                             android:padding="@dimen/_5sdp"
                             android:text="@string/paid_driver"
                             android:textColor="@color/white"
@@ -1288,7 +1288,7 @@
                             android:id="@+id/lblProviderName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/muli_semibold"
+
                             android:gravity="center"
                             android:text="Rajan"
                             android:textColor="@color/black"
@@ -1299,7 +1299,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/muli_semibold"
+
                             android:text="How is your trip?"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_20sdp" />
@@ -1309,7 +1309,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/muli_semibold"
+
                             android:text="Your feedback will help"
                             android:textSize="@dimen/_12sdp" />
 
@@ -1317,7 +1317,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:fontFamily="@font/muli_semibold"
+
                             android:text="improve driving experience"
                             android:textSize="@dimen/_12sdp" />
 
@@ -1344,7 +1344,7 @@
                             android:layout_marginBottom="@dimen/_5sdp"
                             android:background="@drawable/white_color_rect_shape"
                             android:backgroundTint="@color/view_grey_bg_"
-                            android:fontFamily="@font/muli_semibold"
+
                             android:gravity="start"
 
                             android:hint="Additional comments ..."
@@ -1367,7 +1367,7 @@
                             android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginBottom="@dimen/_5sdp"
                             android:background="@drawable/red_color_rect_shape"
-                            android:fontFamily="@font/muli_semibold"
+
 
                             android:padding="@dimen/_5sdp"
                             android:text="Submit Review"
@@ -1613,7 +1613,7 @@
                             android:id="@+id/txtdriveraccpted"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/muli_semibold"
+
                             android:gravity="center"
                             android:padding="@dimen/_7sdp"
                             android:text="@string/driver_is_on_the_way"
@@ -1665,7 +1665,7 @@
                             android:id="@+id/txtdriverArrived"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/muli_semibold"
+
                             android:gravity="center"
                             android:padding="@dimen/_7sdp"
                             android:textColor="@color/white"
@@ -1716,7 +1716,7 @@
                             android:id="@+id/txtdriverpicked"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/muli_semibold"
+
                             android:gravity="center"
                             android:padding="@dimen/_7sdp"
                             android:textColor="@color/white"
@@ -1767,7 +1767,7 @@
                             android:id="@+id/txtdrivercompleted"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/muli_semibold"
+
                             android:gravity="center"
                             android:padding="@dimen/_7sdp"
                             android:textColor="@color/white"
@@ -2300,7 +2300,7 @@
     <!--                                android:layout_width="match_parent"-->
     <!--                                android:layout_height="match_parent"-->
     <!--                                android:layout_weight="1"-->
-    <!--                                android:fontFamily="@font/muli_regular"-->
+    <!--                                -->
     <!--                                android:text="@string/total"-->
     <!--                                android:textColor="@color/white"-->
     <!--                                android:textSize="@dimen/_12sdp" />-->
@@ -2389,7 +2389,7 @@
     <!--                            android:layout_width="match_parent"-->
     <!--                            android:layout_height="wrap_content"-->
     <!--                            android:layout_marginBottom="@dimen/_2sdp"-->
-    <!--                            android:fontFamily="@font/muli_regular"-->
+    <!--                            -->
     <!--                            android:padding="@dimen/_5sdp"-->
     <!--                            android:text="@string/paid_driver"-->
     <!--                            android:textColor="@color/white"-->
@@ -2472,7 +2472,7 @@
     <!--                            android:layout_width="match_parent"-->
     <!--                            android:layout_height="wrap_content"-->
     <!--                            android:layout_marginTop="@dimen/_5sdp"-->
-    <!--                            android:fontFamily="@font/muli_semibold"-->
+    <!--                            -->
     <!--                            android:gravity="center_horizontal"-->
     <!--                            android:text="@string/rate_provider"-->
     <!--                            android:textColor="@color/white"-->
@@ -2521,7 +2521,7 @@
     <!--                            android:layout_marginRight="@dimen/_15sdp"-->
     <!--                            android:layout_marginBottom="@dimen/_5sdp"-->
     <!--                            android:backgroundTint="@color/white"-->
-    <!--                            android:fontFamily="@font/muli_regular"-->
+    <!--                            -->
     <!--                            android:gravity="start"-->
     <!--                            android:hint="@string/write_your_comment"-->
     <!--                            android:maxLines="3"-->
@@ -2781,7 +2781,7 @@
     <!--                            android:id="@+id/txtdriveraccpted"-->
     <!--                            android:layout_width="wrap_content"-->
     <!--                            android:layout_height="wrap_content"-->
-    <!--                            android:fontFamily="@font/muli_regular"-->
+    <!--                            -->
     <!--                            android:gravity="center"-->
     <!--                            android:padding="@dimen/_7sdp"-->
     <!--                            android:text="@string/driver_is_on_the_way"-->
@@ -2833,7 +2833,7 @@
     <!--                            android:id="@+id/txtdriverArrived"-->
     <!--                            android:layout_width="wrap_content"-->
     <!--                            android:layout_height="wrap_content"-->
-    <!--                            android:fontFamily="@font/muli_regular"-->
+    <!--                            -->
     <!--                            android:gravity="center"-->
     <!--                            android:padding="@dimen/_7sdp"-->
     <!--                            android:textColor="@color/white"-->
@@ -2884,7 +2884,7 @@
     <!--                            android:id="@+id/txtdriverpicked"-->
     <!--                            android:layout_width="wrap_content"-->
     <!--                            android:layout_height="wrap_content"-->
-    <!--                            android:fontFamily="@font/muli_regular"-->
+    <!--                            -->
     <!--                            android:gravity="center"-->
     <!--                            android:padding="@dimen/_7sdp"-->
     <!--                            android:textColor="@color/white"-->
@@ -2935,7 +2935,7 @@
     <!--                            android:id="@+id/txtdrivercompleted"-->
     <!--                            android:layout_width="wrap_content"-->
     <!--                            android:layout_height="wrap_content"-->
-    <!--                            android:fontFamily="@font/muli_regular"-->
+    <!--                            -->
     <!--                            android:gravity="center"-->
     <!--                            android:padding="@dimen/_7sdp"-->
     <!--                            android:textColor="@color/white"-->
