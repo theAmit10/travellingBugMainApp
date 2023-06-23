@@ -166,6 +166,8 @@ public interface URLHelper {
 
     String USER_REVIEW_HISTORY = BASE +"api/provider/userreviewhistory";
 
+    String CHANGE_MAIN_STATUS_OF_RIDE = BASE +"api/provider/changemainstatus";
+
 
 
 

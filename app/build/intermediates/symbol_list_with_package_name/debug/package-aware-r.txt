@@ -3417,8 +3417,10 @@ drawable arrived
 drawable arrived_select
 drawable arriveddisable
 drawable auth_btn_blue_bg
+drawable auth_btn_blue_bgs
 drawable auth_btn_gray_bg
 drawable auth_btn_green_bg
+drawable auth_btn_purple_bg
 drawable auth_btn_white_bg
 drawable auth_btn_white_low_corner_bg
 drawable auth_btn_yellow_bg

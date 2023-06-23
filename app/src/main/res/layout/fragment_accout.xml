@@ -23,7 +23,7 @@
             android:text="PROFILE"
             android:textColor="@color/white"
             android:textSize="@dimen/_16sdp"
-            android:textStyle="bold" />
+          />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"

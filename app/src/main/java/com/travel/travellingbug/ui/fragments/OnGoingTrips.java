@@ -360,10 +360,37 @@ public class OnGoingTrips extends Fragment {
 
                         if (jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("PENDING")) {
                             holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
+                            holder.btnCancel.setVisibility(View.VISIBLE);
                         } else if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED")){
                             holder.btnCancel.setVisibility(View.GONE);
                             holder.status.setBackgroundResource(R.drawable.auth_btn_gray_bg);
+                        }else if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("COMPLETED")){
+                            holder.btnCancel.setVisibility(View.GONE);
+                            holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
+                        }else if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("STARTED")){
+                            holder.btnCancel.setVisibility(View.GONE);
+                            holder.status.setBackgroundResource(R.drawable.auth_btn_purple_bg);
+                        }else if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("SCHEDULED")){
+                            holder.status.setBackgroundResource(R.drawable.auth_btn_blue_bgs);
+                            holder.btnCancel.setVisibility(View.VISIBLE);
+                        }else{
+                            holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
                         }
+
+//                        if (jsonObjectTrip.optString("status").equalsIgnoreCase("PENDING")) {
+//                            holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
+//                            holder.status.setText(jsonObjectTrip.optString("status"));
+//
+//                        } else if(jsonObjectTrip.optString("status").equalsIgnoreCase("CANCELLED")){
+//                            holder.status.setBackgroundResource(R.drawable.auth_btn_gray_bg);
+//                            holder.status.setText(jsonObjectTrip.optString("status"));
+//                        }else if(jsonObjectTrip.optString("status").equalsIgnoreCase("STARTED")){
+//                            holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
+//                            holder.status.setText(jsonObjectTrip.optString("status"));
+//                        }else {
+//                            holder.status.setText(jsonObjectTrip.optString("status"));
+//                            holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
+//                        }
 
 
 

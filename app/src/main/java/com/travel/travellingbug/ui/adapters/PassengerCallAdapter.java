@@ -83,8 +83,9 @@ public class PassengerCallAdapter extends RecyclerView.Adapter<PassengerCallAdap
 
 //                        String image = jsonObjectUser.optString("avatar");
 
-                        SharedHelper.putKey(context,"passanger_image",jsonObjectUser.optString("avatar"));
-                        Passanger_image = jsonObjectUser.optString("avatar");
+//                        SharedHelper.putKey(context,"passanger_image",jsonObjectUser.optString("avatar"));
+                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" +jsonObjectUser.optString("avatar")).error(R.drawable.ic_dummy_user).placeholder(R.drawable.ic_dummy_user).into(holder.image);
+//                        Passanger_image = jsonObjectUser.optString("avatar");
 
 
 
@@ -127,7 +128,7 @@ public class PassengerCallAdapter extends RecyclerView.Adapter<PassengerCallAdap
 
         ClassLuxApp.getInstance().addToRequestQueue(request);
 
-        Picasso.get().load(URLHelper.BASE + "storage/app/public/" +Passanger_image).error(R.drawable.ic_dummy_user).placeholder(R.drawable.ic_dummy_user).into(holder.image);
+
 
 
 

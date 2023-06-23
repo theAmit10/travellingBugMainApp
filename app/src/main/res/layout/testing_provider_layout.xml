@@ -470,7 +470,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_medium"
+
                     android:text="@string/total"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_20sdp" />
@@ -507,7 +507,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_medium"
+
                     android:text="Collect cash"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16sdp"
@@ -518,7 +518,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_medium"
+
                     android:gravity="end"
                     android:text=""
                     android:textColor="@color/white"
@@ -607,7 +607,7 @@
                 android:id="@+id/lblProviderName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:gravity="center"
                 android:text="Rajan"
                 android:textColor="@color/black"
@@ -618,7 +618,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:text="@string/rate_provider"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />
@@ -628,7 +628,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:text="Your feedback will help"
                 android:textSize="@dimen/_12sdp" />
 
@@ -636,7 +636,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:text="improve user experience"
                 android:textSize="@dimen/_12sdp" />
 
@@ -663,7 +663,7 @@
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:background="@drawable/white_color_rect_shape"
                 android:backgroundTint="@color/view_grey_bg_"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:gravity="start"
 
                 android:hint="Additional comments ..."
@@ -686,7 +686,7 @@
                 android:layout_marginEnd="@dimen/_5sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:background="@drawable/red_color_rect_shape"
-                android:fontFamily="@font/montserrat_medium"
+
 
                 android:padding="@dimen/_5sdp"
                 android:text="Submit Review"

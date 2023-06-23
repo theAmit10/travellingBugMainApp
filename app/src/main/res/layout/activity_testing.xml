@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        android:fontFamily="@font/montserrat_medium"
+
         android:padding="@dimen/_5sdp"
         android:text="Travel preferences"
         android:textColor="@color/black"

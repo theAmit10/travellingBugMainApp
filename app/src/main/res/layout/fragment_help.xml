@@ -79,7 +79,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:paddingTop="@dimen/_4sdp"
                         android:text="@string/call_support"
                         android:textColor="@color/black"
@@ -112,7 +112,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:paddingTop="@dimen/_4sdp"
                         android:text="@string/chat_support"
                         android:textColor="@color/black"
@@ -146,7 +146,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:paddingTop="@dimen/_4sdp"
                         android:text="@string/weburl"
                         android:textColor="@color/black"

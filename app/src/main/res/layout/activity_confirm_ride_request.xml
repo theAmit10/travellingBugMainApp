@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_medium"
+
             android:text="CONFIRM RIDE REQUEST"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp" />
@@ -239,7 +239,7 @@
                     android:drawableLeft="@drawable/calendar_clock"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/colorGray"
-                    android:fontFamily="@font/montserrat_medium"
+
                     android:text="Date"
                     android:textColor="@color/colorGray" />
                 <TextView
@@ -250,7 +250,7 @@
                     android:layout_marginStart="@dimen/_40sdp"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/dark_gray"
-                    android:fontFamily="@font/montserrat_medium"
+
                     android:maxLines="1"
                     android:text="20 june, 2023"
                     android:textColor="@color/dark_gray" />
@@ -262,7 +262,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:textSize="@dimen/_8sdp"
                     android:drawableLeft="@drawable/ic_time"
-                    android:fontFamily="@font/montserrat_medium"
+
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/colorGray"
                     android:maxLines="1"
@@ -276,7 +276,7 @@
                     android:layout_marginStart="@dimen/_40sdp"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/dark_gray"
-                    android:fontFamily="@font/montserrat_medium"
+
                     android:maxLines="1"
                     android:text="10:30 AM"
                     android:textColor="@color/dark_gray" />
@@ -315,7 +315,7 @@
                     android:drawableLeft="@drawable/fare"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/colorGray"
-                    android:fontFamily="@font/montserrat_medium"
+
                     android:text="Fare"
                     android:textColor="@color/colorGray" />
                 <TextView
@@ -326,7 +326,7 @@
                     android:layout_marginStart="@dimen/_40sdp"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/dark_gray"
-                    android:fontFamily="@font/montserrat_medium"
+
 
                     android:maxLines="1"
                     android:text="RS. 1500"
@@ -338,7 +338,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:drawableLeft="@drawable/seat"
-                    android:fontFamily="@font/montserrat_medium"
+
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/colorGray"
                     android:textSize="@dimen/_8sdp"
@@ -353,7 +353,7 @@
                     android:layout_marginStart="@dimen/_40sdp"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/dark_gray"
-                    android:fontFamily="@font/montserrat_medium"
+
                     android:maxLines="1"
 
                     android:text="3 Seat"

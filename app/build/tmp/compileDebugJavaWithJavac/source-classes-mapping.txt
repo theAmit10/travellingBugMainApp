@@ -1,29 +1,30 @@
-com/travel/travellingbug/models/CardDetails.java
- com.travel.travellingbug.models.CardDetails
-com/travel/travellingbug/utills/MyBoldTextView.java
- com.travel.travellingbug.utills.MyBoldTextView
-com/travel/travellingbug/models/FRDModel.java
- com.travel.travellingbug.models.FRDModel
-com/travel/travellingbug/utills/Typefaces.java
- com.travel.travellingbug.utills.Typefaces
-com/travel/travellingbug/ui/adapters/YourRideViewPagerAdapter.java
- com.travel.travellingbug.ui.adapters.YourRideViewPagerAdapter
-com/travel/travellingbug/helper/SharedHelperImage.java
- com.travel.travellingbug.helper.SharedHelperImage
-com/travel/travellingbug/utills/ResponseListener.java
- com.travel.travellingbug.utills.ResponseListener
-com/travel/travellingbug/ui/fragments/RoundCornerDrawable.java
- com.travel.travellingbug.ui.fragments.RoundCornerDrawable
-com/travel/travellingbug/models/DocumentItem.java
- com.travel.travellingbug.models.DocumentItem
+com/travel/travellingbug/utills/RouteEvaluator.java
+ com.travel.travellingbug.utills.RouteEvaluator
+com/travel/travellingbug/utills/FontCache.java
+ com.travel.travellingbug.utills.FontCache
 com/travel/travellingbug/models/StopOverModel.java
  com.travel.travellingbug.models.StopOverModel
+com/travel/travellingbug/helper/URLHelper.java
+ com.travel.travellingbug.helper.URLHelper
+com/travel/travellingbug/models/WithdrawAmount.java
+ com.travel.travellingbug.models.WithdrawAmount
+com/travel/travellingbug/helper/SharedHelperImage.java
+ com.travel.travellingbug.helper.SharedHelperImage
+com/travel/travellingbug/models/DocListItemModel.java
+ com.travel.travellingbug.models.DocListItemModel
+com/travel/travellingbug/ui/fragments/RoundCornerDrawable.java
+ com.travel.travellingbug.ui.fragments.RoundCornerDrawable
+com/travel/travellingbug/utills/ResponseListener.java
+ com.travel.travellingbug.utills.ResponseListener
+com/travel/travellingbug/models/GetUserRate.java
+ com.travel.travellingbug.models.GetUserRate
 com/travel/travellingbug/ui/adapters/ProfileViewPagerAdapter.java
  com.travel.travellingbug.ui.adapters.ProfileViewPagerAdapter
-com/travel/travellingbug/helper/AppHelper.java
- com.travel.travellingbug.helper.AppHelper
-com/travel/travellingbug/models/IntroModel.java
- com.travel.travellingbug.models.IntroModel
+com/travel/travellingbug/models/ChatList.java
+ com.travel.travellingbug.models.ChatList
+com/travel/travellingbug/models/CardInfo.java
+ com.travel.travellingbug.models.CardInfo
+ com.travel.travellingbug.models.CardInfo$1
 com/travel/travellingbug/utills/MapAnimator.java
  com.travel.travellingbug.utills.MapAnimator
  com.travel.travellingbug.utills.MapAnimator$1
@@ -31,16 +32,15 @@ com/travel/travellingbug/utills/MapAnimator.java
  com.travel.travellingbug.utills.MapAnimator$3
  com.travel.travellingbug.utills.MapAnimator$4
  com.travel.travellingbug.utills.MapAnimator$5
-com/travel/travellingbug/models/CardInfo.java
- com.travel.travellingbug.models.CardInfo
- com.travel.travellingbug.models.CardInfo$1
+com/travel/travellingbug/models/IntroModel.java
+ com.travel.travellingbug.models.IntroModel
 com/travel/travellingbug/utills/CustomTypefaceSpan.java
  com.travel.travellingbug.utills.CustomTypefaceSpan
 com/travel/travellingbug/consts/PlacesAutoCompleteAdapter.java
  com.travel.travellingbug.consts.PlacesAutoCompleteAdapter
  com.travel.travellingbug.consts.PlacesAutoCompleteAdapter$1
-com/travel/travellingbug/helper/SharedHelper.java
- com.travel.travellingbug.helper.SharedHelper
+com/travel/travellingbug/helper/AppHelper.java
+ com.travel.travellingbug.helper.AppHelper
 com/travel/travellingbug/ui/adapters/UserProfileViewPagerAdapter.java
  com.travel.travellingbug.ui.adapters.UserProfileViewPagerAdapter
 com/travel/travellingbug/models/ServiceGenerator.java
@@ -58,8 +58,8 @@ com/travel/travellingbug/models/TravelPreferenceFindRideDetialsModel.java
  com.travel.travellingbug.models.TravelPreferenceFindRideDetialsModel
 com/travel/travellingbug/models/PassengerCallModel.java
  com.travel.travellingbug.models.PassengerCallModel
-com/travel/travellingbug/helper/URLHelper.java
- com.travel.travellingbug.helper.URLHelper
+com/travel/travellingbug/models/CardDetails.java
+ com.travel.travellingbug.models.CardDetails
 com/travel/travellingbug/fcm/MyBroadcastReceiver.java
  com.travel.travellingbug.fcm.MyBroadcastReceiver
 com/travel/travellingbug/utills/LocationTracking.java
@@ -72,71 +72,69 @@ com/travel/travellingbug/models/PostUserRate.java
  com.travel.travellingbug.models.PostUserRate
 com/travel/travellingbug/models/PassengerDataModel.java
  com.travel.travellingbug.models.PassengerDataModel
-com/travel/travellingbug/utills/MyEditText.java
- com.travel.travellingbug.utills.MyEditText
+com/travel/travellingbug/utills/Typefaces.java
+ com.travel.travellingbug.utills.Typefaces
 com/travel/travellingbug/helper/BitmapCompletion.java
  com.travel.travellingbug.helper.BitmapCompletion
 com/travel/travellingbug/models/User.java
  com.travel.travellingbug.models.User
  com.travel.travellingbug.models.User$1
-com/travel/travellingbug/consts/PlaceAPI.java
- com.travel.travellingbug.consts.PlaceAPI
+com/travel/travellingbug/models/FRDModel.java
+ com.travel.travellingbug.models.FRDModel
 com/travel/travellingbug/models/MPesaNumber.java
  com.travel.travellingbug.models.MPesaNumber
  com.travel.travellingbug.models.MPesaNumber$1
-com/travel/travellingbug/models/DocListItemModel.java
- com.travel.travellingbug.models.DocListItemModel
-com/travel/travellingbug/utills/FontCache.java
- com.travel.travellingbug.utills.FontCache
+com/travel/travellingbug/utills/MyEditText.java
+ com.travel.travellingbug.utills.MyEditText
+com/travel/travellingbug/consts/PlaceAPI.java
+ com.travel.travellingbug.consts.PlaceAPI
 com/travel/travellingbug/listeners/ConnectionChangeListener.java
  com.wedrive.driver.Listeners.ConnectionChangeListener
-com/travel/travellingbug/chat/PageTransformer.java
- com.travel.travellingbug.chat.PageTransformer
-com/travel/travellingbug/utills/MyTextView.java
- com.travel.travellingbug.utills.MyTextView
 com/travel/travellingbug/BuildConfig.java
  com.travel.travellingbug.BuildConfig
+com/travel/travellingbug/utills/MyTextView.java
+ com.travel.travellingbug.utills.MyTextView
+com/travel/travellingbug/chat/PageTransformer.java
+ com.travel.travellingbug.chat.PageTransformer
 com/travel/travellingbug/utills/MyCheckbox.java
  com.travel.travellingbug.utills.MyCheckbox
 com/travel/travellingbug/models/PaymentResponse.java
  com.travel.travellingbug.models.PaymentResponse
 com/travel/travellingbug/models/PaymentRequest.java
  com.travel.travellingbug.models.PaymentRequest
-com/travel/travellingbug/models/ChatList.java
- com.travel.travellingbug.models.ChatList
 com/travel/travellingbug/helper/VolleyMultipartRequest.java
  com.travel.travellingbug.helper.VolleyMultipartRequest
  com.travel.travellingbug.helper.VolleyMultipartRequest$DataPart
+com/travel/travellingbug/helper/SharedHelper.java
+ com.travel.travellingbug.helper.SharedHelper
 com/travel/travellingbug/listeners/Connect.java
  com.travel.travellingbug.listeners.Connect
-com/travel/travellingbug/models/WithdrawAmount.java
- com.travel.travellingbug.models.WithdrawAmount
 com/travel/travellingbug/ui/activities/GifImageView.java
  com.travel.travellingbug.ui.activities.GifImageView
 com/travel/travellingbug/models/ChangeDestRequest.java
  com.travel.travellingbug.models.ChangeDestRequest
 com/travel/travellingbug/models/ChatAppMsgDTO.java
  com.travel.travellingbug.models.ChatAppMsgDTO
+com/travel/travellingbug/utills/MyBoldTextView.java
+ com.travel.travellingbug.utills.MyBoldTextView
 com/travel/travellingbug/models/DefaultConstants.java
  com.travel.travellingbug.models.DefaultConstants
 com/travel/travellingbug/helper/BitmapWorkerTask.java
  com.travel.travellingbug.helper.BitmapWorkerTask
-com/travel/travellingbug/models/RestInterface.java
- com.travel.travellingbug.models.RestInterface
 com/travel/travellingbug/helper/DataParser.java
  com.travel.travellingbug.helper.DataParser
 com/travel/travellingbug/ui/adapters/MainActivityViewPagerAdapter.java
  com.travel.travellingbug.ui.adapters.MainActivityViewPagerAdapter
-com/travel/travellingbug/utills/RouteEvaluator.java
- com.travel.travellingbug.utills.RouteEvaluator
+com/travel/travellingbug/models/RestInterface.java
+ com.travel.travellingbug.models.RestInterface
 com/travel/travellingbug/models/VerifyIdMainActivityModel.java
  com.travel.travellingbug.models.VerifyIdMainActivityModel
+com/travel/travellingbug/models/DocumentItem.java
+ com.travel.travellingbug.models.DocumentItem
 com/travel/travellingbug/models/PlacePredictions.java
  com.travel.travellingbug.models.PlacePredictions
 com/travel/travellingbug/ui/adapters/ItemClickListener.java
  com.travel.travellingbug.ui.adapters.ItemClickListener
-com/travel/travellingbug/models/GetUserRate.java
- com.travel.travellingbug.models.GetUserRate
 com/travel/travellingbug/ui/activities/TravelPreferenceActivity.java
  com.travel.travellingbug.ui.activities.TravelPreferenceActivity
  com.travel.travellingbug.ui.activities.TravelPreferenceActivity$1
@@ -229,13 +227,20 @@ com/travel/travellingbug/ui/activities/DriverProfileActivity.java
  com.travel.travellingbug.ui.activities.DriverProfileActivity$1
  com.travel.travellingbug.ui.activities.DriverProfileActivity$2
  com.travel.travellingbug.ui.activities.DriverProfileActivity$3
+com/travel/travellingbug/ui/fragments/PastTrips.java
+ com.travel.travellingbug.ui.fragments.PastTrips
+ com.travel.travellingbug.ui.fragments.PastTrips$1
+ com.travel.travellingbug.ui.fragments.PastTrips$2
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$1
+ com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$MyViewHolder
 com/travel/travellingbug/ui/activities/VerifyIdActivity.java
  com.travel.travellingbug.ui.activities.VerifyIdActivity
  com.travel.travellingbug.ui.activities.VerifyIdActivity$1
  com.travel.travellingbug.ui.activities.VerifyIdActivity$2
-com/travel/travellingbug/ui/activities/HistoryActivity.java
- com.travel.travellingbug.ui.activities.HistoryActivity
- com.travel.travellingbug.ui.activities.HistoryActivity$SampleFragmentPagerAdapter
+com/travel/travellingbug/ui/activities/login/ChangePassword.java
+ com.travel.travellingbug.ui.activities.login.ChangePassword
+ com.travel.travellingbug.ui.activities.login.ChangePassword$1
 com/travel/travellingbug/ui/activities/RideRequestDetailsActivity.java
  com.travel.travellingbug.ui.activities.RideRequestDetailsActivity
  com.travel.travellingbug.ui.activities.RideRequestDetailsActivity$1
@@ -370,10 +375,10 @@ com/travel/travellingbug/ui/activities/ShowProfile.java
 com/travel/travellingbug/ui/adapters/AutoCompleteAdapter.java
  com.travel.travellingbug.ui.adapters.AutoCompleteAdapter
  com.travel.travellingbug.ui.adapters.AutoCompleteAdapter$ViewHolder
-com/travel/travellingbug/ui/activities/DocumentUpload.java
- com.travel.travellingbug.ui.activities.DocumentUpload
- com.travel.travellingbug.ui.activities.DocumentUpload$1
- com.travel.travellingbug.ui.activities.DocumentUpload$2
+com/travel/travellingbug/ui/fragments/SummaryFragment.java
+ com.travel.travellingbug.ui.fragments.SummaryFragment
+ com.travel.travellingbug.ui.fragments.SummaryFragment$1
+ com.travel.travellingbug.ui.fragments.SummaryFragment$2
 com/travel/travellingbug/utills/Utils.java
  com.travel.travellingbug.utills.Utils
  com.travel.travellingbug.utills.Utils$1
@@ -407,10 +412,13 @@ com/travel/travellingbug/ui/fragments/UserProfileAboutFragment.java
  com.travel.travellingbug.ui.fragments.UserProfileAboutFragment$1
  com.travel.travellingbug.ui.fragments.UserProfileAboutFragment$2
  com.travel.travellingbug.ui.fragments.UserProfileAboutFragment$3
-com/travel/travellingbug/ui/fragments/SummaryFragment.java
- com.travel.travellingbug.ui.fragments.SummaryFragment
- com.travel.travellingbug.ui.fragments.SummaryFragment$1
- com.travel.travellingbug.ui.fragments.SummaryFragment$2
+com/travel/travellingbug/ui/activities/FindRideDetails.java
+ com.travel.travellingbug.ui.activities.FindRideDetails
+ com.travel.travellingbug.ui.activities.FindRideDetails$1
+ com.travel.travellingbug.ui.activities.FindRideDetails$2
+ com.travel.travellingbug.ui.activities.FindRideDetails$3
+ com.travel.travellingbug.ui.activities.FindRideDetails$4
+ com.travel.travellingbug.ui.activities.FindRideDetails$5
 com/travel/travellingbug/ui/activities/FindRidesActivity.java
  com.travel.travellingbug.ui.activities.FindRidesActivity
  com.travel.travellingbug.ui.activities.FindRidesActivity$1
@@ -431,15 +439,46 @@ com/travel/travellingbug/ui/fragments/Help.java
  com.travel.travellingbug.ui.fragments.Help$1
 com/travel/travellingbug/ui/activities/ChangePasswordActivity.java
  com.travel.travellingbug.ui.activities.ChangePasswordActivity
-com/travel/travellingbug/ui/fragments/OnGoingTrips.java
- com.travel.travellingbug.ui.fragments.OnGoingTrips
- com.travel.travellingbug.ui.fragments.OnGoingTrips$1
- com.travel.travellingbug.ui.fragments.OnGoingTrips$2
- com.travel.travellingbug.ui.fragments.OnGoingTrips$3
- com.travel.travellingbug.ui.fragments.OnGoingTrips$4
- com.travel.travellingbug.ui.fragments.OnGoingTrips$5
- com.travel.travellingbug.ui.fragments.OnGoingTrips$UpcomingsAdapter
- com.travel.travellingbug.ui.fragments.OnGoingTrips$UpcomingsAdapter$MyViewHolder
+com/travel/travellingbug/ui/fragments/SearchFragment.java
+ com.travel.travellingbug.ui.fragments.SearchFragment
+ com.travel.travellingbug.ui.fragments.SearchFragment$1
+ com.travel.travellingbug.ui.fragments.SearchFragment$1$1
+ com.travel.travellingbug.ui.fragments.SearchFragment$10
+ com.travel.travellingbug.ui.fragments.SearchFragment$11
+ com.travel.travellingbug.ui.fragments.SearchFragment$12
+ com.travel.travellingbug.ui.fragments.SearchFragment$13
+ com.travel.travellingbug.ui.fragments.SearchFragment$14
+ com.travel.travellingbug.ui.fragments.SearchFragment$15
+ com.travel.travellingbug.ui.fragments.SearchFragment$16
+ com.travel.travellingbug.ui.fragments.SearchFragment$17
+ com.travel.travellingbug.ui.fragments.SearchFragment$18
+ com.travel.travellingbug.ui.fragments.SearchFragment$19
+ com.travel.travellingbug.ui.fragments.SearchFragment$2
+ com.travel.travellingbug.ui.fragments.SearchFragment$20
+ com.travel.travellingbug.ui.fragments.SearchFragment$21
+ com.travel.travellingbug.ui.fragments.SearchFragment$22
+ com.travel.travellingbug.ui.fragments.SearchFragment$23
+ com.travel.travellingbug.ui.fragments.SearchFragment$24
+ com.travel.travellingbug.ui.fragments.SearchFragment$25
+ com.travel.travellingbug.ui.fragments.SearchFragment$26
+ com.travel.travellingbug.ui.fragments.SearchFragment$27
+ com.travel.travellingbug.ui.fragments.SearchFragment$28
+ com.travel.travellingbug.ui.fragments.SearchFragment$29
+ com.travel.travellingbug.ui.fragments.SearchFragment$3
+ com.travel.travellingbug.ui.fragments.SearchFragment$30
+ com.travel.travellingbug.ui.fragments.SearchFragment$31
+ com.travel.travellingbug.ui.fragments.SearchFragment$32
+ com.travel.travellingbug.ui.fragments.SearchFragment$4
+ com.travel.travellingbug.ui.fragments.SearchFragment$5
+ com.travel.travellingbug.ui.fragments.SearchFragment$6
+ com.travel.travellingbug.ui.fragments.SearchFragment$7
+ com.travel.travellingbug.ui.fragments.SearchFragment$8
+ com.travel.travellingbug.ui.fragments.SearchFragment$9
+ com.travel.travellingbug.ui.fragments.SearchFragment$FetchUrl
+ com.travel.travellingbug.ui.fragments.SearchFragment$HomeFragmentListener
+ com.travel.travellingbug.ui.fragments.SearchFragment$OnClick
+ com.travel.travellingbug.ui.fragments.SearchFragment$OnClick$1
+ com.travel.travellingbug.ui.fragments.SearchFragment$ParserTask
 com/travel/travellingbug/ui/adapters/PaymentListAdapter.java
  com.travel.travellingbug.ui.adapters.PaymentListAdapter
  com.travel.travellingbug.ui.adapters.PaymentListAdapter$1
@@ -526,49 +565,15 @@ com/travel/travellingbug/utills/CircularProgressBar.java
  com.travel.travellingbug.utills.CircularProgressBar
 com/travel/travellingbug/ui/activities/VerifyEmailActivity.java
  com.travel.travellingbug.ui.activities.VerifyEmailActivity
-com/travel/travellingbug/ui/fragments/DriverMapFragment.java
- com.travel.travellingbug.ui.fragments.DriverMapFragment
- com.travel.travellingbug.ui.fragments.DriverMapFragment$1
- com.travel.travellingbug.ui.fragments.DriverMapFragment$10
- com.travel.travellingbug.ui.fragments.DriverMapFragment$11
- com.travel.travellingbug.ui.fragments.DriverMapFragment$12
- com.travel.travellingbug.ui.fragments.DriverMapFragment$13
- com.travel.travellingbug.ui.fragments.DriverMapFragment$13$1
- com.travel.travellingbug.ui.fragments.DriverMapFragment$13$2
- com.travel.travellingbug.ui.fragments.DriverMapFragment$13$3
- com.travel.travellingbug.ui.fragments.DriverMapFragment$14
- com.travel.travellingbug.ui.fragments.DriverMapFragment$15
- com.travel.travellingbug.ui.fragments.DriverMapFragment$16
- com.travel.travellingbug.ui.fragments.DriverMapFragment$17
- com.travel.travellingbug.ui.fragments.DriverMapFragment$18
- com.travel.travellingbug.ui.fragments.DriverMapFragment$19
- com.travel.travellingbug.ui.fragments.DriverMapFragment$2
- com.travel.travellingbug.ui.fragments.DriverMapFragment$20
- com.travel.travellingbug.ui.fragments.DriverMapFragment$21
- com.travel.travellingbug.ui.fragments.DriverMapFragment$22
- com.travel.travellingbug.ui.fragments.DriverMapFragment$23
- com.travel.travellingbug.ui.fragments.DriverMapFragment$24
- com.travel.travellingbug.ui.fragments.DriverMapFragment$25
- com.travel.travellingbug.ui.fragments.DriverMapFragment$26
- com.travel.travellingbug.ui.fragments.DriverMapFragment$27
- com.travel.travellingbug.ui.fragments.DriverMapFragment$28
- com.travel.travellingbug.ui.fragments.DriverMapFragment$29
- com.travel.travellingbug.ui.fragments.DriverMapFragment$3
- com.travel.travellingbug.ui.fragments.DriverMapFragment$30
- com.travel.travellingbug.ui.fragments.DriverMapFragment$31
- com.travel.travellingbug.ui.fragments.DriverMapFragment$32
- com.travel.travellingbug.ui.fragments.DriverMapFragment$33
- com.travel.travellingbug.ui.fragments.DriverMapFragment$34
- com.travel.travellingbug.ui.fragments.DriverMapFragment$35
- com.travel.travellingbug.ui.fragments.DriverMapFragment$36
- com.travel.travellingbug.ui.fragments.DriverMapFragment$4
- com.travel.travellingbug.ui.fragments.DriverMapFragment$5
- com.travel.travellingbug.ui.fragments.DriverMapFragment$6
- com.travel.travellingbug.ui.fragments.DriverMapFragment$7
- com.travel.travellingbug.ui.fragments.DriverMapFragment$8
- com.travel.travellingbug.ui.fragments.DriverMapFragment$9
- com.travel.travellingbug.ui.fragments.DriverMapFragment$FetchUrl
- com.travel.travellingbug.ui.fragments.DriverMapFragment$ParserTask
+com/travel/travellingbug/ui/fragments/OnGoingTrips.java
+ com.travel.travellingbug.ui.fragments.OnGoingTrips
+ com.travel.travellingbug.ui.fragments.OnGoingTrips$1
+ com.travel.travellingbug.ui.fragments.OnGoingTrips$2
+ com.travel.travellingbug.ui.fragments.OnGoingTrips$3
+ com.travel.travellingbug.ui.fragments.OnGoingTrips$4
+ com.travel.travellingbug.ui.fragments.OnGoingTrips$5
+ com.travel.travellingbug.ui.fragments.OnGoingTrips$UpcomingsAdapter
+ com.travel.travellingbug.ui.fragments.OnGoingTrips$UpcomingsAdapter$MyViewHolder
 com/travel/travellingbug/ui/adapters/TravelPreferenceActivityMainAdapter.java
  com.travel.travellingbug.ui.adapters.TravelPreferenceActivityMainAdapter
  com.travel.travellingbug.ui.adapters.TravelPreferenceActivityMainAdapter$ViewHolder
@@ -750,20 +755,11 @@ com/travel/travellingbug/ui/activities/PersonalDetailsActivity.java
  com.travel.travellingbug.ui.activities.PersonalDetailsActivity$3
  com.travel.travellingbug.ui.activities.PersonalDetailsActivity$4
  com.travel.travellingbug.ui.activities.PersonalDetailsActivity$5
-com/travel/travellingbug/ui/activities/MainActivity.java
- com.travel.travellingbug.ui.activities.MainActivity
- com.travel.travellingbug.ui.activities.MainActivity$1
- com.travel.travellingbug.ui.activities.MainActivity$2
- com.travel.travellingbug.ui.activities.MainActivity$3
- com.travel.travellingbug.ui.activities.MainActivity$4
- com.travel.travellingbug.ui.activities.MainActivity$5
-com/travel/travellingbug/ui/activities/HomeScreenActivity.java
- com.travel.travellingbug.ui.activities.HomeScreenActivity
- com.travel.travellingbug.ui.activities.HomeScreenActivity$1
- com.travel.travellingbug.ui.activities.HomeScreenActivity$2
- com.travel.travellingbug.ui.activities.HomeScreenActivity$3
- com.travel.travellingbug.ui.activities.HomeScreenActivity$4
- com.travel.travellingbug.ui.activities.HomeScreenActivity$5
+com/travel/travellingbug/ui/adapters/YourRideViewPagerAdapter.java
+ com.travel.travellingbug.ui.adapters.YourRideViewPagerAdapter
+com/travel/travellingbug/ui/activities/HistoryActivity.java
+ com.travel.travellingbug.ui.activities.HistoryActivity
+ com.travel.travellingbug.ui.activities.HistoryActivity$SampleFragmentPagerAdapter
 com/travel/travellingbug/ui/activities/TrackActivity.java
  com.travel.travellingbug.ui.activities.TrackActivity
  com.travel.travellingbug.ui.activities.TrackActivity$1
@@ -796,60 +792,67 @@ com/travel/travellingbug/ui/activities/TrackActivity.java
  com.travel.travellingbug.ui.activities.TrackActivity$9
  com.travel.travellingbug.ui.activities.TrackActivity$FetchUrl
  com.travel.travellingbug.ui.activities.TrackActivity$ParserTask
-com/travel/travellingbug/ui/fragments/SearchFragment.java
- com.travel.travellingbug.ui.fragments.SearchFragment
- com.travel.travellingbug.ui.fragments.SearchFragment$1
- com.travel.travellingbug.ui.fragments.SearchFragment$1$1
- com.travel.travellingbug.ui.fragments.SearchFragment$10
- com.travel.travellingbug.ui.fragments.SearchFragment$11
- com.travel.travellingbug.ui.fragments.SearchFragment$12
- com.travel.travellingbug.ui.fragments.SearchFragment$13
- com.travel.travellingbug.ui.fragments.SearchFragment$14
- com.travel.travellingbug.ui.fragments.SearchFragment$15
- com.travel.travellingbug.ui.fragments.SearchFragment$16
- com.travel.travellingbug.ui.fragments.SearchFragment$17
- com.travel.travellingbug.ui.fragments.SearchFragment$18
- com.travel.travellingbug.ui.fragments.SearchFragment$19
- com.travel.travellingbug.ui.fragments.SearchFragment$2
- com.travel.travellingbug.ui.fragments.SearchFragment$20
- com.travel.travellingbug.ui.fragments.SearchFragment$21
- com.travel.travellingbug.ui.fragments.SearchFragment$22
- com.travel.travellingbug.ui.fragments.SearchFragment$23
- com.travel.travellingbug.ui.fragments.SearchFragment$24
- com.travel.travellingbug.ui.fragments.SearchFragment$25
- com.travel.travellingbug.ui.fragments.SearchFragment$26
- com.travel.travellingbug.ui.fragments.SearchFragment$27
- com.travel.travellingbug.ui.fragments.SearchFragment$28
- com.travel.travellingbug.ui.fragments.SearchFragment$29
- com.travel.travellingbug.ui.fragments.SearchFragment$3
- com.travel.travellingbug.ui.fragments.SearchFragment$30
- com.travel.travellingbug.ui.fragments.SearchFragment$31
- com.travel.travellingbug.ui.fragments.SearchFragment$32
- com.travel.travellingbug.ui.fragments.SearchFragment$4
- com.travel.travellingbug.ui.fragments.SearchFragment$5
- com.travel.travellingbug.ui.fragments.SearchFragment$6
- com.travel.travellingbug.ui.fragments.SearchFragment$7
- com.travel.travellingbug.ui.fragments.SearchFragment$8
- com.travel.travellingbug.ui.fragments.SearchFragment$9
- com.travel.travellingbug.ui.fragments.SearchFragment$FetchUrl
- com.travel.travellingbug.ui.fragments.SearchFragment$HomeFragmentListener
- com.travel.travellingbug.ui.fragments.SearchFragment$OnClick
- com.travel.travellingbug.ui.fragments.SearchFragment$OnClick$1
- com.travel.travellingbug.ui.fragments.SearchFragment$ParserTask
-com/travel/travellingbug/ui/activities/login/ChangePassword.java
- com.travel.travellingbug.ui.activities.login.ChangePassword
- com.travel.travellingbug.ui.activities.login.ChangePassword$1
-com/travel/travellingbug/ui/activities/FindRideDetails.java
- com.travel.travellingbug.ui.activities.FindRideDetails
- com.travel.travellingbug.ui.activities.FindRideDetails$1
- com.travel.travellingbug.ui.activities.FindRideDetails$2
- com.travel.travellingbug.ui.activities.FindRideDetails$3
- com.travel.travellingbug.ui.activities.FindRideDetails$4
- com.travel.travellingbug.ui.activities.FindRideDetails$5
-com/travel/travellingbug/ui/fragments/PastTrips.java
- com.travel.travellingbug.ui.fragments.PastTrips
- com.travel.travellingbug.ui.fragments.PastTrips$1
- com.travel.travellingbug.ui.fragments.PastTrips$2
- com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter
- com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$1
- com.travel.travellingbug.ui.fragments.PastTrips$PostAdapter$MyViewHolder
+com/travel/travellingbug/ui/fragments/DriverMapFragment.java
+ com.travel.travellingbug.ui.fragments.DriverMapFragment
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$1
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$10
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$11
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$12
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$13
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$14
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$14$1
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$14$2
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$14$3
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$15
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$16
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$17
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$18
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$19
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$2
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$20
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$21
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$22
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$23
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$24
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$25
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$26
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$27
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$28
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$29
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$3
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$30
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$31
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$32
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$33
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$34
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$35
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$36
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$37
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$38
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$39
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$4
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$5
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$6
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$7
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$8
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$9
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$FetchUrl
+ com.travel.travellingbug.ui.fragments.DriverMapFragment$ParserTask
+com/travel/travellingbug/ui/activities/HomeScreenActivity.java
+ com.travel.travellingbug.ui.activities.HomeScreenActivity
+ com.travel.travellingbug.ui.activities.HomeScreenActivity$1
+ com.travel.travellingbug.ui.activities.HomeScreenActivity$2
+ com.travel.travellingbug.ui.activities.HomeScreenActivity$3
+ com.travel.travellingbug.ui.activities.HomeScreenActivity$4
+ com.travel.travellingbug.ui.activities.HomeScreenActivity$5
+com/travel/travellingbug/ui/activities/DocumentUpload.java
+ com.travel.travellingbug.ui.activities.DocumentUpload
+ com.travel.travellingbug.ui.activities.DocumentUpload$1
+ com.travel.travellingbug.ui.activities.DocumentUpload$2
+com/travel/travellingbug/ui/activities/MainActivity.java
+ com.travel.travellingbug.ui.activities.MainActivity
+ com.travel.travellingbug.ui.activities.MainActivity$1
+ com.travel.travellingbug.ui.activities.MainActivity$2
+ com.travel.travellingbug.ui.activities.MainActivity$3
+ com.travel.travellingbug.ui.activities.MainActivity$4
+ com.travel.travellingbug.ui.activities.MainActivity$5

@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:gravity="center_vertical"
                 android:text="Book Your Ride"
                 android:textColor="@color/white"
@@ -96,7 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:fontFamily="@font/montserrat_regular"
+
                         android:paddingStart="@dimen/_5sdp"
                         android:text="@string/pick_up"
                         android:textSize="14dp" />
@@ -107,7 +107,7 @@
                         android:layout_height="@dimen/_30sdp"
                         android:background="@color/text_color_white"
                         android:ellipsize="end"
-                        android:fontFamily="@font/montserrat_regular"
+
                         android:gravity="center_vertical"
                         android:hint="@string/source_location"
                         android:inputType="text"
@@ -182,7 +182,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:fontFamily="@font/montserrat_regular"
+
                         android:paddingStart="@dimen/_5sdp"
                         android:text="@string/destination_location"
                         android:textSize="14dp" />
@@ -193,7 +193,7 @@
                         android:layout_height="@dimen/_30sdp"
                         android:background="@color/text_color_white"
                         android:ellipsize="end"
-                        android:fontFamily="@font/montserrat_regular"
+
                         android:gravity="center_vertical"
                         android:hint="@string/where_to_go"
                         android:inputType="text"
@@ -365,7 +365,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_regular"
+
                 android:padding="5dp"
                 android:textColor="@color/light_gray"
                 android:textSize="@dimen/_14sdp" />
@@ -373,7 +373,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_regular"
+
                 android:maxLines="2"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
@@ -393,7 +393,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_regular"
+
                 android:padding="5dp"
                 android:textColor="@color/light_gray"
                 android:textSize="@dimen/_14sdp" />
@@ -401,7 +401,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_regular"
+
                 android:maxLines="2"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
@@ -421,7 +421,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_regular"
+
                 android:padding="5dp"
                 android:textColor="@color/light_gray"
                 android:textSize="@dimen/_14sdp" />
@@ -429,7 +429,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_regular"
+
                 android:maxLines="2"
                 android:paddingStart="5dp"
                 android:paddingEnd="5dp"
@@ -455,6 +455,7 @@
             android:drawablePadding="@dimen/_8sdp"
             android:gravity="center|start"
             android:text="@string/pin_location"
+            android:fontFamily="@font/nunito_variablefont_wght"
             android:textColor="@color/black_text_color"
             android:visibility="visible" />
 

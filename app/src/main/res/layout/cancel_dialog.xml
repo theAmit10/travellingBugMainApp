@@ -28,7 +28,7 @@
             android:id="@+id/driver"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_medium"
+
             android:text="@string/plan_changed"
             android:textColor="@color/black"
             android:textSize="@dimen/_12sdp" />
@@ -37,7 +37,7 @@
             android:id="@+id/vehicle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_medium"
+
             android:text="@string/booked_another_cab"
             android:textColor="@color/black"
             android:textSize="@dimen/_12sdp" />
@@ -46,7 +46,7 @@
             android:id="@+id/app"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_medium"
+
             android:text="@string/my_reason_is_not_listed"
             android:textColor="@color/black"
             android:textSize="@dimen/_12sdp" />
@@ -75,7 +75,7 @@
 <!--        android:layout_height="wrap_content"-->
 <!--        android:textSize="@dimen/_12sdp"-->
 <!--        android:textColor="@color/black"-->
-<!--        android:fontFamily="@font/montserrat_medium"-->
+<!--        -->
 <!--        android:text="@string/driver_is_not_moving"/>-->
 <!--        <RadioButton-->
 <!--        android:id="@+id/denied"-->
@@ -83,7 +83,7 @@
 <!--        android:layout_height="wrap_content"-->
 <!--        android:textSize="@dimen/_12sdp"-->
 <!--        android:textColor="@color/black"-->
-<!--        android:fontFamily="@font/montserrat_medium"-->
+<!--        -->
 <!--        android:text="@string/driver_denied_to_come"/>-->
     </RadioGroup>
 
@@ -94,7 +94,7 @@
         android:layout_marginStart="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_15sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        android:fontFamily="@font/montserrat_medium"
+
         android:hint="@string/andwhy"
         android:visibility="gone" />
 

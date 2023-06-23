@@ -52,6 +52,7 @@ public class ExpandableTextView extends androidx.appcompat.widget.AppCompatTextV
 
     private void applyFont(Context context) {
         setTypeface(Typefaces.get(context, "ClanPro-NarrBook.otf"));
+//        setTypeface(Typefaces.get(context, "nunito_variablefont_wght.ttf"));
     }
 
 

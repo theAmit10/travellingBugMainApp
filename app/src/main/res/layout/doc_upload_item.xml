@@ -30,7 +30,7 @@
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
             android:layout_weight="1"
-            android:fontFamily="@font/montserrat_medium"
+
             android:gravity="center|start"
             android:text="Registration Certificate"
             android:textColor="@color/black" />
@@ -52,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/montserrat_medium"
+
             android:text="Certificate Of Good Conduct"
             android:textSize="@dimen/_12sdp"
             android:visibility="gone" />

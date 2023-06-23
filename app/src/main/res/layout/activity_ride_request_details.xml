@@ -36,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:fontFamily="@font/montserrat_medium"
+
                     android:gravity="center_vertical"
                     android:text="RIDE REQUEST"
                     android:textColor="@color/white"
@@ -315,7 +315,7 @@
                         android:layout_marginTop="@dimen/_5sdp"
 
                         android:drawableTint="@color/colorGray"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:text="Pick up date"
                         android:textColor="@color/colorGray"
                         android:textStyle="bold" />
@@ -326,7 +326,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:drawableTint="@color/dark_gray"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:maxLines="1"
                         android:text="date"
                         android:textColor="@color/dark_gray" />
@@ -337,7 +337,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:drawableTint="@color/colorGray"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:maxLines="1"
                         android:text="Pick up time"
                         android:textColor="@color/colorGray"
@@ -349,7 +349,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:drawableTint="@color/dark_gray"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:maxLines="1"
 
                         android:text="3 Seat"
@@ -370,7 +370,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:drawableTint="@color/colorGray"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:text="Fare to collect"
                         android:textColor="@color/colorGray"
                         android:textStyle="bold" />
@@ -383,7 +383,7 @@
 
                         android:drawablePadding="@dimen/_30sdp"
                         android:drawableTint="@color/dark_gray"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:maxLines="1"
                         android:text="RS. 1500"
                         android:textColor="@color/dark_gray" />
@@ -394,7 +394,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:drawableTint="@color/colorGray"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:maxLines="1"
                         android:text="Seats requested"
                         android:textColor="@color/colorGray"
@@ -406,7 +406,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:drawableTint="@color/dark_gray"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:maxLines="1"
                         android:text="3 Seat"
                         android:textColor="@color/dark_gray" />

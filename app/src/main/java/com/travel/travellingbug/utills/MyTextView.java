@@ -33,7 +33,7 @@ public class MyTextView extends TextView {
     }
 
     private void applyCustomFont(Context context) {
-        Typeface customFont = FontCache.getTypeface("fonts/Montserrat-Medium.ttf", context);
+        Typeface customFont = FontCache.getTypeface("fonts/nunito_variablefont_wght.ttf", context);
         setTypeface(customFont);
     }
 }

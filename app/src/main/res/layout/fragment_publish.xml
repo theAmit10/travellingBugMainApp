@@ -33,7 +33,7 @@
         <!--            <TextView-->
         <!--                android:layout_width="match_parent"-->
         <!--                android:layout_height="wrap_content"-->
-        <!--                android:fontFamily="@font/montserrat_medium"-->
+        <!--                -->
         <!--                android:gravity="center_vertical|center"-->
         <!--                android:text="Add Ride"-->
         <!--                android:textColor="@color/white"-->
@@ -598,6 +598,7 @@
                                             android:gravity="center"
                                             android:paddingEnd="@dimen/_8sdp"
                                             android:text="Publish Ride"
+                                            android:fontFamily="@font/nunito_variablefont_wght"
                                             android:textColor="@color/button_text_color"
                                             android:textSize="@dimen/_12sdp" />
                                     </androidx.cardview.widget.CardView>

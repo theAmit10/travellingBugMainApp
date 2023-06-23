@@ -1412,6 +1412,10 @@
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\design_passenger_number.xml"
     },
     {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_auth_btn_blue_bgs.xml.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable\\auth_btn_blue_bgs.xml"
+    },
+    {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_complaints.xml.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\activity_complaints.xml"
     },
@@ -1458,6 +1462,10 @@
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_custom_info_contents.xml.flat",
         "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\layout\\custom_info_contents.xml"
+    },
+    {
+        "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_auth_btn_purple_bg.xml.flat",
+        "source": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\src\\main\\res\\drawable\\auth_btn_purple_bg.xml"
     },
     {
         "merged": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_travel_preference.xml.flat",

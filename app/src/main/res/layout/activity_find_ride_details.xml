@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:padding="@dimen/_5sdp"
                 android:text="Passenger"
                 android:textColor="@color/black"
@@ -65,7 +65,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:fontFamily="@font/montserrat_medium"
+
                     android:gravity="center_horizontal"
                     android:paddingStart="@dimen/_20sdp"
                     android:paddingEnd="@dimen/_20sdp"
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:padding="@dimen/_5sdp"
                 android:text="Travel preferences"
                 android:textColor="@color/black"
@@ -168,7 +168,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:padding="@dimen/_5sdp"
                 android:text="Tracking Link"
                 android:textColor="@color/black"
@@ -178,7 +178,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:padding="@dimen/_5sdp"
                 android:text="http://travellingbug.com/link"
                 android:textColor="@color/green"
@@ -189,7 +189,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:padding="@dimen/_5sdp"
                 android:text="Terms and conditions"
                 android:textColor="@color/black"
@@ -201,7 +201,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_10sdp"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:padding="@dimen/_5sdp"
                 android:text="Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:
 \n
@@ -216,7 +216,7 @@ The purpose of lorem ipsum is to create a natural \n\nlooking block of text (sen
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:gravity="right"
                 android:padding="@dimen/_5sdp"
                 android:text="Read more   "

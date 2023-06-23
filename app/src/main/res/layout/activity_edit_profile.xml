@@ -41,7 +41,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:gravity="center_vertical"
                         android:text="@string/edit_profile"
                         android:textColor="@android:color/white"
@@ -307,7 +307,7 @@
                 android:drawablePadding="@dimen/_15sdp"
 
                 android:drawableTint="@color/white"
-                android:fontFamily="@font/montserrat_regular"
+
                 android:paddingStart="@dimen/_15sdp"
                 android:paddingEnd="@dimen/_10sdp"
                 android:text="@string/notifications"

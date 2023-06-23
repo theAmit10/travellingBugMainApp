@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="-20dp"
-            android:fontFamily="@font/montserrat_medium"
+
             android:gravity="center"
             android:text="FIND A RIDE"
             android:textColor="@color/white"
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_5sdp"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:maxLines="1"
                 android:text="Plot A2, Sector 38 A, Noida, \nIndia"
                 android:textColor="@color/dark_gray"
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:maxLines="1"
                 android:text="Flat No-83, Dwarka Sector 12"
                 android:textColor="@color/dark_gray"
@@ -95,7 +95,7 @@
                 android:drawableLeft="@drawable/calendar_clock"
                 android:drawablePadding="@dimen/_5sdp"
                 android:drawableTint="@color/dark_gray"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:maxLines="1"
                 android:text="20 june, 2023"
                 android:textColor="@color/dark_gray"
@@ -109,7 +109,7 @@
                 android:drawableLeft="@drawable/ic_time"
                 android:drawablePadding="@dimen/_5sdp"
                 android:drawableTint="@color/dark_gray"
-                android:fontFamily="@font/montserrat_medium"
+
                 android:maxLines="1"
                 android:text="11:30 PM"
                 android:textColor="@color/dark_gray"
@@ -183,7 +183,7 @@
                         <com.travel.travellingbug.utills.MyBoldTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_medium"
+
                             android:gravity="center"
                             android:paddingStart="@dimen/_10sdp"
                             android:paddingEnd="@dimen/_10sdp"

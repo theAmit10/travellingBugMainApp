@@ -73,7 +73,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:paddingStart="@dimen/_5sdp"
                         android:text="Home Address"
                         android:textSize="14dp" />
@@ -84,7 +84,7 @@
                         android:layout_height="@dimen/_30sdp"
                         android:background="@color/text_color_white"
                         android:ellipsize="end"
-                        android:fontFamily="@font/montserrat_medium"
+
                         android:gravity="center_vertical"
                         android:hint="@string/source_location"
                         android:inputType="text"
