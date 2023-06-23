@@ -26,12 +26,12 @@ import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
-import com.travel.travellingbug.ui.adapters.ChatAppMsgAdapter;
 import com.travel.travellingbug.helper.ConnectionHelper;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.models.ChatAppMsgDTO;
 import com.travel.travellingbug.models.ChatList;
+import com.travel.travellingbug.ui.adapters.ChatAppMsgAdapter;
 import com.vanniktech.emoji.EmojiEditText;
 import com.vanniktech.emoji.EmojiPopup;
 
@@ -294,12 +294,25 @@ public class UserChatActivity extends AppCompatActivity {
 //            customDialog.setCancelable(true);
 //            if (customDialog != null)
 //                customDialog.show();
+//            https://tejratidukan.com/carpool/api/provider/firebase/getChat?request_id=
+//            https://tejratidukan.com/carpool/api/provider/firebase/allchatHistory?request_id=172&user_id=33
+
+//            https://tejratidukan.com/carpool/api/provider/firebase/sendchat?request_id=172&send_to=40&message=second message
+
             String url;
+//            if (requestId != "" && requestId != null) {
+//                url = URLHelper.ChatGetMessage + requestId;
+//            } else {
+//                url = URLHelper.ChatGetMessage + userID + "@" + providerId;
+//            }
+
             if (requestId != "" && requestId != null) {
-                url = URLHelper.ChatGetMessage + requestId;
+                url = URLHelper.CHAT_API +"?request_id=" + requestId;
             } else {
-                url = URLHelper.ChatGetMessage + userID + "@" + providerId;
+                url = URLHelper.CHAT_API + userID + "@" + providerId;
             }
+
+
             JSONObject object = new JSONObject();
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, object, response -> {
 //                    if ((customDialog != null) && (customDialog.isShowing()))
@@ -367,6 +380,86 @@ public class UserChatActivity extends AppCompatActivity {
             displayMessage(getString(R.string.something_went_wrong_net));
         }
     }
+
+    public void getChatHistory() {
+        if (isInternet) {
+
+
+            String url = URLHelper.CHAT_API + "?request_id="+requestId + "&send_to=" +userID+"&message="+msgInputText.getText().toString();
+//            if (requestId != "" && requestId != null) {
+//                url = URLHelper.ChatGetMessage + requestId;
+//            } else {
+//                url = URLHelper.ChatGetMessage + userID + "@" + providerId;
+//            }
+            JSONObject object = new JSONObject();
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, object, response -> {
+//                    if ((customDialog != null) && (customDialog.isShowing()))
+//                        customDialog.dismiss();
+                Log.d("TAG", "chatListResponse" + response.toString());
+                if (response.toString() != null) {
+                    JSONObject object1 = null;
+                    try {
+                        object1 = new JSONObject(response.toString());
+                        String status = object1.getString("status");
+                        if (status.equalsIgnoreCase("1")) {
+                            JSONArray jsonArray = object1.getJSONArray("data");
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                //   msgDtoList.clear();
+                                JSONObject jo = jsonArray.getJSONObject(i);
+                                SharedHelper.putKey(context, "current_chat_provider_id", "" + jo.getString("provider_id"));
+                                SharedHelper.putKey(context, "current_chat_user_id", "" + jo.getString("user_id"));
+                                SharedHelper.putKey(context, "current_chat_request_id", "" + jo.getString("request_id"));
+                                ChatList chatList = new ChatList();
+                                chatList.setProviderId(jo.getString("provider_id"));
+                                chatList.setUserId(jo.getString("user_id"));
+                                chatList.setRequestId(jo.getString("request_id"));
+                                chatList.setMessage(jo.getString("message"));
+                                chatList.setType(jo.getString("type"));
+                                if (!jo.getString("created_at").contains("null")) {
+                                    if (jo.getString("type").contains("pu")) {
+                                        ChatAppMsgDTO msgDto = new ChatAppMsgDTO(ChatAppMsgDTO.MSG_TYPE_SENT, jo.getString("message"), jo.getString("created_at"));
+                                        msgDtoList.add(msgDto);
+                                    } else {
+                                        ChatAppMsgDTO msgDto = new ChatAppMsgDTO(ChatAppMsgDTO.MSG_TYPE_RECEIVED, jo.getString("message"), jo.getString("created_at"));
+                                        msgDtoList.add(msgDto);
+                                    }
+                                }
+                                // Create the data adapter with above data list.
+
+                            }
+                            chatAppMsgAdapter = new ChatAppMsgAdapter(msgDtoList);
+
+                            // Set data adapter to RecyclerView.
+                            recyclerChat.setAdapter(chatAppMsgAdapter);
+                            recyclerChat.scrollToPosition(chatAppMsgAdapter.getItemCount() - 1);
+                            chatAppMsgAdapter.notifyDataSetChanged();
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            }, error -> {
+                displayMessage(getString(R.string.something_went_wrong));
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("X-Requested-With", "XMLHttpRequest");
+                    headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
+                    return headers;
+                }
+            };
+
+            ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+        } else {
+            displayMessage(getString(R.string.something_went_wrong_net));
+        }
+    }
+
+
 
     public void displayMessage(String toastString) {
         Toasty.info(this, toastString, Toast.LENGTH_SHORT, true).show();

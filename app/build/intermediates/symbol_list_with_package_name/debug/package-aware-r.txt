@@ -5110,6 +5110,7 @@ id com_facebook_smart_instructions_or
 id com_facebook_tooltip_bubble_view_bottom_pointer
 id com_facebook_tooltip_bubble_view_text_body
 id com_facebook_tooltip_bubble_view_top_pointer
+id commenttv
 id confirmBtn
 id confirmNewPassword
 id confirmNewPasswordET
@@ -6134,6 +6135,7 @@ id threeStarTotalVal
 id thumb
 id thursday
 id time
+id timeTv
 id timeVal
 id time_display
 id time_display_background

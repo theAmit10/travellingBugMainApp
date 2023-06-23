@@ -5109,6 +5109,7 @@ int id com_facebook_smart_instructions_or 0x7f0a0192
 int id com_facebook_tooltip_bubble_view_bottom_pointer 0x7f0a0193
 int id com_facebook_tooltip_bubble_view_text_body 0x7f0a0194
 int id com_facebook_tooltip_bubble_view_top_pointer 0x7f0a0195
+int id commenttv 0x7f0a068e
 int id confirmBtn 0x7f0a0196
 int id confirmNewPassword 0x7f0a0197
 int id confirmNewPasswordET 0x7f0a0198
@@ -6133,6 +6134,7 @@ int id threeStarTotalVal 0x7f0a0592
 int id thumb 0x7f0a0593
 int id thursday 0x7f0a0594
 int id time 0x7f0a0595
+int id timeTv 0x7f0a068f
 int id timeVal 0x7f0a0596
 int id time_display 0x7f0a0597
 int id time_display_background 0x7f0a0598

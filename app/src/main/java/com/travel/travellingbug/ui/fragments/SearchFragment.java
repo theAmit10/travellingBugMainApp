@@ -455,6 +455,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         //permission to access location
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            if( customDialog.isShowing()){
+                customDialog.dismiss();
+            }
         } else {
 //            setUpMapIfNeeded();
             if( customDialog.isShowing()){
@@ -482,6 +485,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                     PackageManager.PERMISSION_GRANTED) {
                         // Android M Permission check
                         requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                        if( customDialog.isShowing()){
+                            customDialog.dismiss();
+                        }
                     } else {
                         initMap();
                         MapsInitializer.initialize(getActivity());
@@ -1290,7 +1296,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         new AlertDialog.Builder(getContext())
                 .setTitle("Confirmation")
                 .setMessage("Do you really want to Exit Cab Services?")
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.drawable
+                        .app_logo_org)
                 .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> getActivity().finish())
                 .setNegativeButton(android.R.string.no, null).show();
     }

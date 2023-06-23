@@ -9,6 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -18,17 +20,30 @@ import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
+import com.travel.travellingbug.models.UserProfileReviewDataModel;
+import com.travel.travellingbug.ui.adapters.UserProfileReviewDataAdapter;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 
 public class UserProfileReviewFragment extends Fragment {
 
     String user_id = "";
+
+    RecyclerView fragmentDriverReviewRV;
+    ArrayList<UserProfileReviewDataModel> list = new ArrayList<>();
+    UserProfileReviewDataAdapter adapter;
 
     ProgressBar fiveStarProgress,fourStarProgress,threeStarProgress,twoStarProgress,oneStarProgress;
     TextView fiveStarTotalVal,fourStarTotalVal,threeStarTotalVal,twoStarTotalVal,oneStarTotalVal;
@@ -55,6 +70,38 @@ public class UserProfileReviewFragment extends Fragment {
             getProfileData(user_id);
         }
         return  view;
+    }
+
+    private String getMonth(String date) throws ParseException {
+        Date d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).parse(date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        String monthName = new SimpleDateFormat("MMM").format(cal.getTime());
+        return monthName;
+    }
+
+    private String getDate(String date) throws ParseException {
+        Date d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).parse(date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        String dateName = new SimpleDateFormat("dd").format(cal.getTime());
+        return dateName;
+    }
+
+    private String getYear(String date) throws ParseException {
+        Date d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).parse(date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        String yearName = new SimpleDateFormat("yyyy").format(cal.getTime());
+        return yearName;
+    }
+
+    private String getTime(String date) throws ParseException {
+        Date d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).parse(date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        String timeName = new SimpleDateFormat("hh:mm a").format(cal.getTime());
+        return timeName;
     }
 
     private void getProfileData(String user_id) {
@@ -90,29 +137,40 @@ public class UserProfileReviewFragment extends Fragment {
                             oneStarProgress.setProgress(Integer.parseInt(String.valueOf(oneStarTotalVal.getText())));
 
 
+                            JSONArray dataJsonArray = jsonObject.getJSONArray("Data");
+                            if(dataJsonArray.length() > 0){
+                                for(int i=0 ; i<dataJsonArray.length(); i++){
+                                    JSONObject dataJsonObj = dataJsonArray.getJSONObject(i);
+
+                                    UserProfileReviewDataModel userProfileReviewDataModel = new UserProfileReviewDataModel();
+                                    String user_rating =  dataJsonObj.getString("user_rating");
+                                    String user_comment =  dataJsonObj.getString("user_comment");
+                                    String first_name =  dataJsonObj.getString("first_name");
+                                    String avatar =  dataJsonObj.getString("avatar");
+//                                    String created_at_time =  dataJsonObj.getString("created_at");
+
+
+                                    String form = dataJsonObj.getString("created_at");
+                                    String s_date = getDate(form) + "th " + getMonth(form) + " " + getYear(form);
+
+
+
+                                    list.add(new UserProfileReviewDataModel(user_rating,user_comment,first_name,avatar,s_date));
+
+
+                                }
+
+                                adapter = new UserProfileReviewDataAdapter(getContext(),list);
+                                fragmentDriverReviewRV.setAdapter(adapter);
+                            }
+
+
+
+
 
                         }catch (Exception e){
                             e.printStackTrace();
                         }
-
-
-
-
-//                        if(jsonObject.optString("email").equalsIgnoreCase("")){
-//                            emailTv.setText("No email Available");
-//                        }else {
-//                            emailTv.setText(jsonObject.optString("email"));
-//                        }
-//
-//                        if(jsonObject.optString("mobile") != null){
-//                            phoneTv.setText(jsonObject.optString("mobile"));
-//                        }
-
-//                        userName.setText(jsonObject.optString("first_name"));
-//                        ratingVal.setText(jsonObject.optString("rating"));
-//                        listitemrating.setRating(Float.parseFloat(jsonObject.optString("rating")));
-//                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar"))
-//                                .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(profileImgeIv);
 
 
                     }
@@ -127,8 +185,8 @@ public class UserProfileReviewFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
             }
 
         }) {
@@ -168,6 +226,12 @@ public class UserProfileReviewFragment extends Fragment {
         threeStarTotalVal = view.findViewById(R.id.threeStarTotalVal);
         twoStarTotalVal = view.findViewById(R.id.twoStarTotalVal);
         oneStarTotalVal = view.findViewById(R.id.oneStarTotalVal);
+
+        fragmentDriverReviewRV = view.findViewById(R.id.fragmentDriverReviewRV);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        fragmentDriverReviewRV.setLayoutManager(linearLayoutManager);
+        fragmentDriverReviewRV.setNestedScrollingEnabled(false);
+
 
     }
 }

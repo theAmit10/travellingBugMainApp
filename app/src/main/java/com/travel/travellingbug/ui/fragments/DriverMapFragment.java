@@ -655,10 +655,11 @@ public class DriverMapFragment extends Fragment implements
 
     @OnClick(R.id.img_chat)
     void img_chatClick() {
+
         Intent intentChat = new Intent(getActivity(), UserChatActivity.class);
-        intentChat.putExtra("requestId", request_id);
+        intentChat.putExtra("requestId", current_trip_request_id);
         intentChat.putExtra("providerId", providerId);
-        intentChat.putExtra("userId", userID);
+        intentChat.putExtra("userId", userId);
         intentChat.putExtra("userName", userFirstName);
         getActivity().startActivity(intentChat);
     }
@@ -2603,7 +2604,11 @@ public class DriverMapFragment extends Fragment implements
                                                                         else
                                                                             destination.setText(getAddress(statusResponse.optString("s_latitude"),
                                                                                     statusResponse.optString("s_longitude")));
-                                                                        topSrcDestTxtLbl.setText(getActivity().getString(R.string.pick_up));
+                                                                        try {
+                                                                            topSrcDestTxtLbl.setText(getActivity().getString(R.string.pick_up));
+                                                                        }catch (Exception e){
+                                                                            e.printStackTrace();
+                                                                        }
 
 
                                                                     } else if (filterJsonObj.optString("provider_status").equals("ARRIVED")) {
@@ -4278,7 +4283,12 @@ public class DriverMapFragment extends Fragment implements
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getContext(), "Something went Wrong", Toast.LENGTH_SHORT).show();
+                            try {
+                                Toast.makeText(getContext(), "Something went Wrong", Toast.LENGTH_SHORT).show();
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+
                         }
 
                     }) {

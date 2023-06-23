@@ -37,7 +37,7 @@
             >
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/nametv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="David Johnson"
@@ -56,7 +56,7 @@
                 android:progressTint="#FFCA28" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/commenttv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -68,10 +68,9 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/timeTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:gravity="right"
             android:text="15 April 2017"
             android:textColor="@color/colorDarkGray"
