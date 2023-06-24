@@ -150,21 +150,6 @@ public class SplashScreen extends AppCompatActivity {
                     String base64Key = Base64.encodeToString(keys.getBytes(), Base64.NO_WRAP);
 
 
-//                    FirebaseInstallations.getInstance().getToken(/* forceRefresh */true)
-//                            .addOnCompleteListener(new OnCompleteListener<InstallationTokenResult>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<InstallationTokenResult> task) {
-//                                    if (task.isSuccessful() && task.getResult() != null) {
-//                                        Log.d("Installations", "Installation auth token: " + task.getResult().getToken());
-//                                        String newToken = task.getResult().getToken();
-//                                        Log.e("newToken", newToken);
-//                                        SharedHelper.putKey(getApplicationContext(), "device_token", "" + newToken);
-//                                        device_token = newToken;
-//                                    } else {
-//                                        Log.e("Installations", "Unable to get Installation auth token");
-//                                    }
-//                                }
-//                            });
 
                     SplashScreen.this.runOnUiThread(new Runnable() {
                         public void run() {
@@ -242,16 +227,7 @@ public class SplashScreen extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser != null){
-//            Intent intent = new Intent(SplashScreen.this, HomeScreenActivity.class);
-//            startActivity(intent);
-//        }
-//    }
+
 
     @SuppressLint("HardwareIds")
     public void GetToken() {
@@ -298,6 +274,8 @@ public class SplashScreen extends AppCompatActivity {
         try {
             device_UDID = Settings.Secure.getString(getContentResolver(),
                     Settings.Secure.ANDROID_ID);
+            SharedHelper.putKey(getApplicationContext(),"device_udid",device_UDID);
+
             Log.i(TAG, "Device UDID:" + device_UDID);
         } catch (Exception e) {
             device_UDID = "COULD NOT GET UDID";

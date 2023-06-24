@@ -144,8 +144,9 @@ public class NotificationTab extends AppCompatActivity {
         if (Jzvd.backPress()) {
             return;
         }
-        startActivity(new Intent(NotificationTab.this, HomeScreenActivity.class));
-        finishAffinity();
+        finish();
+//        startActivity(new Intent(NotificationTab.this, HomeScreenActivity.class));
+//        finishAffinity();
     }
 
     private class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> {

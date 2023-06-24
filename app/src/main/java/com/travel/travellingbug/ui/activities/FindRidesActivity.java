@@ -692,11 +692,15 @@ public class FindRidesActivity extends AppCompatActivity {
             RatingBar listitemrating;
             Button details, request;
 
+            LinearLayout containerLL;
+
 
             public MyViewHolder(View itemView) {
                 super(itemView);
 //                tripDate = itemView.findViewById(R.id.tripDate);
                 tripTime = itemView.findViewById(R.id.tripTime);
+
+
 //                tripAmount = itemView.findViewById(R.id.tripAmount);
 //                tripImg = itemView.findViewById(R.id.tripImg);
 //                car_name = itemView.findViewById(R.id.car_name);
@@ -723,12 +727,13 @@ public class FindRidesActivity extends AppCompatActivity {
                 details = itemView.findViewById(R.id.details);
                 request = itemView.findViewById(R.id.request);
 
+
+
 //                itemView.setOnClickListener(view -> {
-//                    Intent intent = new Intent(getApplicationContext(), HistoryDetails.class);
+//                    Intent intent = new Intent(getApplicationContext(), DriverProfileActivity.class);
 //                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                    Log.e("Intent", "" + jsonArray.optJSONObject(getAdapterPosition()).toString());
-//                    intent.putExtra("post_value", jsonArray.optJSONObject(getAdapterPosition()).toString());
-//                    intent.putExtra("tag", "upcoming_trips");
+//                    intent.putExtra("user_id", jsonArray.optJSONObject(getAdapterPosition()).optString("user_id"));
+//                    intent.putExtra("request_id", jsonArray.optJSONObject(getAdapterPosition()).optString("id"));
 //                    startActivity(intent);
 //
 //                });

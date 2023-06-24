@@ -658,6 +658,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     JsonObjectRequest(Request.Method.GET, URLHelper.USER_PROFILE_API,
                             object, response -> {
                         Log.v("GetProfile", response.toString());
+
+
                         SharedHelper.putKey(getContext(), "id", response.optString("id"));
                         SharedHelper.putKey(getContext(), "first_name", response.optString("first_name"));
                         SharedHelper.putKey(getContext(), "last_name", response.optString("last_name"));
@@ -716,6 +718,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     }, error -> {
                         try {
                             displayMessage(getString(R.string.something_went_wrong));
+                            error.printStackTrace();
+                            generateNewAccessToken();
+
+
+
                         }catch (Exception e){
                             e.printStackTrace();
                         }
@@ -726,11 +733,89 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             headers.put("X-Requested-With", "XMLHttpRequest");
                             Log.e(TAG, "getHeaders: Token" + SharedHelper.getKey(getContext(), "access_token") + SharedHelper.getKey(getContext(), "token_type"));
                             headers.put("Authorization", "" + "Bearer" + " " + SharedHelper.getKey(getContext(), "access_token"));
+
                             return headers;
                         }
                     };
 
             ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+        } else {
+            displayMessage(getString(R.string.something_went_wrong_net));
+        }
+
+    }
+
+
+    private void generateNewAccessToken() {
+        System.out.println("generating new access token");
+        if (isInternet) {
+            customDialog = new CustomDialog(getContext());
+            customDialog.setCancelable(false);
+            if (customDialog != null)
+                customDialog.show();
+            JSONObject object = new JSONObject();
+            try {
+
+                String phoneID = SharedHelper.getKey(getContext(), "mobile_number");
+                String phone = phoneID.substring(1, phoneID.length());
+
+                object.put("grant_type", "password");
+                object.put("client_id", URLHelper.client_id);
+                object.put("client_secret", URLHelper.client_secret);
+                object.put("mobile", SharedHelper.getKey(getContext(),"mobile"));
+                object.put("password", "12345678");
+                object.put("scope", "");
+                object.put("device_type", "android");
+                object.put("device_id", SharedHelper.getKey(getContext(),"device_udid"));
+                object.put("device_token", SharedHelper.getKey(getContext(), "device_token"));
+                object.put("logged_in", "1");
+                utils.print("InputToLoginAPI", "" + object);
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest jsonObjectRequest = new
+                    JsonObjectRequest(Request.Method.POST,
+                            URLHelper.login,
+                            object,
+                            response -> {
+                                if ((customDialog != null) && customDialog.isShowing())
+                                    customDialog.dismiss();
+                                utils.print("LoginResponse", response.toString());
+                                SharedHelper.putKey(getContext(),
+                                        "access_token", response.optString("access_token"));
+                                SharedHelper.putKey(getContext(),
+                                        "refresh_token", response.optString("refresh_token"));
+                                SharedHelper.putKey(getContext(),
+                                        "token_type", response.optString("token_type"));
+
+
+
+                                SharedHelper.putKey(getContext(), "loggedIn",
+                                        getString(R.string.True));
+//                                GoToMainActivity();
+
+
+                            },
+                            error -> {
+                                if ((customDialog != null) && customDialog.isShowing())
+                                    customDialog.dismiss();
+                                displayMessage(getString(R.string.something_went_wrong));
+                            }) {
+
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+
+                            headers.put("X-Requested-With", "XMLHttpRequest");
+                            return headers;
+                        }
+                    };
+
+            ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+
         } else {
             displayMessage(getString(R.string.something_went_wrong_net));
         }
@@ -1220,11 +1305,20 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         flowValue = 0;
         layoutChanges();
 
-        //Load animation
-        slide_down = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_down);
-        slide_up = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up);
-        slide_up_top = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up_top);
-        slide_up_down = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up_down);
+
+        try {
+            //Load animation
+            slide_down = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_down);
+            slide_up = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up);
+            slide_up_top = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up_top);
+            slide_up_down = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up_down);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
         imgNavigate.setOnClickListener(v -> {
             Uri naviUri2 = Uri.parse("http://maps.google.com/maps?"
                     + "saddr=" + source_lat + "," + source_lng
@@ -1387,10 +1481,10 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 source_lng = "" + longitude;
                 source_address = currentAddress;
                 current_address = currentAddress;
-                if(getContext() != null){
-                    frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
-                    frmDest.setTextColor(getResources().getColor(R.color.dark_gray));
-                }
+//                if(getContext() != null){
+//                    frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
+//                    frmDest.setTextColor(getResources().getColor(R.color.dark_gray));
+//                }
                 frmSource.setText(currentAddress);
 
                 // setting previous destination data
