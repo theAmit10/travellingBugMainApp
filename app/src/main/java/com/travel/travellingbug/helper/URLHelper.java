@@ -165,8 +165,11 @@ public interface URLHelper {
     String CHANGES_STATUS_BY_FILTER_ID_BY_PROVIDER = BASE +  "api/provider/changestatus";
 
     String USER_REVIEW_HISTORY = BASE +"api/provider/userreviewhistory";
+    String PROVIDER_REVIEW_HISTORY = BASE +"api/provider/review";
 
     String CHANGE_MAIN_STATUS_OF_RIDE = BASE +"api/provider/changemainstatus";
+
+    String UPDATE_POSTAL_ADDRESS = BASE +"api/provider/profile/personal";
 
 
 

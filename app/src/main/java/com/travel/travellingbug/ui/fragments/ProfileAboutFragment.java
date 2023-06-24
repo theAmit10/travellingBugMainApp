@@ -555,6 +555,20 @@ public class ProfileAboutFragment extends Fragment {
                                 e.printStackTrace();
                             }
                         }
+
+
+                        if (response.optJSONObject("profile") != null) {
+                            try {
+                                JSONObject profile = response.optJSONObject("profile");
+
+                                SharedHelper.putKey(getContext(), "full_address", profile.optString("address"));
+
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
                         setProviderDetails();
 
 

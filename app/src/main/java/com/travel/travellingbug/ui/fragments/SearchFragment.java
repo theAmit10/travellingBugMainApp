@@ -714,7 +714,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
 
                     }, error -> {
-                        displayMessage(getString(R.string.something_went_wrong));
+                        try {
+                            displayMessage(getString(R.string.something_went_wrong));
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
                     }) {
                         @Override
                         public Map<String, String> getHeaders() {
@@ -1390,18 +1394,25 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 frmSource.setText(currentAddress);
 
                 // setting previous destination data
-                if (!SharedHelper.getKey(getContext(), "destination_latitude").equalsIgnoreCase("")) {
-                    String destination_latitude = SharedHelper.getKey(getContext(), "destination_latitude");
-                    String destination_longitude = SharedHelper.getKey(getContext(), "destination_longitude");
+                try {
+                    if (!SharedHelper.getKey(getContext(), "destination_latitude").equalsIgnoreCase("")) {
+                        String destination_latitude = SharedHelper.getKey(getContext(), "destination_latitude");
+                        String destination_longitude = SharedHelper.getKey(getContext(), "destination_longitude");
 
-                    Double dlat = Double.valueOf(destination_latitude);
-                    Double dlong = Double.valueOf(destination_longitude);
+                        Double dlat = Double.valueOf(destination_latitude);
+                        Double dlong = Double.valueOf(destination_longitude);
 
-                    String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
-                    frmDest.setText(destination_address);
-                } else {
+                        String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
+                        frmDest.setText(destination_address);
+                    } else {
+                        frmDest.setText("Going to");
+                    }
+
+                }catch (Exception e){
+                    e.printStackTrace();
                     frmDest.setText("Going to");
                 }
+
 
 //                getProvidersList("");
                 value++;

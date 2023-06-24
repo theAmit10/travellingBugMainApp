@@ -15,234 +15,249 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/_10sdp"
-                android:paddingEnd="@dimen/_10sdp">
 
-                <TextView
-                    android:id="@+id/fiveStar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_star"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:drawableTint="@color/quantum_yellow"
-                    android:text="5"
-                    android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold" />
-
-                <ProgressBar
-
-                    android:id="@+id/fiveStarProgress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="@dimen/_170sdp"
-                    android:layout_height="@dimen/_20sdp"
-
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:max="100"
-                    android:padding="@dimen/_5sdp" />
-
-                <TextView
-                    android:id="@+id/fiveStarTotalVal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:text=""
-                    android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/_10sdp"
-                android:paddingEnd="@dimen/_10sdp">
+                android:layout_margin="@dimen/_10sdp"
+                android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/fourStar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_star"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:drawableTint="@color/quantum_yellow"
-                    android:text="4"
-                    android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold" />
-
-                <ProgressBar
-
-                    android:id="@+id/fourStarProgress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="@dimen/_170sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:max="100"
-                    android:padding="@dimen/_5sdp" />
-
-                <TextView
-                    android:id="@+id/fourStarTotalVal"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:text=""
-                    android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold" />
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/fiveStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_star"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/quantum_yellow"
+                        android:text="5"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+
+                        android:id="@+id/fiveStarProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_weight="1"
+
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:max="100"
+                        android:padding="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/fiveStarTotalVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text=""
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
 
 
-            </LinearLayout>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/_10sdp"
-                android:paddingEnd="@dimen/_10sdp">
-
-                <TextView
-                    android:id="@+id/threeStar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_star"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:drawableTint="@color/quantum_yellow"
-                    android:text="3"
-                    android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold" />
-
-                <ProgressBar
-
-                    android:id="@+id/threeStarProgress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="@dimen/_170sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:max="100"
-                    android:padding="@dimen/_5sdp" />
-
-                <TextView
-                    android:id="@+id/threeStarTotalVal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:text=""
-                    android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/_10sdp"
-                android:paddingEnd="@dimen/_10sdp">
-
-                <TextView
-                    android:id="@+id/twoStar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_star"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:drawableTint="@color/quantum_yellow"
-                    android:text="2"
-                    android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold" />
-
-                <ProgressBar
-
-                    android:id="@+id/twoStarProgress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="@dimen/_170sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:max="100"
-                    android:padding="@dimen/_5sdp" />
-
-                <TextView
-                    android:id="@+id/twoStarTotalVal"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:text=""
-                    android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold" />
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/fourStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_star"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/quantum_yellow"
+                        android:text="4"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+
+                        android:id="@+id/fourStarProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_weight="1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:max="100"
+                        android:padding="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/fourStarTotalVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text=""
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
 
 
-            </LinearLayout>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:paddingStart="@dimen/_10sdp"
-                android:paddingEnd="@dimen/_10sdp">
-
-                <TextView
-                    android:id="@+id/oneStar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableRight="@drawable/ic_star"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:drawableTint="@color/quantum_yellow"
-                    android:text="1"
-                    android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold" />
-
-                <ProgressBar
-
-                    android:id="@+id/oneStarProgress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="@dimen/_170sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:max="100"
-                    android:padding="@dimen/_5sdp" />
-
-                <TextView
-                    android:id="@+id/oneStarTotalVal"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:text=""
-                    android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold" />
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp">
 
+                    <TextView
+                        android:id="@+id/threeStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_star"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/quantum_yellow"
+                        android:text="3"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+
+                        android:id="@+id/threeStarProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_weight="1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:max="100"
+                        android:padding="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/threeStarTotalVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text=""
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/twoStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_star"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/quantum_yellow"
+                        android:text="2"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+
+                        android:id="@+id/twoStarProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_weight="1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:max="100"
+                        android:padding="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/twoStarTotalVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text=""
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/oneStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_star"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/quantum_yellow"
+                        android:text="1"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+
+                        android:id="@+id/oneStarProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_weight="1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:max="100"
+                        android:padding="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/oneStarTotalVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text=""
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
 
             </LinearLayout>
 

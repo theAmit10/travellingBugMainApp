@@ -5911,6 +5911,7 @@ id revenue_card
 id revenue_txt
 id reverseSawtooth
 id reviewCount
+id reviewDataLl
 id rg
 id rgLocationChooser
 id rideRequestRv
@@ -6507,6 +6508,7 @@ layout activity_preference_title
 layout activity_privacy_policy
 layout activity_profile
 layout activity_profile_picture
+layout activity_provider_review
 layout activity_ride_request
 layout activity_ride_request_details
 layout activity_select_shipping_method

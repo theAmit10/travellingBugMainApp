@@ -1,32 +1,24 @@
 package com.travel.travellingbug.ui.fragments;
 
 import static android.content.Context.ACTIVITY_SERVICE;
-
-import static com.facebook.FacebookSdk.getApplicationContext;
-
 import static java.lang.Thread.sleep;
 
 import android.app.ActivityManager;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
-import android.os.StrictMode;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -37,31 +29,24 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
-import com.travel.travellingbug.helper.ConnectionHelper;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.ui.activities.ChangeAddressAdtivityOne;
-import com.travel.travellingbug.ui.activities.ChangePasswordActivity;
 import com.travel.travellingbug.ui.activities.HelpActivity;
-import com.travel.travellingbug.ui.activities.MainActivity;
 import com.travel.travellingbug.ui.activities.NotificationTab;
-import com.travel.travellingbug.ui.activities.Profile;
+import com.travel.travellingbug.ui.activities.ProviderReviewActivity;
 import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.ui.activities.TermsAndConditionActivity;
-import com.travel.travellingbug.ui.activities.UserReview;
 import com.travel.travellingbug.ui.activities.WithdrawActivity;
 import com.travel.travellingbug.ui.activities.login.ChangePassword;
-import com.travel.travellingbug.ui.activities.login.SignUp;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import butterknife.ButterKnife;
 import es.dmoral.toasty.Toasty;
 
 
@@ -69,6 +54,8 @@ public class ProfileAccountFragment extends Fragment {
 
     TextView changePasswordtv, postalAddresstv, helpTv, termConditionTv, ratingtv, logoutTv, notificationEmailAndSmstv, availableFundsTv;
     GoogleApiClient mGoogleApiClient;
+
+    TextView paymentRefundsTv,dataProtectionTv,licensesTv,sendTrackingLinkTv;
 
 
     public ProfileAccountFragment() {
@@ -291,7 +278,7 @@ public class ProfileAccountFragment extends Fragment {
         ratingtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), UserReview.class);
+                Intent intent = new Intent(v.getContext(), ProviderReviewActivity.class);
                 startActivity(intent);
             }
         });
@@ -319,6 +306,36 @@ public class ProfileAccountFragment extends Fragment {
             }
         });
 
+
+
+        sendTrackingLinkTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Under Construction", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        paymentRefundsTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Under Construction", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        dataProtectionTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Under Construction", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        licensesTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Under Construction", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     private void initComponenet(View view) {
@@ -330,5 +347,12 @@ public class ProfileAccountFragment extends Fragment {
         logoutTv = view.findViewById(R.id.logoutTv);
         notificationEmailAndSmstv = view.findViewById(R.id.notificationEmailAndSmstv);
         availableFundsTv = view.findViewById(R.id.availableFundsTv);
+
+
+        paymentRefundsTv = view.findViewById(R.id.paymentRefundsTv);
+        dataProtectionTv = view.findViewById(R.id.dataProtectionTv);
+        licensesTv = view.findViewById(R.id.licensesTv);
+        sendTrackingLinkTv = view.findViewById(R.id.sendTrackingLinkTv);
+
     }
 }
