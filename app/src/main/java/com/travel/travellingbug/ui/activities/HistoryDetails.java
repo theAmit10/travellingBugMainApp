@@ -324,65 +324,73 @@ public class HistoryDetails extends AppCompatActivity {
 
 
         btnCancelRide.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setMessage(getString(R.string.cencel_request))
-                    .setCancelable(false)
-                    .setPositiveButton("YES", (dialog, id) -> {
-                        dialog.dismiss();
-                        cancelRequest();
-                    })
-                    .setNegativeButton("NO", (dialog, id) -> dialog.dismiss());
-            AlertDialog alert = builder.create();
-            alert.show();
+            if(status.equalsIgnoreCase("COMPLETED")){
+                Toast.makeText(activity, "Ride Already Completed ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "you cannot cancel ride ", Toast.LENGTH_SHORT).show();
+
+            }else{
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage(getString(R.string.cencel_request))
+                        .setCancelable(false)
+                        .setPositiveButton("YES", (dialog, id) -> {
+                            dialog.dismiss();
+                            cancelRequest();
+                        })
+                        .setNegativeButton("NO", (dialog, id) -> dialog.dismiss());
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+
         });
 
         btnStartRide.setOnClickListener(view -> {
 
-            updateStatusForSingleUserRide(request_id,"STARTED");
-            Toast.makeText(getApplication(), "Start Ride", Toast.LENGTH_SHORT).show();
-            String res = null;
+            if(status.equalsIgnoreCase("COMPLETED")){
+                Toast.makeText(activity, "Ride Already Completed ", Toast.LENGTH_SHORT).show();
 
-            try {
-                JSONArray array = new JSONArray(history_response);
-                for (int i = 0; i < array.length(); i++) {
-                    JSONObject obj = array.getJSONObject(i);
-                    res = obj.toString();
+            }
+            else {
+                updateStatusForSingleUserRide(request_id,"STARTED");
+                Toast.makeText(getApplication(), "Ride Started", Toast.LENGTH_SHORT).show();
+                String res = null;
+
+                try {
+                    JSONArray array = new JSONArray(history_response);
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject obj = array.getJSONObject(i);
+                        res = obj.toString();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            Log.e("TAG", "RES: " + res);
-            JSONArray array = new JSONArray();
-            JSONObject req = new JSONObject();
-            try {
-                JSONObject object = (JSONObject) new JSONTokener(res).nextValue();
-                req.put("request", object);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            array.put(req);
-            Log.e("TAG", "REQ: " + array);
-            Log.e("History", "Details REQ: " + array);
-            Intent i = new Intent(getApplication(), MainActivity.class);
 
-//            HistoryDetails.this.runOnUiThread(() -> {
-//                fragment = new YourRideFragment();
-//                FragmentManager manager = getSupportFragmentManager();
-//                @SuppressLint("CommitTransaction")
-//                FragmentTransaction transaction = manager.beginTransaction();
-//                transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.slide_out_right);
-//                transaction.replace(R.id.content, fragment);
-//                transaction.commit();
-//                fragmentManager = getSupportFragmentManager();
-//            });
-//            GoToFragment();
-            i.putExtra("datas", array.toString());
-            i.putExtra("current_trip_request_id", request_id);
-            i.putExtra("current_trip_user_id", current_trip_user_id);
-            i.putExtra("type", "SCHEDULED");
-            startActivity(i);
-            finish();
+                Log.e("TAG", "RES: " + res);
+                JSONArray array = new JSONArray();
+                JSONObject req = new JSONObject();
+                try {
+                    JSONObject object = (JSONObject) new JSONTokener(res).nextValue();
+                    req.put("request", object);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                array.put(req);
+                Log.e("TAG", "REQ: " + array);
+                Log.e("History", "Details REQ: " + array);
+                Intent i = new Intent(getApplication(), MainActivity.class);
+
+                i.putExtra("datas", array.toString());
+                i.putExtra("current_trip_request_id", request_id);
+                i.putExtra("current_trip_user_id", current_trip_user_id);
+                i.putExtra("type", "SCHEDULED");
+                startActivity(i);
+                finish();
+
+            }
+
+
+
         });
     }
 
@@ -667,7 +675,7 @@ public class HistoryDetails extends AppCompatActivity {
 
                             history_response = response.toString();
                             Log.e("Trip Details", history_response);
-                            utils.print("Trip Details", response.toString());
+//                            utils.print("Trip Details", response.toString());
                             customDialog.dismiss();
                             parentLayout.setVisibility(View.VISIBLE);
 

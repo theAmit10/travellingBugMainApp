@@ -412,7 +412,7 @@ public class DriverMapFragment extends Fragment implements
 
     @OnClick(R.id.btn_01_status)
     void btn_01_statusClick() {
-        Toast.makeText(getContext(), "Clicked", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Processing", Toast.LENGTH_SHORT).show();
 
         updateStatusForSingleUserRide(filter_id, CurrentStatus);
 //        update(CurrentStatus, request_id);
@@ -461,7 +461,7 @@ public class DriverMapFragment extends Fragment implements
             @Override
             public void onErrorResponse(VolleyError error) {
                 customDialog.dismiss();
-                Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
                 Toast.makeText(getContext(), "Error Found : " + error, Toast.LENGTH_SHORT).show();
             }
 
@@ -2186,7 +2186,7 @@ public class DriverMapFragment extends Fragment implements
             builder.setTitle("Ride Completed");
             builder.setMessage("Are you sure you wan't to finish the ride?");
             builder.setPositiveButton(R.string.yes,
-                    (dialog, which) -> updateMainStatusOfRide(current_trip_request_id,"COMPLETED"));
+                    (dialog, which) -> updateMainStatusOfRide(current_trip_request_id, "COMPLETED"));
             builder.setNegativeButton(R.string.no, (dialog, which) -> {
                 //Reset to previous seletion menu in navigation
                 dialog.dismiss();
@@ -2240,8 +2240,6 @@ public class DriverMapFragment extends Fragment implements
             }
         });
     }
-
-
 
 
     private void updateMainStatusOfRide(String rideId, String status) {
@@ -2565,6 +2563,7 @@ public class DriverMapFragment extends Fragment implements
 
                                                                         setValuesTo_ll_03_contentLayer_service_flow(requestJsonArray, jsonObject);
 
+
                                                                         try {
                                                                             txtPickUpNotes.setVisibility(View.GONE);
                                                                             btn_01_status.setVisibility(View.VISIBLE);
@@ -2606,7 +2605,7 @@ public class DriverMapFragment extends Fragment implements
                                                                                     statusResponse.optString("s_longitude")));
                                                                         try {
                                                                             topSrcDestTxtLbl.setText(getActivity().getString(R.string.pick_up));
-                                                                        }catch (Exception e){
+                                                                        } catch (Exception e) {
                                                                             e.printStackTrace();
                                                                         }
 
@@ -4202,19 +4201,11 @@ public class DriverMapFragment extends Fragment implements
         lblCmfrmSourceAddress.setText(statusResponse.optString("s_address"));
         lblCmfrmDestAddress.setText(statusResponse.optString("d_address"));
 
-        //            statusResponse = status.getJSONObject(0).getJSONObject("request");
         lblCmfrmSourceAddress.setText(responess.optString("s_address"));
         lblCmfrmDestAddress.setText(responess.optString("d_address"));
 
 
-//        userId = filterJsonObj.optString("user_id");
         JSONArray filterJsonArray = statusResponse.optJSONArray("filters");
-
-//        System.out.println("data : " + jsonObjectUser.toString());
-//        txt03UserName.setText(userName);
-//        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + userProfileImage).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(img03User);
-//
-//
 
 
         for (int i = 0; i < filterJsonArray.length(); i++) {
@@ -4269,6 +4260,12 @@ public class DriverMapFragment extends Fragment implements
                                     if (jsonObjectUser.optString("rating") != null) {
                                         System.out.println("user rating : " + jsonObjectUser.optString("rating"));
 
+                                        if (jsonObjectUser.optString("rating")!= null) {
+                                            rat03UserRating.setRating(Float.valueOf(jsonObjectUser.optString("rating")));
+                                        } else {
+                                            rat03UserRating.setRating(0);
+                                        }
+
                                     }
 
                                 }
@@ -4285,7 +4282,7 @@ public class DriverMapFragment extends Fragment implements
                         public void onErrorResponse(VolleyError error) {
                             try {
                                 Toast.makeText(getContext(), "Something went Wrong", Toast.LENGTH_SHORT).show();
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
@@ -4584,8 +4581,6 @@ public class DriverMapFragment extends Fragment implements
         });
 
 
-
-
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -4641,7 +4636,7 @@ public class DriverMapFragment extends Fragment implements
             public void onErrorResponse(VolleyError error) {
                 try {
                     Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 

@@ -162,6 +162,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     public String PreviousStatus = "";
     public String CurrentStatus = "";
 
+    public String ride_distance = "";
+    public String ride_time = "";
+
     @BindView(R.id.layoutdriverstatus)
     LinearLayout layoutdriverstatus;
     @BindView(R.id.driveraccepted)
@@ -285,6 +288,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     CircleImageView imgProviderRate;
     @BindView(R.id.txtComments)
     EditText txtComments;
+
+
+
     @BindView(R.id.ratingProviderRate)
     RatingBar ratingProviderRate;
     @BindView(R.id.btnSubmitReview)
@@ -642,7 +648,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
     @butterknife.OnClick(R.id.imgBack)
     void imgBackClick() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, HomeScreenActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
@@ -715,6 +721,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         lblCmfrmSourceAddress = findViewById(R.id.lblCmfrmSourceAddress);
         lblCmfrmDestAddress = findViewById(R.id.lblCmfrmDestAddress);
         txtPickUpNotes = findViewById(R.id.txtPickUpNotes);
+
+        try {
+            trackPickToDest();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         lblPaymentType.setOnClickListener(v -> showChooser());
     }
@@ -1347,32 +1359,33 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.RATE_TO_PROVIDER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                customDialog.dismiss();
-
+                System.out.println("rate response : " + response.toString());
                 try {
+                    customDialog.dismiss();
                     JSONObject jsonObject = new JSONObject(response);
 
                     if (response != null) {
                         System.out.println("data : " + jsonObject.toString());
 
-                        if (jsonObject.optString("message").equalsIgnoreCase("Request Completed!")) {
+                        if (jsonObject.optString("success").equalsIgnoreCase("Driver rated successfully")) {
                             Toast.makeText(getApplicationContext(), "Rated Successfully", Toast.LENGTH_SHORT).show();
                             utils.hideKeypad(context, activity.getCurrentFocus());
                             if ((customDialog != null) && (customDialog.isShowing()))
                                 customDialog.dismiss();
-                            SharedHelper.putKey(getApplicationContext(), "addRating","yes");
-                            // destination.setText("");
-                            // frmDest.setText("");
-                            SharedHelper.putKey(context, "service_type_Car_Ambulance", "");
-                            Intent goMain = new Intent(activity, MainActivity.class);
-                            goMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            activity.startActivity(goMain);
+//                            SharedHelper.putKey(getApplicationContext(), "addRating","yes");
+//                            // destination.setText("");
+//                            // frmDest.setText("");
+//                            SharedHelper.putKey(context, "service_type_Car_Ambulance", "");
+//                            Intent goMain = new Intent(activity, HomeScreenActivity.class);
+//                            goMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                            activity.startActivity(goMain);
                         }
 
                     }
 
                 } catch (JSONException e) {
-                    Toast.makeText(getApplicationContext(), "Soething went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
                     if ((customDialog != null) && (customDialog.isShowing()))
                         customDialog.dismiss();
                 }
@@ -1384,10 +1397,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
             public void onErrorResponse(VolleyError error) {
                 if ((customDialog != null) && (customDialog.isShowing()))
                     customDialog.dismiss();
+                error.printStackTrace();
                 Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getApplicationContext(), "Error Found : " + error, Toast.LENGTH_SHORT).show();
-//                destinationLayer.setVisibility(View.GONE);
-//                layoutinfo.setVisibility(View.VISIBLE);
+
             }
 
         }) {
@@ -1761,7 +1773,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                     source_lng = tripsJsonObj.optString("longitude");
                                                     dest_lat = tripsJsonObj.optString("s_latitude");
                                                     dest_lng = tripsJsonObj.optString("s_longitude");
-                                                    Toast.makeText(TrackActivity.this, "STARTED Zone", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(TrackActivity.this, "RIDE STARTED ", Toast.LENGTH_SHORT).show();
                                                     setValuesForSourceAndDestination();
 
                                                 } else if (status.equalsIgnoreCase("PICKEDUP")) {
@@ -1847,10 +1859,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                 JSONObject provider_service = tripsJsonObj.getJSONObject("provider_service");
                                                                 SharedHelper.putKey(context, "provider_mobile_no", "" + provider.optString("mobile"));
                                                                 lblProvider.setText(provider.optString("first_name"));
+                                                                lblDis.setText(ride_distance);
+                                                                lblEta.setText(ride_time);
 
 
                                                                 if (provider.optString("avatar").startsWith("http"))
-                                                                    Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
                                                                 else
                                                                     Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
                                                                 lblServiceRequested.setText(service_type.optString("name"));
@@ -1928,8 +1942,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                 Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
                                                                 ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
 
-                                                                //                                                lblDis.setText(service_type.optString("distance")+" km");
-                                                                //                                                lblEta.setText(service_type.optString("minute")+" min");
+//                                                                                                                lblDis.setText(service_type.optString("distance")+" km");
+//                                                                                                                lblEta.setText(service_type.optString("minute")+" min");
+
+                                                                lblDis.setText(ride_distance);
+                                                                lblEta.setText(ride_time);
+
                                                                 lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
 
                                                                 lblCmfrmSourceAddress.setText(pickUpLocationName);
@@ -1969,7 +1987,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                 lblProvider.setText(provider.optString("first_name"));
 
                                                                 if (provider.optString("avatar").startsWith("http"))
-                                                                    Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
                                                                 else
                                                                     Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
                                                                 lblServiceRequested.setText(service_type.optString("name"));
@@ -2200,9 +2218,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                 } else if (filterJsonObject.optString("payment_status").equalsIgnoreCase("success")) {
                                                                     btnPayNow.setVisibility(View.GONE);
                                                                     SharedHelper.putKey(getApplicationContext(), "addRating","yes");
-                                                                    lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
+                                                                    lblProviderName.setText(getString(R.string.rate_provider) + " with " + provider.optString("first_name"));
                                                                     if (provider.optString("avatar").startsWith("http"))
-                                                                        Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" +provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
                                                                     else
                                                                         Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
                                                                     flowValue = 6;
@@ -2224,9 +2242,10 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                         case "COMPLETED":
                                                                 btnPayNow.setVisibility(View.GONE);
                                                                 SharedHelper.putKey(getApplicationContext(), "addRating","yes");
-                                                                lblProviderName.setText(getString(R.string.rate_provider) + " " + providerJsonObject.optString("first_name"));
+                                                                lblProviderName.setText(getString(R.string.rate_provider) + " with " + providerJsonObject.optString("first_name"));
+
                                                                 if (providerJsonObject.optString("avatar").startsWith("http"))
-                                                                    Picasso.get().load(providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" +providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
                                                                 else
                                                                     Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
                                                                 flowValue = 6;
@@ -2238,7 +2257,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                     SharedHelper.putKey(getApplicationContext(), "addRating","yes");
                                                                     lblProviderName.setText(getString(R.string.rate_provider) + " " + providerJsonObject.optString("first_name"));
                                                                     if (providerJsonObject.optString("avatar").startsWith("http"))
-                                                                        Picasso.get().load(providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" +providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
                                                                     else
                                                                         Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
                                                                     flowValue = 6;
@@ -4348,6 +4367,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                         Leg leg = route.getLegList().get(index);
                                         try {
                                             totalDistance = totalDistance + Float.parseFloat(leg.getDistance().getText().replace("km", "").replace("m", "").trim());
+                                            ride_distance = String.valueOf(totalDistance);
+                                            ride_time = leg.getDuration().getText();
                                         } catch (NumberFormatException ne) {
                                             ne.printStackTrace();
                                         }

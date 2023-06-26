@@ -133,16 +133,16 @@
 
         <TextView
             android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_20sdp"
             android:layout_gravity="left|center_vertical"
-            android:background="@drawable/auth_btn_green_bg"
-            android:padding="@dimen/_5sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
             android:layout_marginStart="-20dp"
-            android:text="Complete"
-
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/auth_btn_green_bg"
+            android:padding="@dimen/_3sdp"
             android:rotation="-90"
+            android:text="Completed"
             android:textColor="@color/black"
             android:textSize="@dimen/_10sdp" />
 
@@ -151,7 +151,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1"
-            android:layout_marginStart="-30dp"
+            android:layout_marginStart="-40dp"
             >
 
             <LinearLayout

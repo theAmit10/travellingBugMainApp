@@ -1118,7 +1118,7 @@
                 android:background="@drawable/primary_color_rect_shape"
                 android:backgroundTint="@color/white"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
 <!--                <LinearLayout-->
 <!--                    android:layout_width="match_parent"-->
@@ -1205,17 +1205,20 @@
 
                         <ImageButton
                             android:id="@+id/img_chat"
-                            android:layout_width="@dimen/_44sdp"
-                            android:layout_height="@dimen/_44sdp"
-                            android:layout_marginEnd="@dimen/_7sdp"
-                            android:background="@drawable/chat" />
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginEnd="@dimen/_12sdp"
+                            android:background="@drawable/ic_mess"
+
+                            />
 
                         <ImageButton
                             android:id="@+id/img03Call"
-                            android:layout_width="@dimen/_44sdp"
-                            android:layout_height="@dimen/_44sdp"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
                             android:layout_marginEnd="@dimen/_7sdp"
-                            android:background="@drawable/call_new" />
+
+                            android:background="@drawable/ic_call" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -1237,15 +1240,19 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
                             android:layout_marginBottom="@dimen/_10sdp"
-                            android:background="@drawable/source_location" />
+                            android:background="@drawable/source_location"
+                            android:backgroundTint="@color/quantum_yellow"
+                            />
 
                         <ImageView
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:background="@drawable/destination_location" />
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:background="@drawable/destination_location"
+                            android:backgroundTint="@color/green"
+                            />
 
                     </LinearLayout>
 
@@ -1265,7 +1272,7 @@
                             android:layout_marginBottom="@dimen/_10sdp"
                             android:layout_weight="1"
                             android:ellipsize="end"
-                            android:fontFamily="@font/montserrat_semibold"
+                            android:textStyle="bold"
                             android:maxLines="2"
                             android:text="Anamika Enclave"
                             android:textColor="@color/black"
@@ -1277,7 +1284,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:ellipsize="end"
-                            android:fontFamily="@font/montserrat_semibold"
+                            android:textStyle="bold"
                             android:maxLines="2"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp" />
@@ -1352,7 +1359,8 @@
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_weight="1"
-                            android:background="@color/red"
+                            android:background="@drawable/auth_btn_green_bg"
+                            android:backgroundTint="@color/red"
                             android:padding="@dimen/button_padding"
                             android:text="CANCEL"
                             android:textColor="@color/button_text_color"
@@ -1367,8 +1375,7 @@
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_weight="1"
-                            android:background="@drawable/button_corner_black"
-
+                            android:background="@drawable/auth_btn_green_bg"
                             android:padding="@dimen/button_padding"
                             android:text="@string/tap_when_arrived"
                             android:textColor="@color/button_text_color"

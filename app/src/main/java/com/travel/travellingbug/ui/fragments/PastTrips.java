@@ -261,7 +261,8 @@ public class PastTrips extends Fragment {
 
                 JSONObject jsonObjectServiceType = jsonObjectTrip.optJSONObject("service_type");
                 holder.fare.setText("₹ "+jsonObjectServiceType.optString("fixed"));
-                holder.carTypeVal.setText(jsonObjectServiceType.optString("name"));
+
+
 
 
 
@@ -277,6 +278,21 @@ public class PastTrips extends Fragment {
                     e.printStackTrace();
                 }
 
+
+                JSONObject providerServiceJsonObj = jsonObjectTrip.optJSONObject("provider_service");
+                try {
+
+                    if(!providerServiceJsonObj.optString("service_model").equalsIgnoreCase("null")){
+                        String vehicle_name = providerServiceJsonObj.optString("service_model")+ " " + providerServiceJsonObj.optString("service_name") +" | "+providerServiceJsonObj.optString("service_color").toLowerCase();
+                        holder.carTypeVal.setText(vehicle_name);
+                    }else {
+                        holder.carTypeVal.setText("");
+                    }
+
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
 
 
 

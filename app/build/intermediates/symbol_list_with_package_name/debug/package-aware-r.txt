@@ -2071,6 +2071,7 @@ color vw_ShadowItem
 color warningColor
 color white
 color white_trans
+color yellow
 dimen _100sdp
 dimen _101sdp
 dimen _102sdp
@@ -3433,6 +3434,7 @@ drawable backarrow
 drawable background
 drawable banned
 drawable baseline_add
+drawable baseline_call_24
 drawable bg
 drawable bg_car
 drawable bg_toggle_checked
@@ -4149,6 +4151,7 @@ drawable ic_arrow_forward
 drawable ic_back_icon
 drawable ic_backspace_black_24dp
 drawable ic_calender
+drawable ic_call
 drawable ic_camera
 drawable ic_check_white_24dp
 drawable ic_checkmark
@@ -4204,6 +4207,8 @@ drawable ic_logout
 drawable ic_mail
 drawable ic_mastercard
 drawable ic_mastercard_template_32
+drawable ic_mess
+drawable ic_message
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle

@@ -402,16 +402,34 @@ public class OnGoingTrips extends Fragment {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+
+
             try {
                 JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
                 if (serviceObj != null) {
-                    holder.car_name.setText(serviceObj.optString("name"));
+//                    holder.car_name.setText(serviceObj.optString("name"));
                     holder.tripAmount.setText("₹ "+serviceObj.optString("fixed"));
                     //holder.tripAmount.setText(SharedHelper.getKey(context, "currency")+serviceObj.optString("price"));
                     Picasso.get().load(serviceObj.optString("image"))
                             .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
                 }
             } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JSONObject providerServiceJsonObj = jsonArray.optJSONObject(position).optJSONObject("provider_service");
+            try {
+
+                if(!providerServiceJsonObj.optString("service_model").equalsIgnoreCase("null")){
+                    String vehicle_name = providerServiceJsonObj.optString("service_model")+ " " + providerServiceJsonObj.optString("service_name") +" | "+providerServiceJsonObj.optString("service_color").toLowerCase();
+                    holder.car_name.setText(vehicle_name);
+                }else {
+                    holder.car_name.setText("");
+                }
+
+
+            }catch (Exception e){
                 e.printStackTrace();
             }
 
@@ -510,7 +528,7 @@ public class OnGoingTrips extends Fragment {
                 }
 
 
-                Toast.makeText(getContext(), "" + request_id, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "" + request_id, Toast.LENGTH_SHORT).show();
                 intent.putExtra("request_id", request_id);
                 intent.putExtra("s_address", s_address);
                 intent.putExtra("d_address", d_address);

@@ -143,11 +143,11 @@ public class HistoryDetailsUser extends AppCompatActivity {
                 lblTitle.setText(getString(R.string.upcomeng_rides));
             }
         }
-        profileLayout.setOnClickListener(v -> {
-            Intent intent = new Intent(HistoryDetailsUser.this, ShowProfile.class);
-            intent.putExtra("driver", driver);
-            startActivity(intent);
-        });
+//        profileLayout.setOnClickListener(v -> {
+//            Intent intent = new Intent(HistoryDetailsUser.this, ShowProfile.class);
+//            intent.putExtra("driver", driver);
+//            startActivity(intent);
+//        });
 
         backArrow.setOnClickListener(view -> onBackPressed());
     }
@@ -191,18 +191,25 @@ public class HistoryDetailsUser extends AppCompatActivity {
         btnCall = findViewById(R.id.btnCall);
 
         btnCancelRide.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setIcon(R.drawable.app_logo_org)
-                    .setTitle(R.string.app_name)
-                    .setMessage(getString(R.string.cencel_request))
-                    .setCancelable(false)
-                    .setPositiveButton("YES", (dialog, id) -> {
-                        dialog.dismiss();
-                        showreasonDialog();
-                    })
-                    .setNegativeButton("NO", (dialog, id) -> dialog.dismiss());
-            AlertDialog alert = builder.create();
-            alert.show();
+            if(btnCancelRide.getText().toString().equalsIgnoreCase("service cancelled")){
+                Toast.makeText(activity, "Ride has been already cancelled ", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(activity, "you cannot cancel ride ", Toast.LENGTH_SHORT).show();
+            }else{
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setIcon(R.drawable.app_logo_org)
+                        .setTitle(R.string.app_name)
+                        .setMessage(getString(R.string.cencel_request))
+                        .setCancelable(false)
+                        .setPositiveButton("YES", (dialog, id) -> {
+                            dialog.dismiss();
+                            showreasonDialog();
+                        })
+                        .setNegativeButton("NO", (dialog, id) -> dialog.dismiss());
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+
+
         });
 
         btnViewInvoice.setOnClickListener(v -> lnrInvoice.setVisibility(View.VISIBLE));

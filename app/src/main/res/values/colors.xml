@@ -20,6 +20,7 @@
     <color name="view_bg">#1A1A1A</color>
     <color name="view_grey_bg">#d2d2d2</color>
     <color name="view_grey_bg_">#e9e8e8</color>
+    <color name="yellow">#FFCA28</color>
 
     <!-- EditText inside effect color -->
     <color name="cancel_ride_color">#B0B0B0</color>
