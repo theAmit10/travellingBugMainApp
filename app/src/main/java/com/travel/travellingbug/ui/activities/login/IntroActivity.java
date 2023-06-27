@@ -16,7 +16,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.ui.activities.IntroScreen;
-import com.travel.travellingbug.ui.activities.SplashScreen;
 
 import java.util.Locale;
 
@@ -74,11 +73,14 @@ public class IntroActivity extends AppCompatActivity {
             if (checkedId == R.id.rdEng) {
                 SharedHelper.putKey(IntroActivity.this, "selectedlanguage", "en");
                 setLocale("en");
+            }else {
+                SharedHelper.putKey(IntroActivity.this, "selectedlanguage", "en");
+                setLocale("en");
             }
-            if (checkedId == R.id.rdArb) {
-                SharedHelper.putKey(IntroActivity.this, "selectedlanguage", "ar");
-                setLocale("ar");
-            }
+//            if (checkedId == R.id.rdArb) {
+//                SharedHelper.putKey(IntroActivity.this, "selectedlanguage", "ar");
+//                setLocale("ar");
+//            }
         });
     }
 

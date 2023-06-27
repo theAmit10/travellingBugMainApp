@@ -4151,6 +4151,7 @@ drawable ic_arrow_forward
 drawable ic_back_icon
 drawable ic_backspace_black_24dp
 drawable ic_calender
+drawable ic_calender_ic
 drawable ic_call
 drawable ic_camera
 drawable ic_check_white_24dp
@@ -4217,11 +4218,13 @@ drawable ic_name
 drawable ic_navigation_black_24dp
 drawable ic_notification
 drawable ic_otpverification
+drawable ic_passanger
 drawable ic_password
 drawable ic_person
 drawable ic_profile
 drawable ic_referrals
 drawable ic_ring
+drawable ic_ring_ic
 drawable ic_search
 drawable ic_send
 drawable ic_send_black_24dp
@@ -4566,7 +4569,12 @@ drawable mtrl_popupmenu_background
 drawable mtrl_popupmenu_background_dark
 drawable mtrl_tabs_default_indicator
 drawable nav
+drawable nav_account_ic
+drawable nav_add_ic
 drawable nav_button
+drawable nav_car_ic
+drawable nav_plane_ic
+drawable nav_search_ic
 drawable navigation_empty_icon
 drawable nb_document
 drawable nb_help

@@ -230,21 +230,38 @@ public class PastTrips extends Fragment {
             return new MyViewHolder(itemView);
         }
 
-        @SuppressLint("NotifyDataSetChanged")
+
         @Override
-        public void onBindViewHolder(PostAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        public void onBindViewHolder(PostAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
             try {
 
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    System.out.println("History data : " + jsonArray.get(i));
-                }
+//                for (int i = 0; i < jsonArray.length(); i++) {
+//                    System.out.println("History data : " + jsonArray.get(i));
+//                }
 
 //                JSONObject jsonObjectTrip = new JSONObject(String.valueOf(jsonArray.getJSONObject(position).getJSONObject("trip")));
                 JSONObject jsonObjectTrip = jsonArray.getJSONObject(position).optJSONObject("trip");
-                JSONObject providerJsonObject = jsonObjectTrip.optJSONObject("provider");
 
                 holder.txtSource.setText(jsonObjectTrip.optString("s_address"));
                 holder.txtDestination.setText(jsonObjectTrip.optString("d_address"));
+
+                JSONObject providerJsonObject = jsonObjectTrip.getJSONObject("provider");
+                try {
+                    holder.userName.setText(providerJsonObject.optString("first_name"));
+                    holder.ratingVal.setText("( " + providerJsonObject.optString("noofrating") + " Reviews )");
+
+                    if(providerJsonObject.optString("noofrating").equalsIgnoreCase("0")){
+                        holder.listitemrating.setRating(Float.parseFloat("0"));
+                    }else {
+                        holder.listitemrating.setRating(Float.parseFloat(providerJsonObject.optString("rating")));
+                    }
+
+                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonArray.getJSONObject(position).optJSONObject("trip").optJSONObject("provider").optString("avatar"))
+                            .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.profileImgeIv);
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
 
                 if (!jsonObjectTrip.optString("schedule_at", "").isEmpty()) {
                     String form = jsonObjectTrip.optString("schedule_at");
@@ -266,17 +283,7 @@ public class PastTrips extends Fragment {
 
 
 
-                try {
-                    holder.userName.setText(providerJsonObject.optString("first_name"));
-                    holder.ratingVal.setText("( " + providerJsonObject.optString("rating") + " Reviews )");
-                    holder.listitemrating.setRating(Float.parseFloat(providerJsonObject.optString("rating")));
 
-                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerJsonObject.optString("avatar"))
-                            .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.profileImgeIv);
-
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
 
 
                 JSONObject providerServiceJsonObj = jsonObjectTrip.optJSONObject("provider_service");
@@ -394,28 +401,18 @@ public class PastTrips extends Fragment {
                     holder.status.setBackgroundResource(R.drawable.auth_btn_gray_bg);
                     holder.status.setText(jsonObjectTrip.optString("status"));
                 }else if(jsonObjectTrip.optString("status").equalsIgnoreCase("STARTED")){
+                    holder.status.setBackgroundResource(R.drawable.auth_btn_purple_bg);
+                    holder.status.setText(jsonObjectTrip.optString("status"));
+                }else if(jsonObjectTrip.optString("status").equalsIgnoreCase("COMPLETED")){
                     holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
                     holder.status.setText(jsonObjectTrip.optString("status"));
                 }else {
                     holder.status.setText(jsonObjectTrip.optString("status"));
-                    holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
+                    holder.status.setBackgroundResource(R.drawable.auth_btn_blue_bgs);
                 }
 
 
-//                if (holder.status.equals("COMPLETED")) {
-//                    holder.rateRider.setVisibility(View.VISIBLE);
-//                    holder.status.setText("Completed");
-////                    notifyDataSetChanged();
-//                    holder.status.setBackgroundColor(getResources().getColor(R.color.quantum_yellow));
-//
-//                } else if (holder.status.equals("CANCELLED")) {
-//                    holder.rateRider.setVisibility(View.GONE);
-//                    holder.status.setText("Cancelled");
-//
-////                    holder.status.setBackgroundColor(getResources().getColor(R.color.colorGray));
-//                    holder.status.getBackground().setTint(getResources().getColor(R.color.colorGray));
-//                    notifyDataSetChanged();
-//                }
+
 
 
             } catch (Exception e) {
@@ -443,8 +440,8 @@ public class PastTrips extends Fragment {
 //                intent.putExtra("tag", "past_trips");
 //                startActivity(intent);
 
-                Toast.makeText(getContext(), "user id: " + jsonArray.optJSONObject(position).optString("user_id"), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "id: " + jsonArray.optJSONObject(position).optString("id"), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "user id: " + jsonArray.optJSONObject(position).optString("user_id"), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "id: " + jsonArray.optJSONObject(position).optString("id"), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), HistoryDetailsUser.class);
                 intent.putExtra("request_id", jsonArray.optJSONObject(position).optString("request_id"));
                 intent.putExtra("user_id" , jsonArray.optJSONObject(position).optString("user_id"));

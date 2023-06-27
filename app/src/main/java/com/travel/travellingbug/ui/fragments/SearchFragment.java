@@ -475,8 +475,14 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 new Handler().postDelayed(() -> {
                     init(rootView);
 
-                    getProfile();
-                    getDocList();
+                    try {
+                        getProfile();
+                        getDocList();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+
 
                     //permission to access location
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
@@ -1485,7 +1491,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                    frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
 //                    frmDest.setTextColor(getResources().getColor(R.color.dark_gray));
 //                }
-                frmSource.setText(currentAddress);
+                if(current_address.equalsIgnoreCase("") || current_address.length() == 0){
+                    frmSource.setText("Leaving From");
+                }else {
+                    frmSource.setText(currentAddress);
+                }
 
                 // setting previous destination data
                 try {

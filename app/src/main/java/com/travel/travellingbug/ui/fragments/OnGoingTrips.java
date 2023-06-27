@@ -441,8 +441,16 @@ public class OnGoingTrips extends Fragment {
                 if (providerObj != null) {
                     holder.name.setText(providerObj.optString("first_name"));
                     if(providerObj.optString("rating") != null){
-                        holder.listitemrating.setRating(Float.parseFloat(providerObj.optString("rating")));
-                        holder.rateVal.setText("( " +providerObj.optString("rating")+" Reviews )");
+//                        holder.listitemrating.setRating(Float.parseFloat(providerObj.optString("rating")));
+
+                        if(providerObj.optString("noofrating").equalsIgnoreCase("0")){
+                            holder.listitemrating.setRating(Float.parseFloat("0"));
+                        }else {
+                            holder.listitemrating.setRating(Float.parseFloat(providerObj.optString("rating")));
+                        }
+
+
+                        holder.rateVal.setText("( " +providerObj.optString("noofrating")+" Reviews )");
 
                     }
 

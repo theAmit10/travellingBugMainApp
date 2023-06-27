@@ -4,6 +4,7 @@ public class PassengerCallModel {
     String image;
     String u_id,request_id,provider_id,status,provider_status,noofseats,verification_code,total_amount,payment_status,payment_mode,user_id;
 
+
     public PassengerCallModel(String image, String request_id, String provider_id, String status, String provider_status, String noofseats, String verification_code, String total_amount, String payment_status, String payment_mode,String user_id) {
         this.image = image;
         this.request_id = request_id;

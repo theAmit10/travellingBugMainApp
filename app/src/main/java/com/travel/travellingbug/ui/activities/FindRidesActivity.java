@@ -508,7 +508,7 @@ public class FindRidesActivity extends AppCompatActivity {
 //                    URLHelper.BASE + "storage/app/public/" + response.optString("picture")
 
                     Picasso.get().load(URLHelper.BASE + "storage/app/public/" + serviceObj.optString("avatar"))
-                            .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
+                            .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.driver_image);
 
                     holder.profileNameTv.setText(serviceObj.optString("first_name"));
 

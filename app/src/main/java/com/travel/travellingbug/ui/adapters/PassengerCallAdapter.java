@@ -5,28 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
-import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
-import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.models.PassengerCallModel;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class PassengerCallAdapter extends RecyclerView.Adapter<PassengerCallAdapter.ViewHolder> {
 
@@ -68,65 +56,68 @@ public class PassengerCallAdapter extends RecyclerView.Adapter<PassengerCallAdap
 
         PassengerCallModel passengerCallModel = list.get(position);
 
-        // Getting User details
-        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
+//        // Getting User details
+//        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//
+//                System.out.println("size : " + response.length());
+//                System.out.println("data : " + response);
+//
+//                try {
+//                    JSONObject jsonObjectUser = new JSONObject(response);
+//
+//                    if (response != null) {
+//
+////                        String image = jsonObjectUser.optString("avatar");
+//
+////                        SharedHelper.putKey(context,"passanger_image",jsonObjectUser.optString("avatar"));
+//                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" +jsonObjectUser.optString("avatar")).error(R.drawable.ic_dummy_user).placeholder(R.drawable.ic_dummy_user).into(holder.image);
+////                        Passanger_image = jsonObjectUser.optString("avatar");
+//
+//
+//
+//
+//                    }
+//
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+////                                                        Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
+//                System.out.println("error : " + error);
+//            }
+//
+//        }) {
+//
+//
+//            @Override
+//            public Map<String, String> getParams() {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("id", passengerCallModel.getUser_id());
+//                return params;
+//            }
+//
+//            @Override
+//            public Map<String, String> getHeaders() {
+//                HashMap<String, String> headers = new HashMap<String, String>();
+//                headers.put("X-Requested-With", "XMLHttpRequest");
+//                headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
+//                return headers;
+//            }
+//
+//        };
+//
+//        ClassLuxApp.getInstance().addToRequestQueue(request);
 
-                System.out.println("size : " + response.length());
-                System.out.println("data : " + response);
+        Picasso.get().load(URLHelper.BASE + "storage/app/public/" +passengerCallModel.getImage()).error(R.drawable.ic_dummy_user).placeholder(R.drawable.ic_dummy_user).into(holder.image);
 
-                try {
-                    JSONObject jsonObjectUser = new JSONObject(response);
-
-                    if (response != null) {
-
-//                        String image = jsonObjectUser.optString("avatar");
-
-//                        SharedHelper.putKey(context,"passanger_image",jsonObjectUser.optString("avatar"));
-                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" +jsonObjectUser.optString("avatar")).error(R.drawable.ic_dummy_user).placeholder(R.drawable.ic_dummy_user).into(holder.image);
-//                        Passanger_image = jsonObjectUser.optString("avatar");
-
-
-
-
-                    }
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-//                                                        Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
-                System.out.println("error : " + error);
-            }
-
-        }) {
-
-
-            @Override
-            public Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("id", passengerCallModel.getUser_id());
-                return params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("X-Requested-With", "XMLHttpRequest");
-                headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
-                return headers;
-            }
-
-        };
-
-        ClassLuxApp.getInstance().addToRequestQueue(request);
 
 
 
@@ -143,7 +134,7 @@ public class PassengerCallAdapter extends RecyclerView.Adapter<PassengerCallAdap
                 System.out.println("FROM ADAPTER UID: "+passengerCallModel.getU_id());
                 System.out.println("FROM ADAPTER PS : "+passengerCallModel.getProvider_status());
                 System.out.println("FROM ADAPTER S : "+passengerCallModel.getStatus());
-                Toast.makeText(context, "FROM Adapter"+passengerCallModel.getUser_id(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "FROM Adapter"+passengerCallModel.getUser_id(), Toast.LENGTH_SHORT).show();
                 // update position
                 selectedPosition=position;
                 // notify

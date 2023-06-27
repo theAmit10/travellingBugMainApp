@@ -138,32 +138,44 @@ public class HistoryDetails extends AppCompatActivity {
 
     private void SetDetailInComponent() {
 
+        try {
+            String replacedStr = static_map.replaceAll("google_map_key", getResources().getString(R.string.google_map_api));
+            Picasso.get().load(replacedStr)
+                    .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(tripImg);
 
-        String replacedStr = static_map.replaceAll("google_map_key", getResources().getString(R.string.google_map_api));
-        Picasso.get().load(replacedStr)
-                .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(tripImg);
+            System.out.println("static_map "+static_map);
+            System.out.println("static_map replacedStr "+replacedStr);
 
-        System.out.println("static_map "+static_map);
-        System.out.println("static_map replacedStr "+replacedStr);
+            Picasso.get().load(URLHelper.BASE + "storage/app/public/" + avatar)
+                    .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
 
-        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + avatar)
-                .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(tripProviderImg);
+            tripProviderName.setText(first_name);
 
-        tripProviderName.setText(first_name);
 
-        tripProviderRating.setRating(Float.parseFloat(rating));
 
-        tripDate.setText(s_date);
+            tripDate.setText(s_date);
 
-        tripSource.setText(s_address);
+            tripSource.setText(s_address);
 
-        tripDestination.setText(d_address);
+            tripDestination.setText(d_address);
 
-        trip_id.setText(booking_id);
+            trip_id.setText(booking_id);
 
-        paymentType.setText(payment_mode);
+            paymentType.setText(payment_mode);
 
-        tripAmount.setText(estimated_fare);
+            tripAmount.setText(estimated_fare);
+
+            if(rating.equalsIgnoreCase("null") || rating.length() == 0){
+                tripProviderRating.setRating(Float.parseFloat("0"));
+            }else {
+                tripProviderRating.setRating(Float.parseFloat(rating));
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
 
 
     }
@@ -664,8 +676,8 @@ public class HistoryDetails extends AppCompatActivity {
         customDialog.setCancelable(false);
         customDialog.show();
 
-        Toast.makeText(getApplicationContext(), "ID : "+jsonObject.optString("id"), Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(), "Intent ID : "+request_id, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Processing...", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), "Intent ID : "+request_id, Toast.LENGTH_SHORT).show();
 
         JsonArrayRequest jsonArrayRequest = new
                 JsonArrayRequest(URLHelper.UPCOMING_TRIP_DETAILS + "?request_id=" +

@@ -3,6 +3,11 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+        <entry key="imageWizard">
+          <value>
+            <PersistentState />
+          </value>
+        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -30,8 +35,8 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="5fe35c" />
-                            <entry key="outputName" value="ic_mess" />
-                            <entry key="sourceFile" value="C:\Users\Demon\Desktop\ic_mess.svg" />
+                            <entry key="outputName" value="ic_calender_ic" />
+                            <entry key="sourceFile" value="C:\Users\Demon\Desktop\ic_calender_ic.svg" />
                           </map>
                         </option>
                       </PersistentState>

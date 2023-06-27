@@ -884,7 +884,7 @@
                         android:layout_marginStart="@dimen/_20sdp"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:orientation="vertical"
-                        android:visibility="visible">
+                        android:visibility="gone">
 
                         <com.travel.travellingbug.utills.MyBoldTextView
                             android:layout_width="match_parent"
@@ -1253,8 +1253,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-
-                    android:background="@color/colorPrimary"
+                    android:background="@color/white_trans"
                     android:orientation="vertical"
                     android:visibility="gone">
 

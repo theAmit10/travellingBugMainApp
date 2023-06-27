@@ -1118,7 +1118,7 @@
                 android:background="@drawable/primary_color_rect_shape"
                 android:backgroundTint="@color/white"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
 <!--                <LinearLayout-->
 <!--                    android:layout_width="match_parent"-->

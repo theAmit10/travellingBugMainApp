@@ -124,11 +124,11 @@ public class HomeScreenActivity extends AppCompatActivity implements
     private String[] titles = {"Search", "Publish", "Your Ride", "Holiday", "Account"};
 
     private int[] tabIcons = {
-            R.drawable.search,
-            R.drawable.publish,
-            R.drawable.bg_car,
-            R.drawable.bn_holiday_package,
-            R.drawable.ic_person
+            R.drawable.nav_search_ic,
+            R.drawable.nav_add_ic,
+            R.drawable.nav_car_ic,
+            R.drawable.nav_plane_ic,
+            R.drawable.nav_account_ic
     };
     MainActivityViewPagerAdapter viewPagerAdapter;
 
@@ -326,11 +326,11 @@ public class HomeScreenActivity extends AppCompatActivity implements
         new TabLayoutMediator(tabLayout, viewPager, ((tab, position) -> tab.setIcon(tabIcons[position]))).attach();
 
 
-        tabLayout.getTabAt(0).setText("Search").setIcon(R.drawable.search).setTabLabelVisibility(TabLayout.TAB_LABEL_VISIBILITY_LABELED);
-        tabLayout.getTabAt(1).setText("Publish").setIcon(R.drawable.publish).setTabLabelVisibility(TabLayout.TAB_LABEL_VISIBILITY_LABELED);
-        tabLayout.getTabAt(2).setText("Your Ride").setIcon(R.drawable.bg_car);
-        tabLayout.getTabAt(3).setText("Holiday").setIcon(R.drawable.bn_holiday_package);
-        tabLayout.getTabAt(4).setText("Account").setIcon(R.drawable.bn_account);
+        tabLayout.getTabAt(0).setText("Search").setIcon(R.drawable.nav_search_ic).setTabLabelVisibility(TabLayout.TAB_LABEL_VISIBILITY_LABELED);
+        tabLayout.getTabAt(1).setText("Publish").setIcon(R.drawable.nav_add_ic).setTabLabelVisibility(TabLayout.TAB_LABEL_VISIBILITY_LABELED);
+        tabLayout.getTabAt(2).setText("Your Ride").setIcon(R.drawable.nav_car_ic);
+        tabLayout.getTabAt(3).setText("Holiday").setIcon(R.drawable.nav_plane_ic);
+        tabLayout.getTabAt(4).setText("Account").setIcon(R.drawable.nav_account_ic);
 
 
     }

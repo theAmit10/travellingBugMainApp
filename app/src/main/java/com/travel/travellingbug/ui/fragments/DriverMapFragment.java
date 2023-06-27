@@ -462,7 +462,7 @@ public class DriverMapFragment extends Fragment implements
             public void onErrorResponse(VolleyError error) {
                 customDialog.dismiss();
 //                Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "Error Found : " + error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
             }
 
         }) {
@@ -513,6 +513,7 @@ public class DriverMapFragment extends Fragment implements
 
                         if (jsonObject.optString("message").equalsIgnoreCase("Request Completed!")) {
                             Toast.makeText(getContext(), "Rated Successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "Click on the Complete Ride \nwhen you drop all the passenger", Toast.LENGTH_LONG).show();
                             passengerCallRvLinearLayout.setVisibility(View.VISIBLE);
 //                            destinationLayer.setVisibility(View.GONE);
                             layoutinfo.setVisibility(View.VISIBLE);
@@ -544,7 +545,7 @@ public class DriverMapFragment extends Fragment implements
             public void onErrorResponse(VolleyError error) {
                 customDialog.dismiss();
                 Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getContext(), "Error Found : " + error, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Error Found : " + error, Toast.LENGTH_SHORT).show();
                 destinationLayer.setVisibility(View.GONE);
                 layoutinfo.setVisibility(View.VISIBLE);
             }
@@ -579,7 +580,7 @@ public class DriverMapFragment extends Fragment implements
 
     @OnClick(R.id.btn_confirm_payment)
     void btn_confirm_paymentClick() {
-        confirmPaymentToProvider(otp_request_id, "success", otp_user_id);
+        confirmPaymentToProvider(otp_request_id, "success", userId);
         updateStatusForSingleUserRide(filter_id, CurrentStatus);
 //        update(CurrentStatus, request_id);
 
@@ -2013,6 +2014,7 @@ public class DriverMapFragment extends Fragment implements
                                                         passengerCallModel.setPayment_status(filterJsonObject.optString("payment_status"));
                                                         passengerCallModel.setPayment_mode("CASH");
                                                         passengerCallModel.setUser_id(filterJsonObject.optString("user_id"));
+                                                        passengerCallModel.setU_id(filterJsonObject.optString("id"));
 
                                                         passengerCallModelArrayList.add(passengerCallModel);
                                                         Toast.makeText(getContext(), "Added passenger details", Toast.LENGTH_SHORT).show();
@@ -2031,7 +2033,7 @@ public class DriverMapFragment extends Fragment implements
 
 
                                             } catch (JSONException e) {
-                                                displayMessage(e.toString());
+                                                e.printStackTrace();
                                             }
 
 
@@ -2121,8 +2123,8 @@ public class DriverMapFragment extends Fragment implements
     }
 
     private void updateStatusForSingleUserRide(String rideId, String status) {
-        Toast.makeText(getContext(), "rideId : " + rideId, Toast.LENGTH_SHORT).show();
-        Toast.makeText(getContext(), "status : " + status, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "rideId : " + rideId, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Processing", Toast.LENGTH_SHORT).show();
 
 
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.CHANGES_STATUS_BY_FILTER_ID_BY_PROVIDER, new Response.Listener<String>() {
@@ -2136,14 +2138,15 @@ public class DriverMapFragment extends Fragment implements
                         System.out.println("data : " + jsonObject.toString());
                         System.out.println("data : " + "rideId : " + rideId);
                         System.out.println("data : " + "status : " + status);
-                        Toast.makeText(getContext(), "Updated Success", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(), "Updated Success", Toast.LENGTH_SHORT).show();
                         if (jsonObject.optString("id") != null) {
                             System.out.println("STATUS UPDATED OF REQUEST ID : " + jsonObject.optString("id"));
                         }
                     }
 
                 } catch (JSONException e) {
-                    displayMessage(e.toString());
+                    e.printStackTrace();
+
                 }
 
 
@@ -2269,7 +2272,8 @@ public class DriverMapFragment extends Fragment implements
                     }
 
                 } catch (JSONException e) {
-                    displayMessage(e.toString());
+                    e.printStackTrace();
+
                 }
 
 
@@ -2376,6 +2380,60 @@ public class DriverMapFragment extends Fragment implements
                                                                 passengerCallModel.setUser_id(filterJsonObj.optString("user_id"));
                                                                 passengerCallModel.setU_id(filterJsonObj.optString("id"));
 
+
+                                                                // Getting User details
+                                                                StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
+                                                                    @Override
+                                                                    public void onResponse(String response) {
+
+                                                                        System.out.println("size : " + response.length());
+                                                                        System.out.println("data : " + response);
+
+                                                                        try {
+                                                                            JSONObject jsonObjectUser = new JSONObject(response);
+
+                                                                            if (response != null) {
+
+                                                                                passengerCallModel.setImage(jsonObjectUser.optString("avatar"));
+
+                                                                            }
+
+
+                                                                        } catch (JSONException e) {
+                                                                            e.printStackTrace();
+                                                                        }
+
+
+                                                                    }
+                                                                }, new Response.ErrorListener() {
+                                                                    @Override
+                                                                    public void onErrorResponse(VolleyError error) {
+                                                                        error.printStackTrace();
+                                                                    }
+
+                                                                }) {
+
+
+                                                                    @Override
+                                                                    public Map<String, String> getParams() {
+                                                                        Map<String, String> params = new HashMap<>();
+                                                                        params.put("id", passengerCallModel.getUser_id());
+                                                                        return params;
+                                                                    }
+
+                                                                    @Override
+                                                                    public Map<String, String> getHeaders() {
+                                                                        HashMap<String, String> headers = new HashMap<String, String>();
+                                                                        headers.put("X-Requested-With", "XMLHttpRequest");
+                                                                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                                                                        return headers;
+                                                                    }
+
+                                                                };
+
+                                                                ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
                                                                 passengerCallModelArrayList.add(passengerCallModel);
 
                                                             }
@@ -2397,10 +2455,11 @@ public class DriverMapFragment extends Fragment implements
                                                         System.out.println("CLICKED USER DETAILS : " + user.getUser_id());
                                                         System.out.println("CLICKED USER DETAILS UID : " + user.getU_id());
                                                         System.out.println("CLICKED USER PROVIDER DETAILS : " + user.getProvider_id());
-                                                        Toast.makeText(getContext(), "CLICKED USER DETAILS : " + user.getUser_id(), Toast.LENGTH_SHORT).show();
+//                                                        Toast.makeText(getContext(), "CLICKED USER DETAILS : " + user.getUser_id(), Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(getContext(), "Processing", Toast.LENGTH_SHORT).show();
                                                         // Display toast
-                                                        Toast.makeText(getContext(), "Position : "
-                                                                + position + " || Value : " + value, Toast.LENGTH_SHORT).show();
+//                                                        Toast.makeText(getContext(), "Position : "
+//                                                                + position + " || Value : " + value, Toast.LENGTH_SHORT).show();
 
 
                                                     }
@@ -2566,7 +2625,15 @@ public class DriverMapFragment extends Fragment implements
 
                                                                         try {
                                                                             txtPickUpNotes.setVisibility(View.GONE);
+                                                                            driveraccepted.setVisibility(View.GONE);
                                                                             btn_01_status.setVisibility(View.VISIBLE);
+                                                                            driverArrived.setVisibility(View.GONE);
+                                                                            driverPicked.setVisibility(View.GONE);
+                                                                            SharedHelper.putKey(getContext(), "otp_success", "no");
+                                                                            otp_request_id = filterJsonObj.optString("request_id");
+//                                                                            otp_user_id = filterJsonObj.optString("user_id");
+                                                                            img03Status1.setImageResource(R.drawable.arriveddisable);
+                                                                            img03Status2.setImageResource(R.drawable.pickeddisable);
                                                                         } catch (Exception e) {
                                                                             e.printStackTrace();
                                                                         }
@@ -2611,22 +2678,23 @@ public class DriverMapFragment extends Fragment implements
 
 
                                                                     } else if (filterJsonObj.optString("provider_status").equals("ARRIVED")) {
-                                                                        setValuesTo_ll_03_contentLayer_service_flow(statusResponses, statusResponse);
                                                                         txtPickUpNotes.setVisibility(View.VISIBLE);
                                                                         otp_request_id = filterJsonObj.optString("request_id");
                                                                         otp_user_id = filterJsonObj.optString("user_id");
 
+                                                                        setValuesTo_ll_03_contentLayer_service_flow(statusResponses, statusResponse);
 
                                                                         ll_03_contentLayer_service_flow.setVisibility(View.VISIBLE);
                                                                         try {
                                                                             btn_01_status.setText(getActivity().getString(R.string.tap_when_pickedup));
-//                                                                            if (SharedHelper.getKey(getContext(), "otp_success").equalsIgnoreCase("yes")) {
-//                                                                                btn_01_status.setVisibility(View.VISIBLE);
-//                                                                            } else {
-//                                                                                btn_01_status.setVisibility(View.GONE);
-//                                                                            }
+                                                                            if (SharedHelper.getKey(getContext(), "otp_success").equalsIgnoreCase("yes")) {
+                                                                                btn_01_status.setVisibility(View.VISIBLE);
+                                                                                img03Status2.setImageResource(R.drawable.pickeddisable);
+                                                                            } else {
+                                                                                btn_01_status.setVisibility(View.GONE);
+                                                                            }
 
-                                                                            btn_01_status.setVisibility(View.VISIBLE);
+//                                                                            btn_01_status.setVisibility(View.VISIBLE);
 
 
                                                                             CurrentStatus = "PICKEDUP";
@@ -2650,7 +2718,11 @@ public class DriverMapFragment extends Fragment implements
                                                                         else
                                                                             destination.setText(getAddress(statusResponse.optString("d_latitude"),
                                                                                     statusResponse.optString("d_longitude")));
-                                                                        topSrcDestTxtLbl.setText(getActivity().getString(R.string.drop_at));
+                                                                        try {
+                                                                            topSrcDestTxtLbl.setText(getActivity().getString(R.string.drop_at));
+                                                                        } catch (Exception e) {
+                                                                            e.printStackTrace();
+                                                                        }
 
 
                                                                     } else if (filterJsonObj.optString("provider_status").equals("PICKEDUP")) {
@@ -2658,7 +2730,12 @@ public class DriverMapFragment extends Fragment implements
                                                                         ll_03_contentLayer_service_flow.setVisibility(View.VISIBLE);
                                                                         try {
                                                                             btn_01_status.setText(getActivity().getString(R.string.tap_when_dropped));
+                                                                            btn_01_status.setVisibility(View.VISIBLE);
                                                                             txtPickUpNotes.setVisibility(View.GONE);
+
+
+
+
                                                                         } catch (
                                                                                 Exception e) {
                                                                             e.printStackTrace();
@@ -2681,7 +2758,11 @@ public class DriverMapFragment extends Fragment implements
                                                                         else
                                                                             destination.setText(getAddress(statusResponse.optString("d_latitude"),
                                                                                     statusResponse.optString("d_longitude")));
-                                                                        topSrcDestTxtLbl.setText(getActivity().getString(R.string.drop_at));
+                                                                        try {
+                                                                            topSrcDestTxtLbl.setText(getActivity().getString(R.string.drop_at));
+                                                                        } catch (Exception e) {
+                                                                            e.printStackTrace();
+                                                                        }
 //
                                                                         srcLatitude = Double.valueOf(statusResponse.optString("s_latitude"));
                                                                         srcLongitude = Double.valueOf(statusResponse.optString("s_longitude"));
@@ -4260,7 +4341,7 @@ public class DriverMapFragment extends Fragment implements
                                     if (jsonObjectUser.optString("rating") != null) {
                                         System.out.println("user rating : " + jsonObjectUser.optString("rating"));
 
-                                        if (jsonObjectUser.optString("rating")!= null) {
+                                        if (jsonObjectUser.optString("rating") != null) {
                                             rat03UserRating.setRating(Float.valueOf(jsonObjectUser.optString("rating")));
                                         } else {
                                             rat03UserRating.setRating(0);
@@ -4272,7 +4353,8 @@ public class DriverMapFragment extends Fragment implements
 
 
                             } catch (JSONException e) {
-                                displayMessage(e.toString());
+                                displayMessage("Something went wrong");
+                                e.printStackTrace();
                             }
 
 
@@ -4282,6 +4364,7 @@ public class DriverMapFragment extends Fragment implements
                         public void onErrorResponse(VolleyError error) {
                             try {
                                 Toast.makeText(getContext(), "Something went Wrong", Toast.LENGTH_SHORT).show();
+                                error.printStackTrace();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -4301,8 +4384,12 @@ public class DriverMapFragment extends Fragment implements
                         @Override
                         public Map<String, String> getHeaders() {
                             HashMap<String, String> headers = new HashMap<String, String>();
-                            headers.put("X-Requested-With", "XMLHttpRequest");
-                            headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                            try {
+                                headers.put("X-Requested-With", "XMLHttpRequest");
+                                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             return headers;
                         }
 
@@ -4465,10 +4552,13 @@ public class DriverMapFragment extends Fragment implements
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
 
-                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getContext(), "Error Found payment details :"+error, Toast.LENGTH_SHORT).show();
+                try {
+                    Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             }
 
         }) {
