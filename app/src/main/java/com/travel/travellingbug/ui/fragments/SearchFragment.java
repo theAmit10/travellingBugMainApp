@@ -1491,11 +1491,16 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                    frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
 //                    frmDest.setTextColor(getResources().getColor(R.color.dark_gray));
 //                }
-                if(current_address.equalsIgnoreCase("") || current_address.length() == 0){
-                    frmSource.setText("Leaving From");
-                }else {
-                    frmSource.setText(currentAddress);
+                try {
+                    if(current_address.equalsIgnoreCase("") || current_address.length() == 0){
+                        frmSource.setText("Leaving From");
+                    }else {
+                        frmSource.setText(currentAddress);
+                    }
+                }catch (Exception e){
+                   e.printStackTrace();
                 }
+
 
                 // setting previous destination data
                 try {

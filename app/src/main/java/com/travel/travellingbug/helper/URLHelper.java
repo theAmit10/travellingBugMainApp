@@ -170,6 +170,11 @@ public interface URLHelper {
     String CHANGE_MAIN_STATUS_OF_RIDE = BASE +"api/provider/changemainstatus";
 
     String UPDATE_POSTAL_ADDRESS = BASE +"api/provider/profile/personal";
+    String VEHICEL_UPDATE = BASE +"api/provider/profile/vehicleattribute";
+
+    String VEHICEL_ADD_AND_UPDATE = BASE +"api/provider/profile/vehicle";
+
+
 
 
 

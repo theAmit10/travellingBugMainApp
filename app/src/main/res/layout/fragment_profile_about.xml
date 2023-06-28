@@ -25,8 +25,7 @@
                     android:id="@+id/txtuserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-
+                    android:fontFamily="@font/montserrat_semibold"
                     android:text="Wasu"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp"
@@ -100,9 +99,10 @@
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_20sdp"
                 android:text="Verify your profile"
+                android:fontFamily="@font/montserrat_semibold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
-                android:textStyle="bold" />
+                 />
 
 
             <TextView
@@ -174,7 +174,7 @@
                 android:text="About you"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/montserrat_semibold" />
 
 
             <TextView
@@ -217,7 +217,7 @@
                 android:text="Vehicles"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/montserrat_semibold"/>
 
 
             <TextView

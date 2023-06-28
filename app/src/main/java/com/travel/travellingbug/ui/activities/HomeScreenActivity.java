@@ -333,6 +333,8 @@ public class HomeScreenActivity extends AppCompatActivity implements
         tabLayout.getTabAt(4).setText("Account").setIcon(R.drawable.nav_account_ic);
 
 
+
+
     }
 
     @Override

@@ -132,6 +132,10 @@ public class ProfileAboutFragment extends Fragment {
     private void setTextToComponent() {
         txtuserName.setText(SharedHelper.getKey(getContext(), "first_name"));
 
+        if (!SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null")) {
+            txtuserName.setText("");
+        }
+
         if (!SharedHelper.getKey(getContext(), "picture").isEmpty()) {
             Picasso.get().load(SharedHelper.getKey(getContext(), "picture"))
                     .placeholder(R.drawable.ic_dummy_user)
@@ -424,6 +428,21 @@ public class ProfileAboutFragment extends Fragment {
 //        }
 
 
+        String vehicle_add = SharedHelper.getKey(getContext(), "vehicle_add");
+        if (!vehicle_add.equalsIgnoreCase("null") || !vehicle_add.equalsIgnoreCase("") || vehicle_add.equalsIgnoreCase("yes") ) {
+            addVehicleTv.setText("Update vehicle");
+            addVehicleTv.setTextColor(getResources().getColor(R.color.dark_gray));
+            addVehicleTv.setTypeface(addVehicleTv.getTypeface(), Typeface.BOLD);
+            addVehicleTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_forward_gray, 0);
+
+        } else {
+            addVehicleTv.setText("Add Vehicel");
+            addVehicleTv.setTextColor(getResources().getColor(R.color.green));
+            addVehicleTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
+
+        }
+
+
 
 
     }
@@ -550,6 +569,7 @@ public class ProfileAboutFragment extends Fragment {
                                 if (service.optJSONObject("service_type") != null) {
                                     JSONObject serviceType = service.optJSONObject("service_type");
                                     SharedHelper.putKey(getContext(), "service", serviceType.optString("name"));
+                                    SharedHelper.putKey(getContext(), "service_image", serviceType.optString("vehicle_image"));
                                 }
                             } catch (Exception e) {
                                 e.printStackTrace();

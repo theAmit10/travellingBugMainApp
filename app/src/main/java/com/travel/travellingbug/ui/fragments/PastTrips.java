@@ -267,7 +267,7 @@ public class PastTrips extends Fragment {
                     String form = jsonObjectTrip.optString("schedule_at");
                     try {
                         holder.datetime.setText(getDate(form) + "th " + getMonth(form) + " at " + getTime(form));
-                        holder.availableSeat.setText(jsonObjectTrip.optString("availablecapacity")+" Seat left");
+//                        holder.availableSeat.setText(jsonObjectTrip.optString("availablecapacity")+" Seat left");
 
 
 
@@ -276,7 +276,24 @@ public class PastTrips extends Fragment {
                     }
                 }
 
-                JSONObject jsonObjectServiceType = jsonObjectTrip.optJSONObject("service_type");
+
+                // getting taken seat
+                JSONArray filterJsonArray = jsonObjectTrip.optJSONArray("filters");
+                if (filterJsonArray != null && filterJsonArray.length() > 0) {
+                    for (int j = 0; j < filterJsonArray.length(); j++) {
+                        JSONObject filterJsonObject = filterJsonArray.optJSONObject(j);
+                        System.out.println("j" + filterJsonObject.optString("user_id"));
+                        System.out.println("j" + SharedHelper.getKey(getContext(), "id"));
+                        if (filterJsonObject.optString("user_id").equalsIgnoreCase(SharedHelper.getKey(getContext(), "id"))) {
+                            holder.availableSeat.setText(filterJsonObject.optString("noofseats")+" Seat");
+                        }
+                    }
+                }
+
+
+
+
+                            JSONObject jsonObjectServiceType = jsonObjectTrip.optJSONObject("service_type");
                 holder.fare.setText("₹ "+jsonObjectServiceType.optString("fixed"));
 
 
@@ -289,7 +306,7 @@ public class PastTrips extends Fragment {
                 JSONObject providerServiceJsonObj = jsonObjectTrip.optJSONObject("provider_service");
                 try {
 
-                    if(!providerServiceJsonObj.optString("service_model").equalsIgnoreCase("null")){
+                    if(!providerServiceJsonObj.optString("service_model").equalsIgnoreCase("null") && !providerServiceJsonObj.optString("service_name").equalsIgnoreCase("null") && !providerServiceJsonObj.optString("service_color").equalsIgnoreCase("null") ){
                         String vehicle_name = providerServiceJsonObj.optString("service_model")+ " " + providerServiceJsonObj.optString("service_name") +" | "+providerServiceJsonObj.optString("service_color").toLowerCase();
                         holder.carTypeVal.setText(vehicle_name);
                     }else {
