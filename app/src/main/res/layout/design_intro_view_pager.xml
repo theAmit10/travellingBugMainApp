@@ -54,6 +54,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
         android:text="The Caption Title"
+        android:fontFamily="@font/nunito_variablefont_wght"
         android:textAlignment="center"
         android:textColor="@color/colorDarkGray"
         android:textSize="@dimen/_12sdp"

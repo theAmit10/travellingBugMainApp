@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +34,8 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
 
     FloatingActionButton floatingActionButton;
     TextInputEditText licenseNumberETL;
+
+    ImageView backArrow;
 
     String license_number = "";
 
@@ -152,13 +155,23 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(VehicleDetailsLicensePlateNumberActivity.this, "Processing ", Toast.LENGTH_SHORT).show();
+                if(license_number.equalsIgnoreCase("") && license_number.length() < 3){
+                    Toast.makeText(VehicleDetailsLicensePlateNumberActivity.this, "Enter Vehicle Plate Number", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(VehicleDetailsLicensePlateNumberActivity.this, "Processing ", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(VehicleDetailsLicensePlateNumberActivity.this, VehicleDetailsBrandActivity.class);
+                    intent.putExtra("license_number", license_number);
+                    startActivity(intent);
+                }
+
+            }
+        });
 
 
-                Intent intent = new Intent(VehicleDetailsLicensePlateNumberActivity.this, VehicleDetailsBrandActivity.class);
-                intent.putExtra("license_number", license_number);
-                startActivity(intent);
-
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -166,6 +179,7 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
     private void initComponent() {
         floatingActionButton = findViewById(R.id.floatingActionButton);
         licenseNumberETL = findViewById(R.id.licenseNumberETL);
+        backArrow = findViewById(R.id.backArrow);
 
     }
 }

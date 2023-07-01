@@ -32,7 +32,7 @@ public class UpdatePreference extends AppCompatActivity {
     ImageView backArrow;
     TextView toolName;
     String parameter, value;
-    String title, subtitle, id,title_id;
+    String title, subtitle, id,title_id,update;
     EditText editTexttitle,editTextsubtitle;
     TextInputLayout text_input_layout_title,text_input_layout_subtitle;
     Button btnUpdate;
@@ -71,7 +71,7 @@ public class UpdatePreference extends AppCompatActivity {
             public void onClick(View v) {
                 if (isInternet) {
 
-                    if(id.equalsIgnoreCase("0")){
+                    if(update.equalsIgnoreCase("no")){
                         if(!editTexttitle.getText().toString().equalsIgnoreCase("") && !editTextsubtitle.getText().toString().equalsIgnoreCase("")    ){
                             addPreferences();
                         }else {
@@ -80,6 +80,7 @@ public class UpdatePreference extends AppCompatActivity {
                     }else{
                         if(!editTexttitle.getText().toString().equalsIgnoreCase("") && !editTextsubtitle.getText().toString().equalsIgnoreCase("")    ){
                             updatePreferences();
+//                            addPreferences();
                         }else {
                             displayMessage("Enter Both Field");
                         }
@@ -176,12 +177,13 @@ public class UpdatePreference extends AppCompatActivity {
         }, error -> {
             if ((dialogCustom != null) && dialogCustom.isShowing())
                 dialogCustom.dismiss();
+            error.printStackTrace();
             displayMessage(getString(R.string.something_went_wrong));
         }) {
             @Override
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("title", editTexttitle.getText().toString());
+                params.put("title", id);
                 params.put("subtitle", editTextsubtitle.getText().toString());
 
                 return params;
@@ -213,6 +215,7 @@ public class UpdatePreference extends AppCompatActivity {
         title = getIntent().getStringExtra("title");
         subtitle = getIntent().getStringExtra("subtitle");
         title_id = getIntent().getStringExtra("title_id");
+        update = getIntent().getStringExtra("update");
 
         editTexttitle.setText(title);
         editTextsubtitle.setText(subtitle);

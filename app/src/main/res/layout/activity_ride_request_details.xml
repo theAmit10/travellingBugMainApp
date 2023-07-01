@@ -9,7 +9,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <LinearLayout
@@ -59,8 +59,8 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/people"
-                    app:civ_border_color="@color/colorGray"
+                    android:src="@drawable/ic_dummy_user"
+                    app:civ_border_color="@color/white"
                     app:civ_border_width="@dimen/_2sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/imageView6"
@@ -79,7 +79,8 @@
                         android:layout_height="wrap_content"
                         android:drawableRight="@drawable/ic_green_tick"
                         android:drawablePadding="@dimen/_10sdp"
-                        android:text="David Johnson"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="user name"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14sdp"
                         android:textStyle="bold" />
@@ -130,14 +131,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
+                android:layout_weight="1"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/viewProfileTv"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_120sdp"
                     android:layout_height="wrap_content"
-
+                    android:fontFamily="@font/montserrat_semibold"
                     android:drawableLeft="@drawable/ic_profile"
                     android:drawablePadding="@dimen/_10sdp"
                     android:drawableTint="@color/green"
@@ -160,9 +162,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_semibold"
                     android:text="CHAT"
-                    android:layout_weight="1"
-                    android:gravity="center"
+                    android:drawableLeft="@drawable/baseline_chat_24"
+
                     android:textColor="@color/green"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
@@ -180,6 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_30sdp"
                 android:text="Addresses"
+                android:fontFamily="@font/montserrat_semibold"
                 android:textColor="@color/green"
                 android:textSize="@dimen/_13sdp"
                 android:textStyle="bold" />
@@ -239,7 +243,7 @@
                     android:layout_marginStart="@dimen/_35sdp"
                     android:layout_marginEnd="10dp"
                     android:maxLines="1"
-                    android:text="Plot A2, Sector 38 A, Noida, \nIndia"
+                    android:text=""
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_10sdp"
                     android:textStyle="bold"
@@ -254,7 +258,7 @@
                     android:layout_marginStart="@dimen/_35sdp"
                     android:layout_marginEnd="10dp"
                     android:maxLines="1"
-                    android:text="Flat No-83, Dwarka Sector 12"
+                    android:text=""
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_10sdp"
                     android:textStyle="bold"
@@ -292,6 +296,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_30sdp"
                 android:text="Ride info"
+                android:fontFamily="@font/montserrat_semibold"
                 android:textColor="@color/green"
                 android:textSize="@dimen/_13sdp"
                 android:textStyle="bold" />
@@ -328,7 +333,7 @@
                         android:drawableTint="@color/dark_gray"
 
                         android:maxLines="1"
-                        android:text="date"
+                        android:text=""
                         android:textColor="@color/dark_gray" />
 
                     <TextView
@@ -352,7 +357,7 @@
 
                         android:maxLines="1"
 
-                        android:text="3 Seat"
+                        android:text=""
                         android:textColor="@color/dark_gray" />
 
                 </LinearLayout>
@@ -385,7 +390,7 @@
                         android:drawableTint="@color/dark_gray"
 
                         android:maxLines="1"
-                        android:text="RS. 1500"
+                        android:text=""
                         android:textColor="@color/dark_gray" />
 
                     <TextView
@@ -408,55 +413,62 @@
                         android:drawableTint="@color/dark_gray"
 
                         android:maxLines="1"
-                        android:text="3 Seat"
+                        android:text=""
                         android:textColor="@color/dark_gray" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/rejectBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:layout_weight="1"
-                    android:visibility="gone"
-                    android:background="@drawable/cornor_edge_bg"
-                    android:text="Reject"
-                    android:textAllCaps="false"
-                    android:textColor="@color/red"
-                    android:textSize="@dimen/_10sdp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/acceptBtn" />
-
-                <Button
-                    android:id="@+id/acceptBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:layout_weight="1"
-                    android:background="@drawable/auth_btn_green_bg"
-                    android:text="Accept"
-                    android:visibility="gone"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
-            </LinearLayout>
 
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/rejectBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:background="@drawable/cornor_edge_bg"
+                android:text="Reject"
+                android:visibility="gone"
+                android:textAllCaps="false"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/acceptBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@drawable/auth_btn_green_bg"
+                android:text="Accept"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 
 
 </LinearLayout>

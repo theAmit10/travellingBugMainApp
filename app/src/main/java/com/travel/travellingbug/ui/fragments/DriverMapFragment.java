@@ -662,6 +662,7 @@ public class DriverMapFragment extends Fragment implements
         intentChat.putExtra("providerId", providerId);
         intentChat.putExtra("userId", userId);
         intentChat.putExtra("userName", userFirstName);
+        intentChat.putExtra("messageType", "up");
         getActivity().startActivity(intentChat);
     }
 
@@ -4311,6 +4312,7 @@ public class DriverMapFragment extends Fragment implements
                                 if (response != null) {
                                     System.out.println("data : " + jsonObjectUser.toString());
                                     txt03UserName.setText(jsonObjectUser.optString("first_name"));
+                                    userName = jsonObjectUser.optString("first_name");
                                     userProfileImage = jsonObjectUser.optString("avatar");
                                     rating = jsonObjectUser.optString("rating");
                                     ratingVal = jsonObjectUser.optString("rating");

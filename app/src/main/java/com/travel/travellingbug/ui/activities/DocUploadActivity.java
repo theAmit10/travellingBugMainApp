@@ -696,6 +696,7 @@ public class DocUploadActivity extends AppCompatActivity {
         ImageView ivShow = dialog.findViewById(R.id.ivShow);
         Button btCancel = dialog.findViewById(R.id.btCancel);
         Button btOk = dialog.findViewById(R.id.btOk);
+
         TextView etDate = dialog.findViewById(R.id.etDate);
         TextView txtDocumentName = dialog.findViewById(R.id.txtDocumentName);
         TextView txtDocumentType = dialog.findViewById(R.id.txtDocumentType);
@@ -733,7 +734,7 @@ public class DocUploadActivity extends AppCompatActivity {
 
         btOk.setOnClickListener(v -> {
 
-            etDate.setText("10 10 2050");
+            etDate.setText("2050-10-10");
 
             if (etDate.getText().toString().isEmpty()) {
                 etDate.setError("Please select expiry date");
@@ -821,7 +822,7 @@ public class DocUploadActivity extends AppCompatActivity {
 
 
         btOk.setOnClickListener(v -> {
-
+            etDate.setText("2050-10-10");
             if (etDate.getText().toString().isEmpty()) {
                 etDate.setError("Please select expiry date");
             } else {
@@ -845,6 +846,7 @@ public class DocUploadActivity extends AppCompatActivity {
         });
 
         btOk.setOnClickListener(v -> {
+            etDate.setText("2050-10-10");
             if (etDate.getText().toString().isEmpty()) {
                 etDate.setError("Please select expiry date");
             } else {

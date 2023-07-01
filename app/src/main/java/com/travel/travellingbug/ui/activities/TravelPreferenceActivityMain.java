@@ -160,10 +160,12 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
                     jsonArray, response -> {
                 Log.v("GetPreferences", response.toString());
 
+                SharedHelper.putKey(getApplicationContext(),"TravelPreferenceStatus", String.valueOf(response.length()));
+
                 if (response.length() > 0) {
                     errorLayout.setVisibility(View.GONE);
                     travelPreferenceRVLayout.setVisibility(View.VISIBLE);
-                    SharedHelper.putKey(getApplicationContext(),"TravelPreferenceStatus", String.valueOf(response.length()));
+
 
                     for (int i = 0; i < response.length(); i++) {
                         try {

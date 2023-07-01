@@ -20,15 +20,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.daasuu.cat.CountAnimationTextView;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
-import com.travel.travellingbug.ui.activities.EarningActivity;
-import com.travel.travellingbug.ui.activities.MainActivity;
-import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
-import com.daasuu.cat.CountAnimationTextView;
+import com.travel.travellingbug.ui.activities.HomeScreenActivity;
+import com.travel.travellingbug.ui.activities.SplashScreen;
 
 import org.json.JSONObject;
 
@@ -103,7 +102,7 @@ public class SummaryFragment extends Fragment implements View.OnClickListener {
         bundle.putString("toolbar", "true");
         switch (v.getId()) {
             case R.id.backArrow:
-                startActivity(new Intent(getActivity(), MainActivity.class));
+                startActivity(new Intent(getActivity(), HomeScreenActivity.class));
                 break;
             case R.id.rides_card:
                 fragment = new PastTrips();
@@ -122,7 +121,7 @@ public class SummaryFragment extends Fragment implements View.OnClickListener {
                 transaction.commit();
                 break;
             case R.id.revenue_card:
-                startActivity(new Intent(getActivity(), EarningActivity.class));
+//                startActivity(new Intent(getActivity(), EarningActivity.class));
 //                fragment = new EarningsFragment();
 //                transaction.add(R.id.content, fragment);
 //                transaction.hide(this);

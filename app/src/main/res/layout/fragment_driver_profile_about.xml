@@ -76,7 +76,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/view5" />
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/sourceTv"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -309,7 +309,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
 
-                android:text="Travel Days"
+                android:text="Vehicle Detials"
                 android:textColor="@color/colorGray_light"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold" />
@@ -318,7 +318,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-
                 android:padding="@dimen/_10sdp">
 
 
@@ -330,34 +329,27 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/monday"
+                        android:id="@+id/vehicleName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Monday"
-                        android:padding="@dimen/_5sdp"
+                        android:text="Maruti Suzuki"
+                        android:paddingStart="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_5sdp"
                         android:textColor="@color/green"
                         android:textSize="@dimen/_14sdp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tuesday"
+                        android:id="@+id/vehicleNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tuesday"
+                        android:text="MH12875494"
                         android:padding="@dimen/_5sdp"
-                        android:textColor="@color/green"
-                        android:textSize="@dimen/_14sdp"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/_12sdp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/wednesday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Wednesday"
-                        android:padding="@dimen/_5sdp"
-                        android:textColor="@color/green"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -368,35 +360,12 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/thursday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Thursday"
-                        android:padding="@dimen/_5sdp"
-                        android:textColor="@color/green"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/friday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Friday"
-                        android:padding="@dimen/_5sdp"
-                        android:textColor="@color/green"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/saturday"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Saturday"
-                        android:padding="@dimen/_5sdp"
-                        android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_14sdp"
-                        android:textStyle="bold" />
+                    <ImageView
+                        android:id="@+id/vehicleImage"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:srcCompat="@drawable/maruti_car" />
 
                 </LinearLayout>
 
@@ -405,6 +374,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_weight="1"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
                     <TextView
@@ -448,7 +418,7 @@
                         android:id="@+id/chatButton"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_40sdp"
-
+                        android:visibility="gone"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_marginBottom="@dimen/_5sdp"

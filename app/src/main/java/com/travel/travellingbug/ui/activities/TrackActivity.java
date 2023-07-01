@@ -409,6 +409,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         intentChat.putExtra("providerId", currentProviderID);
         intentChat.putExtra("userId", userID);
         intentChat.putExtra("userName", providerFirstName);
+        intentChat.putExtra("messageType", "pu");
         context.startActivity(intentChat);
     }
 

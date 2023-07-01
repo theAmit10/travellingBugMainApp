@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -62,6 +64,8 @@ import es.dmoral.toasty.Toasty;
 public class ProfileAboutFragment extends Fragment {
 
     TextView verifyId, addMyPreferencesTv, addAMiniBioTv, addVehicleTv, editProfilePictv, editPersonalDetailstv,titlePAtv;
+
+    Animation slide_down, slide_up, slide_up_top, slide_up_down;
 
     TextView email, first_name, mobile_no;
     TextView txtuserName;
@@ -132,8 +136,8 @@ public class ProfileAboutFragment extends Fragment {
     private void setTextToComponent() {
         txtuserName.setText(SharedHelper.getKey(getContext(), "first_name"));
 
-        if (!SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null")) {
-            txtuserName.setText("");
+        if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null")) {
+            txtuserName.setText("User");
         }
 
         if (!SharedHelper.getKey(getContext(), "picture").isEmpty()) {
@@ -166,6 +170,11 @@ public class ProfileAboutFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), TravelPreferenceActivity.class);
                 startActivity(intent);
+
+//                Intent myIntent = new Intent(getContext(), TravelPreferenceActivity.class);
+//                ActivityOptions options =
+//                        ActivityOptions.makeCustomAnimation(getContext(), R.anim.slide_out,R.anim.slide_up_top);
+//                startActivity(myIntent, options.toBundle());
             }
         });
 
@@ -283,6 +292,12 @@ public class ProfileAboutFragment extends Fragment {
         img_profile = view.findViewById(R.id.img_profile);
         titlePAtv = view.findViewById(R.id.titlePAtv);
 
+        //Load animation
+        slide_down = AnimationUtils.loadAnimation(getContext(), R.anim.slide_down);
+        slide_up = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up);
+        slide_up_top = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up_top);
+        slide_up_down = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up_down);
+
         setProviderDetails();
 
     }
@@ -370,14 +385,14 @@ public class ProfileAboutFragment extends Fragment {
         String TravelPreferenceStatus = SharedHelper.getKey(getContext(), "TravelPreferenceStatus");
         System.out.println("TravelPreferenceStatus : "+TravelPreferenceStatus);
         System.out.println("TravelPreferenceStatus : "+TravelPreferenceStatus.length());
-        if (!TravelPreferenceStatus.equalsIgnoreCase("") || !(TravelPreferenceStatus.length() == 0)) {
+        if (!TravelPreferenceStatus.equalsIgnoreCase("") && !TravelPreferenceStatus.equalsIgnoreCase("0")) {
             addMyPreferencesTv.setText("Travel Preferences");
             addMyPreferencesTv.setTextColor(getResources().getColor(R.color.dark_gray));
             addMyPreferencesTv.setTypeface(addMyPreferencesTv.getTypeface(), Typeface.BOLD);
             addMyPreferencesTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_forward_gray, 0);
 
         } else {
-            addMyPreferencesTv.setText("Add Travel Preferences");
+            addMyPreferencesTv.setText("Add travel preferences");
             addMyPreferencesTv.setTextColor(getResources().getColor(R.color.green));
             addMyPreferencesTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
 
@@ -403,7 +418,7 @@ public class ProfileAboutFragment extends Fragment {
         String DocumentStatus = SharedHelper.getKey(getContext(), "DocumentStatus");
         System.out.println("DocumentStatus : "+DocumentStatus);
         System.out.println("DocumentStatus : "+DocumentStatus.length());
-        if (!DocumentStatus.equalsIgnoreCase("null") || !DocumentStatus.equalsIgnoreCase("") || DocumentStatus.equalsIgnoreCase("yes") ) {
+        if (DocumentStatus.equalsIgnoreCase("yes") ) {
             verifyId.setText("Documents");
             verifyId.setTextColor(getResources().getColor(R.color.dark_gray));
             verifyId.setTypeface(verifyId.getTypeface(), Typeface.BOLD);
@@ -429,14 +444,16 @@ public class ProfileAboutFragment extends Fragment {
 
 
         String vehicle_add = SharedHelper.getKey(getContext(), "vehicle_add");
-        if (!vehicle_add.equalsIgnoreCase("null") || !vehicle_add.equalsIgnoreCase("") || vehicle_add.equalsIgnoreCase("yes") ) {
+        System.out.println("add vehicle : "+SharedHelper.getKey(getContext(), "vehicle_add"));
+
+        if (vehicle_add.equalsIgnoreCase("yes") ) {
             addVehicleTv.setText("Update vehicle");
             addVehicleTv.setTextColor(getResources().getColor(R.color.dark_gray));
             addVehicleTv.setTypeface(addVehicleTv.getTypeface(), Typeface.BOLD);
             addVehicleTv.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_forward_gray, 0);
 
         } else {
-            addVehicleTv.setText("Add Vehicel");
+            addVehicleTv.setText("Add vehicle");
             addVehicleTv.setTextColor(getResources().getColor(R.color.green));
             addVehicleTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
 

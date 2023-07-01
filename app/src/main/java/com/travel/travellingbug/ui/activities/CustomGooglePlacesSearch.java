@@ -363,6 +363,11 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
 //            Toast.makeText(this, ""+mLastLocation.getProvider(), Toast.LENGTH_SHORT).show();
 //            Toast.makeText(this, ""+mLastLocation.getLatitude(), Toast.LENGTH_SHORT).show();
 //            System.out.println("lat wasu "+mLastLocation.getLatitude()+ " Long : "+mLastLocation.getLongitude());
+
+            System.out.println("Postion : "+position);
+            System.out.println("view : "+view);
+            System.out.println("id : "+id);
+
             if (txtaddressSource.getText().toString().equalsIgnoreCase("")) {
                 try {
                     AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
@@ -547,6 +552,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                 if (placePredictions != null) {
                     intent.putExtra("Location Address", placePredictions);
                     intent.putExtra("pick_location", "no");
+//                    intent.putExtra("pick_location", "yes");
                     Toast.makeText(CustomGooglePlacesSearch.this, ""+placePredictions.getPlaces(), Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK, intent);
                 } else {

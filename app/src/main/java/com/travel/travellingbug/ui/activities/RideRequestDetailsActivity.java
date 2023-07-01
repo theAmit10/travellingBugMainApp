@@ -19,6 +19,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
+import com.travel.travellingbug.chat.UserChatActivity;
 import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
@@ -136,7 +137,15 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         chatTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(RideRequestDetailsActivity.this, "Chat", Toast.LENGTH_SHORT).show();
+                Intent intentChat = new Intent(RideRequestDetailsActivity.this, UserChatActivity.class);
+                intentChat.putExtra("requestId", request_id);
+                intentChat.putExtra("providerId", user_id);
+                intentChat.putExtra("userId", user_id);
+                intentChat.putExtra("userName", first_name);
+                intentChat.putExtra("messageType", "up");
+                System.out.println("request id: "+request_id);
+                startActivity(intentChat);
+
             }
         });
     }

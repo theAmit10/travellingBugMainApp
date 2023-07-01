@@ -3435,6 +3435,7 @@ drawable background
 drawable banned
 drawable baseline_add
 drawable baseline_call_24
+drawable baseline_chat_24
 drawable bg
 drawable bg_car
 drawable bg_toggle_checked
@@ -4296,9 +4297,11 @@ drawable jz_shrink
 drawable jz_title_bg
 drawable jz_volume_icon
 drawable jz_volume_progress_bg
+drawable l
 drawable left_chat
 drawable loading
 drawable loading_gif
+drawable loading_ic
 drawable location_waves
 drawable login_views
 drawable loginbg
@@ -4575,6 +4578,7 @@ drawable nav_button
 drawable nav_car_ic
 drawable nav_plane_ic
 drawable nav_search_ic
+drawable nav_star
 drawable navigation_empty_icon
 drawable nb_document
 drawable nb_help
@@ -5328,7 +5332,6 @@ id frameChange
 id frameLayout
 id frame_container
 id frenchRB
-id friday
 id frmDest
 id frmDestination
 id frmDestinationBottom
@@ -5665,7 +5668,6 @@ id minutes_space
 id mobile_no
 id modal_content_root
 id modal_root
-id monday
 id month_grid
 id month_navigation_bar
 id month_navigation_fragment_toggle
@@ -5956,7 +5958,6 @@ id rv_top_divider
 id rv_video_pick
 id saddress
 id satellite
-id saturday
 id saveBTN
 id saveButton
 id save_non_transition_alpha
@@ -6032,6 +6033,7 @@ id snapMargins
 id sos
 id sourceAndDestinationLayout
 id sourceDestLayout
+id sourceTv
 id south
 id spRegister
 id spacer
@@ -6147,7 +6149,6 @@ id threeStar
 id threeStarProgress
 id threeStarTotalVal
 id thumb
-id thursday
 id time
 id timeTv
 id timeVal
@@ -6215,7 +6216,6 @@ id tripTime
 id trip_id
 id tripid
 id tripsAndFareCV
-id tuesday
 id tvAddressLocation
 id tvCancel
 id tvCancelDialog
@@ -6355,6 +6355,8 @@ id vehicleManufactureETL
 id vehicleModelETL
 id vehicleModelInput
 id vehicleModelRV
+id vehicleName
+id vehicleNumber
 id vehicleSeatETL
 id vehicleSeatInput
 id vehicleTypeRV
@@ -6390,7 +6392,6 @@ id wallet_layout
 id webView
 id webview
 id webviewOrg
-id wednesday
 id west
 id wide
 id widget_viewstub_as

@@ -51,6 +51,12 @@ public class AutoCompleteAdapter extends ArrayAdapter<PlaceAutoComplete> {
         /************  Set Model values in Holder elements ***********/
 
         holder.name.setText(st.nextToken());
+
+
+
+
+
+
 //        Toast.makeText(getContext(), "name : "+st, Toast.LENGTH_SHORT).show();
 //        SharedHelper.putKey(getContext(),"destination_location",st.nextToken());
         String desc_detail = "";
@@ -63,18 +69,21 @@ public class AutoCompleteAdapter extends ArrayAdapter<PlaceAutoComplete> {
         }
         holder.location.setText(desc_detail);
 
-//        holder.name.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                Toast.makeText(getContext(), ""+holder.name.getText(), Toast.LENGTH_SHORT).show();
-////                Toast.makeText(getContext(), ""+holder.location.getText(), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getContext(), ""+Places.get(position).toString(), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getContext(), ""+Places.get(position).getPlaceDesc(), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getContext(), ""+Places.get(position).getPlaceID(), Toast.LENGTH_SHORT).show();
+        holder.name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 //                Places.get(position).
-//
-//            }
-//        });
+//                Toast.makeText(getContext(), ""+holder.name.getText(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), ""+holder.location.getText(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), ""+Places.get(position).toString(), Toast.LENGTH_SHORT).show();
+//                TextView sourcetv = mActivity.findViewById(R.id.txtaddressSource);
+//                sourcetv.setText(Places.get(position).getPlaceDesc());
+
+
+
+
+            }
+        });
 //        Toast.makeText(getContext(), "location : "+desc_detail, Toast.LENGTH_SHORT).show();
         return rowView;
     }

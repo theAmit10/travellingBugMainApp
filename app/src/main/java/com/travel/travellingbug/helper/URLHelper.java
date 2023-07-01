@@ -61,6 +61,9 @@ public interface URLHelper {
 
     String ChatGetMessage = BASE + "api/provider/firebase/getChat?request_id=";
 
+    String ChatMessageHistory = BASE + "api/provider/firebase/allchatHistory?request_id=";
+
+
     String CARD_PAYMENT_LIST = BASE + "api/user/card";
 
     String GET_SERVICE_LIST_API = BASE + "api/user/services";

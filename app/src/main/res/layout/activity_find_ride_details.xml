@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-
+                android:fontFamily="@font/montserrat_semibold"
                 android:padding="@dimen/_5sdp"
                 android:text="Passenger"
                 android:textColor="@color/black"
@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
-
+                android:fontFamily="@font/montserrat_semibold"
                 android:padding="@dimen/_5sdp"
                 android:text="Travel preferences"
                 android:textColor="@color/black"
@@ -168,7 +168,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-
+                android:fontFamily="@font/montserrat_semibold"
                 android:padding="@dimen/_5sdp"
                 android:text="Tracking Link"
                 android:textColor="@color/black"
@@ -189,7 +189,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-
+                android:fontFamily="@font/montserrat_semibold"
                 android:padding="@dimen/_5sdp"
                 android:text="Terms and conditions"
                 android:textColor="@color/black"

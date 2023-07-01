@@ -130,6 +130,9 @@ public class RideRequest extends AppCompatActivity {
     private void getRideRequest() {
 
         System.out.println("Getting Ride Data... ");
+        customDialog = new CustomDialog(RideRequest.this);
+        customDialog.setCancelable(false);
+        customDialog.show();
 
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.UPCOMMING_TRIPS_DETAILS_ONE , new Response.Listener<String>() {
             @Override
@@ -141,6 +144,7 @@ public class RideRequest extends AppCompatActivity {
 
 
                 try {
+                    customDialog.dismiss();
 
                     JSONArray jsonArray = new JSONArray(response);
 
@@ -154,7 +158,7 @@ public class RideRequest extends AppCompatActivity {
                             upcomingsAdapter = new RideRequest.UpcomingsAdapter(filterArray);
                             System.out.println("filter length : "+filterArray.length());
 
-                            Toast.makeText(RideRequest.this, "filter length : "+filterArray.length(), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(RideRequest.this, "filter length : "+filterArray.length(), Toast.LENGTH_SHORT).show();
 
                             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
                             recyclerView.setLayoutManager(mLayoutManager);
@@ -172,6 +176,7 @@ public class RideRequest extends AppCompatActivity {
 
                         }else {
                             Toast.makeText(RideRequest.this, "No Request Available", Toast.LENGTH_SHORT).show();
+
                         }
 
 
@@ -181,7 +186,8 @@ public class RideRequest extends AppCompatActivity {
 
 
                 } catch (JSONException e) {
-                    System.out.println("Error : "+e.getMessage());
+                    customDialog.dismiss();
+                    e.printStackTrace();
                 }
 
 
@@ -189,9 +195,9 @@ public class RideRequest extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(RideRequest.this, "Error Found", Toast.LENGTH_SHORT).show();
-                System.out.println("Error Response : "+error.getMessage());
-                System.out.println("Error Response : "+error.getCause());
+                Toast.makeText(RideRequest.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
+                customDialog.dismiss();
             }
 
         }) {
@@ -401,7 +407,24 @@ public class RideRequest extends AppCompatActivity {
 
 
                     holder.startTimeVal.setText(s_date + " "+s_time);
-                    holder.availableSeat.setText(seat_left +" Seat left");
+
+// getting taken seat
+//                    JSONArray filterJsonArray = jsonArray.optJSONObject(position).optJSONArray("filters");
+//                    if (filterJsonArray != null && filterJsonArray.length() > 0) {
+//                        for (int j = 0; j < filterJsonArray.length(); j++) {
+//                            JSONObject filterJsonObject = filterJsonArray.optJSONObject(j);
+//                            System.out.println("j" + filterJsonObject.optString("user_id"));
+//                            System.out.println("j" + SharedHelper.getKey(getApplicationContext(), "id"));
+//                            if (filterJsonObject.optString("user_id").equalsIgnoreCase(SharedHelper.getKey(getApplicationContext(), "id"))) {
+//                                holder.availableSeat.setText(filterJsonObject.optString("noofseats")+" Seat");
+//                            }
+//                        }
+//                    }
+
+
+
+//                    holder..setText(seat_left +" Seat left");
+                    holder.availableSeat.setText(jsonArray.optJSONObject(position).optString("noofseats")+" Seat");
 
 
 
@@ -561,7 +584,7 @@ public class RideRequest extends AppCompatActivity {
                 intent.putExtra("pick_up_time", s_time);
                 intent.putExtra("noofseat", jsonArray.optJSONObject(position).optString("noofseats"));
                 intent.putExtra("fare", fare);
-                intent.putExtra("request_id", jsonArray.optJSONObject(position).optString(request_id));
+                intent.putExtra("request_id", jsonArray.optJSONObject(position).optString("request_id"));
                 intent.putExtra("tag", "RideRequestDetails");
                 intent.putExtra("person_id",jsonArray.optJSONObject(position).optString("id"));
                 intent.putExtra("status",jsonArray.optJSONObject(position).optString("status"));

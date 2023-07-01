@@ -44,6 +44,8 @@ public class TravelPreferenceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_preference);
 
+
+
         initComponenet();
         getBio();
         clickHandler();
@@ -54,6 +56,7 @@ public class TravelPreferenceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(TravelPreferenceActivity.this, UpdateProfile.class);
+
                 intent.putExtra("parameter", "bio");
                 intent.putExtra("value",bioTv.getText());
                 startActivity(intent);
@@ -78,7 +81,9 @@ public class TravelPreferenceActivity extends AppCompatActivity {
     private void getBio() {
 
         String bio = SharedHelper.getKey(getApplicationContext(), "bio");
-        if (bio != null || !bio.equalsIgnoreCase("null") || !bio.equalsIgnoreCase("")) {
+        System.out.println("bio "+bio);
+        System.out.println("bio len "+bio.length());
+        if (!bio.equalsIgnoreCase("null")) {
             bioTv.setText(bio);
         } else {
             bioTv.setText("Add a mini bio");
@@ -88,6 +93,8 @@ public class TravelPreferenceActivity extends AppCompatActivity {
     public void displayMessage(String toastString) {
         Toasty.info(getApplicationContext(), toastString, Toast.LENGTH_SHORT, true).show();
     }
+
+
 
     private void initComponenet() {
 

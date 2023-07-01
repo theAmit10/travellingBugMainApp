@@ -30,8 +30,16 @@ public class ChangeAddressAdtivityOne extends AppCompatActivity {
         imageView3 = findViewById(R.id.imageView3);
 
 
+        System.out.println("postal address "+SharedHelper.getKey(getApplicationContext(), "full_address"));
+        System.out.println("postal address len "+SharedHelper.getKey(getApplicationContext(), "full_address").length());
 
-        addPostalAddressTv.setText(SharedHelper.getKey(getApplicationContext(), "full_address"));
+
+        if(SharedHelper.getKey(getApplicationContext(), "full_address").equalsIgnoreCase("") || SharedHelper.getKey(getApplicationContext(), "full_address").equalsIgnoreCase("null")){
+            addPostalAddressTv.setText("Add Postal Address");
+        }else {
+            addPostalAddressTv.setText(SharedHelper.getKey(getApplicationContext(), "full_address"));
+        }
+
         addPostalAddressTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

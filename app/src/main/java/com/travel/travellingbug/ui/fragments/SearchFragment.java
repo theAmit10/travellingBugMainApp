@@ -186,7 +186,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     TextView continue_ride_sp;
     LinearLayout showingProgressLL;
 
-    TextView frmSourceBottom, frmDestinationBottom,btnShowPaymentTv;
+    TextView frmSourceBottom, frmDestinationBottom, btnShowPaymentTv;
     View rootView;
     HomeFragmentListener listener;
 
@@ -233,6 +233,10 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     LinearLayout lnrRequestProviders;
     RecyclerView rcvServiceTypes;
     ImageView imgPaymentType;
+
+    String cd = "";
+    String cm = "";
+    String cy = "";
 
     int passenger_number = 1;
 
@@ -455,12 +459,12 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         //permission to access location
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-            if( customDialog.isShowing()){
+            if (customDialog.isShowing()) {
                 customDialog.dismiss();
             }
         } else {
 //            setUpMapIfNeeded();
-            if( customDialog.isShowing()){
+            if (customDialog.isShowing()) {
                 customDialog.dismiss();
             }
             MapsInitializer.initialize(getActivity());
@@ -478,10 +482,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     try {
                         getProfile();
                         getDocList();
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
-
 
 
                     //permission to access location
@@ -491,7 +494,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                     PackageManager.PERMISSION_GRANTED) {
                         // Android M Permission check
                         requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-                        if( customDialog.isShowing()){
+                        if (customDialog.isShowing()) {
                             customDialog.dismiss();
                         }
                     } else {
@@ -541,13 +544,16 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             public void onClick(View v) {
 
 
+
+
+
                 Calendar mcurrentTime = Calendar.getInstance();
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
 
 
-                mTimePicker = new TimePickerDialog(getActivity(), android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new TimePickerDialog.OnTimeSetListener() {
+                mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     int callCount = 0;   //To track number of calls to onTimeSet()
 
                     @Override
@@ -616,28 +622,67 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 mTimePicker.show();
 
 
+
                 final Calendar c = Calendar.getInstance();
                 int mYear = c.get(Calendar.YEAR); // current year
                 int mMonth = c.get(Calendar.MONTH); // current month
                 int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+
+
                 // date picker dialog
-                datePickerDialog = new DatePickerDialog(getActivity(), android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,
+                datePickerDialog = new DatePickerDialog(getActivity(),
                         (view, year, monthOfYear, dayOfMonth) -> {
 
                             // set day of month , month and year value in the edit text
                             String choosedMonth = "";
                             String choosedDate = "";
+
                             String choosedDateFormat = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
+
+
+
+
                             scheduledDate = choosedDateFormat;
+
+//                            DateTimeFormatter parser = null;
+//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                                parser = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//                            }
+//                            DateTimeFormatter formatter = null;
+//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                                formatter = DateTimeFormatter.ofPattern("EEEE, MMM d, yyyy", Locale.ENGLISH);
+//                            }
+//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                                System.out.println(formatter.format(parser.parse( "2018-07-09")));
+//                            }
+
+//                            Calendar cal=Calendar.getInstance();
+//                            SimpleDateFormat month_date = new SimpleDateFormat("MMMM");
+//                            String month_name = month_date.format(cal.getTime());
+//
+//
+//                            System.out.println("sechedule date "+scheduledDate );
+//                            System.out.println("sechedule month_name "+month_name );
+//
+//                            Calendar cals=Calendar.getInstance();
+//                            SimpleDateFormat month_dates = new SimpleDateFormat("MMM");
+//                            String month_names = month_dates.format(cals.getTime());
+//
+//                            System.out.println("sechedule month_names "+month_names );
+
                             try {
                                 choosedMonth = utils.getMonth(choosedDateFormat);
+                                cm = choosedMonth;
+                                cy = String.valueOf(year);
                             } catch (ParseException e) {
                                 e.printStackTrace();
                             }
                             if (dayOfMonth < 10) {
                                 choosedDate = "0" + dayOfMonth;
+                                cd = choosedDate;
                             } else {
                                 choosedDate = "" + dayOfMonth;
+                                cd = choosedDate;
                             }
                             afterToday = Utilities.isAfterToday(year, monthOfYear, dayOfMonth);
                             calendertv.setText(choosedDate + " " + choosedMonth + " " + year);
@@ -645,6 +690,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.getDatePicker().setMaxDate((System.currentTimeMillis() - 1000) + (1000 * 60 * 60 * 24 * 7));
                 datePickerDialog.show();
+
 
 
             }
@@ -728,8 +774,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             generateNewAccessToken();
 
 
-
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }) {
@@ -768,11 +813,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 object.put("grant_type", "password");
                 object.put("client_id", URLHelper.client_id);
                 object.put("client_secret", URLHelper.client_secret);
-                object.put("mobile", SharedHelper.getKey(getContext(),"mobile"));
+                object.put("mobile", SharedHelper.getKey(getContext(), "mobile"));
                 object.put("password", "12345678");
                 object.put("scope", "");
                 object.put("device_type", "android");
-                object.put("device_id", SharedHelper.getKey(getContext(),"device_udid"));
+                object.put("device_id", SharedHelper.getKey(getContext(), "device_udid"));
                 object.put("device_token", SharedHelper.getKey(getContext(), "device_token"));
                 object.put("logged_in", "1");
                 utils.print("InputToLoginAPI", "" + object);
@@ -796,7 +841,6 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                         "refresh_token", response.optString("refresh_token"));
                                 SharedHelper.putKey(getContext(),
                                         "token_type", response.optString("token_type"));
-
 
 
                                 SharedHelper.putKey(getContext(), "loggedIn",
@@ -1306,8 +1350,6 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         ivTopFav.setOnClickListener(view -> saveAddressDialog());
 
 
-
-
         flowValue = 0;
         layoutChanges();
 
@@ -1319,10 +1361,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             slide_up_top = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up_top);
             slide_up_down = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up_down);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
 
 
         imgNavigate.setOnClickListener(v -> {
@@ -1492,13 +1533,13 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                    frmDest.setTextColor(getResources().getColor(R.color.dark_gray));
 //                }
                 try {
-                    if(current_address.equalsIgnoreCase("") || current_address.length() == 0){
+                    if (current_address.equalsIgnoreCase("") || current_address.length() == 0) {
                         frmSource.setText("Leaving From");
-                    }else {
+                    } else {
                         frmSource.setText(currentAddress);
                     }
-                }catch (Exception e){
-                   e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
 
@@ -1517,9 +1558,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         frmDest.setText("Going to");
                     }
 
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
-                    frmDest.setText("Going to");
+//                    frmDest.setText("Going to");
                 }
 
 
@@ -2138,7 +2179,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             source_lng = "" + placePredictions.strSourceLongitude;
                             source_address = placePredictions.strSourceAddress;
 
-                            Toast.makeText(getContext(), "SA : "+source_address, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), "SA : " + source_address, Toast.LENGTH_SHORT).show();
 
                             if (!placePredictions.strSourceLatitude.equalsIgnoreCase("")
                                     && !placePredictions.strSourceLongitude.equalsIgnoreCase("")) {
@@ -3004,7 +3045,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     }
 
     public void statusCheck() {
-        if (getActivity() != null){
+        if (getActivity() != null) {
             final LocationManager manager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
             if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                 enableLoc();
@@ -3831,7 +3872,6 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         btnShowPaymentTv.setVisibility(View.VISIBLE);
                         btnShowPaymentTv.startAnimation(slide_up);
                         schedule_ride.setVisibility(View.GONE);
-
 
 
                         btnRequestRideConfirm.setEnabled(true);

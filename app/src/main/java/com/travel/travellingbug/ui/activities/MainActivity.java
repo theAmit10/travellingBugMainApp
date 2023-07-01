@@ -316,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void applyFontToMenuItem(MenuItem mi) {
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Regular.ttf");
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/nunito_variablefont_wght.ttf");
         SpannableString mNewTitle = new SpannableString(mi.getTitle());
         mNewTitle.setSpan(new CustomTypefaceSpan("", font), 0,
                 mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
@@ -325,7 +325,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadNavHeader() {
         // name, website
-        txtName.setText(SharedHelper.getKey(context, "first_name"));
+        if(SharedHelper.getKey(context, "first_name").equalsIgnoreCase("null")){
+            txtName.setText("user");
+        }else {
+            txtName.setText(SharedHelper.getKey(context, "first_name"));
+        }
+
         if (SharedHelper.getKey(context, "approval_status").equals("new") ||
                 SharedHelper.getKey(context, "approval_status").equals("onboarding")) {
             approvaltxt.setTextColor(Color.YELLOW);
@@ -352,7 +357,18 @@ public class MainActivity extends AppCompatActivity {
         }
         if (SharedHelper.getKey(MainActivity.this, "rating") != null
                 && SharedHelper.getKey(MainActivity.this, "rating") != "") {
-            tvRate.setText(SharedHelper.getKey(MainActivity.this, "rating") + "");
+            if(SharedHelper.getKey(MainActivity.this, "rating").equalsIgnoreCase("null")){
+                tvRate.setText("");
+                tvRate.setVisibility(View.GONE);
+            }else {
+
+                String rate_val = SharedHelper.getKey(MainActivity.this, "rating");
+                String rate_value = rate_val.substring(0,1);
+
+                tvRate.setText(rate_value);
+                tvRate.setVisibility(View.VISIBLE);
+            }
+
         }
     }
 

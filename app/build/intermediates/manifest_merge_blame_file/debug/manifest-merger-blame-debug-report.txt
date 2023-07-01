@@ -80,8 +80,8 @@
 37        </intent>
 38
 39        <package android:name="com.facebook.katana" /> <!-- Needs to be explicitly declared on Android R+ -->
-39-->[com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:18:9-55
-39-->[com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:18:18-52
+39-->[com.facebook.android:facebook-common:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7f3c5288caa985118da54ce80e3f59f\jetified-facebook-common-16.1.2\AndroidManifest.xml:18:9-55
+39-->[com.facebook.android:facebook-common:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7f3c5288caa985118da54ce80e3f59f\jetified-facebook-common-16.1.2\AndroidManifest.xml:18:18-52
 40        <package android:name="com.google.android.apps.maps" />
 40-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:33:9-64
 40-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:33:18-61
@@ -697,7 +697,7 @@
 353            android:label="@string/app_name"
 353-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:326:13-45
 354            android:theme="@style/com_facebook_activity_theme" />
-354-->[com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:25:13-63
+354-->[com.facebook.android:facebook-common:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7f3c5288caa985118da54ce80e3f59f\jetified-facebook-common-16.1.2\AndroidManifest.xml:25:13-63
 355        <activity
 355-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:327:9-340:20
 356            android:name="com.facebook.CustomTabActivity"
@@ -722,7 +722,7 @@
 364-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:337:21-70
 365            </intent-filter>
 366            <intent-filter>
-366-->[com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:31:13-40:29
+366-->[com.facebook.android:facebook-common:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7f3c5288caa985118da54ce80e3f59f\jetified-facebook-common-16.1.2\AndroidManifest.xml:31:13-40:29
 367                <action android:name="android.intent.action.VIEW" />
 367-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:331:17-69
 367-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:331:25-66
@@ -1040,8 +1040,8 @@
 529            android:theme="@style/EasyPermissions.Transparent" />
 529-->[pub.devrel:easypermissions:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\402f44544dc6098ab482246474ab1a9d\jetified-easypermissions-0.3.0\AndroidManifest.xml:16:13-63
 530        <activity android:name="com.facebook.CustomTabMainActivity" />
-530-->[com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:26:9-71
-530-->[com.facebook.android:facebook-common:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\53914fbbc8e86e56d89bc354cd64ac24\jetified-facebook-common-16.0.1\AndroidManifest.xml:26:19-68
+530-->[com.facebook.android:facebook-common:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7f3c5288caa985118da54ce80e3f59f\jetified-facebook-common-16.1.2\AndroidManifest.xml:26:9-71
+530-->[com.facebook.android:facebook-common:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7f3c5288caa985118da54ce80e3f59f\jetified-facebook-common-16.1.2\AndroidManifest.xml:26:19-68
 531        <activity
 531-->[com.google.android.gms:play-services-auth:20.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\dbe0aa59e1ed757e323a19ceb193e56c\jetified-play-services-auth-20.5.0\AndroidManifest.xml:23:9-27:75
 532            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
@@ -1236,38 +1236,38 @@
 641         a completely different provider.
 642        -->
 643        <provider
-643-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:29:9-32:40
+643-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:29:9-32:40
 644            android:name="com.facebook.internal.FacebookInitProvider"
-644-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:30:13-70
+644-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:30:13-70
 645            android:authorities="com.travel.travellingbug.FacebookInitProvider"
-645-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:31:13-72
+645-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:31:13-72
 646            android:exported="false" />
-646-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:32:13-37
+646-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:32:13-37
 647
 648        <receiver
-648-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:34:9-40:20
+648-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:34:9-40:20
 649            android:name="com.facebook.CurrentAccessTokenExpirationBroadcastReceiver"
-649-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:35:13-86
+649-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:35:13-86
 650            android:exported="false" >
-650-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:36:13-37
+650-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:36:13-37
 651            <intent-filter>
-651-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:37:13-39:29
+651-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:37:13-39:29
 652                <action android:name="com.facebook.sdk.ACTION_CURRENT_ACCESS_TOKEN_CHANGED" />
-652-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:38:17-95
-652-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:38:25-92
+652-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:38:17-95
+652-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:38:25-92
 653            </intent-filter>
 654        </receiver>
 655        <receiver
-655-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:41:9-47:20
+655-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:41:9-47:20
 656            android:name="com.facebook.AuthenticationTokenManager$CurrentAuthenticationTokenChangedBroadcastReceiver"
-656-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:42:13-118
+656-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:42:13-118
 657            android:exported="false" >
-657-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:43:13-37
+657-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:43:13-37
 658            <intent-filter>
-658-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:44:13-46:29
+658-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:44:13-46:29
 659                <action android:name="com.facebook.sdk.ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED" />
-659-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:45:17-103
-659-->[com.facebook.android:facebook-core:16.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\7c9b1332d3cd9b54f53cb2d37684cea7\jetified-facebook-core-16.0.1\AndroidManifest.xml:45:25-100
+659-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:45:17-103
+659-->[com.facebook.android:facebook-core:16.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\8db8650f040b50152be85216f8ea8422\jetified-facebook-core-16.1.2\AndroidManifest.xml:45:25-100
 660            </intent-filter>
 661        </receiver>
 662

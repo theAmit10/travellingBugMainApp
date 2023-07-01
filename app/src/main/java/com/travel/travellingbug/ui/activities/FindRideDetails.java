@@ -133,7 +133,7 @@ public class FindRideDetails extends AppCompatActivity {
 
                         JSONArray filtersJsonArray = jsonObject.getJSONArray("filters");
 
-                        location = jsonArray.getJSONObject(0).optString("s_address") + " -> " + jsonArray.getJSONObject(0).optString("d_address");
+                        location = jsonArray.getJSONObject(0).optString("s_address") + " --> " + jsonArray.getJSONObject(0).optString("d_address");
                         System.out.println("location " + location);
 
                         if (filtersJsonArray != null && filtersJsonArray.length() > 0) {

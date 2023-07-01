@@ -65,6 +65,8 @@ public class UserChatActivity extends AppCompatActivity {
     private TextView lblTitle;
     private String requestId;
     private String providerId;
+    private String messageType;
+
     private String userName;
     //    private CustomDialog customDialog;
     private ConnectionHelper helper;
@@ -89,6 +91,7 @@ public class UserChatActivity extends AppCompatActivity {
             if (intent.hasExtra("requestId")) {
                 requestId = intent.getExtras().getString("requestId");
                 providerId = intent.getExtras().getString("providerId");
+                messageType = intent.getExtras().getString("messageType");
                 userName = intent.getExtras().getString("userName");
                 userID = intent.getExtras().getString("userId");
                 if (userName != null) {
@@ -193,24 +196,47 @@ public class UserChatActivity extends AppCompatActivity {
 
                     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     String formattedDate = df.format(c.getTime());
-                    ChatAppMsgDTO msgDto = new ChatAppMsgDTO(ChatAppMsgDTO.MSG_TYPE_SENT, msgContent, formattedDate + "");
-                    msgDtoList.add(msgDto);
-                    getChatDetailsp_u(msgContent);
-                    int newMsgPosition = msgDtoList.size() - 1;
-                    // Notify recycler view insert one new data.
-                    try {
-                        chatAppMsgAdapter = new ChatAppMsgAdapter(msgDtoList);
 
-                        // Set data adapter to RecyclerView.
-                        recyclerChat.setAdapter(chatAppMsgAdapter);
-                        recyclerChat.scrollToPosition(chatAppMsgAdapter.getItemCount() - 1);
+                    if(messageType.equalsIgnoreCase("pu")){
+                        ChatAppMsgDTO msgDto = new ChatAppMsgDTO(ChatAppMsgDTO.MSG_TYPE_RECEIVED, msgContent, formattedDate + "");
+                        msgDtoList.add(msgDto);
+                        getChatDetailsp_u(msgContent);
+                        int newMsgPosition = msgDtoList.size() - 1;
                         // Notify recycler view insert one new data.
-                        chatAppMsgAdapter.notifyItemInserted(newMsgPosition);
-                        // Scroll RecyclerView to the last message.
-                        recyclerChat.scrollToPosition(newMsgPosition);
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                        try {
+                            chatAppMsgAdapter = new ChatAppMsgAdapter(msgDtoList);
+
+                            // Set data adapter to RecyclerView.
+                            recyclerChat.setAdapter(chatAppMsgAdapter);
+                            recyclerChat.scrollToPosition(chatAppMsgAdapter.getItemCount() - 1);
+                            // Notify recycler view insert one new data.
+                            chatAppMsgAdapter.notifyItemInserted(newMsgPosition);
+                            // Scroll RecyclerView to the last message.
+                            recyclerChat.scrollToPosition(newMsgPosition);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+                        ChatAppMsgDTO msgDto = new ChatAppMsgDTO(ChatAppMsgDTO.MSG_TYPE_SENT, msgContent, formattedDate + "");
+                        msgDtoList.add(msgDto);
+                        getChatDetailsp_u(msgContent);
+                        int newMsgPosition = msgDtoList.size() - 1;
+                        // Notify recycler view insert one new data.
+                        try {
+                            chatAppMsgAdapter = new ChatAppMsgAdapter(msgDtoList);
+
+                            // Set data adapter to RecyclerView.
+                            recyclerChat.setAdapter(chatAppMsgAdapter);
+                            recyclerChat.scrollToPosition(chatAppMsgAdapter.getItemCount() - 1);
+                            // Notify recycler view insert one new data.
+                            chatAppMsgAdapter.notifyItemInserted(newMsgPosition);
+                            // Scroll RecyclerView to the last message.
+                            recyclerChat.scrollToPosition(newMsgPosition);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
+
 
                     // Empty the input edit text box.
                     msgInputText.setText("");
@@ -306,8 +332,9 @@ public class UserChatActivity extends AppCompatActivity {
 //                url = URLHelper.ChatGetMessage + userID + "@" + providerId;
 //            }
 
+
             if (requestId != "" && requestId != null) {
-                url = URLHelper.CHAT_API +"?request_id=" + requestId;
+                url = URLHelper.CHAT_API +"?request_id=" + requestId+"&chattype="+messageType;
             } else {
                 url = URLHelper.CHAT_API + userID + "@" + providerId;
             }
@@ -338,7 +365,7 @@ public class UserChatActivity extends AppCompatActivity {
                                 chatList.setMessage(jo.getString("message"));
                                 chatList.setType(jo.getString("type"));
                                 if (!jo.getString("created_at").contains("null")) {
-                                    if (jo.getString("type").contains("pu")) {
+                                    if (jo.getString("type").contains("up")) {
                                         ChatAppMsgDTO msgDto = new ChatAppMsgDTO(ChatAppMsgDTO.MSG_TYPE_SENT, jo.getString("message"), jo.getString("created_at"));
                                         msgDtoList.add(msgDto);
                                     } else {
@@ -468,13 +495,24 @@ public class UserChatActivity extends AppCompatActivity {
     public void getChatDetailsp_u(String message) {
 
         String url;
-        if (providerId != null && userID != null) {
-            if (requestId != null) {
-                url = URLHelper.ChatGetMessage + requestId + "&message=" + message + "&provider_id=" + providerId + "&user_id=" + Integer.parseInt(userID) + "&type=pu";
-            } else {
-                url = URLHelper.ChatGetMessage + userID + "@" + providerId + "&message=" + message + "&provider_id=" + providerId + "&user_id=" + Integer.parseInt(userID) + "&type=pu";
-            }
-        } else {
+//        if (providerId != null && userID != null) {
+//            if (requestId != null) {
+////                url = URLHelper.ChatGetMessage + requestId + "&message=" + message + "&provider_id=" + providerId + "&user_id=" + Integer.parseInt(userID) + "&type=pu";
+//                url = URLHelper.CHAT_API+"request_id=" + requestId +"&send_to=" +Integer.parseInt(userID)+ "&message=" + message  + "&chattype="+messageType;
+//            } else {
+////                url = URLHelper.ChatGetMessage + userID + "@" + providerId + "&message=" + message + "&provider_id=" + providerId + "&user_id=" + Integer.parseInt(userID) + "&type=pu";
+//                url = URLHelper.ChatGetMessage + userID + "@" + providerId + "&message=" + message + "&provider_id=" + providerId + "&user_id=" + Integer.parseInt(userID) + "&type=pu";
+//            }
+//        }
+////        else {
+////            url = URLHelper.ChatGetMessage + SharedHelper.getKey(context, "current_chat_request_id") + "&message=" + message + "&provider_id=" + SharedHelper.getKey(context, "current_chat_provider_id") +
+////                    "&user_id=" + SharedHelper.getKey(context, "current_chat_user_id") + "&type=pu";
+////        }
+
+        if(requestId != null && userID != null && messageType != null ){
+
+            url = URLHelper.CHAT_API+"?request_id=" + requestId +"&send_to=" +Integer.parseInt(userID)+ "&message=" + message  + "&chattype="+messageType;
+        }else {
             url = URLHelper.ChatGetMessage + SharedHelper.getKey(context, "current_chat_request_id") + "&message=" + message + "&provider_id=" + SharedHelper.getKey(context, "current_chat_provider_id") +
                     "&user_id=" + SharedHelper.getKey(context, "current_chat_user_id") + "&type=pu";
         }

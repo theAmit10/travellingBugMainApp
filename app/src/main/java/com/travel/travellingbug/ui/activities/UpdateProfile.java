@@ -27,6 +27,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,6 +42,8 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
     Button btnUpdate;
     Boolean isInternet;
     ConnectionHelper helper;
+
+    ArrayList<String> checker = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +73,9 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
     private void getIntentData() {
         parameter = getIntent().getStringExtra("parameter");
         value = getIntent().getStringExtra("value");
+
+
+
         if (parameter.equalsIgnoreCase("first_name")) {
 
             toolName.setText(getString(R.string.update_name));
@@ -114,14 +120,48 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+
+        checker.add("");
+        checker.add("");
+        checker.add("");
+        checker.add("");
+        checker.add("");
+        checker.add("");
+        checker.add("");
+
+
         if (v.getId() == R.id.backArrow) {
             onBackPressed();
             finish();
         }
         if (v.getId() == R.id.btnUpdate) {
-            if (editText.getText().toString().equals("")) {
+            if (editText.getText().toString().equals("") ) {
                 text_input_layout.setError("This field is not empty");
-            } else {
+            }
+            else if(editText.getText().toString().equals("Confirm your email") ){
+                text_input_layout.setError("This field is not empty");
+            }
+            else if(editText.getText().toString().equals("Update Name") ){
+                text_input_layout.setError("This field is not empty");
+            }
+            else if(editText.getText().toString().equals("Update Account Email") ){
+                text_input_layout.setError("This field is not empty");
+            }
+            else if(editText.getText().toString().equals("Update Mobile No") ){
+                text_input_layout.setError("This field is not empty");
+            }
+            else if(editText.getText().toString().equals("Update a Mini Bio") ){
+                text_input_layout.setError("This field is not empty");
+            }
+            else if(editText.getText().toString().equals("Confirm your email") ){
+                text_input_layout.setError("This field is not empty");
+            }
+            else if(editText.getText().toString().equals("Add a mini bio") ){
+                text_input_layout.setError("This field is not empty");
+            }else if(editText.getText().toString().equals("Enter Name") ){
+                text_input_layout.setError("This field is not empty");
+            }
+            else {
                 if (isInternet) {
                     if (parameter.equals("first_name")) {
 

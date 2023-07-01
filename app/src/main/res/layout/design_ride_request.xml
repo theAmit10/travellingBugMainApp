@@ -39,8 +39,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/ic_green_tick"
+                android:fontFamily="@font/montserrat_semibold"
                 android:drawablePadding="@dimen/_10sdp"
-                android:text="David Johnson"
+                android:text="@string/username"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold" />

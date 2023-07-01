@@ -1116,11 +1116,19 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         flowValue = 0;
         layoutChanges();
 
-        //Load animation
-        slide_down = AnimationUtils.loadAnimation(getContext(), R.anim.slide_down);
-        slide_up = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up);
-        slide_up_top = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up_top);
-        slide_up_down = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up_down);
+
+        try {
+            //Load animation
+            slide_down = AnimationUtils.loadAnimation(getContext(), R.anim.slide_down);
+            slide_up = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up);
+            slide_up_top = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up_top);
+            slide_up_down = AnimationUtils.loadAnimation(getContext(), R.anim.slide_up_down);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
         imgNavigate.setOnClickListener(v -> {
             Uri naviUri2 = Uri.parse("http://maps.google.com/maps?"
                     + "saddr=" + source_lat + "," + source_lng
@@ -1916,7 +1924,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         builder.setTitle(context.getString(R.string.app_name))
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.drawable.app_logo_org)
                 .setMessage("GPS is disabled in your device. Enable it?")
                 .setCancelable(false)
                 .setPositiveButton("Enable GPS",
@@ -1946,10 +1954,11 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 }
 
                 placePredictions = (PlacePredictions) data.getSerializableExtra("Location Address");
+
                 strPickLocation = data.getExtras().getString("pick_location");
                 strPickType = data.getExtras().getString("type");
 
-                Toast.makeText(activity, "Result Success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Processing", Toast.LENGTH_SHORT).show();
 
 
                 if (strPickLocation.equalsIgnoreCase("yes")) {
@@ -3408,6 +3417,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
         getPastTripRate();
     }
+
 
     void getPastTripRate() {
         String auth = "Bearer " + SharedHelper.getKey(context, "access_token");

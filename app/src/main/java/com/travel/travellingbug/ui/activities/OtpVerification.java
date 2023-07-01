@@ -61,7 +61,7 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
         setUpVerificatonCallbacks();
         backArrow.setOnClickListener(v -> onBackPressed());
         tvResend.setOnClickListener(v -> {
-
+            Toast.makeText(this, "Processing", Toast.LENGTH_SHORT).show();
             setUpVerificatonCallbacks();
 
             PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -79,23 +79,49 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
                 TimeUnit.SECONDS,   // Unit of timeout
                 OtpVerification.this,               // Activity (for callback binding)
                 verificationCallbacks);
-        btnverify.setOnClickListener(v -> {
-            if (!otpView.getText().toString().equals("")) {
-                try {
-                    PhoneAuthCredential credential =
-                            PhoneAuthProvider.getCredential(phoneVerificationId, otpView.getText().toString());
-                    signInWithPhoneAuthCredential(credential);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Toast toast = Toast.makeText(OtpVerification.this, "Verification Code is wrong", Toast.LENGTH_SHORT);
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.show();
+
+//        btnverify.setOnClickListener(v -> {
+//            if (!otpView.getText().toString().equals("")) {
+//                try {
+//                    PhoneAuthCredential credential =
+//                            PhoneAuthProvider.getCredential(phoneVerificationId, otpView.getText().toString());
+//                    signInWithPhoneAuthCredential(credential);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                    Toast toast = Toast.makeText(OtpVerification.this, "Verification Code is wrong", Toast.LENGTH_SHORT);
+//                    toast.setGravity(Gravity.CENTER, 0, 0);
+//                    toast.show();
+//                }
+//
+//            } else {
+//                Toast.makeText(OtpVerification.this, "Enter the Correct varification Code", Toast.LENGTH_SHORT).show();
+//            }
+//
+//        });
+
+
+
+        btnverify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("otp data : "+otpView.getText());
+                Toast.makeText(OtpVerification.this, "Processing", Toast.LENGTH_SHORT).show();
+                if (!otpView.getText().toString().equals("")) {
+                    try {
+                        PhoneAuthCredential credential =
+                                PhoneAuthProvider.getCredential(phoneVerificationId, otpView.getText().toString());
+                        signInWithPhoneAuthCredential(credential);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast toast = Toast.makeText(OtpVerification.this, "Verification Code is wrong", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
+                    }
+
+                } else {
+                    Toast.makeText(OtpVerification.this, "enter verification code", Toast.LENGTH_SHORT).show();
                 }
-
-            } else {
-                Toast.makeText(OtpVerification.this, "Enter the Correct varification Code", Toast.LENGTH_SHORT).show();
             }
-
         });
     }
 
@@ -171,6 +197,7 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
     @Override
     public void onOtpCompleted(String otp) {
         btnverify.setEnabled(true);
+        btnverify.setBackgroundResource(R.drawable.auth_btn_green_bg);
 
 
 //        Toast.makeText(this, "OnOtpCompletionListener called", Toast.LENGTH_SHORT).show();

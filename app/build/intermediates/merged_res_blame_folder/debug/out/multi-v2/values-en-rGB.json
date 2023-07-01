@@ -4,6 +4,23 @@
             "outputFile": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rGB\\values-en-rGB.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\47f25e4b29a4ebf4a515be24ad4ca6fa\\jetified-facebook-login-16.1.2\\res\\values-en-rGB\\values-en-rGB.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,190,302,410",
+                        "endColumns": "134,111,107,147",
+                        "endOffsets": "185,297,405,553"
+                    },
+                    "to": {
+                        "startLines": "37,38,39,40",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "3303,3438,3550,3658",
+                        "endColumns": "134,111,107,147",
+                        "endOffsets": "3433,3545,3653,3801"
+                    }
+                },
+                {
                     "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\7d9c5e333e231e20215083fc5250ad49\\jetified-play-services-basement-18.2.0\\res\\values-en-rGB\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -86,23 +103,6 @@
                         "startOffsets": "6804",
                         "endColumns": "108",
                         "endOffsets": "6908"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\e394fd799d189e7d477132202f9d2199\\jetified-facebook-login-16.0.1\\res\\values-en-rGB\\values-en-rGB.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,190,302,410",
-                        "endColumns": "134,111,107,147",
-                        "endOffsets": "185,297,405,553"
-                    },
-                    "to": {
-                        "startLines": "37,38,39,40",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "3303,3438,3550,3658",
-                        "endColumns": "134,111,107,147",
-                        "endOffsets": "3433,3545,3653,3801"
                     }
                 },
                 {

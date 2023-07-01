@@ -133,7 +133,7 @@ public class OnGoingTrips extends Fragment {
         customDialog.show();
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.MY_PUBLISH_UPCOMMING_TRIPS, response -> {
-
+            customDialog.dismiss();
             Log.v("GetPublishedList", response.toString());
             if (response != null) {
                 upcomingsAdapter = new UpcomingsAdapter(response);
@@ -155,7 +155,7 @@ public class OnGoingTrips extends Fragment {
                 recyclerView.setVisibility(View.GONE);
             }
 
-            customDialog.dismiss();
+
 
         }, error -> {
             customDialog.dismiss();
@@ -227,8 +227,53 @@ public class OnGoingTrips extends Fragment {
         Date d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).parse(date);
         Calendar cal = Calendar.getInstance();
         cal.setTime(d);
-        String monthName = new SimpleDateFormat("MMM").format(cal.getTime());
-        return monthName;
+        String monthName = new SimpleDateFormat("M").format(cal.getTime());
+        String name = getMonthName(Integer.parseInt(monthName));
+
+
+        return name;
+    }
+
+    public  String getMonthName(int month)
+    {
+        switch(month)
+        {
+            case 1:
+                return "Jan";
+            case 2:
+                return "Feb";
+            case 3:
+                return "Mar";
+
+            case 4:
+                return "April";
+
+            case 5:
+                return "May";
+
+            case 6:
+                return "June";
+
+            case 7:
+                return "July";
+
+            case 8:
+                return "Aug";
+
+            case 9:
+                return "Sep";
+
+            case 10:
+                return "Oct";
+
+            case 11:
+                return "Nov";
+
+            case 12:
+                return "Dec";
+
+        }
+        return "";
     }
 
     private String getDate(String date) throws ParseException {

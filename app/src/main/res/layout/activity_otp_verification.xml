@@ -70,7 +70,6 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:gravity="center"
-            android:fontFamily="@font/montserrat_semibold"
             android:text="please enter your one time password here"
             android:textColor="@color/colorDarkGray"
             android:textSize="@dimen/_12sdp" />
@@ -132,7 +131,7 @@
         android:layout_height="@dimen/_40sdp"
         android:layout_gravity="bottom"
         android:layout_margin="@dimen/_10sdp"
-        android:background="@drawable/auth_btn_green_bg"
+        android:background="@drawable/auth_btn_gray_bg"
         android:enabled="false"
         android:fontFamily="@font/montserrat_semibold"
         android:text="Continue"

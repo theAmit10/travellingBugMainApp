@@ -51,10 +51,29 @@ public class VerifyIdMainActivityAdapter extends RecyclerView.Adapter<VerifyIdMa
                 intent.putExtra("title", verifyIdMainActivityModel.getTitle());
                 intent.putExtra("subtitle", verifyIdMainActivityModel.getDescription());
                 intent.putExtra("title_id", verifyIdMainActivityModel.getTitle_id());
+                intent.putExtra("update", "no");
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 v.getContext().startActivity(intent);
             }
         });
+
+
+        holder.preferenceContainer.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(v.getContext(), UpdatePreference.class);
+                intent.putExtra("id", verifyIdMainActivityModel.getId());
+                intent.putExtra("title", verifyIdMainActivityModel.getTitle());
+                intent.putExtra("subtitle", verifyIdMainActivityModel.getDescription());
+                intent.putExtra("title_id", verifyIdMainActivityModel.getTitle_id());
+                intent.putExtra("update", "yes");
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                v.getContext().startActivity(intent);
+                return true;
+            }
+        });
+
+
 
     }
 

@@ -123,10 +123,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
                     SharedHelper.putKey(getApplicationContext(), "mobile", phone);
                     Log.v("Phonecode", phone + " ");
-                    registerAPI();
-//                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
-//                    intent.putExtra("phonenumber", phone);
-//                    startActivityForResult(intent, APP_REQUEST_CODE);
+//                    registerAPI();
+                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
+                    intent.putExtra("phonenumber", phone);
+                    startActivityForResult(intent, APP_REQUEST_CODE);
 
 
                 } else {
@@ -139,6 +139,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(SignUp.this, "Processing", Toast.LENGTH_SHORT).show();
                 startActivityForResult(new Intent(SignUp.this, GoogleLoginActivity.class), GOOGLE_LOGIN);
             }
         });
@@ -146,6 +147,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         btnFb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(SignUp.this, "Processing", Toast.LENGTH_SHORT).show();
                 startActivityForResult(new Intent(SignUp.this, FaceBookLoginActivity.class), FACEBOOK_LOGIN);
             }
         });

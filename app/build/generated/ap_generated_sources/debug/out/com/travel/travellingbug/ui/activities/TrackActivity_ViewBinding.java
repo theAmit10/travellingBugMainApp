@@ -23,33 +23,33 @@ import java.lang.Override;
 public class TrackActivity_ViewBinding implements Unbinder {
   private TrackActivity target;
 
-  private View view7f0a0630;
+  private View view7f0a062b;
 
-  private View view7f0a02b5;
-
-  private View view7f0a02d4;
+  private View view7f0a02b3;
 
   private View view7f0a02d2;
 
-  private View view7f0a038c;
+  private View view7f0a02d0;
 
-  private View view7f0a0382;
+  private View view7f0a038a;
+
+  private View view7f0a0380;
 
   private View view7f0a0117;
+
+  private View view7f0a0379;
+
+  private View view7f0a02ca;
+
+  private View view7f0a02cf;
+
+  private View view7f0a0118;
+
+  private View view7f0a0373;
 
   private View view7f0a037b;
 
   private View view7f0a02cc;
-
-  private View view7f0a02d1;
-
-  private View view7f0a0118;
-
-  private View view7f0a0375;
-
-  private View view7f0a037d;
-
-  private View view7f0a02ce;
 
   private View view7f0a012d;
 
@@ -59,7 +59,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
 
   private View view7f0a0119;
 
-  private View view7f0a02bc;
+  private View view7f0a02ba;
 
   @UiThread
   public TrackActivity_ViewBinding(TrackActivity target) {
@@ -89,7 +89,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     target.txtDiscount = Utils.findRequiredViewAsType(source, R.id.txtDiscount, "field 'txtDiscount'", TextView.class);
     view = Utils.findRequiredView(source, R.id.txtPickUpNotes, "field 'txtPickUpNotes' and method 'spcialiNotesClcik'");
     target.txtPickUpNotes = Utils.castView(view, R.id.txtPickUpNotes, "field 'txtPickUpNotes'", TextView.class);
-    view7f0a0630 = view;
+    view7f0a062b = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -98,7 +98,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.imgBack, "field 'imgBack' and method 'imgBackClick'");
     target.imgBack = Utils.castView(view, R.id.imgBack, "field 'imgBack'", ImageView.class);
-    view7f0a02b5 = view;
+    view7f0a02b3 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -107,7 +107,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.imgSos, "field 'imgSos' and method 'imgSosClick'");
     target.imgSos = Utils.castView(view, R.id.imgSos, "field 'imgSos'", ImageView.class);
-    view7f0a02d4 = view;
+    view7f0a02d2 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -116,7 +116,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.imgShareRide, "field 'imgShareRide' and method 'imgShareRideClick'");
     target.imgShareRide = Utils.castView(view, R.id.imgShareRide, "field 'imgShareRide'", ImageView.class);
-    view7f0a02d2 = view;
+    view7f0a02d0 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -125,7 +125,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.mapfocus, "field 'mapfocus' and method 'mapfocusClick'");
     target.mapfocus = Utils.castView(view, R.id.mapfocus, "field 'mapfocus'", ImageView.class);
-    view7f0a038c = view;
+    view7f0a038a = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -135,7 +135,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     target.shadowBack = Utils.findRequiredViewAsType(source, R.id.shadowBack, "field 'shadowBack'", ImageView.class);
     view = Utils.findRequiredView(source, R.id.lnrWaitingForProviders, "field 'lnrWaitingForProviders' and method 'lnrWaitingForProvidersClick'");
     target.lnrWaitingForProviders = Utils.castView(view, R.id.lnrWaitingForProviders, "field 'lnrWaitingForProviders'", RelativeLayout.class);
-    view7f0a0382 = view;
+    view7f0a0380 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -154,7 +154,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.lnrProviderAccepted, "field 'lnrProviderAccepted' and method 'lnrProviderAcceptedClick'");
     target.lnrProviderAccepted = Utils.castView(view, R.id.lnrProviderAccepted, "field 'lnrProviderAccepted'", LinearLayout.class);
-    view7f0a037b = view;
+    view7f0a0379 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -164,7 +164,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     target.AfterAcceptButtonLayout = Utils.findRequiredViewAsType(source, R.id.AfterAcceptButtonLayout, "field 'AfterAcceptButtonLayout'", LinearLayout.class);
     view = Utils.findRequiredView(source, R.id.imgProvider, "field 'imgProvider' and method 'imgProviderClick'");
     target.imgProvider = Utils.castView(view, R.id.imgProvider, "field 'imgProvider'", CircleImageView.class);
-    view7f0a02cc = view;
+    view7f0a02ca = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -173,7 +173,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.imgServiceRequested, "field 'imgServiceRequested' and method 'serviceDetails'");
     target.imgServiceRequested = Utils.castView(view, R.id.imgServiceRequested, "field 'imgServiceRequested'", ImageView.class);
-    view7f0a02d1 = view;
+    view7f0a02cf = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -196,7 +196,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.lnrInvoice, "field 'lnrInvoice' and method 'lnrInvoiceClick'");
     target.lnrInvoice = Utils.castView(view, R.id.lnrInvoice, "field 'lnrInvoice'", LinearLayout.class);
-    view7f0a0375 = view;
+    view7f0a0373 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -212,7 +212,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     target.btnPayNow = Utils.findRequiredViewAsType(source, R.id.btnPayNow, "field 'btnPayNow'", Button.class);
     view = Utils.findRequiredView(source, R.id.lnrRateProvider, "field 'lnrRateProvider' and method 'lnrRateProviderClick'");
     target.lnrRateProvider = Utils.castView(view, R.id.lnrRateProvider, "field 'lnrRateProvider'", LinearLayout.class);
-    view7f0a037d = view;
+    view7f0a037b = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -222,7 +222,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     target.lblProviderName = Utils.findRequiredViewAsType(source, R.id.lblProviderName, "field 'lblProviderName'", TextView.class);
     view = Utils.findRequiredView(source, R.id.imgProviderRate, "field 'imgProviderRate' and method 'imgProviderRateClick'");
     target.imgProviderRate = Utils.castView(view, R.id.imgProviderRate, "field 'imgProviderRate'", CircleImageView.class);
-    view7f0a02ce = view;
+    view7f0a02cc = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -273,7 +273,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.imgEditDestination, "field 'imgEditDestination' and method 'changeDestination'");
     target.imgEditDestination = Utils.castView(view, R.id.imgEditDestination, "field 'imgEditDestination'", ImageView.class);
-    view7f0a02bc = view;
+    view7f0a02ba = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -347,34 +347,34 @@ public class TrackActivity_ViewBinding implements Unbinder {
     target.btnChat = null;
     target.imgEditDestination = null;
 
-    view7f0a0630.setOnClickListener(null);
-    view7f0a0630 = null;
-    view7f0a02b5.setOnClickListener(null);
-    view7f0a02b5 = null;
-    view7f0a02d4.setOnClickListener(null);
-    view7f0a02d4 = null;
+    view7f0a062b.setOnClickListener(null);
+    view7f0a062b = null;
+    view7f0a02b3.setOnClickListener(null);
+    view7f0a02b3 = null;
     view7f0a02d2.setOnClickListener(null);
     view7f0a02d2 = null;
-    view7f0a038c.setOnClickListener(null);
-    view7f0a038c = null;
-    view7f0a0382.setOnClickListener(null);
-    view7f0a0382 = null;
+    view7f0a02d0.setOnClickListener(null);
+    view7f0a02d0 = null;
+    view7f0a038a.setOnClickListener(null);
+    view7f0a038a = null;
+    view7f0a0380.setOnClickListener(null);
+    view7f0a0380 = null;
     view7f0a0117.setOnClickListener(null);
     view7f0a0117 = null;
+    view7f0a0379.setOnClickListener(null);
+    view7f0a0379 = null;
+    view7f0a02ca.setOnClickListener(null);
+    view7f0a02ca = null;
+    view7f0a02cf.setOnClickListener(null);
+    view7f0a02cf = null;
+    view7f0a0118.setOnClickListener(null);
+    view7f0a0118 = null;
+    view7f0a0373.setOnClickListener(null);
+    view7f0a0373 = null;
     view7f0a037b.setOnClickListener(null);
     view7f0a037b = null;
     view7f0a02cc.setOnClickListener(null);
     view7f0a02cc = null;
-    view7f0a02d1.setOnClickListener(null);
-    view7f0a02d1 = null;
-    view7f0a0118.setOnClickListener(null);
-    view7f0a0118 = null;
-    view7f0a0375.setOnClickListener(null);
-    view7f0a0375 = null;
-    view7f0a037d.setOnClickListener(null);
-    view7f0a037d = null;
-    view7f0a02ce.setOnClickListener(null);
-    view7f0a02ce = null;
     view7f0a012d.setOnClickListener(null);
     view7f0a012d = null;
     view7f0a011a.setOnClickListener(null);
@@ -383,7 +383,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     view7f0a0115 = null;
     view7f0a0119.setOnClickListener(null);
     view7f0a0119 = null;
-    view7f0a02bc.setOnClickListener(null);
-    view7f0a02bc = null;
+    view7f0a02ba.setOnClickListener(null);
+    view7f0a02ba = null;
   }
 }

@@ -41,6 +41,7 @@ public class DriverProfileActivity extends AppCompatActivity {
     RatingBar listitemrating;
 
     String user_id = "";
+    String request_id = "";
     private String[] titles = {"ABOUT", "REVIEWS"};
 
     @Override
@@ -53,6 +54,8 @@ public class DriverProfileActivity extends AppCompatActivity {
         tabLayoutController();
 
         user_id  = getIntent().getStringExtra("user_id");
+        request_id  = getIntent().getStringExtra("request_id");
+
         if(getIntent().getStringExtra("user_id") != null){
             getProfileData(user_id);
         }
