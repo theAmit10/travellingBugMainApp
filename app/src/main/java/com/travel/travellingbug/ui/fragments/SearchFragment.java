@@ -395,24 +395,30 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     public void onCameraMove() {
         Utilities.print("Current marker", "Zoom Level " + mMap.getCameraPosition().zoom);
         cmPosition = mMap.getCameraPosition();
-        if (marker != null) {
-            if (!mMap.getProjection().getVisibleRegion().latLngBounds.contains(marker.getPosition())) {
-                Utilities.print("Current marker", "Current Marker is not visible");
-                if (mapfocus.getVisibility() == View.INVISIBLE) {
-                    mapfocus.setVisibility(View.VISIBLE);
-                }
-            } else {
-                Utilities.print("Current marker", "Current Marker is visible");
-                if (mapfocus.getVisibility() == View.VISIBLE) {
-                    mapfocus.setVisibility(View.INVISIBLE);
-                }
-                if (mMap.getCameraPosition().zoom < 16.0f) {
+        try {
+            if (marker != null) {
+                if (!mMap.getProjection().getVisibleRegion().latLngBounds.contains(marker.getPosition())) {
+                    Utilities.print("Current marker", "Current Marker is not visible");
                     if (mapfocus.getVisibility() == View.INVISIBLE) {
                         mapfocus.setVisibility(View.VISIBLE);
                     }
+                } else {
+                    Utilities.print("Current marker", "Current Marker is visible");
+                    if (mapfocus.getVisibility() == View.VISIBLE) {
+                        mapfocus.setVisibility(View.INVISIBLE);
+                    }
+                    if (mMap.getCameraPosition().zoom < 16.0f) {
+                        if (mapfocus.getVisibility() == View.INVISIBLE) {
+                            mapfocus.setVisibility(View.VISIBLE);
+                        }
+                    }
                 }
             }
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
     }
 
     public SearchFragment() {
@@ -1553,7 +1559,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         Double dlong = Double.valueOf(destination_longitude);
 
                         String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
-                        frmDest.setText(destination_address);
+                        if(destination_address.equalsIgnoreCase("")){
+                            frmDest.setText("Going to");
+                        }else {
+                            frmDest.setText(destination_address);
+                        }
                     } else {
                         frmDest.setText("Going to");
                     }
@@ -3738,6 +3748,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     if ((customDialog != null) && (customDialog.isShowing()))
                         customDialog.dismiss();
                     displayMessage(getString(R.string.something_went_wrong));
+                    error.printStackTrace();
                 }) {
                     @Override
                     public Map<String, String> getHeaders() throws AuthFailureError {

@@ -4475,25 +4475,32 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
                                     }
 
-                                    mMap.setOnCameraIdleListener(() -> {
-                                        if (sourceMarker != null) {
-                                            String lat = String.valueOf(sourceLatLng.latitude);
-                                            String lng = String.valueOf(sourceLatLng.longitude);
-                                            if (((lat != null) && !lat.equals("") && !lat.isEmpty() && !lat.equalsIgnoreCase("0,0")) &&
-                                                    ((lng != null) && !lng.equals("") && !lng.isEmpty() && !lng.equalsIgnoreCase("0,0"))) {
-                                                Point PickupPoint = mMap.getProjection().toScreenLocation(new LatLng(sourceLatLng.latitude, sourceLatLng.longitude));
-                                                sourceMarker.setAnchor(PickupPoint.x < dpToPx(context, 200) ? 0.00f : 1.00f, PickupPoint.y < dpToPx(context, 100) ? 0.20f : 1.20f);
-                                            }
+                                    try {
+                                        mMap.setOnCameraIdleListener(() -> {
+                                            if (sourceMarker != null) {
+                                                String lat = String.valueOf(sourceLatLng.latitude);
+                                                String lng = String.valueOf(sourceLatLng.longitude);
+                                                if (((lat != null) && !lat.equals("") && !lat.isEmpty() && !lat.equalsIgnoreCase("0,0")) &&
+                                                        ((lng != null) && !lng.equals("") && !lng.isEmpty() && !lng.equalsIgnoreCase("0,0"))) {
+                                                    Point PickupPoint = mMap.getProjection().toScreenLocation(new LatLng(sourceLatLng.latitude, sourceLatLng.longitude));
+                                                    sourceMarker.setAnchor(PickupPoint.x < dpToPx(context, 200) ? 0.00f : 1.00f, PickupPoint.y < dpToPx(context, 100) ? 0.20f : 1.20f);
+                                                }
 
-                                        }
-                                        if (destinationMarker != null) {
-                                            if (((dest_lat != null) && !dest_lat.equals("") && !dest_lat.isEmpty() && !dest_lat.equalsIgnoreCase("0,0")) &&
-                                                    ((dest_lng != null) && !dest_lng.equals("") && !dest_lng.isEmpty() && !dest_lng.equalsIgnoreCase("0,0"))) {
-                                                Point PickupPoint = mMap.getProjection().toScreenLocation(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)));
-                                                destinationMarker.setAnchor(PickupPoint.x < dpToPx(context, 200) ? 0.00f : 1.00f, PickupPoint.y < dpToPx(context, 100) ? 0.20f : 1.20f);
                                             }
-                                        }
-                                    });
+                                            if (destinationMarker != null) {
+                                                if (((dest_lat != null) && !dest_lat.equals("") && !dest_lat.isEmpty() && !dest_lat.equalsIgnoreCase("0,0")) &&
+                                                        ((dest_lng != null) && !dest_lng.equals("") && !dest_lng.isEmpty() && !dest_lng.equalsIgnoreCase("0,0"))) {
+                                                    Point PickupPoint = mMap.getProjection().toScreenLocation(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)));
+                                                    destinationMarker.setAnchor(PickupPoint.x < dpToPx(context, 200) ? 0.00f : 1.00f, PickupPoint.y < dpToPx(context, 100) ? 0.20f : 1.20f);
+                                                }
+                                            }
+                                        });
+
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+
+
                                     // just for testing
 //                                    lblCmfrmSourceAddress.setText(pickUpLocationName);
 //                                    lblDis.setText(totalDistance + " km");

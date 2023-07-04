@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-
+            android:fontFamily="@font/nunito_bold"
             android:gravity="center_vertical"
             android:text="PROFILE"
             android:textColor="@color/white"
@@ -48,7 +48,7 @@
             android:layout_marginBottom="@dimen/_10sdp"
             android:scaleType="centerCrop"
             android:src="@drawable/people"
-            app:civ_border_color="@color/green"
+            app:civ_border_color="@color/colorGray"
             app:civ_border_width="@dimen/_2sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView6"
@@ -70,6 +70,7 @@
                 android:drawableRight="@drawable/ic_green_tick"
                 android:drawablePadding="@dimen/_10sdp"
                 android:text="David Johnson"
+                android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold" />
@@ -98,6 +99,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
                     android:text="( 115 Reviews )"
+                    android:textStyle="bold"
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_7sdp" />
 
@@ -109,6 +111,7 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
+        style="@style/TabFont"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:background="@color/white"

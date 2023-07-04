@@ -4719,7 +4719,23 @@ font montserrat_semibold
 font montserrat_thin
 font muli_regular
 font muli_semibold
+font nunito_black
+font nunito_black_italic
+font nunito_bold
+font nunito_bold_italic
+font nunito_extra_bold
+font nunito_extra_bold_italic
+font nunito_extra_light
+font nunito_extra_light_italic
+font nunito_italic
 font nunito_italic_variablefont_wght
+font nunito_light
+font nunito_light_italic
+font nunito_medium
+font nunito_medium_italic
+font nunito_regular
+font nunito_semi_bold
+font nunito_semi_bold_italic
 font nunito_variablefont_wght
 id AFRIKAANS
 id ALT
@@ -5167,6 +5183,7 @@ id cut
 id dark
 id dataProtectionTv
 id date
+id dateTimeVal
 id dateVal
 id date_picker_actions
 id date_picker_day
@@ -5798,6 +5815,7 @@ id paymentLayout
 id paymentRefundsTv
 id paymentTextView
 id paymentTitle
+id paymentTv
 id paymentType
 id paymentTypeImg
 id payment_list_view
@@ -6521,6 +6539,7 @@ layout activity_offline
 layout activity_otp_verification
 layout activity_otp_verify_forget_password
 layout activity_payment
+layout activity_payment_and_refund
 layout activity_payment_methods
 layout activity_personal_details
 layout activity_pick_up_notes
@@ -6622,6 +6641,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_pasenger_data
 layout design_passenger_number
+layout design_payment_refund_history
 layout design_progress_bar
 layout design_ride_request
 layout design_stopover
@@ -7743,6 +7763,7 @@ style Base_Widget_MaterialComponents_TextView
 style CardView
 style CardView_Dark
 style CardView_Light
+style DesignTitle
 style Dexter_Internal_Theme_Transparent
 style EasyPermissions
 style EasyPermissions_Transparent
@@ -7850,7 +7871,10 @@ style ShapeAppearanceOverlay_TopRightDifferentCornerSize
 style StripeDefaultTheme
 style StripeErrorTextStyle
 style StripeToolBarStyle
+style SubSubTitle
+style SubTitle
 style SwitchTheme
+style TabFont
 style Test_ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Day
 style Test_Theme_MaterialComponents_MaterialCalendar
 style Test_Widget_MaterialComponents_MaterialCalendar
@@ -8080,6 +8104,7 @@ style ThemeOverlay_MaterialComponents_TimePicker_Display
 style ThemeOverlay_MaterialComponents_Toolbar_Primary
 style ThemeOverlay_MaterialComponents_Toolbar_Surface
 style ThemeOverlayColorAccentRed
+style Title
 style TitleBar
 style TitleBarSpring
 style Widget

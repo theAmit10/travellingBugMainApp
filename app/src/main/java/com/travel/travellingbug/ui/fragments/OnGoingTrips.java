@@ -353,6 +353,9 @@ public class OnGoingTrips extends Fragment {
 
     }
 
+
+
+
     private class UpcomingsAdapter extends RecyclerView.Adapter<UpcomingsAdapter.MyViewHolder> {
         JSONArray jsonArray;
 
@@ -401,7 +404,12 @@ public class OnGoingTrips extends Fragment {
 
                         holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
                         holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
-                        holder.status.setText(jsonArray.optJSONObject(position).optString("status"));
+
+                        String status_case = jsonArray.optJSONObject(position).optString("status");
+                        String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
+
+                        holder.status.setText(status_case_val);
+//                        holder.status.setText(jsonArray.optJSONObject(position).optString("status").toLowerCase());
 
                         if (jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("PENDING")) {
                             holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);

@@ -2,8 +2,8 @@
     android:viewportWidth="64" android:width="18dp" xmlns:android="http://schemas.android.com/apk/res/android">
     <path android:fillColor="#00000000"
         android:pathData="M32,18.14m-11.14,0a11.14,11.14 0,1 1,22.28 0a11.14,11.14 0,1 1,-22.28 0"
-        android:strokeColor="@color/dark_gray" android:strokeWidth="3"/>
+        android:strokeColor="@color/dark_gray" android:strokeWidth="5"/>
     <path android:fillColor="#00000000"
         android:pathData="M54.55,56.85A22.55,22.55 0,0 0,32 34.3h0A22.55,22.55 0,0 0,9.45 56.85Z"
-        android:strokeColor="@color/dark_gray" android:strokeWidth="3"/>
+        android:strokeColor="@color/dark_gray" android:strokeWidth="5"/>
 </vector>

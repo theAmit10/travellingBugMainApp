@@ -468,7 +468,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
     }
 
     private void applyFontToMenuItem(MenuItem mi) {
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/nunito_variablefont_wght.ttf");
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/nunito_regular.ttf");
         SpannableString mNewTitle = new SpannableString(mi.getTitle());
         mNewTitle.setSpan(new CustomTypefaceSpan("", font), 0,
                 mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
@@ -494,7 +494,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
             approvaltxt.setText(getText(R.string.banned));
             status.setImageResource(R.drawable.banned);
         } else {
-            approvaltxt.setTextColor(Color.GREEN);
+            approvaltxt.setTextColor(Color.WHITE);
             approvaltxt.setText(getText(R.string.approved));
             status.setImageResource(R.drawable.approved);
         }
@@ -516,7 +516,8 @@ public class HomeScreenActivity extends AppCompatActivity implements
             }else {
 
                 String rate_val = SharedHelper.getKey(HomeScreenActivity.this, "rating");
-                String rate_value = rate_val.substring(0,1);
+                int rate_valu = rate_val.indexOf(".");
+                String rate_value = rate_val.substring(0,rate_valu);
 
                 tvRate.setText(rate_value);
                 tvRate.setVisibility(View.VISIBLE);

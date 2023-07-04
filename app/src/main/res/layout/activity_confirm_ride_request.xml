@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+android:fontFamily="@font/nunito_bold"
             android:text="CONFIRM RIDE REQUEST"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp" />
@@ -78,6 +78,7 @@
                         android:layout_height="wrap_content"
                         android:text="David Johnson"
                         android:drawableRight="@drawable/ic_green_tick"
+                        android:fontFamily="@font/nunito_bold"
                         android:drawablePadding="@dimen/_10sdp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
@@ -90,6 +91,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Honda Civic | white "
+                        android:textStyle="bold"
                         android:textColor="@color/colorDarkGray"
                         android:textSize="@dimen/_9sdp" />
                 </LinearLayout>
@@ -104,6 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Location "
+                android:fontFamily="@font/nunito_bold"
                 android:layout_marginStart="@dimen/_70sdp"
                 android:textColor="@color/green"
                 android:textSize="@dimen/_12sdp"
@@ -197,6 +200,7 @@
                     android:layout_marginStart="@dimen/_30sdp"
                     android:maxLines="1"
                     android:text="Drop location"
+
                     android:textColor="@color/colorGray"
                     android:textSize="@dimen/_8sdp"
                     android:textStyle="bold"
@@ -220,6 +224,7 @@
                 android:text="Date &amp; Timings"
                 android:layout_marginStart="@dimen/_70sdp"
                 android:textColor="@color/green"
+                android:fontFamily="@font/nunito_bold"
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold" />
 
@@ -239,7 +244,7 @@
                     android:drawableLeft="@drawable/calendar_clock"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/colorGray"
-
+                    android:textStyle="bold"
                     android:text="Date"
                     android:textColor="@color/colorGray" />
                 <TextView
@@ -250,7 +255,7 @@
                     android:layout_marginStart="@dimen/_40sdp"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/dark_gray"
-
+                    android:textStyle="bold"
                     android:maxLines="1"
                     android:text="20 june, 2023"
                     android:textColor="@color/dark_gray" />
@@ -262,7 +267,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:textSize="@dimen/_8sdp"
                     android:drawableLeft="@drawable/ic_time"
-
+                    android:textStyle="bold"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/colorGray"
                     android:maxLines="1"
@@ -276,7 +281,7 @@
                     android:layout_marginStart="@dimen/_40sdp"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/dark_gray"
-
+                    android:textStyle="bold"
                     android:maxLines="1"
                     android:text="10:30 AM"
                     android:textColor="@color/dark_gray" />
@@ -295,6 +300,7 @@
                 android:layout_height="wrap_content"
                 android:text="Fare &amp; Seat Confirmation"
                 android:layout_marginStart="@dimen/_70sdp"
+                android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/green"
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold" />
@@ -315,7 +321,7 @@
                     android:drawableLeft="@drawable/fare"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/colorGray"
-
+                    android:textStyle="bold"
                     android:text="Fare"
                     android:textColor="@color/colorGray" />
                 <TextView
@@ -327,7 +333,7 @@
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/dark_gray"
 
-
+                    android:textStyle="bold"
                     android:maxLines="1"
                     android:text="RS. 1500"
                     android:textColor="@color/dark_gray" />
@@ -338,7 +344,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:drawableLeft="@drawable/seat"
-
+                    android:textStyle="bold"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/colorGray"
                     android:textSize="@dimen/_8sdp"
@@ -355,7 +361,7 @@
                     android:drawableTint="@color/dark_gray"
 
                     android:maxLines="1"
-
+                    android:textStyle="bold"
                     android:text="3 Seat"
                     android:textColor="@color/dark_gray" />
 
@@ -383,6 +389,7 @@
             android:background="@drawable/auth_btn_green_bg"
             android:padding="@dimen/_10sdp"
             android:text="Confirm Request"
+            android:fontFamily="@font/nunito_bold"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

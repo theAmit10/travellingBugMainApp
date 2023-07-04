@@ -68,6 +68,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.travel.travellingbug.ui.activities.PaymentAndRefundActivity"
+            android:exported="false" />
+        <activity
             android:name="com.travel.travellingbug.ui.activities.ProviderReviewActivity"
             android:exported="false" />
         <activity

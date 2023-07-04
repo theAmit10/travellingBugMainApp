@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-
+android:fontFamily="@font/nunito_bold"
             android:text="Booking Successful"
             android:textColor="@color/black"
             android:textSize="@dimen/_20sdp" />
@@ -35,8 +35,8 @@
             android:id="@+id/bookingStatusSubTitleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:gravity="center"
+            android:textStyle="bold"
             android:text="Your booking has been confirmed."
             android:textColor="@color/colorDarkGray"
             android:textSize="@dimen/_14sdp" />

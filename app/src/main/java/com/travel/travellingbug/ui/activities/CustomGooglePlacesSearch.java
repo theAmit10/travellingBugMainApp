@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,7 +36,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.net.PlacesClient;
@@ -48,8 +49,10 @@ import com.travel.travellingbug.utills.Utilities;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 
 public class CustomGooglePlacesSearch extends AppCompatActivity
         implements GoogleApiClient.ConnectionCallbacks,
@@ -80,11 +83,8 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
     private PlacePredictions placePredictions = new PlacePredictions();
 
 
-
-
     PlacesClient placesClient;
     String TAG = "CustomGoogleplacesearch";
-
 
 
     @Override
@@ -114,6 +114,21 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
         imgSourceClose = findViewById(R.id.imgSourceClose);
 
         txtPickLocation = findViewById(R.id.txtPickLocation);
+
+
+        try {
+            //permission to access location
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
+                    ActivityCompat.checkSelfPermission(CustomGooglePlacesSearch.this,
+                            Manifest.permission.ACCESS_FINE_LOCATION) !=
+                            PackageManager.PERMISSION_GRANTED) {
+                // Android M Permission check
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                System.out.println("location Permission granted ");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         String cursor = getIntent().getExtras().getString("cursor");
         String s_address = getIntent().getExtras().getString("s_address");
@@ -364,9 +379,9 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
 //            Toast.makeText(this, ""+mLastLocation.getLatitude(), Toast.LENGTH_SHORT).show();
 //            System.out.println("lat wasu "+mLastLocation.getLatitude()+ " Long : "+mLastLocation.getLongitude());
 
-            System.out.println("Postion : "+position);
-            System.out.println("view : "+view);
-            System.out.println("id : "+id);
+            System.out.println("Postion : " + position);
+            System.out.println("view : " + view);
+            System.out.println("id : " + id);
 
             if (txtaddressSource.getText().toString().equalsIgnoreCase("")) {
                 try {
@@ -393,11 +408,6 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
             }
 
 
-
-
-
-
-
         });
         backArrow.setOnClickListener(v -> {
             finish();
@@ -408,35 +418,54 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
     private void setGoogleAddress(int position) {
         if (mGoogleApiClient != null) {
 
-            Places.GeoDataApi.getPlaceById(mGoogleApiClient, predictions.getPlaces().get(position).getPlaceID())
-                    .setResultCallback(places -> {
-                        if (places.getStatus().isSuccess()) {
-                            Place myPlace = places.get(0);
-                            LatLng queriedLocation = myPlace.getLatLng();
-                            Log.v("Latitude is", "" + queriedLocation.latitude);
-                            Log.v("Longitude is", "" + queriedLocation.longitude);
-                            if (strSelected.equalsIgnoreCase("destination")) {
-                                placePredictions.strDestAddress = myPlace.getAddress().toString();
-                                placePredictions.strDestLatLng = myPlace.getLatLng().toString();
-                                placePredictions.strDestLatitude = myPlace.getLatLng().latitude + "";
-                                placePredictions.strDestLongitude = myPlace.getLatLng().longitude + "";
-                                txtDestination.setText(placePredictions.strDestAddress);
-                                txtDestination.setSelection(0);
-                            } else {
-                                placePredictions.strSourceAddress = myPlace.getAddress().toString();
-                                placePredictions.strSourceLatLng = myPlace.getLatLng().toString();
-                                placePredictions.strSourceLatitude = myPlace.getLatLng().latitude + "";
-                                placePredictions.strSourceLongitude = myPlace.getLatLng().longitude + "";
-                                txtaddressSource.setText(placePredictions.strSourceAddress);
-                                txtaddressSource.setSelection(0);
-                                txtDestination.requestFocus();
-                                mAutoCompleteAdapter = null;
-                            }
-                        }
-                        mAutoCompleteList.setVisibility(View.GONE);
 
+
+
+            Geocoder coder = new Geocoder(this);
+            List<Address> address;
+            LatLng queriedLocation = null;
+
+            try {
+                address = coder.getFromLocationName(predictions.getPlaces().get(position).getPlaceDesc(), 5);
+                for (int i=0;i<address.size(); i++){
+                    System.out.println("cursor address : "+i +" : " +address.get(i));
+                    System.out.println("cursor lat : "+i +" : " +address.get(i).getLatitude());
+                    System.out.println("cursor long : "+i +" : " +address.get(i).getLongitude());
+
+                }
+
+                if(address.size() > 0){
+
+                    queriedLocation = new LatLng(address.get(0).getLatitude(),address.get(0).getLongitude());
+                    System.out.println("cursor : " + strSelected);
+                    System.out.println("cursor Address : " +address.get(0).getAddressLine(0) );
+                    Log.v("cursorLatitude is", "" + queriedLocation.latitude);
+                    Log.v("cursorLongitude is", "" + queriedLocation.longitude);
+                    if (strSelected.equalsIgnoreCase("destination")) {
+                        placePredictions.strDestAddress = address.get(0).getAddressLine(0).toString();
+                        placePredictions.strDestLatLng = queriedLocation.toString();
+                        placePredictions.strDestLatitude = queriedLocation.latitude + "";
+                        placePredictions.strDestLongitude = queriedLocation.longitude + "";
+                        txtDestination.setText(placePredictions.strDestAddress);
+                        txtDestination.setSelection(0);
+                    } else {
+                        placePredictions.strSourceAddress = address.get(0).getAddressLine(0).toString();
+                        placePredictions.strSourceLatLng = queriedLocation.toString();
+                        placePredictions.strSourceLatitude = queriedLocation.latitude + "";
+                        placePredictions.strSourceLongitude = queriedLocation.longitude + "";
+                        txtaddressSource.setText(placePredictions.strSourceAddress);
+                        txtaddressSource.setSelection(0);
+                        txtDestination.requestFocus();
+                        mAutoCompleteAdapter = null;
+                    }
+
+                    mAutoCompleteList.setVisibility(View.GONE);
+                    System.out.println("cursor set google address ended : " + strSelected);
+                    System.out.println("cursor pridiction desc : " + predictions.getPlaces().get(position).getPlaceDesc());
+                    System.out.println("cursor pridiction id : " + predictions.getPlaces().get(position).getPlaceID());
+
+                    if(strSelected.equalsIgnoreCase("destination")){
                         if (txtDestination.getText().toString().length() > 0) {
-                            places.release();
                             if (strSelected.equalsIgnoreCase("destination")) {
                                 if (!placePredictions.strDestAddress.equalsIgnoreCase(placePredictions.strSourceAddress)) {
                                     setAddress();
@@ -444,11 +473,75 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                             }
                         } else {
                             txtDestination.requestFocus();
-                            txtDestination.setText("");
+                            txtDestination.setText("ABC");
                             imgDestClose.setVisibility(View.GONE);
                             mAutoCompleteList.setVisibility(View.GONE);
                         }
-                    });
+                    }
+
+
+                }
+
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+//            Places.GeoDataApi.getPlaceById(mGoogleApiClient, predictions.getPlaces().get(position).getPlaceID())
+//                    .setResultCallback(places -> {
+//                        if (places.getStatus().isSuccess()) {
+//                            Place myPlace = places.get(0);
+//                            LatLng queriedLocation = myPlace.getLatLng();
+//                            System.out.println("cursor : " + strSelected);
+//                            System.out.println("cursor Address : " + myPlace.getAddress());
+//                            Log.v("cursorLatitude is", "" + queriedLocation.latitude);
+//                            Log.v("cursorLongitude is", "" + queriedLocation.longitude);
+//                            if (strSelected.equalsIgnoreCase("destination")) {
+//                                placePredictions.strDestAddress = myPlace.getAddress().toString();
+//                                placePredictions.strDestLatLng = myPlace.getLatLng().toString();
+//                                placePredictions.strDestLatitude = myPlace.getLatLng().latitude + "";
+//                                placePredictions.strDestLongitude = myPlace.getLatLng().longitude + "";
+//                                txtDestination.setText(placePredictions.strDestAddress);
+//                                txtDestination.setSelection(0);
+//                            } else {
+//                                placePredictions.strSourceAddress = myPlace.getAddress().toString();
+//                                placePredictions.strSourceLatLng = myPlace.getLatLng().toString();
+//                                placePredictions.strSourceLatitude = myPlace.getLatLng().latitude + "";
+//                                placePredictions.strSourceLongitude = myPlace.getLatLng().longitude + "";
+//                                txtaddressSource.setText(placePredictions.strSourceAddress);
+//                                txtaddressSource.setSelection(0);
+//                                txtDestination.requestFocus();
+//                                mAutoCompleteAdapter = null;
+//                            }
+//                        }
+//                        mAutoCompleteList.setVisibility(View.GONE);
+//                        System.out.println("cursor set google address ended : " + strSelected);
+//                        System.out.println("cursor pridiction desc : " + predictions.getPlaces().get(position).getPlaceDesc());
+//                        System.out.println("cursor pridiction id : " + predictions.getPlaces().get(position).getPlaceID());
+//
+//                        if (txtDestination.getText().toString().length() > 0) {
+//                            places.release();
+//                            if (strSelected.equalsIgnoreCase("destination")) {
+//                                if (!placePredictions.strDestAddress.equalsIgnoreCase(placePredictions.strSourceAddress)) {
+//                                    setAddress();
+//                                }
+//                            }
+//                        } else {
+//                            txtDestination.requestFocus();
+//                            txtDestination.setText("");
+//                            imgDestClose.setVisibility(View.GONE);
+//                            mAutoCompleteList.setVisibility(View.GONE);
+//                        }
+//                    });
+
+
+
+
+
+
+
         }
     }
 
@@ -553,7 +646,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                     intent.putExtra("Location Address", placePredictions);
                     intent.putExtra("pick_location", "no");
 //                    intent.putExtra("pick_location", "yes");
-                    Toast.makeText(CustomGooglePlacesSearch.this, ""+placePredictions.getPlaces(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CustomGooglePlacesSearch.this, "" + placePredictions.getPlaces(), Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK, intent);
                 } else {
                     setResult(RESULT_CANCELED, intent);

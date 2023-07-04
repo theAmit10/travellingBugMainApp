@@ -20,6 +20,7 @@
             android:layout_marginStart="10dp"
             android:singleLine="true"
             android:text="Location"
+            android:fontFamily="@font/nunito_semi_bold"
             android:textColor="@color/black_text_color"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -32,6 +33,7 @@
             android:layout_marginTop="1dp"
             android:singleLine="true"
             android:text="Location Detail"
+            android:fontFamily="@font/nunito_semi_bold"
             android:textColor="#999999"
             android:textSize="12sp" />
     </LinearLayout>

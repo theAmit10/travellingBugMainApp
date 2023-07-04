@@ -25,7 +25,7 @@
                     android:id="@+id/txtuserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_semibold"
+                    android:fontFamily="@font/nunito_extra_bold"
                     android:text="Wasu"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp"
@@ -40,6 +40,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:text="New Comer"
+                    android:textSize="@dimen/_11sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/nunito_regular"
                     app:layout_constraintStart_toStartOf="@+id/txtuserName"
                     app:layout_constraintTop_toBottomOf="@+id/txtuserName" />
 
@@ -78,8 +81,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="Edit Profile Picture"
+                android:fontFamily="@font/nunito_regular"
                 android:textStyle="bold"
-                android:textColor="@color/green"
+                android:textColor="@color/dark_green"
                 android:textSize="@dimen/_11sdp" />
 
             <TextView
@@ -99,7 +103,7 @@
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_20sdp"
                 android:text="Verify your profile"
-                android:fontFamily="@font/montserrat_semibold"
+                android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
                  />
@@ -110,10 +114,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_add"
+                android:fontFamily="@font/nunito_regular"
                 android:drawablePadding="@dimen/_10sdp"
                 android:textStyle="bold"
                 android:text="Verify My ID"
-                android:textColor="@color/green"
+                android:textColor="@color/dark_green"
                 android:textSize="@dimen/_11sdp" />
 
             <TextView
@@ -121,12 +126,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-
+                android:fontFamily="@font/nunito_regular"
                 android:drawableLeft="@drawable/ic_add"
                 android:drawablePadding="@dimen/_10sdp"
                 android:textStyle="bold"
                 android:text="Name"
-                android:textColor="@color/green"
+                android:textColor="@color/dark_green"
                 android:textSize="@dimen/_11sdp" />
 
 
@@ -138,10 +143,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawableLeft="@drawable/ic_add"
+                android:fontFamily="@font/nunito_regular"
                 android:textStyle="bold"
                 android:drawablePadding="@dimen/_10sdp"
                 android:text="Confirm your email"
-                android:textColor="@color/green"
+                android:textColor="@color/dark_green"
                 android:textSize="@dimen/_11sdp" />
 
 
@@ -149,13 +155,13 @@
                 android:id="@+id/mobile_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:fontFamily="@font/nunito_regular"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:drawableLeft="@drawable/ic_add"
                 android:textStyle="bold"
                 android:drawablePadding="@dimen/_10sdp"
                 android:text="+91 9876543210"
-                android:textColor="@color/green"
+                android:textColor="@color/dark_green"
                 android:textSize="@dimen/_11sdp" />
 
 
@@ -174,7 +180,7 @@
                 android:text="About you"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
-                android:fontFamily="@font/montserrat_semibold" />
+                android:fontFamily="@font/nunito_bold" />
 
 
             <TextView
@@ -184,8 +190,9 @@
                 android:drawableLeft="@drawable/ic_add"
                 android:drawablePadding="@dimen/_10sdp"
                 android:textStyle="bold"
+                android:fontFamily="@font/nunito_regular"
                 android:text="Add a mini Bio"
-                android:textColor="@color/green"
+                android:textColor="@color/dark_green"
                 android:textSize="@dimen/_11sdp" />
 
 
@@ -197,8 +204,9 @@
                 android:drawableLeft="@drawable/ic_add"
                 android:drawablePadding="@dimen/_10sdp"
                 android:textStyle="bold"
+                android:fontFamily="@font/nunito_regular"
                 android:text="Add my Preferences"
-                android:textColor="@color/green"
+                android:textColor="@color/dark_green"
                 android:textSize="@dimen/_11sdp" />
 
 
@@ -217,7 +225,7 @@
                 android:text="Vehicles"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
-                android:fontFamily="@font/montserrat_semibold"/>
+                android:fontFamily="@font/nunito_bold"/>
 
 
             <TextView
@@ -229,8 +237,10 @@
                 android:drawableLeft="@drawable/ic_add"
                 android:drawablePadding="@dimen/_10sdp"
                 android:text="Add Vehicles"
-                android:textColor="@color/green"
-                android:textSize="@dimen/_11sdp" />
+                android:textColor="@color/dark_green"
+                android:fontFamily="@font/nunito_regular"
+                android:textSize="@dimen/_11sdp"
+                />
 
 
             <!--            <TextView-->

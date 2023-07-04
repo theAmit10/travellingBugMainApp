@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Delhi"
-
+        android:fontFamily="@font/nunito_regular"
+        android:textStyle="bold"
         android:maxLines="1"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_5sdp"

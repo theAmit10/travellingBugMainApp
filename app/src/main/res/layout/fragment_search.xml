@@ -54,17 +54,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
 
                         <View
                             android:id="@+id/partationTopHoriView"
                             android:layout_width="@dimen/_50sdp"
                             android:layout_height="@dimen/_3sdp"
-                            android:layout_margin="@dimen/_15sdp"
-                            android:visibility="gone"
-                            android:background="@drawable/auth_btn_green_bg"
                             android:layout_gravity="center"
+                            android:layout_margin="@dimen/_15sdp"
+                            android:background="@drawable/auth_btn_green_bg"
+                            android:visibility="gone"
 
                             />
 
@@ -75,14 +74,13 @@
                             android:layout_weight="1"
                             android:background="@drawable/auth_btn_white_low_corner_bg"
                             android:orientation="vertical"
-                            android:visibility="gone"
-                           >
+                            android:visibility="gone">
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="match_parent"
-                                app:cardCornerRadius="@dimen/_10sdp"
+                                android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/_10sdp"
-                                android:layout_height="wrap_content">
+                                app:cardCornerRadius="@dimen/_10sdp">
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="match_parent"
@@ -100,7 +98,7 @@
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent" />
 
-                                    <com.travel.travellingbug.utills.MyTextView
+                                    <TextView
                                         android:id="@+id/frmSourceBottom"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
@@ -135,8 +133,8 @@
                                         android:layout_marginEnd="@dimen/_15sdp"
                                         android:background="@color/colorLightGray"
                                         app:layout_constraintBottom_toTopOf="@+id/frmDestinationBottom"
-                                        app:layout_constraintStart_toStartOf="@+id/frmSourceBottom"
                                         app:layout_constraintEnd_toEndOf="@+id/frmDestinationBottom"
+                                        app:layout_constraintStart_toStartOf="@+id/frmSourceBottom"
                                         app:layout_constraintTop_toBottomOf="@+id/frmSourceBottom" />
 
 
@@ -150,16 +148,16 @@
                                         app:layout_constraintTop_toBottomOf="@+id/partationView"
                                         app:tint="@color/green" />
 
-                                    <com.travel.travellingbug.utills.MyTextView
+                                    <TextView
                                         android:id="@+id/frmDestinationBottom"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="@dimen/_10sdp"
                                         android:maxLines="1"
+                                        android:padding="@dimen/_5sdp"
                                         android:paddingStart="@dimen/_10sdp"
                                         android:paddingEnd="@dimen/_10sdp"
                                         android:text="Leaving From"
-                                        android:padding="@dimen/_5sdp"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_11sdp"
                                         android:textStyle="bold"
@@ -177,22 +175,22 @@
                                 android:id="@+id/paymentTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:visibility="gone"
-
-                                android:text="Payment Method"
                                 android:layout_margin="@dimen/_10sdp"
+                                android:fontFamily="@font/nunito_bold"
+                                android:text="Payment Method"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_18sdp" />
+                                android:textSize="@dimen/_18sdp"
+                                android:visibility="gone" />
 
                             <androidx.cardview.widget.CardView
                                 android:id="@+id/paymentCardView"
-                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_marginTop="@dimen/_2sdp"
                                 android:layout_marginEnd="@dimen/_10sdp"
                                 android:layout_marginBottom="@dimen/_80sdp"
+                                android:visibility="gone"
                                 app:cardBackgroundColor="@color/white"
                                 app:cardCornerRadius="@dimen/_8sdp"
                                 app:cardElevation="@dimen/_1sdp"
@@ -221,7 +219,8 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
-
+                                            android:fontFamily="@font/nunito_regular"
+                                            android:textStyle="bold"
                                             android:text="Cash"
                                             android:textColor="@color/black"
                                             android:textSize="@dimen/_15sdp" />
@@ -233,12 +232,10 @@
                                         android:id="@+id/chkCash"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:checked="true"
-                                        android:buttonTint="@color/colorPrimary" />
+                                        android:buttonTint="@color/colorPrimary"
+                                        android:checked="true" />
                                 </LinearLayout>
                             </androidx.cardview.widget.CardView>
-
-
 
 
                             <androidx.recyclerview.widget.RecyclerView
@@ -246,10 +243,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:visibility="gone"
                                 android:layout_marginTop="@dimen/_10sdp"
                                 android:layout_marginBottom="@dimen/_7sdp"
-                                android:orientation="horizontal" />
+                                android:orientation="horizontal"
+                                android:visibility="gone" />
 
                             <TextView
                                 android:id="@+id/tvZoneMsg"
@@ -347,10 +344,10 @@
 
                         <LinearLayout
                             android:id="@+id/showingProgressLL"
-                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
                             <ImageView
                                 android:id="@+id/my_featured_image"
@@ -358,7 +355,7 @@
                                 android:layout_height="@dimen/_150sdp"
                                 android:layout_gravity="center_horizontal"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/intro_five"/>
+                                android:src="@drawable/intro_five" />
 
                             <TextView
                                 android:id="@+id/my_caption_title"
@@ -370,15 +367,16 @@
                                 android:layout_marginBottom="@dimen/_20sdp"
                                 android:text="Hold on!! \nwe are searching for nearby driver for you \n\nPress continue... "
                                 android:textAlignment="center"
+                                android:fontFamily="@font/nunito_regular"
+                                android:textStyle="bold"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_14sdp"
-                                />
+                                android:textSize="@dimen/_14sdp" />
 
                             <ProgressBar
+                                android:id="@+id/progress"
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_20sdp"
-                                android:id="@+id/progress"
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerVertical="true"
                                 android:layout_marginStart="@dimen/_20sdp"
@@ -386,7 +384,7 @@
                                 android:layout_marginEnd="@dimen/_20sdp"
                                 android:layout_marginBottom="@dimen/_20sdp"
                                 android:max="100"
-                                android:progress="95"/>
+                                android:progress="95" />
 
 
                         </LinearLayout>
@@ -395,59 +393,61 @@
                             android:id="@+id/btnRequestRidesCv"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:visibility="gone">
 
-<!--                            <androidx.cardview.widget.CardView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_gravity="center"-->
-<!--                                android:layout_margin="@dimen/_5sdp"-->
-<!--                                app:cardBackgroundColor="@color/colorPrimary"-->
-<!--                                app:cardCornerRadius="10dp"-->
-<!--                                app:cardElevation="@dimen/_5sdp">-->
+                            <!--                            <androidx.cardview.widget.CardView-->
+                            <!--                                android:layout_width="wrap_content"-->
+                            <!--                                android:layout_height="wrap_content"-->
+                            <!--                                android:layout_gravity="center"-->
+                            <!--                                android:layout_margin="@dimen/_5sdp"-->
+                            <!--                                app:cardBackgroundColor="@color/colorPrimary"-->
+                            <!--                                app:cardCornerRadius="10dp"-->
+                            <!--                                app:cardElevation="@dimen/_5sdp">-->
 
-<!--                               -->
-<!--                            </androidx.cardview.widget.CardView>-->
+                            <!--                               -->
+                            <!--                            </androidx.cardview.widget.CardView>-->
 
-                            <com.travel.travellingbug.utills.MyBoldTextView
+                            <TextView
                                 android:id="@+id/btnRequestRides"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_40sdp"
                                 android:layout_gravity="center"
-                                android:gravity="center"
-                                android:visibility="gone"
                                 android:layout_margin="@dimen/_10sdp"
-                                android:text="Book Ride"
                                 android:background="@drawable/auth_btn_green_bg"
+                                android:fontFamily="@font/nunito_bold"
+                                android:gravity="center"
+                                android:text="Book Ride"
                                 android:textColor="@color/button_text_color"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12sdp"
+                                android:visibility="gone" />
 
-                            <com.travel.travellingbug.utills.MyBoldTextView
+                            <TextView
                                 android:id="@+id/btnShowPaymentTv"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_40sdp"
                                 android:layout_gravity="center"
                                 android:layout_margin="@dimen/_10sdp"
-                                android:gravity="center"
-                                android:visibility="gone"
-                                android:text="Continue"
                                 android:background="@drawable/auth_btn_green_bg"
+                                android:fontFamily="@font/nunito_bold"
+                                android:gravity="center"
+                                android:text="Continue"
                                 android:textColor="@color/button_text_color"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12sdp"
+                                android:visibility="gone" />
 
-<!--                            <androidx.cardview.widget.CardView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="@dimen/_40sdp"-->
-<!--                                android:layout_gravity="center"-->
-<!--                                app:cardBackgroundColor="@color/colorPrimary"-->
-<!--                                app:cardCornerRadius="10dp"-->
-<!--                                app:cardElevation="@dimen/_5sdp">-->
+                            <!--                            <androidx.cardview.widget.CardView-->
+                            <!--                                android:layout_width="wrap_content"-->
+                            <!--                                android:layout_height="@dimen/_40sdp"-->
+                            <!--                                android:layout_gravity="center"-->
+                            <!--                                app:cardBackgroundColor="@color/colorPrimary"-->
+                            <!--                                app:cardCornerRadius="10dp"-->
+                            <!--                                app:cardElevation="@dimen/_5sdp">-->
 
-<!--                                -->
-<!--                            </androidx.cardview.widget.CardView>-->
+                            <!--                                -->
+                            <!--                            </androidx.cardview.widget.CardView>-->
 
-                            <com.travel.travellingbug.utills.MyTextView
+                            <TextView
                                 android:id="@+id/schedule_ride"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_40sdp"
@@ -455,29 +455,30 @@
                                 android:layout_margin="@dimen/_10sdp"
                                 android:background="@drawable/auth_btn_green_bg"
                                 android:clickable="true"
-                                android:visibility="gone"
                                 android:gravity="center"
                                 android:paddingEnd="@dimen/_8sdp"
                                 android:text="Next"
                                 android:textColor="@color/button_text_color"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12sdp"
+                                android:visibility="gone" />
 
 
                             <LinearLayout
                                 android:id="@+id/showingProgressLLTextViewContainer"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:visibility="gone"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:visibility="gone">
 
 
-                                <com.travel.travellingbug.utills.MyTextView
+                                <TextView
                                     android:id="@+id/cancel_ride_sp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_gravity="center"
-                                    android:layout_weight="1"
                                     android:layout_margin="@dimen/_10sdp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/nunito_bold"
                                     android:background="@drawable/auth_btn_green_bg"
                                     android:clickable="true"
                                     android:gravity="center"
@@ -487,7 +488,7 @@
                                     android:textSize="@dimen/_12sdp" />
 
 
-                                <com.travel.travellingbug.utills.MyTextView
+                                <TextView
                                     android:id="@+id/continue_ride_sp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="@dimen/_40sdp"
@@ -496,13 +497,12 @@
                                     android:layout_weight="1"
                                     android:background="@drawable/auth_btn_green_bg"
                                     android:clickable="true"
+                                    android:fontFamily="@font/nunito_bold"
                                     android:gravity="center"
                                     android:paddingEnd="@dimen/_8sdp"
                                     android:text="Continue"
                                     android:textColor="@color/button_text_color"
                                     android:textSize="@dimen/_12sdp" />
-
-
 
 
                             </LinearLayout>
@@ -831,13 +831,14 @@
                         <!--android:layout_marginRight="20dp"-->
                         <!--android:background="#1A1A1A" />-->
 
-                        <com.travel.travellingbug.utills.MyButton
+                        <Button
                             android:id="@+id/scheduleBtn"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginStart="@dimen/_5sdp"
                             android:layout_marginEnd="@dimen/_5sdp"
                             android:layout_marginBottom="@dimen/_5sdp"
+                            android:fontFamily="@font/nunito_bold"
                             android:background="@drawable/red_color_rect_shape"
                             android:text="@string/next"
                             android:textColor="@color/button_text_color"
@@ -1725,7 +1726,7 @@
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:background="@drawable/menu_icon"
-                            android:backgroundTint="@color/colorPrimary" />
+                            android:backgroundTint="@color/dark_green" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -2136,18 +2137,19 @@
                                     android:gravity="start|center"
                                     android:orientation="horizontal">
 
-                                    <com.travel.travellingbug.utills.MyTextView
+                                    <TextView
                                         android:id="@+id/frmSource"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_margin="@dimen/_5sdp"
                                         android:drawableLeft="@drawable/ic_ring_ic"
                                         android:drawablePadding="@dimen/_10sdp"
+                                        android:fontFamily="@font/nunito_regular"
                                         android:padding="@dimen/_10sdp"
                                         android:text="Leaving From"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_11sdp"
-                                        />
+                                        android:textStyle="bold" />
 
                                     <ImageView
                                         android:id="@+id/ivTopFav"
@@ -2186,11 +2188,12 @@
                                         android:layout_margin="@dimen/_5sdp"
                                         android:drawableLeft="@drawable/ic_ring_ic"
                                         android:drawablePadding="@dimen/_10sdp"
+                                        android:fontFamily="@font/nunito_regular"
                                         android:padding="@dimen/_10sdp"
                                         android:text="Going To"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_11sdp"
-                                         />
+                                        android:textStyle="bold" />
 
                                 </LinearLayout>
 
@@ -2213,20 +2216,20 @@
                                         android:layout_height="20dp"
                                         android:layout_gravity="center_vertical"
                                         android:layout_marginStart="@dimen/_15sdp"
-                                        android:src="@drawable/ic_calender_ic"
-                                         />
+                                        android:src="@drawable/ic_calender_ic" />
 
-                                    <com.travel.travellingbug.utills.MyTextView
+                                    <TextView
                                         android:id="@+id/calendertv"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_margin="@dimen/_5sdp"
                                         android:layout_weight="1"
+                                        android:fontFamily="@font/nunito_regular"
                                         android:padding="@dimen/_5sdp"
                                         android:text="Today"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_11sdp"
-                                        />
+                                        android:textStyle="bold" />
 
                                     <View
                                         android:layout_width="1dp"
@@ -2241,12 +2244,12 @@
                                         android:layout_height="wrap_content"
                                         android:layout_margin="@dimen/_5sdp"
                                         android:drawableLeft="@drawable/ic_passanger"
+                                        android:fontFamily="@font/nunito_regular"
                                         android:padding="@dimen/_10sdp"
-
                                         android:text="1"
                                         android:textColor="@color/black"
                                         android:textSize="@dimen/_14sdp"
-                                         />
+                                        android:textStyle="bold" />
 
 
                                 </LinearLayout>
@@ -2258,6 +2261,7 @@
                                     android:layout_height="wrap_content"
                                     android:background="@drawable/auth_btn_green_bg"
                                     android:text="Search"
+                                    android:fontFamily="@font/nunito_bold"
                                     android:textAllCaps="false"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/_12sdp" />
@@ -2415,12 +2419,13 @@
                         android:id="@+id/btnDone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
+                        android:fontFamily="@font/nunito_regular"
                         android:paddingTop="@dimen/_10sdp"
                         android:paddingBottom="@dimen/_25sdp"
                         android:text="Apply"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_14sdp" />
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="@dimen/_110sdp"

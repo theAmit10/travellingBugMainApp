@@ -44,7 +44,7 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_semibold"
+            android:fontFamily="@font/nunito_bold"
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
             android:paddingStart="@dimen/_10sdp"
@@ -110,10 +110,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-
+                        android:fontFamily="@font/nunito_regular"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="bold"
                         android:paddingStart="@dimen/_5sdp"
                         android:text="Address"
-                        android:textSize="14dp" />
+                        />
 
                     <EditText
                         android:id="@+id/txtaddressSource"
@@ -121,26 +124,28 @@
                         android:layout_height="@dimen/_30sdp"
                         android:background="@color/text_color_white"
                         android:ellipsize="end"
-
                         android:gravity="center_vertical"
                         android:hint="location"
                         android:inputType="text"
                         android:maxLines="1"
+                        android:fontFamily="@font/nunito_regular"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_11sdp"
+                        android:textStyle="bold"
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
                         android:paddingBottom="@dimen/_5sdp"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_12sdp" />
+                        />
 
 
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/imgSourceClose"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@drawable/cross"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -458,17 +463,20 @@
         android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <com.travel.travellingbug.utills.MyBoldTextView
+        <TextView
             android:id="@+id/txtPickLocation"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginStart="20dp"
             android:drawableStart="@drawable/set_location"
-            android:drawableTint="@color/green"
+            android:drawableTint="@color/dark_green"
             android:drawablePadding="@dimen/_8sdp"
             android:gravity="center|start"
             android:text="@string/pin_location"
-            android:textColor="@color/green"
+            android:fontFamily="@font/nunito_bold"
+            android:textSize="@dimen/_11sdp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_green"
             android:visibility="visible" />
 
         <View

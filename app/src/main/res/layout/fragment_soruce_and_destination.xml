@@ -33,9 +33,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-
                 android:gravity="center_vertical"
                 android:text="Book Your Ride"
+                android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14sdp" />
         </LinearLayout>
@@ -96,7 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-
+                        android:fontFamily="@font/nunito_semi_bold"
                         android:paddingStart="@dimen/_5sdp"
                         android:text="@string/pick_up"
                         android:textSize="14dp" />
@@ -107,7 +107,7 @@
                         android:layout_height="@dimen/_30sdp"
                         android:background="@color/text_color_white"
                         android:ellipsize="end"
-
+                        android:fontFamily="@font/nunito_semi_bold"
                         android:gravity="center_vertical"
                         android:hint="@string/source_location"
                         android:inputType="text"
@@ -123,10 +123,10 @@
 
                 <ImageView
                     android:id="@+id/imgSourceClose"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@drawable/cross"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -182,7 +182,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-
+                        android:fontFamily="@font/nunito_semi_bold"
                         android:paddingStart="@dimen/_5sdp"
                         android:text="@string/destination_location"
                         android:textSize="14dp" />
@@ -193,7 +193,7 @@
                         android:layout_height="@dimen/_30sdp"
                         android:background="@color/text_color_white"
                         android:ellipsize="end"
-
+                        android:fontFamily="@font/nunito_semi_bold"
                         android:gravity="center_vertical"
                         android:hint="@string/where_to_go"
                         android:inputType="text"
@@ -208,10 +208,10 @@
 
                 <ImageView
                     android:id="@+id/imgDestClose"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_marginStart="4dp"
-                    android:layout_marginEnd="8dp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@drawable/cross"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -446,16 +446,17 @@
         android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <com.travel.travellingbug.utills.MyBoldTextView
+        <TextView
             android:id="@+id/txtPickLocation"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginStart="20dp"
             android:drawableStart="@drawable/set_location"
+            android:drawableTint="@color/black"
             android:drawablePadding="@dimen/_8sdp"
             android:gravity="center|start"
             android:text="@string/pin_location"
-            android:fontFamily="@font/nunito_variablefont_wght"
+            android:fontFamily="@font/nunito_bold"
             android:textColor="@color/black_text_color"
             android:visibility="visible" />
 

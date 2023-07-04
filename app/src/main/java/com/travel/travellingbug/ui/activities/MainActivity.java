@@ -316,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void applyFontToMenuItem(MenuItem mi) {
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/nunito_variablefont_wght.ttf");
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/nunito_regular.ttf");
         SpannableString mNewTitle = new SpannableString(mi.getTitle());
         mNewTitle.setSpan(new CustomTypefaceSpan("", font), 0,
                 mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
@@ -355,6 +355,7 @@ public class MainActivity extends AppCompatActivity {
                     .error(R.drawable.ic_dummy_user)
                     .into(imgProfile);
         }
+
         if (SharedHelper.getKey(MainActivity.this, "rating") != null
                 && SharedHelper.getKey(MainActivity.this, "rating") != "") {
             if(SharedHelper.getKey(MainActivity.this, "rating").equalsIgnoreCase("null")){
@@ -363,7 +364,8 @@ public class MainActivity extends AppCompatActivity {
             }else {
 
                 String rate_val = SharedHelper.getKey(MainActivity.this, "rating");
-                String rate_value = rate_val.substring(0,1);
+                int rate_valu = rate_val.indexOf(".");
+                String rate_value = rate_val.substring(0,rate_valu);
 
                 tvRate.setText(rate_value);
                 tvRate.setVisibility(View.VISIBLE);

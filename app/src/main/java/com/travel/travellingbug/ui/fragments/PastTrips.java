@@ -457,20 +457,41 @@ public class PastTrips extends Fragment {
 
                 if (jsonObjectTrip.optString("status").equalsIgnoreCase("PENDING")) {
                     holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
-                    holder.status.setText(jsonObjectTrip.optString("status"));
+//                    holder.status.setText(jsonObjectTrip.optString("status").toLowerCase());
+                    String status_case = jsonObjectTrip.optString("status");
+                    String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
+
+                    holder.status.setText(status_case_val);
 
                 } else if(jsonObjectTrip.optString("status").equalsIgnoreCase("CANCELLED")){
                     holder.status.setBackgroundResource(R.drawable.auth_btn_gray_bg);
-                    holder.status.setText(jsonObjectTrip.optString("status"));
+//                    holder.status.setText(jsonObjectTrip.optString("status"));
+
+                    String status_case = jsonObjectTrip.optString("status");
+                    String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
+                    holder.status.setText(status_case_val);
+
                 }else if(jsonObjectTrip.optString("status").equalsIgnoreCase("STARTED")){
                     holder.status.setBackgroundResource(R.drawable.auth_btn_purple_bg);
-                    holder.status.setText(jsonObjectTrip.optString("status"));
+//                    holder.status.setText(jsonObjectTrip.optString("status").toLowerCase());
+                    String status_case = jsonObjectTrip.optString("status");
+                    String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
+
+                    holder.status.setText(status_case_val);
                 }else if(jsonObjectTrip.optString("status").equalsIgnoreCase("COMPLETED")){
                     holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
-                    holder.status.setText(jsonObjectTrip.optString("status"));
+//                    holder.status.setText(jsonObjectTrip.optString("status").toLowerCase());
+                    String status_case = jsonObjectTrip.optString("status");
+                    String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
+
+                    holder.status.setText(status_case_val);
                 }else {
-                    holder.status.setText(jsonObjectTrip.optString("status"));
+//                    holder.status.setText(jsonObjectTrip.optString("status").toLowerCase());
                     holder.status.setBackgroundResource(R.drawable.auth_btn_blue_bgs);
+                    String status_case = jsonObjectTrip.optString("status");
+                    String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
+
+                    holder.status.setText(status_case_val);
                 }
 
 

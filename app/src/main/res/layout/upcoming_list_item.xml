@@ -373,7 +373,7 @@
                                 android:id="@+id/name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_semibold"
+                                android:theme="@style/SubTitle"
                                 android:drawableRight="@drawable/ic_green_tick"
                                 android:drawablePadding="@dimen/_10sdp"
                                 android:text="David Johnson"
@@ -437,7 +437,7 @@
                             android:layout_marginEnd="10dp"
                             android:maxLines="1"
                             android:text="₹ 1200"
-                            android:fontFamily="@font/montserrat_semibold"
+                            android:theme="@style/SubTitle"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10sdp"
                             android:textStyle="bold" />

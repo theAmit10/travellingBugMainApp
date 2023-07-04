@@ -331,7 +331,7 @@ public class ProfileAboutFragment extends Fragment {
 //            txtHeaderMob.setText(mobile);
         } else {
             email.setText("Confirm your email");
-            email.setTextColor(getResources().getColor(R.color.green));
+            email.setTextColor(getResources().getColor(R.color.dark_green));
             email.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
 //            txtHeaderMob.setText("");
         }
@@ -349,7 +349,7 @@ public class ProfileAboutFragment extends Fragment {
 //            txtHeaderMob.setText(mobile);
         } else {
             first_name.setText("Add name");
-            first_name.setTextColor(getResources().getColor(R.color.green));
+            first_name.setTextColor(getResources().getColor(R.color.dark_green));
             first_name.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
 //            txtHeaderMob.setText("");
         }
@@ -370,7 +370,7 @@ public class ProfileAboutFragment extends Fragment {
 //            txtHeaderMob.setText(mobile);
         } else {
             mobile_no.setText("Add phone number");
-            mobile_no.setTextColor(getResources().getColor(R.color.green));
+            mobile_no.setTextColor(getResources().getColor(R.color.dark_green));
             mobile_no.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
 //            txtHeaderMob.setText("");
         }
@@ -393,7 +393,7 @@ public class ProfileAboutFragment extends Fragment {
 
         } else {
             addMyPreferencesTv.setText("Add travel preferences");
-            addMyPreferencesTv.setTextColor(getResources().getColor(R.color.green));
+            addMyPreferencesTv.setTextColor(getResources().getColor(R.color.dark_green));
             addMyPreferencesTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
 
         }
@@ -410,7 +410,7 @@ public class ProfileAboutFragment extends Fragment {
 
         } else {
             addAMiniBioTv.setText("Add a mini bio");
-            addAMiniBioTv.setTextColor(getResources().getColor(R.color.green));
+            addAMiniBioTv.setTextColor(getResources().getColor(R.color.dark_green));
             addAMiniBioTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
 
         }
@@ -426,7 +426,7 @@ public class ProfileAboutFragment extends Fragment {
 
         } else {
             verifyId.setText("Verify ID");
-            verifyId.setTextColor(getResources().getColor(R.color.green));
+            verifyId.setTextColor(getResources().getColor(R.color.dark_green));
             verifyId.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
 
         }
@@ -454,7 +454,7 @@ public class ProfileAboutFragment extends Fragment {
 
         } else {
             addVehicleTv.setText("Add vehicle");
-            addVehicleTv.setTextColor(getResources().getColor(R.color.green));
+            addVehicleTv.setTextColor(getResources().getColor(R.color.dark_green));
             addVehicleTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add, 0, 0, 0);
 
         }

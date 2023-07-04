@@ -41,6 +41,9 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".ui.activities.PaymentAndRefundActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.ProviderReviewActivity"
             android:exported="false" />
         <activity

@@ -253,7 +253,7 @@
                 android:id="@+id/addRideTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:fontFamily="@font/nunito_bold"
                 android:gravity="center_vertical|center"
                 android:text="ADD RIDE"
                 android:textColor="@color/white"
@@ -407,7 +407,6 @@
                                                             android:visibility="gone"
                                                             android:layout_width="match_parent"
                                                             android:layout_height="wrap_content"
-
                                                             android:paddingTop="@dimen/_10sdp"
                                                             android:paddingStart="@dimen/_20sdp"
                                                             android:paddingEnd="@dimen/_20sdp"
@@ -441,11 +440,14 @@
                                                             android:paddingTop="@dimen/_10sdp"
                                                             android:paddingBottom="@dimen/_10sdp"
                                                             android:paddingStart="@dimen/_12sdp"
-                                                            android:drawableLeft="@drawable/ic_add"
+                                                            android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
+                                                            android:drawableTint="@color/dark_green"
                                                             android:drawablePadding="@dimen/_3sdp"
                                                             android:paddingEnd="@dimen/_20sdp"
                                                             android:text="Add stopovers"
-                                                            android:textColor="@color/green"
+                                                            android:fontFamily="@font/nunito_regular"
+                                                            android:textStyle="bold"
+                                                            android:textColor="@color/dark_green"
                                                             android:textSize="@dimen/_12sdp"
                                                             />
 
@@ -465,8 +467,10 @@
                                         android:layout_centerInParent="true"
                                         android:layout_marginStart="@dimen/_10sdp"
                                         android:text="Return on same route ?"
+                                        android:fontFamily="@font/nunito_regular"
+                                        android:textStyle="bold"
                                         android:textSize="@dimen/_12sdp"
-                                        android:textColor="@color/green"
+                                        android:textColor="@color/dark_green"
                                         />
 
 
@@ -585,7 +589,7 @@
                                         android:visibility="visible"
                                         android:layout_gravity="center"
                                         android:layout_weight="1"
-                                        app:cardBackgroundColor="@color/colorPrimary"
+                                        app:cardBackgroundColor="@color/dark_green"
                                         app:cardCornerRadius="@dimen/_10sdp"
                                         app:cardElevation="@dimen/_5sdp">
 
@@ -598,7 +602,7 @@
                                             android:gravity="center"
                                             android:paddingEnd="@dimen/_8sdp"
                                             android:text="Publish Ride"
-                                            android:fontFamily="@font/nunito_variablefont_wght"
+                                            android:fontFamily="@font/nunito_bold"
                                             android:textColor="@color/button_text_color"
                                             android:textSize="@dimen/_12sdp" />
                                     </androidx.cardview.widget.CardView>
@@ -2571,13 +2575,14 @@
                                                         android:orientation="vertical">
 
 
-                                                        <com.travel.travellingbug.utills.MyTextView
+                                                        <TextView
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="wrap_content"
-                                                            android:fontFamily="@font/nunito_variablefont_wght"
+                                                            android:fontFamily="@font/nunito_semi_bold"
                                                             android:text="Set pickup location"
+                                                            android:textStyle="bold"
                                                             android:textColor="@color/colorDarkGray"
-                                                            android:textSize="@dimen/_12sdp" />
+                                                            android:textSize="@dimen/_11sdp" />
 
                                                         <TextView
                                                             android:id="@+id/frmSource"
@@ -2585,6 +2590,7 @@
                                                             android:layout_height="wrap_content"
                                                             android:maxLength="40"
                                                             android:maxLines="1"
+                                                            android:fontFamily="@font/nunito_semi_bold"
                                                             android:text="Set pickup location"
                                                             android:textColor="@color/colorGray"
                                                             android:textSize="@dimen/_12sdp" />
@@ -2604,13 +2610,14 @@
                                                         android:layout_weight="1"
                                                         android:orientation="vertical">
 
-                                                        <com.travel.travellingbug.utills.MyTextView
+                                                        <TextView
                                                             android:layout_width="wrap_content"
                                                             android:layout_height="wrap_content"
                                                             android:text="Set drop location"
-                                                            android:fontFamily="@font/nunito_variablefont_wght"
+                                                            android:textStyle="bold"
+                                                            android:fontFamily="@font/nunito_semi_bold"
                                                             android:textColor="@color/colorDarkGray"
-                                                            android:textSize="@dimen/_12sdp" />
+                                                            android:textSize="@dimen/_11sdp" />
 
                                                         <TextView
                                                             android:id="@+id/frmDest"
@@ -2618,6 +2625,7 @@
                                                             android:layout_height="wrap_content"
                                                             android:maxLength="40"
                                                             android:maxLines="1"
+                                                            android:fontFamily="@font/nunito_semi_bold"
                                                             android:text="Set drop location"
                                                             android:textColor="@color/colorGray"
                                                             android:textSize="@dimen/_12sdp" />
@@ -2784,6 +2792,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
 
+                                android:fontFamily="@font/nunito_bold"
                                 android:paddingTop="@dimen/_10sdp"
                                 android:paddingBottom="@dimen/_25sdp"
                                 android:text="Apply"

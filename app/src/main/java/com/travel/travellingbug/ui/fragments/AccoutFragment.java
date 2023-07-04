@@ -66,6 +66,7 @@ public class AccoutFragment extends Fragment {
         tabLayout.getTabAt(1).setText("Account");
 
 
+
     }
 
     private void clickHandlerComponent() {
