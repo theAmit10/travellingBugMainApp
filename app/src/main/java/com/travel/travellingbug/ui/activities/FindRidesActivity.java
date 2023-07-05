@@ -90,12 +90,74 @@ public class FindRidesActivity extends AppCompatActivity {
 
     }
 
+
+    private String getDateForTop(String date) throws ParseException {
+        Date d = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH).parse(date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        String dateName = new SimpleDateFormat("dd").format(cal.getTime());
+        return dateName;
+    }
+
+    private String getYearForTop(String date) throws ParseException {
+        Date d = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH).parse(date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        String yearName = new SimpleDateFormat("yyyy").format(cal.getTime());
+        return yearName;
+    }
+
+    private String getTimeForTop(String date) throws ParseException {
+        Calendar cal = Calendar.getInstance();
+        Date d = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH).parse(date);
+        cal.setTime(d);
+        String timeName = new SimpleDateFormat("hh:mm a").format(cal.getTime());
+        return timeName;
+    }
+
+    private String getMonthForTop(String date) throws ParseException {
+        Date d = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH).parse(date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        String monthName = new SimpleDateFormat("M").format(cal.getTime());
+        String name = getMonthName(Integer.parseInt(monthName));
+
+
+        return name;
+    }
+
     private void setDataOnComponent() {
         from.setText(s_address);
         destination.setText(d_address);
 
-        date.setText(schedule_date);
-        time.setText(schedule_time);
+
+        String form = schedule_date+" "  + schedule_time+":00";
+
+        System.out.println("date data : "+form);
+
+
+//        2023-05-19 17:48:51
+
+
+        try {
+            date.setText(getDateForTop(form) + "th " + getMonthForTop(form) + " , " +getYearForTop(form));
+        } catch (ParseException e) {
+            date.setText(schedule_date);
+            e.printStackTrace();
+        }
+
+//        date.setText(schedule_date);
+
+//        time.setText(schedule_time);
+
+//        String formTime = schedule_time;
+
+        try {
+            time.setText(getTimeForTop(form));
+        } catch (ParseException e) {
+            time.setText(schedule_time);
+            e.printStackTrace();
+        }
     }
 
     private void clickHandler() {

@@ -341,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
             approvaltxt.setText(getText(R.string.banned));
             status.setImageResource(R.drawable.banned);
         } else {
-            approvaltxt.setTextColor(Color.GREEN);
+            approvaltxt.setTextColor(Color.WHITE);
             approvaltxt.setText(getText(R.string.approved));
             status.setImageResource(R.drawable.approved);
         }
@@ -367,7 +367,7 @@ public class MainActivity extends AppCompatActivity {
                 int rate_valu = rate_val.indexOf(".");
                 String rate_value = rate_val.substring(0,rate_valu);
 
-                tvRate.setText(rate_value);
+                tvRate.setText("(  "+rate_value +" )");
                 tvRate.setVisibility(View.VISIBLE);
             }
 

@@ -492,6 +492,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
         initComponent(rootView);
 
+
+
         onClickHandler();
         restInterface = ServiceGenerator.createService(RestInterface.class);
         customDialog = new CustomDialog(getActivity());
@@ -1033,6 +1035,15 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             }
         });
 
+
+
+        // setting stopOver location
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+        stopoverRv.setLayoutManager(linearLayoutManager);
+//        stopOverTitleTv.setVisibility(View.VISIBLE);
+//        stepOverOrgAdapter = new StepOverOrgAdapter(getContext(), stopOverModelArrayList);
+//        stopoverRv.setAdapter(stepOverOrgAdapter);
+        stopoverRv.setNestedScrollingEnabled(false);
 
 
 
@@ -1954,7 +1965,6 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 }
 
                 placePredictions = (PlacePredictions) data.getSerializableExtra("Location Address");
-
                 strPickLocation = data.getExtras().getString("pick_location");
                 strPickType = data.getExtras().getString("type");
 
@@ -1977,6 +1987,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
                             if (!placePredictions.strSourceLatitude.equalsIgnoreCase("")
                                     && !placePredictions.strSourceLongitude.equalsIgnoreCase("")) {
+
+                                System.out.println("SOURCE : "+source_address);
                                 double latitude = Double.parseDouble(placePredictions.strSourceLatitude);
                                 double longitude = Double.parseDouble(placePredictions.strSourceLongitude);
                                 LatLng location = new LatLng(latitude, longitude);
@@ -2021,52 +2033,63 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                 //mMap.clear();
                                 if (sourceMarker != null)
                                     sourceMarker.remove();
-                                MarkerOptions markerOptions = new MarkerOptions()
-                                        .anchor(0.5f, 0.75f)
-                                        .position(location)
-                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_marker));
-                                marker = mMap.addMarker(markerOptions);
-                                sourceMarker = mMap.addMarker(markerOptions);
+//                                MarkerOptions markerOptions = new MarkerOptions()
+//                                        .anchor(0.5f, 0.75f)
+//                                        .position(location)
+//                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_marker));
+//                                marker = mMap.addMarker(markerOptions);
+//                                sourceMarker = mMap.addMarker(markerOptions);
                                /* CameraPosition cameraPosition = new CameraPosition.Builder().target(location).zoom(14).build();
                                 mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
                             }
-                            if (!dest_lat.equalsIgnoreCase("") && !dest_lng.equalsIgnoreCase("")) {
+
+                            try {
+                                if (!dest_lat.equalsIgnoreCase("") && !dest_lng.equalsIgnoreCase("")) {
                                 destLatLng = new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng));
                                 if (destinationMarker != null)
                                     destinationMarker.remove();
-                                MarkerOptions destMarker = new MarkerOptions()
-                                        .position(destLatLng)
-                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.provider_marker));
-                                destinationMarker = mMap.addMarker(destMarker);
-                                LatLngBounds.Builder builder = new LatLngBounds.Builder();
-                                builder.include(sourceMarker.getPosition());
-                                builder.include(destinationMarker.getPosition());
-                                LatLngBounds bounds = builder.build();
-                                int padding = 200; // offset from edges of the map in pixels
-                                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-                                mMap.moveCamera(cu);
+//                                MarkerOptions destMarker = new MarkerOptions()
+//                                        .position(destLatLng)
+//                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.provider_marker));
+//                                destinationMarker = mMap.addMarker(destMarker);
+//                                LatLngBounds.Builder builder = new LatLngBounds.Builder();
+//                                builder.include(sourceMarker.getPosition());
+//                                builder.include(destinationMarker.getPosition());
+//                                LatLngBounds bounds = builder.build();
+//                                int padding = 200; // offset from edges of the map in pixels
+//                                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+//                                mMap.moveCamera(cu);
 
                                 /*LatLng myLocation = new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng));
                                 CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(16).build();
                                 mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
+                            }
+
+                            }catch (Exception e){
+                                e.printStackTrace();
                             }
                         }
 
                         if (dest_address.equalsIgnoreCase("")) {
                             flowValue = 1;
                             frmSource.setText(source_address);
-                            getValidZone();
+//                            getValidZone();
 //                            getServiceList();
                         } else {
                             flowValue = 1;
 
                             if (cardInfoArrayList.size() > 0) {
                                 getCardDetailsForPayment(cardInfoArrayList.get(0));
-                                sourceDestLayout.setVisibility(View.GONE);
+                                sourceDestLayout.setVisibility(View.VISIBLE);
                             }
-                            getValidZone();
-                            paymentLayout.setVisibility(View.VISIBLE);
+//                            getValidZone();
+//                            paymentLayout.setVisibility(View.VISIBLE);
 //                            getServiceList();
+                        }
+
+                        if(!dest_address.equalsIgnoreCase("") && !source_address.equalsIgnoreCase("")){
+                            System.out.println("setting dest and source address");
+                            setValuesForSourceAndDestination();
                         }
 
                         layoutChanges();
@@ -2097,7 +2120,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 strPickTypeSO = data.getExtras().getString("typeSO");
 
 
-                Toast.makeText(activity, "Stop Over Result Success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "Processing", Toast.LENGTH_SHORT).show();
 
 
                 if (strPickLocationSO.equalsIgnoreCase("yes")) {
@@ -2125,18 +2148,59 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                 LatLng location = new LatLng(latitude, longitude);
 
                                 //mMap.clear();
+//                                try {
+//                                    MarkerOptions markerOptions = new MarkerOptions()
+//                                            .anchor(0.5f, 0.75f)
+//                                            .position(location)
+//                                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_marker));
+//                                    marker = mMap.addMarker(markerOptions);
+//                                    sourceMarker = mMap.addMarker(markerOptions);
+//                                } catch (Exception e) {
+//                                    e.printStackTrace();
+//                                }
+                               /* CameraPosition cameraPosition = new CameraPosition.Builder().target(location).zoom(16).build();
+                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
+
+
+                                stopOverModelArrayList.add(new StopOverModel(source_latSO,source_lngSO,source_addressSO));
+
                                 try {
-                                    MarkerOptions markerOptions = new MarkerOptions()
-                                            .anchor(0.5f, 0.75f)
-                                            .position(location)
-                                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_marker));
-                                    marker = mMap.addMarker(markerOptions);
-                                    sourceMarker = mMap.addMarker(markerOptions);
+                                    JSONObject jsonObjectStopOver = new JSONObject();
+                                    jsonObjectStopOver.put("lat",source_latSO);
+                                    jsonObjectStopOver.put("lng",source_lngSO);
+                                    jsonObjectStopOver.put("area",source_addressSO);
+
+                                    jsonArrayStopOver.put(jsonObjectStopOver);
+
+//                                trackPickToDest(source_lat,source_lng,source_latSO,source_lngSO);
+
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
+
+
+
+
+
+//                            stepOverAdapter = new StepOverAdapter(getContext(), stopOverModelArrayList);
+//                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+//                            stopoverRv.setLayoutManager(linearLayoutManager);
+//                            stopoverRv.setNestedScrollingEnabled(false);
+
+                                stopOverTitleTv.setVisibility(View.VISIBLE);
+                                stepOverOrgAdapter = new StepOverOrgAdapter(getContext(), stopOverModelArrayList);
+                                stopoverRv.setAdapter(stepOverOrgAdapter);
+
+
+
+                                System.out.println("stopover : "+jsonArrayStopOver.toString() );
+                                try {
+                                    trackPickToDest(source_lat,source_lng,source_latSO,source_lngSO);
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
-                               /* CameraPosition cameraPosition = new CameraPosition.Builder().target(location).zoom(16).build();
-                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
+
+
                             }
 
                         }
@@ -2145,6 +2209,10 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                             dest_lngSO = "" + placePredictionsSO.strDestLongitude;
                             dest_addressSO = placePredictionsSO.strDestAddress;
                             dropLocationName = dest_addressSO;
+
+
+                            Toast.makeText(getContext(), "stopoverlocation dest : " + dest_addressSO, Toast.LENGTH_SHORT).show();
+                            System.out.println("stopoverlocation : " + dest_addressSO);
 
                             SharedHelper.putKey(context, "current_status", "2");
                             if (source_latSO != null && source_lngSO != null && !source_lngSO.equalsIgnoreCase("")
@@ -2199,18 +2267,23 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                         if (dest_address.equalsIgnoreCase("")) {
                             flowValue = 1;
                             frmSource.setText(source_address);
-                            getValidZone();
+//                            getValidZone();
 //                            getServiceList();
                         } else {
                             flowValue = 1;
 
                             if (cardInfoArrayList.size() > 0) {
                                 getCardDetailsForPayment(cardInfoArrayList.get(0));
-                                sourceDestLayout.setVisibility(View.GONE);
+//                                sourceDestLayout.setVisibility(View.GONE);
                             }
-                            getValidZone();
-                            paymentLayout.setVisibility(View.VISIBLE);
+//                            getValidZone();
+//                            paymentLayout.setVisibility(View.VISIBLE);
 //                            getServiceList();
+                        }
+
+                        if(!dest_addressSO.equalsIgnoreCase("") && !source_addressSO.equalsIgnoreCase("")){
+                            System.out.println("setting dest and source address");
+                            setValuesForSourceAndDestination();
                         }
 
                         layoutChanges();
@@ -3966,7 +4039,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
                         // for stopover
 
-                        if (strPickTypeSO.equalsIgnoreCase("source")) {
+                        if (strPickTypeSO.equalsIgnoreCase("destination")) {
                             source_addressSO = "" + address + "," + city + "," + state;
                             source_latSO = "" + cmPosition.target.latitude;
                             source_lngSO = "" + cmPosition.target.longitude;
@@ -3974,6 +4047,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                             System.out.println("stepOver lat : "+source_latSO);
                             System.out.println("stepOver long : "+source_lngSO);
                             System.out.println("stepOver add : "+source_addressSO);
+
+
 
 
 
@@ -4002,15 +4077,17 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
 
 //                            stepOverAdapter = new StepOverAdapter(getContext(), stopOverModelArrayList);
-                            stepOverOrgAdapter = new StepOverOrgAdapter(getContext(), stopOverModelArrayList);
-                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-                            stopoverRv.setLayoutManager(linearLayoutManager);
+//                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+//                            stopoverRv.setLayoutManager(linearLayoutManager);
+//                            stopoverRv.setNestedScrollingEnabled(false);
+
                             stopOverTitleTv.setVisibility(View.VISIBLE);
+                            stepOverOrgAdapter = new StepOverOrgAdapter(getContext(), stopOverModelArrayList);
                             stopoverRv.setAdapter(stepOverOrgAdapter);
-                            stopoverRv.setNestedScrollingEnabled(false);
 
 
                             System.out.println("stopover : "+jsonArrayStopOver.toString() );
+
 
 
 

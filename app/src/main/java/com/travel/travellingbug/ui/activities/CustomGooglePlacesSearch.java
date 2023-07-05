@@ -2,6 +2,7 @@ package com.travel.travellingbug.ui.activities;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -24,7 +25,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -140,6 +140,8 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
         if (d_address != null && !d_address.equalsIgnoreCase("")) {
             txtDestination.setText(d_address);
         }
+
+        strSelected = getIntent().getStringExtra("cursor");
 
         if (cursor.equalsIgnoreCase("source")) {
             strSelected = "source";
@@ -269,6 +271,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     Log.v("PayNowRequestResponse", error.toString());
+                                    error.printStackTrace();
                                 }
                             });
                             ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
@@ -371,13 +374,16 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
 
         });
 
-        //txtDestination.setText("");
+
         txtDestination.setSelection(txtDestination.getText().length());
 
         mAutoCompleteList.setOnItemClickListener((parent, view, position, id) -> {
-//            Toast.makeText(this, ""+mLastLocation.getProvider(), Toast.LENGTH_SHORT).show();
-//            Toast.makeText(this, ""+mLastLocation.getLatitude(), Toast.LENGTH_SHORT).show();
-//            System.out.println("lat wasu "+mLastLocation.getLatitude()+ " Long : "+mLastLocation.getLongitude());
+
+            try {
+                Toast.makeText(getApplicationContext(), "Processing", Toast.LENGTH_SHORT).show();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
 
             System.out.println("Postion : " + position);
             System.out.println("view : " + view);
@@ -408,6 +414,40 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
             }
 
 
+
+
+
+
+
+
+
+
+
+//            if (txtDestination.getText().toString().equalsIgnoreCase("")) {
+//                try {
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(thisActivity);
+//                    LayoutInflater inflater = (LayoutInflater) thisActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                    builder.setMessage("Please choose pickup location")
+//                            .setTitle(thisActivity.getString(R.string.app_name))
+//                            .setCancelable(true)
+//                            .setIcon(R.drawable.app_logo_org)
+//                            .setPositiveButton("OK", (dialog, id1) -> {
+//                                txtaddressSource.requestFocus();
+////                                txtDestination.setText("");
+////                                imgDestClose.setVisibility(View.GONE);
+//                                mAutoCompleteList.setVisibility(View.GONE);
+//                                dialog.dismiss();
+//                            });
+//                    AlertDialog alert = builder.create();
+//                    alert.show();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            } else {
+//                setGoogleAddress(position);
+//            }
+
+
         });
         backArrow.setOnClickListener(v -> {
             finish();
@@ -417,9 +457,6 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
 
     private void setGoogleAddress(int position) {
         if (mGoogleApiClient != null) {
-
-
-
 
             Geocoder coder = new Geocoder(this);
             List<Address> address;
@@ -463,9 +500,10 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                     System.out.println("cursor set google address ended : " + strSelected);
                     System.out.println("cursor pridiction desc : " + predictions.getPlaces().get(position).getPlaceDesc());
                     System.out.println("cursor pridiction id : " + predictions.getPlaces().get(position).getPlaceID());
+                    System.out.println("cursor txtDestination : " + txtDestination.getText().toString());
 
                     if(strSelected.equalsIgnoreCase("destination")){
-                        if (txtDestination.getText().toString().length() > 0) {
+                        if (!txtDestination.getText().toString().equalsIgnoreCase("Going to")) {
                             if (strSelected.equalsIgnoreCase("destination")) {
                                 if (!placePredictions.strDestAddress.equalsIgnoreCase(placePredictions.strSourceAddress)) {
                                     setAddress();
@@ -473,7 +511,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                             }
                         } else {
                             txtDestination.requestFocus();
-                            txtDestination.setText("ABC");
+                            txtDestination.setText("");
                             imgDestClose.setVisibility(View.GONE);
                             mAutoCompleteList.setVisibility(View.GONE);
                         }
@@ -645,8 +683,8 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                 if (placePredictions != null) {
                     intent.putExtra("Location Address", placePredictions);
                     intent.putExtra("pick_location", "no");
-//                    intent.putExtra("pick_location", "yes");
-                    Toast.makeText(CustomGooglePlacesSearch.this, "" + placePredictions.getPlaces(), Toast.LENGTH_SHORT).show();
+                    intent.putExtra("type", strSelected);
+//                    Toast.makeText(CustomGooglePlacesSearch.this, "" + placePredictions.getPlaces(), Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK, intent);
                 } else {
                     setResult(RESULT_CANCELED, intent);

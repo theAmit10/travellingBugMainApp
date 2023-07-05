@@ -519,7 +519,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
                 int rate_valu = rate_val.indexOf(".");
                 String rate_value = rate_val.substring(0,rate_valu);
 
-                tvRate.setText(rate_value);
+                tvRate.setText("(  "+rate_value +" )");
                 tvRate.setVisibility(View.VISIBLE);
             }
 

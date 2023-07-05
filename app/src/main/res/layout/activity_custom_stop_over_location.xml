@@ -144,7 +144,7 @@
                     android:id="@+id/imgSourceClose"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@drawable/cross"
                     android:visibility="gone"

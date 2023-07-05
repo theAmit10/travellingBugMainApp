@@ -488,27 +488,30 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     try {
                         getProfile();
                         getDocList();
+
+                        //permission to access location
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
+                                ActivityCompat.checkSelfPermission(getActivity(),
+                                        Manifest.permission.ACCESS_FINE_LOCATION) !=
+                                        PackageManager.PERMISSION_GRANTED) {
+                            // Android M Permission check
+                            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                            if (customDialog.isShowing()) {
+                                customDialog.dismiss();
+                            }
+                        } else {
+                            initMap();
+                            MapsInitializer.initialize(getActivity());
+                            customDialog.dismiss();
+                            customDialog.cancel();
+                        }
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
 
-                    //permission to access location
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
-                            ActivityCompat.checkSelfPermission(getActivity(),
-                                    Manifest.permission.ACCESS_FINE_LOCATION) !=
-                                    PackageManager.PERMISSION_GRANTED) {
-                        // Android M Permission check
-                        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-                        if (customDialog.isShowing()) {
-                            customDialog.dismiss();
-                        }
-                    } else {
-                        initMap();
-                        MapsInitializer.initialize(getActivity());
-                        customDialog.dismiss();
-                        customDialog.cancel();
-                    }
+
                 }, 500);
             }
         }
@@ -2174,6 +2177,10 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 strPickLocation = data.getExtras().getString("pick_location");
                 strPickType = data.getExtras().getString("type");
 
+                System.out.println("intent data  strPickType: "+strPickType);
+                System.out.println("intent data  strPickLocation: "+strPickLocation);
+
+
 
                 if (strPickLocation.equalsIgnoreCase("yes")) {
                     pick_first = true;
@@ -2182,17 +2189,20 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     layoutChanges();
                     float zoomLevel = 16.0f; //This goes up to 21
                     stopAnim();
-                } else {
+                }
+                else {
                     if (placePredictions != null) {
                         if (!placePredictions.strSourceAddress.equalsIgnoreCase("")) {
                             source_lat = "" + placePredictions.strSourceLatitude;
                             source_lng = "" + placePredictions.strSourceLongitude;
                             source_address = placePredictions.strSourceAddress;
 
-                            Toast.makeText(getContext(), "SA : " + source_address, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getContext(), "SA : " + source_address, Toast.LENGTH_SHORT).show();
 
                             if (!placePredictions.strSourceLatitude.equalsIgnoreCase("")
                                     && !placePredictions.strSourceLongitude.equalsIgnoreCase("")) {
+                                System.out.println("SOURCE : "+source_address);
+
                                 double latitude = Double.parseDouble(placePredictions.strSourceLatitude);
                                 double longitude = Double.parseDouble(placePredictions.strSourceLongitude);
                                 LatLng location = new LatLng(latitude, longitude);
@@ -2218,6 +2228,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             dest_lng = "" + placePredictions.strDestLongitude;
                             dest_address = placePredictions.strDestAddress;
                             dropLocationName = dest_address;
+
+                            System.out.println("SOURCE DROP : "+dest_address);
 
                             SharedHelper.putKey(context, "current_status", "2");
                             if (source_lat != null && source_lng != null && !source_lng.equalsIgnoreCase("")
@@ -2252,7 +2264,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                     destinationMarker.remove();
                                 MarkerOptions destMarker = new MarkerOptions()
                                         .position(destLatLng)
-                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.provider_marker));
+                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.destination_location));
                                 destinationMarker = mMap.addMarker(destMarker);
                                 LatLngBounds.Builder builder = new LatLngBounds.Builder();
                                 builder.include(sourceMarker.getPosition());
@@ -2271,7 +2283,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         if (dest_address.equalsIgnoreCase("")) {
                             flowValue = 1;
                             frmSource.setText(source_address);
-                            getValidZone();
+//                            getValidZone();
 //                            getServiceList();
                         } else {
                             flowValue = 1;
@@ -2280,14 +2292,178 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                 getCardDetailsForPayment(cardInfoArrayList.get(0));
                                 sourceDestLayout.setVisibility(View.GONE);
                             }
-                            getValidZone();
-                            paymentLayout.setVisibility(View.VISIBLE);
+//                            getValidZone();
+                            paymentLayout.setVisibility(View.GONE);
 //                            getServiceList();
+                        }
+
+                        if(!dest_address.equalsIgnoreCase("") && !source_address.equalsIgnoreCase("")){
+                            System.out.println("setting dest and source address");
+                            setValuesForSourceAndDestination();
                         }
 
                         layoutChanges();
                     }
                 }
+
+
+
+
+
+
+//                } else {
+//                    if(strPickType.equalsIgnoreCase("source")){
+//                        if (placePredictions != null) {
+//                            if (!placePredictions.strSourceAddress.equalsIgnoreCase("")) {
+//                                source_lat = "" + placePredictions.strSourceLatitude;
+//                                source_lng = "" + placePredictions.strSourceLongitude;
+//                                source_address = placePredictions.strSourceAddress;
+//
+//                                Toast.makeText(getContext(), "SA : " + source_address, Toast.LENGTH_SHORT).show();
+//
+//                                if (!placePredictions.strSourceLatitude.equalsIgnoreCase("")
+//                                        && !placePredictions.strSourceLongitude.equalsIgnoreCase("")) {
+//                                    double latitude = Double.parseDouble(placePredictions.strSourceLatitude);
+//                                    double longitude = Double.parseDouble(placePredictions.strSourceLongitude);
+//                                    LatLng location = new LatLng(latitude, longitude);
+//
+//                                    //mMap.clear();
+//                                    try {
+//                                        MarkerOptions markerOptions = new MarkerOptions()
+//                                                .anchor(0.5f, 0.75f)
+//                                                .position(location)
+//                                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_marker));
+//                                        marker = mMap.addMarker(markerOptions);
+//                                        sourceMarker = mMap.addMarker(markerOptions);
+//                                    } catch (Exception e) {
+//                                        e.printStackTrace();
+//                                    }
+//                                    CameraPosition cameraPosition = new CameraPosition.Builder().target(location).zoom(16).build();
+//                                    mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+//                                }
+//
+//                            }else {
+//                                Toast.makeText(getContext(), "Try again", Toast.LENGTH_SHORT).show();
+//                            }
+//
+//
+//                            if (dest_address.equalsIgnoreCase("")) {
+//                                flowValue = 1;
+//                                frmSource.setText(source_address);
+////                            getValidZone();
+////                            getServiceList();
+//                            } else {
+//                                flowValue = 1;
+//
+//                                if (cardInfoArrayList.size() > 0) {
+//                                    getCardDetailsForPayment(cardInfoArrayList.get(0));
+//                                    sourceDestLayout.setVisibility(View.GONE);
+//                                }
+////                            getValidZone();
+//                                paymentLayout.setVisibility(View.VISIBLE);
+////                            getServiceList();
+//                            }
+//
+////                            flowValue = 1;
+////                            frmSource.setText(source_address);
+//                            layoutChanges();
+//                            setValuesForSourceAndDestination();
+//                        }
+//                    }else{
+//
+//                        if (placePredictions != null) {
+//                            if (!placePredictions.strDestAddress.equalsIgnoreCase("")) {
+//                                dest_lat = "" + placePredictions.strDestLatitude;
+//                                dest_lng = "" + placePredictions.strDestLongitude;
+//                                dest_address = placePredictions.strDestAddress;
+//                                dropLocationName = dest_address;
+//
+//                                Toast.makeText(getContext(), "Drop : "+dest_address, Toast.LENGTH_SHORT).show();
+//
+//                                SharedHelper.putKey(context, "current_status", "2");
+//                                if (source_lat != null && source_lng != null && !source_lng.equalsIgnoreCase("")
+//                                        && !source_lat.equalsIgnoreCase("")) {
+//                                    String url = getUrl(Double.parseDouble(source_lat), Double.parseDouble(source_lng)
+//                                            , Double.parseDouble(dest_lat), Double.parseDouble(dest_lng));
+//
+//                                    current_lat = source_lat;
+//                                    current_lng = source_lng;
+//                                    //  getNewApproximateFare("1");
+//                                    //  getNewApproximateFare2("2");
+//                                    FetchUrl fetchUrl = new FetchUrl();
+//                                    fetchUrl.execute(url);
+//                                    LatLng location = new LatLng(Double.parseDouble(current_lat), Double.parseDouble(current_lng));
+//
+//
+//                                    //mMap.clear();
+//                                    if (sourceMarker != null)
+//                                        sourceMarker.remove();
+//                                    MarkerOptions markerOptions = new MarkerOptions()
+//                                            .anchor(0.5f, 0.75f)
+//                                            .position(location)
+//                                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_marker));
+//                                    marker = mMap.addMarker(markerOptions);
+//                                    sourceMarker = mMap.addMarker(markerOptions);
+//                               /* CameraPosition cameraPosition = new CameraPosition.Builder().target(location).zoom(14).build();
+//                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
+//                                }
+//                                if (!dest_lat.equalsIgnoreCase("") && !dest_lng.equalsIgnoreCase("")) {
+//                                    destLatLng = new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng));
+//                                    if (destinationMarker != null)
+//                                        destinationMarker.remove();
+//                                    MarkerOptions destMarker = new MarkerOptions()
+//                                            .position(destLatLng)
+//                                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.provider_marker));
+//                                    destinationMarker = mMap.addMarker(destMarker);
+//                                    LatLngBounds.Builder builder = new LatLngBounds.Builder();
+//                                    builder.include(sourceMarker.getPosition());
+//                                    builder.include(destinationMarker.getPosition());
+//                                    LatLngBounds bounds = builder.build();
+//                                    int padding = 200; // offset from edges of the map in pixels
+//                                    CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+//                                    mMap.moveCamera(cu);
+//
+//                                /*LatLng myLocation = new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng));
+//                                CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(16).build();
+//                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
+//                                }
+//                            }
+//
+//                            if (dest_address.equalsIgnoreCase("")) {
+//                                flowValue = 1;
+//                                frmSource.setText(source_address);
+////                            getValidZone();
+////                            getServiceList();
+//                            } else {
+//                                flowValue = 1;
+//
+//                                if (cardInfoArrayList.size() > 0) {
+//                                    getCardDetailsForPayment(cardInfoArrayList.get(0));
+//                                    sourceDestLayout.setVisibility(View.GONE);
+//                                }
+////                            getValidZone();
+//                                paymentLayout.setVisibility(View.VISIBLE);
+////                            getServiceList();
+//                            }
+////                            flowValue = 1;
+////                            frmDest.setText(dest_address);
+////                            destination.setText(dest_address);
+//                            layoutChanges();
+//
+//                            setValuesForSourceAndDestination();
+//
+//                        }else {
+//                            Toast.makeText(getContext(), "Try again", Toast.LENGTH_SHORT).show();
+//                        }
+//
+//
+//
+//
+//
+//
+//                    }
+//
+//                }
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 // The user canceled the operation.
             }
@@ -3754,7 +3930,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     public Map<String, String> getHeaders() throws AuthFailureError {
                         HashMap<String, String> headers = new HashMap<String, String>();
                         headers.put("X-Requested-With", "XMLHttpRequest");
-                        headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " " + SharedHelper.getKey(context, "access_token"));
+                        headers.put("Authorization", "" + "Bearer" + " " + SharedHelper.getKey(getContext(), "access_token"));
+
                         return headers;
                     }
                 };
@@ -4340,7 +4517,13 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                             ne.printStackTrace();
                                         }
 //                                totalDistance =0;
-                                        if (leg.getDuration().getText().contains("hour")) {
+                                        Log.v("ridetime", leg.getDuration().getText() + " ");
+                                        if(leg.getDuration().getText().contains("day")){
+                                            Log.v("splitday", leg.getDuration().getText().split("day")[0] + " ");
+                                            totalDuration = totalDuration + 24 * Integer.parseInt(leg.getDuration().getText()
+                                                    .split("day")[0].trim());
+                                        }
+                                        else if (leg.getDuration().getText().contains("hour")) {
                                             Log.v("splithour", leg.getDuration().getText().split("hour")[0] + " ");
                                             totalDuration = totalDuration + 60 * Integer.parseInt(leg.getDuration().getText()
                                                     .split("hour")[0].trim());
