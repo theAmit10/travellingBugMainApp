@@ -4236,6 +4236,7 @@ drawable ic_time
 drawable ic_unionpay
 drawable ic_unionpay_template_32
 drawable ic_unknown
+drawable ic_upload
 drawable ic_user_name
 drawable ic_visa
 drawable ic_visa_template_32
@@ -4627,6 +4628,7 @@ drawable profile_work
 drawable provider
 drawable provider_marker
 drawable publish
+drawable publish_frag_image
 drawable quantum_ic_arrow_back_grey600_24
 drawable quantum_ic_clear_grey600_24
 drawable quantum_ic_cloud_off_vd_theme_24
@@ -4954,6 +4956,7 @@ id back
 id backArrow
 id backLayout
 id back_tiny
+id backarrow
 id banner_body
 id banner_content_root
 id banner_image
@@ -5171,6 +5174,7 @@ id country_code_picker_listview
 id country_code_picker_search
 id coupon_et
 id coupon_list_view
+id cross_icon
 id currency_txt
 id current
 id currentPassword
@@ -5615,6 +5619,7 @@ id ll_mobileLayout
 id ll_resend
 id lnrAfterAcceptedStatus
 id lnrApproximate
+id lnrBottomLayout
 id lnrComments
 id lnrEarnings
 id lnrErrorLayout

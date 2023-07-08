@@ -25,7 +25,7 @@ import java.lang.Override;
 public class DriverMapFragment_ViewBinding implements Unbinder {
   private DriverMapFragment target;
 
-  private View view7f0a03a7;
+  private View view7f0a03a8;
 
   private View view7f0a02b6;
 
@@ -51,7 +51,7 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
 
   private View view7f0a02d6;
 
-  private View view7f0a040e;
+  private View view7f0a040f;
 
   @UiThread
   public DriverMapFragment_ViewBinding(final DriverMapFragment target, View source) {
@@ -61,7 +61,7 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
     target.btnSearch = Utils.findRequiredViewAsType(source, R.id.btnSearch, "field 'btnSearch'", Button.class);
     view = Utils.findRequiredView(source, R.id.menuIcon, "field 'menuIcon' and method 'menuIconClick'");
     target.menuIcon = Utils.castView(view, R.id.menuIcon, "field 'menuIcon'", ImageView.class);
-    view7f0a03a7 = view;
+    view7f0a03a8 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -242,7 +242,7 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
     target.user_total_ride_distanse = Utils.findRequiredViewAsType(source, R.id.user_total_ride_distanse, "field 'user_total_ride_distanse'", TextView.class);
     view = Utils.findRequiredView(source, R.id.online_offline_switch, "field 'online_offline_switch' and method 'online_offline_switchClick'");
     target.online_offline_switch = Utils.castView(view, R.id.online_offline_switch, "field 'online_offline_switch'", Switch.class);
-    view7f0a040e = view;
+    view7f0a040f = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -344,8 +344,8 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
     target.edt05Comment = null;
     target.topSrcDestTxtLbl = null;
 
-    view7f0a03a7.setOnClickListener(null);
-    view7f0a03a7 = null;
+    view7f0a03a8.setOnClickListener(null);
+    view7f0a03a8 = null;
     view7f0a02b6.setOnClickListener(null);
     view7f0a02b6 = null;
     view7f0a0132.setOnClickListener(null);
@@ -370,7 +370,7 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
     view7f0a02ae = null;
     view7f0a02d6.setOnClickListener(null);
     view7f0a02d6 = null;
-    view7f0a040e.setOnClickListener(null);
-    view7f0a040e = null;
+    view7f0a040f.setOnClickListener(null);
+    view7f0a040f = null;
   }
 }

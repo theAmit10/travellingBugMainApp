@@ -81,6 +81,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     Dialog dialog;
     private MaterialSpinner spRegister;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +108,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 //        txtSignIn.setOnClickListener(this);
 //        btnSignUp.setOnClickListener(this);
 
+//        FirebaseApp.initializeApp(/*context=*/ this);
+//        FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
+//        firebaseAppCheck.installAppCheckProviderFactory(
+//                PlayIntegrityAppCheckProviderFactory.getInstance());
+
         getToken();
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -123,10 +131,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
                     SharedHelper.putKey(getApplicationContext(), "mobile", phone);
                     Log.v("Phonecode", phone + " ");
-//                    registerAPI();
-                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
-                    intent.putExtra("phonenumber", phone);
-                    startActivityForResult(intent, APP_REQUEST_CODE);
+                    registerAPI();
+//                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
+//                    intent.putExtra("phonenumber", phone);
+//                    startActivityForResult(intent, APP_REQUEST_CODE);
 
 
                 } else {

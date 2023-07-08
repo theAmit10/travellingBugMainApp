@@ -272,6 +272,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     TextView lblType;
     TextView paymentTextView;
     CardView paymentCardView;
+
+    ImageView cross_icon;
     TextView lblApproxAmount, surgeDiscount, surgeTxt;
     View lineView;
     LinearLayout ScheduleLayout;
@@ -552,15 +554,10 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             @Override
             public void onClick(View v) {
 
-
-
-
-
                 Calendar mcurrentTime = Calendar.getInstance();
                 int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                 int minute = mcurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
-
 
                 mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                     int callCount = 0;   //To track number of calls to onTimeSet()
@@ -681,6 +678,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
                             try {
                                 choosedMonth = utils.getMonth(choosedDateFormat);
+//                                cm = getMonth(choosedDateFormat);
                                 cm = choosedMonth;
                                 cy = String.valueOf(year);
                             } catch (ParseException e) {
@@ -694,7 +692,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                 cd = choosedDate;
                             }
                             afterToday = Utilities.isAfterToday(year, monthOfYear, dayOfMonth);
-                            calendertv.setText(choosedDate + " " + choosedMonth + " " + year);
+                            calendertv.setText(choosedDate + "th " + getMonthName(Integer.parseInt(choosedMonth)) + " , " + year);
                         }, mYear, mMonth, mDay);
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 datePickerDialog.getDatePicker().setMaxDate((System.currentTimeMillis() - 1000) + (1000 * 60 * 60 * 24 * 7));
@@ -706,10 +704,76 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         });
 
 
+        cross_icon = rootView.findViewById(R.id.cross_icon);
+        cross_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(txtSelectedAddressSource != null ){
+                    txtSelectedAddressSource.setText("");
+                }
+            }
+        });
+
+
+
         return rootView;
 
 
     }
+
+    private String getMonth(String date) throws ParseException {
+        Date d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).parse(date);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(d);
+        String monthName = new SimpleDateFormat("M").format(cal.getTime());
+        String name = getMonthName(Integer.parseInt(monthName));
+
+
+        return name;
+    }
+
+    public  String getMonthName(int month)
+    {
+        switch(month)
+        {
+            case 1:
+                return "Jan";
+            case 2:
+                return "Feb";
+            case 3:
+                return "Mar";
+
+            case 4:
+                return "April";
+
+            case 5:
+                return "May";
+
+            case 6:
+                return "June";
+
+            case 7:
+                return "July";
+
+            case 8:
+                return "Aug";
+
+            case 9:
+                return "Sep";
+
+            case 10:
+                return "Oct";
+
+            case 11:
+                return "Nov";
+
+            case 12:
+                return "Dec";
+
+        }
+        return "";
+    }
+
 
     public void getProfile() {
 
@@ -2179,6 +2243,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
                 System.out.println("intent data  strPickType: "+strPickType);
                 System.out.println("intent data  strPickLocation: "+strPickLocation);
+
+                rootView.findViewById(R.id.mapLayout).setAlpha(1);
 
 
 
@@ -4167,6 +4233,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     break;
                 case R.id.btnDone:
                     pick_first = true;
+                    rootView.findViewById(R.id.mapLayout).setAlpha(1);
                     try {
                         Utilities.print("centerLat", cmPosition.target.latitude + "");
                         Utilities.print("centerLong", cmPosition.target.longitude + "");
@@ -4504,6 +4571,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                     Log.v("rawBody", rawBody + "");
                                     Log.v("direction", direction + "");
 
+                                    String distance = "";
+                                    String distanceTime = "";
+
                                     float totalDistance = 0;
                                     int totalDuration = 0;
                                     mMap.clear();
@@ -4512,6 +4582,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                     for (int index = 0; index < legCount; index++) {
                                         Leg leg = route.getLegList().get(index);
                                         try {
+                                            distance = leg.getDistance().getText().toString();
+                                            distanceTime = leg.getDuration().getText().toString();
                                             totalDistance = totalDistance + Float.parseFloat(leg.getDistance().getText().replace("km", "").replace("m", "").trim());
                                         } catch (NumberFormatException ne) {
                                             ne.printStackTrace();
@@ -4598,11 +4670,13 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                                 TextView etaTxt = marker_view2.findViewById(com.gsanthosh91.decoderoutekey.R.id.etaTxt);
                                                 etaTxt.setVisibility(View.VISIBLE);
                                                 addressDes.setText(pickUpLocationName);
-                                                if (totalDuration > 60) {
-                                                    etaTxt.setText(convertHours(totalDuration));
-                                                } else {
-                                                    etaTxt.setText(totalDuration + " mins");
-                                                }
+//                                                if (totalDuration > 60) {
+//                                                    etaTxt.setText(convertHours(totalDuration));
+//                                                } else {
+//                                                    etaTxt.setText(totalDuration + " mins");
+//                                                }
+//                                                etaDur.setText(distanceTime);
+                                                etaTxt.setText(distanceTime);
 
                                                 etaDur = totalDuration + "";
                                                 MarkerOptions marker_opt_des = new MarkerOptions().position(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)));
@@ -4633,8 +4707,12 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                         }
                                     });
                                     lblCmfrmSourceAddress.setText(pickUpLocationName);
-                                    lblDis.setText(totalDistance + " km");
-                                    lblEta.setText(totalDuration + " min");
+//                                    lblDis.setText(totalDistance + " km");
+//                                    lblEta.setText(totalDuration + " min");
+                                    lblEta.setText(distanceTime);
+                                    lblDis.setText(distance);
+                                    System.out.println("distanceTime : "+distanceTime);
+                                    System.out.println("distance : "+distance);
                                     setCameraWithCoordinationBounds(route);
                                 }
                             }

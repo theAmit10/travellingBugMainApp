@@ -57,15 +57,23 @@
     <color name="green">#0bc273</color>
     <color name="dark_green">#09a361</color>
 
-    <color name="colorGray">#d7d7d7</color>
-    <color name="colorLightGray">#eeeeee</color>
-    <color name="colorDarkGray">#646464</color>
-    <color name="colorGray_light">#CDCDCD</color>
-    <color name="colorGreyLight">#4DCCCCCC</color>
+<!--    <color name="colorGray">#646464</color>-->
+<!--    <color name="colorLightGray">#646464</color>-->
+<!--    <color name="colorDarkGray">#646464</color>-->
+<!--    <color name="colorGray_light">#646464</color>-->
+<!--    <color name="colorGreyLight">#646464</color>-->
+
     <color name="vividCerise">#da1d81</color>
     <color name="smokyBlack">#100c08</color>
     <color name="transwhite">#F2ffffff</color>
     <color name="confirmcolor">#00a328</color>
     <color name="white_trans">#00000000</color>
+
+
+    <color name="colorGray">#d7d7d7</color>
+    <color name="colorLightGray">#eeeeee</color>
+    <color name="colorDarkGray">#646464</color>
+    <color name="colorGray_light">#CDCDCD</color>
+    <color name="colorGreyLight">#4DCCCCCC</color>
 
 </resources>

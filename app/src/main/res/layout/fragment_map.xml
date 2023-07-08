@@ -1577,6 +1577,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/invoice"
+                        android:fontFamily="@font/nunito_bold"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_15sdp"
                         android:textStyle="bold" />
@@ -1603,7 +1604,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="50"
                             android:gravity="end"
-                            android:text="50"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="@dimen/_14sdp" />
 
@@ -1631,7 +1632,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="50"
                             android:gravity="end"
-                            android:text="50"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="@dimen/_14sdp" />
 
@@ -1660,7 +1661,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="50"
                             android:gravity="end"
-                            android:text="50"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="@dimen/_14sdp" />
 
@@ -1689,7 +1690,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="50"
                             android:gravity="end"
-                            android:text="50"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="@dimen/_14sdp" />
 
@@ -1715,7 +1716,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="50"
                             android:gravity="end"
-                            android:text="50"
+                            android:text=""
                             android:textColor="@color/black_text_color" />
 
                     </LinearLayout>
@@ -1740,7 +1741,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:gravity="end"
-                            android:text="0"
+                            android:text=""
                             android:textColor="@color/white"
                             android:textSize="@dimen/_24sdp"
                             android:textStyle="bold" />
@@ -1813,13 +1814,13 @@
                     android:layout_marginStart="@dimen/button_margin"
                     android:layout_marginEnd="@dimen/button_margin"
                     android:layout_marginBottom="@dimen/button_margin"
-                    android:background="@drawable/button_corner_black"
-                    android:backgroundTint="@color/green"
+                    android:background="@drawable/auth_btn_green_bg"
                     android:paddingStart="@dimen/button_padding"
                     android:paddingEnd="@dimen/button_padding"
+                    android:fontFamily="@font/nunito_semi_bold"
                     android:paddingBottom="@dimen/button_padding"
                     android:text="@string/tap_when_paid"
-                    android:textColor="@color/button_text_color"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/_15sdp"
                     android:visibility="visible" />
 
@@ -2364,9 +2365,9 @@
                     android:id="@+id/lblProviderName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+                    android:textStyle="bold"
                     android:gravity="center"
-                    android:text="Rajan"
+                    android:text="Username"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
 
@@ -2375,7 +2376,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_10sdp"
-
+                    android:textStyle="bold"
                     android:text="@string/rate_provider"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
@@ -2443,8 +2444,6 @@
                     android:layout_marginEnd="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_5sdp"
                     android:background="@drawable/red_color_rect_shape"
-
-
                     android:padding="@dimen/_5sdp"
                     android:text="Submit Review"
                     android:textColor="@color/button_text_color"

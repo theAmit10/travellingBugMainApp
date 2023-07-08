@@ -589,7 +589,16 @@ public class DriverMapFragment extends Fragment implements
 
     @OnClick(R.id.btn_rate_submit)
     void btn_rate_submitClick() {
+        System.out.println("rating : "+feedBackRating);
+        if(feedBackRating == null){
+            feedBackRating = "1";
+        }
+//        if(feedBackRating.equalsIgnoreCase("null")){
+//            rating = "1";
+//        }
+        System.out.println("rating : "+feedBackRating);
         rateToUser(otp_request_id, feedBackRating, feedBackComment, userId);
+
 
 //        update(CurrentStatus, request_id);
     }
@@ -687,11 +696,17 @@ public class DriverMapFragment extends Fragment implements
         String url = "http://maps.google.com/maps?"
                 + "saddr=" + address
                 + "&daddr=" + daddress;
-        Log.e("url", url + "url");
+        Log.e("nav url", url + "url");
+        System.out.println("address : "+address);
+        System.out.println("address des : "+daddress);
         if (btn_01_status.getText().toString().equalsIgnoreCase("ARRIVED")) {
             Uri naviUri = Uri.parse("http://maps.google.com/maps?"
                     + "saddr=" + crt_lat + "," + crt_lng
                     + "&daddr=" + srcLatitude + "," + srcLongitude);
+
+//            Uri naviUri = Uri.parse("http://maps.google.com/maps?"
+//                    + "saddr=" + crt_lat + "," + crt_lng
+//                    + "&daddr=" + destLatitude + "," + destLongitude);
 
             Intent intent = new Intent(Intent.ACTION_VIEW, naviUri);
             intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
@@ -2358,6 +2373,8 @@ public class DriverMapFragment extends Fragment implements
                                                 daddress = jsonObject.optString("d_address");
 
 
+
+
                                                 JSONArray filterArray = jsonObject.getJSONArray("filters");
 
                                                 if (jsonObject.getJSONArray("filters") != null) {
@@ -2570,6 +2587,7 @@ public class DriverMapFragment extends Fragment implements
 //                                                statusResponse = response.optJSONArray("requests").getJSONObject(23).optJSONObject("request");
 //                                                request_id = response.optJSONArray("requests").getJSONObject(23).optString("request_id");
                                                                 statusResponse = jsonObject;
+                                                                System.out.println("status response : "+statusResponse.toString());
                                                                 request_id = jsonObject.optString("id");
 
                                                                 if ((statusResponse != null) && (request_id != null)) {
@@ -2690,8 +2708,10 @@ public class DriverMapFragment extends Fragment implements
                                                                             btn_01_status.setText(getActivity().getString(R.string.tap_when_pickedup));
                                                                             if (SharedHelper.getKey(getContext(), "otp_success").equalsIgnoreCase("yes")) {
                                                                                 btn_01_status.setVisibility(View.VISIBLE);
+                                                                                txtPickUpNotes.setVisibility(View.GONE);
                                                                                 img03Status2.setImageResource(R.drawable.pickeddisable);
                                                                             } else {
+                                                                                txtPickUpNotes.setVisibility(View.VISIBLE);
                                                                                 btn_01_status.setVisibility(View.GONE);
                                                                             }
 

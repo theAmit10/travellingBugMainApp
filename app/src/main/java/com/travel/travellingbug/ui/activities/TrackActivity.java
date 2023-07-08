@@ -290,7 +290,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     EditText txtComments;
 
 
-
     @BindView(R.id.ratingProviderRate)
     RatingBar ratingProviderRate;
     @BindView(R.id.btnSubmitReview)
@@ -403,7 +402,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     void callbtnChat() {
 
 
-
         Intent intentChat = new Intent(context, UserChatActivity.class);
         intentChat.putExtra("requestId", current_chat_requestID);
         intentChat.putExtra("providerId", currentProviderID);
@@ -465,16 +463,16 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
     @butterknife.OnClick(R.id.imgProviderRate)
     void imgProviderRateClick() {
-        Intent intent4 = new Intent(activity, ShowProfile.class);
-        intent4.putExtra("driver", driver);
-        startActivity(intent4);
+//        Intent intent4 = new Intent(activity, ShowProfile.class);
+//        intent4.putExtra("driver", driver);
+//        startActivity(intent4);
     }
 
     @butterknife.OnClick(R.id.imgProvider)
     void imgProviderClick() {
-        Intent intent1 = new Intent(activity, ShowProfile.class);
-        intent1.putExtra("driver", driver);
-        startActivity(intent1);
+//        Intent intent1 = new Intent(activity, ShowProfile.class);
+//        intent1.putExtra("driver", driver);
+//        startActivity(intent1);
     }
 
     @butterknife.OnClick(R.id.mapfocus)
@@ -725,7 +723,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         lblCmfrmSourceAddress = findViewById(R.id.lblCmfrmSourceAddress);
         lblCmfrmDestAddress = findViewById(R.id.lblCmfrmDestAddress);
         txtPickUpNotes = findViewById(R.id.txtPickUpNotes);
-
 
 
         lblPaymentType.setOnClickListener(v -> showChooser());
@@ -1302,12 +1299,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     }
 
     public void submitReviewCall() {
-        System.out.println("REVIEW TO PROVIDER : "+request_id_from_trip+" | "+feedBackRating+" | "+txtComments.getText().toString());
+        System.out.println("REVIEW TO PROVIDER : " + request_id_from_trip + " | " + feedBackRating + " | " + txtComments.getText().toString());
 
-        rateToProvider(request_id_from_trip,feedBackRating,txtComments.getText().toString());
-
-
-
+        rateToProvider(request_id_from_trip, feedBackRating, txtComments.getText().toString());
 
 
 //        customDialog = new CustomDialog(context);
@@ -1352,7 +1346,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 //        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
 
 
-
     }
 
     private void rateToProvider(String request_id, String rating, String comment) {
@@ -1383,7 +1376,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                 lnrRateProvider.startAnimation(slide_down);
                                 lnrRateProvider.setVisibility(View.GONE);
                             }
-
 
 
                         }
@@ -1421,6 +1413,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
                 return params;
             }
+
             @Override
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<String, String>();
@@ -1762,26 +1755,23 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
                                             if (filterJsonArray != null && filterJsonArray.length() > 0) {
 
-                                                for(int j=0; j < filterJsonArray.length(); j++){
-                                                    System.out.println("j"+j);
+                                                for (int j = 0; j < filterJsonArray.length(); j++) {
+                                                    System.out.println("j" + j);
                                                     JSONObject filterJsonObject = filterJsonArray.optJSONObject(j);
-                                                    System.out.println("j"+filterJsonObject.optString("user_id"));
-                                                    System.out.println("j"+SharedHelper.getKey(getApplicationContext(),"id"));
-                                                    if(filterJsonObject.optString("user_id").equalsIgnoreCase(SharedHelper.getKey(getApplicationContext(),"id"))){
+                                                    System.out.println("j" + filterJsonObject.optString("user_id"));
+                                                    System.out.println("j" + SharedHelper.getKey(getApplicationContext(), "id"));
+                                                    if (filterJsonObject.optString("user_id").equalsIgnoreCase(SharedHelper.getKey(getApplicationContext(), "id"))) {
 
-                                                        System.out.println("current user filter data: "+filterJsonObject.toString());
+                                                        System.out.println("current user filter data: " + filterJsonObject.toString());
 
 //                                                JSONObject filterJsonObject = filterJsonArray.getJSONObject(0);
 
-                                                        System.out.println("UPSTATUS data : "+source_lat+" "+source_lng+" "+dest_lat+" "+dest_lng);
+                                                        System.out.println("UPSTATUS data : " + source_lat + " " + source_lng + " " + dest_lat + " " + dest_lng);
 
                                                         String status = filterJsonObject.optString("provider_status");
 
 
-
-
-
-                                                        System.out.println("UPSTATUS data 2 : "+source_lat+" "+source_lng+" "+dest_lat+" "+dest_lng);
+                                                        System.out.println("UPSTATUS data 2 : " + source_lat + " " + source_lng + " " + dest_lat + " " + dest_lng);
 
                                                         System.out.println("UPSTATUS reqStatus two : " + reqStatus);
                                                         System.out.println("UPSTATUS ps : " + filterJsonObject.optString("provider_status"));
@@ -1798,9 +1788,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                             dest_lat = tripsJsonObj.optString("d_latitude");
                                                             dest_lng = tripsJsonObj.optString("d_longitude");
 
-                                                            System.out.println("UPSTATUS data 3 : "+source_lat+" "+source_lng+" "+dest_lat+" "+dest_lng);
+                                                            System.out.println("UPSTATUS data 3 : " + source_lat + " " + source_lng + " " + dest_lat + " " + dest_lng);
 
-                                                            if(one_time_distance_and_time){
+                                                            if (one_time_distance_and_time) {
                                                                 try {
                                                                     trackPickToDest();
 
@@ -1918,7 +1908,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                     imgDropped.setImageResource(R.drawable.complete);
 
 
-
                                                                     strTag = "ride_accepted";
                                                                     try {
                                                                         JSONObject provider = tripsJsonObj.getJSONObject("provider");
@@ -1940,7 +1929,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                         Picasso.get().load(service_type.optString("image"))
                                                                                 .placeholder(R.drawable.car_select).error(R.drawable.car_select)
                                                                                 .into(imgServiceRequested);
-                                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+//                                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                                        if (!provider.optString("rating").equalsIgnoreCase("null")) {
+                                                                            ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                                        } else {
+                                                                            ratingProvider.setRating(Float.parseFloat("0"));
+                                                                        }
                                                                         //                                                lblDis.setText(service_type.optString("distance")+" km");
                                                                         //                                                lblEta.setText(service_type.optString("minute")+" min");
                                                                         lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
@@ -1983,7 +1977,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                     imgPicked.setImageResource(R.drawable.pickeddisable);
                                                                     imgDropped.setImageResource(R.drawable.complete);
 
-                                                                    if(txtPickUpNotes.getText().equals("****")){
+                                                                    if (txtPickUpNotes.getText().equals("****")) {
                                                                         Random random2 = new Random();
                                                                         String otp_code2 = String.format("%04d", random2.nextInt(10000));
                                                                         System.out.printf("OTP : " + otp_code2);
@@ -2017,7 +2011,14 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                         lblServiceRequested.setText(service_type.optString("name"));
                                                                         lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
                                                                         Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
-                                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+
+
+//                                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                                        if (!provider.optString("rating").equalsIgnoreCase("null")) {
+                                                                            ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                                        } else {
+                                                                            ratingProvider.setRating(Float.parseFloat("0"));
+                                                                        }
 
 //                                                                                                                lblDis.setText(service_type.optString("distance")+" km");
 //                                                                                                                lblEta.setText(service_type.optString("minute")+" min");
@@ -2070,7 +2071,13 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                         lblServiceRequested.setText(service_type.optString("name"));
                                                                         lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
                                                                         Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
-                                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+
+//                                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                                        if (!provider.optString("rating").equalsIgnoreCase("null")) {
+                                                                            ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                                        } else {
+                                                                            ratingProvider.setRating(Float.parseFloat("0"));
+                                                                        }
 
                                                                         //                                                lblDis.setText(service_type.optString("distance")+" km");
                                                                         //                                                lblEta.setText(service_type.optString("minute")+" min");
@@ -2322,20 +2329,26 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                     if ((confirmDialog != null) && (confirmDialog.isShowing()))
                                                                         confirmDialog.dismiss();
 
-                                                                    SharedHelper.putKey(getApplicationContext(), "addRating","no");
+                                                                    SharedHelper.putKey(getApplicationContext(), "addRating", "no");
                                                                     Toast.makeText(getApplicationContext(), "DROPPED ", Toast.LENGTH_SHORT).show();
 
                                                                     break;
 
                                                                 case "COMPLETED":
                                                                     btnPayNow.setVisibility(View.GONE);
-                                                                    SharedHelper.putKey(getApplicationContext(), "addRating","yes");
+                                                                    SharedHelper.putKey(getApplicationContext(), "addRating", "yes");
                                                                     lblProviderName.setText(getString(R.string.rate_provider) + " with " + providerJsonObject.optString("first_name"));
 
-                                                                    if (providerJsonObject.optString("avatar").startsWith("http"))
-                                                                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" +providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
-                                                                    else
-                                                                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                    System.out.println("provider details or user :"+providerJsonObject.toString());
+                                                                    System.out.println("provider details or user firstname :"+providerJsonObject.optString("first_name"));
+                                                                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerJsonObject.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                                    System.out.println("provider details or user avatar :"+providerJsonObject.optString("avatar"));
+
+//                                                                    if (providerJsonObject.optString("avatar").startsWith("http"))
+//                                                                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                                    else
+//                                                                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + providerJsonObject.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+//
                                                                     flowValue = 6;
                                                                     layoutChanges();
 
@@ -2425,7 +2438,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 //                                                            }
 
 
-
                                                                     if ((confirmDialog != null) && (confirmDialog.isShowing()))
                                                                         confirmDialog.dismiss();
                                                                     break;
@@ -2444,9 +2456,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
 
                                                     }
-                                                    }
                                                 }
-
+                                            }
 
 
                                             String status = reqStatus;
@@ -2742,7 +2753,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                         Picasso.get().load(service_type.optString("image"))
                                                                 .placeholder(R.drawable.car_select).error(R.drawable.car_select)
                                                                 .into(imgServiceRequested);
-                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+//                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                        if (!provider.optString("rating").equalsIgnoreCase("null")) {
+                                                            ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                        } else {
+                                                            ratingProvider.setRating(Float.parseFloat("0"));
+                                                        }
                                                         //                                                lblDis.setText(service_type.optString("distance")+" km");
                                                         //                                                lblEta.setText(service_type.optString("minute")+" min");
                                                         lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
@@ -2794,7 +2810,13 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                         lblServiceRequested.setText(service_type.optString("name"));
                                                         lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
                                                         Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
-                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+//                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+
+                                                        if (!provider.optString("rating").equalsIgnoreCase("null")) {
+                                                            ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                        } else {
+                                                            ratingProvider.setRating(Float.parseFloat("0"));
+                                                        }
 
                                                         //                                                lblDis.setText(service_type.optString("distance")+" km");
                                                         //                                                lblEta.setText(service_type.optString("minute")+" min");
@@ -2841,7 +2863,13 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                         lblServiceRequested.setText(service_type.optString("name"));
                                                         lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
                                                         Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
-                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+//                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+
+                                                        if (!provider.optString("rating").equalsIgnoreCase("null")) {
+                                                            ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                                                        } else {
+                                                            ratingProvider.setRating(Float.parseFloat("0"));
+                                                        }
 
                                                         //                                                lblDis.setText(service_type.optString("distance")+" km");
                                                         //                                                lblEta.setText(service_type.optString("minute")+" min");
@@ -2946,10 +2974,15 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                         } else if (isPaid.equalsIgnoreCase("1")) {
                                                             btnPayNow.setVisibility(View.GONE);
                                                             lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
-                                                            if (provider.optString("avatar").startsWith("http"))
-                                                                Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
-                                                            else
-                                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+                                                            System.out.println("provider details or user :"+provider.toString());
+                                                            System.out.println("provider details or user firstname :"+provider.optString("first_name"));
+                                                            System.out.println("provider details or user avatar :"+provider.optString("avatar"));
+                                                            Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                            if (provider.optString("avatar").startsWith("http"))
+//                                                                Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+//                                                            else
+//                                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProvider);
+
                                                             flowValue = 6;
                                                             layoutChanges();
                                                         }
@@ -3006,10 +3039,17 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                         } else if (isPaid.equalsIgnoreCase("1")) {
                                                             btnPayNow.setVisibility(View.GONE);
                                                             lblProviderName.setText(getString(R.string.rate_provider) + " " + provider.optString("first_name"));
-                                                            if (provider.optString("avatar").startsWith("http"))
-                                                                Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
-                                                            else
-                                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
+                                                            System.out.println("provider details or user :"+provider.toString());
+                                                            System.out.println("provider details or user firstname :"+provider.optString("first_name"));
+                                                            System.out.println("provider details or user avatar :"+provider.optString("avatar"));
+
+                                                            Picasso.get().load(URLHelper.BASE + "storage/app/public/" +provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProviderRate);
+
+//                                                            if (provider.optString("avatar").startsWith("http"))
+//                                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" +provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
+//                                                            else
+//                                                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.loading).error(R.drawable.ic_dummy_user).into(imgProviderRate);
+//
                                                             flowValue = 6;
                                                             layoutChanges();
                                                             //imgPaymentTypeInvoice.setImageResource(R.drawable.visa);
@@ -3950,6 +3990,79 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         }
     }
 
+
+    private void updateStatusForSingleUserRide(String rideId, String status) {
+        customDialog = new CustomDialog(context);
+        customDialog.setCancelable(false);
+        if (customDialog != null)
+            customDialog.show();
+        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.CHANGE_STATUS_BY_USER, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if ((customDialog != null) && (customDialog.isShowing()))
+                    customDialog.dismiss();
+                finish();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    if (response != null) {
+
+
+                        try {
+                            System.out.println("data : " + jsonObject.toString());
+                            Toast.makeText(TrackActivity.this, "Successfully cancelled", Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(TrackActivity.this, HomeScreenActivity.class);
+                            startActivity(intent);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+
+                } catch (JSONException e) {
+                    displayMessage(e.toString());
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                if ((customDialog != null) && (customDialog.isShowing()))
+                    customDialog.dismiss();
+            }
+
+        }) {
+
+
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("rideid", rideId);
+                params.put("status", status);
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                return headers;
+            }
+
+        };
+
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+    }
+
     private void showStartedDialog(JSONObject requestStatusCheckObject) {
 
         confirmDialog = new Dialog(TrackActivity.this);
@@ -3964,14 +4077,22 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         TextView subTitleTv = confirmDialog.findViewById(R.id.subTitleTv);
         subTitleTv.setVisibility(View.VISIBLE);
         titleTv.setText("Ride Started");
-        tvDriverMsg.setText(getString(R.string.driver_will_pickup)  + " few minutes.");
+        tvDriverMsg.setText(getString(R.string.driver_will_pickup) + " few minutes.");
 
         tvCancel.setOnClickListener(v -> {
             confirmDialog.dismiss();
-            cancelRequest();
+//            cancelRequest();
+
+            updateStatusForSingleUserRide(request_id_from_trip, "CANCELLED");
+
+
         });
 
         tvDone.setOnClickListener(v -> {
+
+            System.out.println("done started");
+
+            System.out.println("done data : " + requestStatusCheckObject.toString());
 
             layoutdriverstatus.setVisibility(View.VISIBLE);
             driveraccepted.setVisibility(View.VISIBLE);
@@ -3997,7 +4118,11 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
                 Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select)
                         .error(R.drawable.car_select).into(imgServiceRequested);
-                ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                if (!provider.optString("rating").equalsIgnoreCase("null")) {
+                    ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
+                } else {
+                    ratingProvider.setRating(Float.parseFloat("0"));
+                }
 
                 lblApproxAmount.setText(SharedHelper.getKey(TrackActivity.this, "currency") + service_type.optString("fixed"));
 
@@ -4010,6 +4135,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
 
                 AfterAcceptButtonLayout.setVisibility(View.VISIBLE);
+                System.out.println("done data : " + requestStatusCheckObject.toString());
                 flowValue = 4;
                 layoutChanges();
 
@@ -4021,6 +4147,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 //                    startActivity(intent);
 //                }
             } catch (Exception e) {
+                System.out.println("done error : " + e.getMessage());
+                System.out.println("done error : " + e.getCause());
+                System.out.println("done error : " + e.getStackTrace());
                 e.printStackTrace();
             }
             confirmDialog.dismiss();
@@ -4441,7 +4570,6 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     private void trackPickToDest() throws Exception {
 
 
-
         GoogleDirection.withServerKey(getString(R.string.google_map_api))
                 .from(new LatLng(Double.parseDouble(source_lat), Double.parseDouble(source_lng)))
                 .to(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)))
@@ -4456,6 +4584,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                     Log.v("rawBody", rawBody + "");
                                     Log.v("direction", direction + "");
 
+                                    String distance = "";
+                                    String distanceTime = "";
+
                                     float totalDistance = 0;
                                     int totalDuration = 0;
                                     mMap.clear();
@@ -4464,9 +4595,15 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                     for (int index = 0; index < legCount; index++) {
                                         Leg leg = route.getLegList().get(index);
                                         try {
-                                            totalDistance = totalDistance + Float.parseFloat(leg.getDistance().getText().replace("km", "").replace("m", "").trim());
-                                            ride_distance = String.valueOf(totalDistance);
+//                                            totalDistance = totalDistance + Float.parseFloat(leg.getDistance().getText().replace("km", "").replace("m", "").trim());
+//                                            ride_distance = String.valueOf(totalDistance);
+
+                                            ride_distance = String.valueOf(leg.getDistance().getText());
                                             ride_time = leg.getDuration().getText();
+
+
+                                            distance = leg.getDistance().getText().toString();
+                                            distanceTime = leg.getDuration().getText().toString();
 //                                            Toast.makeText(activity, ride_distance, Toast.LENGTH_SHORT).show();
 //                                            Toast.makeText(activity, ride_time, Toast.LENGTH_SHORT).show();
                                             one_time_distance_and_time = false;
@@ -4475,7 +4612,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                             ne.printStackTrace();
                                         }
 //                                totalDistance =0;
-                                        if (leg.getDuration().getText().contains("hour")) {
+                                        Log.v("ridetime", leg.getDuration().getText() + " ");
+                                        if (leg.getDuration().getText().contains("day")) {
+                                            Log.v("splitday", leg.getDuration().getText().split("day")[0] + " ");
+                                            totalDuration = totalDuration + 24 * Integer.parseInt(leg.getDuration().getText()
+                                                    .split("day")[0].trim());
+                                        } else if (leg.getDuration().getText().contains("hour")) {
                                             Log.v("splithour", leg.getDuration().getText().split("hour")[0] + " ");
                                             totalDuration = totalDuration + 60 * Integer.parseInt(leg.getDuration().getText()
                                                     .split("hour")[0].trim());
@@ -4518,11 +4660,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                 TextView etaTxt = marker_view2.findViewById(com.gsanthosh91.decoderoutekey.R.id.etaTxt);
                                                 etaTxt.setVisibility(View.VISIBLE);
                                                 addressDes.setText(dropLocationName);
-                                                if (totalDuration > 60) {
-                                                    etaTxt.setText(convertHours(totalDuration));
-                                                } else {
-                                                    etaTxt.setText(totalDuration + " mins");
-                                                }
+//                                                if (totalDuration > 60) {
+//                                                    etaTxt.setText(convertHours(totalDuration));
+//                                                } else {
+//                                                    etaTxt.setText(totalDuration + " mins");
+//                                                }
+                                                etaTxt.setText(distanceTime);
                                                 etaDur = totalDuration + "";
                                                 MarkerOptions marker_opt_des = new MarkerOptions().position(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)));
                                                 marker_opt_des.icon(BitmapDescriptorFactory.fromBitmap(createDrawableFromView(context, marker_view2))).anchor(0.00f, 0.20f);
@@ -4549,11 +4692,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                 TextView etaTxt = marker_view2.findViewById(com.gsanthosh91.decoderoutekey.R.id.etaTxt);
                                                 etaTxt.setVisibility(View.VISIBLE);
                                                 addressDes.setText(pickUpLocationName);
-                                                if (totalDuration > 60) {
-                                                    etaTxt.setText(convertHours(totalDuration));
-                                                } else {
-                                                    etaTxt.setText(totalDuration + " mins");
-                                                }
+//                                                if (totalDuration > 60) {
+//                                                    etaTxt.setText(convertHours(totalDuration));
+//                                                } else {
+//                                                    etaTxt.setText(totalDuration + " mins");
+//                                                }
+                                                etaTxt.setText(distanceTime);
 
                                                 etaDur = totalDuration + "";
                                                 MarkerOptions marker_opt_des = new MarkerOptions().position(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)));
@@ -4584,8 +4728,11 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                         }
                                     });
                                     lblCmfrmSourceAddress.setText(pickUpLocationName);
-                                    lblDis.setText(totalDistance + " km");
-                                    lblEta.setText(totalDuration + " min");
+//                                    lblDis.setText(totalDistance + " km");
+//                                    lblEta.setText(totalDuration + " min");
+
+                                    lblEta.setText(distanceTime);
+                                    lblDis.setText(distance);
                                     setCameraWithCoordinationBounds(route);
                                 }
                             }

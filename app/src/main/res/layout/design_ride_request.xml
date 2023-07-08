@@ -72,7 +72,7 @@
                     android:textStyle="bold"
                     android:text="( 115 Reviews )"
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_7sdp" />
+                    android:textSize="@dimen/_8sdp" />
 
             </LinearLayout>
         </LinearLayout>
@@ -109,7 +109,7 @@
                 android:textStyle="bold"
                 android:text="3 Seat"
                 android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_9sdp"
+                android:textSize="@dimen/_10sdp"
 
                 />
 
@@ -162,7 +162,7 @@
             android:fontFamily="@font/nunito_regular"
             android:text="Plot A2, Sector 38 A, Noida, \nIndia"
             android:textColor="@color/colorDarkGray"
-            android:textSize="@dimen/_8sdp"
+            android:textSize="@dimen/_10sdp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.224"
@@ -179,7 +179,7 @@
             android:fontFamily="@font/nunito_regular"
             android:text="Flat No-83, Dwarka Sector 12"
             android:textColor="@color/colorDarkGray"
-            android:textSize="@dimen/_8sdp"
+            android:textSize="@dimen/_10sdp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView10"

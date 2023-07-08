@@ -142,7 +142,7 @@
                     android:id="@+id/viewProfileTv"
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_profile"
+                    android:drawableLeft="@drawable/ic_person"
                     android:drawablePadding="@dimen/_10sdp"
                     android:drawableTint="@color/dark_green"
                     android:fontFamily="@font/nunito_bold"
@@ -232,9 +232,9 @@
                     android:layout_marginEnd="10dp"
                     android:maxLines="1"
                     android:text="Pickup location"
-                    android:textColor="@color/colorGray"
+                    android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_10sdp"
-                    android:textStyle="bold"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
                     app:layout_constraintTop_toTopOf="@+id/imageView9" />
@@ -278,9 +278,9 @@
                     android:layout_marginStart="@dimen/_35sdp"
                     android:maxLines="1"
                     android:text="Drop location"
-                    android:textColor="@color/colorGray"
+                    android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_10sdp"
-                    android:textStyle="bold"
+
                     app:layout_constraintEnd_toEndOf="@+id/dropLocation"
                     app:layout_constraintStart_toEndOf="@+id/imageView10"
                     app:layout_constraintTop_toBottomOf="@+id/view5" />
@@ -322,12 +322,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
-
-                        android:drawableTint="@color/colorGray"
-
+                        android:drawableTint="@color/colorDarkGray"
                         android:text="Pick up date"
-                        android:textColor="@color/colorGray"
-                        android:textStyle="bold" />
+                        android:textColor="@color/colorDarkGray"
+                        />
 
                     <TextView
                         android:id="@+id/pickUpDataVal"
@@ -345,12 +343,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:drawableTint="@color/colorGray"
+                        android:drawableTint="@color/colorDarkGray"
 
                         android:maxLines="1"
                         android:text="Pick up time"
-                        android:textColor="@color/colorGray"
-                        android:textStyle="bold" />
+                        android:textColor="@color/colorDarkGray"
+                         />
 
                     <TextView
                         android:id="@+id/pickUpTimeVal"
@@ -378,11 +376,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:drawableTint="@color/colorGray"
+                        android:drawableTint="@color/colorDarkGray"
 
                         android:text="Fare to collect"
-                        android:textColor="@color/colorGray"
-                        android:textStyle="bold" />
+                        android:textColor="@color/colorDarkGray"
+                         />
 
                     <TextView
                         android:id="@+id/fareVal"
@@ -402,12 +400,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:drawableTint="@color/colorGray"
-
+                        android:drawableTint="@color/colorDarkGray"
                         android:maxLines="1"
                         android:text="Seats requested"
-                        android:textColor="@color/colorGray"
-                        android:textStyle="bold" />
+                        android:textColor="@color/colorDarkGray"
+                         />
 
                     <TextView
                         android:id="@+id/seatVal"

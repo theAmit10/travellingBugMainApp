@@ -22,7 +22,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:scaleType="centerCrop"
-            android:src="@drawable/people"
+            android:src="@drawable/ic_dummy_user"
             app:civ_border_color="@color/white"
             app:civ_border_width="@dimen/_2sdp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -45,12 +45,15 @@
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold" />
 
+
+
             <RatingBar
                 android:id="@+id/listitemrating"
-                style="?attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="@dimen/_12sdp"
                 android:layout_gravity="start"
+                android:layout_marginBottom="5dp"
                 android:isIndicator="true"
                 android:numStars="5"
                 android:progressTint="#FFCA28" />

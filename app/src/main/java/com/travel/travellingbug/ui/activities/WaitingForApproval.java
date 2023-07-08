@@ -94,7 +94,7 @@ public class WaitingForApproval extends AppCompatActivity {
 
             if (response.optString("account_status").equals("approved")) {
 
-                startActivity(new Intent(WaitingForApproval.this, MainActivity.class));
+                startActivity(new Intent(WaitingForApproval.this, HomeScreenActivity.class));
             }
         }, error -> {
             displayMessage(getString(R.string.something_went_wrong));

@@ -22,9 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Email Address"
-        android:textColor="@color/colorGray"
+        android:textColor="@color/colorDarkGray"
         android:layout_marginStart="@dimen/_10sdp"
-        android:textStyle="bold"
+
         />
 
     <TextView
@@ -44,9 +44,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Phone Number"
-        android:textColor="@color/colorGray"
+        android:textColor="@color/colorDarkGray"
         android:layout_marginStart="@dimen/_10sdp"
-        android:textStyle="bold"
+
         />
 
     <TextView

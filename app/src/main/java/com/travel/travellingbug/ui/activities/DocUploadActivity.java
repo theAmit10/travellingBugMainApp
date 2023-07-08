@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -76,6 +77,8 @@ public class DocUploadActivity extends AppCompatActivity {
     private static final int MEDIA_TYPE_IMAGE = 1;
     private static final int TAKE_PICTURE = 0;
     private static final int GET_PICTURE = 1;
+
+    Dialog confirmDialog;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     public static String TAG = "DocUploadActivity";
     public static int deviceHeight;
@@ -185,11 +188,11 @@ public class DocUploadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doc_upload);
 
 
-        Toast.makeText(getApplicationContext(), "Welcome  "+SharedHelper.getKey(getApplicationContext(),"first_name"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Welcome  " + SharedHelper.getKey(getApplicationContext(), "first_name"), Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(), "Please upload a document to continue", Toast.LENGTH_LONG).show();
-        System.out.println("First Name : "+SharedHelper.getKey(getApplicationContext(),"first_name"));
+        System.out.println("First Name : " + SharedHelper.getKey(getApplicationContext(), "first_name"));
         // Setting Name First
-        if(SharedHelper.getKey(getApplicationContext(),"first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getApplicationContext(),"first_name").equalsIgnoreCase("") || SharedHelper.getKey(getApplicationContext(),"first_name").equalsIgnoreCase(null)){
+        if (SharedHelper.getKey(getApplicationContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getApplicationContext(), "first_name").equalsIgnoreCase("") || SharedHelper.getKey(getApplicationContext(), "first_name").equalsIgnoreCase(null)) {
             Toast.makeText(getApplicationContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), UpdateProfile.class);
             intent.putExtra("parameter", "first_name");
@@ -250,9 +253,10 @@ public class DocUploadActivity extends AppCompatActivity {
                             5);
                 }
             }
-            Dialog d = ImageChoose();
-            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
-            d.show();
+//            Dialog d = ImageChoose();
+//            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
+//            d.show();
+            showImageDialog();
         });
 
 
@@ -265,9 +269,10 @@ public class DocUploadActivity extends AppCompatActivity {
                             5);
                 }
             }
-            Dialog d = ImageChoose();
-            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
-            d.show();
+//            Dialog d = ImageChoose();
+//            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
+//            d.show();
+            showImageDialog();
         });
 
         backArrow.setOnClickListener(new View.OnClickListener() {
@@ -289,9 +294,10 @@ public class DocUploadActivity extends AppCompatActivity {
                 }
             }
 
-            Dialog d = ImageChoose();
-            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
-            d.show();
+//            Dialog d = ImageChoose();
+//            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
+//            d.show();
+            showImageDialog();
         });
 
         btPsvInsurenceCertificate.setOnClickListener(v -> {
@@ -303,9 +309,10 @@ public class DocUploadActivity extends AppCompatActivity {
                             5);
                 }
             }
-            Dialog d = ImageChoose();
-            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
-            d.show();
+//            Dialog d = ImageChoose();
+//            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
+//            d.show();
+            showImageDialog();
         });
 
         btMotorInspectCertificate.setOnClickListener(v -> {
@@ -317,9 +324,10 @@ public class DocUploadActivity extends AppCompatActivity {
                             5);
                 }
             }
-            Dialog d = ImageChoose();
-            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
-            d.show();
+//            Dialog d = ImageChoose();
+//            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
+//            d.show();
+            showImageDialog();
 
 
         });
@@ -339,7 +347,6 @@ public class DocUploadActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
                 displayMessage(DocUploadActivity.this.getString(R.string.upload_all_documents_and_check_term));
             }
-
 
 
 //            if (totalDocUpload == responseArray.length()) {
@@ -391,7 +398,7 @@ public class DocUploadActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                    }, error -> Log.v("DocUploadActivity", error.getMessage()+"")) {
+                    }, error -> Log.v("DocUploadActivity", error.getMessage() + "")) {
                         @Override
                         public java.util.Map<String, String> getHeaders() throws AuthFailureError {
                             HashMap<String, String> headers = new HashMap<>();
@@ -414,6 +421,65 @@ public class DocUploadActivity extends AppCompatActivity {
         Toast.makeText(this, toastString, Toast.LENGTH_LONG).show();
     }
 
+
+    private void showImageDialog() {
+
+        confirmDialog = new Dialog(this);
+        confirmDialog.setContentView(R.layout.confirm_ride_dialog);
+        confirmDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        confirmDialog.show();
+        ImageView image = confirmDialog.findViewById(R.id.image);
+        image.setImageResource(R.drawable.ic_upload);
+        TextView tvCancel = confirmDialog.findViewById(R.id.tvCancel);
+        TextView tvDone = confirmDialog.findViewById(R.id.tvDone);
+
+        tvDone.setText("Gallery");
+        tvCancel.setText("Camera");
+        try {
+            tvCancel.setTextColor(getResources().getColor(R.color.colorDarkGray));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        TextView tvDriverMsg = confirmDialog.findViewById(R.id.tvDriverMsg);
+        TextView titleTv = confirmDialog.findViewById(R.id.titleTv);
+        TextView subTitleTv = confirmDialog.findViewById(R.id.subTitleTv);
+        subTitleTv.setText("Your data is safe and secure");
+        subTitleTv.setVisibility(View.VISIBLE);
+        titleTv.setText("Upload Image");
+        tvDriverMsg.setText("");
+
+        tvCancel.setOnClickListener(v -> {
+            confirmDialog.dismiss();
+
+            try {
+                if (ContextCompat.checkSelfPermission(DocUploadActivity.this,
+                        Manifest.permission.CAMERA) ==
+                        PackageManager.PERMISSION_GRANTED) {
+                    takePhoto();
+                } else {
+                    Toast.makeText(DocUploadActivity.this, "You have denied camera access permission.",
+                            Toast.LENGTH_LONG).show();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+        });
+
+        tvDone.setOnClickListener(v -> {
+            try {
+                getPhoto();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            confirmDialog.dismiss();
+
+        });
+    }
+
     private Dialog ImageChoose() {
         androidx.appcompat.app.AlertDialog.Builder builder = new
                 androidx.appcompat.app.AlertDialog.Builder(DocUploadActivity.this);
@@ -427,6 +493,7 @@ public class DocUploadActivity extends AppCompatActivity {
                         // TODO Auto-generated method stub
                         switch (which) {
                             case 0:
+
                                 getPhoto();
                                 break;
                             case 1:
@@ -442,7 +509,7 @@ public class DocUploadActivity extends AppCompatActivity {
                             default:
                                 break;
                         }
-                    });
+                    }).setIcon(R.drawable.bt_ic_camera);
         } else {
             builder.setTitle("Choose Image :").setItems(
                     new CharSequence[]{"Gallery", "Camera"},
@@ -486,6 +553,7 @@ public class DocUploadActivity extends AppCompatActivity {
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraImageUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
+        System.out.println("cameraImageUri : "+cameraImageUri);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, cameraImageUri);
         startActivityForResult(intent, TAKE_PICTURE);
     }
@@ -498,6 +566,8 @@ public class DocUploadActivity extends AppCompatActivity {
 
     @SuppressLint("SimpleDateFormat")
     private File getOutputMediaFile(int type) {
+
+
 
         File mediaStorageDir = new File(
                 Environment
@@ -667,7 +737,7 @@ public class DocUploadActivity extends AppCompatActivity {
                                 Intent intent1 = new Intent(DocUploadActivity.this, WaitingForApproval.class);
                                 intent1.putExtra("account_status", "account_status_new");
                                 startActivity(intent1);
-                                finish();
+//                                finish();
                             }, error -> {
                         Log.e("completeDoc", error.getLocalizedMessage());
                         //                                utils.print("Error", error.toString());
@@ -739,24 +809,24 @@ public class DocUploadActivity extends AppCompatActivity {
             if (etDate.getText().toString().isEmpty()) {
                 etDate.setError("Please select expiry date");
             } else {
-            documentUri = cameraImageUri;
-            new BitmapWorkerTask(DocUploadActivity.this, adapterImageView,
-                    "add_revenue").execute(cameraImageUri);
+                documentUri = cameraImageUri;
+                new BitmapWorkerTask(DocUploadActivity.this, adapterImageView,
+                        "add_revenue").execute(cameraImageUri);
 
-            try {
-                adapterButton.setVisibility(View.GONE);
-                adapterImageView.setVisibility(View.VISIBLE);
-                saveProfileAccount(responseArray.getJSONObject(UploadPosition).getString("name"),
-                        AppHelper.getFileDataFromDrawable(ivShow.getDrawable()),
-                        responseArray.getJSONObject(UploadPosition).getString("id"), etDate.getText().toString());
+                try {
+                    adapterButton.setVisibility(View.GONE);
+                    adapterImageView.setVisibility(View.VISIBLE);
+                    saveProfileAccount(responseArray.getJSONObject(UploadPosition).getString("name"),
+                            AppHelper.getFileDataFromDrawable(ivShow.getDrawable()),
+                            responseArray.getJSONObject(UploadPosition).getString("id"), etDate.getText().toString());
 //                        responseArray.getJSONObject(UploadPosition).getString("id"), "10-10-2050");
 
 
-            } catch (JSONException e) {
-                e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                dialog.dismiss();
             }
-            dialog.dismiss();
-        }
 
 
         });
@@ -927,9 +997,10 @@ public class DocUploadActivity extends AppCompatActivity {
                                         5);
                             }
                         }
-                        Dialog d = ImageChoose();
-                        d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
-                        d.show();
+//                        Dialog d = ImageChoose();
+//                        d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
+//                        d.show();
+                        showImageDialog();
                     });
 
                     holder.documentNameLL.setOnClickListener(new View.OnClickListener() {
@@ -945,9 +1016,10 @@ public class DocUploadActivity extends AppCompatActivity {
                                             5);
                                 }
                             }
-                            Dialog d = ImageChoose();
-                            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
-                            d.show();
+//                            Dialog d = ImageChoose();
+//                            d.getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
+//                            d.show();
+                            showImageDialog();
                         }
                     });
 

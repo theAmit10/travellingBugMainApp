@@ -163,11 +163,13 @@ public class MainActivity extends AppCompatActivity {
         loadNavHeader();
         setUpNavigationView();
 
-        navHeader.setOnClickListener(view -> {
-            drawer.closeDrawers();
-            new Handler().postDelayed(() -> startActivity(new Intent(activity,
-                    Profile.class)), 250);
-        });
+//        navHeader.setOnClickListener(view -> {
+//            drawer.closeDrawers();
+//            new Handler().postDelayed(() -> startActivity(new Intent(activity,
+//                    HomeScreenActivity.class)), 250);
+//        });
+
+
         if (getIntent().getStringExtra("status") != null) {
             statustg = getIntent().getStringExtra("status");
         }
@@ -367,7 +369,7 @@ public class MainActivity extends AppCompatActivity {
                 int rate_valu = rate_val.indexOf(".");
                 String rate_value = rate_val.substring(0,rate_valu);
 
-                tvRate.setText("(  "+rate_value +" )");
+                tvRate.setText(rate_value);
                 tvRate.setVisibility(View.VISIBLE);
             }
 

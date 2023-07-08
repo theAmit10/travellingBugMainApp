@@ -131,7 +131,7 @@ public class CustomStopOverLocation extends AppCompatActivity
         }
 
         if (cursor.equalsIgnoreCase("source")) {
-            strSelected = "source";
+            strSelected = "destination";
             txtaddressSource.requestFocus();
             imgSourceClose.setVisibility(View.VISIBLE);
             imgDestClose.setVisibility(View.GONE);
@@ -146,7 +146,7 @@ public class CustomStopOverLocation extends AppCompatActivity
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    strSelected = "source";
+                    strSelected = "destination";
                     imgSourceClose.setVisibility(View.VISIBLE);
                 } else {
                     imgSourceClose.setVisibility(View.GONE);
@@ -190,6 +190,7 @@ public class CustomStopOverLocation extends AppCompatActivity
                         Intent intent = new Intent();
                         intent.putExtra("pick_locationSO", "yes");
                         intent.putExtra("typeSO", "destination");
+                        intent.putExtra("strPickForStopOverOrNot", "yes");
                         setResult(RESULT_OK, intent);
                         finish();
                     }
@@ -295,7 +296,7 @@ public class CustomStopOverLocation extends AppCompatActivity
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // optimised way is to start searching for laction after user has typed minimum 3 chars
-                strSelected = "source";
+                strSelected = "destination";
                 if (txtaddressSource.getText().length() > 0) {
                     txtPickLocation.setVisibility(View.VISIBLE);
                     imgSourceClose.setVisibility(View.VISIBLE);
@@ -559,9 +560,6 @@ public class CustomStopOverLocation extends AppCompatActivity
 //                            mAutoCompleteList.setVisibility(View.GONE);
 //                        }
 //                    });
-
-
-
 
 
 

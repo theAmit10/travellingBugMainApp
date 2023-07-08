@@ -221,6 +221,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     String feedBackRating;
     double height;
     double width;
+
+    String strPickForStopOverOrNot = "";
     String strPickLocation = "", strPickType = "";
     String strPickLocationSO = "", strPickTypeSO = "";
     int click = 1;
@@ -249,6 +251,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     CardView srcDestLayout;
 
     TextView stopOverTitleTv;
+
+    ImageView backarrow,cross_icon;
 
     RecyclerView stopoverRv;
     StepOverAdapter stepOverAdapter;
@@ -490,7 +494,64 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
         }
 
+        mapLayout = rootView.findViewById(R.id.mapLayout);
+
+        backarrow = rootView.findViewById(R.id.backarrow);
+        backarrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (lnrRequestProviders.getVisibility() == View.VISIBLE) {
+                    flowValue = 0;
+                    isRequestProviderScreen = false;
+                    sourceDestLayout.setVisibility(View.VISIBLE);
+//                        getProvidersList("");
+                    frmSource.setOnClickListener(new PublishFragment.OnClick());
+                    frmDest.setOnClickListener(new PublishFragment.OnClick());
+                    sourceDestLayout.setOnClickListener(null);
+                    if (!current_lat.equalsIgnoreCase("") && !current_lng.equalsIgnoreCase("")) {
+                        destinationBorderImg.setVisibility(View.VISIBLE);
+                        //verticalView.setVisibility(View.GONE);
+                        LatLng myLocation = new LatLng(Double.parseDouble(current_lat), Double.parseDouble(current_lng));
+                        CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(16).build();
+                        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+//                            getProvidersList("");
+                        sourceDestLayout.setVisibility(View.VISIBLE);
+                    }
+                } else if (lnrApproximate.getVisibility() == View.VISIBLE) {
+                    isRequestProviderScreen = true;
+                    frmSource.setOnClickListener(new PublishFragment.OnClick());
+                    frmDest.setOnClickListener(new PublishFragment.OnClick());
+                    sourceDestLayout.setOnClickListener(null);
+                    flowValue = 1;
+                } else if (lnrWaitingForProviders.getVisibility() == View.VISIBLE) {
+                    sourceDestLayout.setVisibility(View.GONE);
+                    isRequestProviderScreen = false;
+                    flowValue = 1;
+                } else if (ScheduleLayout.getVisibility() == View.VISIBLE) {
+                    isRequestProviderScreen = false;
+                    flowValue = 1;
+                }
+                layoutChanges();
+            }
+        });
+
+
+        cross_icon = rootView.findViewById(R.id.cross_icon);
+        cross_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(txtSelectedAddressSource != null ){
+                    txtSelectedAddressSource.setText("");
+                }
+            }
+        });
+
+
+
         initComponent(rootView);
+
+
+
 
 
 
@@ -1096,6 +1157,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         lnrWaitingForProviders.setOnClickListener(new PublishFragment.OnClick());
 
 
+
+
         addStopOverTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1107,6 +1170,11 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST_STOPOVER);
             }
         });
+
+
+
+
+
 
 
 
@@ -1967,8 +2035,11 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 placePredictions = (PlacePredictions) data.getSerializableExtra("Location Address");
                 strPickLocation = data.getExtras().getString("pick_location");
                 strPickType = data.getExtras().getString("type");
+                strPickForStopOverOrNot = data.getExtras().getString("strPickForStopOverOrNot");
 
                 Toast.makeText(activity, "Processing", Toast.LENGTH_SHORT).show();
+                rootView.findViewById(R.id.mapLayout).setAlpha(1);
+
 
 
                 if (strPickLocation.equalsIgnoreCase("yes")) {
@@ -2103,6 +2174,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 // The user canceled the operation.
             }
         }
+
         if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST_STOPOVER) {
             if (parserTask != null) {
                 parserTask = null;
@@ -2118,9 +2190,12 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
                 strPickLocationSO = data.getExtras().getString("pick_locationSO");
                 strPickTypeSO = data.getExtras().getString("typeSO");
+                strPickForStopOverOrNot = data.getExtras().getString("strPickForStopOverOrNot");
 
 
                 Toast.makeText(activity, "Processing", Toast.LENGTH_SHORT).show();
+
+                rootView.findViewById(R.id.mapLayout).setAlpha(1);
 
 
                 if (strPickLocationSO.equalsIgnoreCase("yes")) {
@@ -2132,19 +2207,30 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                     float zoomLevel = 16.0f; //This goes up to 21
                     stopAnim();
                 } else {
+                    System.out.println("placePredictionsSO : "+placePredictionsSO);
                     if (placePredictionsSO != null) {
-                        if (!placePredictionsSO.strSourceAddress.equalsIgnoreCase("")) {
-                            source_latSO = "" + placePredictionsSO.strSourceLatitude;
-                            source_lngSO = "" + placePredictionsSO.strSourceLongitude;
-                            source_addressSO = placePredictionsSO.strSourceAddress;
+                        System.out.println("placePredictionsSO strDestAddress : "+placePredictionsSO.strDestAddress);
+                        System.out.println("placePredictionsSO strDestAddress : "+placePredictionsSO.strSourceAddress);
 
-                            Toast.makeText(getContext(), "stopoverlocation : " + source_addressSO, Toast.LENGTH_SHORT).show();
+                        if (!placePredictionsSO.strDestAddress.equalsIgnoreCase("")) {
+                            source_latSO = "" + placePredictionsSO.strDestLatitude;
+                            source_lngSO = "" + placePredictionsSO.strDestLongitude;
+                            source_addressSO = placePredictionsSO.strDestAddress;
+
+                            System.out.println("source_latSO : "+source_latSO);
+                            System.out.println("source_lngSO : "+source_lngSO);
+                            System.out.println("source_addressSO : "+source_addressSO);
+                            System.out.println("placePredictionsSO.strSourceAddress : "+placePredictionsSO.strSourceAddress);
+                            System.out.println("placePredictionsSO.strDestAddress : "+placePredictionsSO.strDestAddress);
+
+
+//                            Toast.makeText(getContext(), "stopoverlocation : " + source_addressSO, Toast.LENGTH_SHORT).show();
                             System.out.println("stopoverlocation : " + source_addressSO);
 
-                            if (!placePredictionsSO.strSourceLatitude.equalsIgnoreCase("")
-                                    && !placePredictionsSO.strSourceLongitude.equalsIgnoreCase("")) {
-                                double latitude = Double.parseDouble(placePredictionsSO.strSourceLatitude);
-                                double longitude = Double.parseDouble(placePredictionsSO.strSourceLongitude);
+                            if (!placePredictionsSO.strDestLatitude.equalsIgnoreCase("")
+                                    && !placePredictionsSO.strDestLongitude.equalsIgnoreCase("")) {
+                                double latitude = Double.parseDouble(placePredictionsSO.strDestLatitude);
+                                double longitude = Double.parseDouble(placePredictionsSO.strDestLongitude);
                                 LatLng location = new LatLng(latitude, longitude);
 
                                 //mMap.clear();
@@ -2204,65 +2290,106 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                             }
 
                         }
-                        if (!placePredictionsSO.strDestAddress.equalsIgnoreCase("")) {
-                            dest_latSO = "" + placePredictionsSO.strDestLatitude;
-                            dest_lngSO = "" + placePredictionsSO.strDestLongitude;
-                            dest_addressSO = placePredictionsSO.strDestAddress;
-                            dropLocationName = dest_addressSO;
 
-
-                            Toast.makeText(getContext(), "stopoverlocation dest : " + dest_addressSO, Toast.LENGTH_SHORT).show();
-                            System.out.println("stopoverlocation : " + dest_addressSO);
-
-                            SharedHelper.putKey(context, "current_status", "2");
-                            if (source_latSO != null && source_lngSO != null && !source_lngSO.equalsIgnoreCase("")
-                                    && !source_latSO.equalsIgnoreCase("")) {
-                                String url = getUrl(Double.parseDouble(source_latSO), Double.parseDouble(source_lngSO)
-                                        , Double.parseDouble(dest_latSO), Double.parseDouble(dest_lngSO));
-
-                                current_latSO = source_latSO;
-                                current_lngSO = source_lngSO;
-                                //  getNewApproximateFare("1");
-                                //  getNewApproximateFare2("2");
-                                PublishFragment.FetchUrl fetchUrl = new PublishFragment.FetchUrl();
-                                fetchUrl.execute(url);
-                                LatLng location = new LatLng(Double.parseDouble(current_latSO), Double.parseDouble(current_lngSO));
-
-
-                                //mMap.clear();
-                                if (sourceMarker != null)
-                                    sourceMarker.remove();
-                                MarkerOptions markerOptions = new MarkerOptions()
-                                        .anchor(0.5f, 0.75f)
-                                        .position(location)
-                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_marker));
-                                marker = mMap.addMarker(markerOptions);
-                                sourceMarker = mMap.addMarker(markerOptions);
-                               /* CameraPosition cameraPosition = new CameraPosition.Builder().target(location).zoom(14).build();
-                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
-                            }
-                            if (!dest_latSO.equalsIgnoreCase("") && !dest_lngSO.equalsIgnoreCase("")) {
-                                destLatLngSO = new LatLng(Double.parseDouble(dest_latSO), Double.parseDouble(dest_lngSO));
-
-                                if (destinationMarker != null)
-                                    destinationMarker.remove();
-                                MarkerOptions destMarker = new MarkerOptions()
-                                        .position(destLatLngSO)
-                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.provider_marker));
-                                destinationMarker = mMap.addMarker(destMarker);
-                                LatLngBounds.Builder builder = new LatLngBounds.Builder();
-                                builder.include(sourceMarker.getPosition());
-                                builder.include(destinationMarker.getPosition());
-                                LatLngBounds bounds = builder.build();
-                                int padding = 200; // offset from edges of the map in pixels
-                                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-                                mMap.moveCamera(cu);
-
-                                /*LatLng myLocation = new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng));
-                                CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(16).build();
-                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
-                            }
-                        }
+//                        if (!placePredictionsSO.strDestAddress.equalsIgnoreCase("")) {
+//                            dest_latSO = "" + placePredictionsSO.strDestLatitude;
+//                            dest_lngSO = "" + placePredictionsSO.strDestLongitude;
+//                            dest_addressSO = placePredictionsSO.strDestAddress;
+//                            dropLocationName = dest_addressSO;
+//
+//
+//
+//
+//                            Toast.makeText(getContext(), "stopoverlocation dest : " + dest_addressSO, Toast.LENGTH_SHORT).show();
+//                            System.out.println("stopoverlocation : " + dest_addressSO);
+//
+//                            stopOverModelArrayList.add(new StopOverModel(source_latSO,source_lngSO,source_addressSO));
+//
+//                            try {
+//                                JSONObject jsonObjectStopOver = new JSONObject();
+//                                jsonObjectStopOver.put("lat",source_latSO);
+//                                jsonObjectStopOver.put("lng",source_lngSO);
+//                                jsonObjectStopOver.put("area",source_addressSO);
+//
+//                                jsonArrayStopOver.put(jsonObjectStopOver);
+//
+////                                trackPickToDest(source_lat,source_lng,source_latSO,source_lngSO);
+//
+//                            }catch (Exception e){
+//                                e.printStackTrace();
+//                            }
+//
+//
+//                            stopOverTitleTv.setVisibility(View.VISIBLE);
+//                            stepOverOrgAdapter = new StepOverOrgAdapter(getContext(), stopOverModelArrayList);
+//                            stopoverRv.setAdapter(stepOverOrgAdapter);
+//
+//
+//
+//                            System.out.println("stopover : "+jsonArrayStopOver.toString() );
+//                            try {
+//                                trackPickToDest(source_lat,source_lng,dest_latSO,dest_lngSO);
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
+//
+//
+//
+//                            SharedHelper.putKey(context, "current_status", "2");
+//                            if (source_latSO != null && source_lngSO != null && !source_lngSO.equalsIgnoreCase("")
+//                                    && !source_latSO.equalsIgnoreCase("")) {
+//                                String url = getUrl(Double.parseDouble(source_latSO), Double.parseDouble(source_lngSO)
+//                                        , Double.parseDouble(dest_latSO), Double.parseDouble(dest_lngSO));
+//
+//                                current_latSO = source_latSO;
+//                                current_lngSO = source_lngSO;
+//                                //  getNewApproximateFare("1");
+//                                //  getNewApproximateFare2("2");
+//                                PublishFragment.FetchUrl fetchUrl = new PublishFragment.FetchUrl();
+//                                fetchUrl.execute(url);
+//                                LatLng location = new LatLng(Double.parseDouble(current_latSO), Double.parseDouble(current_lngSO));
+//
+//
+//                                //mMap.clear();
+//                                if (sourceMarker != null)
+//                                    sourceMarker.remove();
+////                                MarkerOptions markerOptions = new MarkerOptions()
+////                                        .anchor(0.5f, 0.75f)
+////                                        .position(location)
+////                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_marker));
+////                                marker = mMap.addMarker(markerOptions);
+////                                sourceMarker = mMap.addMarker(markerOptions);
+//                               /* CameraPosition cameraPosition = new CameraPosition.Builder().target(location).zoom(14).build();
+//                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
+//                            }
+//
+//                            if (!dest_latSO.equalsIgnoreCase("") && !dest_lngSO.equalsIgnoreCase("")) {
+//                                destLatLngSO = new LatLng(Double.parseDouble(dest_latSO), Double.parseDouble(dest_lngSO));
+//
+//                                if (destinationMarker != null)
+//                                    destinationMarker.remove();
+////                                MarkerOptions destMarker = new MarkerOptions()
+////                                        .position(destLatLngSO)
+////                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.provider_marker));
+////                                destinationMarker = mMap.addMarker(destMarker);
+////                                LatLngBounds.Builder builder = new LatLngBounds.Builder();
+////                                builder.include(sourceMarker.getPosition());
+////                                builder.include(destinationMarker.getPosition());
+////                                LatLngBounds bounds = builder.build();
+////                                int padding = 200; // offset from edges of the map in pixels
+////                                CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+////                                try {
+////                                    mMap.moveCamera(cu);
+////                                }catch (Exception e){
+////                                    e.printStackTrace();
+////                                }
+//
+//
+//                                /*LatLng myLocation = new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng));
+//                                CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(16).build();
+//                                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));*/
+//                            }
+//                        }
 
                         if (dest_address.equalsIgnoreCase("")) {
                             flowValue = 1;
@@ -3949,6 +4076,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                     try {
                         Utilities.print("centerLat", cmPosition.target.latitude + "");
                         Utilities.print("centerLong", cmPosition.target.longitude + "");
+                        rootView.findViewById(R.id.mapLayout).setAlpha(1);
 
                         Geocoder geocoder = null;
                         List<Address> addresses;
@@ -3966,111 +4094,112 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                             e.printStackTrace();
                         }
 
-                        if (strPickType.equalsIgnoreCase("source")) {
-                            source_address = "" + address + "," + city + "," + state;
-                            source_lat = "" + cmPosition.target.latitude;
-                            source_lng = "" + cmPosition.target.longitude;
-                            if (dest_lat.equalsIgnoreCase("")) {
-                                Toast.makeText(context, "Select destination", Toast.LENGTH_SHORT).show();
-                                Intent intentDest = new Intent(getActivity(), CustomGooglePlacesSearch.class);
-                                intentDest.putExtra("cursor", "destination");
-                                intentDest.putExtra("s_address", source_address);
-                                startActivityForResult(intentDest, PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST);
-                            } else {
+                        System.out.println(" strPickForStopOverOrNot from Btndone : "+strPickForStopOverOrNot);
 
+                        if(strPickForStopOverOrNot.equalsIgnoreCase("no")){
+
+                            if (strPickType.equalsIgnoreCase("source")) {
+                                source_address = "" + address + "," + city + "," + state;
                                 source_lat = "" + cmPosition.target.latitude;
                                 source_lng = "" + cmPosition.target.longitude;
+                                if (dest_lat.equalsIgnoreCase("")) {
+                                    Toast.makeText(context, "Select destination", Toast.LENGTH_SHORT).show();
+                                    Intent intentDest = new Intent(getActivity(), CustomGooglePlacesSearch.class);
+                                    intentDest.putExtra("cursor", "destination");
+                                    intentDest.putExtra("s_address", source_address);
+                                    startActivityForResult(intentDest, PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST);
+                                } else {
+
+                                    source_lat = "" + cmPosition.target.latitude;
+                                    source_lng = "" + cmPosition.target.longitude;
 
 //                                mMap.clear();
-                                setValuesForSourceAndDestination();
+                                    setValuesForSourceAndDestination();
 
-                                flowValue = 1;
-                                layoutChanges();
-                                strPickLocation = "";
-                                strPickType = "";
+                                    flowValue = 1;
+                                    layoutChanges();
+                                    strPickLocation = "";
+                                    strPickType = "";
 //                                getServiceList();
 
-                                CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(cmPosition.target.latitude,
-                                        cmPosition.target.longitude));
-                                CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
-                                mMap.moveCamera(center);
-                                mMap.moveCamera(zoom);
+                                    CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(cmPosition.target.latitude,
+                                            cmPosition.target.longitude));
+                                    CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
+                                    mMap.moveCamera(center);
+                                    mMap.moveCamera(zoom);
 
-                            }
-                        } else {
-                            dest_lat = "" + cmPosition.target.latitude;
-                            if (source_address.equalsIgnoreCase("" + address)) {
-                                flowValue = 0;
-                                layoutChanges();
-                                Toast.makeText(context, "Both source and destination are same", Toast.LENGTH_SHORT).show();
-
-                                Intent intentDest = new Intent(getActivity(), CustomGooglePlacesSearch.class);
-                                intentDest.putExtra("cursor", "destination");
-                                intentDest.putExtra("s_address", frmSource.getText().toString());
-                                startActivityForResult(intentDest, PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST);
-                            } else {
-                                if (placePredictions != null) {
-                                    if (!placePredictions.strSourceAddress.equalsIgnoreCase("")) {
-                                        source_lat = "" + placePredictions.strSourceLatitude;
-                                        source_lng = "" + placePredictions.strSourceLongitude;
-                                        source_address = placePredictions.strSourceAddress;
-                                    }
                                 }
-                                dest_address = "" + address + "," + city + "," + state;
+                            } else {
                                 dest_lat = "" + cmPosition.target.latitude;
-                                dest_lng = "" + cmPosition.target.longitude;
-                                dropLocationName = dest_address;
+                                if (source_address.equalsIgnoreCase("" + address)) {
+                                    flowValue = 0;
+                                    layoutChanges();
+                                    Toast.makeText(context, "Both source and destination are same", Toast.LENGTH_SHORT).show();
+                                    Intent intentDest = new Intent(getActivity(), CustomGooglePlacesSearch.class);
+                                    intentDest.putExtra("cursor", "destination");
+                                    intentDest.putExtra("s_address", frmSource.getText().toString());
+                                    startActivityForResult(intentDest, PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST);
+                                } else {
+                                    if (placePredictions != null) {
+                                        if (!placePredictions.strSourceAddress.equalsIgnoreCase("")) {
+                                            source_lat = "" + placePredictions.strSourceLatitude;
+                                            source_lng = "" + placePredictions.strSourceLongitude;
+                                            source_address = placePredictions.strSourceAddress;
+                                        }
+                                    }
+                                    dest_address = "" + address + "," + city + "," + state;
+                                    dest_lat = "" + cmPosition.target.latitude;
+                                    dest_lng = "" + cmPosition.target.longitude;
+                                    dropLocationName = dest_address;
 //                                mMap.clear();
-                                setValuesForSourceAndDestination();
-                                flowValue = 1;
-                                layoutChanges();
-                                strPickLocation = "";
-                                strPickType = "";
+                                    setValuesForSourceAndDestination();
+                                    flowValue = 1;
+                                    layoutChanges();
+                                    strPickLocation = "";
+                                    strPickType = "";
 //                                getServiceList();
 
-                                CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(cmPosition.target.latitude,
-                                        cmPosition.target.longitude));
-                                CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
-                                mMap.moveCamera(center);
-                                mMap.moveCamera(zoom);
+                                    CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(cmPosition.target.latitude,
+                                            cmPosition.target.longitude));
+                                    CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
+                                    mMap.moveCamera(center);
+                                    mMap.moveCamera(zoom);
+                                }
                             }
-                        }
+
+                        }else {
+                            // for stopover
+
+                            System.out.println("else strPickTypeSO : "+strPickTypeSO);
+
+                            if (strPickTypeSO.equalsIgnoreCase("destination")) {
+
+                                source_addressSO = "" + address + "," + city + "," + state;
+                                source_latSO = "" + cmPosition.target.latitude;
+                                source_lngSO = "" + cmPosition.target.longitude;
+                                dest_latSO = "" + cmPosition.target.latitude;
+                                dest_lngSO = "" + cmPosition.target.longitude;
+
+                                System.out.println("else strPickTypeSO stepOver lat : "+source_latSO);
+                                System.out.println("else strPickTypeSO stepOver long : "+source_lngSO);
+                                System.out.println("else strPickTypeSO stepOver add : "+source_addressSO);
 
 
-                        // for stopover
+                                stopOverModelArrayList.add(new StopOverModel(source_latSO,source_lngSO,source_addressSO));
 
-                        if (strPickTypeSO.equalsIgnoreCase("destination")) {
-                            source_addressSO = "" + address + "," + city + "," + state;
-                            source_latSO = "" + cmPosition.target.latitude;
-                            source_lngSO = "" + cmPosition.target.longitude;
+                                try {
+                                    JSONObject jsonObjectStopOver = new JSONObject();
+                                    jsonObjectStopOver.put("lat",source_latSO);
+                                    jsonObjectStopOver.put("lng",source_lngSO);
+                                    jsonObjectStopOver.put("area",source_addressSO);
 
-                            System.out.println("stepOver lat : "+source_latSO);
-                            System.out.println("stepOver long : "+source_lngSO);
-                            System.out.println("stepOver add : "+source_addressSO);
+                                    jsonArrayStopOver.put(jsonObjectStopOver);
 
+                                trackPickToDest(source_lat,source_lng,source_latSO,source_lngSO);
 
-
-
-
-
-
-//                            stopOverModelArrayList = new ArrayList<>();
-
-                            stopOverModelArrayList.add(new StopOverModel(source_latSO,source_lngSO,source_addressSO));
-
-                            try {
-                                JSONObject jsonObjectStopOver = new JSONObject();
-                                jsonObjectStopOver.put("lat",source_latSO);
-                                jsonObjectStopOver.put("lng",source_lngSO);
-                                jsonObjectStopOver.put("area",source_addressSO);
-
-                                jsonArrayStopOver.put(jsonObjectStopOver);
-
-//                                trackPickToDest(source_lat,source_lng,source_latSO,source_lngSO);
-
-                            }catch (Exception e){
-                                e.printStackTrace();
-                            }
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
 
 
 
@@ -4081,87 +4210,85 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 //                            stopoverRv.setLayoutManager(linearLayoutManager);
 //                            stopoverRv.setNestedScrollingEnabled(false);
 
-                            stopOverTitleTv.setVisibility(View.VISIBLE);
-                            stepOverOrgAdapter = new StepOverOrgAdapter(getContext(), stopOverModelArrayList);
-                            stopoverRv.setAdapter(stepOverOrgAdapter);
+                                stopOverTitleTv.setVisibility(View.VISIBLE);
+                                stepOverOrgAdapter = new StepOverOrgAdapter(getContext(), stopOverModelArrayList);
+                                stopoverRv.setAdapter(stepOverOrgAdapter);
 
 
-                            System.out.println("stopover : "+jsonArrayStopOver.toString() );
+                                System.out.println("stopover : "+jsonArrayStopOver.toString() );
 
 
 
 
 //                            Toast.makeText(activity, "stepOver add : "+source_addressSO, Toast.LENGTH_SHORT).show();
 
-                            if (dest_latSO.equalsIgnoreCase("")) {
-                                Toast.makeText(context, "Select destination", Toast.LENGTH_SHORT).show();
-                                Intent intentDest = new Intent(getActivity(), CustomGooglePlacesSearch.class);
-                                intentDest.putExtra("cursor", "destination");
-                                intentDest.putExtra("s_address", source_address);
-                                startActivityForResult(intentDest, PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST);
-                            } else {
+                                if (dest_latSO.equalsIgnoreCase("")) {
+                                    Toast.makeText(context, "Select destination", Toast.LENGTH_SHORT).show();
+                                    Intent intentDest = new Intent(getActivity(), CustomGooglePlacesSearch.class);
+                                    intentDest.putExtra("cursor", "destination");
+                                    intentDest.putExtra("s_address", source_address);
+                                    startActivityForResult(intentDest, PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST);
+                                } else {
 
-                                source_latSO = "" + cmPosition.target.latitude;
-                                source_lngSO = "" + cmPosition.target.longitude;
+                                    source_latSO = "" + cmPosition.target.latitude;
+                                    source_lngSO = "" + cmPosition.target.longitude;
 
 //                                mMap.clear();
 //                                setValuesForSourceAndDestination();
 
-                                flowValue = 1;
-                                layoutChanges();
-                                strPickLocationSO = "";
-                                strPickTypeSO = "";
+                                    flowValue = 1;
+                                    layoutChanges();
+                                    strPickLocationSO = "";
+                                    strPickTypeSO = "";
 //                                getServiceList();
 
-                                CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(cmPosition.target.latitude,
-                                        cmPosition.target.longitude));
-                                CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
-                                mMap.moveCamera(center);
-                                mMap.moveCamera(zoom);
+                                    CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(cmPosition.target.latitude,
+                                            cmPosition.target.longitude));
+                                    CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
+                                    mMap.moveCamera(center);
+                                    mMap.moveCamera(zoom);
 
-                            }
-                        }
-                        else {
-                            dest_latSO = "" + cmPosition.target.latitude;
-                            if (source_addressSO.equalsIgnoreCase("" + address)) {
-                                flowValue = 0;
-                                layoutChanges();
-                                Toast.makeText(context, "Both source and destination are same", Toast.LENGTH_SHORT).show();
-
-                                Intent intentDest = new Intent(getActivity(), CustomGooglePlacesSearch.class);
-                                intentDest.putExtra("cursor", "destination");
-                                intentDest.putExtra("s_address", frmSource.getText().toString());
-                                startActivityForResult(intentDest, PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST);
-                            } else {
-                                if (placePredictionsSO != null) {
-                                    if (!placePredictionsSO.strSourceAddress.equalsIgnoreCase("")) {
-                                        source_latSO = "" + placePredictionsSO.strSourceLatitude;
-                                        source_lngSO = "" + placePredictionsSO.strSourceLongitude;
-                                        source_addressSO = placePredictionsSO.strSourceAddress;
-                                    }
                                 }
-                                dest_addressSO = "" + address + "," + city + "," + state;
+                            }
+                            else {
                                 dest_latSO = "" + cmPosition.target.latitude;
-                                dest_lngSO = "" + cmPosition.target.longitude;
-                                dropLocationName = dest_addressSO;
+                                if (source_addressSO.equalsIgnoreCase("" + address)) {
+                                    flowValue = 0;
+                                    layoutChanges();
+                                    Toast.makeText(context, "Both source and destination are same", Toast.LENGTH_SHORT).show();
+
+                                    Intent intentDest = new Intent(getActivity(), CustomGooglePlacesSearch.class);
+                                    intentDest.putExtra("cursor", "destination");
+                                    intentDest.putExtra("s_address", frmSource.getText().toString());
+                                    startActivityForResult(intentDest, PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST);
+                                } else {
+                                    if (placePredictionsSO != null) {
+                                        if (!placePredictionsSO.strSourceAddress.equalsIgnoreCase("")) {
+                                            source_latSO = "" + placePredictionsSO.strSourceLatitude;
+                                            source_lngSO = "" + placePredictionsSO.strSourceLongitude;
+                                            source_addressSO = placePredictionsSO.strSourceAddress;
+                                        }
+                                    }
+                                    dest_addressSO = "" + address + "," + city + "," + state;
+                                    dest_latSO = "" + cmPosition.target.latitude;
+                                    dest_lngSO = "" + cmPosition.target.longitude;
+                                    dropLocationName = dest_addressSO;
 //                                mMap.clear();
 //                                setValuesForSourceAndDestination();
-                                flowValue = 1;
-                                layoutChanges();
-                                strPickLocationSO = "";
-                                strPickTypeSO = "";
+                                    flowValue = 1;
+                                    layoutChanges();
+                                    strPickLocationSO = "";
+                                    strPickTypeSO = "";
 
-                                CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(cmPosition.target.latitude,
-                                        cmPosition.target.longitude));
-                                CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
-                                mMap.moveCamera(center);
-                                mMap.moveCamera(zoom);
+                                    CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(cmPosition.target.latitude,
+                                            cmPosition.target.longitude));
+                                    CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
+                                    mMap.moveCamera(center);
+                                    mMap.moveCamera(zoom);
+                                }
                             }
+
                         }
-
-
-
-
 
 
                     } catch (Exception e) {
@@ -4170,6 +4297,11 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                     }
                     break;
                 case R.id.imgBack:
+                    stopOverModelArrayList.clear();
+                    stopOverTitleTv.setVisibility(View.GONE);
+                    stepOverOrgAdapter = new StepOverOrgAdapter(getContext(), stopOverModelArrayList);
+                    stopoverRv.setAdapter(stepOverOrgAdapter);
+
                     if (lnrRequestProviders.getVisibility() == View.VISIBLE) {
                         flowValue = 0;
                         isRequestProviderScreen = false;

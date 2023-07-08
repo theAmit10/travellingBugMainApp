@@ -33,9 +33,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="5fe35c" />
-                            <entry key="outputName" value="baseline_chat_24" />
-                            <entry key="sourceFile" value="C:\Users\Demon\Desktop\ic_calender_ic.svg" />
+                            <entry key="outputName" value="ic_upload" />
+                            <entry key="sourceFile" value="C:\Users\Demon\Desktop\ic_upload.svg" />
                           </map>
                         </option>
                       </PersistentState>

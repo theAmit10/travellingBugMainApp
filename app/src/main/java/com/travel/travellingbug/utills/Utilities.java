@@ -267,7 +267,7 @@ public class Utilities {
         Date d = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(date);
         Calendar cal = Calendar.getInstance();
         cal.setTime(d);
-        String monthName = new SimpleDateFormat("MMM").format(cal.getTime());
+        String monthName = new SimpleDateFormat("M").format(cal.getTime());
         return monthName;
     }
 

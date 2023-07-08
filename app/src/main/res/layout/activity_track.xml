@@ -58,7 +58,7 @@
                     android:background="@drawable/white_color_rect_shape"
                     android:backgroundTint="@color/white"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -73,27 +73,30 @@
                         app:cardBackgroundColor="#FAFAFA">
 
                         <TextView
+                            android:id="@+id/txtPickUpNotes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:fontFamily="@font/nunito_bold"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:text="****"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:textColor="@color/dark_green"
+                            android:textSize="@dimen/_18sdp"
+                            android:textStyle="bold" />
+
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:fontFamily="@font/montserrat_semibold"
+                            android:fontFamily="@font/nunito_bold"
                             android:gravity="center_vertical"
                             android:text="Share this CODE with driver "
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/txtPickUpNotes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
 
-                            android:paddingStart="@dimen/_15sdp"
-                            android:text="****"
-                            android:textColor="@color/dark_green"
-                            android:textSize="@dimen/_18sdp"
-                            android:textStyle="bold" />
 
 
                     </LinearLayout>
@@ -159,9 +162,8 @@
                                 android:id="@+id/lblProvider"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
                                 android:ellipsize="end"
-                                android:fontFamily="@font/montserrat_semibold"
+                                android:fontFamily="@font/nunito_bold"
                                 android:maxLength="25"
                                 android:text="@string/sample_name"
                                 android:textColor="@color/black"
@@ -237,10 +239,9 @@
                                 android:layout_marginBottom="@dimen/_10sdp"
                                 android:layout_weight="1"
                                 android:ellipsize="end"
-
-
+                                android:textStyle="bold"
                                 android:maxLines="2"
-                                android:text="Anamika Enclave"
+                                android:text=""
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12sdp" />
 
@@ -257,7 +258,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:ellipsize="end"
-
+                                    android:textStyle="bold"
                                     android:maxLines="2"
                                     android:textColor="@color/black"
                                     android:textSize="@dimen/_12sdp" />
@@ -327,24 +328,26 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:gravity="center"
+
                             android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
+                                android:textStyle="bold"
                                 android:text="Distance"
+                                android:layout_gravity="center"
                                 android:textColor="@color/cancel_ride_color"
                                 android:textSize="@dimen/_12sdp" />
 
-                            <TextView
+                            <com.travel.travellingbug.utills.MyBoldTextView
                                 android:id="@+id/lblDis"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
                                 android:gravity="end"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12sdp" />
@@ -353,16 +356,17 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:gravity="center"
+
                             android:orientation="vertical">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
+                                android:textStyle="bold"
                                 android:text="Time"
+                                android:layout_gravity="center"
                                 android:textColor="@color/cancel_ride_color"
                                 android:textSize="@dimen/_12sdp" />
 
@@ -370,7 +374,8 @@
                                 android:id="@+id/lblEta"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
+                                android:textStyle="bold"
+                                android:layout_gravity="center"
                                 android:gravity="end"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/_12sdp" />
@@ -1289,7 +1294,8 @@
                             android:layout_height="wrap_content"
 
                             android:gravity="center"
-                            android:text="Rajan"
+                            android:text=""
+                            android:textStyle="bold"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_14sdp" />
 
@@ -1298,7 +1304,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginTop="@dimen/_10sdp"
-
+                            android:textStyle="bold"
                             android:text="How is your trip?"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_20sdp" />

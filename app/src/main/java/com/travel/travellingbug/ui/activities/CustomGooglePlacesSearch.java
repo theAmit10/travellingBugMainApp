@@ -203,6 +203,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                         Intent intent = new Intent();
                         intent.putExtra("pick_location", "yes");
                         intent.putExtra("type", strSelected);
+                        intent.putExtra("strPickForStopOverOrNot", "no");
                         setResult(RESULT_OK, intent);
                         finish();
                     }
@@ -684,6 +685,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                     intent.putExtra("Location Address", placePredictions);
                     intent.putExtra("pick_location", "no");
                     intent.putExtra("type", strSelected);
+                    intent.putExtra("strPickForStopOverOrNot", "no");
 //                    Toast.makeText(CustomGooglePlacesSearch.this, "" + placePredictions.getPlaces(), Toast.LENGTH_SHORT).show();
                     setResult(RESULT_OK, intent);
                 } else {

@@ -23,11 +23,11 @@
             app:tint="@color/white" />
 
         <TextView
+            style="@style/TabFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:paddingStart="@dimen/_12sdp"
-            android:text="Verify OTP"
+            android:text="VERIFY OTP"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp" />
 

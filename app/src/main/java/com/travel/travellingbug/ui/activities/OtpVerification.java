@@ -23,6 +23,7 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.mukesh.OnOtpCompletionListener;
 import com.mukesh.OtpView;
+import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 
 import java.util.concurrent.TimeUnit;
@@ -39,6 +40,8 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
     private FirebaseAuth fbAuth;
     private String phoneVerificationId;
     private PhoneAuthProvider.ForceResendingToken resendToken;
+
+    CustomDialog customDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +130,11 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
 
 
     private void setUpVerificatonCallbacks() {
+        customDialog = new CustomDialog(this);
+        if (customDialog != null)
+            customDialog.show();
+            customDialog.setCancelable(false);
+
         verificationCallbacks =
                 new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
@@ -140,9 +148,10 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
 
                     @Override
                     public void onVerificationFailed(FirebaseException e) {
-
-
-                        Log.d("responce", e.toString());
+                        if(customDialog.isShowing()){
+                            customDialog.dismiss();
+                        }
+                            Log.d("responce", e.toString());
                         Toast.makeText(OtpVerification.this, e.getMessage() + " ", Toast.LENGTH_SHORT).show();
                         if (e instanceof FirebaseAuthInvalidCredentialsException) {
                             e.printStackTrace();
@@ -155,6 +164,9 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
 
                     @Override
                     public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken token) {
+                        if(customDialog.isShowing()){
+                            customDialog.dismiss();
+                        }
                         phoneVerificationId = verificationId;
                         resendToken = token;
                         Toast.makeText(OtpVerification.this, "Send to ( " + phoneNumber + " )", Toast.LENGTH_SHORT).show();
@@ -167,6 +179,9 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         fbAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
+                    if(customDialog.isShowing()){
+                        customDialog.dismiss();
+                    }
                     if (task.isSuccessful()) {
 
                         Toast.makeText(OtpVerification.this, "Successfully verified", Toast.LENGTH_LONG).show();
@@ -184,6 +199,9 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
                         // get the user info to know that user is already login or not
 
                     } else {
+                        if(customDialog.isShowing()){
+                            customDialog.dismiss();
+                        }
                         if (task.getException() instanceof
                                 FirebaseAuthInvalidCredentialsException) {
                             Toast.makeText(OtpVerification.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
