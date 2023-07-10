@@ -3440,6 +3440,7 @@ drawable bg
 drawable bg_car
 drawable bg_toggle_checked
 drawable bggradient
+drawable blur_img
 drawable bn_account
 drawable bn_holiday_package
 drawable bn_your_ride
@@ -3485,6 +3486,7 @@ drawable call_new
 drawable call_support
 drawable cancel_button_bg
 drawable cancel_text
+drawable car
 drawable car_select
 drawable cash_payment
 drawable ccp_down_arrow
@@ -3548,6 +3550,7 @@ drawable cross
 drawable cross_icon
 drawable current_focus
 drawable current_loc
+drawable custom_cornor_edge_bg
 drawable default_indicator
 drawable design_fab_background
 drawable design_ic_visibility
@@ -3558,6 +3561,7 @@ drawable destination_green_icon
 drawable destination_icon
 drawable destination_location
 drawable destination_marker
+drawable discovery
 drawable done
 drawable done_background_color
 drawable done_background_color_dark
@@ -4136,10 +4140,13 @@ drawable flag_zw
 drawable forget_gradient_background
 drawable forgot_lock
 drawable full_rounded_button
+drawable googledocs
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable grey_border_bg
+drawable history
 drawable history_
+drawable home
 drawable horizontal_dashed_line
 drawable ic_account
 drawable ic_add
@@ -4229,6 +4236,7 @@ drawable ic_ring_ic
 drawable ic_search
 drawable ic_send
 drawable ic_send_black_24dp
+drawable ic_sos
 drawable ic_star
 drawable ic_summary
 drawable ic_suv_car
@@ -4591,6 +4599,7 @@ drawable new_wallet
 drawable newuser
 drawable no_data_found
 drawable normal_service_item
+drawable notification
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -4633,6 +4642,7 @@ drawable quantum_ic_arrow_back_grey600_24
 drawable quantum_ic_clear_grey600_24
 drawable quantum_ic_cloud_off_vd_theme_24
 drawable quantum_ic_search_grey600_24
+drawable question
 drawable rate1
 drawable rate2
 drawable rate3
@@ -4654,6 +4664,7 @@ drawable round_source
 drawable rounded_button
 drawable rounded_layout
 drawable roundshape
+drawable routes
 drawable sad
 drawable search
 drawable seat
@@ -4667,6 +4678,7 @@ drawable sos
 drawable source_location
 drawable square_desti
 drawable squre
+drawable summary
 drawable summary_
 drawable test_custom_background
 drawable toast_frame
@@ -5907,6 +5919,7 @@ id rat01UserRating
 id rat02UserRating
 id rat03UserRating
 id rat05UserRating
+id rateRatingBar
 id rateRider
 id rateVal
 id ratingProvider
@@ -6648,6 +6661,7 @@ layout design_pasenger_data
 layout design_passenger_number
 layout design_payment_refund_history
 layout design_progress_bar
+layout design_ride_complete_dialog
 layout design_ride_request
 layout design_stopover
 layout design_stopover_rv

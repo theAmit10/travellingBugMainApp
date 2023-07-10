@@ -88,12 +88,13 @@
                 tools:ignore="TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.travel.travellingbug.utills.MyButton
+        <Button
             android:id="@+id/btnUpdate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_30sdp"
             android:background="@drawable/rounded_button"
+            android:fontFamily="@font/nunito_bold"
             android:text="@string/update"
             android:textColor="@color/text_color_white"
             android:textSize="@dimen/_14sdp" />

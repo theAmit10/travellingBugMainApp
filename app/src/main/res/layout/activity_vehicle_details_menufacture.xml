@@ -39,6 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
+                android:fontFamily="@font/nunito_bold"
                 android:text="When was your car \nmade ?  Passengers like to know."
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18sdp"
@@ -53,9 +54,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/auth_btn_gray_bg"
-                android:elevation="@dimen/_10sdp"
-                android:outlineAmbientShadowColor="@color/green"
-                android:outlineSpotShadowColor="@color/green"
+
                 android:paddingStart="15dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="15dp"
@@ -68,6 +67,7 @@
                     android:background="@android:color/transparent"
                     android:drawablePadding="@dimen/_10sdp"
                     android:hint="Vehicle Manufacture"
+                    android:textColorHint="@color/colorDarkGray"
                     android:paddingBottom="5dp"
                     tools:ignore="TouchTargetSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -88,9 +88,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/auth_btn_gray_bg"
-                android:elevation="@dimen/_10sdp"
-                android:outlineAmbientShadowColor="@color/green"
-                android:outlineSpotShadowColor="@color/green"
+
                 android:paddingStart="15dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="15dp"
@@ -103,6 +101,7 @@
                     android:background="@android:color/transparent"
                     android:drawablePadding="@dimen/_10sdp"
                     android:hint="Add Vehicle AC"
+                    android:textColorHint="@color/colorDarkGray"
                     android:paddingBottom="5dp"
                     tools:ignore="TouchTargetSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -125,9 +124,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/auth_btn_gray_bg"
-                android:elevation="@dimen/_10sdp"
-                android:outlineAmbientShadowColor="@color/green"
-                android:outlineSpotShadowColor="@color/green"
+
                 android:paddingStart="15dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="15dp"
@@ -141,6 +138,7 @@
                     android:inputType="number"
                     android:drawablePadding="@dimen/_10sdp"
                     android:hint="Add Vehicle Capacity"
+                    android:textColorHint="@color/colorDarkGray"
                     android:paddingBottom="5dp"
                     tools:ignore="TouchTargetSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -162,6 +160,7 @@
                 android:drawableRight="@drawable/ic_camera"
                 android:padding="@dimen/_10sdp"
                 android:text="Upload Car Picture ? "
+                android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold" />

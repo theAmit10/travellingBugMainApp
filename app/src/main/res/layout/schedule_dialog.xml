@@ -8,11 +8,11 @@
         android:layout_width="@dimen/_272sdp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_5sdp"
-        android:padding="@dimen/_10sdp"
         android:background="@drawable/white_color_rect_shape"
         android:backgroundTint="@color/white"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp">
 
         <ImageView
             android:layout_width="@dimen/_84sdp"
@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-android:fontFamily="@font/nunito_bold"
+            android:fontFamily="@font/nunito_bold"
             android:text="Booking Successful"
             android:textColor="@color/black"
             android:textSize="@dimen/_20sdp" />
@@ -36,10 +36,10 @@ android:fontFamily="@font/nunito_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textStyle="bold"
             android:text="Your booking has been confirmed."
             android:textColor="@color/colorDarkGray"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvDriverMsg"

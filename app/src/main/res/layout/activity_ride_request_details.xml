@@ -221,6 +221,7 @@
                     android:layout_width="@dimen/_10sdp"
                     android:layout_height="@dimen/_10sdp"
                     android:src="@drawable/ic_circle_yellow"
+                    app:tint="#eec62d"
                     app:layout_constraintStart_toStartOf="@+id/imageView9"
                     app:layout_constraintTop_toBottomOf="@+id/view5" />
 
@@ -253,7 +254,7 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
                 <TextView
                     android:id="@+id/dropLocation"
@@ -333,10 +334,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:drawableTint="@color/dark_gray"
-
+                        android:textStyle="bold"
                         android:maxLines="1"
                         android:text=""
-                        android:textColor="@color/dark_gray" />
+                        android:textColor="@color/colorDarkGray" />
 
                     <TextView
                         android:id="@+id/pickUpTime"
@@ -356,11 +357,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:drawableTint="@color/dark_gray"
-
+                        android:textStyle="bold"
                         android:maxLines="1"
 
                         android:text=""
-                        android:textColor="@color/dark_gray" />
+                        android:textColor="@color/colorDarkGray" />
 
                 </LinearLayout>
 
@@ -390,10 +391,10 @@
 
                         android:drawablePadding="@dimen/_30sdp"
                         android:drawableTint="@color/dark_gray"
-
+                        android:textStyle="bold"
                         android:maxLines="1"
                         android:text=""
-                        android:textColor="@color/dark_gray" />
+                        android:textColor="@color/colorDarkGray" />
 
                     <TextView
                         android:id="@+id/seat"
@@ -412,10 +413,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:drawableTint="@color/dark_gray"
-
+                        android:textStyle="bold"
                         android:maxLines="1"
                         android:text=""
-                        android:textColor="@color/dark_gray" />
+                        android:textColor="@color/colorDarkGray" />
 
                 </LinearLayout>
 

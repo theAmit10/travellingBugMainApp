@@ -3668,7 +3668,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             }
         }
 
-        getPastTripRate();
+//        getPastTripRate();
     }
 
     void getPastTripRate() {

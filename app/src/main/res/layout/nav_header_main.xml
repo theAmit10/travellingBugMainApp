@@ -66,31 +66,44 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/_14sdp" />
 
-            <TextView
-                android:id="@+id/tvRate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/usernameTxt"
-                android:layout_toEndOf="@+id/img_profile"
-                android:drawableEnd="@drawable/nav_star"
-                android:drawableTint="@color/yellow"
-                android:fontFamily="@font/montserrat_semibold"
-                android:gravity="center_vertical"
-                android:text=""
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_11sdp"
-                android:visibility="visible" />
+<!--            <TextView-->
+<!--                android:id="@+id/tvRate"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/usernameTxt"-->
+<!--                android:layout_toEndOf="@+id/img_profile"-->
+<!--                android:drawableEnd="@drawable/nav_star"-->
+<!--                android:drawableTint="@color/yellow"-->
+<!--                android:fontFamily="@font/montserrat_semibold"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:text=""-->
+<!--                android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="@dimen/_11sdp"-->
+<!--                android:visibility="visible" />-->
 
-            <com.travel.travellingbug.utills.MyTextView
-                android:id="@+id/status_txt"
+            <RatingBar
+                android:id="@+id/rateRatingBar"
+                style="?attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_semibold"
+                android:layout_gravity="start"
+                android:layout_marginBottom="5dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:progressTint="#FFCA28" />
+
+
+
+            <TextView
+                android:id="@+id/status_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center|start"
                 android:maxLines="1"
+                android:paddingTop="@dimen/_5sdp"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/_11sdp" />
+                android:textSize="@dimen/_14sdp" />
 
 
         </LinearLayout>

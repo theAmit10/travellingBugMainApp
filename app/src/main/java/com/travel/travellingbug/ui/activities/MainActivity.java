@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -101,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
     private View navHeader;
     private ImageView imgProfile;
     private TextView txtName, approvaltxt, tvRate;
+
+    private RatingBar rateRatingBar;
     private ImageView status;
     // flag to load home fragment when user presses back key
     private boolean shouldLoadHomeFragOnBackPress = true;
@@ -188,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
         approvaltxt = navHeader.findViewById(R.id.status_txt);
         imgProfile = navHeader.findViewById(R.id.img_profile);
         tvRate = navHeader.findViewById(R.id.tvRate);
+        rateRatingBar = navHeader.findViewById(R.id.rateRatingBar);
         status = navHeader.findViewById(R.id.status);
 
 
@@ -361,16 +365,16 @@ public class MainActivity extends AppCompatActivity {
         if (SharedHelper.getKey(MainActivity.this, "rating") != null
                 && SharedHelper.getKey(MainActivity.this, "rating") != "") {
             if(SharedHelper.getKey(MainActivity.this, "rating").equalsIgnoreCase("null")){
-                tvRate.setText("");
-                tvRate.setVisibility(View.GONE);
+                rateRatingBar.setRating(Float.parseFloat("0"));
+                rateRatingBar.setVisibility(View.GONE);
             }else {
 
                 String rate_val = SharedHelper.getKey(MainActivity.this, "rating");
                 int rate_valu = rate_val.indexOf(".");
                 String rate_value = rate_val.substring(0,rate_valu);
 
-                tvRate.setText(rate_value);
-                tvRate.setVisibility(View.VISIBLE);
+                rateRatingBar.setRating(Float.parseFloat(rate_val));
+                rateRatingBar.setVisibility(View.VISIBLE);
             }
 
         }

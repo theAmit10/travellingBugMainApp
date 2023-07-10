@@ -317,7 +317,8 @@ public class OnGoingTrips extends Fragment {
                     }
 
                 } catch (JSONException e) {
-                    displayMessage(e.toString());
+                    displayMessage("Something went wrong");
+                    e.printStackTrace();
                 }
 
 
@@ -325,7 +326,8 @@ public class OnGoingTrips extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
             }
 
         }) {
@@ -336,6 +338,7 @@ public class OnGoingTrips extends Fragment {
                 Map<String, String> params = new HashMap<>();
                 params.put("rideid", rideId);
                 params.put("status", status);
+                System.out.println("param : "+getParams().toString());
                 return params;
             }
             @Override

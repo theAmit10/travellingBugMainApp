@@ -16,13 +16,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
+import com.google.android.material.textfield.TextInputLayout;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.ConnectionHelper;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.helper.VolleyMultipartRequest;
-import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -80,6 +80,7 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
 
             toolName.setText(getString(R.string.update_name));
             text_input_layout.setHelperText("This name will be shown to the driver during ride pickup");
+
             editText.setHint("Enter Name");
 //            text_input_layout.setHint("Enter  Name");
             editText.setText(value);

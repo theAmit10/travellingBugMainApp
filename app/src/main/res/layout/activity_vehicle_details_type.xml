@@ -45,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
                 android:text="What's kind of  vehicle's \nis it ? "
+                android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18sdp"
                 android:textStyle="bold" />

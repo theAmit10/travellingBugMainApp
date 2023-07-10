@@ -64,33 +64,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:orientation="vertical"
-                android:visibility="gone"
                 android:gravity="center"
-               >
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/error_image"
-                    android:layout_width="@dimen/_72sdp"
-                    android:layout_height="@dimen/_64sdp"
-                    android:visibility="invisible"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/ic_launcher_web" />
+                    android:background="@drawable/car"
+                    android:visibility="visible" />
 
-                <com.travel.travellingbug.utills.MyTextView
+                <com.travel.travellingbug.utills.MyBoldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/error_image"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/_20sdp"
+                    android:paddingEnd="@dimen/_20sdp"
+                    android:text="Your Travel Preferences will appear here."
+                    android:textColor="@color/black"
+
+                    android:textSize="@dimen/_20sdp"
+                    android:textStyle="bold" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/error_image"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
-                    android:text="No Travel Preferences"
-                    android:textColor="@color/colorPrimary"
+                    android:fontFamily="@font/nunito_regular"
+                    android:text="No Travel Preferences Found"
+                    android:textColor="@color/black"
                     android:textSize="18sp" />
-
-
-
-
-
 
 
             </LinearLayout>
@@ -114,6 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
             android:background="@drawable/auth_btn_green_bg"
+            android:fontFamily="@font/nunito_bold"
             android:padding="@dimen/_10sdp"
             android:text="add preference"
             android:textColor="@color/white"

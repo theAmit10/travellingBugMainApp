@@ -217,7 +217,8 @@ public class HistoryDetails extends AppCompatActivity {
                     }
 
                 } catch (JSONException e) {
-                    displayMessage(e.toString());
+                    displayMessage("Something went wrong");
+                    e.printStackTrace();
                 }
 
 
@@ -255,18 +256,13 @@ public class HistoryDetails extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
 
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
 
-                    if (response != null) {
-                        System.out.println("data : "+jsonObject.toString());
-                        if(jsonObject.optString("id") != null){
-                            System.out.println("STATUS UPDATED OF REQUEST ID : "+jsonObject.optString("id"));
-                        }
-                    }
-
-                } catch (JSONException e) {
-                    displayMessage(e.toString());
+                if (response != null) {
+//                        JSONObject jsonObject = new JSONObject(response);
+                    System.out.println("data : "+response.toString());
+//                        if(jsonObject.optString("id") != null){
+////                            System.out.println("STATUS UPDATED OF REQUEST ID : "+jsonObject.optString("id"));
+//                        }
                 }
 
 
@@ -274,7 +270,8 @@ public class HistoryDetails extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
             }
 
         }) {
@@ -607,6 +604,7 @@ public class HistoryDetails extends AppCompatActivity {
                 }, error -> {
                     customDialog.dismiss();
                     displayMessage(getString(R.string.something_went_wrong));
+                    error.printStackTrace();
                 }) {
                     @Override
                     public Map<String, String> getHeaders() {
@@ -643,6 +641,8 @@ public class HistoryDetails extends AppCompatActivity {
                         }, error -> {
                     customDialog.dismiss();
                     displayMessage(getString(R.string.something_went_wrong));
+                    error.printStackTrace();
+
                 }) {
                     @Override
                     public Map<String, String> getHeaders() {
@@ -694,6 +694,7 @@ public class HistoryDetails extends AppCompatActivity {
                         }, error -> {
                     customDialog.dismiss();
                     displayMessage(getString(R.string.something_went_wrong));
+                    error.printStackTrace();
                 }) {
                     @Override
                     public Map<String, String> getHeaders() {

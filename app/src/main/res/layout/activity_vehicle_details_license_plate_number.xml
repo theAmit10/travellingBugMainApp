@@ -43,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
                 android:text="What is your license \nplate number?"
+                android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_18sdp"
                 android:textStyle="bold" />
@@ -55,6 +56,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:text="Country"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,6 +71,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:text="India"
+                android:textStyle="bold"
                 android:textColor="@color/green"
                 android:textSize="@dimen/_14sdp" />
 
@@ -80,6 +83,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:text="Select Vehicle Type"
+                android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
 
@@ -99,6 +103,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:text="Private Car"
+                    android:textStyle="bold"
                     android:textColor="@color/green" />
 
 
@@ -108,7 +113,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:text="Texi"
+                    android:text="Taxi"
+                    android:textStyle="bold"
                     android:textColor="@color/green" />
 
 
@@ -122,9 +128,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/auth_btn_gray_bg"
-                android:elevation="@dimen/_10sdp"
-                android:outlineAmbientShadowColor="@color/green"
-                android:outlineSpotShadowColor="@color/green"
+
                 android:paddingStart="15dp"
                 android:paddingTop="5dp"
                 android:paddingEnd="15dp"
@@ -138,6 +142,7 @@
                     android:drawableLeft="@drawable/ic_search"
                     android:drawablePadding="@dimen/_10sdp"
                     android:hint="Enter License Number"
+                    android:textColorHint="@color/colorDarkGray"
                     android:paddingBottom="5dp"
                     tools:ignore="TouchTargetSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>

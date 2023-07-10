@@ -27,11 +27,12 @@
             android:padding="5dp"
             android:src="@drawable/back_white" />
 
-        <com.travel.travellingbug.utills.MyBoldTextView
+        <TextView
             android:id="@+id/lblTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
+            style="@style/Title"
             android:text="Ride Details"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
@@ -87,11 +88,12 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <com.travel.travellingbug.utills.MyBoldTextView
+                        <TextView
                             android:id="@+id/tripProviderName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/sample_name"
+                            android:textStyle="bold"
                             android:textColor="@color/black_text_color"
                             android:textSize="16sp" />
 
@@ -115,11 +117,12 @@
                         android:layout_weight="0.8"
                         android:orientation="vertical">
 
-                        <com.travel.travellingbug.utills.MyBoldTextView
+                        <TextView
                             android:id="@+id/tripDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="end"
+                            android:textStyle="bold"
                             android:lineSpacingMultiplier="1.5"
                             android:textColor="@color/black_text_color"
                             android:textSize="@dimen/_11sdp" />
@@ -337,7 +340,7 @@
         android:orientation="horizontal"
         android:visibility="gone">
 
-        <com.travel.travellingbug.utills.MyButton
+        <Button
             android:id="@+id/btnCancelRide"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -346,13 +349,14 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="20dp"
             android:layout_weight="1"
+            android:fontFamily="@font/nunito_bold"
             android:background="@drawable/auth_btn_green_bg"
             android:backgroundTint="@color/quantum_googred"
             android:text="@string/cancel_ride"
             android:textAllCaps="true"
             android:textColor="@color/white" />
 
-        <com.travel.travellingbug.utills.MyButton
+        <Button
             android:id="@+id/btnCall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -361,6 +365,7 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:layout_weight="1"
+            android:fontFamily="@font/nunito_bold"
             android:background="@drawable/auth_btn_green_bg"
             android:backgroundTint="@color/colorPrimary"
             android:text="@string/call_btn"
@@ -370,13 +375,14 @@
 
     </LinearLayout>
 
-    <com.travel.travellingbug.utills.MyButton
+    <Button
         android:id="@+id/btnViewInvoice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:fontFamily="@font/nunito_bold"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:text="@string/view_invoice"

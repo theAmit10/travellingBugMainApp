@@ -213,13 +213,13 @@
                                 android:layout_height="@dimen/_15sdp"
                                 android:layout_marginBottom="@dimen/_10sdp"
                                 android:background="@drawable/source_location"
-                                android:backgroundTint="@color/quantum_yellow" />
+                                android:backgroundTint="#eec62d" />
 
                             <ImageView
                                 android:layout_width="@dimen/_15sdp"
                                 android:layout_height="@dimen/_15sdp"
                                 android:background="@drawable/destination_location"
-                                android:backgroundTint="@color/green" />
+                                android:backgroundTint="@color/dark_green" />
 
                         </LinearLayout>
 
@@ -1488,7 +1488,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:src="@drawable/sos"
+                        android:src="@drawable/ic_sos"
                         android:visibility="gone" />
 
                     <ImageView

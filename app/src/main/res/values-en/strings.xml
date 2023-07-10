@@ -219,7 +219,7 @@
     <string name="tap_when_paid">CONFIRM PAYMENT</string>
     <string name="rate_user">SUBMIT</string>
 
-    <string name="waitingForApproval">Please allow us  1 business days to review your profile.</string>
+    <string name="waitingForApproval">Please allow us one business days to review your profile.</string>
 
     <string name="earned_amount">Earned Money</string>
     <string name="withdraw">Withdraw</string>

@@ -354,11 +354,11 @@
 
                             <ImageView
                                 android:id="@+id/my_featured_image"
-                                android:layout_width="@dimen/_200sdp"
-                                android:layout_height="@dimen/_150sdp"
+                                android:layout_width="@dimen/_100sdp"
+                                android:layout_height="@dimen/_75sdp"
                                 android:layout_gravity="center_horizontal"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/intro_five" />
+                                android:src="@drawable/discovery" />
 
                             <TextView
                                 android:id="@+id/my_caption_title"
@@ -421,7 +421,7 @@
                                 android:background="@drawable/auth_btn_green_bg"
                                 android:fontFamily="@font/nunito_bold"
                                 android:gravity="center"
-                                android:text="Book Ride"
+                                android:text="BOOK RIDE"
                                 android:textColor="@color/button_text_color"
                                 android:textSize="@dimen/_12sdp"
                                 android:visibility="gone" />
@@ -435,7 +435,7 @@
                                 android:background="@drawable/auth_btn_green_bg"
                                 android:fontFamily="@font/nunito_bold"
                                 android:gravity="center"
-                                android:text="Continue"
+                                android:text="CONTINUE"
                                 android:textColor="@color/button_text_color"
                                 android:textSize="@dimen/_12sdp"
                                 android:visibility="gone" />
@@ -459,9 +459,10 @@
                                 android:layout_margin="@dimen/_10sdp"
                                 android:background="@drawable/auth_btn_green_bg"
                                 android:clickable="true"
+                                android:fontFamily="@font/nunito_bold"
                                 android:gravity="center"
                                 android:paddingEnd="@dimen/_8sdp"
-                                android:text="Next"
+                                android:text="NEXT"
                                 android:textColor="@color/button_text_color"
                                 android:textSize="@dimen/_12sdp"
                                 android:visibility="gone" />
@@ -487,7 +488,7 @@
                                     android:clickable="true"
                                     android:gravity="center"
                                     android:paddingEnd="@dimen/_8sdp"
-                                    android:text="Cancel Ride"
+                                    android:text="CANCEL RIDE"
                                     android:textColor="@color/button_text_color"
                                     android:textSize="@dimen/_12sdp" />
 
@@ -504,7 +505,7 @@
                                     android:fontFamily="@font/nunito_bold"
                                     android:gravity="center"
                                     android:paddingEnd="@dimen/_8sdp"
-                                    android:text="Continue"
+                                    android:text="CONTINUE"
                                     android:textColor="@color/button_text_color"
                                     android:textSize="@dimen/_12sdp" />
 
@@ -2264,7 +2265,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@drawable/auth_btn_green_bg"
-                                    android:text="Search"
+                                    android:text="SEARCH"
                                     android:fontFamily="@font/nunito_bold"
                                     android:textAllCaps="false"
                                     android:textColor="@color/white"

@@ -69,9 +69,9 @@
                     android:gravity="center_horizontal"
                     android:paddingStart="@dimen/_20sdp"
                     android:paddingEnd="@dimen/_20sdp"
-                    android:text="All Seat Available"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp"
+                    android:text="There is no Passenger. \nAll seats are available for booking"
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/_13sdp"
                     android:textStyle="bold"
                     android:visibility="gone" />
 
@@ -181,7 +181,7 @@
 
                 android:padding="@dimen/_5sdp"
                 android:text="http://travellingbug.com/link"
-                android:textColor="@color/green"
+                android:textColor="@color/dark_green"
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold" />
 

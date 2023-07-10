@@ -2227,7 +2227,7 @@ public class DriverMapFragment extends Fragment implements
 
 
         Dialog confirmDialog = new Dialog(getContext());
-        confirmDialog.setContentView(R.layout.schedule_dialog);
+        confirmDialog.setContentView(R.layout.design_ride_complete_dialog);
 
         TextView tvDone = confirmDialog.findViewById(R.id.tvDone);
         TextView bookingStatusTitleTv = confirmDialog.findViewById(R.id.bookingStatusTitleTv);
@@ -4821,7 +4821,8 @@ public class DriverMapFragment extends Fragment implements
 
 //    private void update(final String status, String id) {
 //        Log.v("Status", status + " ");
-//        customDialog = new CustomDialog(getActivity());
+//
+//        Dialog = new CustomDialog(getActivity());
 //        customDialog.setCancelable(true);
 //        customDialog.show();
 //        if (status.equals("ONLINE")) {

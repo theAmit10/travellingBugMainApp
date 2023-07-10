@@ -92,7 +92,7 @@
                                 android:layout_marginStart="@dimen/_10sdp"
                                 android:layout_weight=".5"
                                 android:gravity="start"
-                                android:text="@string/legal"
+                                android:text="TravellingBug"
                                 android:textColor="@color/done_disabled_dark"
                                 android:textSize="@dimen/_10sdp" />
 

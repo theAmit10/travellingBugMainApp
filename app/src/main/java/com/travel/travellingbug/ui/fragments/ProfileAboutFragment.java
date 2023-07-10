@@ -3,6 +3,7 @@ package com.travel.travellingbug.ui.fragments;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -319,6 +320,23 @@ public class ProfileAboutFragment extends Fragment {
 //                    .error(R.drawable.ic_dummy_user)
 //                    .into(profile_Image);
 //        }
+
+        if (SharedHelper.getKey(getContext(), "approval_status").equals("new") ||
+                SharedHelper.getKey(getContext(), "approval_status").equals("onboarding")) {
+            titlePAtv.setTextColor(Color.YELLOW);
+            titlePAtv.setText(getText(R.string.waiting_for_approval));
+//            status.setImageResource(R.drawable.newuser);
+        } else if (SharedHelper.getKey(getContext(), "approval_status").equals("banned")) {
+            titlePAtv.setTextColor(Color.RED);
+            titlePAtv.setText(getText(R.string.banned));
+//            status.setImageResource(R.drawable.banned);
+        } else {
+//            titlePAtv.setTextColor(Color.WHITE);
+            titlePAtv.setText(getText(R.string.approved));
+//            titlePAtv.setImageResource(R.drawable.approved);
+        }
+
+
 
         String emailS = SharedHelper.getKey(getContext(), "email");
         System.out.println("emailS : "+emailS);
