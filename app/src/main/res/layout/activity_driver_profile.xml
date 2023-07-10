@@ -47,7 +47,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:scaleType="centerCrop"
-            android:src="@drawable/people"
+            android:src="@drawable/ic_dummy_user"
             app:civ_border_color="@color/green"
             app:civ_border_width="@dimen/_2sdp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +67,7 @@
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="David Johnson"
+                android:text="username"
                 android:drawableRight="@drawable/ic_green_tick"
                 android:drawablePadding="@dimen/_10sdp"
                 android:textStyle="bold"
@@ -97,7 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="( 115 Reviews )"
+                    android:text=""
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_7sdp" />
 
@@ -112,7 +112,9 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:background="@color/white"
-        app:tabSelectedTextColor="@color/black"
+        app:tabSelectedTextColor="@color/dark_green"
+        app:tabTextColor="@color/colorDarkGray"
+        app:tabTextAppearance="@style/TabFont"
         app:tabIndicatorColor="@color/dark_green"
         android:layout_height="@dimen/_40sdp">
     </com.google.android.material.tabs.TabLayout>

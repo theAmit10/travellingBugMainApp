@@ -1,6 +1,7 @@
 package com.travel.travellingbug.ui.activities;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -36,6 +37,8 @@ public class DriverProfileActivity extends AppCompatActivity {
 
     ImageView profileImgeIv;
 
+    ImageView backArrow;
+
     TextView userName,ratingVal;
 
     RatingBar listitemrating;
@@ -59,6 +62,13 @@ public class DriverProfileActivity extends AppCompatActivity {
         if(getIntent().getStringExtra("user_id") != null){
             getProfileData(user_id);
         }
+
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void getProfileData(String user_id) {
@@ -83,9 +93,25 @@ public class DriverProfileActivity extends AppCompatActivity {
 
 
                         if(jsonObject.optString("rating") != null){
-                            listitemrating.setRating(Float.parseFloat(jsonObject.optString("rating")));
-                            ratingVal.setText(jsonObject.optString("rating"));
+                            System.out.println("rating : "+jsonObject.optString("rating"));
+//                            listitemrating.setRating(Float.parseFloat(jsonObject.optString("rating")));
+//                            ratingVal.setText(jsonObject.optString("rating"));
+
+                            if(jsonObject.optString("rating").equalsIgnoreCase("null")){
+                                listitemrating.setRating(Float.parseFloat("0"));
+                                ratingVal.setText("( 0 Reviews )");
+                            }else {
+
+                                String rate_val = jsonObject.optString("rating");
+                                listitemrating.setRating(Float.parseFloat(rate_val));
+                                ratingVal.setText("( "+jsonObject.optString("rating")+" Reviews )");
+                            }
                         }
+
+
+
+
+
 
                         Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar"))
                                 .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(profileImgeIv);
@@ -95,7 +121,7 @@ public class DriverProfileActivity extends AppCompatActivity {
 
 
                 } catch (JSONException e) {
-
+                        e.printStackTrace();
                 }
 
 
@@ -103,7 +129,8 @@ public class DriverProfileActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
             }
 
         }) {
@@ -151,6 +178,8 @@ public class DriverProfileActivity extends AppCompatActivity {
         profileImgeIv = findViewById(R.id.profileImgeIv);
         userName = findViewById(R.id.userName);
         ratingVal = findViewById(R.id.ratingVal);
+        listitemrating =findViewById(R.id.listitemrating);
+        backArrow =findViewById(R.id.backArrow);
 
     }
 

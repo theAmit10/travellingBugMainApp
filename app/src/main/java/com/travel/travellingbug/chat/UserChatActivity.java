@@ -509,11 +509,15 @@ public class UserChatActivity extends AppCompatActivity {
 ////                    "&user_id=" + SharedHelper.getKey(context, "current_chat_user_id") + "&type=pu";
 ////        }
 
+        String message_formate = message.replace(" ","_");
+        System.out.println("Message : "+message_formate );
+
+
         if(requestId != null && userID != null && messageType != null ){
 
-            url = URLHelper.CHAT_API+"?request_id=" + requestId +"&send_to=" +Integer.parseInt(userID)+ "&message=" + message  + "&chattype="+messageType;
+            url = URLHelper.CHAT_API+"?request_id=" + requestId +"&send_to=" +Integer.parseInt(userID)+ "&message=" + message_formate  + "&chattype="+messageType;
         }else {
-            url = URLHelper.ChatGetMessage + SharedHelper.getKey(context, "current_chat_request_id") + "&message=" + message + "&provider_id=" + SharedHelper.getKey(context, "current_chat_provider_id") +
+            url = URLHelper.ChatGetMessage + SharedHelper.getKey(context, "current_chat_request_id") + "&message=" + message_formate + "&provider_id=" + SharedHelper.getKey(context, "current_chat_provider_id") +
                     "&user_id=" + SharedHelper.getKey(context, "current_chat_user_id") + "&type=pu";
         }
 

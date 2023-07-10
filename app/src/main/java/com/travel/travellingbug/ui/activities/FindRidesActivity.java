@@ -778,6 +778,18 @@ public class FindRidesActivity extends AppCompatActivity {
 //                startActivity(i);
 //            });
 
+
+            holder.containerLL.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent  = new Intent(FindRidesActivity.this, DriverProfileActivity.class);
+                    intent.putExtra("user_id",jsonArray.optJSONObject(position).optJSONObject("provider").optString("id"));
+                    intent.putExtra("request_id",jsonArray.optJSONObject(position).optString("id"));
+                    startActivity(intent);
+                }
+            });
+
+
         }
 
         @Override
@@ -833,6 +845,7 @@ public class FindRidesActivity extends AppCompatActivity {
                 listitemrating = itemView.findViewById(R.id.listitemrating);
                 details = itemView.findViewById(R.id.details);
                 request = itemView.findViewById(R.id.request);
+                containerLL = itemView.findViewById(R.id.containerLL);
 
 
 

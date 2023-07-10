@@ -26,6 +26,7 @@
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:text="Ride Info"
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_10sdp"
@@ -36,16 +37,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_140sdp"
-
+                    android:visibility="gone"
                     android:text="View in map"
                     android:textColor="@color/green"
-                    android:textSize="@dimen/_14sdp"
+                    android:textSize="@dimen/_11sdp"
                     android:textStyle="bold" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_10sdp"
+                >
 
 
                 <ImageView
@@ -55,13 +58,14 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/ic_circle_green"
+                    app:tint="@color/dark_green"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <View
                     android:id="@+id/view5"
                     android:layout_width="1dp"
-                    android:layout_height="50dp"
+                    android:layout_height="20dp"
                     android:background="@color/colorDarkGray"
                     app:layout_constraintEnd_toEndOf="@+id/imageView9"
                     app:layout_constraintStart_toStartOf="@+id/imageView9"
@@ -72,6 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_circle_yellow"
+                    app:tint="#eec62d"
                     app:layout_constraintStart_toStartOf="@+id/imageView9"
                     app:layout_constraintTop_toBottomOf="@+id/view5" />
 
@@ -81,9 +86,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:text="Plot A2, Sector 38 A, Noida, \nIndia"
+                    android:text=""
+                    android:maxLines="1"
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_14sdp"
+                    android:textSize="@dimen/_11sdp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
@@ -94,11 +100,15 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="-5dp"
                     android:layout_marginEnd="10dp"
-                    android:text="Flat No-83, Dwarka Sector 12"
+                    android:layout_marginBottom="10dp"
+                    android:maxLines="1"
+                    android:text=""
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_14sdp"
+                    android:textSize="@dimen/_11sdp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView10"
                     app:layout_constraintTop_toBottomOf="@+id/view5" />
@@ -134,9 +144,10 @@
                         android:id="@+id/startTimeVal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10:00 am"
+                        android:fontFamily="@font/nunito_bold"
+                        android:text=""
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_11sdp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -161,9 +172,10 @@
                         android:id="@+id/returnTimeVal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3:00 pm"
+                        android:text=""
+                        android:fontFamily="@font/nunito_bold"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_11sdp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -189,8 +201,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Honda Civic | white "
+                        android:fontFamily="@font/nunito_bold"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_13sdp"
+                        android:textSize="@dimen/_11sdp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -233,8 +246,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3 Seats"
+                        android:fontFamily="@font/nunito_bold"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_11sdp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -260,8 +274,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="AC available"
+                        android:fontFamily="@font/nunito_bold"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_11sdp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -286,9 +301,10 @@
                         android:id="@+id/perSeatPerKmVal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rs 4940"
+                        android:text=""
+                        android:fontFamily="@font/nunito_bold"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_11sdp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -307,16 +323,18 @@
                 android:id="@+id/travelDays"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_20sdp"
 
-                android:text="Vehicle Detials"
-                android:textColor="@color/colorGray_light"
+                android:text="Vehicle Details"
+                android:textColor="@color/colorDarkGray"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:orientation="horizontal"
                 android:padding="@dimen/_10sdp">
 
@@ -325,6 +343,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_10sdp"
+
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -333,11 +352,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Maruti Suzuki"
-                        android:paddingStart="@dimen/_5sdp"
+                        android:fontFamily="@font/nunito_bold"
                         android:paddingEnd="@dimen/_5sdp"
                         android:paddingTop="@dimen/_5sdp"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_11sdp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -345,9 +364,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="MH12875494"
-                        android:padding="@dimen/_5sdp"
+                        android:fontFamily="@font/nunito_bold"
+                        android:paddingEnd="@dimen/_5sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_5sdp"
                         android:textColor="@color/dark_gray"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_11sdp"
                         android:textStyle="bold" />
 
 
@@ -418,7 +440,6 @@
                         android:id="@+id/chatButton"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/_40sdp"
-                        android:visibility="gone"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_marginBottom="@dimen/_5sdp"
@@ -426,7 +447,8 @@
                         android:layout_weight="1"
                         android:background="@drawable/auth_btn_white_low_corner_bg"
                         android:text="Chat"
-                        android:textAllCaps="false"
+                        android:fontFamily="@font/nunito_bold"
+                        android:textAllCaps="true"
                         android:textColor="@color/green"
                         android:textSize="@dimen/_12sdp" />
 
@@ -440,8 +462,10 @@
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:layout_weight="1"
                         android:background="@drawable/auth_btn_green_bg"
-                        android:text="Continue"
-                        android:textAllCaps="false"
+                        android:text="Call"
+                        android:visibility="visible"
+                        android:textAllCaps="true"
+                        android:fontFamily="@font/nunito_bold"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_12sdp" />
 

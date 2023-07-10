@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -41,7 +42,6 @@ import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.models.Driver;
 import com.travel.travellingbug.ui.activities.login.SignUp;
 import com.travel.travellingbug.utills.MyBoldTextView;
-import com.travel.travellingbug.utills.MyButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,16 +67,16 @@ public class HistoryDetailsUser extends AppCompatActivity {
     ConnectionHelper helper;
     CustomDialog customDialog;
     MyBoldTextView tripAmount;
-    MyBoldTextView tripDate;
+    TextView tripDate;
     MyBoldTextView paymentType;
     MyBoldTextView booking_id;
     MyBoldTextView tripComments;
-    MyBoldTextView tripProviderName;
+    TextView tripProviderName;
     MyBoldTextView tripSource;
     MyBoldTextView lblTotalPrice;
     MyBoldTextView lblBookingID;
     MyBoldTextView tripDestination;
-    MyBoldTextView lblTitle;
+    TextView lblTitle;
     MyBoldTextView lblBasePrice;
     MyBoldTextView lblDistancePrice;
     MyBoldTextView lblTaxPrice;
@@ -89,7 +89,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
     LinearLayout profileLayout;
     LinearLayout lnrInvoice, lnrInvoiceSub;
     String tag = "";
-    MyButton btnCancelRide;
+    Button btnCancelRide;
     Driver driver;
     String reason = "";
 
@@ -140,7 +140,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
                 lnrComments.setVisibility(View.GONE);
 //                getUpcomingDetails();
                 getRequestDetails();
-                lblTitle.setText(getString(R.string.upcomeng_rides));
+                lblTitle.setText("RIDE DETAILS");
             }
         }
 //        profileLayout.setOnClickListener(v -> {
@@ -212,12 +212,28 @@ public class HistoryDetailsUser extends AppCompatActivity {
 
         });
 
-        btnViewInvoice.setOnClickListener(v -> lnrInvoice.setVisibility(View.VISIBLE));
+//        btnViewInvoice.setOnClickListener(v -> lnrInvoice.setVisibility(View.VISIBLE));
 
-        lnrInvoice.setOnClickListener(v -> lnrInvoice.setVisibility(View.GONE));
-
-        lnrInvoiceSub.setOnClickListener(v -> {
+        btnViewInvoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lnrInvoice.setVisibility(View.VISIBLE);
+//                Toast.makeText(HistoryDetailsUser.this, "Clicked", Toast.LENGTH_SHORT).show();
+            }
         });
+
+        lnrInvoice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lnrInvoice.setVisibility(View.GONE);
+//                Toast.makeText(HistoryDetailsUser.this, "Clicked 2", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+//        lnrInvoice.setOnClickListener(v -> lnrInvoice.setVisibility(View.GONE));
+
+//        lnrInvoiceSub.setOnClickListener(v -> {
+//        });
 
         btnCall.setOnClickListener(v -> {
             if (driver.getMobile() != null && !driver.getMobile().equalsIgnoreCase("null") && driver.getMobile().length() > 0) {
@@ -236,6 +252,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
                         // for ActivityCompat#requestPermissions for more details.
                         return;
                     }
+
                     startActivity(intentCall);
                 }
             } else {
@@ -359,111 +376,6 @@ public class HistoryDetailsUser extends AppCompatActivity {
         if (customDialog != null)
             customDialog.show();
 
-//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.GET_HISTORY_DETAILS_API + "?request_id=" + jsonObject.optString("id"), response -> {
-//
-//            Log.v("GetPaymentList Details", response.toString());
-//            if (response != null && response.length() > 0) {
-//                if (response.optJSONObject(0) != null) {
-//                    Picasso.get().load(response.optJSONObject(0).optString("static_map")).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(tripImg);
-//                    Log.e("History Details", "onResponse: Currency" + SharedHelper.getKey(context, "currency"));
-//                    JSONObject providerObj = response.optJSONObject(0).optJSONObject("provider");
-//                    if (providerObj != null) {
-//                        driver = new Driver();
-//                        driver.setFname(providerObj.optString("first_name"));
-//                        driver.setLname(providerObj.optString("last_name"));
-//                        driver.setMobile(providerObj.optString("mobile"));
-//                        driver.setEmail(providerObj.optString("email"));
-//                        driver.setImg(providerObj.optString("avatar"));
-//                        driver.setRating(providerObj.optString("rating"));
-//                    }
-//                    if (response.optJSONObject(0).optString("booking_id") != null &&
-//                            !response.optJSONObject(0).optString("booking_id").equalsIgnoreCase("")) {
-//                        booking_id.setText(response.optJSONObject(0).optString("booking_id"));
-//                        lblBookingID.setText(response.optJSONObject(0).optString("booking_id"));
-//                    }
-//                    String form;
-//                    if (tag.equalsIgnoreCase("past_trips")) {
-//                        form = response.optJSONObject(0).optString("assigned_at");
-//                    } else {
-//                        form = response.optJSONObject(0).optString("schedule_at");
-//                    }
-//                    if (response.optJSONObject(0).optJSONObject("payment") != null && response.optJSONObject(0).optJSONObject("payment").optString("total") != null &&
-//                            !response.optJSONObject(0).optJSONObject("payment").optString("total").equalsIgnoreCase("")) {
-//                        tripAmount.setText(SharedHelper.getKey(context, "currency") + "" + response.optJSONObject(0).optJSONObject("payment").optString("total"));
-//                        response.optJSONObject(0).optJSONObject("payment");
-//                        lblBasePrice.setText((SharedHelper.getKey(context, "currency") + ""
-//                                + response.optJSONObject(0).optJSONObject("payment").optString("fixed")));
-//                        lblDistancePrice.setText((SharedHelper.getKey(context, "currency") + ""
-//                                + response.optJSONObject(0).optJSONObject("payment").optString("distance")));
-//                        lblTaxPrice.setText((SharedHelper.getKey(context, "currency") + ""
-//                                + response.optJSONObject(0).optJSONObject("payment").optString("tax")));
-//                        lblTotalPrice.setText((SharedHelper.getKey(context, "currency") + ""
-//                                + response.optJSONObject(0).optJSONObject("payment").optString("total" +
-//                                "")));
-//                    } else {
-//                        tripAmount.setVisibility(View.GONE);
-//                    }
-//                    try {
-//                        tripDate.setText(getDate(form) + "th " + getMonth(form) + " " + getYear(form) + "\n" + getTime(form));
-//                    } catch (ParseException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                    paymentType.setText(response.optJSONObject(0).optString("payment_mode"));
-//                    if (response.optJSONObject(0).optString("payment_mode").equalsIgnoreCase("CASH")) {
-//                        paymentTypeImg.setImageResource(R.drawable.money1);
-//                    } else {
-//                        paymentTypeImg.setImageResource(R.drawable.visa_icon);
-//                    }
-//                    Picasso.get().load(URLHelper.BASE + "storage/app/public/" + response.optJSONObject(0).optJSONObject("provider").optString("avatar"))
-//                            .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(tripProviderImg);
-//                    if (response.optJSONObject(0).optJSONObject("rating") != null &&
-//                            !response.optJSONObject(0).optJSONObject("rating").optString("provider_comment").equalsIgnoreCase("")) {
-//                        tripComments.setText(response.optJSONObject(0).optJSONObject("rating").optString("provider_comment", ""));
-//                    } else {
-//                        tripComments.setText(getString(R.string.no_comments));
-//                    }
-//                    if (response.optJSONObject(0).optJSONObject("provider").optString("rating") != null
-//                            && !response.optJSONObject(0).optJSONObject("provider").optString("rating").equalsIgnoreCase("")) {
-//                        tripProviderRating.setRating(Float.parseFloat(response.optJSONObject(0).optJSONObject("provider").optString("rating")));
-//                    } else {
-//                        tripProviderRating.setRating(0);
-//                    }
-//                    tripProviderName.setText(response.optJSONObject(0).optJSONObject("provider").optString("first_name"));
-//                    if (response.optJSONObject(0).optString("s_address") == null || response.optJSONObject(0).optString("d_address") == null || response.optJSONObject(0).optString("d_address").equals("") || response.optJSONObject(0).optString("s_address").equals("")) {
-//                        sourceAndDestinationLayout.setVisibility(View.GONE);
-//                        //   viewLayout.setVisibility(View.GONE);
-//                    } else {
-//                        tripSource.setText(response.optJSONObject(0).optString("s_address"));
-//                        tripDestination.setText(response.optJSONObject(0).optString("d_address"));
-//                    }
-//
-//                }
-//            }
-//            if ((customDialog != null) && (customDialog.isShowing()))
-//                customDialog.dismiss();
-//            parentLayout.setVisibility(View.VISIBLE);
-//
-//        }, error -> {
-//            if ((customDialog != null) && (customDialog.isShowing()))
-//                customDialog.dismiss();
-//            displayMessage(getString(R.string.something_went_wrong));
-//        }) {
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                HashMap<String, String> headers = new HashMap<String, String>();
-//                headers.put("X-Requested-With", "XMLHttpRequest");
-//                headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " " + SharedHelper.getKey(context, "access_token"));
-//                return headers;
-//            }
-//        };
-//
-//        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
-
-
-        // Started
-
-
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.UPCOMMING_TRIPS_DETAILS_ONE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -514,6 +426,27 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                     }
                                 }
 
+                                if(jsonArray.optJSONObject(i).optString("status").equalsIgnoreCase("COMPLETED")){
+                                    try {
+                                        btnCancelRide.setText("Service Cancelled");
+                                        btnCancelRide.setVisibility(View.GONE);
+                                        btnViewInvoice.setVisibility(View.VISIBLE);
+                                        btnCall.setVisibility(View.GONE);
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+                                }
+
+                                tripProviderImg.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent intent = new Intent(HistoryDetailsUser.this, DriverProfileActivity.class);
+                                        intent.putExtra("user_id",providerObj.optString("id"));
+                                        intent.putExtra("request_id",request_id);
+                                        startActivity(intent);
+                                    }
+                                });
+
 
                                 JSONArray filterJsonArray = jsonArray.optJSONObject(i).optJSONArray("filters");
                                 for(int j=0; j<filterJsonArray.length(); j++){
@@ -548,34 +481,114 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                 } else {
                                     form = jsonArray.optJSONObject(i).optString("schedule_at");
                                 }
-                                if (jsonArray.optJSONObject(i).optJSONObject("payment") != null && jsonArray.optJSONObject(i).optJSONObject("payment").optString("total") != null &&
-                                        !jsonArray.optJSONObject(i).optJSONObject("payment").optString("total").equalsIgnoreCase("")) {
-                                    tripAmount.setText(SharedHelper.getKey(context, "currency") + "" + jsonArray.optJSONObject(i).optJSONObject("payment").optString("total"));
-                                    jsonArray.optJSONObject(i).optJSONObject("payment");
-                                    lblBasePrice.setText((SharedHelper.getKey(context, "currency") + ""
-                                            + jsonArray.optJSONObject(i).optJSONObject("payment").optString("fixed")));
-                                    lblDistancePrice.setText((SharedHelper.getKey(context, "currency") + ""
-                                            + jsonArray.optJSONObject(i).optJSONObject("payment").optString("distance")));
-                                    lblTaxPrice.setText((SharedHelper.getKey(context, "currency") + ""
-                                            + jsonArray.optJSONObject(i).optJSONObject("payment").optString("tax")));
-                                    lblTotalPrice.setText((SharedHelper.getKey(context, "currency") + ""
-                                            + jsonArray.optJSONObject(i).optJSONObject("payment").optString("total" +
-                                            "")));
-                                } else {
-                                    tripAmount.setVisibility(View.GONE);
-                                }
+//                                if (jsonArray.optJSONObject(i).optJSONObject("payment") != null && jsonArray.optJSONObject(i).optJSONObject("payment").optString("total") != null &&
+//                                        !jsonArray.optJSONObject(i).optJSONObject("payment").optString("total").equalsIgnoreCase("")) {
+//                                    tripAmount.setText(SharedHelper.getKey(context, "currency") + "" + jsonArray.optJSONObject(i).optJSONObject("payment").optString("total"));
+//                                    jsonArray.optJSONObject(i).optJSONObject("payment");
+//                                    lblBasePrice.setText((SharedHelper.getKey(context, "currency") + ""
+//                                            + jsonArray.optJSONObject(i).optJSONObject("payment").optString("fixed")));
+//                                    lblDistancePrice.setText((SharedHelper.getKey(context, "currency") + ""
+//                                            + jsonArray.optJSONObject(i).optJSONObject("payment").optString("distance")));
+//                                    lblTaxPrice.setText((SharedHelper.getKey(context, "currency") + ""
+//                                            + jsonArray.optJSONObject(i).optJSONObject("payment").optString("tax")));
+//                                    lblTotalPrice.setText((SharedHelper.getKey(context, "currency") + ""
+//                                            + jsonArray.optJSONObject(i).optJSONObject("payment").optString("total" +
+//                                            "")));
+//                                } else {
+//                                    tripAmount.setVisibility(View.GONE);
+//                                }
+
+
+
+
+                                // getting fare details
+                                StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + jsonArray.optJSONObject(i).optString("s_latitude") + "&s_longitude=" + jsonArray.optJSONObject(i).optString("s_longitude") + "&d_latitude=" + jsonArray.optJSONObject(i).optString("d_latitude") + "&d_longitude=" + jsonArray.optJSONObject(i).optString("d_longitude") + "&service_type=2", new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+
+
+                                        try {
+                                            JSONObject jsonObject = new JSONObject(response);
+
+                                            if (response != null) {
+                                                System.out.println("payment details estimated data : " + jsonObject.toString());
+                                                jsonObject.optString("estimated_fare");
+                                                jsonObject.optString("distance");
+                                                jsonObject.optString("time");
+                                                jsonObject.optString("tax_price");
+                                                jsonObject.optString("base_price");
+                                                jsonObject.optString("discount");
+                                                jsonObject.optString("currency");
+
+                                                String con = jsonObject.optString("currency") + " ";
+
+
+//                                                txt04InvoiceId.setText(jsonArray.optJSONObject(i).optString("booking_id"));
+                                                lblBasePrice.setText(con + jsonObject.optString("base_price"));
+                                                lblDistancePrice.setText(jsonObject.optString("distance") + " KM");
+                                                lblTaxPrice.setText(con + jsonObject.optString("tax_price"));
+                                                lblTotalPrice.setText(con + jsonObject.optString("estimated_fare"));
+//                                                txt04PaymentMode.setText("CASH");
+//                                                txt04Commision.setText(con + jsonObject.optString("discount"));
+//                                                txtTotal.setText(con + jsonObject.optString("estimated_fare"));
+                                                paymentTypeImg.setImageResource(R.drawable.money1);
+
+
+
+                                                System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+
+                                            }
+
+                                        } catch (JSONException e) {
+                                            Toast.makeText(HistoryDetailsUser.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                                            e.printStackTrace();
+                                        }
+
+
+                                    }
+                                }, new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+
+                                        try {
+                                            Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+
+                                    }
+
+                                }) {
+                                    @Override
+                                    public Map<String, String> getHeaders() {
+                                        HashMap<String, String> headers = new HashMap<String, String>();
+                                        headers.put("X-Requested-With", "XMLHttpRequest");
+                                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                                        return headers;
+                                    }
+
+                                };
+
+                                ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+
+
                                 try {
                                     tripDate.setText(getDate(form) + "th " + getMonth(form) + " " + getYear(form) + "\n" + getTime(form));
                                 } catch (ParseException e) {
                                     e.printStackTrace();
                                 }
 
-                                paymentType.setText(jsonArray.optJSONObject(i).optString("payment_mode"));
-                                if (jsonArray.optJSONObject(i).optString("payment_mode").equalsIgnoreCase("CASH")) {
-                                    paymentTypeImg.setImageResource(R.drawable.money1);
-                                } else {
-                                    paymentTypeImg.setImageResource(R.drawable.visa_icon);
-                                }
+//                                paymentType.setText(jsonArray.optJSONObject(i).optString("payment_mode"));
+//                                if (jsonArray.optJSONObject(i).optString("payment_mode").equalsIgnoreCase("CASH")) {
+//                                    paymentTypeImg.setImageResource(R.drawable.money1);
+//                                } else {
+//                                    paymentTypeImg.setImageResource(R.drawable.visa_icon);
+//                                }
+
+                                paymentType.setText("CASH");
+                                paymentTypeImg.setImageResource(R.drawable.money1);
 
 
 //                                JSONArray filterJsonArray = jsonArray.optJSONObject(i).optJSONArray("filters");
@@ -627,49 +640,20 @@ public class HistoryDetailsUser extends AppCompatActivity {
                     parentLayout.setVisibility(View.VISIBLE);
 
 
-//                ###########################
 
-
-//                    if (response != null) {
-//                        System.out.println("data : "+jsonArray.getString(0));
-//                        upcomingsAdapter = new FindRidesActivity.UpcomingsAdapter(jsonArray);
-//                        //  recyclerView.setHasFixedSize(true);
-//                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext().getApplicationContext());
-//                        recyclerView.setLayoutManager(mLayoutManager);
-//                        recyclerView.setItemAnimator(new DefaultItemAnimator());
-//                        if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
-//                            recyclerView.setVisibility(View.VISIBLE);
-//                            errorLayout.setVisibility(View.GONE);
-//                            recyclerView.setAdapter(upcomingsAdapter);
-//                        } else {
-////                    errorLayout.setVisibility(View.VISIBLE);
-//                            recyclerView.setVisibility(View.GONE);
-//                        }
-//
-//                    } else {
-//                        errorLayout.setVisibility(View.VISIBLE);
-//                        recyclerView.setVisibility(View.GONE);
-//                    }
-
-//                    for(int i=0 ; i<jsonArray.length(); i++){
-//                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-//                        System.out.println("data : "+jsonObject.toString());
-//                        System.out.println("data : "+jsonObject.getString("s_address"));
-//                    }
 
                 } catch (JSONException e) {
-//                    throw new RuntimeException(e);
-                    displayMessage(e.toString());
-//                    errorLayout.setVisibility(View.VISIBLE);
-//                    recyclerView.setVisibility(View.GONE);
+                    displayMessage("Something went wrong");
+                    e.printStackTrace();
+
                 }
 
-//                Toast.makeText(FindRidesActivity.this, "Data Found succesfully..", Toast.LENGTH_SHORT).show();
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(HistoryDetailsUser.this, "Error Found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HistoryDetailsUser.this, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
 
         }) {

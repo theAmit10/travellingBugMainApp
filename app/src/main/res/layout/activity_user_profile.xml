@@ -47,7 +47,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
             android:scaleType="centerCrop"
-            android:src="@drawable/people"
+            android:src="@drawable/ic_dummy_user"
             app:civ_border_color="@color/colorGray"
             app:civ_border_width="@dimen/_2sdp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@drawable/ic_green_tick"
                 android:drawablePadding="@dimen/_10sdp"
-                android:text="David Johnson"
+                android:text="username"
                 android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
@@ -98,7 +98,7 @@
                     android:layout_weight="1"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
-                    android:text="( 115 Reviews )"
+                    android:text=""
                     android:textStyle="bold"
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_7sdp" />
@@ -111,12 +111,13 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        style="@style/TabFont"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
         android:background="@color/white"
+        app:tabSelectedTextColor="@color/dark_green"
+        app:tabTextColor="@color/colorDarkGray"
+        app:tabTextAppearance="@style/TabFont"
         app:tabIndicatorColor="@color/dark_green"
-        app:tabSelectedTextColor="@color/black"></com.google.android.material.tabs.TabLayout>
+        android:layout_height="@dimen/_40sdp"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
