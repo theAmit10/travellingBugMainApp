@@ -6695,6 +6695,8 @@ int layout fragment_past_trips 0x7f0d00c9
 int layout fragment_profile_about 0x7f0d00ca
 int layout fragment_profile_account 0x7f0d00cb
 int layout fragment_publish 0x7f0d00cc
+int layout fragment_rating_given 0x7f0d016a
+int layout fragment_rating_received 0x7f0d016b
 int layout fragment_search 0x7f0d00cd
 int layout fragment_soruce_and_destination 0x7f0d00ce
 int layout fragment_summary 0x7f0d00cf

@@ -6696,6 +6696,8 @@ layout fragment_past_trips
 layout fragment_profile_about
 layout fragment_profile_account
 layout fragment_publish
+layout fragment_rating_given
+layout fragment_rating_received
 layout fragment_search
 layout fragment_soruce_and_destination
 layout fragment_summary

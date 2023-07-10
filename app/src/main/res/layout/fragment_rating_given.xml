@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.RatingGivenFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/reviewDataLl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/fiveStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_star"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/quantum_yellow"
+                        android:text="5"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+
+                        android:id="@+id/fiveStarProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerHorizontal="true"
+
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:padding="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/fiveStarTotalVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text=""
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/fourStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_star"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/quantum_yellow"
+                        android:text="4"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+
+                        android:id="@+id/fourStarProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:padding="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/fourStarTotalVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text=""
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/threeStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_star"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/quantum_yellow"
+                        android:text="3"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+
+                        android:id="@+id/threeStarProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:padding="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/threeStarTotalVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text=""
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/twoStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_star"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/quantum_yellow"
+                        android:text="2"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+
+                        android:id="@+id/twoStarProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:padding="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/twoStarTotalVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text=""
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_10sdp"
+                    android:paddingEnd="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/oneStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableRight="@drawable/ic_star"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/quantum_yellow"
+                        android:text="1"
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+
+                        android:id="@+id/oneStarProgress"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="@dimen/_170sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:padding="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/oneStarTotalVal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:text=""
+                        android:textColor="@color/colorDarkGray"
+                        android:textSize="@dimen/_12sdp"
+                        android:textStyle="bold" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/view8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="@dimen/_10sdp"
+                android:background="@color/colorGray_light" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/fragmentDriverReviewRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/design_driver_profile_reviews" />
+
+                <TextView
+                    android:id="@+id/fragmentDriverReviewRvNoReviewFound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="No Review found."
+                    android:visibility="gone" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <RelativeLayout
+        android:id="@+id/errorLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/error_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_184sdp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:background="@drawable/no_data_found"
+                android:scaleType="centerCrop" />
+
+            <com.travel.travellingbug.utills.MyBoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
+
+                android:text="No review"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20sdp"
+                android:textStyle="bold" />
+
+            <!--            <com.travel.travellingbug.utills.MyTextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_below="@+id/error_image"-->
+            <!--                android:layout_centerHorizontal="true"-->
+            <!--                android:layout_marginTop="10dp"-->
+            <!--                android:text="Find the perfect ride from thousands of destination, or publish to share yours travel costs."-->
+            <!--                android:padding="@dimen/_20sdp"-->
+            <!--                android:textColor="@color/colorDarkGray"-->
+            <!--                android:textSize="@dimen/_12sdp" />-->
+
+            <com.travel.travellingbug.utills.MyTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/error_image"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:text="You have no Reviews"
+                android:textColor="@color/colorDarkGray"
+                android:textSize="@dimen/_12sdp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
