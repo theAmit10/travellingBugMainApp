@@ -32,8 +32,10 @@ import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.ui.activities.ChangeAddressAdtivityOne;
+import com.travel.travellingbug.ui.activities.DataProtectionActivity;
 import com.travel.travellingbug.ui.activities.HelpActivity;
 import com.travel.travellingbug.ui.activities.NotificationTab;
+import com.travel.travellingbug.ui.activities.PaymentAndRefundActivity;
 import com.travel.travellingbug.ui.activities.ProviderReviewActivity;
 import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.ui.activities.TermsAndConditionActivity;
@@ -318,21 +320,25 @@ public class ProfileAccountFragment extends Fragment {
         paymentRefundsTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Under Construction", Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(() -> startActivity(new Intent(getContext(),
+                        PaymentAndRefundActivity.class)), 250);
             }
         });
 
         dataProtectionTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Under Construction", Toast.LENGTH_SHORT).show();
+
+                new Handler().postDelayed(() -> startActivity(new Intent(getContext(),
+                        DataProtectionActivity.class)), 250);
+
             }
         });
 
         licensesTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Under Construction", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Comming soon", Toast.LENGTH_SHORT).show();
             }
         });
 

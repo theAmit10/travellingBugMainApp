@@ -91,7 +91,7 @@
 <!--                android:textColor="@color/colorDarkGray"-->
 <!--                android:textSize="@dimen/_12sdp" />-->
 
-            <com.travel.travellingbug.utills.MyTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/error_image"

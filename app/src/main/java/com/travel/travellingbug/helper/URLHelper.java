@@ -177,6 +177,8 @@ public interface URLHelper {
 
     String VEHICEL_ADD_AND_UPDATE = BASE +"api/provider/profile/vehicle";
 
+    String USER_PAYMENT_HISTORY = BASE +"api/provider/mypaymenthistory";
+
 
 
 

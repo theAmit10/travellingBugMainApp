@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:text="Edit Personal Details"
+                android:text="Edit personal details"
                 android:textColor="@color/green"
                 android:textSize="@dimen/_11sdp" />
 

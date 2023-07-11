@@ -5843,9 +5843,9 @@ id paymentCardView
 id paymentDescription
 id paymentLayout
 id paymentRefundsTv
+id paymentRv
 id paymentTextView
 id paymentTitle
-id paymentTv
 id paymentType
 id paymentTypeImg
 id payment_list_view
@@ -5904,6 +5904,7 @@ id postalAddresstv
 id preferenceContainer
 id preferenceDivider
 id primary_button
+id privacyPolicy
 id privacyPolicyTextView
 id privateCarCheckBox
 id profileImgeIv
@@ -6390,6 +6391,7 @@ id userRating
 id user_name
 id user_total_ride_distanse
 id user_type
+id username
 id usernameTxt
 id vehicle
 id vehicleAcETL
@@ -6542,6 +6544,7 @@ layout activity_complaints
 layout activity_confirm_ride_request
 layout activity_coupon
 layout activity_custom_stop_over_location
+layout activity_data_protection
 layout activity_doc_upload
 layout activity_document_status
 layout activity_document_upload

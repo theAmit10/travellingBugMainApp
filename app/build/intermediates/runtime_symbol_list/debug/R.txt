@@ -5842,9 +5842,9 @@ int id paymentCardView 0x7f0a0433
 int id paymentDescription 0x7f0a0434
 int id paymentLayout 0x7f0a0435
 int id paymentRefundsTv 0x7f0a0436
+int id paymentRv 0x7f0a069a
 int id paymentTextView 0x7f0a0437
 int id paymentTitle 0x7f0a0438
-int id paymentTv 0x7f0a0439
 int id paymentType 0x7f0a043a
 int id paymentTypeImg 0x7f0a043b
 int id payment_list_view 0x7f0a043c
@@ -5903,6 +5903,7 @@ int id postalAddresstv 0x7f0a0470
 int id preferenceContainer 0x7f0a0471
 int id preferenceDivider 0x7f0a0472
 int id primary_button 0x7f0a0473
+int id privacyPolicy 0x7f0a069c
 int id privacyPolicyTextView 0x7f0a0474
 int id privateCarCheckBox 0x7f0a0475
 int id profileImgeIv 0x7f0a0476
@@ -6389,6 +6390,7 @@ int id userRating 0x7f0a0656
 int id user_name 0x7f0a0657
 int id user_total_ride_distanse 0x7f0a0658
 int id user_type 0x7f0a0659
+int id username 0x7f0a069b
 int id usernameTxt 0x7f0a065a
 int id vehicle 0x7f0a065b
 int id vehicleAcETL 0x7f0a065c
@@ -6541,6 +6543,7 @@ int layout activity_complaints 0x7f0d0022
 int layout activity_confirm_ride_request 0x7f0d0023
 int layout activity_coupon 0x7f0d0024
 int layout activity_custom_stop_over_location 0x7f0d0025
+int layout activity_data_protection 0x7f0d016c
 int layout activity_doc_upload 0x7f0d0026
 int layout activity_document_status 0x7f0d0027
 int layout activity_document_upload 0x7f0d0028

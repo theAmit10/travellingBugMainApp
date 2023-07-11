@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,6 +76,10 @@ public class DocumentStatus extends AppCompatActivity {
     public static int deviceHeight;
     public static int deviceWidth;
     RecyclerView recDocuments;
+
+    ImageView backArrow;
+
+    RelativeLayout errorLayout;
     String documnetName = "", documentId = "";
     Uri documentUri;
     private Uri cameraImageUri = null;
@@ -131,12 +136,23 @@ public class DocumentStatus extends AppCompatActivity {
 //        getSupportActionBar().setTitle("Document ");
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         recDocuments = findViewById(R.id.recDocuments);
+        errorLayout = findViewById(R.id.errorLayout);
+        backArrow = findViewById(R.id.backArrow);
+
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         getDocList();
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         deviceHeight = displayMetrics.heightPixels;
         deviceWidth = displayMetrics.widthPixels;
+
+
 
     }
 
@@ -171,7 +187,7 @@ public class DocumentStatus extends AppCompatActivity {
                                 }
 
                             } else {
-
+                                errorLayout.setVisibility(View.VISIBLE);
                             }
 
                             customDialog.dismiss();
@@ -179,6 +195,7 @@ public class DocumentStatus extends AppCompatActivity {
                         }, error -> {
                     Log.v("DocumentsStatus Error", error.getMessage() + "");
                     customDialog.dismiss();
+                    error.printStackTrace();
                     displayMessage(getString(R.string.something_went_wrong));
                 }) {
                     @Override
