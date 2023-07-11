@@ -321,7 +321,8 @@ public class FindRidesActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(FindRidesActivity.this, "Error Found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FindRidesActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
                 customDialog.dismiss();
                 customDialog.cancel();
             }

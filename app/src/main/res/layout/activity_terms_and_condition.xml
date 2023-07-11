@@ -36,9 +36,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp"
                     android:padding="@dimen/_5sdp"
+                    android:fontFamily="@font/nunito_bold"
                     android:text="Terms And Condition"
                     android:textColor="@color/colorLightGray"
-                    android:textSize="@dimen/_18sdp"
+                    android:textSize="@dimen/_14sdp"
                     android:textStyle="bold" />
 
 
@@ -59,6 +60,7 @@
                 android:padding="@dimen/_10sdp"
                 android:text="Terms of Travelling Bug"
                 android:textColor="@color/black"
+                android:fontFamily="@font/nunito_bold"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold" />
 
@@ -66,6 +68,7 @@
                 android:id="@+id/termsTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_semi_bold"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp"
                 android:text="Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:

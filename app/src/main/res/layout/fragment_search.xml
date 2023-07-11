@@ -352,13 +352,24 @@
                             android:orientation="vertical"
                             android:visibility="gone">
 
-                            <ImageView
+<!--                            <ImageView-->
+<!--                                android:id="@+id/my_featured_image"-->
+<!--                                android:layout_width="@dimen/_100sdp"-->
+<!--                                android:layout_height="@dimen/_75sdp"-->
+<!--                                android:layout_gravity="center_horizontal"-->
+<!--                                android:scaleType="fitXY"-->
+<!--                                android:src="@drawable/discovery" />-->
+
+                            <pl.droidsonroids.gif.GifImageView
                                 android:id="@+id/my_featured_image"
-                                android:layout_width="@dimen/_100sdp"
-                                android:layout_height="@dimen/_75sdp"
-                                android:layout_gravity="center_horizontal"
-                                android:scaleType="fitXY"
-                                android:src="@drawable/discovery" />
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_184sdp"
+                                android:layout_marginStart="@dimen/_20sdp"
+                                android:layout_marginEnd="@dimen/_20sdp"
+                                android:scaleType="centerCrop"
+                                android:layout_centerHorizontal="true"
+                                android:background="@drawable/driver_comming"
+                                />
 
                             <TextView
                                 android:id="@+id/my_caption_title"

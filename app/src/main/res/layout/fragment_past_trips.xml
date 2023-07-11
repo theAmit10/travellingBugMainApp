@@ -61,6 +61,7 @@
         android:id="@+id/errorLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_centerInParent="true">
 
         <LinearLayout
@@ -71,12 +72,12 @@
 
             <ImageView
                 android:id="@+id/error_image"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/_184sdp"
                 android:layout_height="@dimen/_184sdp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
-                android:background="@drawable/no_data_found"
+                android:background="@drawable/travel"
                 android:scaleType="centerCrop" />
 
             <com.travel.travellingbug.utills.MyBoldTextView
@@ -92,13 +93,13 @@
                 android:textSize="@dimen/_20sdp"
                 android:textStyle="bold" />
 
-            <com.travel.travellingbug.utills.MyTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/error_image"
                 android:layout_centerHorizontal="true"
                 android:padding="@dimen/_10sdp"
-                android:text="Your have no past rides"
+                android:text="You have no past rides"
                 android:textColor="@color/colorDarkGray"
                 android:textSize="@dimen/_12sdp" />
 

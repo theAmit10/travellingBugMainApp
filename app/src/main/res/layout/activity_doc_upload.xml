@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:fillViewport="true"
     android:orientation="vertical">
@@ -42,7 +43,7 @@
             android:padding="@dimen/_5sdp"
             android:textStyle="bold"
             android:text="Which Document would you like to upload ?"
-            android:fontFamily="@font/montserrat_semibold"
+            android:fontFamily="@font/nunito_bold"
             android:textColor="@color/black"
             android:textSize="@dimen/_18sdp"
           />
@@ -52,6 +53,7 @@
             android:id="@+id/recDoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            tools:listitem="@layout/doc_upload_item"
             android:layout_margin="@dimen/_10sdp">
 
         </androidx.recyclerview.widget.RecyclerView>
@@ -67,6 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12sdp"
+                android:fontFamily="@font/nunito_semi_bold"
                 android:text="@string/terms_and_condition"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp"
@@ -365,10 +368,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-
+                android:fontFamily="@font/nunito_bold"
                 android:gravity="center|start"
                 android:text="I certify my all document is correct."
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/dark_green" />
 
         </LinearLayout>
 
@@ -381,7 +384,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_15sdp"
             android:background="@drawable/auth_btn_green_bg"
-            android:fontFamily="@font/montserrat_semibold"
+            android:fontFamily="@font/nunito_bold"
             android:text="Submit"
             android:textColor="@color/white"
             android:textSize="@dimen/_13sdp" />

@@ -25,7 +25,7 @@ import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.models.VerifyIdMainActivityModel;
-import com.travel.travellingbug.ui.adapters.VerifyIdMainActivityAdapter;
+import com.travel.travellingbug.ui.adapters.PreferenceTitleAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -91,9 +91,10 @@ public class PreferenceTitle extends AppCompatActivity {
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false);
-        VerifyIdMainActivityAdapter verifyIdMainActivityAdapter = new VerifyIdMainActivityAdapter(getApplicationContext(), list);
+//        VerifyIdMainActivityAdapter verifyIdMainActivityAdapter = new VerifyIdMainActivityAdapter(getApplicationContext(), list);
+        PreferenceTitleAdapter preferenceTitleAdapter = new PreferenceTitleAdapter(getApplicationContext(), list);
         travelPreferenceRV.setLayoutManager(linearLayoutManager);
-        travelPreferenceRV.setAdapter(verifyIdMainActivityAdapter);
+        travelPreferenceRV.setAdapter(preferenceTitleAdapter);
         travelPreferenceRV.setNestedScrollingEnabled(false);
 
 
@@ -134,6 +135,12 @@ public class PreferenceTitle extends AppCompatActivity {
 
     public void displayMessage(String toastString) {
         Toasty.info(getApplicationContext(), toastString, Toast.LENGTH_SHORT, true).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     public void getPreferencesTitle() {
@@ -188,14 +195,16 @@ public class PreferenceTitle extends AppCompatActivity {
 
 
                         } catch (JSONException e) {
-                            throw new RuntimeException(e);
+                            e.printStackTrace();
+                            e.printStackTrace();
                         }
                     }
 
-                    VerifyIdMainActivityAdapter verifyIdMainActivityAdapter = new VerifyIdMainActivityAdapter(getApplicationContext(), list);
+//                    VerifyIdMainActivityAdapter verifyIdMainActivityAdapter = new VerifyIdMainActivityAdapter(getApplicationContext(), list);
+                    PreferenceTitleAdapter preferenceTitleAdapter = new PreferenceTitleAdapter(getApplicationContext(), list);
                     if (customDialog != null)
                         customDialog.dismiss();
-                    travelPreferenceRV.setAdapter(verifyIdMainActivityAdapter);
+                    travelPreferenceRV.setAdapter(preferenceTitleAdapter);
 
                 } else {
                     if (customDialog != null)

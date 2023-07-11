@@ -3,7 +3,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/home"
+            android:icon="@drawable/side_nav_home"
             android:title="@string/home" />
         <item
             android:id="@+id/nav_profile"
@@ -12,7 +12,7 @@
             android:visible="false" />
         <item
             android:id="@+id/nav_yourtrips"
-            android:icon="@drawable/history"
+            android:icon="@drawable/side_nav_history"
             android:title="@string/history" />
         <item
             android:id="@+id/nav_earnings"
@@ -22,17 +22,17 @@
 
         <item
             android:id="@+id/nav_document"
-            android:icon="@drawable/googledocs"
+            android:icon="@drawable/side_nav_document"
             android:title="@string/documents" />
 
         <item
             android:id="@+id/nav_wallet"
-            android:icon="@drawable/summary"
+            android:icon="@drawable/side_nav_summary"
 
             android:title="@string/summary" />
         <item
             android:id="@+id/nav_notification"
-            android:icon="@drawable/notification"
+            android:icon="@drawable/notification_side_nav"
             android:title="@string/notifications" />
         <item
             android:id="@+id/nav_withdraw"
@@ -41,7 +41,7 @@
             android:title="@string/withdraw" />
         <item
             android:id="@+id/nav_help"
-            android:icon="@drawable/question"
+            android:icon="@drawable/side_nav_help"
             android:title="@string/help" />
         <item
             android:id="@+id/nav_share"

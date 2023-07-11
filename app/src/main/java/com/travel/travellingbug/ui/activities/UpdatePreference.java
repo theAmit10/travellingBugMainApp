@@ -71,18 +71,20 @@ public class UpdatePreference extends AppCompatActivity {
             public void onClick(View v) {
                 if (isInternet) {
 
+//                    Toast.makeText(UpdatePreference.this, "UPDATE : "+update, Toast.LENGTH_SHORT).show();
+
                     if(update.equalsIgnoreCase("no")){
-                        if(!editTexttitle.getText().toString().equalsIgnoreCase("") && !editTextsubtitle.getText().toString().equalsIgnoreCase("")    ){
+                        if(!editTexttitle.getText().toString().equalsIgnoreCase("") && !editTextsubtitle.getText().toString().equalsIgnoreCase("")&& !editTextsubtitle.getText().toString().equalsIgnoreCase("Add Value")    ){
                             addPreferences();
                         }else {
-                            displayMessage("Enter Both Field");
+                            displayMessage("Enter Preference");
                         }
                     }else{
                         if(!editTexttitle.getText().toString().equalsIgnoreCase("") && !editTextsubtitle.getText().toString().equalsIgnoreCase("")    ){
                             updatePreferences();
 //                            addPreferences();
                         }else {
-                            displayMessage("Enter Both Field");
+                            displayMessage("Enter Preference");
                         }
 
                     }
@@ -97,6 +99,13 @@ public class UpdatePreference extends AppCompatActivity {
 
 
         });
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
     }
 
     private void updatePreferences() {
@@ -136,6 +145,10 @@ public class UpdatePreference extends AppCompatActivity {
         }, error -> {
             if ((dialogCustom != null) && dialogCustom.isShowing())
                 dialogCustom.dismiss();
+            System.out.println("error : "+error.toString());
+            System.out.println("error : "+error.getCause());
+            System.out.println("error : "+error.getMessage());
+            System.out.println("error : "+error.getStackTrace());
             displayMessage(getString(R.string.something_went_wrong));
         }) {
             @Override
@@ -178,6 +191,10 @@ public class UpdatePreference extends AppCompatActivity {
             if ((dialogCustom != null) && dialogCustom.isShowing())
                 dialogCustom.dismiss();
             error.printStackTrace();
+            System.out.println("error : "+error.toString());
+            System.out.println("error : "+error.getCause());
+            System.out.println("error : "+error.getMessage());
+            System.out.println("error : "+error.getStackTrace());
             displayMessage(getString(R.string.something_went_wrong));
         }) {
             @Override
@@ -223,6 +240,7 @@ public class UpdatePreference extends AppCompatActivity {
         System.out.println(" preferecnce id"+id);
         System.out.println(" preferecnce title"+title);
         System.out.println(" preferecnce subtitle"+subtitle);
+        System.out.println(" preferecnce update"+update);
 
 //        if (parameter.equalsIgnoreCase("first_name")) {
 //

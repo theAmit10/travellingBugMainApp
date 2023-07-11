@@ -3436,6 +3436,7 @@ drawable banned
 drawable baseline_add
 drawable baseline_call_24
 drawable baseline_chat_24
+drawable baseline_notifications
 drawable bg
 drawable bg_car
 drawable bg_toggle_checked
@@ -3567,6 +3568,7 @@ drawable done_background_color
 drawable done_background_color_dark
 drawable dot
 drawable driver_accepted
+drawable driver_comming
 drawable driving_car
 drawable driving_imge_two
 drawable earning
@@ -4608,6 +4610,7 @@ drawable notification_bg_low_pressed
 drawable notification_bg_normal
 drawable notification_bg_normal_pressed
 drawable notification_icon_background
+drawable notification_side_nav
 drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
@@ -4673,6 +4676,13 @@ drawable selected_service_item
 drawable selector_row
 drawable set_location
 drawable share_ride
+drawable side_bar_notificatio
+drawable side_nav_document
+drawable side_nav_help
+drawable side_nav_history
+drawable side_nav_home
+drawable side_nav_notification
+drawable side_nav_summary
 drawable simple_button_background
 drawable sos
 drawable source_location
@@ -4686,6 +4696,8 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable top_shadow
 drawable topbg
+drawable travel
+drawable travel_two_people
 drawable triangle
 drawable up_down
 drawable user_marker
@@ -4725,6 +4737,7 @@ drawable white_color_rect_shape
 drawable white_dialog_choose_shape
 drawable white_roundshape_background
 drawable wishlist_heart_shape
+drawable women_map
 font karla
 font karla_bold
 font montserrat_medium

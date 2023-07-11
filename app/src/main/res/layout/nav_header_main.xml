@@ -103,7 +103,7 @@
                 android:maxLines="1"
                 android:paddingTop="@dimen/_5sdp"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_12sdp" />
 
 
         </LinearLayout>

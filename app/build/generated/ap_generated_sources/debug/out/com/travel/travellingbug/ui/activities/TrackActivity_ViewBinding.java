@@ -23,7 +23,7 @@ import java.lang.Override;
 public class TrackActivity_ViewBinding implements Unbinder {
   private TrackActivity target;
 
-  private View view7f0a0630;
+  private View view7f0a0631;
 
   private View view7f0a02b6;
 
@@ -89,7 +89,7 @@ public class TrackActivity_ViewBinding implements Unbinder {
     target.txtDiscount = Utils.findRequiredViewAsType(source, R.id.txtDiscount, "field 'txtDiscount'", TextView.class);
     view = Utils.findRequiredView(source, R.id.txtPickUpNotes, "field 'txtPickUpNotes' and method 'spcialiNotesClcik'");
     target.txtPickUpNotes = Utils.castView(view, R.id.txtPickUpNotes, "field 'txtPickUpNotes'", TextView.class);
-    view7f0a0630 = view;
+    view7f0a0631 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -347,8 +347,8 @@ public class TrackActivity_ViewBinding implements Unbinder {
     target.btnChat = null;
     target.imgEditDestination = null;
 
-    view7f0a0630.setOnClickListener(null);
-    view7f0a0630 = null;
+    view7f0a0631.setOnClickListener(null);
+    view7f0a0631 = null;
     view7f0a02b6.setOnClickListener(null);
     view7f0a02b6 = null;
     view7f0a02d5.setOnClickListener(null);

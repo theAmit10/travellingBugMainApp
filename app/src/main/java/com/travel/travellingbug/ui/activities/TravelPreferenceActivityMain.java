@@ -68,6 +68,8 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
     LinearLayout errorLayout;
     RelativeLayout travelPreferenceRVLayout;
 
+    int preference_title_length = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +77,21 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
 
         initComponenet();
         getProfile();
+        getPreferencesTitleLength();
         settingAdapterForRecycleView();
+
+
+        //  setting visibility for add prefernce
+        checkingVisibilityForAddpreference();
+    }
+
+    private void checkingVisibilityForAddpreference() {
+        System.out.println("checking");
+        System.out.println("checking preference_title_length : "+preference_title_length);
+        System.out.println("checking list.size() : "+list.size());
+        if(preference_title_length != 0 && list.size() >= preference_title_length){
+            addPreferences.setVisibility(View.GONE);
+        }
     }
 
     private void settingAdapterForRecycleView() {
@@ -134,7 +150,19 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                HomeScreenActivity.class.runOnUiThread(() -> {
+//                    Fragment fragment = new AccoutFragment();
+//                    FragmentManager manager = getSupportFragmentManager();
+//                    @SuppressLint("CommitTransaction")
+//                    FragmentTransaction transaction = manager.beginTransaction();
+//                    transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.slide_out_right);
+//                    transaction.replace(R.id.content, fragment);
+//                    transaction.commit();
+////                        fragmentManager = getSupportFragmentManager();
+//                });
+
                 finish();
+
             }
         });
 
@@ -144,6 +172,51 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
         Toasty.info(getApplicationContext(), toastString, Toast.LENGTH_SHORT, true).show();
     }
 
+    public void getPreferencesTitleLength() {
+
+
+        if (isInternet) {
+            JSONObject object = new JSONObject();
+            JSONArray jsonArray = new JSONArray();
+            list = new ArrayList<>();
+
+
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URLHelper.PREFERENCES_TITLE,
+                    jsonArray, response -> {
+                Log.v("GetPreferencesTitle", response.toString());
+
+                if (response.length() > 0) {
+
+                    System.out.println("LENGTH : "+response.length());
+                    preference_title_length = response.length();
+
+
+
+
+
+                }
+
+            }, error -> {
+//                displayMessage(getString(R.string.something_went_wrong));
+            }) {
+                @Override
+                public Map<String, String> getHeaders() {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("X-Requested-With", "XMLHttpRequest");
+                    Log.e(TAG, "getHeaders: Token" + SharedHelper.getKey(getApplicationContext(), "access_token") + SharedHelper.getKey(getContext(), "token_type"));
+                    headers.put("Authorization", "" + "Bearer" + " " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                    return headers;
+                }
+            };
+
+            ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
+
+
+        } else {
+            displayMessage(getString(R.string.something_went_wrong_net));
+        }
+
+    }
     public void getProfile() {
         customDialog = new CustomDialog(TravelPreferenceActivityMain.this);
         customDialog.setCancelable(false);
@@ -198,9 +271,12 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
 
 
                         } catch (JSONException e) {
-                            throw new RuntimeException(e);
+                            e.printStackTrace();
                         }
                     }
+
+
+                    checkingVisibilityForAddpreference();
 
                     VerifyIdMainActivityAdapter verifyIdMainActivityAdapter = new VerifyIdMainActivityAdapter(getApplicationContext(), list);
                     if (customDialog != null)
@@ -218,6 +294,7 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
 
             }, error -> {
 //                displayMessage(getString(R.string.something_went_wrong));
+                error.printStackTrace();
             }) {
                 @Override
                 public Map<String, String> getHeaders() {

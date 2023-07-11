@@ -51,7 +51,7 @@ public class VerifyIdMainActivityAdapter extends RecyclerView.Adapter<VerifyIdMa
                 intent.putExtra("title", verifyIdMainActivityModel.getTitle());
                 intent.putExtra("subtitle", verifyIdMainActivityModel.getDescription());
                 intent.putExtra("title_id", verifyIdMainActivityModel.getTitle_id());
-                intent.putExtra("update", "no");
+                intent.putExtra("update", "yes");
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 v.getContext().startActivity(intent);
             }

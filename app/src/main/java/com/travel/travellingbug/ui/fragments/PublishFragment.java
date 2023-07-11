@@ -67,6 +67,7 @@ import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -4297,43 +4298,56 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                     }
                     break;
                 case R.id.imgBack:
-                    stopOverModelArrayList.clear();
-                    stopOverTitleTv.setVisibility(View.GONE);
-                    stepOverOrgAdapter = new StepOverOrgAdapter(getContext(), stopOverModelArrayList);
-                    stopoverRv.setAdapter(stepOverOrgAdapter);
+                    getActivity().runOnUiThread(() -> {
+                        Fragment fragment = new PublishFragment();
+                        FragmentManager manager = getActivity().getSupportFragmentManager();
+                        @SuppressLint("CommitTransaction")
+                        FragmentTransaction transaction = manager.beginTransaction();
+                        transaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.slide_out_right);
+                        transaction.replace(R.id.content, fragment);
+                        transaction.commit();
+//                        fragmentManager = getSupportFragmentManager();
+                    });
+//                    GoToFragment();
 
-                    if (lnrRequestProviders.getVisibility() == View.VISIBLE) {
-                        flowValue = 0;
-                        isRequestProviderScreen = false;
-                        sourceDestLayout.setVisibility(View.VISIBLE);
-//                        getProvidersList("");
-                        frmSource.setOnClickListener(new PublishFragment.OnClick());
-                        frmDest.setOnClickListener(new PublishFragment.OnClick());
-                        sourceDestLayout.setOnClickListener(null);
-                        if (!current_lat.equalsIgnoreCase("") && !current_lng.equalsIgnoreCase("")) {
-                            destinationBorderImg.setVisibility(View.VISIBLE);
-                            //verticalView.setVisibility(View.GONE);
-                            LatLng myLocation = new LatLng(Double.parseDouble(current_lat), Double.parseDouble(current_lng));
-                            CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(16).build();
-                            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-//                            getProvidersList("");
-                            sourceDestLayout.setVisibility(View.VISIBLE);
-                        }
-                    } else if (lnrApproximate.getVisibility() == View.VISIBLE) {
-                        isRequestProviderScreen = true;
-                        frmSource.setOnClickListener(new PublishFragment.OnClick());
-                        frmDest.setOnClickListener(new PublishFragment.OnClick());
-                        sourceDestLayout.setOnClickListener(null);
-                        flowValue = 1;
-                    } else if (lnrWaitingForProviders.getVisibility() == View.VISIBLE) {
-                        sourceDestLayout.setVisibility(View.GONE);
-                        isRequestProviderScreen = false;
-                        flowValue = 1;
-                    } else if (ScheduleLayout.getVisibility() == View.VISIBLE) {
-                        isRequestProviderScreen = false;
-                        flowValue = 1;
-                    }
-                    layoutChanges();
+
+//                    stopOverModelArrayList.clear();
+//                    stopOverTitleTv.setVisibility(View.GONE);
+//                    stepOverOrgAdapter = new StepOverOrgAdapter(getContext(), stopOverModelArrayList);
+//                    stopoverRv.setAdapter(stepOverOrgAdapter);
+//
+//                    if (lnrRequestProviders.getVisibility() == View.VISIBLE) {
+//                        flowValue = 0;
+//                        isRequestProviderScreen = false;
+//                        sourceDestLayout.setVisibility(View.VISIBLE);
+////                        getProvidersList("");
+//                        frmSource.setOnClickListener(new PublishFragment.OnClick());
+//                        frmDest.setOnClickListener(new PublishFragment.OnClick());
+//                        sourceDestLayout.setOnClickListener(null);
+//                        if (!current_lat.equalsIgnoreCase("") && !current_lng.equalsIgnoreCase("")) {
+//                            destinationBorderImg.setVisibility(View.VISIBLE);
+//                            //verticalView.setVisibility(View.GONE);
+//                            LatLng myLocation = new LatLng(Double.parseDouble(current_lat), Double.parseDouble(current_lng));
+//                            CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(16).build();
+//                            mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+////                            getProvidersList("");
+//                            sourceDestLayout.setVisibility(View.VISIBLE);
+//                        }
+//                    } else if (lnrApproximate.getVisibility() == View.VISIBLE) {
+//                        isRequestProviderScreen = true;
+//                        frmSource.setOnClickListener(new PublishFragment.OnClick());
+//                        frmDest.setOnClickListener(new PublishFragment.OnClick());
+//                        sourceDestLayout.setOnClickListener(null);
+//                        flowValue = 1;
+//                    } else if (lnrWaitingForProviders.getVisibility() == View.VISIBLE) {
+//                        sourceDestLayout.setVisibility(View.GONE);
+//                        isRequestProviderScreen = false;
+//                        flowValue = 1;
+//                    } else if (ScheduleLayout.getVisibility() == View.VISIBLE) {
+//                        isRequestProviderScreen = false;
+//                        flowValue = 1;
+//                    }
+//                    layoutChanges();
                     break;
                 case R.id.imgMenu:
 //                    if (NAV_DRAWER == 0) {
@@ -4559,7 +4573,9 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                         try {
                                             totalDistance = totalDistance + Float.parseFloat(leg.getDistance().getText().replace("km", "").replace("m", "").trim());
                                             Toast.makeText(getContext(), "DISTANCE : "+totalDistance, Toast.LENGTH_SHORT).show();
-                                            SharedHelper.putKey(getContext(),"PUBLISHED_DISTANCE",totalDistance+" KM");
+                                            SharedHelper.putKey(getContext(),"PUBLISHED_DISTANCE",""+totalDistance);
+                                            System.out.println("Distance : "+totalDistance);
+
 
                                         } catch (NumberFormatException ne) {
                                             ne.printStackTrace();

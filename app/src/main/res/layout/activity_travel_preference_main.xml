@@ -70,10 +70,10 @@
 
                 <ImageView
                     android:id="@+id/error_image"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_100sdp"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/car"
+                    android:background="@drawable/travel_two_people"
                     android:visibility="visible" />
 
                 <com.travel.travellingbug.utills.MyBoldTextView
@@ -83,7 +83,7 @@
                     android:gravity="center"
                     android:paddingStart="@dimen/_20sdp"
                     android:paddingEnd="@dimen/_20sdp"
-                    android:text="Your Travel Preferences will appear here."
+                    android:text="Your travel preferences will appear here."
                     android:textColor="@color/black"
 
                     android:textSize="@dimen/_20sdp"
@@ -96,7 +96,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="30dp"
                     android:fontFamily="@font/nunito_regular"
-                    android:text="No Travel Preferences Found"
+                    android:text="No travel preferences found"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 

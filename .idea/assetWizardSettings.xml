@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/chat/baseline_chat_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/notifications_none/baseline_notifications_none_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -34,9 +34,9 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="color" value="5fe35c" />
-                            <entry key="outputName" value="ic_sos" />
-                            <entry key="sourceFile" value="C:\Users\Demon\Desktop\ic_sos.svg" />
+                            <entry key="color" value="050505" />
+                            <entry key="outputName" value="notification_side_nav" />
+                            <entry key="sourceFile" value="C:\Users\Demon\Desktop\notification_side_nav.svg" />
                           </map>
                         </option>
                       </PersistentState>

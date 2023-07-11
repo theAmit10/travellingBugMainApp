@@ -323,7 +323,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
-                android:background="@drawable/no_data_found"
+                android:background="@drawable/women_map"
                 android:scaleType="centerCrop" />
 
             <com.travel.travellingbug.utills.MyBoldTextView
@@ -332,7 +332,7 @@
                 android:gravity="center"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp"
-
+                android:layout_marginTop="@dimen/_10sdp"
                 android:text="No review"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_20sdp"
@@ -349,13 +349,14 @@
             <!--                android:textColor="@color/colorDarkGray"-->
             <!--                android:textSize="@dimen/_12sdp" />-->
 
-            <com.travel.travellingbug.utills.MyTextView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/error_image"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:text="You have no Reviews"
+                android:textStyle="bold"
+                android:text="User haven't received any rating yet."
                 android:textColor="@color/colorDarkGray"
                 android:textSize="@dimen/_12sdp" />
 
