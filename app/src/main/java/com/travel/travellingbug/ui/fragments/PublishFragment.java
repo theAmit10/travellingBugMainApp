@@ -5,7 +5,6 @@ import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -975,7 +974,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                    TimePickerDialog mTimePicker;
 
 
-                   mTimePicker = new TimePickerDialog(getActivity(), android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new TimePickerDialog.OnTimeSetListener() {
+                   mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
                        int callCount = 0;   //To track number of calls to onTimeSet()
 
                        @Override
@@ -1051,7 +1050,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                    int mMonth = c.get(Calendar.MONTH); // current month
                    int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
                    // date picker dialog
-                   datePickerDialog = new DatePickerDialog(getActivity(), android.app.AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,
+                   datePickerDialog = new DatePickerDialog(getActivity(),
                            (view, year, monthOfYear, dayOfMonth) -> {
 
                                // set day of month , month and year value in the edit text
@@ -4409,7 +4408,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                     int mMonth = c.get(Calendar.MONTH); // current month
                     int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
                     // date picker dialog
-                    datePickerDialog = new DatePickerDialog(activity, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,
+                    datePickerDialog = new DatePickerDialog(activity,
                             (view, year, monthOfYear, dayOfMonth) -> {
 
                                 // set day of month , month and year value in the edit text
@@ -4439,7 +4438,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                     int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
                     int minute = mcurrentTime.get(Calendar.MINUTE);
                     TimePickerDialog mTimePicker;
-                    mTimePicker = new TimePickerDialog(activity, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT, new TimePickerDialog.OnTimeSetListener() {
+                    mTimePicker = new TimePickerDialog(activity,  new TimePickerDialog.OnTimeSetListener() {
                         int callCount = 0;   //To track number of calls to onTimeSet()
 
                         @Override

@@ -325,7 +325,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
-                android:background="@drawable/no_data_found"
+                android:background="@drawable/women_map"
                 android:scaleType="centerCrop" />
 
             <com.travel.travellingbug.utills.MyBoldTextView

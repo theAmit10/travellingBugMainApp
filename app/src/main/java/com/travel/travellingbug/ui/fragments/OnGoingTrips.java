@@ -142,23 +142,24 @@ public class OnGoingTrips extends Fragment {
                 recyclerView.setLayoutManager(mLayoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
                 if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
-                    recyclerView.setVisibility(View.VISIBLE);
                     errorLayout.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
                     recyclerView.setAdapter(upcomingsAdapter);
                 } else {
-                    errorLayout.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.GONE);
+                    errorLayout.setVisibility(View.VISIBLE);
                 }
 
             } else {
-                errorLayout.setVisibility(View.VISIBLE);
                 recyclerView.setVisibility(View.GONE);
+                errorLayout.setVisibility(View.VISIBLE);
             }
 
 
 
         }, error -> {
             customDialog.dismiss();
+            recyclerView.setVisibility(View.GONE);
             errorLayout.setVisibility(View.VISIBLE);
             displayMessage(getString(R.string.something_went_wrong));
         }) {

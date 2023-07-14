@@ -69,6 +69,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.travel.travellingbug.ui.activities.AddTrackingLinkActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.travel.travellingbug.ui.activities.TrackingLinkActivity"
+            android:exported="false" />
+        <activity
             android:name="com.travel.travellingbug.ui.activities.DataProtectionActivity"
             android:exported="false" />
         <activity

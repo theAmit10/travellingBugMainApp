@@ -95,6 +95,7 @@ public class RideRequest extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 upcomingsAdapter.notifyDataSetChanged();
+                getRideRequest();
                 confirmDialog.dismiss();
             }
         });
@@ -112,7 +113,6 @@ public class RideRequest extends AppCompatActivity {
         TextView tvDriverMsg = confirmDialog.findViewById(R.id.tvDriverMsg);
 
         bookingStatusTitleTv.setText("Cancelled");
-
         bookingStatusSubTitleTv.setText("Ride Request has been Cancelled successfully");
 
         tvDriverMsg.setText("");
@@ -122,6 +122,7 @@ public class RideRequest extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 upcomingsAdapter.notifyDataSetChanged();
+                getRideRequest();
                 confirmDialog.dismiss();
             }
         });
@@ -464,7 +465,7 @@ public class RideRequest extends AppCompatActivity {
 
 
                             } catch (JSONException e) {
-
+                                    e.printStackTrace();
                             }
 
 
@@ -502,12 +503,15 @@ public class RideRequest extends AppCompatActivity {
                         if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("ACCEPTED")){
                             System.out.println("ACCEPTED : "+jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("ACCEPTED"));
                             holder.acceptBtn.setText("ACCEPTED");
+                            holder.acceptBtn.setClickable(false);
+
                             holder.acceptBtn.setVisibility(View.VISIBLE);
                             holder.rejectBtn.setVisibility(View.GONE);
 
                         }else if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED")){
                             System.out.println("CANCELLED : "+jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED"));
                             holder.rejectBtn.setText("CANCELLED");
+                            holder.rejectBtn.setClickable(false);
                             holder.rejectBtn.setVisibility(View.VISIBLE);
                             holder.acceptBtn.setVisibility(View.GONE);
                         }
@@ -516,6 +520,15 @@ public class RideRequest extends AppCompatActivity {
                         holder.acceptBtn.setVisibility(View.VISIBLE);
                         holder.rejectBtn.setVisibility(View.VISIBLE);
                     }
+
+
+                    holder.acceptBtn.setOnClickListener(v -> {
+                        acceptRequest(jsonArray.optJSONObject(position).optString("id"));
+                    });
+
+                    holder.rejectBtn.setOnClickListener(v -> {
+                        cancelRequest(jsonArray.optJSONObject(position).optString("id"));
+                    });
 
 //
 //                        holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
@@ -541,13 +554,7 @@ public class RideRequest extends AppCompatActivity {
 //                e.printStackTrace();
 //            }
 
-            holder.acceptBtn.setOnClickListener(v -> {
-                acceptRequest(person_id);
-            });
 
-            holder.rejectBtn.setOnClickListener(v -> {
-                cancelRequest(person_id);
-            });
 
 //            holder.btnStart.setOnClickListener(view -> {
 //                //Toast.makeText(getActivity(),"Start Ride",Toast.LENGTH_SHORT).show();

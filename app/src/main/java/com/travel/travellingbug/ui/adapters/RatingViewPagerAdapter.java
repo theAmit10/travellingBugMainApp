@@ -27,7 +27,6 @@ public class RatingViewPagerAdapter extends FragmentStateAdapter {
             case 1:
                 return new RatingGivenFragment();
 
-
         }
         return new RatingReceivedFragment();
     }

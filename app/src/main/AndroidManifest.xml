@@ -42,6 +42,12 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".ui.activities.AddTrackingLinkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.TrackingLinkActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.DataProtectionActivity"
             android:exported="false" />
         <activity

@@ -47,14 +47,25 @@
 
 
 
+<!--            <RatingBar-->
+<!--                android:id="@+id/listitemrating"-->
+<!--                style="@style/Widget.AppCompat.RatingBar.Small"-->
+<!--                android:layout_width="@dimen/_65sdp"-->
+<!--                android:layout_height="@dimen/_12sdp"-->
+<!--                android:layout_gravity="start"-->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                android:isIndicator="true"-->
+<!--                android:numStars="5"-->
+<!--                android:progressTint="#FFCA28" />-->
+
             <RatingBar
                 android:id="@+id/listitemrating"
-                style="@style/Widget.AppCompat.RatingBar.Small"
-                android:layout_width="@dimen/_65sdp"
-                android:layout_height="@dimen/_12sdp"
+                style="?attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginBottom="5dp"
                 android:isIndicator="true"
+
                 android:numStars="5"
                 android:progressTint="#FFCA28" />
 

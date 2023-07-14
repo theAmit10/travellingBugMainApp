@@ -165,7 +165,6 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
             else {
                 if (isInternet) {
                     if (parameter.equals("first_name")) {
-
                         SharedHelper.putKey(getApplicationContext(), "first_name", editText.getText().toString());
                         updateProfileWithoutImage();
                     }

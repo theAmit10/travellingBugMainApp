@@ -4676,6 +4676,7 @@ drawable selected_service_item
 drawable selector_row
 drawable set_location
 drawable share_ride
+drawable share_tracking_link
 drawable side_bar_notificatio
 drawable side_nav_document
 drawable side_nav_help
@@ -4696,6 +4697,7 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable top_shadow
 drawable topbg
+drawable tracking_link
 drawable travel
 drawable travel_two_people
 drawable triangle
@@ -5392,6 +5394,7 @@ id fullAdressInput
 id fullscreen
 id genderTv
 id genderValTv
+id generateTrackingLinkTv
 id ghost_view
 id ghost_view_holder
 id give_us_a_review_landmine_button
@@ -6240,6 +6243,7 @@ id topTitle
 id total
 id total_earn_layout
 id touch_outside
+id trackingLinkIv
 id transitionToEnd
 id transitionToStart
 id transition_current_scene
@@ -6535,6 +6539,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_source
+layout activity_add_tracking_link
 layout activity_change_address_adtivity_one
 layout activity_change_address_adtivity_two
 layout activity_change_password
@@ -6596,6 +6601,7 @@ layout activity_terms_of_use
 layout activity_testing
 layout activity_track
 layout activity_track_driver
+layout activity_tracking_link
 layout activity_travel_preference
 layout activity_travel_preference_main
 layout activity_update_preference

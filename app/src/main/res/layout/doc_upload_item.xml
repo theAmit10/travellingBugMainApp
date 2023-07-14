@@ -32,6 +32,7 @@
             android:fontFamily="@font/nunito_semi_bold"
             android:gravity="center|start"
             android:text="Registration Certificate"
+            android:textSize="@dimen/_11sdp"
             android:textColor="@color/black" />
 
         <Button

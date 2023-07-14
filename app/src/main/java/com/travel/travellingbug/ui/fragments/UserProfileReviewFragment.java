@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,6 +50,17 @@ public class UserProfileReviewFragment extends Fragment {
 
     ProgressBar fiveStarProgress,fourStarProgress,threeStarProgress,twoStarProgress,oneStarProgress;
     TextView fiveStarTotalVal,fourStarTotalVal,threeStarTotalVal,twoStarTotalVal,oneStarTotalVal;
+
+
+
+
+    LinearLayout reviewDataLl;
+    RelativeLayout errorLayout;
+    ConstraintLayout bottomContainer;
+
+
+
+
 
     public UserProfileReviewFragment() {
         // Required empty public constructor
@@ -160,8 +174,13 @@ public class UserProfileReviewFragment extends Fragment {
 
                                 }
 
+                                reviewDataLl.setVisibility(View.VISIBLE);
+
                                 adapter = new UserProfileReviewDataAdapter(getContext(),list);
                                 fragmentDriverReviewRV.setAdapter(adapter);
+                            }else {
+                                errorLayout.setVisibility(View.VISIBLE);
+
                             }
 
 
@@ -170,6 +189,7 @@ public class UserProfileReviewFragment extends Fragment {
 
                         }catch (Exception e){
                             e.printStackTrace();
+                            errorLayout.setVisibility(View.VISIBLE);
                         }
 
 
@@ -177,6 +197,7 @@ public class UserProfileReviewFragment extends Fragment {
 
 
                 } catch (JSONException e) {
+                    errorLayout.setVisibility(View.VISIBLE);
                     e.printStackTrace();
                 }
 
@@ -226,6 +247,14 @@ public class UserProfileReviewFragment extends Fragment {
         threeStarTotalVal = view.findViewById(R.id.threeStarTotalVal);
         twoStarTotalVal = view.findViewById(R.id.twoStarTotalVal);
         oneStarTotalVal = view.findViewById(R.id.oneStarTotalVal);
+
+        reviewDataLl = view.findViewById(R.id.reviewDataLl);
+        errorLayout = view.findViewById(R.id.errorLayout);
+//        bottomContainer = view.findViewById(R.id.bottomContainer);
+
+
+
+
 
         fragmentDriverReviewRV = view.findViewById(R.id.fragmentDriverReviewRV);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);

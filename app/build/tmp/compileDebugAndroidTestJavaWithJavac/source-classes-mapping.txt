@@ -1,2 +1,0 @@
-com/travel/travellingbug/test/BuildConfig.java
- com.travel.travellingbug.test.BuildConfig

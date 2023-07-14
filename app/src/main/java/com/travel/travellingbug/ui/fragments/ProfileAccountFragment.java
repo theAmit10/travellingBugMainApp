@@ -39,6 +39,7 @@ import com.travel.travellingbug.ui.activities.PaymentAndRefundActivity;
 import com.travel.travellingbug.ui.activities.ProviderReviewActivity;
 import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.ui.activities.TermsAndConditionActivity;
+import com.travel.travellingbug.ui.activities.TrackingLinkActivity;
 import com.travel.travellingbug.ui.activities.WithdrawActivity;
 import com.travel.travellingbug.ui.activities.login.ChangePassword;
 
@@ -313,7 +314,8 @@ public class ProfileAccountFragment extends Fragment {
         sendTrackingLinkTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Under Construction", Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(() -> startActivity(new Intent(getContext(),
+                        TrackingLinkActivity.class)), 250);
             }
         });
 

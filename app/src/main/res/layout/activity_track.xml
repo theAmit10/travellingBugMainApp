@@ -58,7 +58,7 @@
                     android:background="@drawable/white_color_rect_shape"
                     android:backgroundTint="@color/white"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -76,11 +76,11 @@
                             android:id="@+id/txtPickUpNotes"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:gravity="center_vertical"
+                            android:layout_marginEnd="@dimen/_10sdp"
                             android:fontFamily="@font/nunito_bold"
+                            android:gravity="center_vertical"
                             android:paddingStart="@dimen/_10sdp"
                             android:text="****"
-                            android:layout_marginEnd="@dimen/_10sdp"
                             android:textColor="@color/dark_green"
                             android:textSize="@dimen/_18sdp"
                             android:textStyle="bold" />
@@ -95,8 +95,6 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/_12sdp"
                             android:textStyle="bold" />
-
-
 
 
                     </LinearLayout>
@@ -239,11 +237,11 @@
                                 android:layout_marginBottom="@dimen/_10sdp"
                                 android:layout_weight="1"
                                 android:ellipsize="end"
-                                android:textStyle="bold"
                                 android:maxLines="2"
                                 android:text=""
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -258,10 +256,10 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:ellipsize="end"
-                                    android:textStyle="bold"
                                     android:maxLines="2"
                                     android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12sdp"
+                                    android:textStyle="bold" />
 
                                 <ImageView
                                     android:id="@+id/imgEditDestination"
@@ -336,21 +334,21 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:text="Distance"
                                 android:layout_gravity="center"
+                                android:text="Distance"
                                 android:textColor="@color/cancel_ride_color"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
 
                             <com.travel.travellingbug.utills.MyBoldTextView
                                 android:id="@+id/lblDis"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textStyle="bold"
                                 android:layout_gravity="center"
                                 android:gravity="end"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
 
                         </LinearLayout>
 
@@ -364,21 +362,21 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textStyle="bold"
-                                android:text="Time"
                                 android:layout_gravity="center"
+                                android:text="Time"
                                 android:textColor="@color/cancel_ride_color"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
 
                             <com.travel.travellingbug.utills.MyBoldTextView
                                 android:id="@+id/lblEta"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textStyle="bold"
                                 android:layout_gravity="center"
                                 android:gravity="end"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12sdp"
+                                android:textStyle="bold" />
 
                         </LinearLayout>
 
@@ -404,10 +402,22 @@
                                     android:layout_margin="@dimen/_2sdp"
                                     android:background="@color/white"
                                     android:text="@string/cancel_ride"
-
                                     android:textColor="@android:color/holo_red_dark"
                                     android:textSize="@dimen/_10sdp"
                                     android:visibility="gone" />
+
+                                <ImageView
+                                    android:id="@+id/trackingLinkIv"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_2sdp"
+                                    android:src="@drawable/share_tracking_link"
+                                    app:tint="@color/dark_green"
+                                    android:text="Share tracking link"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/dark_green"
+                                    android:textSize="@dimen/_10sdp"
+                                    android:visibility="visible" />
 
                             </LinearLayout>
                         </LinearLayout>
