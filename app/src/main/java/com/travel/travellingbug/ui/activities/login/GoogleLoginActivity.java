@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -79,11 +80,23 @@ public class GoogleLoginActivity extends AppCompatActivity {
         mAuth.signInWithCredential(authCredential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
+
+                        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Add your number", Toast.LENGTH_LONG).show();
+
                         FirebaseUser user = mAuth.getCurrentUser();
+
                         String userName = user.getDisplayName();
                         String userMail = user.getEmail();
                         String userId = user.getUid();
                         String userToken = account.getIdToken();
+
+                        System.out.println("google email : "+userMail);
+                        System.out.println("google name : "+userName);
+
+                        SharedHelper.putKey(getApplicationContext(),"google_email",userMail);
+                        SharedHelper.putKey(getApplicationContext(),"google_username",user.getDisplayName());
+                        SharedHelper.putKey(getApplicationContext(),"google_photourl", String.valueOf(user.getPhotoUrl()));
 
 
                         Intent intent = new Intent();

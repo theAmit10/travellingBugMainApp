@@ -85,7 +85,7 @@
                 android:checked="true"
                 android:layoutDirection="rtl"
                 android:padding="@dimen/_10sdp"
-                android:text="English"
+                android:text="English-UK"
                 android:textAlignment="textStart"
 
 
@@ -103,7 +103,7 @@
                 android:fontFamily="@font/nunito_semi_bold"
                 android:layoutDirection="rtl"
                 android:padding="@dimen/_10sdp"
-                android:text="Arabic"
+                android:text="English-US"
                 android:textAlignment="textStart"
 
 
@@ -115,6 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
                 android:layout_gravity="start"
+                android:visibility="gone"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@drawable/auth_btn_white_bg"
                 android:checked="false"
@@ -133,6 +134,7 @@
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@drawable/auth_btn_white_bg"
                 android:checked="false"
+                android:visibility="gone"
                 android:layoutDirection="rtl"
                 android:padding="@dimen/_10sdp"
                 android:text="French"

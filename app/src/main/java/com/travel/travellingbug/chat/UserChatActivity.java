@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -54,9 +55,10 @@ public class UserChatActivity extends AppCompatActivity {
 
     public Context context = UserChatActivity.this;
     public Activity activity = UserChatActivity.this;
-    List<ChatAppMsgDTO> msgDtoList;
+    List<ChatAppMsgDTO> msgDtoList  = new ArrayList<ChatAppMsgDTO>();
     ChatAppMsgAdapter chatAppMsgAdapter;
     ImageView emojiButton;
+    private Handler ha;
     EmojiPopup emojiPopup;
     ViewGroup rootView;
     EmojiEditText msgInputText;
@@ -114,6 +116,19 @@ public class UserChatActivity extends AppCompatActivity {
         receiver = new MyBroadcastReceiver();
 
 
+//        ha = new Handler();
+//        ha.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                //call function
+//                getChatDetails();
+//
+//                ha.postDelayed(this, 3000);
+//            }
+//        }, 3000);
+
+
+
     }
 
     private void initViews() {
@@ -127,7 +142,7 @@ public class UserChatActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerChat.setLayoutManager(linearLayoutManager);
         // Create the initial data list.
-        msgDtoList = new ArrayList<ChatAppMsgDTO>();
+//        msgDtoList = new ArrayList<ChatAppMsgDTO>();
 
         helper = new ConnectionHelper(context);
         isInternet = helper.isConnectingToInternet();
@@ -151,6 +166,7 @@ public class UserChatActivity extends AppCompatActivity {
             public void onRefresh() {
                 msgDtoList.clear();
                 getChatDetails();
+
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -364,6 +380,7 @@ public class UserChatActivity extends AppCompatActivity {
                                 chatList.setRequestId(jo.getString("request_id"));
                                 chatList.setMessage(jo.getString("message"));
                                 chatList.setType(jo.getString("type"));
+                                chatList.setChatId(jo.getString("id"));
                                 if (!jo.getString("created_at").contains("null")) {
                                     if (jo.getString("type").contains("up")) {
                                         ChatAppMsgDTO msgDto = new ChatAppMsgDTO(ChatAppMsgDTO.MSG_TYPE_SENT, jo.getString("message"), jo.getString("created_at"));
@@ -376,7 +393,12 @@ public class UserChatActivity extends AppCompatActivity {
                                 // Create the data adapter with above data list.
 
                             }
-                            chatAppMsgAdapter = new ChatAppMsgAdapter(msgDtoList);
+                            ChatAppMsgAdapter chatAppMsgAdapter = new ChatAppMsgAdapter(msgDtoList);
+
+
+                            for(int i=0; i<msgDtoList.size(); i++){
+                                System.out.println("msgDtoList data : "+msgDtoList.get(i).getMsgContent());
+                            }
 
                             // Set data adapter to RecyclerView.
                             recyclerChat.setAdapter(chatAppMsgAdapter);
@@ -407,6 +429,7 @@ public class UserChatActivity extends AppCompatActivity {
             displayMessage(getString(R.string.something_went_wrong_net));
         }
     }
+
 
     public void getChatHistory() {
         if (isInternet) {

@@ -9,6 +9,22 @@ public class ChatAppMsgDTO {
     private String msgContent;
     // Message type.
     private String msgType;
+    private String msgId;
+
+    public ChatAppMsgDTO(String msgTime, String msgContent, String msgType, String msgId) {
+        this.msgTime = msgTime;
+        this.msgContent = msgContent;
+        this.msgType = msgType;
+        this.msgId = msgId;
+    }
+
+    public String getMsgId() {
+        return msgId;
+    }
+
+    public void setMsgId(String msgId) {
+        this.msgId = msgId;
+    }
 
     public ChatAppMsgDTO(String msgType, String msgContent, String msgTime) {
         this.msgType = msgType;

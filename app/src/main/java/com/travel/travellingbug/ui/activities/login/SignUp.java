@@ -30,6 +30,7 @@ import com.google.firebase.installations.InstallationTokenResult;
 import com.google.gson.JsonObject;
 import com.hbb20.CountryCodePicker;
 import com.jaredrummler.materialspinner.MaterialSpinner;
+import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.Login;
 import com.travel.travellingbug.R;
@@ -131,10 +132,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
                     SharedHelper.putKey(getApplicationContext(), "mobile", phone);
                     Log.v("Phonecode", phone + " ");
-                    registerAPI();
-//                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
-//                    intent.putExtra("phonenumber", phone);
-//                    startActivityForResult(intent, APP_REQUEST_CODE);
+//                    registerAPI();
+                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
+                    intent.putExtra("phonenumber", phone);
+                    startActivityForResult(intent, APP_REQUEST_CODE);
 
 
                 } else {
@@ -147,7 +148,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(SignUp.this, "Processing", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SignUp.this, "Processing", Toast.LENGTH_SHORT).show();
                 startActivityForResult(new Intent(SignUp.this, GoogleLoginActivity.class), GOOGLE_LOGIN);
             }
         });
@@ -155,7 +156,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         btnFb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(SignUp.this, "Processing", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SignUp.this, "Processing", Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(SignUp.this, FBAuthActivity.class));
+
                 startActivityForResult(new Intent(SignUp.this, FaceBookLoginActivity.class), FACEBOOK_LOGIN);
             }
         });
@@ -432,7 +435,15 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             object.put("grant_type", "password");
             object.put("client_id", URLHelper.client_id);
             object.put("client_secret", URLHelper.client_secret);
-            object.put("email", "");
+
+
+            if(SharedHelper.getKey(getApplicationContext(),"google_email") != null){
+                object.put("email", SharedHelper.getKey(getApplicationContext(),"google_email"));
+            }else {
+                object.put("email", "");
+            }
+
+
             object.put("mobile", phone);
             object.put("scope", "");
             object.put("device_type", "android");
@@ -511,6 +522,26 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
         ImageView imgBack = dialog.findViewById(R.id.imgBack);
         CountryCodePicker ccp = dialog.findViewById(R.id.ccp);
+        ImageView img_profile = dialog.findViewById(R.id.img_profile);
+        TextView txtuserName = dialog.findViewById(R.id.txtuserName);
+
+
+//        SharedHelper.putKey(getApplicationContext(),"google_username",user.getDisplayName());
+//        SharedHelper.putKey(getApplicationContext(),"google_photourl", String.valueOf(user.getPhotoUrl()));
+
+        if(SharedHelper.getKey(getApplicationContext(),"google_photourl") != null){
+            Picasso.get().load(SharedHelper.getKey(getApplicationContext(),"google_photourl")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(img_profile);
+        }
+        if(SharedHelper.getKey(getApplicationContext(),"google_username") != null){
+            txtuserName.setText("Welcome, "+SharedHelper.getKey(getApplicationContext(),"google_username"));
+        }else {
+            txtuserName.setText("");
+        }
+
+
+
+
+
         ImageButton nextIcon = dialog.findViewById(R.id.nextIcon);
         EditText mobile_no = dialog.findViewById(R.id.mobile_no);
         imgBack.setOnClickListener(v -> dialog.dismiss());

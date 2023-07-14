@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -15,25 +16,59 @@
 
         <ImageView
             android:id="@+id/imgBack"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
             android:layout_margin="10dp"
             android:src="@drawable/back_icon"
             app:tint="@color/green" />
 
-        <FrameLayout
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center">
 
             <ImageView
 
+                android:id="@+id/imageView8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:src="@drawable/intro_four"
-                 />
-        </FrameLayout>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_profile"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_dummy_user"
+                app:civ_border_color="@color/colorGray"
+                app:civ_border_width="@dimen/_2sdp"
+                app:layout_constraintBottom_toTopOf="@+id/txtuserName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/imageView8" />
+
+            <TextView
+                android:id="@+id/txtuserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_extra_bold"
+                android:maxLines="1"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold"
+
+                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
@@ -81,9 +116,13 @@
                             app:ccp_contentColor="@color/black"
                             app:ccp_defaultNameCode="eg"
                             app:ccp_showFlag="true"
+                            app:ccpDialog_searchEditTextTint="@color/colorDarkGray"
+                            app:ccp_defaultPhoneCode="91"
+                            app:ccp_autoDetectCountry="true"
                             app:ccp_showNameCode="false"
                             app:ccp_showPhoneCode="true"
                             app:ccp_textSize="@dimen/_10sdp" />
+
                     </FrameLayout>
 
                     <EditText
@@ -107,8 +146,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:textStyle="bold"
                     android:gravity="center"
-                    android:text="@string/we_will_send_you_a_one_time_sms_message_carrier_rate_may_apply"
+                    android:text="we will send you a one time password in this number"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_10sdp" />
 
@@ -121,6 +161,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/_25sdp"
                     android:background="@drawable/round_shape"
+                    android:backgroundTint="@color/dark_green"
                     android:src="@drawable/ic_chevron_right_black_24dp"
                     app:tint="@color/white" />
             </LinearLayout>

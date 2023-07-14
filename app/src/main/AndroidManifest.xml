@@ -24,6 +24,11 @@
         android:name="android.hardware.telephony"
         android:required="false" />
 
+    <queries>
+        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> <!-- allows app to access Facebook app features -->
+        <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> <!-- allows sharing to Messenger app -->
+    </queries>
+
     <application
         android:name=".ClassLuxApp"
         android:allowBackup="false"
@@ -41,6 +46,12 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
+        <activity
+            android:name=".ui.activities.login.FBAuthActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.UpdatePhoneNumber"
+            android:exported="false" />
         <activity
             android:name=".ui.activities.AddTrackingLinkActivity"
             android:exported="false" />

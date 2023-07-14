@@ -5394,6 +5394,7 @@ int id fullscreen 0x7f0a0271
 int id genderTv 0x7f0a0272
 int id genderValTv 0x7f0a0273
 int id generateTrackingLinkTv 0x7f0a0274
+int id getOtpButton 0x7f0a069e
 int id ghost_view 0x7f0a0275
 int id ghost_view_holder 0x7f0a0276
 int id give_us_a_review_landmine_button 0x7f0a0277
@@ -5446,6 +5447,7 @@ int id imageView4 0x7f0a02a5
 int id imageView5 0x7f0a02a6
 int id imageView6 0x7f0a02a7
 int id imageView7 0x7f0a02a8
+int id imageView8 0x7f0a069f
 int id imageView9 0x7f0a02a9
 int id imageView_arrow 0x7f0a02aa
 int id image_content_root 0x7f0a02ab
@@ -5669,6 +5671,7 @@ int id lnrUpcomingLayout 0x7f0a0384
 int id lnrWaitingForProviders 0x7f0a0385
 int id loading 0x7f0a0386
 int id location 0x7f0a0387
+int id login_button 0x7f0a06a0
 int id logo 0x7f0a0388
 int id logoutBtn 0x7f0a0389
 int id logoutTv 0x7f0a038a
@@ -6557,6 +6560,7 @@ int layout activity_edit_profile 0x7f0d002c
 int layout activity_enter_shipping_info 0x7f0d002d
 int layout activity_face_book_login 0x7f0d002e
 int layout activity_favourite_place_search 0x7f0d002f
+int layout activity_fbauth 0x7f0d0170
 int layout activity_find_ride_details 0x7f0d0030
 int layout activity_find_rides 0x7f0d0031
 int layout activity_forgot_password 0x7f0d0032
@@ -6603,6 +6607,7 @@ int layout activity_track_driver 0x7f0d005a
 int layout activity_tracking_link 0x7f0d005b
 int layout activity_travel_preference 0x7f0d005c
 int layout activity_travel_preference_main 0x7f0d005d
+int layout activity_update_phone_number 0x7f0d016f
 int layout activity_update_preference 0x7f0d005e
 int layout activity_update_profile 0x7f0d005f
 int layout activity_user_chat 0x7f0d0060

@@ -7,6 +7,16 @@ public class ChatList {
     private String providerId;
     private String message;
 
+    private String chatId;
+
+    public String getChatId() {
+        return chatId;
+    }
+
+    public void setChatId(String chatId) {
+        this.chatId = chatId;
+    }
+
     public String getType() {
         return type;
     }

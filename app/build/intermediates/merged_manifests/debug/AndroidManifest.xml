@@ -30,6 +30,8 @@
         android:required="false" />
 
     <queries>
+        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> <!-- allows app to access Facebook app features -->
+        <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> <!-- allows sharing to Messenger app -->
         <intent>
             <action android:name="android.intent.action.VIEW" />
 
@@ -68,6 +70,12 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
+        <activity
+            android:name="com.travel.travellingbug.ui.activities.login.FBAuthActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.travel.travellingbug.ui.activities.UpdatePhoneNumber"
+            android:exported="false" />
         <activity
             android:name="com.travel.travellingbug.ui.activities.AddTrackingLinkActivity"
             android:exported="false" />

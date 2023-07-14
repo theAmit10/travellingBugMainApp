@@ -1,11 +1,8 @@
 package com.travel.travellingbug.ui.fragments;
 
-import static android.content.Context.ACTIVITY_SERVICE;
 import static java.lang.Thread.sleep;
 
-import android.app.ActivityManager;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -121,11 +118,11 @@ public class ProfileAccountFragment extends Fragment {
 
     public void logout() {
         Toast.makeText(getContext(), "Logging Out", Toast.LENGTH_SHORT).show();
-        Toast.makeText(getContext(), "Logging Out", Toast.LENGTH_SHORT).show();
-        Toast.makeText(getContext(), "Clearing All Cache ...", Toast.LENGTH_LONG).show();
-        Toast.makeText(getContext(), "Logging Out", Toast.LENGTH_SHORT).show();
-        Toast.makeText(getContext(), "Clearing All Cache ...", Toast.LENGTH_LONG).show();
-        Toast.makeText(getContext(), "Cleared  All the Cache\nNow Closing App", Toast.LENGTH_LONG).show();
+//        Toast.makeText(getContext(), "Logging Out", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "Clearing All Cache ...", Toast.LENGTH_LONG).show();
+//        Toast.makeText(getContext(), "Logging Out", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), "Clearing All Cache ...", Toast.LENGTH_LONG).show();
+//        Toast.makeText(getContext(), "Cleared  All the Cache\nNow Closing App", Toast.LENGTH_LONG).show();
 
         ExecutorService service = Executors.newSingleThreadExecutor();
         service.execute(new Runnable() {
@@ -177,18 +174,12 @@ public class ProfileAccountFragment extends Fragment {
                                             displayMessage("Error Found : " + e.getMessage());
 
                                         } finally {
-                                            if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
-                                                ((ActivityManager) getContext().getSystemService(ACTIVITY_SERVICE))
-                                                        .clearApplicationUserData();
-                                                return;
-                                            }
-//
-//                                            Context ctx = getApplicationContext();
-//                                            PackageManager pm = ctx.getPackageManager();
-//                                            Intent intent = pm.getLaunchIntentForPackage(ctx.getPackageName());
-//                                            Intent mainIntent = Intent.makeRestartActivityTask(intent.getComponent());
-//                                            ctx.startActivity(mainIntent);
-//                                            Runtime.getRuntime().exit(0);
+//                                            if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
+//                                                ((ActivityManager) getContext().getSystemService(ACTIVITY_SERVICE))
+//                                                        .clearApplicationUserData();
+//                                                return;
+//                                            }
+
                                         }
 
 

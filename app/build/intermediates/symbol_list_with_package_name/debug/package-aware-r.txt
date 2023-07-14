@@ -5395,6 +5395,7 @@ id fullscreen
 id genderTv
 id genderValTv
 id generateTrackingLinkTv
+id getOtpButton
 id ghost_view
 id ghost_view_holder
 id give_us_a_review_landmine_button
@@ -5447,6 +5448,7 @@ id imageView4
 id imageView5
 id imageView6
 id imageView7
+id imageView8
 id imageView9
 id imageView_arrow
 id image_content_root
@@ -5670,6 +5672,7 @@ id lnrUpcomingLayout
 id lnrWaitingForProviders
 id loading
 id location
+id login_button
 id logo
 id logoutBtn
 id logoutTv
@@ -6558,6 +6561,7 @@ layout activity_edit_profile
 layout activity_enter_shipping_info
 layout activity_face_book_login
 layout activity_favourite_place_search
+layout activity_fbauth
 layout activity_find_ride_details
 layout activity_find_rides
 layout activity_forgot_password
@@ -6604,6 +6608,7 @@ layout activity_track_driver
 layout activity_tracking_link
 layout activity_travel_preference
 layout activity_travel_preference_main
+layout activity_update_phone_number
 layout activity_update_preference
 layout activity_update_profile
 layout activity_user_chat
