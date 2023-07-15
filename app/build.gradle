@@ -15,6 +15,7 @@ android {
         archivesBaseName = "PinkCarDriver" + versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resConfigs "en", "ar"
+
     }
 
     buildTypes {
@@ -28,7 +29,21 @@ android {
         targetCompatibility = 1.8
     }
 
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+
+
+
+
+
+
+
+
 }
+
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -118,6 +133,25 @@ dependencies {
 //    implementation 'com.google.firebase:firebase-appcheck-playintegrity'
 ////    implementation 'com.google.firebase:firebase-appcheck-safetynet:16.0.0-beta04'
 //    implementation 'com.google.firebase:firebase-appcheck-safetynet:16.0.0'
+
+//    implementation 'com.twilio.sdk:twilio:8.9.0'
+//    implementation 'com.twilio.sdk:twilio-java-sdk:9.9.0'  // Replace "7.x.x" with the latest version
+//    implementation "com.twilio.sdk:twilio:9.9.0"
+    implementation 'com.twilio.sdk:twilio:8.17.0' // Replace with the latest version
+
+
+
+
+    implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+
+
+
+
+
+
+
+
+
 
 
 

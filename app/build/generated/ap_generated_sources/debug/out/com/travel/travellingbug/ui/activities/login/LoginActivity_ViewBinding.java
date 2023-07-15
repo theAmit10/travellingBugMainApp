@@ -17,15 +17,15 @@ import java.lang.Override;
 public class LoginActivity_ViewBinding implements Unbinder {
   private LoginActivity target;
 
-  private View view7f0a03fc;
+  private View view7f0a03ff;
 
   private View view7f0a011e;
 
   private View view7f0a011d;
 
-  private View view7f0a063b;
+  private View view7f0a063e;
 
-  private View view7f0a062d;
+  private View view7f0a0630;
 
   @UiThread
   public LoginActivity_ViewBinding(LoginActivity target) {
@@ -42,7 +42,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
     target.ccp = Utils.findRequiredViewAsType(source, R.id.ccp, "field 'ccp'", CountryCodePicker.class);
     view = Utils.findRequiredView(source, R.id.nextIcon, "field 'nextIcon' and method 'btnLoginClick'");
     target.nextIcon = Utils.castView(view, R.id.nextIcon, "field 'nextIcon'", Button.class);
-    view7f0a03fc = view;
+    view7f0a03ff = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -67,7 +67,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.txtSignUp, "method 'txtSignUpClick'");
-    view7f0a063b = view;
+    view7f0a063e = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -75,7 +75,7 @@ public class LoginActivity_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.txtForget, "method 'txtForgetClick'");
-    view7f0a062d = view;
+    view7f0a0630 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -97,15 +97,15 @@ public class LoginActivity_ViewBinding implements Unbinder {
     target.nextIcon = null;
     target.mobile_no = null;
 
-    view7f0a03fc.setOnClickListener(null);
-    view7f0a03fc = null;
+    view7f0a03ff.setOnClickListener(null);
+    view7f0a03ff = null;
     view7f0a011e.setOnClickListener(null);
     view7f0a011e = null;
     view7f0a011d.setOnClickListener(null);
     view7f0a011d = null;
-    view7f0a063b.setOnClickListener(null);
-    view7f0a063b = null;
-    view7f0a062d.setOnClickListener(null);
-    view7f0a062d = null;
+    view7f0a063e.setOnClickListener(null);
+    view7f0a063e = null;
+    view7f0a0630.setOnClickListener(null);
+    view7f0a0630 = null;
   }
 }
