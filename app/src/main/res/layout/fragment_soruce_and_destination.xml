@@ -459,7 +459,7 @@
             android:drawableTint="@color/black"
             android:drawablePadding="@dimen/_8sdp"
             android:gravity="center|start"
-            android:text="@string/pin_location"
+            android:text="Set current location"
             android:textStyle="bold"
             android:fontFamily="@font/nunito_bold"
             android:textColor="@color/black_text_color"

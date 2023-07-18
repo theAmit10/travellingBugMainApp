@@ -249,6 +249,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     TextView lblPaymentType, lblPromo, booking_id;
     //    Button btnRequestRides;
     TextView btnRequestRides;
+
+    ImageView accountImageView;
     String scheduledDate = "";
     String scheduledTime = "";
     String cancalReason = "";
@@ -1062,6 +1064,39 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         btnRequestRides = rootView.findViewById(R.id.btnRequestRides);
         imgBackTitle = rootView.findViewById(R.id.imgBackTitle);
         btnSearch = rootView.findViewById(R.id.btnSearch);
+        accountImageView = rootView.findViewById(R.id.accountImageView);
+
+
+        accountImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                getActivity().runOnUiThread(() -> {
+//                    fragment = new InboxFragment();
+//                    FragmentManager manager = getSupportFragmentManager();
+//                    @SuppressLint("CommitTransaction")
+//                    FragmentTransaction transaction = manager.beginTransaction();
+//                    transaction.replace(R.id.content, fragment);
+//                    transaction.commit();
+//                    fragmentManager = getSupportFragmentManager();
+//                });
+//
+//                getActivity().runOnUiThread(() -> {
+//                    drawer.closeDrawers();
+//                    FragmentManager manager = getSupportFragmentManager();
+//                    @SuppressLint("CommitTransaction")
+//                    FragmentTransaction transaction = manager.beginTransaction();
+//                    transaction.replace(R.id.content, fragment);
+//                    transaction.commit();
+//                });
+
+
+//                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.fragment_container, new AccoutFragment()); // Replace with your desired fragment
+//                transaction.addToBackStack(null); // Optional: Adds the transaction to the back stack
+//                transaction.commit();
+
+            }
+        });
 
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -1073,6 +1108,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         !destination.getText().toString().equalsIgnoreCase("") &&
                         !frmDest.getText().toString().equalsIgnoreCase("")) {
 //                    getApproximateFare();
+                    mapLayout.setVisibility(View.VISIBLE);
                     sourceDestLayout.setOnClickListener(new SearchFragment.OnClick());
                 } else {
                     Toast.makeText(context, "Please enter both pickup and drop locations", Toast.LENGTH_SHORT).show();

@@ -7,6 +7,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
@@ -69,6 +70,7 @@ import com.travel.travellingbug.ui.adapters.MainActivityViewPagerAdapter;
 import com.travel.travellingbug.ui.fragments.AccoutFragment;
 import com.travel.travellingbug.ui.fragments.DriverMapFragment;
 import com.travel.travellingbug.ui.fragments.HolidayPackageFragment;
+import com.travel.travellingbug.ui.fragments.InboxFragment;
 import com.travel.travellingbug.ui.fragments.PublishFragment;
 import com.travel.travellingbug.ui.fragments.SearchFragment;
 import com.travel.travellingbug.ui.fragments.SummaryFragment;
@@ -150,6 +152,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
         if (SharedHelper.getKey(context, "login_by").equals("facebook"))
             FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_home_screen);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 
         settingFragmentViewPager();
@@ -198,7 +201,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
                     case 3:
 
                         HomeScreenActivity.this.runOnUiThread(() -> {
-                            fragment = new HolidayPackageFragment();
+                            fragment = new InboxFragment();
                             FragmentManager manager = getSupportFragmentManager();
                             @SuppressLint("CommitTransaction")
                             FragmentTransaction transaction = manager.beginTransaction();
@@ -212,7 +215,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
                     case 4:
 
                         HomeScreenActivity.this.runOnUiThread(() -> {
-                            fragment = new AccoutFragment();
+                            fragment = new HolidayPackageFragment();
                             FragmentManager manager = getSupportFragmentManager();
                             @SuppressLint("CommitTransaction")
                             FragmentTransaction transaction = manager.beginTransaction();
@@ -331,9 +334,9 @@ public class HomeScreenActivity extends AppCompatActivity implements
 
         tabLayout.getTabAt(0).setText("Search").setIcon(R.drawable.nav_search_ic).setTabLabelVisibility(TabLayout.TAB_LABEL_VISIBILITY_LABELED);
         tabLayout.getTabAt(1).setText("Publish").setIcon(R.drawable.nav_add_ic).setTabLabelVisibility(TabLayout.TAB_LABEL_VISIBILITY_LABELED);
-        tabLayout.getTabAt(2).setText("Your Ride").setIcon(R.drawable.nav_car_ic);
-        tabLayout.getTabAt(3).setText("Holiday").setIcon(R.drawable.nav_plane_ic);
-        tabLayout.getTabAt(4).setText("Account").setIcon(R.drawable.nav_account_ic);
+        tabLayout.getTabAt(2).setText("Bookings").setIcon(R.drawable.ic_booking);
+        tabLayout.getTabAt(3).setText("Inbox").setIcon(R.drawable.mail);
+        tabLayout.getTabAt(4).setText("Holiday").setIcon(R.drawable.ic_holiday_package);
 
 
 
@@ -349,20 +352,26 @@ public class HomeScreenActivity extends AppCompatActivity implements
         navigationView.setNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.nav_home:
-                    if (CURRENT_TAG != TAG_HOME) {
-                        fragment = new SearchFragment();
-                        GoToFragment();
-                    } else {
-                        drawer.closeDrawers();
-                    }
+                    drawer.closeDrawers();
+                    fragment = new SearchFragment();
+                    GoToFragment();
+//                    if (CURRENT_TAG != TAG_HOME) {
+//                        fragment = new SearchFragment();
+//                        GoToFragment();
+//                    } else {
+//                        drawer.closeDrawers();
+//                    }
                     break;
                 case R.id.nav_profile:
                     drawer.closeDrawers();
-                    new Handler().postDelayed(() -> startActivity(new Intent(activity, DriverProfileActivity.class)),
-                            250);
+//                    new Handler().postDelayed(() -> startActivity(new Intent(activity, DriverProfileActivity.class)),
+//                            250);
+                    fragment = new AccoutFragment();
+                    GoToFragment();
+
                     break;
                 case R.id.nav_document:
-
+                    drawer.closeDrawers();
                     startActivity(new Intent(activity, DocumentStatus.class));
                     break;
 
@@ -381,6 +390,22 @@ public class HomeScreenActivity extends AppCompatActivity implements
 //                    startActivity(intent);
 
                     break;
+                case R.id.nav_invoice:
+                    drawer.closeDrawers();
+                    new Handler().postDelayed(() -> startActivity(new Intent(HomeScreenActivity.this,
+                            InvoiceActivity.class)), 250);
+
+
+                    break;
+
+                case R.id.nav_tracking:
+                    drawer.closeDrawers();
+                    new Handler().postDelayed(() -> startActivity(new Intent(HomeScreenActivity.this,
+                            VehicleTrackingActivity.class)), 250);
+
+
+                    break;
+
                 case R.id.nav_notification:
                     drawer.closeDrawers();
                     new Handler().postDelayed(() -> startActivity(new Intent(HomeScreenActivity.this,

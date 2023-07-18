@@ -7,9 +7,9 @@
             android:title="@string/home" />
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_profile"
-            android:title="@string/profile"
-            android:visible="false" />
+            android:icon="@drawable/nav_accounts"
+            android:title="Account"
+            android:visible="true" />
         <item
             android:id="@+id/nav_yourtrips"
             android:icon="@drawable/side_nav_history"
@@ -26,19 +26,31 @@
             android:title="@string/documents" />
 
         <item
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/notification_side_nav"
+            android:title="@string/notifications" />
+
+        <item
             android:id="@+id/nav_wallet"
             android:icon="@drawable/side_nav_summary"
 
             android:title="@string/summary" />
-        <item
-            android:id="@+id/nav_notification"
-            android:icon="@drawable/notification_side_nav"
-            android:title="@string/notifications" />
+
         <item
             android:id="@+id/nav_withdraw"
             android:icon="@drawable/ic_withdraw"
             android:visible="false"
             android:title="@string/withdraw" />
+
+        <item
+            android:id="@+id/nav_invoice"
+            android:icon="@drawable/nav_invoice_ic"
+            android:title="Invoice" />
+
+        <item
+            android:id="@+id/nav_tracking"
+            android:icon="@drawable/nav_vehicle_tracking_ic"
+            android:title="Vehicle Tracking" />
         <item
             android:id="@+id/nav_help"
             android:icon="@drawable/side_nav_help"

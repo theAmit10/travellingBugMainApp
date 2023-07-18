@@ -401,7 +401,7 @@ public class OnGoingTrips extends Fragment {
 
                         holder.tripId.setText(jsonArray.optJSONObject(position).optString("booking_id"));
 
-                        holder.availableSeat.setText(jsonArray.optJSONObject(position).optString("availablecapacity") +" Seat left");
+                        holder.availableSeat.setText(jsonArray.optJSONObject(position).optString("availablecapacity") +" Available seat");
 
                         holder.listitemrating.setRating(Float.parseFloat("3.0"));
                         request_id = jsonArray.optJSONObject(position).optString("id");

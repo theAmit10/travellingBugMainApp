@@ -1,17 +1,15 @@
 package com.travel.travellingbug.ui.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
-import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.SharedHelper;
 
@@ -56,6 +54,7 @@ public class VerifyIdActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);
             }
         });
     }

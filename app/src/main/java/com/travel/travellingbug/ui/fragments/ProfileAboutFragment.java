@@ -155,6 +155,7 @@ public class ProfileAboutFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), VerifyIdActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 
@@ -163,6 +164,7 @@ public class ProfileAboutFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), TravelPreferenceActivityMain.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 
@@ -171,6 +173,7 @@ public class ProfileAboutFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), TravelPreferenceActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
 
 //                Intent myIntent = new Intent(getContext(), TravelPreferenceActivity.class);
 //                ActivityOptions options =
@@ -184,6 +187,7 @@ public class ProfileAboutFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), VehicleDetailsLicensePlateNumberActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 
@@ -193,6 +197,7 @@ public class ProfileAboutFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ProfilePictureActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 
@@ -201,6 +206,7 @@ public class ProfileAboutFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), PersonalDetailsActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 
@@ -240,6 +246,7 @@ public class ProfileAboutFragment extends Fragment {
                 intent.putExtra("parameter", "first_name");
                 intent.putExtra("value", first_name.getText().toString());
                 startActivityForResult(intent, 11);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 
@@ -250,6 +257,7 @@ public class ProfileAboutFragment extends Fragment {
                 intent.putExtra("parameter", "email");
                 intent.putExtra("value", email.getText().toString());
                 startActivityForResult(intent, 11);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
 
             }
         });
@@ -261,6 +269,7 @@ public class ProfileAboutFragment extends Fragment {
                 intent.putExtra("parameter", "mobile");
                 intent.putExtra("value", mobile_no.getText().toString());
                 startActivityForResult(intent, 11);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 

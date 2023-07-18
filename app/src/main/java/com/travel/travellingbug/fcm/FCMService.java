@@ -72,7 +72,7 @@ public class FCMService extends FirebaseMessagingService {
                 NotificationCompat.Builder notifiBuilder = new NotificationCompat.Builder(this, getString(R.string.default_notification_channel_id));
                 notifiBuilder.setContentTitle(title);
                 notifiBuilder.setContentText(message);
-                notifiBuilder.setSmallIcon(R.mipmap.ic_launcher);
+                notifiBuilder.setSmallIcon(R.drawable.app_logo_org);
                 notifiBuilder.setAutoCancel(true);
                 notifiBuilder.setContentIntent(pendingIntent);
 
@@ -89,7 +89,7 @@ public class FCMService extends FirebaseMessagingService {
                         this, 0, notifyIntent, PendingIntent.FLAG_IMMUTABLE
                 );
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(this, getString(R.string.default_notification_channel_id));
-                builder.setSmallIcon(R.mipmap.ic_launcher);
+                builder.setSmallIcon(R.drawable.app_logo_org);
                 builder.setContentIntent(notifyPendingIntent);
                 builder.setContentTitle(getString(R.string.app_name));
                 builder.setContentText("New Incoming Ride");
@@ -137,7 +137,7 @@ public class FCMService extends FirebaseMessagingService {
             PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* TripRequest code */, intent, PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE);
             Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, getString(R.string.default_notification_channel_id))
-                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setSmallIcon(R.drawable.app_logo_org)
                     .setContentTitle(title)
                     .setContentText(message)
                     .setAutoCancel(true)
@@ -176,7 +176,7 @@ public class FCMService extends FirebaseMessagingService {
             Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             NotificationCompat.Builder notificationBuilder = new
                     NotificationCompat.Builder(this, getString(R.string.default_notification_channel_id))
-                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setSmallIcon(R.drawable.app_logo_org)
                     .setContentTitle(getString(R.string.app_name))
                     .setContentText(message)
                     .setAutoCancel(true)

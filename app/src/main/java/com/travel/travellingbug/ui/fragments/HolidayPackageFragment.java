@@ -1,5 +1,6 @@
 package com.travel.travellingbug.ui.fragments;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +12,15 @@ import android.webkit.WebViewClient;
 import androidx.fragment.app.Fragment;
 
 import com.travel.travellingbug.R;
+import com.travel.travellingbug.helper.CustomDialog;
 
 
 public class HolidayPackageFragment extends Fragment {
 
     WebView webView ;
     String url = "";
+
+    CustomDialog customDialog;
 
 
     public HolidayPackageFragment() {
@@ -29,6 +33,7 @@ public class HolidayPackageFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
     @Override
@@ -40,8 +45,25 @@ public class HolidayPackageFragment extends Fragment {
         webView = view.findViewById(R.id.webviewOrg);
         url = "https://travellingbug.in/";
 
-        WebViewClient webViewClient  = new WebViewClient();
-        webView.setWebViewClient(webViewClient);
+        customDialog = new CustomDialog(getContext());
+
+
+//        WebViewClient webViewClient  = new WebViewClient();
+//        webView.setWebViewClient(webViewClient);
+        webView.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+//                super.onPageStarted(view, url, favicon);
+                customDialog.show();
+                customDialog.setCancelable(false);
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+//                super.onPageFinished(view, url);
+                customDialog.dismiss();
+            }
+        });
 
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
@@ -63,4 +85,6 @@ public class HolidayPackageFragment extends Fragment {
 
         return view;
     }
+
+
 }

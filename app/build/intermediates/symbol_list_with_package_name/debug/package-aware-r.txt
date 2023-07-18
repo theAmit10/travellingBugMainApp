@@ -4160,6 +4160,7 @@ drawable ic_arrow_back
 drawable ic_arrow_forward
 drawable ic_back_icon
 drawable ic_backspace_black_24dp
+drawable ic_booking
 drawable ic_calender
 drawable ic_calender_ic
 drawable ic_call
@@ -4201,6 +4202,7 @@ drawable ic_forward_gray
 drawable ic_google
 drawable ic_green_tick
 drawable ic_history
+drawable ic_holiday_package
 drawable ic_home
 drawable ic_image_black_24dp
 drawable ic_info_outline_white_24dp
@@ -4216,6 +4218,7 @@ drawable ic_lock_outline_black_24dp
 drawable ic_logo_round
 drawable ic_logout
 drawable ic_mail
+drawable ic_mail_tab
 drawable ic_mastercard
 drawable ic_mastercard_template_32
 drawable ic_mess
@@ -4316,6 +4319,7 @@ drawable loading_ic
 drawable location_waves
 drawable login_views
 drawable loginbg
+drawable mail
 drawable maruti_car
 drawable material_cursor_drawable
 drawable material_ic_calendar_black_24dp
@@ -4582,14 +4586,18 @@ drawable mtrl_navigation_bar_item_background
 drawable mtrl_popupmenu_background
 drawable mtrl_popupmenu_background_dark
 drawable mtrl_tabs_default_indicator
+drawable na_account_icon
 drawable nav
 drawable nav_account_ic
+drawable nav_accounts
 drawable nav_add_ic
 drawable nav_button
 drawable nav_car_ic
+drawable nav_invoice_ic
 drawable nav_plane_ic
 drawable nav_search_ic
 drawable nav_star
+drawable nav_vehicle_tracking_ic
 drawable navigation_empty_icon
 drawable nb_document
 drawable nb_help
@@ -4883,6 +4891,7 @@ id accessibility_custom_action_8
 id accessibility_custom_action_9
 id accountCV
 id accountDescription
+id accountImageView
 id accountName
 id accountNumber
 id accountTitle
@@ -5767,10 +5776,12 @@ id nav_document
 id nav_earnings
 id nav_help
 id nav_home
+id nav_invoice
 id nav_logout
 id nav_notification
 id nav_profile
 id nav_share
+id nav_tracking
 id nav_view
 id nav_wallet
 id nav_withdraw
@@ -6574,6 +6585,7 @@ layout activity_history_details_user
 layout activity_home_screen
 layout activity_intro
 layout activity_intro_screen
+layout activity_invoice
 layout activity_legal
 layout activity_login
 layout activity_main
@@ -6620,6 +6632,7 @@ layout activity_vehicle_details_license_plate_number
 layout activity_vehicle_details_menufacture
 layout activity_vehicle_details_model
 layout activity_vehicle_details_type
+layout activity_vehicle_tracking
 layout activity_verify_email
 layout activity_verify_id
 layout activity_verify_id_main
@@ -6672,6 +6685,7 @@ layout design_bottom_sheet_dialog
 layout design_call_request_passenger
 layout design_driver_profile_reviews
 layout design_find_ride
+layout design_inbox_fragment
 layout design_intro_view_pager
 layout design_layout_snackbar
 layout design_layout_snackbar_include
@@ -6717,6 +6731,7 @@ layout fragment_driver_profile_review
 layout fragment_earnings
 layout fragment_help
 layout fragment_holiday_package
+layout fragment_inbox
 layout fragment_map
 layout fragment_on_going_trips
 layout fragment_past_trips

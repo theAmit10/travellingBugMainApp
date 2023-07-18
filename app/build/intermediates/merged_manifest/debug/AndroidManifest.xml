@@ -73,6 +73,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name="com.travel.travellingbug.ui.activities.VehicleTrackingActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.travel.travellingbug.ui.activities.InvoiceActivity"
+            android:exported="false" />
+        <activity
             android:name="com.travel.travellingbug.ui.activities.login.FBAuthActivity"
             android:exported="false" />
         <activity

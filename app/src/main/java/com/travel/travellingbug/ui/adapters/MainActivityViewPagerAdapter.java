@@ -32,9 +32,9 @@ public class MainActivityViewPagerAdapter extends FragmentStateAdapter {
             case 2:
                 return new YourRideFragment();
             case 3:
-                return new HolidayPackageFragment();
-            case 4:
                 return new AccoutFragment();
+            case 4:
+                return new HolidayPackageFragment();
 
         }
         return new SearchFragment();
