@@ -32,7 +32,7 @@ public class AddTrackingLinkActivity extends AppCompatActivity {
 
     ImageView backArrow;
     TextView generateTrackingLinkTv;
-    Button btnSubmit;
+    Button btnSubmit,btnShareLink;
 
     CustomDialog customDialog;
 
@@ -58,9 +58,21 @@ public class AddTrackingLinkActivity extends AppCompatActivity {
     }
 
     private void getIntentData() {
-        latitude = getIntent().getStringExtra("latitude");
-        longitude = getIntent().getStringExtra("longitude");
-        rideid = getIntent().getStringExtra("rideid");
+        try {
+            latitude = getIntent().getStringExtra("latitude");
+            longitude = getIntent().getStringExtra("longitude");
+            rideid = getIntent().getStringExtra("rideid");
+
+            if(getIntent().getStringExtra("rideid") == null){
+                btnSubmit.setVisibility(View.GONE);
+                btnShareLink.setVisibility(View.VISIBLE);
+            }else {
+                btnShareLink.setVisibility(View.GONE);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -224,12 +236,36 @@ public class AddTrackingLinkActivity extends AppCompatActivity {
             }
         });
 
+        btnShareLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+
+                    String shareUrl = "http://maps.google.com/maps?q=loc:";
+
+                    Intent intent = new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    String name = SharedHelper.getKey(getApplicationContext(), "first_name");
+                    String text = "TravellingBug App,\n" + name + "\nwould like to share a trip with you at \n" + shareUrl + latitude + "," + longitude;
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "TravellingBug App");
+                    intent.putExtra(Intent.EXTRA_TEXT, text);
+                    startActivity(Intent.createChooser(intent, "Share Via"));
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(), "Share applications not found!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
     }
 
     private void initData() {
         backArrow = findViewById(R.id.backArrow);
         generateTrackingLinkTv = findViewById(R.id.generateTrackingLinkTv);
         btnSubmit = findViewById(R.id.btnSubmit);
+        btnShareLink = findViewById(R.id.btnShareLink);
 
 
         helper = new ConnectionHelper(getApplicationContext());

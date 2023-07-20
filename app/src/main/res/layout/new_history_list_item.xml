@@ -208,23 +208,40 @@
 <!--                        android:isIndicator="true"-->
 <!--                        android:max="5" />-->
 
+
+
+
+<!--                    <RatingBar-->
+<!--                        android:id="@+id/listitemrating"-->
+<!--                        style="?attr/ratingBarStyleSmall"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="start"-->
+<!--                        android:layout_marginBottom="5dp"-->
+<!--                        android:isIndicator="true"-->
+<!--                        android:numStars="5"-->
+<!--                        android:progressTint="#FFCA28" />-->
+
+
+
+
                     <RatingBar
                         android:id="@+id/listitemrating"
-                        style="?attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
+                        style = "?android:attr/ratingBarStyleSmall"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
+                        android:max="5"
+                        android:progressTint="#FFCA28"/>
 
-                        android:layout_marginBottom="5dp"
-                        android:isIndicator="true"
-                        android:numStars="5"
-                        android:progressTint="#FFCA28" />
+
+
+
 
                     <TextView
                         android:id="@+id/ratingVal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="-5dp"
+                        android:layout_marginTop="5dp"
                         android:text=""
                         android:textColor="@color/colorDarkGray"
                         android:textSize="@dimen/_8sdp" />
@@ -385,7 +402,7 @@
                         android:layout_height="wrap_content"
                         android:text="Honda Civic | white "
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_11sdp"
+                        android:textSize="@dimen/_10sdp"
                         android:textStyle="bold" />
 
                 </LinearLayout>

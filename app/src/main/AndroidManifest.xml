@@ -21,7 +21,6 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature
         android:name="android.hardware.telephony"
@@ -49,6 +48,9 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
+        <activity
+            android:name=".ui.activities.TrackLinkUserActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activities.AccountActivity"
             android:exported="false" />

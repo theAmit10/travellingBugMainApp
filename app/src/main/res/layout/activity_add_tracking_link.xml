@@ -118,6 +118,17 @@
             android:text="Submit"
             android:textColor="@color/text_color_white"
             android:textSize="@dimen/_14sdp" />
+
+        <Button
+            android:id="@+id/btnShareLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/nunito_bold"
+            android:text="Share tracking link"
+            android:textColor="@color/text_color_white"
+            android:textSize="@dimen/_14sdp" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -404,7 +404,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
 //                            TrackingLinkActivity.class)), 250);
 
                     Intent intent = new Intent(HomeScreenActivity.this,
-                            TrackingLinkActivity.class);
+                            TrackLinkUserActivity.class);
                     intent.putExtra("fromActivity","HomeScreenActivity");
                     startActivity(intent);
 

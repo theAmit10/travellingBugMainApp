@@ -4676,6 +4676,8 @@ drawable nav_invoice_ic
 drawable nav_plane_ic
 drawable nav_search_ic
 drawable nav_star
+drawable nav_star_gray
+drawable nav_star_gray_light
 drawable nav_vehicle_tracking_ic
 drawable navigation_empty_icon
 drawable nb_document
@@ -5152,6 +5154,7 @@ id btnRequestRidesCv
 id btnSave
 id btnSearch
 id btnSend
+id btnShareLink
 id btnShowPaymentTv
 id btnSignUp
 id btnSignUps
@@ -6727,6 +6730,7 @@ layout activity_terms_of_use
 layout activity_testing
 layout activity_track
 layout activity_track_driver
+layout activity_track_link_user
 layout activity_tracking_link
 layout activity_travel_preference
 layout activity_travel_preference_main

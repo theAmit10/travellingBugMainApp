@@ -2003,7 +2003,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 sourceDestLayout.setVisibility(View.VISIBLE);
                 imgMenu.setVisibility(View.VISIBLE);
                 destination.setText("");
-                frmDest.setText("");
+                frmDest.setText(""+"Going to");
                 frmSource.setText("" + current_address);
                 dest_address = "";
                 dest_lat = "";

@@ -275,7 +275,7 @@ public class InvoiceActivity extends AppCompatActivity {
                             System.out.println("Invoice model list size 2 : "+list.size());
                             if(list.size() > 0){
                                 InvoiceAdapter invoiceAdapter = new InvoiceAdapter(getApplicationContext(),list);
-                                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false);
+                                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false);
                                 recyclerView.setAdapter(invoiceAdapter);
                                 recyclerView.setLayoutManager(linearLayoutManager);
                                 recyclerView.setNestedScrollingEnabled(false);
