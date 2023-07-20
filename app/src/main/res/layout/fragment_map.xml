@@ -1560,7 +1560,7 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:background="@drawable/primary_color_rect_shape"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
 
                 <LinearLayout
@@ -1574,17 +1574,21 @@
                     android:paddingEnd="@dimen/content_padding"
                     android:weightSum="50">
 
-
                     <TextView
-
+                        android:id="@+id/invoiceDownloadTv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="@string/invoice"
+                        android:drawableRight="@drawable/download_ic"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:drawableTint="@color/white"
                         android:fontFamily="@font/nunito_bold"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_15sdp"
                         android:textStyle="bold" />
+
+
 
                     <LinearLayout
                         android:layout_width="match_parent"

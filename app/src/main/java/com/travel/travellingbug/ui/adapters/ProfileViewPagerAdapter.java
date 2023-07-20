@@ -3,7 +3,6 @@ package com.travel.travellingbug.ui.adapters;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.travel.travellingbug.ui.fragments.ProfileAboutFragment;
@@ -19,9 +18,11 @@ public class ProfileViewPagerAdapter extends FragmentStateAdapter {
         super(fragmentActivity);
     }
 
-    public ProfileViewPagerAdapter(FragmentManager childFragmentManager) {
-        super(childFragmentManager.getPrimaryNavigationFragment());
-    }
+//    public ProfileViewPagerAdapter(FragmentManager childFragmentManager) {
+//        super(childFragmentManager.getPrimaryNavigationFragment());
+//    }
+
+
 
     @NonNull
     @Override

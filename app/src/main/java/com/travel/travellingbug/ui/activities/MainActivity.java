@@ -213,9 +213,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     break;
                 case R.id.nav_profile:
-//                    drawer.closeDrawers();
-//                    new Handler().postDelayed(() -> startActivity(new Intent(activity, Profile.class)),
-//                            250);
+                    drawer.closeDrawers();
+                    new Handler().postDelayed(() -> startActivity(new Intent(activity, AccountActivity.class)),
+                            250);
                     break;
                 case R.id.nav_document:
 
@@ -235,6 +235,25 @@ public class MainActivity extends AppCompatActivity {
                             WithdrawActivity.class)), 250);
 
                     break;
+                case R.id.nav_invoice:
+                    drawer.closeDrawers();
+                    new Handler().postDelayed(() -> startActivity(new Intent(MainActivity.this,
+                            InvoiceActivity.class)), 250);
+
+
+                    break;
+
+                case R.id.nav_tracking:
+                    drawer.closeDrawers();
+
+                    Intent intents = new Intent(MainActivity.this,
+                            TrackingLinkActivity.class);
+                    intents.putExtra("fromActivity","HomeScreenActivity");
+                    startActivity(intents);
+
+
+                    break;
+
                 case R.id.nav_notification:
                     drawer.closeDrawers();
                     new Handler().postDelayed(() -> startActivity(new Intent(MainActivity.this,

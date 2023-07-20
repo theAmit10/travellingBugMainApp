@@ -99,6 +99,18 @@ public class PastTrips extends Fragment {
     }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
     public void getHistoryList() {
 
         customDialog = new CustomDialog(getActivity());

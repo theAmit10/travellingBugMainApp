@@ -68,6 +68,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.akexorcist.googledirection.DirectionCallback;
@@ -107,6 +108,8 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 import com.google.maps.android.ui.IconGenerator;
 import com.koushikdutta.ion.Ion;
 import com.skyfishjy.library.RippleBackground;
@@ -125,6 +128,7 @@ import com.travel.travellingbug.models.GetUserRate;
 import com.travel.travellingbug.models.PlacePredictions;
 import com.travel.travellingbug.models.PostUserRate;
 import com.travel.travellingbug.models.RestInterface;
+import com.travel.travellingbug.models.SearchHistoryModel;
 import com.travel.travellingbug.models.ServiceGenerator;
 import com.travel.travellingbug.ui.activities.CouponActivity;
 import com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch;
@@ -133,6 +137,8 @@ import com.travel.travellingbug.ui.activities.HomeScreenActivity;
 import com.travel.travellingbug.ui.activities.Payment;
 import com.travel.travellingbug.ui.activities.ShowProfile;
 import com.travel.travellingbug.ui.activities.UpdateProfile;
+import com.travel.travellingbug.ui.adapters.SearchHistoryAdpater;
+import com.travel.travellingbug.ui.adapters.SearchHistoryItemClickListener;
 import com.travel.travellingbug.utills.MapAnimator;
 import com.travel.travellingbug.utills.MapRipple;
 import com.travel.travellingbug.utills.MyTextView;
@@ -147,6 +153,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
@@ -310,6 +317,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
     //          <!--5. Invoice Layout ...-->
     ImageView imgProviderRate;
+
+    RecyclerView searchHistoryRv;
+
+    ArrayList<SearchHistoryModel> searchHistoryModels = new ArrayList<>();
+    ArrayList<SearchHistoryModel> mSearchHistoryModel;
     RatingBar ratingProviderRate;
     EditText txtCommentsRate;
     Button btnSubmitReview;
@@ -333,6 +345,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     CustomDialog customDialog;
     TextView tvZoneMsg;
 
+    SearchHistoryItemClickListener searchHistoryItemClickListener;
     View partationTopHoriView;
     //MArkers
     Marker availableProviders;
@@ -373,7 +386,10 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     MyTextView serviceItemPrice;
     private Marker sourceMarker;
     private Marker destinationMarker;
+
     private Marker providerMarker;
+
+    RelativeLayout searchHistoryRelativeLayout;
 
 
     boolean push = false;
@@ -419,7 +435,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 }
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -513,7 +529,6 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
 
 
                 }, 500);
@@ -630,7 +645,6 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 mTimePicker.show();
 
 
-
                 final Calendar c = Calendar.getInstance();
                 int mYear = c.get(Calendar.YEAR); // current year
                 int mMonth = c.get(Calendar.MONTH); // current month
@@ -646,8 +660,6 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             String choosedDate = "";
 
                             String choosedDateFormat = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
-
-
 
 
                             scheduledDate = choosedDateFormat;
@@ -701,21 +713,82 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 datePickerDialog.show();
 
 
-
             }
         });
+
+        searchHistoryItemClickListener = new SearchHistoryItemClickListener() {
+            @Override
+            public void onClick(int position, SearchHistoryModel searchHistoryModel) {
+
+                frmSource.setText(searchHistoryModel.getFromAddress());
+                frmDest.setText(searchHistoryModel.getDestAddress());
+                source_address = searchHistoryModel.getFromAddress();
+                dest_address = searchHistoryModel.getDestAddress();
+                destination.setText(searchHistoryModel.getDestAddress());
+                source_lat = searchHistoryModel.getSlat();
+                source_lng = searchHistoryModel.getSlong();
+                dest_lat = searchHistoryModel.getDlat();
+                dest_lng = searchHistoryModel.getDlong();
+                rootView.findViewById(R.id.mapLayout).setAlpha(1);
+
+                setValuesForSourceAndDestination();
+
+                flowValue = 1;
+                layoutChanges();
+
+            }
+        };
+
+        //setting search history
+        searchHistoryRelativeLayout = rootView.findViewById(R.id.searchHistoryRelativeLayout);
+        searchHistoryRv = rootView.findViewById(R.id.searchHistoryRv);
+
+        try {
+
+            if (SharedHelper.getKey(getContext(), "getSearchHistory") != null) {
+                System.out.println("getSearchHistory : "+SharedHelper.getKey(getContext(), "getSearchHistory"));
+                String json = SharedHelper.getKey(getContext(), "getSearchHistory");
+                Gson gson = new Gson();
+                Type type = new TypeToken<ArrayList<SearchHistoryModel>>() {
+                }.getType();
+                mSearchHistoryModel = gson.fromJson(json, type);
+                System.out.println("mSearchHistoryModel size : "+mSearchHistoryModel.size());
+                for(int i=0;i<mSearchHistoryModel.size(); i++){
+                    System.out.println("mSearchHistoryModel add : "+mSearchHistoryModel.get(i).getFromAddress());
+                    System.out.println("mSearchHistoryModel pass : "+mSearchHistoryModel.get(i).getPassenger());
+                }
+
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+                searchHistoryRv.setLayoutManager(linearLayoutManager);
+                searchHistoryRv.setNestedScrollingEnabled(false);
+                SearchHistoryAdpater searchHistoryAdpater = new SearchHistoryAdpater(getContext(), mSearchHistoryModel,searchHistoryItemClickListener);
+                searchHistoryRv.setAdapter(searchHistoryAdpater);
+                searchHistoryRelativeLayout.setVisibility(View.VISIBLE);
+
+
+
+
+
+
+
+
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         cross_icon = rootView.findViewById(R.id.cross_icon);
         cross_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtSelectedAddressSource != null ){
+                if (txtSelectedAddressSource != null) {
                     txtSelectedAddressSource.setText("");
                 }
             }
         });
-
 
 
         return rootView;
@@ -734,10 +807,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         return name;
     }
 
-    public  String getMonthName(int month)
-    {
-        switch(month)
-        {
+    public String getMonthName(int month) {
+        switch (month) {
             case 1:
                 return "Jan";
             case 2:
@@ -1067,6 +1138,14 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         accountImageView = rootView.findViewById(R.id.accountImageView);
 
 
+        sourceDestLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchHistoryRelativeLayout.setVisibility(View.GONE);
+            }
+        });
+
+
         accountImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1108,8 +1187,10 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         !destination.getText().toString().equalsIgnoreCase("") &&
                         !frmDest.getText().toString().equalsIgnoreCase("")) {
 //                    getApproximateFare();
-                    mapLayout.setVisibility(View.VISIBLE);
+
                     sourceDestLayout.setOnClickListener(new SearchFragment.OnClick());
+
+
                 } else {
                     Toast.makeText(context, "Please enter both pickup and drop locations", Toast.LENGTH_SHORT).show();
                 }
@@ -1240,7 +1321,6 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         cancel_ride_sp = rootView.findViewById(R.id.cancel_ride_sp);
         continue_ride_sp = rootView.findViewById(R.id.continue_ride_sp);
         partationTopHoriView = rootView.findViewById(R.id.partationTopHoriView);
-        // serviceItemPrice =  rootView.findViewById(R.id.serviceItemPrice);
 
 
 //        getCards();
@@ -1249,6 +1329,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         cardInfo.setCardType("CASH");
         cardInfo.setLastFour("CASH");
         cardInfoArrayList.add(cardInfo);
+
+
+
 
 
         btnShowPaymentTv.setOnClickListener(new View.OnClickListener() {
@@ -1310,6 +1393,26 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     intent3.putExtra("payment_mode", "CASH");
                     intent3.putExtra("seat_count", persontv.getText());
                     startActivity(intent3);
+
+
+                    Gson gson = new Gson();
+                    String json = SharedHelper.getKey(getContext(),"getSearchHistory");
+                    Type type = new TypeToken<ArrayList<SearchHistoryModel>>() {}.getType();
+                    mSearchHistoryModel = gson.fromJson(json, type);
+
+                    if (mSearchHistoryModel == null) {
+                        mSearchHistoryModel = new ArrayList<>();
+                    }
+                    mSearchHistoryModel.add(new SearchHistoryModel(source_address , dest_address, persontv.getText().toString()+" passenger",source_lat,source_lng,dest_lat,dest_lng));
+                    String updatedJson = gson.toJson(mSearchHistoryModel);
+                    SharedHelper.putKey(getContext(), "getSearchHistory", updatedJson);
+
+                    System.out.println("mSearchHistoryModel size 2 : STARTED");
+                    System.out.println("mSearchHistoryModel size 2 : "+mSearchHistoryModel.size());
+                    for(int i=0;i<mSearchHistoryModel.size(); i++){
+                        System.out.println("mSearchHistoryModel add 2 : "+mSearchHistoryModel.get(i));
+                        System.out.println("mSearchHistoryModel pass 2 : "+mSearchHistoryModel.get(i).getPassenger());
+                    }
 
                 } else {
                     Toast.makeText(context, "Please select date and time", Toast.LENGTH_SHORT).show();
@@ -1662,9 +1765,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         Double dlong = Double.valueOf(destination_longitude);
 
                         String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
-                        if(destination_address.equalsIgnoreCase("")){
+                        if (destination_address.equalsIgnoreCase("")) {
                             frmDest.setText("Going to");
-                        }else {
+                        } else {
                             frmDest.setText(destination_address);
                         }
                     } else {
@@ -1916,6 +2019,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                sourceDestLayout.setVisibility(View.GONE);
                 sourceDestLayout.setVisibility(View.VISIBLE);
                 btnSearch.setVisibility(View.GONE);
+                searchHistoryRelativeLayout.setVisibility(View.GONE);
 
 
                 btnRequestRidesCv.setVisibility(View.VISIBLE);
@@ -2277,11 +2381,10 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 strPickLocation = data.getExtras().getString("pick_location");
                 strPickType = data.getExtras().getString("type");
 
-                System.out.println("intent data  strPickType: "+strPickType);
-                System.out.println("intent data  strPickLocation: "+strPickLocation);
+                System.out.println("intent data  strPickType: " + strPickType);
+                System.out.println("intent data  strPickLocation: " + strPickLocation);
 
                 rootView.findViewById(R.id.mapLayout).setAlpha(1);
-
 
 
                 if (strPickLocation.equalsIgnoreCase("yes")) {
@@ -2291,8 +2394,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     layoutChanges();
                     float zoomLevel = 16.0f; //This goes up to 21
                     stopAnim();
-                }
-                else {
+                } else {
                     if (placePredictions != null) {
                         if (!placePredictions.strSourceAddress.equalsIgnoreCase("")) {
                             source_lat = "" + placePredictions.strSourceLatitude;
@@ -2303,7 +2405,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
                             if (!placePredictions.strSourceLatitude.equalsIgnoreCase("")
                                     && !placePredictions.strSourceLongitude.equalsIgnoreCase("")) {
-                                System.out.println("SOURCE : "+source_address);
+                                System.out.println("SOURCE : " + source_address);
 
                                 double latitude = Double.parseDouble(placePredictions.strSourceLatitude);
                                 double longitude = Double.parseDouble(placePredictions.strSourceLongitude);
@@ -2331,7 +2433,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                             dest_address = placePredictions.strDestAddress;
                             dropLocationName = dest_address;
 
-                            System.out.println("SOURCE DROP : "+dest_address);
+                            System.out.println("SOURCE DROP : " + dest_address);
 
                             SharedHelper.putKey(context, "current_status", "2");
                             if (source_lat != null && source_lng != null && !source_lng.equalsIgnoreCase("")
@@ -2399,7 +2501,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                            getServiceList();
                         }
 
-                        if(!dest_address.equalsIgnoreCase("") && !source_address.equalsIgnoreCase("")){
+                        if (!dest_address.equalsIgnoreCase("") && !source_address.equalsIgnoreCase("")) {
                             System.out.println("setting dest and source address");
                             setValuesForSourceAndDestination();
                         }
@@ -2407,10 +2509,6 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         layoutChanges();
                     }
                 }
-
-
-
-
 
 
 //                } else {
@@ -2937,6 +3035,14 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             object.put("upcoming", "1");
             object.put("use_wallet", "0");
             object.put("payment_mode", "CASH");
+
+
+
+
+
+
+
+
 
 
 //            if (chkWallet.isChecked()) {
@@ -4055,6 +4161,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     break;
                 case R.id.frmSource:
                     Intent intent = new Intent(getActivity(), CustomGooglePlacesSearch.class);
+                    searchHistoryRelativeLayout.setVisibility(View.GONE);
                     intent.putExtra("cursor", "source");
                     intent.putExtra("s_address", frmSource.getText().toString());
                     intent.putExtra("d_address", destination.getText().toString());
@@ -4065,6 +4172,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 case R.id.sourceDestLayout:
                 case R.id.frmDest:
                     Intent intent2 = new Intent(getActivity(), CustomGooglePlacesSearch.class);
+                    searchHistoryRelativeLayout.setVisibility(View.GONE);
                     intent2.putExtra("cursor", "destination");
                     intent2.putExtra("s_address", frmSource.getText().toString());
                     intent2.putExtra("d_address", destination.getText().toString());
@@ -4093,6 +4201,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                        frmSource.setOnClickListener(null);
 //                    sourceDestLayout.setClickable(false);
 //                        SharedHelper.putKey(context, "name", "");
+
                         schedule_ride.setVisibility(View.GONE);
                         sourceDestLayout.setVisibility(View.GONE);
                         lnrRequestProviders.setVisibility(View.VISIBLE);
@@ -4104,6 +4213,18 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                         showingProgressLLTextViewContainer.setVisibility(View.VISIBLE);
                         showingProgressLL.setVisibility(View.VISIBLE);
                         partationTopHoriView.setVisibility(View.VISIBLE);
+
+
+
+
+
+//                        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+//                        String json = sharedPreferences.getString("myListKey", "");
+//
+//                        Gson gson = new Gson();
+//                        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+//                        ArrayList<String> myList = gson.fromJson(json, type);
+
 
 //                        Intent intent3 = new Intent(getActivity(), FindRidesActivity.class);
 //
@@ -4626,12 +4747,11 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                         }
 //                                totalDistance =0;
                                         Log.v("ridetime", leg.getDuration().getText() + " ");
-                                        if(leg.getDuration().getText().contains("day")){
+                                        if (leg.getDuration().getText().contains("day")) {
                                             Log.v("splitday", leg.getDuration().getText().split("day")[0] + " ");
                                             totalDuration = totalDuration + 24 * Integer.parseInt(leg.getDuration().getText()
                                                     .split("day")[0].trim());
-                                        }
-                                        else if (leg.getDuration().getText().contains("hour")) {
+                                        } else if (leg.getDuration().getText().contains("hour")) {
                                             Log.v("splithour", leg.getDuration().getText().split("hour")[0] + " ");
                                             totalDuration = totalDuration + 60 * Integer.parseInt(leg.getDuration().getText()
                                                     .split("hour")[0].trim());
@@ -4747,8 +4867,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                                    lblEta.setText(totalDuration + " min");
                                     lblEta.setText(distanceTime);
                                     lblDis.setText(distance);
-                                    System.out.println("distanceTime : "+distanceTime);
-                                    System.out.println("distance : "+distance);
+                                    System.out.println("distanceTime : " + distanceTime);
+                                    System.out.println("distance : " + distance);
                                     setCameraWithCoordinationBounds(route);
                                 }
                             }

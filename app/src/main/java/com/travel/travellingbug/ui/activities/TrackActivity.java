@@ -1813,6 +1813,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                         reqStatus = filterJsonObject.optString("provider_status");
                                                         SharedHelper.putKey(context, "req_status", filterJsonObject.optString("provider_status"));
                                                         String wallet = tripsJsonObj.optString("use_wallet");
+
+
                                                         if (status.equalsIgnoreCase("STARTED")
                                                                 || status.equalsIgnoreCase("ARRIVED")) {
                                                             source_lat = tripsJsonObj.optString("s_latitude");
@@ -1898,8 +1900,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 //                                                PreviousStatus ="ACCEPTED";
 //                                                Toast.makeText(TrackActivity.this, "Prev : " + PreviousStatus, Toast.LENGTH_SHORT).show();
 //                                                Toast.makeText(TrackActivity.this, "status : " + status, Toast.LENGTH_SHORT).show();
-                                                        System.out.println("checking status PreviousStatus" + PreviousStatus);
-                                                        System.out.println("checking status status" + status);
+                                                        System.out.println("checking status PreviousStatus " + PreviousStatus);
+                                                        System.out.println("checking status status " + status);
 
 //                                                trackPickToDest();
 

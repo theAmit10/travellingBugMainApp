@@ -67,6 +67,11 @@ public class TrackingLinkActivity extends AppCompatActivity {
 
     String fare = "";
 
+    String fromActivity = "";
+
+    TextView titleTv;
+
+
     String booking_id = "", status = "", payment_mode = "", estimated_fare = "", verification_code = "", static_map = "", first_name = "", mobile = "", avatar = "", rating = "";
 
 
@@ -76,6 +81,18 @@ public class TrackingLinkActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tracking_link);
 
         findViewByIdAndInitialize();
+        titleTv = findViewById(R.id.titleTv);
+
+
+//        intent.putExtra("fromActivity","HomeScreenActivity")
+        if(getIntent().getStringExtra("fromActivity") != null){
+            fromActivity = getIntent().getStringExtra("fromActivity");
+            titleTv.setText("TRACK VEHICLE");
+
+        }
+
+
+
 
         if (isInternet) {
             getUpcomingList();

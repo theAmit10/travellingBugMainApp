@@ -235,7 +235,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // optimised way is to start searching for laction after user has typed minimum 3 chars
+                // optimised way is to start searching for location after user has typed minimum 3 chars
                 imgDestClose.setVisibility(View.VISIBLE);
                 strSelected = "destination";
                 if (txtDestination.getText().length() > 0) {
@@ -504,11 +504,16 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                     System.out.println("cursor txtDestination : " + txtDestination.getText().toString());
 
                     if(strSelected.equalsIgnoreCase("destination")){
-                        if (!txtDestination.getText().toString().equalsIgnoreCase("Going to")) {
-                            if (strSelected.equalsIgnoreCase("destination")) {
+                        if (!txtDestination.getText().toString().equalsIgnoreCase("")) {
+                            if (!txtDestination.getText().toString().equalsIgnoreCase("Going to")) {
                                 if (!placePredictions.strDestAddress.equalsIgnoreCase(placePredictions.strSourceAddress)) {
                                     setAddress();
                                 }
+                            }else {
+                                txtDestination.requestFocus();
+                                txtDestination.setText("");
+                                imgDestClose.setVisibility(View.GONE);
+                                mAutoCompleteList.setVisibility(View.GONE);
                             }
                         } else {
                             txtDestination.requestFocus();

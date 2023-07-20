@@ -29,6 +29,7 @@
 
         <TextView
             android:id="@+id/tmLeft"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
@@ -76,6 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:visibility="gone"
             android:layout_marginEnd="4dp"
             android:textColor="@color/black"
             android:textSize="@dimen/_8sdp" />

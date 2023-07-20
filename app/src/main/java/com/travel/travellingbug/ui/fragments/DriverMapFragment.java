@@ -1,6 +1,8 @@
 package com.travel.travellingbug.ui.fragments;
 
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 import android.Manifest;
@@ -14,9 +16,15 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
 import android.graphics.drawable.LayerDrawable;
+import android.graphics.pdf.PdfDocument;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -27,6 +35,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.Selection;
@@ -121,6 +130,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -154,6 +165,8 @@ public class DriverMapFragment extends Fragment implements
     private static SupportMapFragment mapFragment = null;
     private static int deviceHeight;
     private static int deviceWidth;
+
+    TextView invoiceDownloadTv;
 
     int selected_user = 0;
 
@@ -406,6 +419,18 @@ public class DriverMapFragment extends Fragment implements
     private String feedBackComment = "Jai Shree Ram";
     private android.app.AlertDialog Waintingdialog;
     private String earning = "";
+
+
+    // for generating pdf
+    // declaring width and height
+    // for our PDF file.
+    int pageHeight = 1120;
+    int pagewidth = 792;
+    // creating a bitmap variable
+    // for storing our images
+    Bitmap bmp, scaledbmp;
+    // constant code for runtime permissions
+    private static final int PERMISSION_REQUEST_CODE = 200;
 
     public DriverMapFragment() {
 
@@ -863,17 +888,6 @@ public class DriverMapFragment extends Fragment implements
         if (push) {
             isRunning = false;
         }
-//
-//        Toast.makeText(getContext(), "First Name : "+SharedHelper.getKey(getContext(),"first_name"), Toast.LENGTH_SHORT).show();
-//        System.out.println("First Name : "+SharedHelper.getKey(getContext(),"first_name"));
-//        // Setting Name First
-//        if(SharedHelper.getKey(getContext(),"first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(),"first_name").equalsIgnoreCase("") || SharedHelper.getKey(getContext(),"first_name").equalsIgnoreCase(null)){
-//            Toast.makeText(getContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
-//            Intent intent = new Intent(getContext(), UpdateProfile.class);
-//            intent.putExtra("parameter", "first_name");
-//            intent.putExtra("value", "");
-//            startActivityForResult(intent, 1);
-//        }
 
 
         if (!SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase(null)) {
@@ -895,39 +909,6 @@ public class DriverMapFragment extends Fragment implements
 //            }
         }
 
-//        itemClickListener=new ItemClickListener() {
-//            @Override
-//            public void onClick(int position, PassengerCallModel user) {
-////                passengerCallModelArrayList.clear();
-//                System.out.println("CLICKED USER DETAILS B : "+userId);
-//                userId = user.getUser_id();
-//                selected_user =  position;
-//                System.out.println("CLICKED USER DETAILS : "+user.getUser_id());
-//                System.out.println("CLICKED USER DETAILS UID : "+user.getU_id());
-//                System.out.println("CLICKED USER PROVIDER DETAILS : "+user.getProvider_id());
-//                Toast.makeText(getContext(), "CLICKED USER DETAILS : "+user.getUser_id(), Toast.LENGTH_SHORT).show();
-//
-////                userId = user.getUser_id();
-////                selected_user =  position;
-//
-//                checkStatusSchedule();
-//
-//
-//                // Display toast
-//                Toast.makeText(getContext(),"Position : "
-//                        +position +" || Value : "+value,Toast.LENGTH_SHORT).show();
-//            }
-//        };
-//
-//        Intent i = getActivity().getIntent();
-//        type = i.getStringExtra("type");
-//        datas = i.getStringExtra("datas");
-//        if (type != null) {
-//            checkStatusSchedule();
-//        } else {
-//            checkStatus();
-
-//        }
 
 
         Log.e(TAG, "TYPE: " + type);
@@ -1002,9 +983,142 @@ public class DriverMapFragment extends Fragment implements
             }
         });
 
+
+
+        invoiceDownloadTv = view.findViewById(R.id.invoiceDownloadTv);
+
+        invoiceDownloadTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                String paymentData = "{ \"amount\": 29.99, \"currency\": \"USD\", \"cardNumber\": \"**** **** **** 1234\", \"expiryDate\": \"08/25\", \"cvv\": \"123\", \"name\": \"John Doe\" }";
+
+                if (checkPermission()) {
+                    Toast.makeText(getContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+                } else {
+                    requestPermission();
+                }
+
+                System.out.println("GENERATING PDF");
+                Toast.makeText(getContext(), "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
+
+//                generatePDF();
+
+            }
+        });
+
+
+
+
+
+
         statusCheck();
         return view;
     }
+
+    private void generatePDF() {
+        // creating an object variable
+        // for our PDF document.
+        PdfDocument pdfDocument = new PdfDocument();
+
+        // two variables for paint "paint" is used
+        // for drawing shapes and we will use "title"
+        // for adding text in our PDF file.
+        Paint paint = new Paint();
+        Paint title = new Paint();
+
+        // we are adding page info to our PDF file
+        // in which we will be passing our pageWidth,
+        // pageHeight and number of pages and after that
+        // we are calling it to create our PDF.
+        PdfDocument.PageInfo mypageInfo = new PdfDocument.PageInfo.Builder(pagewidth, pageHeight, 1).create();
+
+        // below line is used for setting
+        // start page for our PDF file.
+        PdfDocument.Page myPage = pdfDocument.startPage(mypageInfo);
+
+        // creating a variable for canvas
+        // from our page of PDF.
+        Canvas canvas = myPage.getCanvas();
+
+        // below line is used to draw our image on our PDF file.
+        // the first parameter of our drawbitmap method is
+        // our bitmap
+        // second parameter is position from left
+        // third parameter is position from top and last
+        // one is our variable for paint.
+        canvas.drawBitmap(scaledbmp, 56, 40, paint);
+
+        // below line is used for adding typeface for
+        // our text which we will be adding in our PDF file.
+        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
+
+        // below line is used for setting text size
+        // which we will be displaying in our PDF file.
+        title.setTextSize(15);
+
+        // below line is sued for setting color
+        // of our text inside our PDF file.
+        title.setColor(ContextCompat.getColor(getContext(), R.color.dark_green));
+
+        // below line is used to draw text in our PDF file.
+        // the first parameter is our text, second parameter
+        // is position from start, third parameter is position from top
+        // and then we are passing our variable of paint which is title.
+        canvas.drawText("A portal for IT professionals.", 209, 100, title);
+        canvas.drawText("Travelling Bug", 209, 80, title);
+
+        // similarly we are creating another text and in this
+        // we are aligning this text to center of our PDF file.
+        title.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+        title.setColor(ContextCompat.getColor(getContext(), R.color.dark_green));
+        title.setTextSize(24);
+
+
+        // below line is used for setting
+        // our text to center of PDF.
+        title.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText("This is sample document which we have created.", 396, 560, title);
+
+        // after adding all attributes to our
+        // PDF file we will be finishing our page.
+        pdfDocument.finishPage(myPage);
+
+        // below line is used to set the name of
+        // our PDF file and its path.
+        File file = new File(Environment.getExternalStorageDirectory(), "GFG.pdf");
+
+        try {
+            // after creating a file name we will
+            // write our PDF file to that location.
+            pdfDocument.writeTo(new FileOutputStream(file));
+
+            // below line is to print toast message
+            // on completion of PDF generation.
+            Toast.makeText(getContext(), "PDF file generated successfully.", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            // below line is used
+            // to handle error
+            e.printStackTrace();
+        }
+        // after storing our pdf to that
+        // location we are closing our PDF file.
+        pdfDocument.close();
+    }
+
+//    private void generatePDF(String data) {
+//
+//        Document document = new Document();
+//        try {
+//            PdfWriter.getInstance(document, new FileOutputStream("output.pdf"));
+//            document.open();
+//            document.add(new Paragraph(data));
+//            document.close();
+//        } catch (DocumentException e) {
+//            e.printStackTrace();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     public void statusCheck() {
         final LocationManager manager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
@@ -1161,6 +1275,20 @@ public class DriverMapFragment extends Fragment implements
                     }
                 }
                 break;
+            case 100:
+                if (grantResults.length > 0) {
+                    // after requesting permissions we are showing
+                    // users a toast message of permission granted.
+                    boolean writeStorage = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                    boolean readStorage = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+
+                    if (writeStorage && readStorage) {
+                        Toast.makeText(getContext(), "Permission Granted..", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "Permission Denied.", Toast.LENGTH_SHORT).show();
+//                        finish();
+                    }
+                }
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
@@ -3400,9 +3528,24 @@ public class DriverMapFragment extends Fragment implements
 
     }
 
+    private boolean checkPermission() {
+        // checking of permissions.
+        int permission1 = ContextCompat.checkSelfPermission(getContext(), WRITE_EXTERNAL_STORAGE);
+        int permission2 = ContextCompat.checkSelfPermission(getContext(), READ_EXTERNAL_STORAGE);
+        return permission1 == PackageManager.PERMISSION_GRANTED && permission2 == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermission() {
+        // requesting permissions if not provided.
+        ActivityCompat.requestPermissions(getActivity(), new String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+    }
+
     @SuppressLint("SetTextI18n")
     private void setValuesTo_ll_04_contentLayer_payment(JSONObject status) {
         System.out.println("payment details : " + status.toString());
+//        generatePDFbtn = getfindViewById(R.id.idBtnGeneratePDF);
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.app_logo_org);
+        scaledbmp = Bitmap.createScaledBitmap(bmp, 140, 140, false);
         JSONObject statusResponse = status;
 
 
@@ -3438,14 +3581,120 @@ public class DriverMapFragment extends Fragment implements
                         paymentTypeImg.setImageResource(R.drawable.money1);
                         btn_confirm_payment.setVisibility(View.VISIBLE);
 
-
-//                        Toast.makeText(PickUpNotes.this, "data : "+response, Toast.LENGTH_SHORT).show();
                         System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+
+
+
+                        // creating an object variable
+                        // for our PDF document.
+                        PdfDocument pdfDocument = new PdfDocument();
+
+                        // two variables for paint "paint" is used
+                        // for drawing shapes and we will use "title"
+                        // for adding text in our PDF file.
+                        Paint paint = new Paint();
+                        Paint title = new Paint();
+
+                        // we are adding page info to our PDF file
+                        // in which we will be passing our pageWidth,
+                        // pageHeight and number of pages and after that
+                        // we are calling it to create our PDF.
+                        PdfDocument.PageInfo mypageInfo = new PdfDocument.PageInfo.Builder(pagewidth, pageHeight, 1).create();
+
+                        // below line is used for setting
+                        // start page for our PDF file.
+                        PdfDocument.Page myPage = pdfDocument.startPage(mypageInfo);
+
+                        // creating a variable for canvas
+                        // from our page of PDF.
+                        Canvas canvas = myPage.getCanvas();
+
+                        // below line is used to draw our image on our PDF file.
+                        // the first parameter of our drawbitmap method is
+                        // our bitmap
+                        // second parameter is position from left
+                        // third parameter is position from top and last
+                        // one is our variable for paint.
+                        canvas.drawBitmap(scaledbmp, 56, 40, paint);
+
+                        // below line is used for adding typeface for
+                        // our text which we will be adding in our PDF file.
+                        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+
+                        // below line is used for setting text size
+                        // which we will be displaying in our PDF file.
+                        title.setTextSize(15);
+
+                        // below line is sued for setting color
+                        // of our text inside our PDF file.
+                        title.setColor(ContextCompat.getColor(getContext(), R.color.black));
+
+                        // below line is used to draw text in our PDF file.
+                        // the first parameter is our text, second parameter
+                        // is position from start, third parameter is position from top
+                        // and then we are passing our variable of paint which is title.
+                        canvas.drawText("Travelling Bug", 209, 80, title);
+                        canvas.drawText("", 209, 100, title);
+                        canvas.drawText("We believe that travel is not just a hobby, it's a way of life.", 209, 120, title);
+                        canvas.drawText("Our mission is to provide exceptional  travel experiences ", 209, 140, title);
+                        canvas.drawText("that inspire and enrich our clients'lives.", 209, 160, title);
+                        canvas.drawText("With our expertise and passion for travel,", 209, 180, title);
+                        canvas.drawText("we make your dream vacation a reality.", 209, 200, title);
+
+
+                        // similarly we are creating another text and in this
+                        // we are aligning this text to center of our PDF file.
+                        title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                        title.setColor(ContextCompat.getColor(getContext(), R.color.black));
+                        title.setTextSize(24);
+
+
+                        // below line is used for setting
+                        // our text to center of PDF.
+                        title.setTextAlign(Paint.Align.CENTER);
+
+                        canvas.drawText("--------------------------------------------", 396, 540, title);
+                        canvas.drawText("INVOICE", 396, 560, title);
+                        canvas.drawText("--------------------------------------------", 396, 600, title);
+                        canvas.drawText("Booking ID             "+status.optString("booking_id"), 396, 630, title);
+                        canvas.drawText("Base fare              "+con + jsonObject.optString("base_price"), 396, 670, title);
+                        canvas.drawText("Distance               "+jsonObject.optString("distance") + " KM", 396, 710, title);
+                        canvas.drawText("Tax                    "+con + jsonObject.optString("tax_price"), 396, 750, title);
+                        canvas.drawText("--------------------------------------------", 396, 790, title);
+                        canvas.drawText("Total                  "+con + jsonObject.optString("estimated_fare"), 396, 830, title);
+                        canvas.drawText("--------------------------------------------", 396, 870, title);
+
+                        // after adding all attributes to our
+                        // PDF file we will be finishing our page.
+                        pdfDocument.finishPage(myPage);
+
+                        // below line is used to set the name of
+                        // our PDF file and its path.
+                        File file = new File(Environment.getExternalStorageDirectory(), "TravellingBug"+status.optString("booking_id")+".pdf");
+
+                        try {
+                            // after creating a file name we will
+                            // write our PDF file to that location.
+                            pdfDocument.writeTo(new FileOutputStream(file));
+
+                            // below line is to print toast message
+                            // on completion of PDF generation.
+//                            Toast.makeText(getContext(), "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
+                        } catch (IOException e) {
+                            // below line is used
+                            // to handle error
+                            e.printStackTrace();
+                        }
+                        // after storing our pdf to that
+                        // location we are closing our PDF file.
+                        pdfDocument.close();
+
+
 
                     }
 
                 } catch (JSONException e) {
-//                    Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+
                     e.printStackTrace();
                 }
 
@@ -3466,17 +3715,7 @@ public class DriverMapFragment extends Fragment implements
         }) {
 
 
-//            @Override
-//            public Map<String, String> getParams() {
-//                Map<String, String> params = new HashMap<>();
-//                params.put("s_latitude", status.optString("s_latitude"));
-//                params.put("s_longitude", status.optString("s_longitude"));
-//                params.put("d_latitude", status.optString("d_latitude"));
-//                params.put("d_longitude", status.optString("d_longitude"));
-//                params.put("service_type", "2");
-//                System.out.println("payment details param  :"+params.toString());
-//                return params;
-//            }
+
 
             @Override
             public Map<String, String> getHeaders() {

@@ -67,7 +67,6 @@ import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.listeners.Connect;
 import com.travel.travellingbug.ui.activities.login.LoginActivity;
 import com.travel.travellingbug.ui.adapters.MainActivityViewPagerAdapter;
-import com.travel.travellingbug.ui.fragments.AccoutFragment;
 import com.travel.travellingbug.ui.fragments.DriverMapFragment;
 import com.travel.travellingbug.ui.fragments.HolidayPackageFragment;
 import com.travel.travellingbug.ui.fragments.InboxFragment;
@@ -158,7 +157,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
         settingFragmentViewPager();
 
         int HeightWin = getNavigationBarHeight();
-        System.out.println("height : "+HeightWin );
+        System.out.println("height : " + HeightWin);
 
         slide_down = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
         slide_up = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
@@ -339,8 +338,6 @@ public class HomeScreenActivity extends AppCompatActivity implements
         tabLayout.getTabAt(4).setText("Holiday").setIcon(R.drawable.ic_holiday_package);
 
 
-
-
     }
 
     @Override
@@ -364,10 +361,10 @@ public class HomeScreenActivity extends AppCompatActivity implements
                     break;
                 case R.id.nav_profile:
                     drawer.closeDrawers();
-//                    new Handler().postDelayed(() -> startActivity(new Intent(activity, DriverProfileActivity.class)),
-//                            250);
-                    fragment = new AccoutFragment();
-                    GoToFragment();
+                    new Handler().postDelayed(() -> startActivity(new Intent(activity, AccountActivity.class)),
+                            250);
+//                    fragment = new AccoutFragment();
+//                    GoToFragment();
 
                     break;
                 case R.id.nav_document:
@@ -400,8 +397,16 @@ public class HomeScreenActivity extends AppCompatActivity implements
 
                 case R.id.nav_tracking:
                     drawer.closeDrawers();
-                    new Handler().postDelayed(() -> startActivity(new Intent(HomeScreenActivity.this,
-                            VehicleTrackingActivity.class)), 250);
+//                    new Handler().postDelayed(() -> startActivity(new Intent(HomeScreenActivity.this,
+//                            VehicleTrackingActivity.class)), 250);
+
+//                    new Handler().postDelayed(() -> startActivity(new Intent(HomeScreenActivity.this,
+//                            TrackingLinkActivity.class)), 250);
+
+                    Intent intent = new Intent(HomeScreenActivity.this,
+                            TrackingLinkActivity.class);
+                    intent.putExtra("fromActivity","HomeScreenActivity");
+                    startActivity(intent);
 
 
                     break;
@@ -506,9 +511,9 @@ public class HomeScreenActivity extends AppCompatActivity implements
     private void loadNavHeader() {
         // name, website
 
-        if(SharedHelper.getKey(context, "first_name").equalsIgnoreCase("null")){
+        if (SharedHelper.getKey(context, "first_name").equalsIgnoreCase("null")) {
             txtName.setText("user");
-        }else {
+        } else {
             txtName.setText(SharedHelper.getKey(context, "first_name"));
         }
 
@@ -538,14 +543,14 @@ public class HomeScreenActivity extends AppCompatActivity implements
         }
         if (SharedHelper.getKey(HomeScreenActivity.this, "rating") != null
                 && SharedHelper.getKey(HomeScreenActivity.this, "rating") != "") {
-            if(SharedHelper.getKey(HomeScreenActivity.this, "rating").equalsIgnoreCase("null")){
+            if (SharedHelper.getKey(HomeScreenActivity.this, "rating").equalsIgnoreCase("null")) {
                 rateRatingBar.setRating(Float.parseFloat("0"));
                 rateRatingBar.setVisibility(View.GONE);
-            }else {
+            } else {
 
                 String rate_val = SharedHelper.getKey(HomeScreenActivity.this, "rating");
                 int rate_valu = rate_val.indexOf(".");
-                String rate_value = rate_val.substring(0,rate_valu);
+                String rate_value = rate_val.substring(0, rate_valu);
 
                 rateRatingBar.setRating(Float.parseFloat(rate_val));
                 rateRatingBar.setVisibility(View.VISIBLE);

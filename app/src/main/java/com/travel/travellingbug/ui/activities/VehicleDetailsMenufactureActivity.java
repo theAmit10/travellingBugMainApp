@@ -70,6 +70,8 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
 
     FloatingActionButton floatingActionButton;
 
+    TextView acYesTv,acNoTv;
+
     TextView updateProfile;
 
 
@@ -142,6 +144,9 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
         vehicleImage = findViewById(R.id.vehicleImage);
 //        btnTakePicture = findViewById(R.id.btnTakePicture);
         updateProfile = findViewById(R.id.choosePicturetv);
+
+        acYesTv = findViewById(R.id.acYesTv);
+        acNoTv = findViewById(R.id.acNoTv);
 
         helper = new ConnectionHelper(context);
         isInternet = helper.isConnectingToInternet();
@@ -332,22 +337,43 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
             }
         });
 
-        vehicleAcETL.addTextChangedListener(new TextWatcher() {
+        acYesTv.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                service_ac = vehicleAcETL.getText().toString();
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                service_ac = vehicleAcETL.getText().toString();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            public void onClick(View v) {
+                service_ac = "Yes";
+//                acYesTv.setBackgroundColor(getResources().getColor(R.color.dark_green));
+                acYesTv.setBackgroundResource(R.drawable.auth_btn_green_bg);
+                acNoTv.setBackgroundResource(R.drawable.auth_btn_gray_bg);
             }
         });
+
+        acNoTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                service_ac = "No";
+//                acNoTv.setBackgroundColor(getResources().getColor(R.color.yellow));
+                acYesTv.setBackgroundResource(R.drawable.auth_btn_gray_bg);
+                acNoTv.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
+            }
+        });
+
+
+//        vehicleAcETL.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                service_ac = vehicleAcETL.getText().toString();
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                service_ac = vehicleAcETL.getText().toString();
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//            }
+//        });
 
         vehicleSeatETL.addTextChangedListener(new TextWatcher() {
             @Override
@@ -386,7 +412,12 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isInternet) {
-                    updateProfile();
+                    if(service_ac.equalsIgnoreCase("")){
+                        Toast.makeText(context, "Add Ac Details", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        updateProfile();
+                    }
                 } else {
                     displayMessage(getString(R.string.something_went_wrong_net));
                 }

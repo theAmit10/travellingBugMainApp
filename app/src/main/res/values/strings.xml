@@ -162,7 +162,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="enter_mobile_no">Enter Mobile number</string>
-    <string name="pin_location">Set pin location</string>
+    <string name="pin_location">Change location</string>
 
     <!--Activity Help-->
 

@@ -139,6 +139,10 @@ dependencies {
 //    implementation "com.twilio.sdk:twilio:9.9.0"
     implementation 'com.twilio.sdk:twilio:8.17.0' // Replace with the latest version
 
+    implementation 'com.itextpdf:itextg:5.5.10'
+    implementation 'com.afollestad.material-dialogs:core:3.3.0'
+
+
 
 
 
