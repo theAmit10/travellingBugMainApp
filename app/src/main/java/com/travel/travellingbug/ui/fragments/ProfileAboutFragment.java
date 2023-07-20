@@ -109,27 +109,33 @@ public class ProfileAboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        View view = inflater.inflate(R.layout.fragment_profile_about, container, false);
+
+
 //        if (SharedHelper.getKey(getContext(), "selectedlanguage").contains("ar")) {
 //            activity.getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 //        } else {
 //            activity.getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
 //        }
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile_about, container, false);
+        try {
 
-        initComponent(view);
+            initComponent(view);
 
-        setTextToComponent();
+            setTextToComponent();
 
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        deviceHeight = displayMetrics.heightPixels;
-        deviceWidth = displayMetrics.widthPixels;
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            deviceHeight = displayMetrics.heightPixels;
+            deviceWidth = displayMetrics.widthPixels;
 
+            clickHandlerOnComponenet();
+            getProfile();
 
-        clickHandlerOnComponenet();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
-        getProfile();
 
         return view;
     }

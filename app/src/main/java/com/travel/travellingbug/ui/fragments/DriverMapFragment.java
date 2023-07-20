@@ -993,7 +993,8 @@ public class DriverMapFragment extends Fragment implements
 //                String paymentData = "{ \"amount\": 29.99, \"currency\": \"USD\", \"cardNumber\": \"**** **** **** 1234\", \"expiryDate\": \"08/25\", \"cvv\": \"123\", \"name\": \"John Doe\" }";
 
                 if (checkPermission()) {
-                    Toast.makeText(getContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+                    System.out.println("Permission Granted");
                 } else {
                     requestPermission();
                 }
@@ -2359,23 +2360,37 @@ public class DriverMapFragment extends Fragment implements
 
 
         Dialog confirmDialog = new Dialog(getContext());
-        confirmDialog.setContentView(R.layout.design_ride_complete_dialog);
+        confirmDialog.setContentView(R.layout.design_ride_completed_map_screeen_dialog);
 
         TextView tvDone = confirmDialog.findViewById(R.id.tvDone);
+        TextView noTv = confirmDialog.findViewById(R.id.noTv);
         TextView bookingStatusTitleTv = confirmDialog.findViewById(R.id.bookingStatusTitleTv);
         TextView bookingStatusSubTitleTv = confirmDialog.findViewById(R.id.bookingStatusSubTitleTv);
         TextView tvDriverMsg = confirmDialog.findViewById(R.id.tvDriverMsg);
 
+
         bookingStatusTitleTv.setText("Ride Completed");
 
-        bookingStatusSubTitleTv.setText("Your ride has been Requested successfully ");
-
-        tvDriverMsg.setText("");
+//        bookingStatusSubTitleTv.setText("Your ride has been completed successfully ");
+//
+//        tvDriverMsg.setText("Would you like to download invoice");
 
         confirmDialog.show();
+
+
         tvDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (checkPermission()) {
+//                    Toast.makeText(getContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+                    System.out.println("Permission Granted");
+                } else {
+                    requestPermission();
+                }
+
+                Toast.makeText(getContext(), "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
+                System.out.println("GENERATING PDF");
+
                 confirmDialog.dismiss();
                 layoutinfo.setVisibility(View.VISIBLE);
                 LatLng myLocation = new LatLng(Double.parseDouble(crt_lat), Double.parseDouble(crt_lng));
@@ -2388,6 +2403,23 @@ public class DriverMapFragment extends Fragment implements
 
 //                Intent intent = new Intent(getContext(), HomeScreenActivity.class);
 //                startActivity(intent);
+            }
+        });
+
+
+        noTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDialog.dismiss();
+                layoutinfo.setVisibility(View.VISIBLE);
+                LatLng myLocation = new LatLng(Double.parseDouble(crt_lat), Double.parseDouble(crt_lng));
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(14).build();
+                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                mapClear();
+                clearVisibility();
+                mMap.clear();
+                startActivity(new Intent(getContext(), HomeScreenActivity.class));
+
             }
         });
     }

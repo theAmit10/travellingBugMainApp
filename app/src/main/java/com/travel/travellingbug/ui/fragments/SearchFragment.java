@@ -1089,6 +1089,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         listener = null;
     }
 
+
+
     private void init(View rootView) {
 
         helper = new ConnectionHelper(context);
@@ -1183,6 +1185,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             public void onClick(View v) {
                 scheduledDate = "";
                 scheduledTime = "";
+
                 if (!frmSource.getText().toString().equalsIgnoreCase("") &&
                         !destination.getText().toString().equalsIgnoreCase("") &&
                         !frmDest.getText().toString().equalsIgnoreCase("")) {
@@ -1196,6 +1199,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 }
             }
         });
+
+
 
 //        <!--  Driver and service type Details-->
 

@@ -26,6 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
@@ -59,6 +60,7 @@ public class OnGoingTrips extends Fragment {
     View rootView;
     UpcomingsAdapter upcomingsAdapter;
     RecyclerView recyclerView;
+    private ShimmerFrameLayout mFrameLayout;
     RelativeLayout errorLayout;
     ConnectionHelper helper;
     CustomDialog customDialog;
@@ -109,6 +111,8 @@ public class OnGoingTrips extends Fragment {
 
     public void findViewByIdAndInitialize() {
         recyclerView = rootView.findViewById(R.id.recyclerView);
+        mFrameLayout = rootView.findViewById(R.id.shimmerLayout);
+
         errorLayout = rootView.findViewById(R.id.errorLayout);
         errorLayout.setVisibility(View.GONE);
         helper = new ConnectionHelper(getActivity());
@@ -124,6 +128,12 @@ public class OnGoingTrips extends Fragment {
             getUpcomingList();
         }
         super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        mFrameLayout.stopShimmer();
+        super.onPause();
     }
 
     public void getUpcomingList() {
@@ -145,6 +155,9 @@ public class OnGoingTrips extends Fragment {
                     errorLayout.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.VISIBLE);
                     recyclerView.setAdapter(upcomingsAdapter);
+                    mFrameLayout.startShimmer();
+                    mFrameLayout.setVisibility(View.GONE);
+                    recyclerView.setVisibility(View.VISIBLE);
                 } else {
                     recyclerView.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
@@ -190,6 +203,8 @@ public class OnGoingTrips extends Fragment {
     public void displayMessage(String toastString) {
         Toasty.info(getActivity(), toastString, Toast.LENGTH_SHORT, true).show();
     }
+
+
 
     public void cancelRequest(final String request_id) {
 

@@ -25,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
@@ -65,6 +66,8 @@ public class FindRidesActivity extends AppCompatActivity {
     boolean scheduleTrip = false;
 
     RecyclerView recyclerView;
+
+    private ShimmerFrameLayout mFrameLayout;
 
     LinearLayout errorLayout;
 
@@ -196,6 +199,7 @@ public class FindRidesActivity extends AppCompatActivity {
 //        details = findViewById(R.id.details);
 //        request = findViewById(R.id.request);
         recyclerView = findViewById(R.id.findRideRequestRv);
+        mFrameLayout = findViewById(R.id.shimmerLayout);
         from = findViewById(R.id.from);
         destination = findViewById(R.id.destination);
         errorLayout = findViewById(R.id.errorLayout);
@@ -293,12 +297,17 @@ public class FindRidesActivity extends AppCompatActivity {
                             recyclerView.setVisibility(View.VISIBLE);
                             errorLayout.setVisibility(View.GONE);
                             recyclerView.setAdapter(upcomingsAdapter);
+                            mFrameLayout.startShimmer();
+                            mFrameLayout.setVisibility(View.GONE);
+                            recyclerView.setVisibility(View.VISIBLE);
                         } else {
 //                    errorLayout.setVisibility(View.VISIBLE);
                             recyclerView.setVisibility(View.GONE);
+                            mFrameLayout.startShimmer();
                         }
 
                     } else {
+                        mFrameLayout.startShimmer();
 //                errorLayout.setVisibility(View.VISIBLE);
 //                        recyclerView.setVisibility(View.GONE);
                     }
@@ -368,6 +377,18 @@ public class FindRidesActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        mFrameLayout.startShimmer();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        mFrameLayout.stopShimmer();
+        super.onPause();
+    }
+
     private String getMonth(String date) throws ParseException {
         Date d = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).parse(date);
         Calendar cal = Calendar.getInstance();
@@ -378,6 +399,8 @@ public class FindRidesActivity extends AppCompatActivity {
 
         return name;
     }
+
+
 
     public  String getMonthName(int month)
     {
