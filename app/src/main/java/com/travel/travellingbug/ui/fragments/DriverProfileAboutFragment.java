@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.chat.UserChatActivity;
@@ -50,6 +52,8 @@ public class DriverProfileAboutFragment extends Fragment {
     String providerFirstName = "";
     String providerId = "";
     String providerMobileNo = "";
+    private ShimmerFrameLayout mFrameLayout;
+    private LinearLayout parentLinearLayout;
 
 
     public DriverProfileAboutFragment() {
@@ -256,6 +260,8 @@ public class DriverProfileAboutFragment extends Fragment {
     }
 
     private void getProfileData(String user_id) {
+        mFrameLayout.startShimmer();
+
 
         // Getting other details of profile
 
@@ -336,8 +342,12 @@ public class DriverProfileAboutFragment extends Fragment {
 
                     }
 
+                    mFrameLayout.setVisibility(View.GONE);
+                    parentLinearLayout.setVisibility(View.VISIBLE);
+
 
                 } catch (JSONException e) {
+                    mFrameLayout.setVisibility(View.GONE);
                     e.printStackTrace();
                 }
 
@@ -346,8 +356,8 @@ public class DriverProfileAboutFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
-                Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                mFrameLayout.setVisibility(View.GONE);
             }
 
         }) {
@@ -373,6 +383,18 @@ public class DriverProfileAboutFragment extends Fragment {
         ClassLuxApp.getInstance().addToRequestQueue(request);
     }
 
+    @Override
+    public void onPause() {
+        mFrameLayout.stopShimmer();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        mFrameLayout.startShimmer();
+        super.onResume();
+    }
+
     private void initData(View view) {
 
         dropLocation = view.findViewById(R.id.dropLocation);
@@ -390,6 +412,9 @@ public class DriverProfileAboutFragment extends Fragment {
 
         continueButton = view.findViewById(R.id.continueButton);
         chatButton = view.findViewById(R.id.chatButton);
+
+        parentLinearLayout = view.findViewById(R.id.parentLinearLayout);
+        mFrameLayout = view.findViewById(R.id.shimmerLayout);
 
     }
 }

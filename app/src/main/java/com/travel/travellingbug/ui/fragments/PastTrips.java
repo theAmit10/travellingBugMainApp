@@ -29,7 +29,6 @@ import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.ui.activities.HistoryDetailsUser;
 import com.travel.travellingbug.ui.activities.SplashScreen;
-import com.travel.travellingbug.ui.activities.TrackActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -478,13 +477,21 @@ public class PastTrips extends Fragment {
 
                     holder.status.setText(status_case_val);
 
-                } else if(jsonObjectTrip.optString("status").equalsIgnoreCase("CANCELLED")){
+                } else if(jsonObjectTrip.optString("status").equalsIgnoreCase("CANCELLED") || jsonArray.getJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED") ){
                     holder.status.setBackgroundResource(R.drawable.auth_btn_gray_bg);
-//                    holder.status.setText(jsonObjectTrip.optString("status"));
 
-                    String status_case = jsonObjectTrip.optString("status");
-                    String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
-                    holder.status.setText(status_case_val);
+                    if(jsonObjectTrip.optString("status").equalsIgnoreCase("CANCELLED")){
+                        String status_case = jsonObjectTrip.optString("status");
+                        String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
+                        holder.status.setText(status_case_val);
+                    } else {
+                        String status_case = jsonArray.getJSONObject(position).optString("status");
+                        String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
+                        holder.status.setText(status_case_val);
+                    }
+
+
+
 
                 }else if(jsonObjectTrip.optString("status").equalsIgnoreCase("STARTED")){
                     holder.status.setBackgroundResource(R.drawable.auth_btn_purple_bg);
@@ -517,17 +524,17 @@ public class PastTrips extends Fragment {
                 e.printStackTrace();
             }
 
-            holder.historyContainerLL.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    Intent intent = new Intent(getContext(), TrackActivity.class);
-                    intent.putExtra("flowValue", 3);
-                    intent.putExtra("request_id_from_trip", jsonArray.optJSONObject(position).optString("request_id"));
-                    startActivity(intent);
-
-                    return true;
-                }
-            });
+//            holder.historyContainerLL.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View v) {
+//                    Intent intent = new Intent(getContext(), TrackActivity.class);
+//                    intent.putExtra("flowValue", 3);
+//                    intent.putExtra("request_id_from_trip", jsonArray.optJSONObject(position).optString("request_id"));
+//                    startActivity(intent);
+//
+//                    return true;
+//                }
+//            });
 
 
             holder.historyContainerLL.setOnClickListener(view -> {
@@ -547,6 +554,9 @@ public class PastTrips extends Fragment {
                 Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
                 intent.putExtra("post_value", jsonArray.optJSONObject(position).toString());
                 intent.putExtra("tag", "past_trips");
+
+                intent.putExtra("flowValue", 3);
+                intent.putExtra("request_id_from_trip", jsonArray.optJSONObject(position).optString("request_id"));
 
 //                request_id = jsonArray.optJSONObject(position).optString("id");
 //

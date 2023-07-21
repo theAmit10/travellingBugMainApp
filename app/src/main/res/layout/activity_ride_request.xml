@@ -11,19 +11,37 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="@color/colorPrimary"
+        android:orientation="horizontal"
         android:gravity="center_vertical">
 
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:fontFamily="@font/nunito_bold"
             android:gravity="center_vertical"
             android:text="RIDE REQUESTS"
+            android:layout_weight="1"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:id="@+id/startRideTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="right"
+            android:padding="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="START"
+            android:background="@drawable/auth_btn_green_bg"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
+
+
     </LinearLayout>
 
     <RelativeLayout

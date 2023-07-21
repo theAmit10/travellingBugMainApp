@@ -19,6 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.SharedHelper;
@@ -58,6 +59,7 @@ public class UserProfileReviewFragment extends Fragment {
     RelativeLayout errorLayout;
     ConstraintLayout bottomContainer;
 
+    private ShimmerFrameLayout mFrameLayout;
 
 
 
@@ -119,6 +121,7 @@ public class UserProfileReviewFragment extends Fragment {
     }
 
     private void getProfileData(String user_id) {
+        mFrameLayout.startShimmer();
 
         // Getting other details of profile
 
@@ -174,12 +177,14 @@ public class UserProfileReviewFragment extends Fragment {
 
                                 }
 
-                                reviewDataLl.setVisibility(View.VISIBLE);
 
                                 adapter = new UserProfileReviewDataAdapter(getContext(),list);
                                 fragmentDriverReviewRV.setAdapter(adapter);
+                                mFrameLayout.setVisibility(View.GONE);
+                                reviewDataLl.setVisibility(View.VISIBLE);
                             }else {
                                 errorLayout.setVisibility(View.VISIBLE);
+                                mFrameLayout.setVisibility(View.GONE);
 
                             }
 
@@ -190,6 +195,7 @@ public class UserProfileReviewFragment extends Fragment {
                         }catch (Exception e){
                             e.printStackTrace();
                             errorLayout.setVisibility(View.VISIBLE);
+                            mFrameLayout.setVisibility(View.GONE);
                         }
 
 
@@ -198,6 +204,7 @@ public class UserProfileReviewFragment extends Fragment {
 
                 } catch (JSONException e) {
                     errorLayout.setVisibility(View.VISIBLE);
+                    mFrameLayout.setVisibility(View.GONE);
                     e.printStackTrace();
                 }
 
@@ -233,6 +240,18 @@ public class UserProfileReviewFragment extends Fragment {
         ClassLuxApp.getInstance().addToRequestQueue(request);
     }
 
+    @Override
+    public void onPause() {
+        mFrameLayout.stopShimmer();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        mFrameLayout.startShimmer();
+        super.onResume();
+    }
+
     private void initData(View view) {
 
 
@@ -250,6 +269,8 @@ public class UserProfileReviewFragment extends Fragment {
 
         reviewDataLl = view.findViewById(R.id.reviewDataLl);
         errorLayout = view.findViewById(R.id.errorLayout);
+
+        mFrameLayout = view.findViewById(R.id.shimmerLayout);
 //        bottomContainer = view.findViewById(R.id.bottomContainer);
 
 

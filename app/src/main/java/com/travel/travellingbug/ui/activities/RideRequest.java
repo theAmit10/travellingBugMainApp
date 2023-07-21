@@ -50,11 +50,19 @@ public class RideRequest extends AppCompatActivity {
     RecyclerView recyclerView;
 
     RelativeLayout errorLayout;
+
+    TextView startRideTv;
     RideRequest.UpcomingsAdapter upcomingsAdapter;
 
     String noofseat="",request_id="", person_id="",s_address="",d_address="",s_date = "",s_time = "",seat_left = "", profile_image = "",fare = "";
 
     String rating="0";
+
+
+    String booking_id = "", status = "", payment_mode = "", estimated_fare = "", verification_code = "", static_map = "", first_name = "", mobile = "", avatar = "";
+
+    String post_value = "", tag = "";
+    String current_trip_user_id = "";
 
 
 
@@ -64,13 +72,58 @@ public class RideRequest extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ride_request);
 
-        errorLayout = findViewById(R.id.errorLayoutRl);
-        recyclerView = findViewById(R.id.rideRequestRv);
+
+        try {
+            errorLayout = findViewById(R.id.errorLayoutRl);
+            recyclerView = findViewById(R.id.rideRequestRv);
+            getIntentData();
+            startRideTv = findViewById(R.id.startRideTv);
+            getRideRequest();
 
 
-        getIntentData();
 
-        getRideRequest();
+            startRideTv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(RideRequest.this, HistoryDetails.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    Log.e("Intent", "" + post_value);
+                    intent.putExtra("post_value", ""+post_value);
+                    intent.putExtra("tag", tag);
+                    intent.putExtra("request_id", request_id);
+                    intent.putExtra("s_address", s_address);
+                    intent.putExtra("d_address", d_address);
+                    intent.putExtra("booking_id", booking_id);
+                    intent.putExtra("s_date", s_date);
+                    intent.putExtra("s_time", s_time);
+                    intent.putExtra("status", status);
+                    intent.putExtra("payment_mode", payment_mode);
+                    intent.putExtra("estimated_fare", estimated_fare);
+                    intent.putExtra("verification_code", verification_code);
+                    intent.putExtra("static_map", static_map);
+                    intent.putExtra("first_name", first_name);
+                    intent.putExtra("rating", rating);
+                    intent.putExtra("avatar", avatar);
+                    intent.putExtra("current_trip_user_id", current_trip_user_id);
+                    startActivity(intent);
+                }
+            });
+
+
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+
+
+
+
+
     }
 
     private void showAcceptedDialog() {
@@ -360,6 +413,26 @@ public class RideRequest extends AppCompatActivity {
         s_time = getIntent().getStringExtra("s_time");
         seat_left = getIntent().getStringExtra("seat_left");
         fare = getIntent().getStringExtra("fare");
+
+
+        // for history screen to start ride
+        request_id = getIntent().getStringExtra("request_id");
+        s_address = getIntent().getStringExtra("s_address");
+        d_address = getIntent().getStringExtra("d_address");
+        s_date = getIntent().getStringExtra("s_date");
+        s_time = getIntent().getStringExtra("s_time");
+        status = getIntent().getStringExtra("status");
+        payment_mode = getIntent().getStringExtra("payment_mode");
+        estimated_fare = getIntent().getStringExtra("estimated_fare");
+        verification_code = getIntent().getStringExtra("verification_code");
+        static_map = getIntent().getStringExtra("static_map");
+        first_name = getIntent().getStringExtra("first_name");
+        rating = getIntent().getStringExtra("rating");
+        avatar = getIntent().getStringExtra("avatar");
+        booking_id = getIntent().getStringExtra("booking_id");
+        current_trip_user_id = getIntent().getStringExtra("current_trip_user_id");
+        post_value = getIntent().getStringExtra("post_value");
+        tag = getIntent().getStringExtra("tag");
 
         System.out.println("request_id : "+request_id);
     }

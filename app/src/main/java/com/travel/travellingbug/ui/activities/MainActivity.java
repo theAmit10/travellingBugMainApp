@@ -9,6 +9,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -125,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         if (SharedHelper.getKey(context, "login_by").equals("facebook"))
             FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         findViewById();
 

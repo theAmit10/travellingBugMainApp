@@ -4157,9 +4157,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         TextView tvDriverMsg = confirmDialog.findViewById(R.id.tvDriverMsg);
         TextView titleTv = confirmDialog.findViewById(R.id.titleTv);
         TextView subTitleTv = confirmDialog.findViewById(R.id.subTitleTv);
+        View partition = confirmDialog.findViewById(R.id.partition);
         subTitleTv.setVisibility(View.VISIBLE);
         titleTv.setText("Ride Started");
         tvDriverMsg.setText(getString(R.string.driver_will_pickup) + " few minutes.");
+        partition.setVisibility(View.GONE);
+        tvCancel.setVisibility(View.GONE);
 
         tvCancel.setOnClickListener(v -> {
             confirmDialog.dismiss();

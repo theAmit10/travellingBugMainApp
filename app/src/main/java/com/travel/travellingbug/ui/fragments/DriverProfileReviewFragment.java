@@ -19,6 +19,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.SharedHelper;
@@ -54,6 +55,8 @@ public class DriverProfileReviewFragment extends Fragment {
     UserProfileReviewDataAdapter adapter;
     ProgressBar fiveStarProgress, fourStarProgress, threeStarProgress, twoStarProgress, oneStarProgress;
     TextView fiveStarTotalVal, fourStarTotalVal, threeStarTotalVal, twoStarTotalVal, oneStarTotalVal;
+
+    private ShimmerFrameLayout mFrameLayout;
     public DriverProfileReviewFragment() {
         // Required empty public constructor
     }
@@ -88,6 +91,8 @@ public class DriverProfileReviewFragment extends Fragment {
         errorLayout = view.findViewById(R.id.errorLayout);
 //        bottomContainer = view.findViewById(R.id.bottomContainer);
         reviewDataLl = view.findViewById(R.id.reviewDataLl);
+        mFrameLayout = view.findViewById(R.id.shimmerLayout);
+
 
 
 
@@ -111,7 +116,20 @@ public class DriverProfileReviewFragment extends Fragment {
 
     }
 
+    @Override
+    public void onPause() {
+        mFrameLayout.stopShimmer();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        mFrameLayout.startShimmer();
+        super.onResume();
+    }
+
     private void getProfileData(String user_id) {
+        mFrameLayout.startShimmer();
 
         // Getting other details of profile
 
@@ -164,17 +182,20 @@ public class DriverProfileReviewFragment extends Fragment {
 
 
                                 }
-                                reviewDataLl.setVisibility(View.VISIBLE);
 
                                 adapter = new UserProfileReviewDataAdapter(getContext(), list);
                                 fragmentDriverReviewRV.setAdapter(adapter);
+                                mFrameLayout.setVisibility(View.GONE);
+                                reviewDataLl.setVisibility(View.VISIBLE);
                             }else {
                                 errorLayout.setVisibility(View.VISIBLE);
+                                mFrameLayout.setVisibility(View.GONE);
                             }
 
 
                         } catch (Exception e) {
                             errorLayout.setVisibility(View.VISIBLE);
+                            mFrameLayout.setVisibility(View.GONE);
                             e.printStackTrace();
                         }
 

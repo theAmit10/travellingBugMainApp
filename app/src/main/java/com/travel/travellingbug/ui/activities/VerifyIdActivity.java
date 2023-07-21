@@ -54,7 +54,7 @@ public class VerifyIdActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);
+                overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
     }

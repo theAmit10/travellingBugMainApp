@@ -32,6 +32,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
@@ -98,6 +99,14 @@ public class HistoryDetailsUser extends AppCompatActivity {
 
     Button btnViewInvoice, btnCall;
 
+    TextView trackVehicleTv;
+
+    private ShimmerFrameLayout mFrameLayout;
+
+    String flowValue= "",request_id_from_trip="";
+
+
+
 
 
     @Override
@@ -120,9 +129,16 @@ public class HistoryDetailsUser extends AppCompatActivity {
             tag = intent.getStringExtra("tag");
             request_id = getIntent().getStringExtra("request_id");
             user_id = getIntent().getStringExtra("user_id");
+            request_id_from_trip = getIntent().getStringExtra("request_id_from_trip");
+            flowValue = getIntent().getStringExtra("flowValue");
+
+
+
+
             jsonObject = new JSONObject(post_details);
         } catch (Exception e) {
             jsonObject = null;
+            e.printStackTrace();
         }
 
         if (jsonObject != null) {
@@ -150,6 +166,18 @@ public class HistoryDetailsUser extends AppCompatActivity {
 //        });
 
         backArrow.setOnClickListener(view -> onBackPressed());
+
+
+        trackVehicleTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HistoryDetailsUser.this, TrackActivity.class);
+                intent.putExtra("flowValue", flowValue);
+                intent.putExtra("request_id_from_trip", request_id_from_trip);
+                startActivity(intent);
+                overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
+            }
+        });
     }
 
     public void findViewByIdAndInitialize() {
@@ -189,6 +217,10 @@ public class HistoryDetailsUser extends AppCompatActivity {
         lnrUpcomingLayout = findViewById(R.id.lnrUpcomingLayout);
         btnViewInvoice = findViewById(R.id.btnViewInvoice);
         btnCall = findViewById(R.id.btnCall);
+        trackVehicleTv = findViewById(R.id.trackVehicleTv);
+        mFrameLayout = findViewById(R.id.shimmerLayout);
+
+
 
         btnCancelRide.setOnClickListener(v -> {
             if(btnCancelRide.getText().toString().equalsIgnoreCase("service cancelled")){
@@ -369,7 +401,21 @@ public class HistoryDetailsUser extends AppCompatActivity {
         alert.show();
     }
 
+
+    @Override
+    public void onPause() {
+        mFrameLayout.stopShimmer();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        mFrameLayout.startShimmer();
+        super.onResume();
+    }
+
     public void getRequestDetails() {
+        mFrameLayout.startShimmer();
 
         customDialog = new CustomDialog(context);
         customDialog.setCancelable(false);
@@ -420,6 +466,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                 if(jsonArray.optJSONObject(i).optString("status").equalsIgnoreCase("CANCELLED")){
                                     try {
                                         btnCancelRide.setText("Service Cancelled");
+                                        trackVehicleTv.setVisibility(View.VISIBLE);
                                         btnCall.setVisibility(View.GONE);
                                     }catch (Exception e){
                                         e.printStackTrace();
@@ -429,6 +476,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                 if(jsonArray.optJSONObject(i).optString("status").equalsIgnoreCase("COMPLETED")){
                                     try {
                                         btnCancelRide.setText("Service Cancelled");
+                                        trackVehicleTv.setVisibility(View.VISIBLE);
                                         btnCancelRide.setVisibility(View.GONE);
                                         btnViewInvoice.setVisibility(View.VISIBLE);
                                         btnCall.setVisibility(View.GONE);
@@ -450,20 +498,21 @@ public class HistoryDetailsUser extends AppCompatActivity {
 
                                 JSONArray filterJsonArray = jsonArray.optJSONObject(i).optJSONArray("filters");
                                 for(int j=0; j<filterJsonArray.length(); j++){
-                                    JSONObject filterJsonObj = filterJsonArray.getJSONObject(i);
-                                    System.out.println("filter cancelled status user_id given 1 : "+user_id);
+                                    JSONObject filterJsonObj = filterJsonArray.getJSONObject(j);
+//                                    System.out.println("filter cancelled status user_id given 1 : "+user_id);
 
                                     if(filterJsonObj.optString("user_id").equalsIgnoreCase(user_id)){
-                                        System.out.println("filter cancelled status user_id given 2 : "+user_id);
-                                        System.out.println("filter cancelled status user_id found 2 : "+filterJsonObj.optString("user_id"));
+//                                        System.out.println("filter cancelled status user_id given 2 : "+user_id);
+//                                        System.out.println("filter cancelled status user_id found 2 : "+filterJsonObj.optString("user_id"));
                                         if(filterJsonObj.optString("status").equalsIgnoreCase("CANCELLED")){
                                             try {
                                                 btnCancelRide.setText("Service Cancelled");
                                                 btnCall.setVisibility(View.GONE);
-                                                System.out.println("filter cancelled status : "+filterJsonObj.optString("status"));
-                                                System.out.println("filter cancelled status user_id given : "+user_id);
-                                                System.out.println("filter cancelled status user_id found : "+filterJsonObj.optString("user_id"));
-                                                Toast.makeText(getApplicationContext(), "Service Cancelled", Toast.LENGTH_SHORT).show();
+                                                trackVehicleTv.setVisibility(View.VISIBLE);
+//                                                System.out.println("filter cancelled status : "+filterJsonObj.optString("status"));
+//                                                System.out.println("filter cancelled status user_id given : "+user_id);
+//                                                System.out.println("filter cancelled status user_id found : "+filterJsonObj.optString("user_id"));
+//                                                Toast.makeText(getApplicationContext(), "Service Cancelled", Toast.LENGTH_SHORT).show();
                                             }catch (Exception e){
                                                 e.printStackTrace();
                                             }
@@ -638,6 +687,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
                     if ((customDialog != null) && (customDialog.isShowing()))
                         customDialog.dismiss();
                     parentLayout.setVisibility(View.VISIBLE);
+                    mFrameLayout.setVisibility(View.GONE);
 
 
 
@@ -769,6 +819,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
                 if ((customDialog != null) && (customDialog.isShowing()))
                     customDialog.dismiss();
                 parentLayout.setVisibility(View.VISIBLE);
+                mFrameLayout.setVisibility(View.GONE);
 
             }
         }, error -> {

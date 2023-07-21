@@ -69,10 +69,12 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Cancel"
+
                 android:textColor="@color/view_grey_bg"
                 android:textSize="@dimen/_14sdp" />
 
             <View
+                android:id="@+id/partition"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
                 android:background="@color/view_grey_bg" />
