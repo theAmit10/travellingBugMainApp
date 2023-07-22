@@ -76,12 +76,14 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
                 if(status.equalsIgnoreCase("ACCEPTED")){
                     System.out.println("ACCEPTED : "+status.equalsIgnoreCase("ACCEPTED"));
                     acceptBtn.setText("ACCEPTED");
+                    acceptBtn.setClickable(false);
                     acceptBtn.setVisibility(View.VISIBLE);
                     rejectBtn.setVisibility(View.GONE);
 
                 }else if(status.equalsIgnoreCase("CANCELLED")){
                     System.out.println("CANCELLED : "+status.equalsIgnoreCase("CANCELLED"));
                     rejectBtn.setText("CANCELLED");
+                    rejectBtn.setClickable(false);
                     rejectBtn.setVisibility(View.VISIBLE);
                     acceptBtn.setVisibility(View.GONE);
                 }

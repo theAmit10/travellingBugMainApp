@@ -43,7 +43,7 @@
                 android:id="@+id/trackVehicleTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@drawable/auth_btn_green_bg"

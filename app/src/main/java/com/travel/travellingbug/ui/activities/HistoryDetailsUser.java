@@ -466,7 +466,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                 if(jsonArray.optJSONObject(i).optString("status").equalsIgnoreCase("CANCELLED")){
                                     try {
                                         btnCancelRide.setText("Service Cancelled");
-                                        trackVehicleTv.setVisibility(View.VISIBLE);
+                                        trackVehicleTv.setVisibility(View.GONE);
                                         btnCall.setVisibility(View.GONE);
                                     }catch (Exception e){
                                         e.printStackTrace();
@@ -476,7 +476,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                 if(jsonArray.optJSONObject(i).optString("status").equalsIgnoreCase("COMPLETED")){
                                     try {
                                         btnCancelRide.setText("Service Cancelled");
-                                        trackVehicleTv.setVisibility(View.VISIBLE);
+                                        trackVehicleTv.setVisibility(View.GONE);
                                         btnCancelRide.setVisibility(View.GONE);
                                         btnViewInvoice.setVisibility(View.VISIBLE);
                                         btnCall.setVisibility(View.GONE);
@@ -508,7 +508,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                             try {
                                                 btnCancelRide.setText("Service Cancelled");
                                                 btnCall.setVisibility(View.GONE);
-                                                trackVehicleTv.setVisibility(View.VISIBLE);
+                                                trackVehicleTv.setVisibility(View.GONE);
 //                                                System.out.println("filter cancelled status : "+filterJsonObj.optString("status"));
 //                                                System.out.println("filter cancelled status user_id given : "+user_id);
 //                                                System.out.println("filter cancelled status user_id found : "+filterJsonObj.optString("user_id"));

@@ -379,95 +379,7 @@ public class PastTrips extends Fragment {
 
 
 
-//                holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
-//                holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
 
-
-//                userId = jsonObjectTrip.optString("user_id");
-
-                // Getting other details of profile
-
-//                StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//
-//                        System.out.println("size : " + response.length());
-//                        System.out.println("data : " + response);
-//
-//                        try {
-//                            JSONObject jsonObject = new JSONObject(response);
-//
-//                            if (response != null) {
-//                                System.out.println("data : " + jsonObject.toString());
-//                                userName = jsonObject.optString("first_name");
-//                                userProfileImage = jsonObject.optString("avatar");
-//                                rating = jsonObject.optString("rating");
-//                                ratingVal = jsonObject.optString("rating");
-//
-//
-////                                userName = itemView.findViewById(R.id.userName);
-////                                ratingVal = itemView.findViewById(R.id.ratingVal);
-////                                listitemrating = itemView.findViewById(R.id.listitemrating);
-////                                profileImgeIv = itemView.findViewById(R.id.profileImgeIv);
-//
-//                                holder.userName.setText(jsonObject.optString("first_name"));
-//                                holder.ratingVal.setText("( " + jsonObject.optString("rating") + " Reviews )");
-//                                holder.listitemrating.setRating(Float.parseFloat(jsonObject.optString("rating")));
-//
-//                                Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar"))
-//                                        .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.profileImgeIv);
-//
-//
-//                            }
-//
-//
-//                        } catch (JSONException e) {
-//                            displayMessage(e.toString());
-//                        }
-//
-//
-//                    }
-//                }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(getContext(), "Error Found", Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                }) {
-//
-//
-//                    @Override
-//                    public Map<String, String> getParams() {
-//                        Map<String, String> params = new HashMap<>();
-//                        params.put("id", providerJsonObject.optString("id"));
-//                        return params;
-//                    }
-//
-//                    @Override
-//                    public Map<String, String> getHeaders() {
-//                        HashMap<String, String> headers = new HashMap<String, String>();
-//                        headers.put("X-Requested-With", "XMLHttpRequest");
-//                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
-//                        return headers;
-//                    }
-//
-//                };
-//
-//                ClassLuxApp.getInstance().addToRequestQueue(request);
-
-
-//                holder.status.setText(jsonArray.optJSONObject(position).optString("status"));
-
-//                if (jsonArray.optJSONObject(position).optJSONObject("trip").optString("status").equalsIgnoreCase("PENDING")) {
-//                    holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
-//                    holder.status.setText(jsonArray.optJSONObject(position).optJSONObject("trip").optString("status"));
-//
-//                } else if(jsonArray.optJSONObject(position).optJSONObject("trip").optString("status").equalsIgnoreCase("CANCELLED")){
-//                    holder.status.setBackgroundResource(R.drawable.auth_btn_gray_bg);
-//                    holder.status.setText(jsonArray.optJSONObject(position).optJSONObject("trip").optString("status"));
-//                }else {
-//                    holder.status.setText(jsonArray.optJSONObject(position).optJSONObject("trip").optString("status"));
-//                }
 
                 if (jsonObjectTrip.optString("status").equalsIgnoreCase("PENDING")) {
                     holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
@@ -491,8 +403,6 @@ public class PastTrips extends Fragment {
                     }
 
 
-
-
                 }else if(jsonObjectTrip.optString("status").equalsIgnoreCase("STARTED")){
                     holder.status.setBackgroundResource(R.drawable.auth_btn_purple_bg);
 //                    holder.status.setText(jsonObjectTrip.optString("status").toLowerCase());
@@ -500,13 +410,18 @@ public class PastTrips extends Fragment {
                     String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
 
                     holder.status.setText(status_case_val);
-                }else if(jsonObjectTrip.optString("status").equalsIgnoreCase("COMPLETED")){
-                    holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
-//                    holder.status.setText(jsonObjectTrip.optString("status").toLowerCase());
-                    String status_case = jsonObjectTrip.optString("status");
-                    String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
-
-                    holder.status.setText(status_case_val);
+                }else if(jsonObjectTrip.optString("status").equalsIgnoreCase("COMPLETED") || jsonArray.getJSONObject(position).optString("provider_status").equalsIgnoreCase("COMPLETED") ){
+                    if(jsonArray.getJSONObject(position).optString("provider_status").equalsIgnoreCase("COMPLETED")){
+                        holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
+                        String status_case = jsonArray.getJSONObject(position).optString("provider_status");
+                        String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
+                        holder.status.setText(status_case_val);
+                    }else {
+                        holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
+                        String status_case = jsonObjectTrip.optString("status");
+                        String status_case_val = status_case.substring(0,1).toUpperCase() + status_case.substring(1).toLowerCase();
+                        holder.status.setText(status_case_val);
+                    }
                 }else {
 //                    holder.status.setText(jsonObjectTrip.optString("status").toLowerCase());
                     holder.status.setBackgroundResource(R.drawable.auth_btn_blue_bgs);

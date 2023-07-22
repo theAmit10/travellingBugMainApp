@@ -356,6 +356,8 @@ public class DriverMapFragment extends Fragment implements
     ;
     GoogleApiClient mGoogleApiClient;
     LocationRequest mLocationRequest;
+
+    private int filterArrayCancelledRideCount = 0;
     ParserTask parserTask;
 
     private String userId = "", userName = "", rating = "", ratingVal = "", vehicleDetails = "", userProfileImage = "", current_trip_user_id = "", mobile_number = "";
@@ -800,6 +802,7 @@ public class DriverMapFragment extends Fragment implements
         user_type.setText(SharedHelper.getKey(getActivity(), "service"));
 
         passengerCallRvLinearLayout = view.findViewById(R.id.passengerCallRvLinearLayout);
+        passengerCallRv = view.findViewById(R.id.passengerCallRv);
 
 
         // commenting this just for testing
@@ -829,6 +832,7 @@ public class DriverMapFragment extends Fragment implements
             }
             return false;
         });
+
         sos.setOnClickListener(v -> showSosDialog());
         lnrGoOffline.setVisibility(View.GONE);
 
@@ -838,12 +842,10 @@ public class DriverMapFragment extends Fragment implements
         // for testing
         TextView leavingtv = view.findViewById(R.id.leavingtv);
         TextView goingtv = view.findViewById(R.id.goingtv);
-        passengerCallRv = view.findViewById(R.id.passengerCallRv);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
-
-        passengerCallRv.setLayoutManager(linearLayoutManager);
-        passengerCallRv.setNestedScrollingEnabled(false);
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+//        passengerCallRv.setLayoutManager(linearLayoutManager);
+//        passengerCallRv.setNestedScrollingEnabled(false);
 
 
         txtPickUpNotes = view.findViewById(R.id.txtPickUpNotes);
@@ -902,11 +904,17 @@ public class DriverMapFragment extends Fragment implements
             datas = i.getStringExtra("datas");
             if (type != null) {
                 checkStatusSchedule();
+                getRideFilterListData();
             }
 //            else {
 ////                checkStatus();
 //                checkStatusSchedule();
 //            }
+
+
+
+
+
         }
 
 
@@ -962,6 +970,26 @@ public class DriverMapFragment extends Fragment implements
             }
         }, 1000);
 
+
+        itemClickListener = new ItemClickListener() {
+            @Override
+            public void onClick(int position, PassengerCallModel user) {
+                userId = user.getUser_id();
+                selected_user = position;
+                filter_id = user.getU_id();
+                Toast.makeText(getContext(), "Processing", Toast.LENGTH_SHORT).show();
+                if (ll_03_contentLayer_service_flow.getVisibility() == View.VISIBLE) {
+                    ll_03_contentLayer_service_flow.startAnimation(slide_down);
+                    ll_03_contentLayer_service_flow.setVisibility(View.GONE);
+                }
+                // Display toast
+//                                                        Toast.makeText(getContext(), "Position : "
+//                                                                + position + " || Value : " + value, Toast.LENGTH_SHORT).show();
+
+
+            }
+        };
+
         online_offline_switch.setChecked(true);
 //        active_Status.setBackgroundResource(R.drawable.auth_btn_white_bg);
         active_Status.setText("Complete Ride");
@@ -1016,110 +1044,174 @@ public class DriverMapFragment extends Fragment implements
         return view;
     }
 
-    private void generatePDF() {
-        // creating an object variable
-        // for our PDF document.
-        PdfDocument pdfDocument = new PdfDocument();
+    private void getRideFilterListData() {
 
-        // two variables for paint "paint" is used
-        // for drawing shapes and we will use "title"
-        // for adding text in our PDF file.
-        Paint paint = new Paint();
-        Paint title = new Paint();
+        System.out.println("Getting Ride Data... ");
+//        customDialog = new CustomDialog(getContext());
+//        customDialog.setCancelable(false);
+//        customDialog.show();
 
-        // we are adding page info to our PDF file
-        // in which we will be passing our pageWidth,
-        // pageHeight and number of pages and after that
-        // we are calling it to create our PDF.
-        PdfDocument.PageInfo mypageInfo = new PdfDocument.PageInfo.Builder(pagewidth, pageHeight, 1).create();
+        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.UPCOMMING_TRIPS_DETAILS_ONE , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
-        // below line is used for setting
-        // start page for our PDF file.
-        PdfDocument.Page myPage = pdfDocument.startPage(mypageInfo);
-
-        // creating a variable for canvas
-        // from our page of PDF.
-        Canvas canvas = myPage.getCanvas();
-
-        // below line is used to draw our image on our PDF file.
-        // the first parameter of our drawbitmap method is
-        // our bitmap
-        // second parameter is position from left
-        // third parameter is position from top and last
-        // one is our variable for paint.
-        canvas.drawBitmap(scaledbmp, 56, 40, paint);
-
-        // below line is used for adding typeface for
-        // our text which we will be adding in our PDF file.
-        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.NORMAL));
-
-        // below line is used for setting text size
-        // which we will be displaying in our PDF file.
-        title.setTextSize(15);
-
-        // below line is sued for setting color
-        // of our text inside our PDF file.
-        title.setColor(ContextCompat.getColor(getContext(), R.color.dark_green));
-
-        // below line is used to draw text in our PDF file.
-        // the first parameter is our text, second parameter
-        // is position from start, third parameter is position from top
-        // and then we are passing our variable of paint which is title.
-        canvas.drawText("A portal for IT professionals.", 209, 100, title);
-        canvas.drawText("Travelling Bug", 209, 80, title);
-
-        // similarly we are creating another text and in this
-        // we are aligning this text to center of our PDF file.
-        title.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
-        title.setColor(ContextCompat.getColor(getContext(), R.color.dark_green));
-        title.setTextSize(24);
+                System.out.println("size : "+response.length());
+                System.out.println("Request Data : "+response);
+                String location;
 
 
-        // below line is used for setting
-        // our text to center of PDF.
-        title.setTextAlign(Paint.Align.CENTER);
-        canvas.drawText("This is sample document which we have created.", 396, 560, title);
+                try {
+//                    customDialog.dismiss();
+                    JSONArray jsonArray = new JSONArray(response);
 
-        // after adding all attributes to our
-        // PDF file we will be finishing our page.
-        pdfDocument.finishPage(myPage);
+                    for(int i=0;i <jsonArray.length(); i++){
 
-        // below line is used to set the name of
-        // our PDF file and its path.
-        File file = new File(Environment.getExternalStorageDirectory(), "GFG.pdf");
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-        try {
-            // after creating a file name we will
-            // write our PDF file to that location.
-            pdfDocument.writeTo(new FileOutputStream(file));
+                        JSONArray filterArray = jsonObject.getJSONArray("filters");
+                        if(response != null ){
 
-            // below line is to print toast message
-            // on completion of PDF generation.
-            Toast.makeText(getContext(), "PDF file generated successfully.", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            // below line is used
-            // to handle error
-            e.printStackTrace();
-        }
-        // after storing our pdf to that
-        // location we are closing our PDF file.
-        pdfDocument.close();
+                            if (jsonObject.getJSONArray("filters") != null) {
+                                if (filterArray.length() > 0) {
+                                    for (int j = 0; j < filterArray.length(); j++) {
+                                        JSONObject filterJsonObj = filterArray.getJSONObject(j);
+
+                                        if (passengerCallModelArrayList.size() < filterArray.length() && !filterJsonObj.optString("status").equalsIgnoreCase("CANCELLED")) {
+                                            System.out.println("length passengerCallModelArrayList org : " + passengerCallModelArrayList.size());
+                                            System.out.println("length filterArray.length() org : " + filterArray.length());
+                                            PassengerCallModel passengerCallModel = new PassengerCallModel();
+//                                                                passengerCallModel.setImage(filterJsonObj.optString("avatar"));
+                                            passengerCallModel.setRequest_id(filterJsonObj.optString("request_id"));
+                                            passengerCallModel.setProvider_id(filterJsonObj.optString("provider_id"));
+                                            passengerCallModel.setStatus(filterJsonObj.optString("status"));
+                                            passengerCallModel.setProvider_status(filterJsonObj.optString("provider_status"));
+                                            passengerCallModel.setNoofseats(filterJsonObj.optString("noofseats"));
+                                            passengerCallModel.setVerification_code(filterJsonObj.optString("verification_code"));
+                                            passengerCallModel.setTotal_amount(filterJsonObj.optString("total_amount"));
+                                            passengerCallModel.setPayment_status(filterJsonObj.optString("payment_status"));
+                                            passengerCallModel.setPayment_mode("CASH");
+                                            passengerCallModel.setUser_id(filterJsonObj.optString("user_id"));
+                                            passengerCallModel.setU_id(filterJsonObj.optString("id"));
+
+
+                                            // Getting User details
+                                            StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
+                                                @Override
+                                                public void onResponse(String response) {
+
+                                                    try {
+                                                        JSONObject jsonObjectUser = new JSONObject(response);
+
+                                                        if (response != null) {
+
+                                                            passengerCallModel.setImage(jsonObjectUser.optString("avatar"));
+
+                                                        }
+
+
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+
+
+                                                }
+                                            }, new Response.ErrorListener() {
+                                                @Override
+                                                public void onErrorResponse(VolleyError error) {
+                                                    error.printStackTrace();
+                                                }
+
+                                            }) {
+
+
+                                                @Override
+                                                public Map<String, String> getParams() {
+                                                    Map<String, String> params = new HashMap<>();
+                                                    params.put("id", filterJsonObj.optString("user_id"));
+                                                    return params;
+                                                }
+
+                                                @Override
+                                                public Map<String, String> getHeaders() {
+                                                    HashMap<String, String> headers = new HashMap<String, String>();
+                                                    headers.put("X-Requested-With", "XMLHttpRequest");
+                                                    headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                                                    return headers;
+                                                }
+
+                                            };
+
+                                            ClassLuxApp.getInstance().addToRequestQueue(request);
+
+                                            passengerCallModelArrayList.add(passengerCallModel);
+
+                                        }
+                                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.HORIZONTAL, false);
+                                        passengerCallRv.setLayoutManager(linearLayoutManager);
+                                        PassengerCallAdapter passengerCallAdapter = new PassengerCallAdapter(getContext(), passengerCallModelArrayList, itemClickListener);
+                                        passengerCallRv.setAdapter(passengerCallAdapter);
+                                        passengerCallRv.setNestedScrollingEnabled(false);
+                                    }
+
+                                }
+                            }
+
+
+                        }else {
+                            Toast.makeText(getContext(), "No Request Available", Toast.LENGTH_SHORT).show();
+
+                        }
+
+
+                    }
+
+
+
+
+                } catch (JSONException e) {
+
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
+
+            }
+
+        }) {
+
+
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("request_id",current_trip_request_id);
+                return params;
+            }
+
+
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                return headers;
+            }
+
+        };
+
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
     }
 
-//    private void generatePDF(String data) {
-//
-//        Document document = new Document();
-//        try {
-//            PdfWriter.getInstance(document, new FileOutputStream("output.pdf"));
-//            document.open();
-//            document.add(new Paragraph(data));
-//            document.close();
-//        } catch (DocumentException e) {
-//            e.printStackTrace();
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//    }
+
+
+
 
     public void statusCheck() {
         final LocationManager manager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
@@ -2523,107 +2615,110 @@ public class DriverMapFragment extends Fragment implements
 
                                                 JSONArray filterArray = jsonObject.getJSONArray("filters");
 
-                                                if (jsonObject.getJSONArray("filters") != null) {
-                                                    if (filterArray.length() > 0) {
-                                                        for (int j = 0; j < filterArray.length(); j++) {
-                                                            JSONObject filterJsonObj = filterArray.getJSONObject(j);
-                                                            if (passengerCallModelArrayList.size() < filterArray.length()) {
-                                                                System.out.println("length passengerCallModelArrayList org : " + passengerCallModelArrayList.size());
-                                                                System.out.println("length filterArray.length() org : " + filterArray.length());
-                                                                PassengerCallModel passengerCallModel = new PassengerCallModel();
-//                                                                passengerCallModel.setImage(filterJsonObj.optString("avatar"));
-                                                                passengerCallModel.setRequest_id(filterJsonObj.optString("request_id"));
-                                                                passengerCallModel.setProvider_id(filterJsonObj.optString("provider_id"));
-                                                                passengerCallModel.setStatus(filterJsonObj.optString("status"));
-                                                                passengerCallModel.setProvider_status(filterJsonObj.optString("provider_status"));
-                                                                passengerCallModel.setNoofseats(filterJsonObj.optString("noofseats"));
-                                                                passengerCallModel.setVerification_code(filterJsonObj.optString("verification_code"));
-                                                                passengerCallModel.setTotal_amount(filterJsonObj.optString("total_amount"));
-                                                                passengerCallModel.setPayment_status(filterJsonObj.optString("payment_status"));
-                                                                passengerCallModel.setPayment_mode("CASH");
-                                                                passengerCallModel.setUser_id(filterJsonObj.optString("user_id"));
-                                                                passengerCallModel.setU_id(filterJsonObj.optString("id"));
+//                                                if (jsonObject.getJSONArray("filters") != null) {
+//                                                    if (filterArray.length() > 0) {
+//                                                        for (int j = 0; j < filterArray.length(); j++) {
+//                                                            JSONObject filterJsonObj = filterArray.getJSONObject(j);
+//                                                            if(filterJsonObj.optString("status").equalsIgnoreCase("CANCELLED")){
+//                                                                filterArrayCancelledRideCount++;
+//                                                            }
+//                                                            if (passengerCallModelArrayList.size() < filterArray.length() && !filterJsonObj.optString("status").equalsIgnoreCase("CANCELLED")) {
+//                                                                System.out.println("length passengerCallModelArrayList org : " + passengerCallModelArrayList.size());
+//                                                                System.out.println("length filterArray.length() org : " + filterArray.length());
+//                                                                PassengerCallModel passengerCallModel = new PassengerCallModel();
+////                                                                passengerCallModel.setImage(filterJsonObj.optString("avatar"));
+//                                                                passengerCallModel.setRequest_id(filterJsonObj.optString("request_id"));
+//                                                                passengerCallModel.setProvider_id(filterJsonObj.optString("provider_id"));
+//                                                                passengerCallModel.setStatus(filterJsonObj.optString("status"));
+//                                                                passengerCallModel.setProvider_status(filterJsonObj.optString("provider_status"));
+//                                                                passengerCallModel.setNoofseats(filterJsonObj.optString("noofseats"));
+//                                                                passengerCallModel.setVerification_code(filterJsonObj.optString("verification_code"));
+//                                                                passengerCallModel.setTotal_amount(filterJsonObj.optString("total_amount"));
+//                                                                passengerCallModel.setPayment_status(filterJsonObj.optString("payment_status"));
+//                                                                passengerCallModel.setPayment_mode("CASH");
+//                                                                passengerCallModel.setUser_id(filterJsonObj.optString("user_id"));
+//                                                                passengerCallModel.setU_id(filterJsonObj.optString("id"));
+//
+//
+//                                                                // Getting User details
+//                                                                StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
+//                                                                    @Override
+//                                                                    public void onResponse(String response) {
+//
+//                                                                        try {
+//                                                                            JSONObject jsonObjectUser = new JSONObject(response);
+//
+//                                                                            if (response != null) {
+//
+//                                                                                passengerCallModel.setImage(jsonObjectUser.optString("avatar"));
+//
+//                                                                            }
+//
+//
+//                                                                        } catch (JSONException e) {
+//                                                                            e.printStackTrace();
+//                                                                        }
+//
+//
+//                                                                    }
+//                                                                }, new Response.ErrorListener() {
+//                                                                    @Override
+//                                                                    public void onErrorResponse(VolleyError error) {
+//                                                                        error.printStackTrace();
+//                                                                    }
+//
+//                                                                }) {
+//
+//
+//                                                                    @Override
+//                                                                    public Map<String, String> getParams() {
+//                                                                        Map<String, String> params = new HashMap<>();
+//                                                                        params.put("id", passengerCallModel.getUser_id());
+//                                                                        return params;
+//                                                                    }
+//
+//                                                                    @Override
+//                                                                    public Map<String, String> getHeaders() {
+//                                                                        HashMap<String, String> headers = new HashMap<String, String>();
+//                                                                        headers.put("X-Requested-With", "XMLHttpRequest");
+//                                                                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+//                                                                        return headers;
+//                                                                    }
+//
+//                                                                };
+//
+//                                                                ClassLuxApp.getInstance().addToRequestQueue(request);
+//
+//
+//                                                                passengerCallModelArrayList.add(passengerCallModel);
+//
+//                                                            }
+//                                                            PassengerCallAdapter passengerCallAdapter = new PassengerCallAdapter(getContext(), passengerCallModelArrayList, itemClickListener);
+//                                                            passengerCallRv.setAdapter(passengerCallAdapter);
+//                                                        }
+//
+//                                                    }
+//                                                }
 
 
-                                                                // Getting User details
-                                                                StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
-                                                                    @Override
-                                                                    public void onResponse(String response) {
-
-                                                                        try {
-                                                                            JSONObject jsonObjectUser = new JSONObject(response);
-
-                                                                            if (response != null) {
-
-                                                                                passengerCallModel.setImage(jsonObjectUser.optString("avatar"));
-
-                                                                            }
-
-
-                                                                        } catch (JSONException e) {
-                                                                            e.printStackTrace();
-                                                                        }
-
-
-                                                                    }
-                                                                }, new Response.ErrorListener() {
-                                                                    @Override
-                                                                    public void onErrorResponse(VolleyError error) {
-                                                                        error.printStackTrace();
-                                                                    }
-
-                                                                }) {
-
-
-                                                                    @Override
-                                                                    public Map<String, String> getParams() {
-                                                                        Map<String, String> params = new HashMap<>();
-                                                                        params.put("id", passengerCallModel.getUser_id());
-                                                                        return params;
-                                                                    }
-
-                                                                    @Override
-                                                                    public Map<String, String> getHeaders() {
-                                                                        HashMap<String, String> headers = new HashMap<String, String>();
-                                                                        headers.put("X-Requested-With", "XMLHttpRequest");
-                                                                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
-                                                                        return headers;
-                                                                    }
-
-                                                                };
-
-                                                                ClassLuxApp.getInstance().addToRequestQueue(request);
-
-
-                                                                passengerCallModelArrayList.add(passengerCallModel);
-
-                                                            }
-                                                            PassengerCallAdapter passengerCallAdapter = new PassengerCallAdapter(getContext(), passengerCallModelArrayList, itemClickListener);
-                                                            passengerCallRv.setAdapter(passengerCallAdapter);
-                                                        }
-
-                                                    }
-                                                }
-
-
-                                                itemClickListener = new ItemClickListener() {
-                                                    @Override
-                                                    public void onClick(int position, PassengerCallModel user) {
-                                                        userId = user.getUser_id();
-                                                        selected_user = position;
-                                                        filter_id = user.getU_id();
-                                                        Toast.makeText(getContext(), "Processing", Toast.LENGTH_SHORT).show();
-                                                        if (ll_03_contentLayer_service_flow.getVisibility() == View.VISIBLE) {
-                                                            ll_03_contentLayer_service_flow.startAnimation(slide_down);
-                                                            ll_03_contentLayer_service_flow.setVisibility(View.GONE);
-                                                        }
-                                                        // Display toast
-//                                                        Toast.makeText(getContext(), "Position : "
-//                                                                + position + " || Value : " + value, Toast.LENGTH_SHORT).show();
-
-
-                                                    }
-                                                };
+//                                                itemClickListener = new ItemClickListener() {
+//                                                    @Override
+//                                                    public void onClick(int position, PassengerCallModel user) {
+//                                                        userId = user.getUser_id();
+//                                                        selected_user = position;
+//                                                        filter_id = user.getU_id();
+//                                                        Toast.makeText(getContext(), "Processing", Toast.LENGTH_SHORT).show();
+//                                                        if (ll_03_contentLayer_service_flow.getVisibility() == View.VISIBLE) {
+//                                                            ll_03_contentLayer_service_flow.startAnimation(slide_down);
+//                                                            ll_03_contentLayer_service_flow.setVisibility(View.GONE);
+//                                                        }
+//                                                        // Display toast
+////                                                        Toast.makeText(getContext(), "Position : "
+////                                                                + position + " || Value : " + value, Toast.LENGTH_SHORT).show();
+//
+//
+//                                                    }
+//                                                };
 
 
                                                 if (jsonObject.getJSONArray("filters") != null) {

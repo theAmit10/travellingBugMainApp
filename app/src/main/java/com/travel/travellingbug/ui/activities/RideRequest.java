@@ -595,12 +595,35 @@ public class RideRequest extends AppCompatActivity {
                     }
 
 
-                    holder.acceptBtn.setOnClickListener(v -> {
-                        acceptRequest(jsonArray.optJSONObject(position).optString("id"));
+//                    holder.acceptBtn.setOnClickListener(v -> {
+//                        acceptRequest(jsonArray.optJSONObject(position).optString("id"));
+//                    });
+//
+//                    holder.rejectBtn.setOnClickListener(v -> {
+//                        cancelRequest(jsonArray.optJSONObject(position).optString("id"));
+//                    });
+//
+
+                    holder.acceptBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("ACCEPTED")){
+                                Toast.makeText(RideRequest.this, "You have already accepted.", Toast.LENGTH_SHORT).show();
+                            }else{
+                                acceptRequest(jsonArray.optJSONObject(position).optString("id"));
+                            }
+                        }
                     });
 
-                    holder.rejectBtn.setOnClickListener(v -> {
-                        cancelRequest(jsonArray.optJSONObject(position).optString("id"));
+                    holder.rejectBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED")){
+                                Toast.makeText(RideRequest.this, "Already cancelled.", Toast.LENGTH_SHORT).show();
+                            }else {
+                                cancelRequest(jsonArray.optJSONObject(position).optString("id"));
+                            }
+                        }
                     });
 
 //

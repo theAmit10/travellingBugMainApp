@@ -131,9 +131,10 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
 
     private void setUpVerificatonCallbacks() {
         customDialog = new CustomDialog(this);
-        if (customDialog != null)
+        if (customDialog != null){
             customDialog.show();
             customDialog.setCancelable(false);
+        }
 
         verificationCallbacks =
                 new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
@@ -186,6 +187,7 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
 
                         Toast.makeText(OtpVerification.this, "Successfully verified", Toast.LENGTH_LONG).show();
                         Intent returnIntent = new Intent();
+                        returnIntent.putExtra("verified_number",phoneNumber);
                         setResult(Activity.RESULT_OK, returnIntent);
 //                        SharedHelper.putKey(OtpVerification.this,"loggedIn","true");
                         SharedHelper.putKey(getApplicationContext(), "loggedIn", getString(R.string.True));

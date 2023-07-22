@@ -44,21 +44,26 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 
 
-
 public class UserChatActivity extends AppCompatActivity {
 
     public Context context = UserChatActivity.this;
     public Activity activity = UserChatActivity.this;
-    List<ChatAppMsgDTO> msgDtoList  = new ArrayList<ChatAppMsgDTO>();
+    List<ChatAppMsgDTO> msgDtoList = new ArrayList<ChatAppMsgDTO>();
+    List<ChatAppMsgDTO> filterList = new ArrayList<>();
+    LinkedHashSet<ChatAppMsgDTO> linkedHashSet = new LinkedHashSet<>();
     ChatAppMsgAdapter chatAppMsgAdapter;
     ImageView emojiButton;
     private Handler ha;
+
+    String currentMessagelength = "0";
+    int differenceCount = 0;
     EmojiPopup emojiPopup;
     ViewGroup rootView;
     EmojiEditText msgInputText;
@@ -116,17 +121,18 @@ public class UserChatActivity extends AppCompatActivity {
         receiver = new MyBroadcastReceiver();
 
 
-//        ha = new Handler();
-//        ha.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                //call function
+        ha = new Handler();
+        ha.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //call function
 //                getChatDetails();
-//
-//                ha.postDelayed(this, 3000);
-//            }
-//        }, 3000);
+                getlengthofChatDetails();
+                System.out.println("Realtime working");
 
+                ha.postDelayed(this, 2000);
+            }
+        }, 2000);
 
 
     }
@@ -164,9 +170,9 @@ public class UserChatActivity extends AppCompatActivity {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                msgDtoList.clear();
-                getChatDetails();
-
+//                msgDtoList.clear();
+//                getChatDetails();
+                getlengthofChatDetails();
                 mSwipeRefreshLayout.setRefreshing(false);
             }
         });
@@ -213,7 +219,7 @@ public class UserChatActivity extends AppCompatActivity {
                     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     String formattedDate = df.format(c.getTime());
 
-                    if(messageType.equalsIgnoreCase("pu")){
+                    if (messageType.equalsIgnoreCase("pu")) {
                         ChatAppMsgDTO msgDto = new ChatAppMsgDTO(ChatAppMsgDTO.MSG_TYPE_RECEIVED, msgContent, formattedDate + "");
                         msgDtoList.add(msgDto);
                         getChatDetailsp_u(msgContent);
@@ -232,7 +238,7 @@ public class UserChatActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }else {
+                    } else {
                         ChatAppMsgDTO msgDto = new ChatAppMsgDTO(ChatAppMsgDTO.MSG_TYPE_SENT, msgContent, formattedDate + "");
                         msgDtoList.add(msgDto);
                         getChatDetailsp_u(msgContent);
@@ -350,7 +356,7 @@ public class UserChatActivity extends AppCompatActivity {
 
 
             if (requestId != "" && requestId != null) {
-                url = URLHelper.CHAT_API +"?request_id=" + requestId+"&chattype="+messageType;
+                url = URLHelper.CHAT_API + "?request_id=" + requestId + "&chattype=" + messageType;
             } else {
                 url = URLHelper.CHAT_API + userID + "@" + providerId;
             }
@@ -396,8 +402,8 @@ public class UserChatActivity extends AppCompatActivity {
                             ChatAppMsgAdapter chatAppMsgAdapter = new ChatAppMsgAdapter(msgDtoList);
 
 
-                            for(int i=0; i<msgDtoList.size(); i++){
-                                System.out.println("msgDtoList data : "+msgDtoList.get(i).getMsgContent());
+                            for (int i = 0; i < msgDtoList.size(); i++) {
+                                System.out.println("msgDtoList data : " + msgDtoList.get(i).getMsgContent());
                             }
 
                             // Set data adapter to RecyclerView.
@@ -430,12 +436,108 @@ public class UserChatActivity extends AppCompatActivity {
         }
     }
 
+    public void getlengthofChatDetails() {
+        if (isInternet) {
+
+            String url;
+
+            if (requestId != "" && requestId != null) {
+                url = URLHelper.CHAT_API + "?request_id=" + requestId + "&chattype=" + messageType;
+            } else {
+                url = URLHelper.CHAT_API + userID + "@" + providerId;
+            }
+
+
+            JSONObject object = new JSONObject();
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, object, response -> {
+
+                Log.d("TAG", "chatListResponse" + response.toString());
+                if (response.toString() != null) {
+                    JSONObject object1 = null;
+                    try {
+                        object1 = new JSONObject(response.toString());
+                        String status = object1.getString("status");
+                        if (status.equalsIgnoreCase("1")) {
+                            JSONArray jsonArray = object1.getJSONArray("data");
+
+                            System.out.println("Realtime message length : "+jsonArray.length());
+                            System.out.println("current message length : "+msgDtoList.size());
+                            differenceCount = jsonArray.length() - msgDtoList.size();
+                            System.out.println("Difference current message length : "+differenceCount);
+
+                            for (int i = jsonArray.length()-differenceCount; i < jsonArray.length() ; i++) {
+
+                                //   msgDtoList.clear();
+                                JSONObject jo = jsonArray.getJSONObject(i);
+//                                SharedHelper.putKey(context, "current_chat_provider_id", "" + jo.getString("provider_id"));
+//                                SharedHelper.putKey(context, "current_chat_user_id", "" + jo.getString("user_id"));
+//                                SharedHelper.putKey(context, "current_chat_request_id", "" + jo.getString("request_id"));
+                                ChatList chatList = new ChatList();
+                                chatList.setProviderId(jo.getString("provider_id"));
+                                chatList.setUserId(jo.getString("user_id"));
+                                chatList.setRequestId(jo.getString("request_id"));
+                                chatList.setMessage(jo.getString("message"));
+                                chatList.setType(jo.getString("type"));
+                                chatList.setChatId(jo.getString("id"));
+
+
+                                System.out.println("currently added data "+ i +" | "+ chatList.getMessage());
+
+                                if (!jo.getString("created_at").contains("null")) {
+                                    if (jo.getString("type").contains("up")) {
+                                        ChatAppMsgDTO msgDto = new ChatAppMsgDTO(ChatAppMsgDTO.MSG_TYPE_SENT, jo.getString("message"), jo.getString("created_at"));
+                                        msgDtoList.add(msgDto);
+                                    } else {
+                                        ChatAppMsgDTO msgDto = new ChatAppMsgDTO(ChatAppMsgDTO.MSG_TYPE_RECEIVED, jo.getString("message"), jo.getString("created_at"));
+                                        msgDtoList.add(msgDto);
+                                    }
+                                }
+//                                // Create the data adapter with above data list.
+//
+                            }
+
+//                            for (int i = 0; i < msgDtoList.size(); i++) {
+//                                System.out.println("msgDtoList data : " + msgDtoList.get(i).getMsgContent());
+//                            }
+//                            // Set data adapter to RecyclerView.
+                            ChatAppMsgAdapter chatAppMsgAdapter = new ChatAppMsgAdapter(msgDtoList);
+                            recyclerChat.setAdapter(chatAppMsgAdapter);
+                            recyclerChat.scrollToPosition(chatAppMsgAdapter.getItemCount() - 1);
+                            chatAppMsgAdapter.notifyDataSetChanged();
+                        }
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            }, error -> {
+                displayMessage(getString(R.string.something_went_wrong));
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("X-Requested-With", "XMLHttpRequest");
+                    headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
+                    return headers;
+                }
+            };
+
+            ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+        } else {
+            displayMessage(getString(R.string.something_went_wrong_net));
+        }
+    }
+
+
+
 
     public void getChatHistory() {
         if (isInternet) {
 
 
-            String url = URLHelper.CHAT_API + "?request_id="+requestId + "&send_to=" +userID+"&message="+msgInputText.getText().toString();
+            String url = URLHelper.CHAT_API + "?request_id=" + requestId + "&send_to=" + userID + "&message=" + msgInputText.getText().toString();
 //            if (requestId != "" && requestId != null) {
 //                url = URLHelper.ChatGetMessage + requestId;
 //            } else {
@@ -510,7 +612,6 @@ public class UserChatActivity extends AppCompatActivity {
     }
 
 
-
     public void displayMessage(String toastString) {
         Toasty.info(this, toastString, Toast.LENGTH_SHORT, true).show();
     }
@@ -532,14 +633,14 @@ public class UserChatActivity extends AppCompatActivity {
 ////                    "&user_id=" + SharedHelper.getKey(context, "current_chat_user_id") + "&type=pu";
 ////        }
 
-        String message_formate = message.replace(" ","_");
-        System.out.println("Message : "+message_formate );
+        String message_formate = message.replace(" ", "_");
+        System.out.println("Message : " + message_formate);
 
 
-        if(requestId != null && userID != null && messageType != null ){
+        if (requestId != null && userID != null && messageType != null) {
 
-            url = URLHelper.CHAT_API+"?request_id=" + requestId +"&send_to=" +Integer.parseInt(userID)+ "&message=" + message_formate  + "&chattype="+messageType;
-        }else {
+            url = URLHelper.CHAT_API + "?request_id=" + requestId + "&send_to=" + Integer.parseInt(userID) + "&message=" + message_formate + "&chattype=" + messageType;
+        } else {
             url = URLHelper.ChatGetMessage + SharedHelper.getKey(context, "current_chat_request_id") + "&message=" + message_formate + "&provider_id=" + SharedHelper.getKey(context, "current_chat_provider_id") +
                     "&user_id=" + SharedHelper.getKey(context, "current_chat_user_id") + "&type=pu";
         }

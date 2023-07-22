@@ -10,94 +10,94 @@
 9        android:targetSdkVersion="32" />
 9-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml
 10
-11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:6:5-67
-11-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:6:22-64
-12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-12-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:7:5-79
-12-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:7:22-76
-13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-13-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:8:5-81
-13-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:8:22-78
-14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-14-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:9:5-80
-14-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:9:22-77
-15    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-15-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:10:5-81
-15-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:10:22-78
-16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-16-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:11:5-79
-16-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:11:22-76
-17    <uses-permission android:name="android.permission.CALL_PHONE" />
-17-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:12:5-69
-17-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:12:22-66
-18    <uses-permission android:name="android.permission.CAMERA" />
-18-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:13:5-65
-18-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:13:22-62
-19    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-19-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:14:5-76
-19-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:14:22-73
-20    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
-20-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:15:5-86
-20-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:15:22-83
-21    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-21-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:16:5-71
-21-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:16:22-68
-22    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
-22-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:17:5-74
-22-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:17:22-71
-23    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-23-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:18:5-75
-23-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:18:22-72
-24    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-24-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:19:5-77
-24-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:19:22-74
-25    <uses-permission android:name="android.permission.WAKE_LOCK" />
-25-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:20:5-68
-25-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:20:22-65
-26    <uses-permission android:name="android.permission.SEND_SMS" />
-26-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:21:5-67
-26-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:21:22-64
-27    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-27-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:18:5-75
-27-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:18:22-72
-28
-29    <uses-feature android:name="android.hardware.camera" />
-29-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:24:5-60
-29-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:24:19-57
-30    <uses-feature
-30-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:25:5-27:36
-31        android:name="android.hardware.telephony"
-31-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:26:9-50
-32        android:required="false" />
-32-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:27:9-33
-33
-34    <queries>
-34-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:29:5-32:15
-35        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> <!-- allows app to access Facebook app features -->
-35-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:30:9-89
-35-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:30:19-86
-36        <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> <!-- allows sharing to Messenger app -->
-36-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:30:9-89
-36-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:30:19-86
-37        <intent>
-37-->[com.google.firebase:firebase-inappmessaging-display:20.3.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9b708221de1c12318c7c8bc2e3744666\jetified-firebase-inappmessaging-display-20.3.2\AndroidManifest.xml:13:9-17:18
-38            <action android:name="android.intent.action.VIEW" />
-38-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:369:17-69
-38-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:369:25-66
-39
-40            <data android:scheme="https" />
-40-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:374:17-376:55
-40-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:375:21-70
-41        </intent>
-42
-43        <package android:name="com.facebook.katana" /> <!-- Needs to be explicitly declared on Android R+ -->
-43-->[com.facebook.android:facebook-common:16.1.3] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7f3c5288caa985118da54ce80e3f59f\jetified-facebook-common-16.1.2\AndroidManifest.xml:18:9-55
-43-->[com.facebook.android:facebook-common:16.1.3] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7f3c5288caa985118da54ce80e3f59f\jetified-facebook-common-16.1.2\AndroidManifest.xml:18:18-52
-44        <package android:name="com.google.android.apps.maps" />
-44-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:33:9-64
-44-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:33:18-61
-45    </queries>
+11    <queries>
+11-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:6:5-9:15
+12        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" /> <!-- allows app to access Facebook app features -->
+12-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:7:9-89
+12-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:7:19-86
+13        <provider android:authorities="com.facebook.orca.provider.PlatformProvider" /> <!-- allows sharing to Messenger app -->
+13-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:7:9-89
+13-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:7:19-86
+14        <intent>
+14-->[com.google.firebase:firebase-inappmessaging-display:20.3.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\9b708221de1c12318c7c8bc2e3744666\jetified-firebase-inappmessaging-display-20.3.2\AndroidManifest.xml:13:9-17:18
+15            <action android:name="android.intent.action.VIEW" />
+15-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:373:17-69
+15-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:373:25-66
+16
+17            <data android:scheme="https" />
+17-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:378:17-380:55
+17-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:379:21-70
+18        </intent>
+19
+20        <package android:name="com.facebook.katana" /> <!-- Needs to be explicitly declared on Android R+ -->
+20-->[com.facebook.android:facebook-common:16.1.3] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7f3c5288caa985118da54ce80e3f59f\jetified-facebook-common-16.1.2\AndroidManifest.xml:18:9-55
+20-->[com.facebook.android:facebook-common:16.1.3] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7f3c5288caa985118da54ce80e3f59f\jetified-facebook-common-16.1.2\AndroidManifest.xml:18:18-52
+21        <package android:name="com.google.android.apps.maps" />
+21-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:33:9-64
+21-->[com.google.android.gms:play-services-maps:17.0.1] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\465a483a7b722717a8aa9e6861f73108\jetified-play-services-maps-17.0.1\AndroidManifest.xml:33:18-61
+22    </queries>
+23
+24    <uses-permission android:name="android.permission.INTERNET" />
+24-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:11:5-67
+24-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:11:22-64
+25    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+25-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:12:5-79
+25-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:12:22-76
+26    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+26-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:13:5-81
+26-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:13:22-78
+27    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+27-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:14:5-80
+27-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:14:22-77
+28    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+28-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:15:5-81
+28-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:15:22-78
+29    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+29-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:16:5-79
+29-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:16:22-76
+30    <uses-permission android:name="android.permission.CALL_PHONE" />
+30-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:17:5-69
+30-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:17:22-66
+31    <uses-permission android:name="android.permission.CAMERA" />
+31-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:18:5-65
+31-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:18:22-62
+32    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+32-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:19:5-76
+32-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:19:22-73
+33    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+33-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:20:5-86
+33-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:20:22-83
+34    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+34-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:21:5-71
+34-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:21:22-68
+35    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+35-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:22:5-74
+35-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:22:22-71
+36    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+36-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:23:5-75
+36-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:23:22-72
+37    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+37-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:24:5-77
+37-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:24:22-74
+38    <uses-permission android:name="android.permission.WAKE_LOCK" />
+38-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:25:5-68
+38-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:25:22-65
+39    <uses-permission android:name="android.permission.SEND_SMS" />
+39-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:26:5-67
+39-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:26:22-64
+40    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+40-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:23:5-75
+40-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:23:22-72
+41
+42    <uses-feature android:name="android.hardware.camera" />
+42-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:29:5-60
+42-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:29:19-57
+43    <uses-feature
+43-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:30:5-32:36
+44        android:name="android.hardware.telephony"
+44-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:31:9-50
+45        android:required="false" />
+45-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:32:9-33
 46
 47    <uses-permission android:name="android.permission.VIBRATE" />
 47-->[com.github.citux:datetimepicker:0.3.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b557b69236be1b793cda16f11d75086d\jetified-datetimepicker-0.3.0\AndroidManifest.xml:24:5-66
@@ -123,832 +123,832 @@
 55-->[com.google.android.gms:play-services-measurement:21.2.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\b55ccc278bece697bfa9c06b0c17b5ca\jetified-play-services-measurement-21.2.2\AndroidManifest.xml:26:22-107
 56
 57    <application
-57-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:34:5-448:19
+57-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:38:5-452:19
 58        android:name="com.travel.travellingbug.ClassLuxApp"
-58-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:35:9-36
+58-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:39:9-36
 59        android:allowBackup="false"
-59-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:36:9-36
+59-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:40:9-36
 60        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 60-->[androidx.core:core:1.5.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\c18859ecb579254e2402d0e10b45da0d\core-1.5.0\AndroidManifest.xml:24:18-86
 61        android:autoMirrored="true"
-61-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:37:9-36
+61-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:41:9-36
 62        android:debuggable="true"
 63        android:fullBackupContent="false"
-63-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:38:9-42
+63-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:42:9-42
 64        android:hardwareAccelerated="true"
-64-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:39:9-43
+64-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:43:9-43
 65        android:icon="@drawable/app_logo_org"
-65-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:40:9-46
+65-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:44:9-46
 66        android:label="@string/app_name"
-66-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:41:9-41
+66-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:45:9-41
 67        android:largeHeap="true"
-67-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:42:9-33
+67-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:46:9-33
 68        android:networkSecurityConfig="@xml/network_security_config"
-68-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:43:9-69
+68-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:47:9-69
 69        android:requestLegacyExternalStorage="true"
-69-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:44:9-52
+69-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:48:9-52
 70        android:roundIcon="@drawable/app_logo_org"
-70-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:45:9-51
+70-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:49:9-51
 71        android:supportsRtl="true"
-71-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:46:9-35
+71-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:50:9-35
 72        android:testOnly="true"
 73        android:theme="@style/AppTheme"
-73-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:47:9-40
+73-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:51:9-40
 74        android:usesCleartextTraffic="true" >
-74-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:48:9-44
+74-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:52:9-44
 75        <activity
-75-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:51:9-53:40
+75-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:55:9-57:40
 76            android:name="com.travel.travellingbug.ui.activities.TrackLinkUserActivity"
-76-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:52:13-64
+76-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:56:13-64
 77            android:exported="false" />
-77-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:53:13-37
+77-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:57:13-37
 78        <activity
-78-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:54:9-56:40
+78-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:58:9-60:40
 79            android:name="com.travel.travellingbug.ui.activities.AccountActivity"
-79-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:55:13-58
+79-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:59:13-58
 80            android:exported="false" />
-80-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:56:13-37
+80-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:60:13-37
 81        <activity
-81-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:57:9-59:40
+81-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:61:9-63:40
 82            android:name="com.travel.travellingbug.ui.activities.VehicleTrackingActivity"
-82-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:58:13-66
+82-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:62:13-66
 83            android:exported="false" />
-83-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:59:13-37
+83-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:63:13-37
 84        <activity
-84-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:60:9-62:40
+84-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:64:9-66:40
 85            android:name="com.travel.travellingbug.ui.activities.InvoiceActivity"
-85-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:61:13-58
+85-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:65:13-58
 86            android:exported="false" />
-86-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:62:13-37
+86-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:66:13-37
 87        <activity
-87-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:63:9-65:40
+87-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:67:9-69:40
 88            android:name="com.travel.travellingbug.ui.activities.login.FBAuthActivity"
-88-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:64:13-63
+88-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:68:13-63
 89            android:exported="false" />
-89-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:65:13-37
+89-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:69:13-37
 90        <activity
-90-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:66:9-68:40
+90-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:70:9-72:40
 91            android:name="com.travel.travellingbug.ui.activities.UpdatePhoneNumber"
-91-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:67:13-60
+91-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:71:13-60
 92            android:exported="false" />
-92-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:68:13-37
+92-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:72:13-37
 93        <activity
-93-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:69:9-71:40
+93-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:73:9-75:40
 94            android:name="com.travel.travellingbug.ui.activities.AddTrackingLinkActivity"
-94-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:70:13-66
+94-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:74:13-66
 95            android:exported="false" />
-95-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:71:13-37
+95-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:75:13-37
 96        <activity
-96-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:72:9-74:40
+96-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:76:9-78:40
 97            android:name="com.travel.travellingbug.ui.activities.TrackingLinkActivity"
-97-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:73:13-63
+97-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:77:13-63
 98            android:exported="false" />
-98-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:74:13-37
+98-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:78:13-37
 99        <activity
-99-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:75:9-77:40
+99-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:79:9-81:40
 100            android:name="com.travel.travellingbug.ui.activities.DataProtectionActivity"
-100-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:76:13-65
+100-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:80:13-65
 101            android:exported="false" />
-101-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:77:13-37
+101-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:13-37
 102        <activity
-102-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:78:9-80:40
+102-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:82:9-84:40
 103            android:name="com.travel.travellingbug.ui.activities.PaymentAndRefundActivity"
-103-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:79:13-67
+103-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:83:13-67
 104            android:exported="false" />
-104-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:80:13-37
+104-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:84:13-37
 105        <activity
-105-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:81:9-83:40
+105-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:85:9-87:40
 106            android:name="com.travel.travellingbug.ui.activities.ProviderReviewActivity"
-106-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:82:13-65
+106-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:86:13-65
 107            android:exported="false" />
-107-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:83:13-37
+107-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:87:13-37
 108        <activity
-108-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:84:9-86:40
+108-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:88:9-90:40
 109            android:name="com.travel.travellingbug.ui.activities.TestingActivity"
-109-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:85:13-58
+109-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:89:13-58
 110            android:exported="false" />
-110-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:86:13-37
+110-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:90:13-37
 111        <activity
-111-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:87:9-89:40
+111-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:91:9-93:40
 112            android:name="com.travel.travellingbug.ui.activities.PreferenceTitle"
-112-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:88:13-58
+112-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:13-58
 113            android:exported="false" />
-113-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:89:13-37
+113-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:93:13-37
 114        <activity
-114-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:90:9-92:40
+114-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:94:9-96:40
 115            android:name="com.travel.travellingbug.ui.activities.PickUpNotes"
-115-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:91:13-54
+115-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:95:13-54
 116            android:exported="false" />
-116-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:92:13-37
+116-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:96:13-37
 117        <activity
-117-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:93:9-95:40
+117-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:97:9-99:40
 118            android:name="com.travel.travellingbug.ui.activities.HistoryDetailsUser"
-118-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:94:13-61
+118-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:98:13-61
 119            android:exported="false" />
-119-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:95:13-37
+119-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:99:13-37
 120        <activity
-120-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:96:9-98:40
+120-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:100:9-102:40
 121            android:name="com.travel.travellingbug.ui.activities.CustomStopOverLocation"
-121-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:97:13-65
+121-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:101:13-65
 122            android:exported="false" />
-122-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:98:13-37
+122-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:102:13-37
 123        <activity
-123-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:99:9-101:40
+123-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:103:9-105:40
 124            android:name="com.travel.travellingbug.ui.activities.UserProfileActivity"
-124-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:100:13-62
+124-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:104:13-62
 125            android:exported="false" />
-125-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:101:13-37
+125-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:105:13-37
 126        <activity
-126-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:102:9-104:40
+126-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:106:9-108:40
 127            android:name="com.travel.travellingbug.ui.activities.TrackActivity"
-127-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:103:13-56
+127-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:107:13-56
 128            android:exported="false" />
-128-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:104:13-37
+128-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:108:13-37
 129        <activity
-129-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:105:9-107:40
+129-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:109:9-111:40
 130            android:name="com.travel.travellingbug.ui.activities.RideRequestDetailsActivity"
-130-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:106:13-69
+130-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:110:13-69
 131            android:exported="false" />
-131-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:107:13-37
+131-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:111:13-37
 132        <activity
-132-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:108:9-110:40
+132-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:112:9-114:40
 133            android:name="com.travel.travellingbug.ui.activities.RideRequest"
-133-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:109:13-54
+133-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:113:13-54
 134            android:exported="false" />
-134-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:110:13-37
+134-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:114:13-37
 135        <activity
-135-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:111:9-113:40
+135-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:115:9-117:40
 136            android:name="com.travel.travellingbug.ui.activities.UpdatePreference"
-136-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:112:13-59
+136-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:116:13-59
 137            android:exported="false" />
-137-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:113:13-37
+137-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:117:13-37
 138        <activity
-138-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:114:9-116:40
+138-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:118:9-120:40
 139            android:name="com.travel.travellingbug.ui.activities.ConfirmRideRequestActivity"
-139-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:115:13-69
+139-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:119:13-69
 140            android:exported="false" />
-140-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:116:13-37
+140-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:120:13-37
 141        <activity
-141-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:117:9-119:40
+141-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:121:9-123:40
 142            android:name="com.travel.travellingbug.ui.activities.FindRideDetails"
-142-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:118:13-58
+142-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:122:13-58
 143            android:exported="false" />
-143-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:119:13-37
+143-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:123:13-37
 144        <activity
-144-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:120:9-122:40
+144-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:124:9-126:40
 145            android:name="com.travel.travellingbug.ui.activities.FindRidesActivity"
-145-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:121:13-60
+145-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:125:13-60
 146            android:exported="false" />
-146-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:122:13-37
+146-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:126:13-37
 147        <activity
-147-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:123:9-125:40
+147-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:127:9-129:40
 148            android:name="com.travel.travellingbug.ui.activities.Payment"
-148-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:124:13-50
+148-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:128:13-50
 149            android:exported="false" />
-149-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:125:13-37
+149-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:129:13-37
 150        <activity
-150-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:126:9-128:40
+150-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:130:9-132:40
 151            android:name="com.travel.travellingbug.ui.activities.ProfilePictureActivity"
-151-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:127:13-65
+151-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:131:13-65
 152            android:exported="false" />
-152-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:128:13-37
+152-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:132:13-37
 153        <activity
-153-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:129:9-131:40
+153-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:133:9-135:40
 154            android:name="com.travel.travellingbug.ui.activities.PersonalDetailsActivity"
-154-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:130:13-66
+154-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:134:13-66
 155            android:exported="false" />
-155-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:131:13-37
+155-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:135:13-37
 156        <activity
-156-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:132:9-134:40
+156-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:136:9-138:40
 157            android:name="com.travel.travellingbug.ui.activities.VerifyEmailActivity"
-157-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:133:13-62
+157-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:137:13-62
 158            android:exported="false" />
-158-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:134:13-37
+158-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:138:13-37
 159        <activity
-159-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:135:9-137:40
+159-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:139:9-141:40
 160            android:name="com.travel.travellingbug.ui.activities.VerifyMobileNumberActivity"
-160-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:136:13-69
+160-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:140:13-69
 161            android:exported="false" />
-161-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:137:13-37
+161-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:141:13-37
 162        <activity
-162-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:138:9-140:40
+162-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:142:9-144:40
 163            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsMenufactureActivity"
-163-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:139:13-76
+163-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:143:13-76
 164            android:exported="false" />
-164-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:140:13-37
+164-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:144:13-37
 165        <activity
-165-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:141:9-143:40
+165-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:145:9-147:40
 166            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsColorActivity"
-166-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:142:13-70
+166-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:146:13-70
 167            android:exported="false" />
-167-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:143:13-37
+167-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:147:13-37
 168        <activity
-168-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:144:9-146:40
+168-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:148:9-150:40
 169            android:name="com.travel.travellingbug.ui.activities.DriverProfileActivity"
-169-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:145:13-64
+169-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:149:13-64
 170            android:exported="false" />
-170-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:146:13-37
+170-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:150:13-37
 171        <activity
-171-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:147:9-149:40
+171-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:151:9-153:40
 172            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsTypeActivity"
-172-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:148:13-69
+172-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:152:13-69
 173            android:exported="false" />
-173-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:149:13-37
+173-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:153:13-37
 174        <activity
-174-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:150:9-152:40
+174-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:154:9-156:40
 175            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsModelActivity"
-175-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:151:13-70
+175-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:155:13-70
 176            android:exported="false" />
-176-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:152:13-37
+176-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:156:13-37
 177        <activity
-177-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:153:9-155:40
+177-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:157:9-159:40
 178            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsBrandActivity"
-178-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:154:13-70
+178-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:158:13-70
 179            android:exported="false" />
-179-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:155:13-37
+179-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:159:13-37
 180        <activity
-180-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:156:9-158:40
+180-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:160:9-162:40
 181            android:name="com.travel.travellingbug.ui.activities.VehicleDetailsLicensePlateNumberActivity"
-181-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:157:13-83
+181-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:161:13-83
 182            android:exported="false" />
-182-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:158:13-37
+182-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:162:13-37
 183        <activity
-183-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:159:9-161:40
+183-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:163:9-165:40
 184            android:name="com.travel.travellingbug.ui.activities.TravelPreferenceActivityMain"
-184-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:160:13-71
+184-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:164:13-71
 185            android:exported="false" />
-185-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:161:13-37
+185-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:165:13-37
 186        <activity
-186-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:162:9-164:40
+186-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:166:9-168:40
 187            android:name="com.travel.travellingbug.ui.activities.TravelPreferenceActivity"
-187-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:163:13-67
+187-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:167:13-67
 188            android:exported="false" />
-188-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:164:13-37
+188-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:168:13-37
 189        <activity
-189-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:165:9-167:40
+189-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:169:9-171:40
 190            android:name="com.travel.travellingbug.ui.activities.VerifyIdMainActivity"
-190-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:166:13-63
+190-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:170:13-63
 191            android:exported="false" />
-191-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:167:13-37
+191-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:171:13-37
 192        <activity
-192-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:168:9-170:40
+192-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:172:9-174:40
 193            android:name="com.travel.travellingbug.ui.activities.VerifyIdActivity"
-193-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:169:13-59
+193-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:173:13-59
 194            android:exported="false" />
-194-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:170:13-37
+194-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:174:13-37
 195        <activity
-195-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:171:9-173:40
+195-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:175:9-177:40
 196            android:name="com.travel.travellingbug.ui.activities.HelpActivity"
-196-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:172:13-55
+196-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:176:13-55
 197            android:exported="false" />
-197-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:173:13-37
+197-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:177:13-37
 198        <activity
-198-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:174:9-176:40
+198-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:178:9-180:40
 199            android:name="com.travel.travellingbug.ui.activities.TermsAndConditionActivity"
-199-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:175:13-68
+199-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:179:13-68
 200            android:exported="false" />
-200-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:176:13-37
+200-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:180:13-37
 201        <activity
-201-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:177:9-179:40
+201-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:181:9-183:40
 202            android:name="com.travel.travellingbug.ui.activities.ChangePasswordActivity"
-202-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:178:13-65
+202-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:182:13-65
 203            android:exported="false" />
-203-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:179:13-37
+203-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:183:13-37
 204        <activity
-204-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:180:9-182:40
+204-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:184:9-186:40
 205            android:name="com.travel.travellingbug.ui.activities.ChangeAddressAdtivityTwo"
-205-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:181:13-67
+205-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:185:13-67
 206            android:exported="false" />
-206-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:182:13-37
+206-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:186:13-37
 207        <activity
-207-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:183:9-185:40
+207-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:187:9-189:40
 208            android:name="com.travel.travellingbug.ui.activities.ChangeAddressAdtivityOne"
-208-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:184:13-67
+208-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:188:13-67
 209            android:exported="false" />
-209-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:185:13-37
+209-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:189:13-37
 210        <activity
-210-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:186:9-188:39
+210-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:190:9-192:39
 211            android:name="com.travel.travellingbug.ui.activities.HomeScreenActivity"
-211-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:187:13-61
+211-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:191:13-61
 212            android:exported="true" />
-212-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:188:13-36
+212-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:192:13-36
 213        <activity
-213-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:189:9-192:59
+213-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:193:9-196:59
 214            android:name="com.travel.travellingbug.ui.activities.IntroScreen"
-214-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:190:13-54
+214-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:194:13-54
 215            android:exported="false"
-215-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:191:13-37
+215-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:195:13-37
 216            android:theme="@style/AppTheme.NoActionBar" />
-216-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:192:13-56
+216-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:196:13-56
 217        <activity
-217-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:193:9-197:59
+217-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:197:9-201:59
 218            android:name="com.travel.travellingbug.ui.activities.login.IntroActivity"
-218-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:194:13-62
+218-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:198:13-62
 219            android:configChanges="locale|orientation"
-219-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:195:13-55
+219-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:199:13-55
 220            android:screenOrientation="portrait"
-220-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:196:13-49
+220-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:200:13-49
 221            android:theme="@style/AppTheme.NoActionBar" />
-221-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:197:13-56
+221-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:201:13-56
 222        <activity
-222-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:198:9-202:59
+222-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:202:9-206:59
 223            android:name="com.travel.travellingbug.ui.activities.login.LoginActivity"
-223-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:199:13-62
+223-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:203:13-62
 224            android:configChanges="locale|orientation"
-224-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:200:13-55
+224-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:204:13-55
 225            android:screenOrientation="portrait"
-225-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:201:13-49
+225-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:205:13-49
 226            android:theme="@style/AppTheme.NoActionBar" />
-226-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:202:13-56
+226-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:206:13-56
 227        <activity
-227-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:203:9-206:78
+227-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:207:9-210:78
 228            android:name="com.travel.travellingbug.ui.activities.login.FaceBookLoginActivity"
-228-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:204:13-70
+228-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:208:13-70
 229            android:screenOrientation="portrait"
-229-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:205:13-49
+229-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:209:13-49
 230            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
-230-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:206:13-75
+230-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:210:13-75
 231        <activity
-231-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:207:9-210:78
+231-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:211:9-214:78
 232            android:name="com.travel.travellingbug.ui.activities.login.GoogleLoginActivity"
-232-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:208:13-68
+232-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:212:13-68
 233            android:screenOrientation="portrait"
-233-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:209:13-49
+233-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:213:13-49
 234            android:theme="@style/Theme.AppCompat.Transparent.NoActionBar" />
-234-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:210:13-75
+234-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:214:13-75
 235        <activity
-235-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:211:9-221:20
+235-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:215:9-225:20
 236            android:name="com.travel.travellingbug.ui.activities.NotificationTab"
-236-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:212:13-58
+236-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:216:13-58
 237            android:configChanges="orientation|keyboardHidden|screenSize"
-237-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:213:13-74
+237-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:217:13-74
 238            android:exported="true"
-238-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:214:13-36
+238-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:218:13-36
 239            android:theme="@style/AppTheme.NoActionBar" >
-239-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:215:13-56
+239-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:13-56
 240            <intent-filter>
-240-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:216:13-220:29
+240-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:220:13-224:29
 241                <action android:name="com.quickridejadriver.providers.TARGETNOTIFICATION" />
-241-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:217:17-93
-241-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:217:25-90
+241-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:221:17-93
+241-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:221:25-90
 242
 243                <category android:name="android.intent.category.DEFAULT" />
-243-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:17-76
-243-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:27-73
+243-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:17-76
+243-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:27-73
 244            </intent-filter>
 245        </activity>
 246        <activity android:name="com.travel.travellingbug.ui.activities.DocUploadActivity" />
-246-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:222:9-69
-246-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:222:19-66
+246-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:226:9-69
+246-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:226:19-66
 247
 248        <uses-library
-248-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:224:9-226:40
+248-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:228:9-230:40
 249            android:name="org.apache.http.legacy"
-249-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:225:13-50
+249-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:229:13-50
 250            android:required="false" />
-250-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:226:13-37
+250-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:230:13-37
 251
 252        <activity
-252-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:228:9-230:59
+252-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:232:9-234:59
 253            android:name="com.travel.travellingbug.ui.activities.WithdrawActivity"
-253-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:229:13-59
+253-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:233:13-59
 254            android:theme="@style/AppTheme.NoActionBar" />
-254-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:230:13-56
+254-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:234:13-56
 255        <activity
-255-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:231:9-233:59
+255-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:235:9-237:59
 256            android:name="com.travel.travellingbug.ui.activities.OtpVerification"
-256-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:232:13-58
+256-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:236:13-58
 257            android:theme="@style/AppTheme.NoActionBar" />
-257-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:233:13-56
+257-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:237:13-56
 258        <activity
-258-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:234:9-238:67
+258-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:238:9-242:67
 259            android:name="com.travel.travellingbug.ui.activities.WithdrawAmountActivity"
-259-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:235:13-65
+259-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:239:13-65
 260            android:screenOrientation="portrait"
-260-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:236:13-49
+260-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:240:13-49
 261            android:theme="@style/AppTheme.NoActionBar"
-261-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:237:13-56
+261-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:241:13-56
 262            android:windowSoftInputMode="stateHidden|adjustPan" />
-262-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:238:13-64
+262-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:242:13-64
 263        <activity android:name="com.travel.travellingbug.ui.activities.DocumentStatus" />
-263-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:239:9-66
-263-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:239:19-63
+263-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:243:9-66
+263-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:243:19-63
 264        <activity
-264-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:240:9-249:20
+264-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:244:9-253:20
 265            android:name="com.travel.travellingbug.ui.activities.SplashScreen"
-265-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:241:13-55
+265-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:245:13-55
 266            android:exported="true"
-266-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:242:13-36
+266-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:246:13-36
 267            android:theme="@style/AppTheme.NoActionBar" >
-267-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:243:13-56
+267-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:247:13-56
 268            <intent-filter>
-268-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:244:13-248:29
+268-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:248:13-252:29
 269                <action android:name="android.intent.action.MAIN" />
-269-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:245:17-69
-269-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:245:25-66
+269-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:249:17-69
+269-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:249:25-66
 270
 271                <category android:name="android.intent.category.LAUNCHER" />
-271-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:247:17-77
-271-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:247:27-74
+271-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:251:17-77
+271-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:251:27-74
 272            </intent-filter>
 273        </activity>
 274        <activity
-274-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:250:9-252:59
+274-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:254:9-256:59
 275            android:name="com.travel.travellingbug.Login"
-275-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:251:13-34
+275-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:255:13-34
 276            android:theme="@style/AppTheme.NoActionBar" />
-276-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:252:13-56
+276-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:256:13-56
 277        <activity
-277-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:253:9-255:59
+277-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:257:9-259:59
 278            android:name="com.travel.travellingbug.ui.activities.FullImage"
-278-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:254:13-52
+278-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:258:13-52
 279            android:theme="@style/AppTheme.NoActionBar" />
-279-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:255:13-56
+279-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:259:13-56
 280        <activity
-280-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:256:9-258:59
+280-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:260:9-262:59
 281            android:name="com.travel.travellingbug.ui.activities.login.SignUp"
-281-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:257:13-55
+281-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:261:13-55
 282            android:theme="@style/AppTheme.NoActionBar" />
-282-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:258:13-56
+282-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:262:13-56
 283        <activity
-283-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:259:9-263:58
+283-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:263:9-267:58
 284            android:name="com.travel.travellingbug.chat.UserChatActivity"
-284-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:260:13-50
+284-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:264:13-50
 285            android:screenOrientation="portrait"
-285-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:261:13-49
+285-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:265:13-49
 286            android:theme="@style/AppTheme.NoActionBar"
-286-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:262:13-56
+286-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:266:13-56
 287            android:windowSoftInputMode="adjustResize" />
-287-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:263:13-55
+287-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:267:13-55
 288        <activity
-288-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:264:9-267:59
+288-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:268:9-271:59
 289            android:name="com.travel.travellingbug.ui.activities.UserReview"
-289-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:265:13-53
+289-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:269:13-53
 290            android:screenOrientation="portrait"
-290-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:266:13-49
+290-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:270:13-49
 291            android:theme="@style/AppTheme.NoActionBar" />
-291-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:267:13-56
+291-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:271:13-56
 292        <activity
-292-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:268:9-271:59
+292-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:272:9-275:59
 293            android:name="com.travel.travellingbug.ui.activities.login.ForgotPassword"
-293-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:269:13-63
+293-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:273:13-63
 294            android:screenOrientation="portrait"
-294-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:270:13-49
+294-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:274:13-49
 295            android:theme="@style/AppTheme.NoActionBar" />
-295-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:271:13-56
+295-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:275:13-56
 296
 297        <meta-data
-297-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:273:9-275:54
+297-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:277:9-279:54
 298            android:name="com.google.android.geo.API_KEY"
-298-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:274:13-58
+298-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:278:13-58
 299            android:value="@string/google_map_api" />
-299-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:275:13-51
+299-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:279:13-51
 300        <meta-data
-300-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:276:9-278:69
+300-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:280:9-282:69
 301            android:name="com.google.android.gms.version"
-301-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:277:13-58
+301-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:281:13-58
 302            android:value="@integer/google_play_services_version" />
-302-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:278:13-66
+302-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:282:13-66
 303
 304        <activity
-304-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:280:9-285:58
+304-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:284:9-289:58
 305            android:name="com.travel.travellingbug.ui.activities.MainActivity"
-305-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:281:13-55
+305-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:285:13-55
 306            android:exported="true"
-306-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:282:13-36
+306-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:286:13-36
 307            android:label="@string/app_name"
-307-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:283:13-45
+307-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:287:13-45
 308            android:theme="@style/AppTheme.NoActionBar"
-308-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:284:13-56
+308-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:288:13-56
 309            android:windowSoftInputMode="adjustResize" />
-309-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:285:13-55
+309-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:289:13-55
 310        <activity
-310-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:286:9-291:57
+310-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:290:9-295:57
 311            android:name="com.travel.travellingbug.ui.activities.EditProfile"
-311-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:287:13-54
+311-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:291:13-54
 312            android:label="@string/app_name"
-312-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:288:13-45
+312-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:292:13-45
 313            android:screenOrientation="portrait"
-313-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:289:13-49
+313-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:293:13-49
 314            android:theme="@style/AppTheme.NoActionBar"
-314-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:290:13-56
+314-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:294:13-56
 315            android:windowSoftInputMode="stateHidden" />
-315-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:291:13-54
+315-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:295:13-54
 316        <activity
-316-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:292:9-297:57
+316-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:296:9-301:57
 317            android:name="com.travel.travellingbug.ui.activities.ShowProfile"
-317-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:293:13-54
+317-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:297:13-54
 318            android:label="@string/app_name"
-318-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:294:13-45
+318-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:298:13-45
 319            android:screenOrientation="portrait"
-319-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:295:13-49
+319-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:299:13-49
 320            android:theme="@style/AppTheme.NoActionBar"
-320-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:296:13-56
+320-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:300:13-56
 321            android:windowSoftInputMode="stateHidden" />
-321-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:297:13-54
+321-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:301:13-54
 322        <activity
-322-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:298:9-303:58
+322-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:302:9-307:58
 323            android:name="com.travel.travellingbug.ui.activities.HistoryDetails"
-323-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:299:13-57
+323-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:303:13-57
 324            android:label="@string/app_name"
-324-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:300:13-45
+324-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:304:13-45
 325            android:screenOrientation="portrait"
-325-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:301:13-49
+325-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:305:13-49
 326            android:theme="@style/AppTheme.NoActionBar"
-326-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:302:13-56
+326-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:306:13-56
 327            android:windowSoftInputMode="adjustResize" />
-327-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:303:13-55
+327-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:307:13-55
 328        <activity
-328-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:304:9-307:52
+328-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:308:9-311:52
 329            android:name="com.travel.travellingbug.ui.activities.HistoryActivity"
-329-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:305:13-58
+329-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:309:13-58
 330            android:label="History"
-330-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:306:13-36
+330-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:310:13-36
 331            android:screenOrientation="portrait" />
-331-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:307:13-49
+331-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:311:13-49
 332        <activity
-332-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:308:9-311:57
+332-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:312:9-315:57
 333            android:name="com.travel.travellingbug.ui.activities.CouponActivity"
-333-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:309:13-57
+333-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:313:13-57
 334            android:label="Coupon"
-334-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:310:13-35
+334-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:314:13-35
 335            android:windowSoftInputMode="stateHidden" />
-335-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:311:13-54
+335-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:315:13-54
 336        <activity
-336-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:312:9-317:58
+336-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:316:9-321:58
 337            android:name="com.travel.travellingbug.ui.activities.login.ChangePassword"
-337-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:313:13-63
+337-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:317:13-63
 338            android:label="@string/app_name"
-338-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:314:13-45
+338-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:318:13-45
 339            android:screenOrientation="portrait"
-339-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:315:13-49
+339-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:319:13-49
 340            android:theme="@style/AppTheme.NoActionBar"
-340-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:316:13-56
+340-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:320:13-56
 341            android:windowSoftInputMode="adjustResize" />
-341-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:317:13-55
+341-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:321:13-55
 342        <activity
-342-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:318:9-323:58
+342-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:322:9-327:58
 343            android:name="com.travel.travellingbug.ui.activities.CustomGooglePlacesSearch"
-343-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:319:13-67
+343-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:323:13-67
 344            android:label="@string/app_name"
-344-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:320:13-45
+344-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:324:13-45
 345            android:screenOrientation="portrait"
-345-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:321:13-49
+345-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:325:13-49
 346            android:theme="@style/AppTheme.NoActionBar"
-346-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:322:13-56
+346-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:326:13-56
 347            android:windowSoftInputMode="adjustResize" />
-347-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:323:13-55
+347-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:327:13-55
 348
 349        <service
-349-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:325:9-331:19
+349-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:329:9-335:19
 350            android:name="com.travel.travellingbug.fcm.FCMService"
-350-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:326:13-43
+350-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:330:13-43
 351            android:exported="true" >
-351-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:327:13-36
+351-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:331:13-36
 352            <intent-filter>
-352-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:328:13-330:29
+352-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:332:13-334:29
 353                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-353-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:329:17-78
-353-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:329:25-75
+353-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:333:17-78
+353-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:333:25-75
 354            </intent-filter>
 355        </service>
 356
 357        <meta-data
-357-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:333:9-335:71
+357-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:337:9-339:71
 358            android:name="com.google.firebase.messaging.default_notification_channel_id"
-358-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:334:13-89
+358-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:338:13-89
 359            android:value="@string/default_notification_channel_id" />
-359-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:335:13-68
+359-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:339:13-68
 360
 361        <receiver
-361-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:337:9-339:39
+361-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:341:9-343:39
 362            android:name="com.travel.travellingbug.fcm.MyBroadcastReceiver"
-362-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:338:13-52
+362-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:342:13-52
 363            android:exported="true" />
-363-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:339:13-36
+363-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:343:13-36
 364
 365        <meta-data
-365-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:341:9-343:57
+365-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:345:9-347:57
 366            android:name="com.google.firebase.messaging.default_notification_icon"
-366-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:342:13-83
+366-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:346:13-83
 367            android:resource="@drawable/app_logo_org" />
-367-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:343:13-54
+367-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:347:13-54
 368        <!--
 369 Set color used with incoming notification messages. This is used when no color is set for the incoming
 370             notification message. See README(https://goo.gl/6BKBk7) for more.
 371        -->
 372        <meta-data
-372-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:348:9-350:53
+372-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:352:9-354:53
 373            android:name="com.google.firebase.messaging.default_notification_color"
-373-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:349:13-84
+373-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:353:13-84
 374            android:resource="@color/colorAccent" />
-374-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:350:13-50
+374-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:354:13-50
 375        <meta-data
-375-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:351:9-353:48
+375-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:355:9-357:48
 376            android:name="com.facebook.accountkit.ApplicationName"
-376-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:352:13-67
+376-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:356:13-67
 377            android:value="@string/app_name" />
-377-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:353:13-45
+377-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:357:13-45
 378        <meta-data
-378-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:354:9-356:55
+378-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:358:9-360:55
 379            android:name="com.facebook.sdk.ApplicationId"
-379-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:355:13-58
+379-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:359:13-58
 380            android:value="@string/facebook_app_id" />
-380-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:356:13-52
+380-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:360:13-52
 381        <meta-data
-381-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:357:9-359:61
+381-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:361:9-363:61
 382            android:name="com.facebook.sdk.ClientToken"
-382-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:358:13-56
+382-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:362:13-56
 383            android:value="@string/facebook_client_token" />
-383-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:359:13-58
+383-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:363:13-58
 384
 385        <activity
-385-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:361:9-364:48
+385-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:365:9-368:48
 386            android:name="com.facebook.FacebookActivity"
-386-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:362:13-57
+386-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:366:13-57
 387            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-387-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:363:13-96
+387-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:367:13-96
 388            android:label="@string/app_name"
-388-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:364:13-45
+388-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:368:13-45
 389            android:theme="@style/com_facebook_activity_theme" />
 389-->[com.facebook.android:facebook-common:16.1.3] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7f3c5288caa985118da54ce80e3f59f\jetified-facebook-common-16.1.2\AndroidManifest.xml:25:13-63
 390        <activity
-390-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:365:9-378:20
+390-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:369:9-382:20
 391            android:name="com.facebook.CustomTabActivity"
-391-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:366:13-58
+391-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:370:13-58
 392            android:exported="true" >
-392-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:367:13-36
+392-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:371:13-36
 393            <intent-filter>
-393-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:368:13-377:29
+393-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:372:13-381:29
 394                <action android:name="android.intent.action.VIEW" />
-394-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:369:17-69
-394-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:369:25-66
+394-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:373:17-69
+394-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:373:25-66
 395
 396                <category android:name="android.intent.category.DEFAULT" />
-396-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:17-76
-396-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:27-73
+396-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:17-76
+396-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:27-73
 397                <category android:name="android.intent.category.BROWSABLE" />
-397-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:372:17-78
-397-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:372:27-75
+397-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:376:17-78
+397-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:376:27-75
 398
 399                <data android:scheme="@string/fb_login_protocol_scheme" />
-399-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:374:17-376:55
-399-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:375:21-70
+399-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:378:17-380:55
+399-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:379:21-70
 400            </intent-filter>
 401            <intent-filter>
 401-->[com.facebook.android:facebook-common:16.1.3] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\a7f3c5288caa985118da54ce80e3f59f\jetified-facebook-common-16.1.2\AndroidManifest.xml:31:13-40:29
 402                <action android:name="android.intent.action.VIEW" />
-402-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:369:17-69
-402-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:369:25-66
+402-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:373:17-69
+402-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:373:25-66
 403
 404                <category android:name="android.intent.category.DEFAULT" />
-404-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:17-76
-404-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:27-73
+404-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:17-76
+404-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:27-73
 405                <category android:name="android.intent.category.BROWSABLE" />
-405-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:372:17-78
-405-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:372:27-75
+405-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:376:17-78
+405-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:376:27-75
 406
 407                <data
-407-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:374:17-376:55
+407-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:378:17-380:55
 408                    android:host="cct.com.travel.travellingbug"
 409                    android:scheme="fbconnect" />
-409-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:375:21-70
+409-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:379:21-70
 410            </intent-filter>
 411        </activity>
 412        <activity
-412-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:379:9-383:59
+412-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:383:9-387:59
 413            android:name="com.travel.travellingbug.ui.activities.SosCallActivity"
-413-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:380:13-58
+413-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:384:13-58
 414            android:hardwareAccelerated="false"
-414-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:381:13-48
+414-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:385:13-48
 415            android:screenOrientation="portrait"
-415-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:382:13-49
+415-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:386:13-49
 416            android:theme="@style/AppTheme.NoActionBar" />
-416-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:383:13-56
+416-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:387:13-56
 417        <activity
-417-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:384:9-388:59
+417-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:388:9-392:59
 418            android:name="com.travel.travellingbug.ui.activities.ComplaintsAcivity"
-418-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:385:13-60
+418-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:389:13-60
 419            android:hardwareAccelerated="false"
-419-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:386:13-48
+419-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:390:13-48
 420            android:screenOrientation="portrait"
-420-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:387:13-49
+420-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:391:13-49
 421            android:theme="@style/AppTheme.NoActionBar" />
-421-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:388:13-56
+421-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:392:13-56
 422        <activity
-422-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:389:9-392:59
+422-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:393:9-396:59
 423            android:name="com.travel.travellingbug.ui.activities.LegalActivity"
-423-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:390:13-56
+423-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:394:13-56
 424            android:hardwareAccelerated="false"
-424-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:391:13-48
+424-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:395:13-48
 425            android:theme="@style/AppTheme.NoActionBar" />
-425-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:392:13-56
+425-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:396:13-56
 426        <activity
-426-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:393:9-397:59
+426-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:397:9-401:59
 427            android:name="com.travel.travellingbug.ui.activities.TermsOfUseActivity"
-427-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:394:13-61
+427-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:398:13-61
 428            android:hardwareAccelerated="false"
-428-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:395:13-48
+428-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:399:13-48
 429            android:screenOrientation="portrait"
-429-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:396:13-49
+429-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:400:13-49
 430            android:theme="@style/AppTheme.NoActionBar" />
-430-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:397:13-56
+430-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:401:13-56
 431        <activity
-431-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:398:9-402:59
+431-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:402:9-406:59
 432            android:name="com.travel.travellingbug.ui.activities.PrivacyPolicyActivity"
-432-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:399:13-64
+432-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:403:13-64
 433            android:hardwareAccelerated="false"
-433-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:400:13-48
+433-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:404:13-48
 434            android:screenOrientation="portrait"
-434-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:401:13-49
+434-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:405:13-49
 435            android:theme="@style/AppTheme.NoActionBar" />
-435-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:402:13-56
+435-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:406:13-56
 436        <activity
-436-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:403:9-407:59
+436-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:407:9-411:59
 437            android:name="com.travel.travellingbug.ui.activities.UpdateProfile"
-437-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:404:13-56
+437-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:408:13-56
 438            android:hardwareAccelerated="false"
-438-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:405:13-48
+438-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:409:13-48
 439            android:screenOrientation="portrait"
-439-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:406:13-49
+439-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:410:13-49
 440            android:theme="@style/AppTheme.NoActionBar" />
-440-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:407:13-56
+440-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:411:13-56
 441        <activity
-441-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:408:9-413:58
+441-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:412:9-417:58
 442            android:name="com.travel.travellingbug.ui.activities.WaitingForApproval"
-442-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:409:13-61
+442-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:413:13-61
 443            android:label="@string/app_name"
-443-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:410:13-45
+443-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:414:13-45
 444            android:screenOrientation="portrait"
-444-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:411:13-49
+444-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:415:13-49
 445            android:theme="@style/AppTheme.NoActionBar"
-445-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:412:13-56
+445-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:416:13-56
 446            android:windowSoftInputMode="adjustResize" />
-446-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:413:13-55
+446-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:417:13-55
 447        <activity
-447-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:414:9-418:59
+447-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:418:9-422:59
 448            android:name="com.travel.travellingbug.ui.activities.FavouritePlaceSearch"
-448-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:415:13-63
+448-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:419:13-63
 449            android:hardwareAccelerated="false"
-449-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:416:13-48
+449-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:420:13-48
 450            android:screenOrientation="portrait"
-450-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:417:13-49
+450-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:421:13-49
 451            android:theme="@style/AppTheme.NoActionBar" />
-451-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:418:13-56
+451-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:422:13-56
 452        <activity
-452-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:419:9-423:59
+452-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:423:9-427:59
 453            android:name="com.travel.travellingbug.ui.activities.DocumentUpload"
-453-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:420:13-57
+453-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:424:13-57
 454            android:configChanges="orientation|keyboardHidden"
-454-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:421:13-63
+454-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:425:13-63
 455            android:screenOrientation="portrait"
-455-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:422:13-49
+455-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:426:13-49
 456            android:theme="@style/AppTheme.NoActionBar" />
-456-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:423:13-56
+456-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:427:13-56
 457        <activity
-457-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:424:9-428:59
+457-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:428:9-432:59
 458            android:name="com.travel.travellingbug.ui.activities.TrackActivityDriver"
-458-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:425:13-62
+458-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:429:13-62
 459            android:configChanges="orientation|keyboardHidden"
-459-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:426:13-63
+459-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:430:13-63
 460            android:screenOrientation="portrait"
-460-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:427:13-49
+460-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:431:13-49
 461            android:theme="@style/AppTheme.NoActionBar" />
-461-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:428:13-56
+461-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:432:13-56
 462        <activity
-462-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:429:9-432:59
+462-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:433:9-436:59
 463            android:name="com.travel.travellingbug.ui.activities.Profile"
-463-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:430:13-50
+463-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:434:13-50
 464            android:configChanges="orientation|keyboardHidden"
-464-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:431:13-63
+464-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:435:13-63
 465            android:theme="@style/AppTheme.NoActionBar" />
-465-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:432:13-56
+465-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:436:13-56
 466        <activity
-466-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:433:9-437:59
+466-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:437:9-441:59
 467            android:name="com.travel.travellingbug.ui.activities.EarningActivity"
-467-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:434:13-58
+467-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:438:13-58
 468            android:configChanges="orientation|keyboardHidden"
-468-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:435:13-63
+468-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:439:13-63
 469            android:screenOrientation="portrait"
-469-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:436:13-49
+469-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:440:13-49
 470            android:theme="@style/AppTheme.NoActionBar" />
-470-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:437:13-56
+470-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:441:13-56
 471
 472        <provider
 473            android:name="androidx.core.content.FileProvider"
-473-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:440:13-62
+473-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:444:13-62
 474            android:authorities="com.travel.travellingbug.provider"
-474-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:441:13-60
+474-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:445:13-60
 475            android:exported="false"
-475-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:442:13-37
+475-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:446:13-37
 476            android:grantUriPermissions="true" >
-476-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:443:13-47
+476-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:447:13-47
 477            <meta-data
-477-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:444:13-446:54
+477-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:448:13-450:54
 478                android:name="android.support.FILE_PROVIDER_PATHS"
-478-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:445:17-67
+478-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:449:17-67
 479                android:resource="@xml/file_paths" />
-479-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:446:17-51
+479-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:450:17-51
 480        </provider>
 481
 482        <activity
@@ -1169,10 +1169,10 @@
 596            android:exported="false" >
 596-->[com.google.firebase:firebase-messaging:23.1.2] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\d6e2c0600075042eb292b97105d1df82\jetified-firebase-messaging-23.1.2\AndroidManifest.xml:47:13-37
 597            <intent-filter android:priority="-500" >
-597-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:328:13-330:29
+597-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:332:13-334:29
 598                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-598-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:329:17-78
-598-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:329:25-75
+598-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:333:17-78
+598-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:333:25-75
 599            </intent-filter>
 600        </service>
 601
@@ -1191,22 +1191,22 @@
 608            <intent-filter>
 608-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\6095429a9ac171e995a90aa2ba2ac93f\jetified-firebase-auth-22.0.0\AndroidManifest.xml:35:13-45:29
 609                <action android:name="android.intent.action.VIEW" />
-609-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:369:17-69
-609-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:369:25-66
+609-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:373:17-69
+609-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:373:25-66
 610
 611                <category android:name="android.intent.category.DEFAULT" />
-611-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:17-76
-611-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:27-73
+611-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:17-76
+611-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:27-73
 612                <category android:name="android.intent.category.BROWSABLE" />
-612-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:372:17-78
-612-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:372:27-75
+612-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:376:17-78
+612-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:376:27-75
 613
 614                <data
-614-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:374:17-376:55
+614-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:378:17-380:55
 615                    android:host="firebase.auth"
 616                    android:path="/"
 617                    android:scheme="genericidp" />
-617-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:375:21-70
+617-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:379:21-70
 618            </intent-filter>
 619        </activity>
 620        <activity
@@ -1224,22 +1224,22 @@
 626            <intent-filter>
 626-->[com.google.firebase:firebase-auth:22.0.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\6095429a9ac171e995a90aa2ba2ac93f\jetified-firebase-auth-22.0.0\AndroidManifest.xml:53:13-63:29
 627                <action android:name="android.intent.action.VIEW" />
-627-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:369:17-69
-627-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:369:25-66
+627-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:373:17-69
+627-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:373:25-66
 628
 629                <category android:name="android.intent.category.DEFAULT" />
-629-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:17-76
-629-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:219:27-73
+629-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:17-76
+629-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:223:27-73
 630                <category android:name="android.intent.category.BROWSABLE" />
-630-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:372:17-78
-630-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:372:27-75
+630-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:376:17-78
+630-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:376:27-75
 631
 632                <data
-632-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:374:17-376:55
+632-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:378:17-380:55
 633                    android:host="firebase.auth"
 634                    android:path="/"
 635                    android:scheme="recaptcha" />
-635-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:375:21-70
+635-->C:\Users\Demon\Desktop\Driver_App\Driver\app\src\main\AndroidManifest.xml:379:21-70
 636            </intent-filter>
 637        </activity>
 638        <activity

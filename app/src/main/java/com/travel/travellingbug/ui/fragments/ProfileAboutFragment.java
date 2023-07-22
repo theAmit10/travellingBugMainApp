@@ -45,6 +45,7 @@ import com.travel.travellingbug.ui.activities.ProfilePictureActivity;
 import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.ui.activities.TravelPreferenceActivity;
 import com.travel.travellingbug.ui.activities.TravelPreferenceActivityMain;
+import com.travel.travellingbug.ui.activities.UpdatePhoneNumber;
 import com.travel.travellingbug.ui.activities.UpdateProfile;
 import com.travel.travellingbug.ui.activities.VehicleDetailsLicensePlateNumberActivity;
 import com.travel.travellingbug.ui.activities.VerifyIdActivity;
@@ -271,7 +272,7 @@ public class ProfileAboutFragment extends Fragment {
         mobile_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), UpdateProfile.class);
+                Intent intent = new Intent(getContext(), UpdatePhoneNumber.class);
                 intent.putExtra("parameter", "mobile");
                 intent.putExtra("value", mobile_no.getText().toString());
                 startActivityForResult(intent, 11);

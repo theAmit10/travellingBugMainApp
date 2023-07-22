@@ -1,6 +1,5 @@
 package com.travel.travellingbug.ui.activities;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -16,9 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.android.volley.Request;
 import com.google.android.material.textfield.TextInputLayout;
@@ -42,16 +40,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 import es.dmoral.toasty.Toasty;
 
 public class UpdatePhoneNumber extends AppCompatActivity implements View.OnClickListener {
 
     ImageView backArrow;
+
+    public static int APP_REQUEST_CODE = 99;
     TextView toolName;
     String parameter, value;
     EditText editText;
+    Dialog dialog;
     TextInputLayout text_input_layout;
     Button btnUpdate, getOtpButton;
     Boolean isInternet;
@@ -104,6 +104,36 @@ public class UpdatePhoneNumber extends AppCompatActivity implements View.OnClick
         btnUpdate.setOnClickListener(this);
 
 
+        getOtpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (etName.getText().toString().equals("") ||
+                        etName.getText().toString().equalsIgnoreCase(getString(R.string.first_name))) {
+                    displayMessage("Phone Number Required");
+                } else if (isInternet) {
+
+                    dialog = new Dialog(UpdatePhoneNumber.this, R.style.AppTheme_NoActionBar);
+
+
+                    String phone = ccp.getSelectedCountryCodeWithPlus() + etName.getText().toString();
+
+                    SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
+                    SharedHelper.putKey(getApplicationContext(), "mobile", phone);
+                    Log.v("Phonecode", phone + " ");
+//                    registerAPI();
+                    Intent intent = new Intent(UpdatePhoneNumber.this, OtpVerification.class);
+                    intent.putExtra("phonenumber", phone);
+                    startActivityForResult(intent, APP_REQUEST_CODE);
+
+
+                } else {
+                    displayMessage(getString(R.string.something_went_wrong_net));
+                }
+            }
+
+        });
+
+
 //        getOtpButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -115,135 +145,130 @@ public class UpdatePhoneNumber extends AppCompatActivity implements View.OnClick
 //        Twilio.init();
 
 
-
-
-        getOtpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (etName.getText().toString().equals("") ||
-                        etName.getText().toString().equalsIgnoreCase(getString(R.string.first_name))) {
-                    displayMessage("Phone Number Required");
-                } else if (isInternet) {
-
-//                    dialog = new Dialog(SignUp.this, R.style.AppTheme_NoActionBar);
-                    Toast.makeText(UpdatePhoneNumber.this, "Processing", Toast.LENGTH_SHORT).show();
-
-
-                    String phone = ccp.getSelectedCountryCodeWithPlus() + etName.getText().toString();
-
-//                    SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
-//                    SharedHelper.putKey(getApplicationContext(), "mobile", phone);
-
-//                    String phone = phoneID.substring(1, phoneID.length());
-
-
-                    Log.v("Phonecode", phone + " ");
-//                    registerAPI();
-//                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
-//                    intent.putExtra("phonenumber", phone);
-//                    startActivityForResult(intent, APP_REQUEST_CODE);
-
-
-                    String phoneNumber = phone;  // Recipient's phone number
-
-
-
-                    Random random = new Random();
-                    String otp_code = String.format("%06d", random.nextInt(10000));
-
-                    System.out.println("number : "+phoneNumber);
-                    System.out.println("number code : "+otp_code);
-//                    System.out.printf("OTP : " + otp_code);
-                    String verificationCode = "112233";  // Verification code
-
-//                    sendSMS(phoneNumber, verificationCode);
-
-//                    String phoneNumber = "+1234567890";  // Recipient's phone number
-//                    String verificationCode = generateVerificationCode();  // Generate the verification code
-
-                    // Check if the SEND_SMS permission is already granted
-                    if (ContextCompat.checkSelfPermission(UpdatePhoneNumber.this, Manifest.permission.SEND_SMS)
-                            == PackageManager.PERMISSION_GRANTED) {
-                        // Permission already granted, proceed with sending SMS
-                        TwilioSMSHelper.sendVerificationCode(phoneNumber, verificationCode);
-                    } else {
-                        // Permission is not granted, request it from the user
-                        ActivityCompat.requestPermissions(UpdatePhoneNumber.this, new String[]{Manifest.permission.SEND_SMS},
-                                PERMISSION_REQUEST_SEND_SMS);
-                        System.out.println("no permission");
-                    }
-
-
-
-
-
-
-
-                } else {
-                    displayMessage(getString(R.string.something_went_wrong_net));
-                }
-            }
-
-
-//                if(!input_mobile_number.getText().toString().trim().isEmpty()){
-//                    if((input_mobile_number.getText().toString().trim()).length() == 10) {
-////                        Intent intent = new Intent(EnterPhoneNumberScreen.this, VerifyOtpScreen.class);
-//                        intent.putExtra("mobile", input_mobile_number.getText().toString());
-//                        startActivity(intent);
+//        getOtpButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
 //
-//                        progressBar.setVisibility(View.VISIBLE);
-//                        getOtpButton.setVisibility(View.INVISIBLE);
-
-//                        otpSend();
-//                        FirebaseAuth.getInstance().getFirebaseAuthSettings().setAppVerificationDisabledForTesting(true);
-
-//                        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-//                                "+91" + input_mobile_number.getText().toString(),
-//                                60,
-//                                TimeUnit.SECONDS,
-//                                EnterPhoneNumberScreen.this,
-//                                new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-//                                    @Override
-//                                    public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-//                                        progressBar.setVisibility(View.GONE);
-//                                        getOtpButton.setVisibility(View.VISIBLE);
-//                                    }
+//                if (etName.getText().toString().equals("") ||
+//                        etName.getText().toString().equalsIgnoreCase(getString(R.string.first_name))) {
+//                    displayMessage("Phone Number Required");
+//                } else if (isInternet) {
 //
-//                                    @Override
-//                                    public void onVerificationFailed(@NonNull FirebaseException e) {
-//                                        progressBar.setVisibility(View.GONE);
-//                                        getOtpButton.setVisibility(View.VISIBLE);
-//                                        Toast.makeText(EnterPhoneNumberScreen.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                                        System.out.println("error " +e.getMessage());
-//                                    }
-//
-//                                    @Override
-//                                    public void onCodeSent(@NonNull String backendOtp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-//                                        progressBar.setVisibility(View.GONE);
-//                                        getOtpButton.setVisibility(View.VISIBLE);
-//                                        Intent intent = new Intent(EnterPhoneNumberScreen.this, VerifyOtpScreen.class);
-//                                        intent.putExtra("mobile", input_mobile_number.getText().toString().trim());
-//                                        intent.putExtra("backendOtp",backendOtp);
-//                                        startActivity(intent);
-//                                    }
-//                                }
-//                        );
+////                    dialog = new Dialog(SignUp.this, R.style.AppTheme_NoActionBar);
+//                    Toast.makeText(UpdatePhoneNumber.this, "Processing", Toast.LENGTH_SHORT).show();
 //
 //
-//                    }else{
-//                        Toast.makeText(EnterPhoneNumberScreen.this, "Please Enter correct Number ", Toast.LENGTH_SHORT).show();
+//                    String phone = ccp.getSelectedCountryCodeWithPlus() + etName.getText().toString();
+//
+////                    SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
+////                    SharedHelper.putKey(getApplicationContext(), "mobile", phone);
+//
+////                    String phone = phoneID.substring(1, phoneID.length());
+//
+//
+//                    Log.v("Phonecode", phone + " ");
+////                    registerAPI();
+////                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
+////                    intent.putExtra("phonenumber", phone);
+////                    startActivityForResult(intent, APP_REQUEST_CODE);
+//
+//
+//                    String phoneNumber = phone;  // Recipient's phone number
+//
+//
+//
+//                    Random random = new Random();
+//                    String otp_code = String.format("%06d", random.nextInt(10000));
+//
+//                    System.out.println("number : "+phoneNumber);
+//                    System.out.println("number code : "+otp_code);
+////                    System.out.printf("OTP : " + otp_code);
+//                    String verificationCode = "112233";  // Verification code
+//
+////                    sendSMS(phoneNumber, verificationCode);
+//
+////                    String phoneNumber = "+1234567890";  // Recipient's phone number
+////                    String verificationCode = generateVerificationCode();  // Generate the verification code
+//
+//                    // Check if the SEND_SMS permission is already granted
+//                    if (ContextCompat.checkSelfPermission(UpdatePhoneNumber.this, Manifest.permission.SEND_SMS)
+//                            == PackageManager.PERMISSION_GRANTED) {
+//                        // Permission already granted, proceed with sending SMS
+//                        TwilioSMSHelper.sendVerificationCode(phoneNumber, verificationCode);
+//                    } else {
+//                        // Permission is not granted, request it from the user
+//                        ActivityCompat.requestPermissions(UpdatePhoneNumber.this, new String[]{Manifest.permission.SEND_SMS},
+//                                PERMISSION_REQUEST_SEND_SMS);
+//                        System.out.println("no permission");
 //                    }
-//                }else{
-//                    Toast.makeText(EnterPhoneNumberScreen.this, "Enter Mobile Number ", Toast.LENGTH_SHORT).show();
+//
+//
+//
+//
+//
+//
+//
+//                } else {
+//                    displayMessage(getString(R.string.something_went_wrong_net));
 //                }
 //            }
-
-
-        });
-
-
-
+//
+//
+////                if(!input_mobile_number.getText().toString().trim().isEmpty()){
+////                    if((input_mobile_number.getText().toString().trim()).length() == 10) {
+//////                        Intent intent = new Intent(EnterPhoneNumberScreen.this, VerifyOtpScreen.class);
+////                        intent.putExtra("mobile", input_mobile_number.getText().toString());
+////                        startActivity(intent);
+////
+////                        progressBar.setVisibility(View.VISIBLE);
+////                        getOtpButton.setVisibility(View.INVISIBLE);
+//
+////                        otpSend();
+////                        FirebaseAuth.getInstance().getFirebaseAuthSettings().setAppVerificationDisabledForTesting(true);
+//
+////                        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+////                                "+91" + input_mobile_number.getText().toString(),
+////                                60,
+////                                TimeUnit.SECONDS,
+////                                EnterPhoneNumberScreen.this,
+////                                new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+////                                    @Override
+////                                    public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+////                                        progressBar.setVisibility(View.GONE);
+////                                        getOtpButton.setVisibility(View.VISIBLE);
+////                                    }
+////
+////                                    @Override
+////                                    public void onVerificationFailed(@NonNull FirebaseException e) {
+////                                        progressBar.setVisibility(View.GONE);
+////                                        getOtpButton.setVisibility(View.VISIBLE);
+////                                        Toast.makeText(EnterPhoneNumberScreen.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+////                                        System.out.println("error " +e.getMessage());
+////                                    }
+////
+////                                    @Override
+////                                    public void onCodeSent(@NonNull String backendOtp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+////                                        progressBar.setVisibility(View.GONE);
+////                                        getOtpButton.setVisibility(View.VISIBLE);
+////                                        Intent intent = new Intent(EnterPhoneNumberScreen.this, VerifyOtpScreen.class);
+////                                        intent.putExtra("mobile", input_mobile_number.getText().toString().trim());
+////                                        intent.putExtra("backendOtp",backendOtp);
+////                                        startActivity(intent);
+////                                    }
+////                                }
+////                        );
+////
+////
+////                    }else{
+////                        Toast.makeText(EnterPhoneNumberScreen.this, "Please Enter correct Number ", Toast.LENGTH_SHORT).show();
+////                    }
+////                }else{
+////                    Toast.makeText(EnterPhoneNumberScreen.this, "Enter Mobile Number ", Toast.LENGTH_SHORT).show();
+////                }
+////            }
+//
+//
+//        });
 
 
     }
@@ -264,15 +289,65 @@ public class UpdatePhoneNumber extends AppCompatActivity implements View.OnClick
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (data != null) {
+            if (requestCode == APP_REQUEST_CODE) { // confirm that this response matches your request
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+//                registerAPI();
+//                finish();
+                getOtpButton.setVisibility(View.GONE);
+                if (data.getStringExtra("verified_number") != null) {
+
+                    String phoneID = data.getStringExtra("verified_number");
+                    String phone = phoneID.substring(1, phoneID.length());
+                    editText.setText(phone);
+
+                    if (editText.getText().toString().equals("")) {
+                        text_input_layout.setError("This field is not empty");
+                    } else if (editText.getText().toString().equals("Confirm your email")) {
+                        text_input_layout.setError("This field is not empty");
+                    } else if (editText.getText().toString().equals("Update Name")) {
+                        text_input_layout.setError("This field is not empty");
+                    } else if (editText.getText().toString().equals("Update Account Email")) {
+                        text_input_layout.setError("This field is not empty");
+                    } else if (editText.getText().toString().equals("Update Mobile No")) {
+                        text_input_layout.setError("This field is not empty");
+                    } else if (editText.getText().toString().equals("Update a Mini Bio")) {
+                        text_input_layout.setError("This field is not empty");
+                    } else if (editText.getText().toString().equals("Confirm your email")) {
+                        text_input_layout.setError("This field is not empty");
+                    } else if (editText.getText().toString().equals("Add a mini bio")) {
+                        text_input_layout.setError("This field is not empty");
+                    } else if (editText.getText().toString().equals("Enter Name")) {
+                        text_input_layout.setError("This field is not empty");
+                    } else {
+                        if (isInternet) {
+
+                            SharedHelper.putKey(getApplicationContext(), parameter, editText.getText().toString());
+                            updateProfileWithoutImage();
+
+
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
     public void sendSMS(String toPhoneNumber, String verificationCode) {
 //        Twilio.init("abcd","1234");
 
-        System.out.println("id : "+ACCOUNT_SID);
-        System.out.println("id : "+ AUTH_TOKEN);
+        System.out.println("id : " + ACCOUNT_SID);
+        System.out.println("id : " + AUTH_TOKEN);
 
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         String fromPhoneNumber = "+919564200516";
-
 
 
         try {
@@ -300,10 +375,7 @@ public class UpdatePhoneNumber extends AppCompatActivity implements View.OnClick
         }
 
 
-
-
     }
-
 
 
     private void getIntentData() {
