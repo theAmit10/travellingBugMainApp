@@ -358,12 +358,12 @@ public class MainActivity extends AppCompatActivity {
             txtName.setText(SharedHelper.getKey(context, "first_name"));
         }
 
-        if (SharedHelper.getKey(context, "approval_status").equals("new") ||
-                SharedHelper.getKey(context, "approval_status").equals("onboarding")) {
-            approvaltxt.setTextColor(Color.YELLOW);
+        if (SharedHelper.getKey(context, "status").equals("new") ||
+                SharedHelper.getKey(context, "status").equals("onboarding")) {
+//            approvaltxt.setTextColor(Color.YELLOW);
             approvaltxt.setText(getText(R.string.waiting_for_approval));
             status.setImageResource(R.drawable.newuser);
-        } else if (SharedHelper.getKey(context, "approval_status").equals("banned")) {
+        } else if (SharedHelper.getKey(context, "status").equals("banned")) {
             approvaltxt.setTextColor(Color.RED);
             approvaltxt.setText(getText(R.string.banned));
             status.setImageResource(R.drawable.banned);

@@ -18,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.SharedHelper;
@@ -46,6 +47,7 @@ public class RatingReceivedFragment extends Fragment {
     RelativeLayout errorLayout;
 
     RecyclerView fragmentDriverReviewRV;
+    private ShimmerFrameLayout mFrameLayout;
     ArrayList<UserProfileReviewDataModel> list = new ArrayList<>();
     UserProfileReviewDataAdapter adapter;
     ProgressBar fiveStarProgress, fourStarProgress, threeStarProgress, twoStarProgress, oneStarProgress;
@@ -86,6 +88,7 @@ public class RatingReceivedFragment extends Fragment {
         errorLayout = view.findViewById(R.id.errorLayout);
         reviewDataLl = view.findViewById(R.id.reviewDataLl);
 
+        mFrameLayout = view.findViewById(R.id.shimmerLayout);
 
 
         fiveStarProgress = view.findViewById(R.id.fiveStarProgress);
@@ -109,7 +112,7 @@ public class RatingReceivedFragment extends Fragment {
     }
 
     private void getProfileData(String user_id) {
-
+        mFrameLayout.startShimmer();
         // Getting other details of profile
 
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.USER_REVIEW_HISTORY, new Response.Listener<String>() {
@@ -161,15 +164,18 @@ public class RatingReceivedFragment extends Fragment {
 
 
                                 }
-                                reviewDataLl.setVisibility(View.VISIBLE);
                                 adapter = new UserProfileReviewDataAdapter(getContext(), list);
                                 fragmentDriverReviewRV.setAdapter(adapter);
+                                mFrameLayout.setVisibility(View.GONE);
+                                reviewDataLl.setVisibility(View.VISIBLE);
                             }else {
+                                mFrameLayout.setVisibility(View.GONE);
                                 errorLayout.setVisibility(View.VISIBLE);
                             }
 
 
                         } catch (Exception e) {
+                            mFrameLayout.setVisibility(View.GONE);
                             errorLayout.setVisibility(View.VISIBLE);
                             e.printStackTrace();
                         }
@@ -179,6 +185,7 @@ public class RatingReceivedFragment extends Fragment {
 
 
                 } catch (JSONException e) {
+                    mFrameLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
                     e.printStackTrace();
                 }
@@ -213,6 +220,18 @@ public class RatingReceivedFragment extends Fragment {
         };
 
         ClassLuxApp.getInstance().addToRequestQueue(request);
+    }
+
+    @Override
+    public void onPause() {
+        mFrameLayout.stopShimmer();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        mFrameLayout.startShimmer();
+        super.onResume();
     }
 
     private String getMonth(String date) throws ParseException {

@@ -1,12 +1,5 @@
 package com.travel.travellingbug.ui.activities;
 
-import static com.travel.travellingbug.ClassLuxApp.TAG;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -23,11 +16,14 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -431,6 +427,8 @@ public class ProfilePictureActivity extends AppCompatActivity {
                                 }
 
                                 Toast.makeText(ProfilePictureActivity.this, getString(R.string.update_success), Toast.LENGTH_SHORT).show();
+
+                                finish();
                                 //displayMessage(getString(R.string.update_success));
 
                             } catch (JSONException e) {

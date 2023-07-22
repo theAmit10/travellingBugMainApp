@@ -3246,57 +3246,64 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     }
 
     public void setValuesForSourceAndDestination() {
-        if (isInternet) {
-            if (!source_lat.equalsIgnoreCase("")) {
-                if (!source_address.equalsIgnoreCase("")) {
-                    frmSource.setText(source_address);
-                    frmSourceBottom.setText(source_address);
+        try {
+            if (isInternet) {
+                if (!source_lat.equalsIgnoreCase("")) {
+                    if (!source_address.equalsIgnoreCase("")) {
+                        frmSource.setText(source_address);
+                        frmSourceBottom.setText(source_address);
 
+                    } else {
+                        frmSource.setText(current_address);
+                        frmSourceBottom.setText(source_address);
+                    }
                 } else {
                     frmSource.setText(current_address);
                     frmSourceBottom.setText(source_address);
                 }
-            } else {
-                frmSource.setText(current_address);
-                frmSourceBottom.setText(source_address);
-            }
 
-            /***************************************CHANGES HERE TO HIDE SOURCE ADDRESS AND DESTINATION ADDRESS TEXTVIEW***********************************************/
+                /***************************************CHANGES HERE TO HIDE SOURCE ADDRESS AND DESTINATION ADDRESS TEXTVIEW***********************************************/
 
-            if (!dest_lat.equalsIgnoreCase("")) {
-                destination.setText(dest_address);
+                if (!dest_lat.equalsIgnoreCase("")) {
+                    destination.setText(dest_address);
 //                frmDestination.setVisibility(View.GONE);
 //                sourceDestLayout.setVisibility(View.VISIBLE);
-                frmDest.setText(dest_address);
-                frmDestinationBottom.setText(dest_address);
+                    frmDest.setText(dest_address);
+                    frmDestinationBottom.setText(dest_address);
 
 
-            }
+                }
 
-            /***************************************CHANGES HERE TO HIDE SOURCE ADDRESS AND DESTINATION ADDRESS TEXTVIEW***********************************************/
+                /***************************************CHANGES HERE TO HIDE SOURCE ADDRESS AND DESTINATION ADDRESS TEXTVIEW***********************************************/
 
-            if (!source_lat.equalsIgnoreCase("") && !source_lng.equalsIgnoreCase("")) {
-                sourceLatLng = new LatLng(Double.parseDouble(source_lat), Double.parseDouble(source_lng));
-            }
-            if (!dest_lat.equalsIgnoreCase("") && !dest_lng.equalsIgnoreCase("")) {
-                destLatLng = new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng));
-            }
+                if (!source_lat.equalsIgnoreCase("") && !source_lng.equalsIgnoreCase("")) {
+                    sourceLatLng = new LatLng(Double.parseDouble(source_lat), Double.parseDouble(source_lng));
+                }
+                if (!dest_lat.equalsIgnoreCase("") && !dest_lng.equalsIgnoreCase("")) {
+                    destLatLng = new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng));
+                }
 
-            if (sourceLatLng != null && destLatLng != null) {
-                Utilities.print("LatLng", "Source:" + sourceLatLng + " Destination: " + destLatLng);
-                // String url = getDirectionsUrl(sourceLatLng, destLatLng);
+                if (sourceLatLng != null && destLatLng != null) {
+                    Utilities.print("LatLng", "Source:" + sourceLatLng + " Destination: " + destLatLng);
+                    // String url = getDirectionsUrl(sourceLatLng, destLatLng);
                /* DownloadTask downloadTask = new DownloadTask();
                 // Start downloading json data from Google Directions API
                 downloadTask.execute(url);*/
-                pickUpLocationName = source_address;
+                    pickUpLocationName = source_address;
 
 
-                String url = getUrl(sourceLatLng.latitude, sourceLatLng.longitude, destLatLng.latitude, destLatLng.longitude);
-                FetchUrl fetchUrl = new FetchUrl();
-                fetchUrl.execute(url);
+                    String url = getUrl(sourceLatLng.latitude, sourceLatLng.longitude, destLatLng.latitude, destLatLng.longitude);
+                    FetchUrl fetchUrl = new FetchUrl();
+                    fetchUrl.execute(url);
+                }
+
             }
 
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
+
     }
 
     private void showChooser() {

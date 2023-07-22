@@ -337,9 +337,11 @@ public class ProfileAboutFragment extends Fragment {
 //                    .into(profile_Image);
 //        }
 
-        if (SharedHelper.getKey(getContext(), "approval_status").equals("new") ||
-                SharedHelper.getKey(getContext(), "approval_status").equals("onboarding")) {
-            titlePAtv.setTextColor(Color.YELLOW);
+
+
+        if (SharedHelper.getKey(getContext(), "status").equals("new") ||
+                SharedHelper.getKey(getContext(), "status").equals("onboarding")) {
+//            titlePAtv.setTextColor(Color.YELLOW);
             titlePAtv.setText(getText(R.string.waiting_for_approval));
 //            status.setImageResource(R.drawable.newuser);
         } else if (SharedHelper.getKey(getContext(), "approval_status").equals("banned")) {

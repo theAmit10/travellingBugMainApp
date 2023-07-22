@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.Request;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.hbb20.CountryCodePicker;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.SharedHelper;
@@ -27,6 +28,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import es.dmoral.toasty.Toasty;
 
@@ -34,8 +37,25 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
 
     FloatingActionButton floatingActionButton;
     TextInputEditText licenseNumberETL;
+    private static final String LICENSE_NUMBER_REGEX = "^[A-Z]{3}\\d{3}$";
+//    private static final String LICENSE_NUMBER_REGEX_ONE = "^[A-Z]{2}[ -]{0,1}[0-9]{2}[ -]{0,1}(?:[A-Z])[ -]{0,1}[A-Z]{1,2}[ -]{0,1}[0-9]{1,4}$";
+//    private static final String LICENSE_NUMBER_REGEX_TWO = "^[A-Z]{2}[ -]{0,1}[0-9]{2}[ -]{0,1}[A-Z]{1,2}[ -]{0,1}[0-9]{1,4}$";
+//    private static final String LICENSE_NUMBER_REGEX_THREE = "^[A-Z]{3}[ -]{0,1}[0-9]{1,4}$";
+//    private static final String LICENSE_NUMBER_REGEX_FOUR = "^[A-Z]{2}[ -]{0,1}[0-9]{2}[ -]{0,1}[0-9]{1,4}$";
+
+
+
+    private static final Pattern pattern = Pattern.compile(LICENSE_NUMBER_REGEX);
+//    private static final Pattern pattern_one = Pattern.compile(LICENSE_NUMBER_REGEX_ONE);
+//    private static final Pattern pattern_two = Pattern.compile(LICENSE_NUMBER_REGEX_TWO);
+//    private static final Pattern pattern_three = Pattern.compile(LICENSE_NUMBER_REGEX_THREE);
+//    private static final Pattern pattern_four = Pattern.compile(LICENSE_NUMBER_REGEX_FOUR);
+
+
 
     ImageView backArrow;
+
+    CountryCodePicker ccp;
 
     String license_number = "";
 
@@ -49,6 +69,22 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
 
         licenseNumberETL.setText(SharedHelper.getKey(getApplicationContext(), "service_number"));
 
+    }
+
+    public static boolean isValidLicenseNumber(String licenseNumber) {
+        // Trim any leading or trailing whitespace
+        String trimmedLicenseNumber = licenseNumber.trim();
+
+        // Convert to uppercase (assuming license numbers are case-insensitive)
+        String uppercasedLicenseNumber = trimmedLicenseNumber.toUpperCase();
+
+        Matcher matcher = pattern.matcher(uppercasedLicenseNumber);
+//         matcher = pattern_one.matcher(uppercasedLicenseNumber);
+//         matcher = pattern_two.matcher(uppercasedLicenseNumber);
+//         matcher = pattern_three.matcher(uppercasedLicenseNumber);
+//         matcher = pattern_four.matcher(uppercasedLicenseNumber);
+
+        return matcher.matches();
     }
 
     private void updateProfileWithoutImage() {
@@ -155,7 +191,16 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(license_number.equalsIgnoreCase("") && license_number.length() < 3){
+//                if(isValidLicenseNumber(license_number)){
+//                    Toast.makeText(VehicleDetailsLicensePlateNumberActivity.this, "Enter Vehicle Plate Number", Toast.LENGTH_SHORT).show();
+//                }else {
+//                    Toast.makeText(VehicleDetailsLicensePlateNumberActivity.this, "Processing ", Toast.LENGTH_SHORT).show();
+//                    Intent intent = new Intent(VehicleDetailsLicensePlateNumberActivity.this, VehicleDetailsBrandActivity.class);
+//                    intent.putExtra("license_number", license_number);
+//                    startActivity(intent);
+//                }
+
+                if(license_number.equalsIgnoreCase("") && license_number.length() < 4){
                     Toast.makeText(VehicleDetailsLicensePlateNumberActivity.this, "Enter Vehicle Plate Number", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(VehicleDetailsLicensePlateNumberActivity.this, "Processing ", Toast.LENGTH_SHORT).show();
@@ -164,8 +209,18 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
                     startActivity(intent);
                 }
 
+
+
             }
         });
+
+//        String userInput = "ABC123";
+//
+//        if (isValidLicenseNumber(userInput)) {
+//            System.out.println("License number is valid.");
+//        } else {
+//            System.out.println("Invalid license number. Please enter a valid license number.");
+//        }
 
 
         backArrow.setOnClickListener(new View.OnClickListener() {
@@ -174,12 +229,17 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
                 finish();
             }
         });
+
+
+
+        System.out.println("COUNTRY  : "+ccp.getSelectedCountryName());
     }
 
     private void initComponent() {
         floatingActionButton = findViewById(R.id.floatingActionButton);
         licenseNumberETL = findViewById(R.id.licenseNumberETL);
         backArrow = findViewById(R.id.backArrow);
+        ccp = findViewById(R.id.ccp);
 
     }
 }

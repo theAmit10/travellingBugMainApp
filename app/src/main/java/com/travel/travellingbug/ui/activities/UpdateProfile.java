@@ -137,30 +137,30 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
         }
         if (v.getId() == R.id.btnUpdate) {
             if (editText.getText().toString().equals("") ) {
-                text_input_layout.setError("This field is not empty");
+                text_input_layout.setError("This field not should be empty");
             }
             else if(editText.getText().toString().equals("Confirm your email") ){
-                text_input_layout.setError("This field is not empty");
+                text_input_layout.setError("This field not should be empty");
             }
             else if(editText.getText().toString().equals("Update Name") ){
-                text_input_layout.setError("This field is not empty");
+                text_input_layout.setError("This field not should be empty");
             }
             else if(editText.getText().toString().equals("Update Account Email") ){
-                text_input_layout.setError("This field is not empty");
+                text_input_layout.setError("This field not should be empty");
             }
             else if(editText.getText().toString().equals("Update Mobile No") ){
-                text_input_layout.setError("This field is not empty");
+                text_input_layout.setError("This field not should be empty");
             }
             else if(editText.getText().toString().equals("Update a Mini Bio") ){
                 text_input_layout.setError("This field is not empty");
             }
             else if(editText.getText().toString().equals("Confirm your email") ){
-                text_input_layout.setError("This field is not empty");
+                text_input_layout.setError("This field not should be empty");
             }
             else if(editText.getText().toString().equals("Add a mini bio") ){
-                text_input_layout.setError("This field is not empty");
+                text_input_layout.setError("This field not should be empty");
             }else if(editText.getText().toString().equals("Enter Name") ){
-                text_input_layout.setError("This field is not empty");
+                text_input_layout.setError("This field not should be empty");
             }
             else {
                 if (isInternet) {
