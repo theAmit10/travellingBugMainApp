@@ -33,7 +33,6 @@ import android.provider.Settings;
 import android.text.format.DateUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.util.SparseBooleanArray;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -111,7 +110,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.maps.android.ui.IconGenerator;
 import com.koushikdutta.ion.Ion;
 import com.skyfishjy.library.RippleBackground;
-import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.ConnectionHelper;
@@ -123,7 +121,6 @@ import com.travel.travellingbug.models.CardInfo;
 import com.travel.travellingbug.models.Driver;
 import com.travel.travellingbug.models.GetUserRate;
 import com.travel.travellingbug.models.PlacePredictions;
-import com.travel.travellingbug.models.PostUserRate;
 import com.travel.travellingbug.models.RestInterface;
 import com.travel.travellingbug.models.ServiceGenerator;
 import com.travel.travellingbug.models.StopOverModel;
@@ -135,6 +132,7 @@ import com.travel.travellingbug.ui.activities.HomeScreenActivity;
 import com.travel.travellingbug.ui.activities.Payment;
 import com.travel.travellingbug.ui.activities.ShowProfile;
 import com.travel.travellingbug.ui.activities.UpdateProfile;
+import com.travel.travellingbug.ui.activities.WaitingForApproval;
 import com.travel.travellingbug.ui.adapters.StepOverAdapter;
 import com.travel.travellingbug.ui.adapters.StepOverOrgAdapter;
 import com.travel.travellingbug.utills.MapAnimator;
@@ -165,11 +163,9 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import de.hdodenhof.circleimageview.CircleImageView;
 import es.dmoral.toasty.Toasty;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Callback;
 
 
 public class PublishFragment extends Fragment implements OnMapReadyCallback, LocationListener,
@@ -485,6 +481,12 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 Intent intent = new Intent(getContext(), DocUploadActivity.class);
                 startActivity(intent);
             }
+        }
+
+        if(SharedHelper.getKey(getContext(),"status").equalsIgnoreCase("onboarding")){
+            Intent intent = new Intent(getContext(), WaitingForApproval.class);
+            startActivity(intent);
+            getActivity().overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);
         }
 
         if (rootView == null) {
@@ -2529,50 +2531,50 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
     }
 
-    public void getServiceList() {
-        if (customDialog != null && (!customDialog.isShowing())) {
-            customDialog = new CustomDialog(getActivity());
-            customDialog.setCancelable(false);
-            customDialog.show();
-        }
-
-        JsonArrayRequest jsonArrayRequest = new
-                JsonArrayRequest(URLHelper.GET_SERVICE_LIST_API,
-                        response -> {
-                            Utilities.print("GetServices", response.toString());
-                            customDialog.dismiss();
-                            customDialog.cancel();
-                            if ((customDialog != null) && (customDialog.isShowing()))
-                                customDialog.dismiss();
-                            if (response.length() > 0) {
-                                currentPostion = 0;
-                                PublishFragment.ServiceListAdapter serviceListAdapter = new PublishFragment.ServiceListAdapter(response);
-                                rcvServiceTypes.setLayoutManager(new LinearLayoutManager(activity,
-                                        LinearLayoutManager.HORIZONTAL, false));
-                                rcvServiceTypes.setAdapter(serviceListAdapter);
-//                                getProvidersList(SharedHelper.getKey(context, "service_type"));
-                            }
-                            mMap.clear();
-                            setValuesForSourceAndDestination();
-                        }, error -> {
-                    if ((customDialog != null) && (customDialog.isShowing()))
-                        customDialog.dismiss();
-                    displayMessage(getActivity().getString(R.string.something_went_wrong));
-                }) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("X-Requested-With", "XMLHttpRequest");
-                        headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " "
-                                + SharedHelper.getKey(context, "access_token"));
-                        return headers;
-                    }
-                };
-
-        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
-
-        Log.i(TAG, "getServiceList: " + jsonArrayRequest.getUrl());
-    }
+//    public void getServiceList() {
+//        if (customDialog != null && (!customDialog.isShowing())) {
+//            customDialog = new CustomDialog(getActivity());
+//            customDialog.setCancelable(false);
+//            customDialog.show();
+//        }
+//
+//        JsonArrayRequest jsonArrayRequest = new
+//                JsonArrayRequest(URLHelper.GET_SERVICE_LIST_API,
+//                        response -> {
+//                            Utilities.print("GetServices", response.toString());
+//                            customDialog.dismiss();
+//                            customDialog.cancel();
+//                            if ((customDialog != null) && (customDialog.isShowing()))
+//                                customDialog.dismiss();
+//                            if (response.length() > 0) {
+//                                currentPostion = 0;
+//                                PublishFragment.ServiceListAdapter serviceListAdapter = new PublishFragment.ServiceListAdapter(response);
+//                                rcvServiceTypes.setLayoutManager(new LinearLayoutManager(activity,
+//                                        LinearLayoutManager.HORIZONTAL, false));
+//                                rcvServiceTypes.setAdapter(serviceListAdapter);
+////                                getProvidersList(SharedHelper.getKey(context, "service_type"));
+//                            }
+//                            mMap.clear();
+//                            setValuesForSourceAndDestination();
+//                        }, error -> {
+//                    if ((customDialog != null) && (customDialog.isShowing()))
+//                        customDialog.dismiss();
+//                    displayMessage(getActivity().getString(R.string.something_went_wrong));
+//                }) {
+//                    @Override
+//                    public Map<String, String> getHeaders() throws AuthFailureError {
+//                        HashMap<String, String> headers = new HashMap<String, String>();
+//                        headers.put("X-Requested-With", "XMLHttpRequest");
+//                        headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " "
+//                                + SharedHelper.getKey(context, "access_token"));
+//                        return headers;
+//                    }
+//                };
+//
+//        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
+//
+//        Log.i(TAG, "getServiceList: " + jsonArrayRequest.getUrl());
+//    }
 
     public void getApproximateFare() {
 
@@ -3110,7 +3112,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
     public void payNow() {
         Log.d(TAG, "payNow: " + lblTotalPrice.getText().toString());
-        confirmFinalPayment(lblTotalPrice.getText().toString());
+//        confirmFinalPayment(lblTotalPrice.getText().toString());
     }
 
     private void mapClear() {
@@ -3615,109 +3617,109 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             }
         }
 
-        getPastTripRate();
+//        getPastTripRate();
     }
 
 
-    void getPastTripRate() {
-        String auth = "Bearer " + SharedHelper.getKey(context, "access_token");
-        getUserRateCall = restInterface.getUserRate(requestWith, auth);
-        getUserRateCall.enqueue(new Callback<GetUserRate>() {
-            @Override
-            public void onResponse(Call<GetUserRate> call,
-                                   retrofit2.Response<GetUserRate> response) {
-                if (response.code() == 200) {
-                    String requestId = response.body().getRequest_id();
-                    String providerImage = response.body().getProvider_picture();
-                    String providerName = response.body().getProvider_name();
-                    if (response.body().getPaid().equals("1")) {
-                        if (response.body().getUser_rated().equals("0")) {
-                            showTripRateDialog(requestId, providerName, providerImage);
-                        }
-                    }
-                }
-            }
+//    void getPastTripRate() {
+//        String auth = "Bearer " + SharedHelper.getKey(context, "access_token");
+//        getUserRateCall = restInterface.getUserRate(requestWith, auth);
+//        getUserRateCall.enqueue(new Callback<GetUserRate>() {
+//            @Override
+//            public void onResponse(Call<GetUserRate> call,
+//                                   retrofit2.Response<GetUserRate> response) {
+//                if (response.code() == 200) {
+//                    String requestId = response.body().getRequest_id();
+//                    String providerImage = response.body().getProvider_picture();
+//                    String providerName = response.body().getProvider_name();
+//                    if (response.body().getPaid().equals("1")) {
+//                        if (response.body().getUser_rated().equals("0")) {
+//                            showTripRateDialog(requestId, providerName, providerImage);
+//                        }
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<GetUserRate> call, Throwable t) {
+//
+//            }
+//        });
+//    }
 
-            @Override
-            public void onFailure(Call<GetUserRate> call, Throwable t) {
+//    void showTripRateDialog(String requestId, String proName, String proImage) {
+//        userRateDialog = new Dialog(getActivity());
+//        userRateDialog.setContentView(R.layout.user_rate_dailog);
+//
+//        CircleImageView ivProviderImg;
+//        TextView tvProviderName, tvRate, tvSkip;
+//        RatingBar rbProvider;
+//        EditText etComment;
+//
+//        userRateDialog.show();
+//        userRateDialog.setCancelable(false);
+//
+//        ivProviderImg = userRateDialog.findViewById(R.id.ivProviderImg);
+//        tvProviderName = userRateDialog.findViewById(R.id.tvProviderName);
+//        tvRate = userRateDialog.findViewById(R.id.tvRate);
+//        tvSkip = userRateDialog.findViewById(R.id.tvSkip);
+//        rbProvider = userRateDialog.findViewById(R.id.rbProvider);
+//        etComment = userRateDialog.findViewById(R.id.etComment);
+//
+//        if (proImage != null) {
+//            Picasso.get().load(URLHelper.image_url_signature + proImage)
+//                    .resize(100, 100)
+//                    .into(ivProviderImg);
+//        }
+//
+//        tvProviderName.setText(getString(R.string.rate_your_trip_with) + proName);
+//
+//        tvRate.setOnClickListener(v -> {
+//            int rate = (int) rbProvider.getRating();
+//            String com = etComment.getText().toString();
+//            if (rbProvider.getRating() > 1) {
+//                postPastTripRate(requestId, rate, com);
+//            } else {
+//                postPastTripRate(requestId, 1, com);
+//            }
+//        });
+//        tvSkip.setOnClickListener(v -> {
+//            String rate = String.valueOf(rbProvider.getRating());
+//            String com = etComment.getText().toString();
+//            postPastTripRate(requestId, 1, com);
+//        });
+//
+//    }
 
-            }
-        });
-    }
-
-    void showTripRateDialog(String requestId, String proName, String proImage) {
-        userRateDialog = new Dialog(getActivity());
-        userRateDialog.setContentView(R.layout.user_rate_dailog);
-
-        CircleImageView ivProviderImg;
-        TextView tvProviderName, tvRate, tvSkip;
-        RatingBar rbProvider;
-        EditText etComment;
-
-        userRateDialog.show();
-        userRateDialog.setCancelable(false);
-
-        ivProviderImg = userRateDialog.findViewById(R.id.ivProviderImg);
-        tvProviderName = userRateDialog.findViewById(R.id.tvProviderName);
-        tvRate = userRateDialog.findViewById(R.id.tvRate);
-        tvSkip = userRateDialog.findViewById(R.id.tvSkip);
-        rbProvider = userRateDialog.findViewById(R.id.rbProvider);
-        etComment = userRateDialog.findViewById(R.id.etComment);
-
-        if (proImage != null) {
-            Picasso.get().load(URLHelper.image_url_signature + proImage)
-                    .resize(100, 100)
-                    .into(ivProviderImg);
-        }
-
-        tvProviderName.setText(getString(R.string.rate_your_trip_with) + proName);
-
-        tvRate.setOnClickListener(v -> {
-            int rate = (int) rbProvider.getRating();
-            String com = etComment.getText().toString();
-            if (rbProvider.getRating() > 1) {
-                postPastTripRate(requestId, rate, com);
-            } else {
-                postPastTripRate(requestId, 1, com);
-            }
-        });
-        tvSkip.setOnClickListener(v -> {
-            String rate = String.valueOf(rbProvider.getRating());
-            String com = etComment.getText().toString();
-            postPastTripRate(requestId, 1, com);
-        });
-
-    }
-
-    void postPastTripRate(String requestId, int rating, String comment) {
-        customDialog.show();
-        customDialog.setCancelable(false);
-        String auth = "Bearer " + SharedHelper.getKey(context, "access_token");
-        PostUserRate postUserRate = new PostUserRate();
-        postUserRate.setRequest_id(requestId);
-        postUserRate.setRating(rating);
-        postUserRate.setComment(comment);
-        responseBodyCall = restInterface.postUserRate(requestWith, auth, postUserRate);
-        responseBodyCall.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
-                if (response.code() == 200) {
-                    if (customDialog != null && customDialog.isShowing()) {
-                        customDialog.dismiss();
-                        userRateDialog.cancel();
-                        mMap.clear();
-                        flowValue = 0;
-                        layoutChanges();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                customDialog.dismiss();
-            }
-        });
-    }
+//    void postPastTripRate(String requestId, int rating, String comment) {
+//        customDialog.show();
+//        customDialog.setCancelable(false);
+//        String auth = "Bearer " + SharedHelper.getKey(context, "access_token");
+//        PostUserRate postUserRate = new PostUserRate();
+//        postUserRate.setRequest_id(requestId);
+//        postUserRate.setRating(rating);
+//        postUserRate.setComment(comment);
+//        responseBodyCall = restInterface.postUserRate(requestWith, auth, postUserRate);
+//        responseBodyCall.enqueue(new Callback<ResponseBody>() {
+//            @Override
+//            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+//                if (response.code() == 200) {
+//                    if (customDialog != null && customDialog.isShowing()) {
+//                        customDialog.dismiss();
+//                        userRateDialog.cancel();
+//                        mMap.clear();
+//                        flowValue = 0;
+//                        layoutChanges();
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                customDialog.dismiss();
+//            }
+//        });
+//    }
 
     @Override
     public void getJSONArrayResult(String strTag, JSONArray response) {
@@ -3732,10 +3734,10 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             if (response.length() > 0) {
                 currentPostion = 0;
 
-                PublishFragment.ServiceListAdapter serviceListAdapter = new PublishFragment.ServiceListAdapter(response);
-                rcvServiceTypes.setLayoutManager(new LinearLayoutManager(activity,
-                        LinearLayoutManager.HORIZONTAL, false));
-                rcvServiceTypes.setAdapter(serviceListAdapter);
+//                PublishFragment.ServiceListAdapter serviceListAdapter = new PublishFragment.ServiceListAdapter(response);
+//                rcvServiceTypes.setLayoutManager(new LinearLayoutManager(activity,
+//                        LinearLayoutManager.HORIZONTAL, false));
+//                rcvServiceTypes.setAdapter(serviceListAdapter);
 //                getProvidersList(SharedHelper.getKey(context, "service_type"));
             } else {
                 displayMessage(getString(R.string.no_service));
@@ -3851,48 +3853,48 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
     }
 
-    private void confirmFinalPayment(String totalFee) {
-
-        customDialog.setCancelable(false);
-        if (customDialog != null)
-            customDialog.show();
-        JSONObject object = new JSONObject();
-
-        String constructedURL1 = URLHelper.BASE + URLHelper.GET_PAYMENT_CONFIRMATION + totalFee + "?req_id=" + SharedHelper.getKey(getActivity(), "request_id");
-        Log.e("paymentConfirmationApi:", constructedURL1);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, constructedURL1, object, response -> {
-            Log.e("payment_response_", response.toString());
-            if ((customDialog != null) && (customDialog.isShowing()))
-                customDialog.dismiss();
-            if (response != null) {
-                try {
-                    String status = response.getString("status");
-                    if (status.equalsIgnoreCase("1")) {
-                        //  paymentShowDialog(response.optString("message"));
-                    } else {
-                        //   paymentErrorShowDialog(response.optString("message"));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        }, error -> {
-            if ((customDialog != null) && (customDialog.isShowing()))
-                customDialog.dismiss();
-            displayMessage(getString(R.string.something_went_wrong));
-
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("X-Requested-With", "XMLHttpRequest");
-                headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " " + SharedHelper.getKey(context, "access_token"));
-                return headers;
-            }
-        };
-        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
-    }
+//    private void confirmFinalPayment(String totalFee) {
+//
+//        customDialog.setCancelable(false);
+//        if (customDialog != null)
+//            customDialog.show();
+//        JSONObject object = new JSONObject();
+//
+//        String constructedURL1 = URLHelper.BASE + URLHelper.GET_PAYMENT_CONFIRMATION + totalFee + "?req_id=" + SharedHelper.getKey(getActivity(), "request_id");
+//        Log.e("paymentConfirmationApi:", constructedURL1);
+//        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, constructedURL1, object, response -> {
+//            Log.e("payment_response_", response.toString());
+//            if ((customDialog != null) && (customDialog.isShowing()))
+//                customDialog.dismiss();
+//            if (response != null) {
+//                try {
+//                    String status = response.getString("status");
+//                    if (status.equalsIgnoreCase("1")) {
+//                        //  paymentShowDialog(response.optString("message"));
+//                    } else {
+//                        //   paymentErrorShowDialog(response.optString("message"));
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//        }, error -> {
+//            if ((customDialog != null) && (customDialog.isShowing()))
+//                customDialog.dismiss();
+//            displayMessage(getString(R.string.something_went_wrong));
+//
+//        }) {
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//                HashMap<String, String> headers = new HashMap<String, String>();
+//                headers.put("X-Requested-With", "XMLHttpRequest");
+//                headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " " + SharedHelper.getKey(context, "access_token"));
+//                return headers;
+//            }
+//        };
+//        ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+//    }
 
     public void getValidZone() {
 
@@ -4935,141 +4937,141 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
     }
 
-    private class ServiceListAdapter extends RecyclerView.Adapter<PublishFragment.ServiceListAdapter.MyViewHolder> {
-        JSONArray jsonArray;
-        int selectedPosition;
-        private SparseBooleanArray selectedItems;
-
-        public ServiceListAdapter(JSONArray array) {
-            this.jsonArray = array;
-        }
-
-
-        @Override
-        public PublishFragment.ServiceListAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            @SuppressLint("InflateParams")
-            View view = LayoutInflater.from(getActivity())
-                    .inflate(R.layout.service_type_list_item, null);
-            return new PublishFragment.ServiceListAdapter.MyViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(PublishFragment.ServiceListAdapter.MyViewHolder holder, final int position) {
-            Utilities.print("Title: ", "" +
-                    jsonArray.optJSONObject(position).optString("name")
-                    + " Image: " + jsonArray.optJSONObject(position).optString("image")
-                    + " Grey_Image:" + jsonArray.optJSONObject(position).optString("grey_image"));
-
-            holder.serviceItem.setText(jsonArray.optJSONObject(position).optString("name"));
-            System.out.println("POSITION IS CALLEDD " + position);
-
-
-            if (position == 0) {
-                getNewApproximateFare(jsonArray.optJSONObject(position)
-                        .optString("id"), holder.serviceItemPrice);
-            }
-
-            if (position == 1) {
-                getNewApproximateFare(jsonArray.optJSONObject(position)
-                        .optString("id"), holder.serviceItemPrice);
-            }
-            if (position == 2) {
-                getNewApproximateFare(jsonArray.optJSONObject(position)
-                        .optString("id"), holder.serviceItemPrice);
-            }
-            if (position == 3) {
-                getNewApproximateFare(jsonArray.optJSONObject(position)
-                        .optString("id"), holder.serviceItemPrice);
-            }
-            if (position == 4) {
-                getNewApproximateFare(jsonArray.optJSONObject(position)
-                        .optString("id"), holder.serviceItemPrice);
-            }
-
-
-            if (position == currentPostion) {
-                SharedHelper.putKey(context, "service_type", "" +
-                        jsonArray.optJSONObject(position).optString("id"));
-                Picasso.get().load(URLHelper.BASE + jsonArray
-                                .optJSONObject(position).optString("image"))
-                        .placeholder(R.drawable.car_select)
-                        .error(R.drawable.car_select).into(holder.serviceImg);
-                holder.selector_background.setBackgroundResource(R.drawable.selected_service_item);
-                holder.serviceItem.setTextColor(getResources().getColor(R.color.text_color_white));
-                holder.serviceCapacity.setText(jsonArray.optJSONObject(position).optString("capacity"));
-//                holder.serviceCapacity.setBackgroundResource(R.drawable.normal_service_item);
-                Picasso.get().load(URLHelper.BASE + jsonArray.optJSONObject(position).optString("image"))
-                        .placeholder(R.drawable.car_select)
-                        .error(R.drawable.car_select).into(ImgConfrmCabType);
-//                getApproximateFareSchedule();
-
-            } else {
-                //SharedHelper.putKey(context, "service_type", "" + jsonArray.optJSONObject(position).optString("id"));
-                Picasso.get().load(URLHelper.BASE + jsonArray.optJSONObject(position).optString("image"))
-                        .placeholder(R.drawable.car_select)
-                        .error(R.drawable.car_select).into(holder.serviceImg);
-                holder.selector_background.setBackgroundResource(R.drawable.normal_service_item);
-//                holder.selector_background.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-                holder.serviceItem.setTextColor(getResources().getColor(R.color.black));
-                holder.serviceCapacity.setText(jsonArray.optJSONObject(position).optString("capacity"));
-
-//                getApproximateFareSchedule();
-            }
-
-
-            holder.linearLayoutOfList.setTag(position);
-
-            holder.linearLayoutOfList.setOnClickListener(view -> {
-                if (position == currentPostion) {
-                    try {
-                        lnrHidePopup.setVisibility(View.VISIBLE);
-                        // showProviderPopup(jsonArray.getJSONObject(position));
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                currentPostion = Integer.parseInt(view.getTag().toString());
-                SharedHelper.putKey(context, "service_type", "" + jsonArray.optJSONObject(currentPostion).optString("id"));
-                SharedHelper.putKey(context, "name", "" + jsonArray.optJSONObject(currentPostion).optString("name"));
-                try {
-                    notifyDataSetChanged();
-                } catch (NullPointerException ne) {
-                    ne.printStackTrace();
-                }
-
-                Utilities.print("service_typeCurrentPosition", "" + SharedHelper.getKey(context, "service_type"));
-                Utilities.print("Service name", "" + SharedHelper.getKey(context, "name"));
-//                getProvidersList(SharedHelper.getKey(context, "service_type"));
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return jsonArray.length();
-        }
-
-        public class MyViewHolder extends RecyclerView.ViewHolder {
-
-            TextView serviceItem, serviceCapacity;
-            MyTextView serviceItemPrice;
-            CircleImageView serviceImg;
-            LinearLayout linearLayoutOfList;
-            FrameLayout selector_background;
-
-            public MyViewHolder(View itemView) {
-                super(itemView);
-                serviceItem = itemView.findViewById(R.id.serviceItem);
-                serviceCapacity = itemView.findViewById(R.id.serviceCapacity);
-                serviceImg = itemView.findViewById(R.id.serviceImg);
-                linearLayoutOfList = itemView.findViewById(R.id.LinearLayoutOfList);
-                selector_background = itemView.findViewById(R.id.selector_background);
-                serviceItemPrice = itemView.findViewById(R.id.serviceItemPrice);
-                height = itemView.getHeight();
-                width = itemView.getWidth();
-            }
-        }
-    }
+//    private class ServiceListAdapter extends RecyclerView.Adapter<PublishFragment.ServiceListAdapter.MyViewHolder> {
+//        JSONArray jsonArray;
+//        int selectedPosition;
+//        private SparseBooleanArray selectedItems;
+//
+//        public ServiceListAdapter(JSONArray array) {
+//            this.jsonArray = array;
+//        }
+//
+//
+//        @Override
+//        public PublishFragment.ServiceListAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//            @SuppressLint("InflateParams")
+//            View view = LayoutInflater.from(getActivity())
+//                    .inflate(R.layout.service_type_list_item, null);
+//            return new PublishFragment.ServiceListAdapter.MyViewHolder(view);
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(PublishFragment.ServiceListAdapter.MyViewHolder holder, final int position) {
+//            Utilities.print("Title: ", "" +
+//                    jsonArray.optJSONObject(position).optString("name")
+//                    + " Image: " + jsonArray.optJSONObject(position).optString("image")
+//                    + " Grey_Image:" + jsonArray.optJSONObject(position).optString("grey_image"));
+//
+//            holder.serviceItem.setText(jsonArray.optJSONObject(position).optString("name"));
+//            System.out.println("POSITION IS CALLEDD " + position);
+//
+//
+//            if (position == 0) {
+//                getNewApproximateFare(jsonArray.optJSONObject(position)
+//                        .optString("id"), holder.serviceItemPrice);
+//            }
+//
+//            if (position == 1) {
+//                getNewApproximateFare(jsonArray.optJSONObject(position)
+//                        .optString("id"), holder.serviceItemPrice);
+//            }
+//            if (position == 2) {
+//                getNewApproximateFare(jsonArray.optJSONObject(position)
+//                        .optString("id"), holder.serviceItemPrice);
+//            }
+//            if (position == 3) {
+//                getNewApproximateFare(jsonArray.optJSONObject(position)
+//                        .optString("id"), holder.serviceItemPrice);
+//            }
+//            if (position == 4) {
+//                getNewApproximateFare(jsonArray.optJSONObject(position)
+//                        .optString("id"), holder.serviceItemPrice);
+//            }
+//
+//
+//            if (position == currentPostion) {
+//                SharedHelper.putKey(context, "service_type", "" +
+//                        jsonArray.optJSONObject(position).optString("id"));
+//                Picasso.get().load(URLHelper.BASE + jsonArray
+//                                .optJSONObject(position).optString("image"))
+//                        .placeholder(R.drawable.car_select)
+//                        .error(R.drawable.car_select).into(holder.serviceImg);
+//                holder.selector_background.setBackgroundResource(R.drawable.selected_service_item);
+//                holder.serviceItem.setTextColor(getResources().getColor(R.color.text_color_white));
+//                holder.serviceCapacity.setText(jsonArray.optJSONObject(position).optString("capacity"));
+////                holder.serviceCapacity.setBackgroundResource(R.drawable.normal_service_item);
+//                Picasso.get().load(URLHelper.BASE + jsonArray.optJSONObject(position).optString("image"))
+//                        .placeholder(R.drawable.car_select)
+//                        .error(R.drawable.car_select).into(ImgConfrmCabType);
+////                getApproximateFareSchedule();
+//
+//            } else {
+//                //SharedHelper.putKey(context, "service_type", "" + jsonArray.optJSONObject(position).optString("id"));
+//                Picasso.get().load(URLHelper.BASE + jsonArray.optJSONObject(position).optString("image"))
+//                        .placeholder(R.drawable.car_select)
+//                        .error(R.drawable.car_select).into(holder.serviceImg);
+//                holder.selector_background.setBackgroundResource(R.drawable.normal_service_item);
+////                holder.selector_background.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+//                holder.serviceItem.setTextColor(getResources().getColor(R.color.black));
+//                holder.serviceCapacity.setText(jsonArray.optJSONObject(position).optString("capacity"));
+//
+////                getApproximateFareSchedule();
+//            }
+//
+//
+//            holder.linearLayoutOfList.setTag(position);
+//
+//            holder.linearLayoutOfList.setOnClickListener(view -> {
+//                if (position == currentPostion) {
+//                    try {
+//                        lnrHidePopup.setVisibility(View.VISIBLE);
+//                        // showProviderPopup(jsonArray.getJSONObject(position));
+//
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//                currentPostion = Integer.parseInt(view.getTag().toString());
+//                SharedHelper.putKey(context, "service_type", "" + jsonArray.optJSONObject(currentPostion).optString("id"));
+//                SharedHelper.putKey(context, "name", "" + jsonArray.optJSONObject(currentPostion).optString("name"));
+//                try {
+//                    notifyDataSetChanged();
+//                } catch (NullPointerException ne) {
+//                    ne.printStackTrace();
+//                }
+//
+//                Utilities.print("service_typeCurrentPosition", "" + SharedHelper.getKey(context, "service_type"));
+//                Utilities.print("Service name", "" + SharedHelper.getKey(context, "name"));
+////                getProvidersList(SharedHelper.getKey(context, "service_type"));
+//            });
+//        }
+//
+//        @Override
+//        public int getItemCount() {
+//            return jsonArray.length();
+//        }
+//
+//        public class MyViewHolder extends RecyclerView.ViewHolder {
+//
+//            TextView serviceItem, serviceCapacity;
+//            MyTextView serviceItemPrice;
+//            CircleImageView serviceImg;
+//            LinearLayout linearLayoutOfList;
+//            FrameLayout selector_background;
+//
+//            public MyViewHolder(View itemView) {
+//                super(itemView);
+//                serviceItem = itemView.findViewById(R.id.serviceItem);
+//                serviceCapacity = itemView.findViewById(R.id.serviceCapacity);
+//                serviceImg = itemView.findViewById(R.id.serviceImg);
+//                linearLayoutOfList = itemView.findViewById(R.id.LinearLayoutOfList);
+//                selector_background = itemView.findViewById(R.id.selector_background);
+//                serviceItemPrice = itemView.findViewById(R.id.serviceItemPrice);
+//                height = itemView.getHeight();
+//                width = itemView.getWidth();
+//            }
+//        }
+//    }
 
     // Fetches data from url passed
     private class FetchUrl extends AsyncTask<String, Void, String> {

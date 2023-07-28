@@ -457,16 +457,95 @@ public class TrackingLinkActivity extends AppCompatActivity {
             }
 
 
+//            try {
+//                JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
+//                if (serviceObj != null) {
+////                    holder.car_name.setText(serviceObj.optString("name"));
+//                    holder.tripAmount.setText("₹ " + serviceObj.optString("fixed"));
+//                    //holder.tripAmount.setText(SharedHelper.getKey(context, "currency")+serviceObj.optString("price"));
+//                    Picasso.get().load(serviceObj.optString("image"))
+//                            .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+
+
+            // for fare details
             try {
-                JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
-                if (serviceObj != null) {
-//                    holder.car_name.setText(serviceObj.optString("name"));
-                    holder.tripAmount.setText("₹ " + serviceObj.optString("fixed"));
-                    //holder.tripAmount.setText(SharedHelper.getKey(context, "currency")+serviceObj.optString("price"));
-                    Picasso.get().load(serviceObj.optString("image"))
-                            .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
-                }
-            } catch (JSONException e) {
+                StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + jsonArray.optJSONObject(position).optString("s_latitude") + "&s_longitude=" + jsonArray.optJSONObject(position).optString("s_longitude") + "&d_latitude=" + jsonArray.optJSONObject(position).optString("d_latitude") + "&d_longitude=" + jsonArray.optJSONObject(position).optString("d_longitude") + "&service_type=2", new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            if (response != null) {
+                                System.out.println("payment details estimated data : " + jsonObject.toString());
+                                jsonObject.optString("estimated_fare");
+                                jsonObject.optString("distance");
+                                jsonObject.optString("time");
+                                jsonObject.optString("tax_price");
+                                jsonObject.optString("base_price");
+                                jsonObject.optString("discount");
+                                jsonObject.optString("currency");
+
+                                String con = jsonObject.optString("currency") + " ";
+
+
+                                System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+
+                                try {
+                                    System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+                                    holder.tripAmount.setText(con + jsonObject.optString("estimated_fare"));
+
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
+
+
+                            }
+
+                        } catch (JSONException e) {
+
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        try {
+                            Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                }) {
+
+
+
+
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("X-Requested-With", "XMLHttpRequest");
+                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                        return headers;
+                    }
+
+                };
+
+                ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+
+            }catch (Exception e){
                 e.printStackTrace();
             }
 

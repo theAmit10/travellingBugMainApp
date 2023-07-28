@@ -90,6 +90,7 @@ public class DriverProfileActivity extends AppCompatActivity {
 
 
                         userName.setText(jsonObject.optString("first_name"));
+                        userName.setVisibility(View.VISIBLE);
 
 
                         if(jsonObject.optString("rating") != null){
@@ -104,8 +105,9 @@ public class DriverProfileActivity extends AppCompatActivity {
 
                                 String rate_val = jsonObject.optString("rating");
                                 listitemrating.setRating(Float.parseFloat(rate_val));
-                                ratingVal.setText("( "+jsonObject.optString("rating")+" Reviews )");
+                                ratingVal.setText("( "+jsonObject.optString("noofrating")+" Reviews )");
                             }
+                            listitemrating.setVisibility(View.VISIBLE);
                         }
 
 

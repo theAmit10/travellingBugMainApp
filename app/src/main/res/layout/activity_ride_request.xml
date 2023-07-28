@@ -36,6 +36,7 @@
             android:padding="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:text="START"
+            android:visibility="gone"
             android:background="@drawable/auth_btn_green_bg"
             android:textStyle="bold"
             android:textColor="@color/white"

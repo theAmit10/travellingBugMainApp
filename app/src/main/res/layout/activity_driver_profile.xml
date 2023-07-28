@@ -48,7 +48,7 @@
             android:layout_marginBottom="@dimen/_10sdp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_dummy_user"
-            app:civ_border_color="@color/green"
+            app:civ_border_color="@color/colorLightGray"
             app:civ_border_width="@dimen/_2sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView6"
@@ -69,6 +69,7 @@
                 android:layout_height="wrap_content"
                 android:text="username"
                 android:drawableRight="@drawable/ic_green_tick"
+                android:visibility="gone"
                 android:drawablePadding="@dimen/_10sdp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
@@ -86,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:isIndicator="true"
-
+                    android:visibility="gone"
                     android:numStars="5"
                     android:progressTint="#FFCA28" />
 

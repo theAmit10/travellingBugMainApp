@@ -2224,8 +2224,19 @@ public class DriverMapFragment extends Fragment implements
                                                     userName = jsonObjectUser.optString("first_name");
                                                     System.out.println("data username : " + jsonObjectUser.optString("first_name"));
                                                     userProfileImage = jsonObjectUser.optString("avatar");
-                                                    rating = jsonObjectUser.optString("rating");
-                                                    ratingVal = jsonObjectUser.optString("rating");
+                                                    if(!jsonObjectUser.optString("rating").equalsIgnoreCase("null")){
+                                                        rating = jsonObjectUser.optString("rating");
+                                                    }else {
+                                                        rating = ""+0;
+                                                    }
+
+                                                    if(!jsonObjectUser.optString("noofrating").equalsIgnoreCase("null")){
+                                                        ratingVal = jsonObjectUser.optString("noofrating");
+                                                    }else {
+                                                        ratingVal = ""+0;
+                                                    }
+
+
                                                     mobile_number = jsonObjectUser.optString("mobile");
 
 
@@ -2866,16 +2877,7 @@ public class DriverMapFragment extends Fragment implements
 
                                                                             System.out.println("verification_code User id : "+filterJsonObj.optString("user_id"));
                                                                             System.out.println("verification_code : "+filterJsonObj.optString("verification_code"));
-//                                                                            if (!filterJsonObj.optString("verification_code").equals("null")) {
-//                                                                                btn_01_status.setVisibility(View.VISIBLE);
-//                                                                                txtPickUpNotes.setVisibility(View.GONE);
-//                                                                                img03Status2.setImageResource(R.drawable.pickeddisable);
-//                                                                            } else {
-//                                                                                txtPickUpNotes.setVisibility(View.VISIBLE);
-//                                                                                btn_01_status.setVisibility(View.GONE);
-//                                                                            }
-
-                                                                            if (SharedHelper.getKey(getContext(), "otp_success").equalsIgnoreCase("yes")) {
+                                                                            if (filterJsonObj.optString("is_verified_code").equals("1")) {
                                                                                 btn_01_status.setVisibility(View.VISIBLE);
                                                                                 txtPickUpNotes.setVisibility(View.GONE);
                                                                                 img03Status2.setImageResource(R.drawable.pickeddisable);
@@ -2883,6 +2885,16 @@ public class DriverMapFragment extends Fragment implements
                                                                                 txtPickUpNotes.setVisibility(View.VISIBLE);
                                                                                 btn_01_status.setVisibility(View.GONE);
                                                                             }
+
+
+//                                                                            if (SharedHelper.getKey(getContext(), "otp_success").equalsIgnoreCase("yes")) {
+//                                                                                btn_01_status.setVisibility(View.VISIBLE);
+//                                                                                txtPickUpNotes.setVisibility(View.GONE);
+//                                                                                img03Status2.setImageResource(R.drawable.pickeddisable);
+//                                                                            } else {
+//                                                                                txtPickUpNotes.setVisibility(View.VISIBLE);
+//                                                                                btn_01_status.setVisibility(View.GONE);
+//                                                                            }
 
                                                                             btn_01_status.setVisibility(View.VISIBLE);
 
@@ -3395,8 +3407,10 @@ public class DriverMapFragment extends Fragment implements
                     Double d = Double.parseDouble(statusResponse.optString("distance"));
                     tvDistance.setText(Math.round(d) + "KM");
                 }
-                if (statusResponse.getJSONObject("user").getString("rating") != null) {
+                if (!statusResponse.getJSONObject("user").getString("rating").equalsIgnoreCase("null")) {
                     rat01UserRating.setRating(Float.valueOf(user.getString("rating")));
+                }else{
+                    rat01UserRating.setRating(0);
                 }
             }
         } catch (Exception e) {
@@ -3467,8 +3481,22 @@ public class DriverMapFragment extends Fragment implements
                                     txt03UserName.setText(jsonObjectUser.optString("first_name"));
                                     userName = jsonObjectUser.optString("first_name");
                                     userProfileImage = jsonObjectUser.optString("avatar");
-                                    rating = jsonObjectUser.optString("rating");
-                                    ratingVal = jsonObjectUser.optString("rating");
+
+                                    if(!jsonObjectUser.optString("rating").equalsIgnoreCase("null")){
+                                        rating = jsonObjectUser.optString("rating");
+                                    }else{
+                                        rating = ""+0;
+                                    }
+
+                                    if(!jsonObjectUser.optString("noofrating").equalsIgnoreCase("null")){
+                                        ratingVal = jsonObjectUser.optString("noofrating");
+                                    }else{
+                                        ratingVal = ""+0;
+                                    }
+
+
+
+
 
                                     userFirstName = jsonObjectUser.optString("first_name");
 
@@ -3495,10 +3523,10 @@ public class DriverMapFragment extends Fragment implements
 
                                     });
 
-                                    if (jsonObjectUser.optString("rating") != null) {
+                                    if (!jsonObjectUser.optString("rating").equalsIgnoreCase("null")) {
                                         System.out.println("user rating : " + jsonObjectUser.optString("rating"));
 
-                                        if (jsonObjectUser.optString("rating") != null) {
+                                        if (!jsonObjectUser.optString("rating").equalsIgnoreCase("null")) {
                                             rat03UserRating.setRating(Float.valueOf(jsonObjectUser.optString("rating")));
                                         } else {
                                             rat03UserRating.setRating(0);

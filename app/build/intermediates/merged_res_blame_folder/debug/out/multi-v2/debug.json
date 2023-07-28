@@ -1345,47 +1345,6 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\values-watch-v20_values-watch-v20.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\dbe0aa59e1ed757e323a19ceb193e56c\\jetified-play-services-auth-20.5.0\\res\\values-watch-v20\\values.xml",
-                    "from": {
-                        "startLines": "4,5,6,7,8,9,10,11",
-                        "startColumns": "0,0,0,0,0,0,0,0",
-                        "startOffsets": "173,248,324,399,474,561,638,725",
-                        "endColumns": "74,75,74,74,86,76,86,75",
-                        "endOffsets": "247,323,398,473,560,637,724,800"
-                    },
-                    "to": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,134,214,293,372,463,544,635",
-                        "endColumns": "78,79,78,78,90,80,90,79",
-                        "endOffsets": "129,209,288,367,458,539,630,710"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\eb7259f4bf12b6beff4977d643dcf064\\appcompat-1.3.1\\res\\values-watch-v20\\values-watch-v20.xml",
-                    "from": {
-                        "startLines": "2,5,8",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "55,214,385",
-                        "endLines": "4,7,10",
-                        "endColumns": "12,12,12",
-                        "endOffsets": "209,380,553"
-                    },
-                    "to": {
-                        "startLines": "10,13,16",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "715,874,1045",
-                        "endLines": "12,15,18",
-                        "endColumns": "12,12,12",
-                        "endOffsets": "869,1040,1213"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\values-fa_values-fa.arsc.flat",
             "map": [
                 {
@@ -1558,6 +1517,47 @@
                         "startOffsets": "6420",
                         "endColumns": "105",
                         "endOffsets": "6521"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\values-watch-v20_values-watch-v20.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\dbe0aa59e1ed757e323a19ceb193e56c\\jetified-play-services-auth-20.5.0\\res\\values-watch-v20\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11",
+                        "startColumns": "0,0,0,0,0,0,0,0",
+                        "startOffsets": "173,248,324,399,474,561,638,725",
+                        "endColumns": "74,75,74,74,86,76,86,75",
+                        "endOffsets": "247,323,398,473,560,637,724,800"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,134,214,293,372,463,544,635",
+                        "endColumns": "78,79,78,78,90,80,90,79",
+                        "endOffsets": "129,209,288,367,458,539,630,710"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\eb7259f4bf12b6beff4977d643dcf064\\appcompat-1.3.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "from": {
+                        "startLines": "2,5,8",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,214,385",
+                        "endLines": "4,7,10",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "209,380,553"
+                    },
+                    "to": {
+                        "startLines": "10,13,16",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "715,874,1045",
+                        "endLines": "12,15,18",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "869,1040,1213"
                     }
                 }
             ]
@@ -2645,21 +2645,6 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\values-h480dp-land-v13_values-h480dp-land-v13.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\6e105298cd998da6e05d01bef29eee72\\material-1.4.0\\res\\values-h480dp-land-v13\\values-h480dp-land-v13.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,114,170,226,293,358,413,478,547",
-                        "endColumns": "58,55,55,66,64,54,64,68,68",
-                        "endOffsets": "109,165,221,288,353,408,473,542,611"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\values-lo_values-lo.arsc.flat",
             "map": [
                 {
@@ -2832,6 +2817,21 @@
                         "endLines": "5,33,34,35,36,59,60,66,68,69,70,71,72,73,74,75,76,77,78,79,80,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115",
                         "endColumns": "12,80,114,118,82,65,88,68,58,94,64,57,64,60,59,105,60,59,57,70,118,85,81,112,74,75,89,66,65,68,73,78,72,76,68,69,84,74,92,92,73,68,93,51,66,83,83,61,63,62,98,91,94,91,78",
                         "endOffsets": "269,3017,3132,3251,3334,6031,6120,6701,6878,6973,7038,7096,7161,7222,7282,7388,7449,7509,7567,7638,7757,7940,8022,8135,8210,8286,8376,8443,8509,8578,8652,8731,8804,8881,8950,9020,9105,9180,9273,9366,9440,9509,9603,9655,9722,9806,9890,9952,10016,10079,10178,10270,10365,10457,10536"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\values-h480dp-land-v13_values-h480dp-land-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\6e105298cd998da6e05d01bef29eee72\\material-1.4.0\\res\\values-h480dp-land-v13\\values-h480dp-land-v13.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,170,226,293,358,413,478,547",
+                        "endColumns": "58,55,55,66,64,54,64,68,68",
+                        "endOffsets": "109,165,221,288,353,408,473,542,611"
                     }
                 }
             ]
@@ -3059,21 +3059,6 @@
             ]
         },
         {
-            "outputFile": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\values-h320dp-port-v13_values-h320dp-port-v13.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\6e105298cd998da6e05d01bef29eee72\\material-1.4.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "75",
-                        "endOffsets": "126"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\values-v28_values-v28.arsc.flat",
             "map": [
                 {
@@ -3103,6 +3088,21 @@
                         "endLines": "10,11,15,19",
                         "endColumns": "74,86,12,12",
                         "endOffsets": "825,912,1142,1384"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\res\\merged\\debug\\values-h320dp-port-v13_values-h320dp-port-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\6e105298cd998da6e05d01bef29eee72\\material-1.4.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "75",
+                        "endOffsets": "126"
                     }
                 }
             ]

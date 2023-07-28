@@ -1709,90 +1709,97 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         if (marker != null) {
             marker.remove();
         }
-        if (location != null && location.getLatitude() != 0 && location.getLongitude() != 0) {
 
-            MarkerOptions markerOptions = new MarkerOptions()
-                    .anchor(0.5f, 0.75f)
-                    .position(new LatLng(location.getLatitude(), location.getLongitude()))
-                    .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_currentlocation));
-            marker = mMap.addMarker(markerOptions);
+        try {
+            if (location != null && location.getLatitude() != 0 && location.getLongitude() != 0) {
+
+                MarkerOptions markerOptions = new MarkerOptions()
+                        .anchor(0.5f, 0.75f)
+                        .position(new LatLng(location.getLatitude(), location.getLongitude()))
+                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_currentlocation));
+                marker = mMap.addMarker(markerOptions);
 
 
-            current_lat = "" + location.getLatitude();
-            current_lng = "" + location.getLongitude();
+                current_lat = "" + location.getLatitude();
+                current_lng = "" + location.getLongitude();
 
-            if (source_lat.equalsIgnoreCase("") || source_lat.length() < 0) {
-                source_lat = current_lat;
-            }
-            if (source_lng.equalsIgnoreCase("") || source_lng.length() < 0) {
-                source_lng = current_lng;
-            }
+                if (source_lat.equalsIgnoreCase("") || source_lat.length() < 0) {
+                    source_lat = current_lat;
+                }
+                if (source_lng.equalsIgnoreCase("") || source_lng.length() < 0) {
+                    source_lng = current_lng;
+                }
 
-            if (value == 0) {
-                LatLng myLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(16).build();
-                mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-                mMap.setPadding(0, 0, 0, 0);
-                mMap.getUiSettings().setZoomControlsEnabled(false);
-                mMap.getUiSettings().setMyLocationButtonEnabled(true);
-                mMap.getUiSettings().setMapToolbarEnabled(false);
-                mMap.getUiSettings().setCompassEnabled(false);
+                if (value == 0) {
+                    LatLng myLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                    CameraPosition cameraPosition = new CameraPosition.Builder().target(myLocation).zoom(16).build();
+                    mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                    mMap.setPadding(0, 0, 0, 0);
+                    mMap.getUiSettings().setZoomControlsEnabled(false);
+                    mMap.getUiSettings().setMyLocationButtonEnabled(true);
+                    mMap.getUiSettings().setMapToolbarEnabled(false);
+                    mMap.getUiSettings().setCompassEnabled(false);
 
-                latitude = location.getLatitude();
-                longitude = location.getLongitude();
-                currentAddress = utils.getCompleteAddressString(context, latitude, longitude);
-                source_lat = "" + latitude;
-                source_lng = "" + longitude;
-                source_address = currentAddress;
-                current_address = currentAddress;
+                    latitude = location.getLatitude();
+                    longitude = location.getLongitude();
+                    currentAddress = utils.getCompleteAddressString(context, latitude, longitude);
+                    source_lat = "" + latitude;
+                    source_lng = "" + longitude;
+                    source_address = currentAddress;
+                    current_address = currentAddress;
 //                if(getContext() != null){
 //                    frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
 //                    frmDest.setTextColor(getResources().getColor(R.color.dark_gray));
 //                }
-                try {
-                    if (current_address.equalsIgnoreCase("") || current_address.length() == 0) {
-                        frmSource.setText("Leaving From");
-                    } else {
-                        frmSource.setText(currentAddress);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-
-                // setting previous destination data
-                try {
-                    if (!SharedHelper.getKey(getContext(), "destination_latitude").equalsIgnoreCase("")) {
-                        String destination_latitude = SharedHelper.getKey(getContext(), "destination_latitude");
-                        String destination_longitude = SharedHelper.getKey(getContext(), "destination_longitude");
-
-                        Double dlat = Double.valueOf(destination_latitude);
-                        Double dlong = Double.valueOf(destination_longitude);
-
-                        String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
-                        if (destination_address.equalsIgnoreCase("")) {
-                            frmDest.setText("Going to");
+                    try {
+                        if (current_address.equalsIgnoreCase("") || current_address.length() == 0) {
+                            frmSource.setText("Leaving From");
                         } else {
-                            frmDest.setText(destination_address);
+                            frmSource.setText(currentAddress);
                         }
-                    } else {
-                        frmDest.setText("Going to");
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
 
-                } catch (Exception e) {
-                    e.printStackTrace();
+
+                    // setting previous destination data
+                    try {
+                        if (!SharedHelper.getKey(getContext(), "destination_latitude").equalsIgnoreCase("")) {
+                            String destination_latitude = SharedHelper.getKey(getContext(), "destination_latitude");
+                            String destination_longitude = SharedHelper.getKey(getContext(), "destination_longitude");
+
+                            Double dlat = Double.valueOf(destination_latitude);
+                            Double dlong = Double.valueOf(destination_longitude);
+
+                            String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
+                            if (destination_address.equalsIgnoreCase("")) {
+                                frmDest.setText("Going to");
+                            } else {
+                                frmDest.setText(destination_address);
+                            }
+                        } else {
+                            frmDest.setText("Going to");
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
 //                    frmDest.setText("Going to");
-                }
+                    }
 
 
 //                getProvidersList("");
-                value++;
-                if ((customDialog != null) && (customDialog.isShowing()))
-                    customDialog.dismiss();
-            }
+                    value++;
+                    if ((customDialog != null) && (customDialog.isShowing()))
+                        customDialog.dismiss();
+                }
 
-            updateLocationToAdmin(location.getLatitude() + "", location.getLongitude() + "");
+                updateLocationToAdmin(location.getLatitude() + "", location.getLongitude() + "");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
+
     }
 
     private void updateLocationToAdmin(String latitude, String longitude) {
@@ -4874,14 +4881,20 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                             }
                                         }
                                     });
-                                    lblCmfrmSourceAddress.setText(pickUpLocationName);
+
+                                    try {
+                                        lblCmfrmSourceAddress.setText(pickUpLocationName);
 //                                    lblDis.setText(totalDistance + " km");
 //                                    lblEta.setText(totalDuration + " min");
-                                    lblEta.setText(distanceTime);
-                                    lblDis.setText(distance);
-                                    System.out.println("distanceTime : " + distanceTime);
-                                    System.out.println("distance : " + distance);
-                                    setCameraWithCoordinationBounds(route);
+                                        lblEta.setText(distanceTime);
+                                        lblDis.setText(distance);
+                                        System.out.println("distanceTime : " + distanceTime);
+                                        System.out.println("distance : " + distance);
+                                        setCameraWithCoordinationBounds(route);
+                                    }catch (Exception e){
+                                        e.printStackTrace();
+                                    }
+
                                 }
                             }
                         } catch (NullPointerException ne) {

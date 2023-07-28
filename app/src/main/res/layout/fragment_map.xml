@@ -1560,7 +1560,7 @@
                 android:layout_margin="@dimen/_5sdp"
                 android:background="@drawable/primary_color_rect_shape"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="gone">
 
 
                 <LinearLayout
@@ -2375,7 +2375,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:gravity="center"
-                    android:text="Username"
+                    android:text="loading"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
 

@@ -253,7 +253,8 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
                         android:maxLines="1"
-                        android:text="₹ 1200"
+                        android:layout_gravity="right"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp"
                         android:textStyle="bold"
@@ -266,7 +267,8 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
                         android:maxLines="1"
-                        android:text="3 Seat left"
+                        android:layout_gravity="right"
+                        android:text=""
                         android:textColor="@color/colorDarkGray"
                         android:textSize="@dimen/_10sdp"
 
@@ -369,7 +371,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="10:00 am"
+                        android:text=""
                         android:textColor="@color/green"
                         android:textSize="@dimen/_10sdp"
                         android:textStyle="bold" />
@@ -389,7 +391,7 @@
                         android:id="@+id/carTypeVal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Honda Civic | white "
+                        android:text=""
                         android:textColor="@color/green"
                         android:textSize="@dimen/_11sdp"
                         android:textStyle="bold" />

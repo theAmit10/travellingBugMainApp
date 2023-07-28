@@ -93,7 +93,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
-                android:background="@drawable/travel"
+                android:background="@drawable/travel_two_people"
                 android:scaleType="centerCrop" />
 
             <com.travel.travellingbug.utills.MyBoldTextView
@@ -103,7 +103,7 @@
                 android:gravity="center"
                 android:paddingStart="@dimen/_20sdp"
                 android:paddingEnd="@dimen/_20sdp"
-                android:text="Your Past travel plans will appear here."
+                android:text="Your messages will appear here."
                 android:textColor="@color/black"
 
                 android:textSize="@dimen/_20sdp"
@@ -115,7 +115,7 @@
                 android:layout_below="@+id/error_image"
                 android:layout_centerHorizontal="true"
                 android:padding="@dimen/_10sdp"
-                android:text="You have no past rides"
+                android:text="You have no message"
                 android:textColor="@color/colorDarkGray"
                 android:textSize="@dimen/_12sdp" />
 

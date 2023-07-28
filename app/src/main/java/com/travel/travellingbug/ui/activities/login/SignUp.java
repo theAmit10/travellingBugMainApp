@@ -96,8 +96,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
 
         setContentView(R.layout.activity_sign_up);
-        helper = new ConnectionHelper(getApplicationContext());
-        isInternet = helper.isConnectingToInternet();
+//        helper = new ConnectionHelper(getApplicationContext());
+//        isInternet = helper.isConnectingToInternet();
         txtSignIn = findViewById(R.id.txtSignIn);
         etName = findViewById(R.id.etName);
         etEmail = findViewById(R.id.etEmail);
@@ -119,6 +119,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                helper = new ConnectionHelper(getApplicationContext());
+                isInternet = helper.isConnectingToInternet();
                 if (etName.getText().toString().equals("") ||
                         etName.getText().toString().equalsIgnoreCase(getString(R.string.first_name))) {
                     displayMessage("Phone Number Required");
@@ -132,10 +134,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
                     SharedHelper.putKey(getApplicationContext(), "mobile", phone);
                     Log.v("Phonecode", phone + " ");
-//                    registerAPI();
-                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
-                    intent.putExtra("phonenumber", phone);
-                    startActivityForResult(intent, APP_REQUEST_CODE);
+                    registerAPI();
+//                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
+//                    intent.putExtra("phonenumber", phone);
+//                    startActivityForResult(intent, APP_REQUEST_CODE);
 
 
                 } else {

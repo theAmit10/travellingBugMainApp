@@ -90,12 +90,100 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.ViewHold
 
         holder.ratingVal.setText(invoiceModel.getRatingVal());
         holder.availableSeat.setText(invoiceModel.getSeat());
-        holder.fare.setText(invoiceModel.getFare());
+//        holder.fare.setText(invoiceModel.getFare());
         holder.carTypeVal.setText(invoiceModel.getVehicleDetails());
 
         holder.listitemrating.setRating(Float.parseFloat(invoiceModel.getRating()));
 
         Picasso.get().load(invoiceModel.getImage()).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.profileImgeIv);
+
+        // for fare details
+        try {
+            StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + invoiceModel.getSlat() + "&s_longitude=" + invoiceModel.getSlong() + "&d_latitude=" + invoiceModel.getDlat() + "&d_longitude=" + invoiceModel.getDlong() + "&service_type=2", new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+
+                        if (response != null) {
+                            System.out.println("payment details estimated data : " + jsonObject.toString());
+                            jsonObject.optString("estimated_fare");
+                            jsonObject.optString("distance");
+                            jsonObject.optString("time");
+                            jsonObject.optString("tax_price");
+                            jsonObject.optString("base_price");
+                            jsonObject.optString("discount");
+                            jsonObject.optString("currency");
+
+                            String con = jsonObject.optString("currency") + " ";
+
+
+                            System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+
+
+
+
+                            try {
+                                System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+
+                                Double fares = Double.valueOf(jsonObject.optString("estimated_fare"));
+                                String no_of_seat_string = String.valueOf(invoiceModel.getSeat().charAt(0));
+                                System.out.println(no_of_seat_string);
+                                int no_of_seat = Integer.parseInt(no_of_seat_string);
+                                Double c_fare = fares * no_of_seat;
+                                String calculated_fare = con + c_fare;
+
+                                holder.fare.setText(calculated_fare);
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+
+                        }
+
+                    } catch (JSONException e) {
+
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                    try {
+                        Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            }) {
+
+
+
+
+                @Override
+                public Map<String, String> getHeaders() {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("X-Requested-With", "XMLHttpRequest");
+                    headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
+                    return headers;
+                }
+
+            };
+
+            ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
         holder.invoiceDownload.setOnClickListener(new View.OnClickListener() {

@@ -494,6 +494,8 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
 
                             String res = new String(response.data);
                             utils.print("VEHICEL_ADD", "" + res);
+
+                            System.out.println("ADD VEHICLE RESPONSE : "+response.toString());
                             try {
                                 JSONObject jsonObject = new JSONObject(res);
 

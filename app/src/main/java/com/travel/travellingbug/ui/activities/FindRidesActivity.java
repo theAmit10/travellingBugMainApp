@@ -11,11 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +26,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Picasso;
@@ -51,6 +53,8 @@ public class FindRidesActivity extends AppCompatActivity {
 
     Button details, request;
 
+    int count = 0;
+
 
     String noofseat = "", request_id = "";
 
@@ -74,6 +78,8 @@ public class FindRidesActivity extends AppCompatActivity {
     TextView from, destination;
     UpcomingsAdapter upcomingsAdapter;
 
+    ProgressBar idPBLoading;
+    NestedScrollView nestedSv;
     String s_latitude = "", s_longitude = "", d_latitude = "", d_longitude = "", s_address = "", d_address = "", service_type = "", distance = "", schedule_date = "", schedule_time = "", upcoming = "", use_wallet = "", payment_mode = "";
 
 
@@ -81,6 +87,10 @@ public class FindRidesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_rides);
+
+        idPBLoading = findViewById(R.id.idPBLoading);
+        nestedSv = findViewById(R.id.nestedSv);
+
 
         initData();
         getIntentData();
@@ -288,8 +298,12 @@ public class FindRidesActivity extends AppCompatActivity {
 
                     if (response != null) {
                         System.out.println("data : " + jsonArray.getString(0));
-                        upcomingsAdapter = new FindRidesActivity.UpcomingsAdapter(jsonArray);
+                        upcomingsAdapter = new UpcomingsAdapter(jsonArray);
                         //  recyclerView.setHasFixedSize(true);
+
+
+
+
                         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext().getApplicationContext());
                         recyclerView.setLayoutManager(mLayoutManager);
                         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -468,98 +482,98 @@ public class FindRidesActivity extends AppCompatActivity {
         return timeName;
     }
 
-    public void getVehicleDetails() {
-        customDialog = new CustomDialog(this);
-        customDialog.setCancelable(false);
-        customDialog.show();
-
-        // Getting User details
-        StringRequest request = new StringRequest(Request.Method.GET, URLHelper.GET_VEHICLE_DETAILS, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObjectUser = new JSONObject(response);
-
-                    if (response != null) {
-                        System.out.println("data : " + jsonObjectUser.toString());
-
-                        JSONObject jsonObject = new JSONObject(response);
-
-                        jsonObject.optString("service_model");
-
-
-
-                    }
-                } catch (JSONException e) {
-                    displayMessage(e.toString());
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                System.out.println("error : " + error);
-            }
-
-        }) {
-            @Override
-            public Map<String, String> getHeaders() {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("X-Requested-With", "XMLHttpRequest");
-                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
-                return headers;
-            }
-        };
-        ClassLuxApp.getInstance().addToRequestQueue(request);
-
-
-    }
-
-    public void getUpcomingList() {
-
-//        customDialog = new CustomDialog(getApplicationContext());
+//    public void getVehicleDetails() {
+//        customDialog = new CustomDialog(this);
 //        customDialog.setCancelable(false);
 //        customDialog.show();
+//
+//        // Getting User details
+//        StringRequest request = new StringRequest(Request.Method.GET, URLHelper.GET_VEHICLE_DETAILS, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try {
+//                    JSONObject jsonObjectUser = new JSONObject(response);
+//
+//                    if (response != null) {
+//                        System.out.println("data : " + jsonObjectUser.toString());
+//
+//                        JSONObject jsonObject = new JSONObject(response);
+//
+//                        jsonObject.optString("service_model");
+//
+//
+//
+//                    }
+//                } catch (JSONException e) {
+//                    displayMessage(e.toString());
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                System.out.println("error : " + error);
+//            }
+//
+//        }) {
+//            @Override
+//            public Map<String, String> getHeaders() {
+//                HashMap<String, String> headers = new HashMap<String, String>();
+//                headers.put("X-Requested-With", "XMLHttpRequest");
+//                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+//                return headers;
+//            }
+//        };
+//        ClassLuxApp.getInstance().addToRequestQueue(request);
+//
+//
+//    }
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.MY_PUBLISH_UPCOMMING_TRIPS, response -> {
-
-            Log.v("GetHistoryList", response.toString());
-            if (response != null) {
-                upcomingsAdapter = new FindRidesActivity.UpcomingsAdapter(response);
-                //  recyclerView.setHasFixedSize(true);
-                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext().getApplicationContext());
-                recyclerView.setLayoutManager(mLayoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-                if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
-                    recyclerView.setVisibility(View.VISIBLE);
-//                    errorLayout.setVisibility(View.GONE);
-                    recyclerView.setAdapter(upcomingsAdapter);
-                } else {
-//                    errorLayout.setVisibility(View.VISIBLE);
-                    recyclerView.setVisibility(View.GONE);
-                }
-
-            } else {
-//                errorLayout.setVisibility(View.VISIBLE);
-                recyclerView.setVisibility(View.GONE);
-            }
-
-//            customDialog.dismiss();
-
-        }, error -> {
-//            customDialog.dismiss();
-            displayMessage(getString(R.string.something_went_wrong));
-        }) {
-            @Override
-            public Map<String, String> getHeaders() {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("X-Requested-With", "XMLHttpRequest");
-                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
-                return headers;
-            }
-        };
-
-        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
-    }
+//    public void getUpcomingList() {
+//
+////        customDialog = new CustomDialog(getApplicationContext());
+////        customDialog.setCancelable(false);
+////        customDialog.show();
+//
+//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.MY_PUBLISH_UPCOMMING_TRIPS, response -> {
+//
+//            Log.v("GetHistoryList", response.toString());
+//            if (response != null) {
+//                upcomingsAdapter = new FindRidesActivity.UpcomingsAdapter(response);
+//                //  recyclerView.setHasFixedSize(true);
+//                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext().getApplicationContext());
+//                recyclerView.setLayoutManager(mLayoutManager);
+//                recyclerView.setItemAnimator(new DefaultItemAnimator());
+//                if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
+//                    recyclerView.setVisibility(View.VISIBLE);
+////                    errorLayout.setVisibility(View.GONE);
+//                    recyclerView.setAdapter(upcomingsAdapter);
+//                } else {
+////                    errorLayout.setVisibility(View.VISIBLE);
+//                    recyclerView.setVisibility(View.GONE);
+//                }
+//
+//            } else {
+////                errorLayout.setVisibility(View.VISIBLE);
+//                recyclerView.setVisibility(View.GONE);
+//            }
+//
+////            customDialog.dismiss();
+//
+//        }, error -> {
+////            customDialog.dismiss();
+//            displayMessage(getString(R.string.something_went_wrong));
+//        }) {
+//            @Override
+//            public Map<String, String> getHeaders() {
+//                HashMap<String, String> headers = new HashMap<String, String>();
+//                headers.put("X-Requested-With", "XMLHttpRequest");
+//                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+//                return headers;
+//            }
+//        };
+//
+//        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
+//    }
 
     private class UpcomingsAdapter extends RecyclerView.Adapter<FindRidesActivity.UpcomingsAdapter.MyViewHolder> {
         JSONArray jsonArray;
@@ -589,10 +603,35 @@ public class FindRidesActivity extends AppCompatActivity {
         public void onBindViewHolder(FindRidesActivity.UpcomingsAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 //            Picasso.get().load(jsonArray.optJSONObject(position).optString("static_map")).placeholder(R.drawable.placeholder).error(R.drawable.placeholder).into(holder.tripImg);
             try {
+
+                recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                    @Override
+                    public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                        super.onScrolled(recyclerView, dx, dy);
+
+                        LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                        int totalItemCount = layoutManager.getItemCount();
+                        int lastVisibleItem = layoutManager.findLastVisibleItemPosition();
+                        System.out.println("COUNT -> totalItemCount : "+totalItemCount);
+                        System.out.println("COUNT -> lastVisibleItem : "+lastVisibleItem);
+
+                        // Check if the user has reached the end of the list
+                        if (lastVisibleItem == totalItemCount - 1) {
+                            // Fetch more data here (e.g., next 20 items) and add them to your data source.
+                            // Then notify the adapter that new data has been added.
+                            // recyclerViewAdapter.addData(newData);
+                        }
+                    }
+                });
+
+
+
+
                 if (!jsonArray.optJSONObject(position).optString("schedule_at", "").isEmpty()) {
                     String form = jsonArray.optJSONObject(position).optString("schedule_at");
                     try {
-                        holder.tripDate.setText(getDate(form) + "th " + getMonth(form) + " " + "at " + getTime(form));
+//                        holder.tripDate.setText(getDate(form) + "th " + getMonth(form) + " " + "at " + getTime(form));
+                        holder.tripDate.setText(getTime(form));
 //                        holder.tripId.setText(jsonArray.optJSONObject(position).optString("booking_id"));
 
                         holder.listitemrating.setRating(Float.parseFloat("3.0"));
@@ -601,7 +640,11 @@ public class FindRidesActivity extends AppCompatActivity {
                         holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));
                         holder.txtDestination.setText(jsonArray.optJSONObject(position).optString("d_address"));
                         holder.availableSeat.setText(jsonArray.optJSONObject(position).optString("availablecapacity")+" Seat left");
-                        holder.fare.setText("₹ "+jsonArray.optJSONObject(position).optString("estimated_fare"));
+
+
+
+
+//                        holder.fare.setText("₹ "+jsonArray.optJSONObject(position).optString("estimated_fare"));
 
 
                         request_id = jsonArray.optJSONObject(position).optString("id");
@@ -617,17 +660,137 @@ public class FindRidesActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+
+            // for fare details
             try {
-                JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
-                if (serviceObj != null) {
-                    holder.car_name.setText(serviceObj.optString("name"));
-                    //holder.tripAmount.setText(SharedHelper.getKey(context, "currency")+serviceObj.optString("price"));
-//                    Picasso.get().load(serviceObj.optString("image"))
-//                            .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
+                StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + jsonArray.optJSONObject(position).optString("s_latitude") + "&s_longitude=" + jsonArray.optJSONObject(position).optString("s_longitude") + "&d_latitude=" + jsonArray.optJSONObject(position).optString("d_latitude") + "&d_longitude=" + jsonArray.optJSONObject(position).optString("d_longitude") + "&service_type=2", new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            if (response != null) {
+                                System.out.println("payment details estimated data : " + jsonObject.toString());
+                                jsonObject.optString("estimated_fare");
+                                jsonObject.optString("distance");
+                                jsonObject.optString("time");
+                                jsonObject.optString("tax_price");
+                                jsonObject.optString("base_price");
+                                jsonObject.optString("discount");
+                                jsonObject.optString("currency");
+
+                                String con = jsonObject.optString("currency") + " ";
+
+
+//                                txt04InvoiceId.setText(status.optString("booking_id"));
+//                                txt04BasePrice.setText(con + jsonObject.optString("base_price"));
+//                                txt04Distance.setText(jsonObject.optString("distance") + " KM");
+//                                txt04Tax.setText(con + jsonObject.optString("tax_price"));
+//                                txt04Total.setText(con + jsonObject.optString("estimated_fare"));
+//                                txt04PaymentMode.setText("CASH");
+//                                txt04Commision.setText(con + jsonObject.optString("discount"));
+//                                txtTotal.setText(con + jsonObject.optString("estimated_fare"));
+//                                paymentTypeImg.setImageResource(R.drawable.money1);
+//                                btn_confirm_payment.setVisibility(View.VISIBLE);
+
+                                System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+
+                                try {
+                                    System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+                                    holder.tripAmount.setText(con + jsonObject.optString("estimated_fare"));
+
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
+
+
+
+
+
+
+                            }
+
+                        } catch (JSONException e) {
+
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        try {
+                            Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                }) {
+
+
+
+
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("X-Requested-With", "XMLHttpRequest");
+                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                        return headers;
+                    }
+
+                };
+
+                ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
+
+
+
+
+
+
+            try {
+                JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("provider_service");
+//                if (serviceObj != null) {
+//
+//                    String vehicle_name = serviceObj.optString("service_model")+ " " + serviceObj.optString("service_name") +" | "+serviceObj.optString("service_color").toLowerCase();
+//                    holder.car_name.setText(vehicle_name);
+//                }
+//                else {
+//                    holder.car_name.setText("");
+//                }
+
+                if(serviceObj != null ){
+                    if(!serviceObj.optString("service_model").equalsIgnoreCase("null") && !serviceObj.optString("service_name").equalsIgnoreCase("null") && !serviceObj.optString("service_color").equalsIgnoreCase("null") ){
+                        String vehicle_name = serviceObj.optString("service_model")+ " " + serviceObj.optString("service_name") +" | "+serviceObj.optString("service_color").toLowerCase();
+                        System.out.println("vehicle name : "+vehicle_name);
+                        holder.car_name.setText(vehicle_name);
+                        s_name = vehicle_name;
+                    }else {
+                        holder.car_name.setText("");
+                    }
+                }else {
+                    holder.car_name.setText("");
                 }
+
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
+
 
             try {
                 JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("provider");
@@ -643,9 +806,9 @@ public class FindRidesActivity extends AppCompatActivity {
 
                     holder.profileNameTv.setText(serviceObj.optString("first_name"));
 
-                   if(serviceObj.optString("rating") != null){
+                   if(!serviceObj.optString("rating").equalsIgnoreCase("null")){
                        holder.listitemrating.setRating(Float.parseFloat(serviceObj.optString("rating")));
-                       holder.reviewCount.setText("( "+serviceObj.optString("rating") +" Reviews )");
+                       holder.reviewCount.setText("( "+serviceObj.optString("noofrating") +" Reviews )");
                    }
 
                 }
@@ -653,38 +816,28 @@ public class FindRidesActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-//            holder.btnCancel.setOnClickListener(v -> {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-//                builder.setMessage(getString(R.string.cencel_request))
-//                        .setCancelable(false)
-//                        .setPositiveButton("YES", (dialog, id) -> {
-//                            dialog.dismiss();
-//                            Log.e("canceljson", jsonArray + "j");
-////                            cancelRequest(jsonArray.optJSONObject(position).optString("id"));
-//                        })
-//                        .setNegativeButton("NO", (dialog, id) -> dialog.dismiss());
-//                AlertDialog alert = builder.create();
-//                alert.show();
-//            });
+
+
+
+            // if the user had already made a request on that ride than they can't request for it again
+            if(jsonArray.optJSONObject(position).optJSONArray("filters").length() > 0 ){
+                JSONArray filterJsonArray = jsonArray.optJSONObject(position).optJSONArray("filters");
+
+                for(int i=0 ;i<filterJsonArray.length(); i++){
+                    JSONObject jsonObject = filterJsonArray.optJSONObject(i);
+                    if(jsonObject.optString("user_id").equalsIgnoreCase(SharedHelper.getKey(getApplicationContext(),"id"))){
+                        holder.request.setVisibility(View.GONE);
+                    }
+
+                }
+            }
+
+
 
 
             holder.request.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-
-//                    SharedHelper.putKey(getApplicationContext(), "current_status", "");
-//                    Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
-//                    SharedHelper.putKey(getApplicationContext(), "current_status", "");
-//                    SharedHelper.putKey(getApplicationContext(), "request_id", "80");
-//                    Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
-//                    intent.putExtra("flowValue", 3);
-//
-//                    intent.putExtra("s_address",jsonArray.optJSONObject(position).optString("s_address"));
-//
-//
-//                    startActivity(intent);
-
 
                     try {
                         if (!jsonArray.optJSONObject(position).optString("schedule_at", "").isEmpty()) {
@@ -730,7 +883,7 @@ public class FindRidesActivity extends AppCompatActivity {
 //                            holder.profileNameTv.setText(serviceObj.optString("first_name"));
 
                             s_profileImage = URLHelper.BASE + "storage/app/public/" + serviceObj.optString("avatar");
-                            s_name = serviceObj.optString("first_name");
+//                            s_name = serviceObj.optString("first_name");
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -756,6 +909,11 @@ public class FindRidesActivity extends AppCompatActivity {
                     intent.putExtra("s_seat", s_seat);
                     intent.putExtra("s_id", s_id);
 
+                    intent.putExtra("s_latitude", jsonArray.optJSONObject(position).optString("s_latitude"));
+                    intent.putExtra("s_longitude", jsonArray.optJSONObject(position).optString("s_longitude"));
+                    intent.putExtra("d_latitude", jsonArray.optJSONObject(position).optString("d_latitude"));
+                    intent.putExtra("d_longitude", jsonArray.optJSONObject(position).optString("d_longitude"));
+
 
                     startActivity(intent);
 
@@ -770,37 +928,12 @@ public class FindRidesActivity extends AppCompatActivity {
                     Intent intent = new Intent(FindRidesActivity.this, FindRideDetails.class);
                     intent.putExtra("noofseat", noofseat);
                     intent.putExtra("request_id", jsonArray.optJSONObject(position).optString("id"));
+                    intent.putExtra("user_id",jsonArray.optJSONObject(position).optJSONObject("provider").optString("id"));
                     startActivity(intent);
                 }
             });
 
-//            holder.driver_image.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent = new Intent(FindRidesActivity.this, DriverProfileActivity.class);
-//                    intent.putExtra("user_id",jsonArray.optJSONObject(position).optString("user_id"));
-//                    startActivity(intent);
-//                }
-//            });
 
-//            holder.btnStart.setOnClickListener(view -> {
-//                //Toast.makeText(getActivity(),"Start Ride",Toast.LENGTH_SHORT).show();
-//                Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
-//                JSONArray array = new JSONArray();
-//                JSONObject req = new JSONObject();
-//                try {
-//                    JSONObject object = (JSONObject) new JSONTokener(jsonArray.optJSONObject(position).toString()).nextValue();
-//                    req.put("request", object);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//                array.put(req);
-//                Log.e("TAG", "REQ: " + array);
-//                Intent i = new Intent(getApplicationContext(), HomeScreenActivity.class);
-//                i.putExtra("datas", array.toString());
-//                i.putExtra("type", "SCHEDULED");
-//                startActivity(i);
-//            });
 
 
             holder.containerLL.setOnClickListener(new View.OnClickListener() {
@@ -824,6 +957,7 @@ public class FindRidesActivity extends AppCompatActivity {
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
             TextView tripTime, car_name;
+
             TextView tripDate, tripAmount, tripId, txtSource, txtDestination, status;
 
             ImageView tripImg, driver_image;
@@ -870,6 +1004,8 @@ public class FindRidesActivity extends AppCompatActivity {
                 details = itemView.findViewById(R.id.details);
                 request = itemView.findViewById(R.id.request);
                 containerLL = itemView.findViewById(R.id.containerLL);
+
+//                fare = itemView.findViewById(R.id.fare);
 
 
 

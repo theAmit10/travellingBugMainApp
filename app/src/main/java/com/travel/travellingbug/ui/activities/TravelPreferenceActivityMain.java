@@ -229,7 +229,7 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
             list = new ArrayList<>();
 
 
-            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URLHelper.PREFERENCES,
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URLHelper.PREFERENCES+"?user_id="+SharedHelper.getKey(getContext(),"id"),
                     jsonArray, response -> {
                 Log.v("GetPreferences", response.toString());
 

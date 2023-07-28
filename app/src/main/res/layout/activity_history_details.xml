@@ -270,6 +270,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:visibility="gone"
                             android:gravity="center_vertical|start"
                             android:text="Fare"
                             android:textColor="@color/black_text_color"
@@ -277,6 +278,7 @@
 
                         <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/tripAmount"
+                            android:visibility="gone"
                             android:layout_width="@dimen/_50sdp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

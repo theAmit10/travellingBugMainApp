@@ -58,6 +58,7 @@ public class WaitingForApproval extends AppCompatActivity {
                     HomeScreenActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
             finish();
         });
     }

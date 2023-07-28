@@ -56,13 +56,15 @@ public class RideRequest extends AppCompatActivity {
 
     String noofseat="",request_id="", person_id="",s_address="",d_address="",s_date = "",s_time = "",seat_left = "", profile_image = "",fare = "";
 
-    String rating="0";
+    String rating="",ratingVal="";
 
 
     String booking_id = "", status = "", payment_mode = "", estimated_fare = "", verification_code = "", static_map = "", first_name = "", mobile = "", avatar = "";
 
     String post_value = "", tag = "";
     String current_trip_user_id = "";
+
+    String s_latitude = "",s_longitude="",d_latitude="",d_longitude="";
 
 
 
@@ -85,27 +87,67 @@ public class RideRequest extends AppCompatActivity {
             startRideTv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(RideRequest.this, HistoryDetails.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    Log.e("Intent", "" + post_value);
-                    intent.putExtra("post_value", ""+post_value);
-                    intent.putExtra("tag", tag);
-                    intent.putExtra("request_id", request_id);
-                    intent.putExtra("s_address", s_address);
-                    intent.putExtra("d_address", d_address);
-                    intent.putExtra("booking_id", booking_id);
-                    intent.putExtra("s_date", s_date);
-                    intent.putExtra("s_time", s_time);
-                    intent.putExtra("status", status);
-                    intent.putExtra("payment_mode", payment_mode);
-                    intent.putExtra("estimated_fare", estimated_fare);
-                    intent.putExtra("verification_code", verification_code);
-                    intent.putExtra("static_map", static_map);
-                    intent.putExtra("first_name", first_name);
-                    intent.putExtra("rating", rating);
-                    intent.putExtra("avatar", avatar);
-                    intent.putExtra("current_trip_user_id", current_trip_user_id);
-                    startActivity(intent);
+                    s_address = getIntent().getStringExtra("s_address");
+                    d_address = getIntent().getStringExtra("d_address");
+                    request_id = getIntent().getStringExtra("request_id");
+                    s_date = getIntent().getStringExtra("s_date");
+                    s_time = getIntent().getStringExtra("s_time");
+                    seat_left = getIntent().getStringExtra("seat_left");
+                    fare = getIntent().getStringExtra("fare");
+
+
+                    // for history screen to start ride
+                    request_id = getIntent().getStringExtra("request_id");
+                    s_address = getIntent().getStringExtra("s_address");
+                    d_address = getIntent().getStringExtra("d_address");
+                    s_date = getIntent().getStringExtra("s_date");
+                    s_time = getIntent().getStringExtra("s_time");
+                    status = getIntent().getStringExtra("status");
+                    payment_mode = getIntent().getStringExtra("payment_mode");
+                    estimated_fare = getIntent().getStringExtra("estimated_fare");
+                    verification_code = getIntent().getStringExtra("verification_code");
+                    static_map = getIntent().getStringExtra("static_map");
+                    first_name = getIntent().getStringExtra("first_name");
+                    rating = getIntent().getStringExtra("rating");
+                    avatar = getIntent().getStringExtra("avatar");
+                    booking_id = getIntent().getStringExtra("booking_id");
+                    current_trip_user_id = getIntent().getStringExtra("current_trip_user_id");
+                    post_value = getIntent().getStringExtra("post_value");
+                    tag = getIntent().getStringExtra("tag");
+
+                    System.out.println("request_id : "+request_id);
+                    System.out.println("RR INTENT rating : "+rating);
+
+
+                    if(startRideTv.getText().toString().equalsIgnoreCase("COMPLETED")){
+                        Toast.makeText(RideRequest.this, "Ride already completed", Toast.LENGTH_SHORT).show();
+                    }else if(startRideTv.getText().toString().equalsIgnoreCase("CANCELLED")){
+                        Toast.makeText(RideRequest.this, "Ride has been cancelled", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Intent intent = new Intent(RideRequest.this, HistoryDetails.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        Log.e("Intent", "" + post_value);
+                        intent.putExtra("post_value", ""+post_value);
+                        intent.putExtra("tag", tag);
+                        intent.putExtra("request_id", request_id);
+                        intent.putExtra("s_address", s_address);
+                        intent.putExtra("d_address", d_address);
+                        intent.putExtra("booking_id", booking_id);
+                        intent.putExtra("s_date", s_date);
+                        intent.putExtra("s_time", s_time);
+                        intent.putExtra("status", status);
+                        intent.putExtra("payment_mode", payment_mode);
+                        intent.putExtra("estimated_fare", estimated_fare);
+                        intent.putExtra("verification_code", verification_code);
+                        intent.putExtra("static_map", static_map);
+                        intent.putExtra("first_name", first_name);
+                        intent.putExtra("rating", rating);
+                        intent.putExtra("avatar", avatar);
+                        intent.putExtra("current_trip_user_id", current_trip_user_id);
+                        startActivity(intent);
+                    }
+
+
                 }
             });
 
@@ -206,6 +248,21 @@ public class RideRequest extends AppCompatActivity {
 
 //                        JSONObject jsonObject = new JSONObject(response);
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+
+//                        s_latitude = "",s_longitude="",d_latitude="",d_longitude="";
+                        s_latitude = jsonObject.optString("s_latitude");
+                        s_longitude = jsonObject.optString("s_longitude");
+                        d_latitude = jsonObject.optString("d_latitude");
+                        d_longitude = jsonObject.optString("d_longitude");
+
+                        if(jsonObject.optString("status").equalsIgnoreCase("COMPLETED")   ){
+                            startRideTv.setText("Completed");
+                        }else if(jsonObject.optString("status").equalsIgnoreCase("CANCELLED")){
+                            startRideTv.setText("Cancelled");
+                        }
+                        startRideTv.setVisibility(View.VISIBLE);
+
 
                         JSONArray filterArray = jsonObject.getJSONArray("filters");
                         if(response != null ){
@@ -435,6 +492,7 @@ public class RideRequest extends AppCompatActivity {
         tag = getIntent().getStringExtra("tag");
 
         System.out.println("request_id : "+request_id);
+        System.out.println("RR INTENT rating : "+rating);
     }
 
     private class UpcomingsAdapter extends RecyclerView.Adapter<RideRequest.UpcomingsAdapter.MyViewHolder> {
@@ -467,7 +525,7 @@ public class RideRequest extends AppCompatActivity {
 
             holder.saddress.setText(s_address);
             holder.dropLocation.setText(d_address);
-            holder.fare.setText(fare);
+//            holder.fare.setText(fare);
 
             try {
                 if (!jsonArray.optJSONObject(position).optString("first_name", "").isEmpty()) {
@@ -522,11 +580,18 @@ public class RideRequest extends AppCompatActivity {
 
                                     profile_image = URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar");
 
-                                    if(jsonObject.optString("rating") != null){
+                                    if(!jsonObject.optString("rating").equalsIgnoreCase("null")){
                                         holder.listitemrating.setRating(Float.parseFloat(jsonObject.optString("rating")));
-                                        holder.ratingVal.setText("( "+Float.parseFloat(jsonObject.optString("rating"))+" Reviews )");
+                                        holder.ratingVal.setText("( "+jsonObject.optString("noofrating")+" Reviews )");
 
                                         rating =""+ Float.parseFloat(jsonObject.optString("rating"));
+                                        ratingVal =""+ jsonObject.optString("noofrating");
+                                    }else {
+                                        holder.listitemrating.setRating(0);
+                                        holder.ratingVal.setText("( 0"+" Reviews )");
+
+                                        rating =""+0;
+                                        ratingVal =""+ jsonObject.optString("noofrating");
                                     }
 
 
@@ -546,7 +611,8 @@ public class RideRequest extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getApplicationContext(), "Error Found", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                            error.printStackTrace();
                         }
 
                     }) {
@@ -595,14 +661,108 @@ public class RideRequest extends AppCompatActivity {
                     }
 
 
-//                    holder.acceptBtn.setOnClickListener(v -> {
-//                        acceptRequest(jsonArray.optJSONObject(position).optString("id"));
-//                    });
-//
-//                    holder.rejectBtn.setOnClickListener(v -> {
-//                        cancelRequest(jsonArray.optJSONObject(position).optString("id"));
-//                    });
-//
+
+                    // for fare details
+                    try {
+                        StringRequest requestFare = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + s_latitude + "&s_longitude=" + s_longitude + "&d_latitude=" + d_latitude + "&d_longitude=" + d_longitude + "&service_type=2", new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+
+                                    if (response != null) {
+                                        System.out.println("payment details estimated data : " + jsonObject.toString());
+                                        jsonObject.optString("estimated_fare");
+                                        jsonObject.optString("distance");
+                                        jsonObject.optString("time");
+                                        jsonObject.optString("tax_price");
+                                        jsonObject.optString("base_price");
+                                        jsonObject.optString("discount");
+                                        jsonObject.optString("currency");
+
+                                        String con = jsonObject.optString("currency") + " ";
+
+
+//                                txt04InvoiceId.setText(status.optString("booking_id"));
+//                                txt04BasePrice.setText(con + jsonObject.optString("base_price"));
+//                                txt04Distance.setText(jsonObject.optString("distance") + " KM");
+//                                txt04Tax.setText(con + jsonObject.optString("tax_price"));
+//                                txt04Total.setText(con + jsonObject.optString("estimated_fare"));
+//                                txt04PaymentMode.setText("CASH");
+//                                txt04Commision.setText(con + jsonObject.optString("discount"));
+//                                txtTotal.setText(con + jsonObject.optString("estimated_fare"));
+//                                paymentTypeImg.setImageResource(R.drawable.money1);
+//                                btn_confirm_payment.setVisibility(View.VISIBLE);
+
+                                        System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+
+
+                                        try {
+                                            System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+
+                                            Double fares = Double.valueOf(jsonObject.optString("estimated_fare"));
+                                            int no_of_seat = Integer.parseInt(jsonArray.optJSONObject(position).optString("noofseats"));
+                                            Double c_fare = fares * no_of_seat;
+                                            String calculated_fare = con + c_fare;
+                                            fare = calculated_fare;
+
+                                            holder.fare.setText(calculated_fare);
+
+                                        }catch (Exception e){
+                                            e.printStackTrace();
+                                        }
+
+
+
+
+
+
+                                    }
+
+                                } catch (JSONException e) {
+
+                                    e.printStackTrace();
+                                }
+
+
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+
+                                try {
+                                    Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+
+                        }) {
+
+
+
+
+                            @Override
+                            public Map<String, String> getHeaders() {
+                                HashMap<String, String> headers = new HashMap<String, String>();
+                                headers.put("X-Requested-With", "XMLHttpRequest");
+                                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                                return headers;
+                            }
+
+                        };
+
+                        ClassLuxApp.getInstance().addToRequestQueue(requestFare);
+
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
 
                     holder.acceptBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -678,7 +838,7 @@ public class RideRequest extends AppCompatActivity {
                 intent.putExtra("post_value", jsonArray.optJSONObject(position).toString());
                 intent.putExtra("first_name", jsonArray.optJSONObject(position).optString("first_name"));
                 intent.putExtra("rating", rating);
-                intent.putExtra("rating_val", "( "+rating+" Reviews )");
+                intent.putExtra("rating_val", "( "+ratingVal+" Reviews )");
                 intent.putExtra("profile_image", profile_image);
                 intent.putExtra("user_id", jsonArray.optJSONObject(position).optString("user_id"));
                 intent.putExtra("s_address", s_address);

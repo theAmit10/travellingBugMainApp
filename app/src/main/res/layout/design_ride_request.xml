@@ -41,7 +41,7 @@
                 android:drawableRight="@drawable/ic_green_tick"
                 android:fontFamily="@font/nunito_bold"
                 android:drawablePadding="@dimen/_10sdp"
-                android:text="@string/username"
+                android:text="username"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold" />
@@ -70,7 +70,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
                     android:textStyle="bold"
-                    android:text="( 115 Reviews )"
+                    android:text=""
                     android:textColor="@color/colorDarkGray"
                     android:textSize="@dimen/_8sdp" />
 
@@ -92,7 +92,7 @@
                 android:gravity="right"
                 android:fontFamily="@font/nunito_bold"
                 android:maxLines="1"
-                android:text="₹ 1200"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold" />
@@ -107,7 +107,7 @@
                 android:gravity="right"
                 android:maxLines="1"
                 android:textStyle="bold"
-                android:text="3 Seat"
+                android:text=""
                 android:textColor="@color/colorDarkGray"
                 android:textSize="@dimen/_10sdp"
 
@@ -160,7 +160,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:maxLines="1"
             android:fontFamily="@font/nunito_regular"
-            android:text="Plot A2, Sector 38 A, Noida, \nIndia"
+            android:text=""
             android:textColor="@color/colorDarkGray"
             android:textSize="@dimen/_10sdp"
             android:textStyle="bold"
@@ -177,7 +177,7 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:maxLines="1"
             android:fontFamily="@font/nunito_regular"
-            android:text="Flat No-83, Dwarka Sector 12"
+            android:text=""
             android:textColor="@color/colorDarkGray"
             android:textSize="@dimen/_10sdp"
             android:textStyle="bold"
@@ -210,7 +210,7 @@
                 android:id="@+id/startTimeVal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="25 Feb 10:00 am"
+                android:text=""
 
                 android:textColor="@color/green"
                 android:textSize="@dimen/_10sdp"

@@ -56,7 +56,7 @@ public class FindRideDetails extends AppCompatActivity {
 
     ImageView backArrow;
 
-    String noofseat = "", request_id = "";
+    String noofseat = "", request_id = "",user_id= "";
 
     TextView allAvailabelSeatTv;
 
@@ -111,6 +111,7 @@ public class FindRideDetails extends AppCompatActivity {
     private void getIntentData() {
         noofseat = getIntent().getStringExtra("noofseat");
         request_id = getIntent().getStringExtra("request_id");
+        user_id = getIntent().getStringExtra("user_id");
     }
 
 
@@ -427,7 +428,7 @@ public class FindRideDetails extends AppCompatActivity {
 
 
 
-                stepOverAdapter = new StepOverAdapter(getContext(), stopOverModelArrayList);
+                stepOverAdapter = new StepOverAdapter(getContext(), stopOverModelArrayList,user_id);
                 recyclerViewPreference.setHasFixedSize(true);
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
                 gridLayoutManager.setOrientation(RecyclerView.VERTICAL);

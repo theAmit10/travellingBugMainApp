@@ -103,6 +103,7 @@ public class SummaryFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.backArrow:
                 startActivity(new Intent(getActivity(), HomeScreenActivity.class));
+//                getActivity().finish();
                 break;
             case R.id.rides_card:
                 fragment = new PastTrips();
@@ -148,10 +149,10 @@ public class SummaryFragment extends Fragment implements View.OnClickListener {
             scheduleTxt.setText("0");
         }
         if (revenue > 0) {
-            revenueTxt.setAnimationDuration(500)
-                    .countAnimation(0, revenue);
+//            revenueTxt.setAnimationDuration(500)
+//                    .countAnimation(0, revenue);
         } else {
-            revenueTxt.setText("$ 0");
+//            revenueTxt.setText("$ 0");
         }
         if (rides > 0) {
             noOfRideTxt.setAnimationDuration(500)
@@ -167,7 +168,7 @@ public class SummaryFragment extends Fragment implements View.OnClickListener {
             cancelTxt.setText("0");
         }
         scheduleTxt.startAnimation(txtAnim);
-        revenueTxt.startAnimation(txtAnim);
+//        revenueTxt.startAnimation(txtAnim);
         noOfRideTxt.startAnimation(txtAnim);
         cancelTxt.startAnimation(txtAnim);
         //  currencyTxt.setText(SharedHelper.getKey(getContext(), "currency"));

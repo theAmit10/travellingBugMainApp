@@ -35,9 +35,18 @@ public class StepOverAdapter extends RecyclerView.Adapter<StepOverAdapter.ViewHo
     String TAG = "STEPOVERADAPTER";
     ArrayList<StopOverModel> list;
 
+    String user_id;
+
+
     public StepOverAdapter(Context context, ArrayList<StopOverModel> list) {
         this.context = context;
         this.list = list;
+    }
+
+    public StepOverAdapter(Context context, ArrayList<StopOverModel> list, String user_id) {
+        this.context = context;
+        this.list = list;
+        this.user_id = user_id;
     }
 
     @NonNull
@@ -56,20 +65,18 @@ public class StepOverAdapter extends RecyclerView.Adapter<StepOverAdapter.ViewHo
         StopOverModel stopOverModel = list.get(position);
         holder.location.setText(stopOverModel.getArea());
 
+//        String user_id = getContext();
+
         JSONArray jsonArray = new JSONArray();
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URLHelper.PREFERENCES,
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URLHelper.PREFERENCES+"?user_id="+user_id,
                 jsonArray, response -> {
             Log.v("GetPreferences", response.toString());
-
             if (response.length() > 0) {
-
                 for (int i = 0; i < response.length(); i++) {
                     try {
 
                         JSONObject jsonObjectPreference = response.getJSONObject(i);
                         Log.v("jsonObjectPreference : ", jsonObjectPreference.optString("title"));
-
-
 
 //                        jsonObjectPreference.optString("title");
 

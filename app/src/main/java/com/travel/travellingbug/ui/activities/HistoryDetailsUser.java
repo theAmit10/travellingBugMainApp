@@ -103,7 +103,7 @@ public class HistoryDetailsUser extends AppCompatActivity {
 
     private ShimmerFrameLayout mFrameLayout;
 
-    String flowValue= "",request_id_from_trip="";
+    String flowValue= "",request_id_from_trip="",noofseats="";
 
 
 
@@ -504,6 +504,9 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                     if(filterJsonObj.optString("user_id").equalsIgnoreCase(user_id)){
 //                                        System.out.println("filter cancelled status user_id given 2 : "+user_id);
 //                                        System.out.println("filter cancelled status user_id found 2 : "+filterJsonObj.optString("user_id"));
+
+                                        noofseats = filterJsonObj.optString("noofseats");
+
                                         if(filterJsonObj.optString("status").equalsIgnoreCase("CANCELLED")){
                                             try {
                                                 btnCancelRide.setText("Service Cancelled");
@@ -576,12 +579,27 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                                 lblBasePrice.setText(con + jsonObject.optString("base_price"));
                                                 lblDistancePrice.setText(jsonObject.optString("distance") + " KM");
                                                 lblTaxPrice.setText(con + jsonObject.optString("tax_price"));
-                                                lblTotalPrice.setText(con + jsonObject.optString("estimated_fare"));
+
 //                                                txt04PaymentMode.setText("CASH");
 //                                                txt04Commision.setText(con + jsonObject.optString("discount"));
 //                                                txtTotal.setText(con + jsonObject.optString("estimated_fare"));
                                                 paymentTypeImg.setImageResource(R.drawable.money1);
 
+
+                                                try {
+                                                    System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+
+                                                    Double fare = Double.valueOf(jsonObject.optString("estimated_fare"));
+                                                    int no_of_seat = Integer.parseInt(noofseats);
+                                                    Double c_fare = fare * no_of_seat;
+                                                    String calculated_fare = con + c_fare;
+
+                                                    tripAmount.setText(calculated_fare);
+                                                    lblTotalPrice.setText(calculated_fare);
+
+                                                }catch (Exception e){
+                                                    e.printStackTrace();
+                                                }
 
 
                                                 System.out.println("ESTIMATED FARE STATUS :" + response.toString());
@@ -661,11 +679,11 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                     tripComments.setText(getString(R.string.no_comments));
                                 }
 
-                                if (jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating") != null
-                                        && !jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating").equalsIgnoreCase("")) {
+                                if (!jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating").equalsIgnoreCase("null")) {
+                                    System.out.println("case : "+jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating"));
                                     tripProviderRating.setRating(Float.parseFloat(jsonArray.optJSONObject(i).optJSONObject("provider").optString("rating")));
                                 } else {
-                                    tripProviderRating.setRating(i);
+                                    tripProviderRating.setRating(0);
                                 }
 
                                 tripProviderName.setText(jsonArray.optJSONObject(i).optJSONObject("provider").optString("first_name"));

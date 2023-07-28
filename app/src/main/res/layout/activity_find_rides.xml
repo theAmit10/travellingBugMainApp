@@ -130,6 +130,7 @@
         android:background="@color/colorGray" />
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedSv"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -150,6 +151,12 @@
 
                 </androidx.recyclerview.widget.RecyclerView>
             </RelativeLayout>
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/idPBLoading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
 
             <com.facebook.shimmer.ShimmerFrameLayout

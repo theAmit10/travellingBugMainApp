@@ -136,14 +136,17 @@ public class OnGoingTrips extends Fragment {
     }
 
     public void getUpcomingList() {
-
+        mFrameLayout.startShimmer();
         customDialog = new CustomDialog(getActivity());
         customDialog.setCancelable(false);
         customDialog.show();
 
+
+
+
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.MY_PUBLISH_UPCOMMING_TRIPS, response -> {
             customDialog.dismiss();
-            Log.v("GetPublishedList", response.toString());
+            Log.v("onGoingTrips", response.toString());
             if (response != null) {
                 upcomingsAdapter = new UpcomingsAdapter(response);
                 //  recyclerView.setHasFixedSize(true);
@@ -154,16 +157,18 @@ public class OnGoingTrips extends Fragment {
                     errorLayout.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.VISIBLE);
                     recyclerView.setAdapter(upcomingsAdapter);
-                    mFrameLayout.startShimmer();
+
                     mFrameLayout.setVisibility(View.GONE);
                     recyclerView.setVisibility(View.VISIBLE);
                 } else {
                     recyclerView.setVisibility(View.GONE);
+                    mFrameLayout.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
                 }
 
             } else {
                 recyclerView.setVisibility(View.GONE);
+                mFrameLayout.setVisibility(View.GONE);
                 errorLayout.setVisibility(View.VISIBLE);
             }
 
@@ -173,6 +178,7 @@ public class OnGoingTrips extends Fragment {
             customDialog.dismiss();
             recyclerView.setVisibility(View.GONE);
             errorLayout.setVisibility(View.VISIBLE);
+            error.printStackTrace();
             displayMessage(getString(R.string.something_went_wrong));
         }) {
             @Override
@@ -183,6 +189,7 @@ public class OnGoingTrips extends Fragment {
                 return headers;
             }
         };
+
 
         ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
     }
@@ -476,18 +483,101 @@ public class OnGoingTrips extends Fragment {
 
 
 
+//            try {
+//                JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
+//                if (serviceObj != null) {
+////                    holder.car_name.setText(serviceObj.optString("name"));
+//                    holder.tripAmount.setText("₹ "+serviceObj.optString("fixed"));
+//                    //holder.tripAmount.setText(SharedHelper.getKey(context, "currency")+serviceObj.optString("price"));
+//                    Picasso.get().load(serviceObj.optString("image"))
+//                            .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+
+
+            // for fare details
             try {
-                JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
-                if (serviceObj != null) {
-//                    holder.car_name.setText(serviceObj.optString("name"));
-                    holder.tripAmount.setText("₹ "+serviceObj.optString("fixed"));
-                    //holder.tripAmount.setText(SharedHelper.getKey(context, "currency")+serviceObj.optString("price"));
-                    Picasso.get().load(serviceObj.optString("image"))
-                            .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
-                }
-            } catch (JSONException e) {
+                StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + jsonArray.optJSONObject(position).optString("s_latitude") + "&s_longitude=" + jsonArray.optJSONObject(position).optString("s_longitude") + "&d_latitude=" + jsonArray.optJSONObject(position).optString("d_latitude") + "&d_longitude=" + jsonArray.optJSONObject(position).optString("d_longitude") + "&service_type=2", new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            if (response != null) {
+                                System.out.println("payment details estimated data : " + jsonObject.toString());
+                                jsonObject.optString("estimated_fare");
+                                jsonObject.optString("distance");
+                                jsonObject.optString("time");
+                                jsonObject.optString("tax_price");
+                                jsonObject.optString("base_price");
+                                jsonObject.optString("discount");
+                                jsonObject.optString("currency");
+
+                                String con = jsonObject.optString("currency") + " ";
+
+
+                                System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+
+                                try {
+                                    System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+                                    holder.tripAmount.setText(con + jsonObject.optString("estimated_fare"));
+
+                                }catch (Exception e){
+                                    e.printStackTrace();
+                                }
+
+
+                            }
+
+                        } catch (JSONException e) {
+
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        try {
+                            Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+
+                }) {
+
+
+
+
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("X-Requested-With", "XMLHttpRequest");
+                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                        return headers;
+                    }
+
+                };
+
+                ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+
+            }catch (Exception e){
                 e.printStackTrace();
             }
+
+
+
+
 
             JSONObject providerServiceJsonObj = jsonArray.optJSONObject(position).optJSONObject("provider_service");
             try {
@@ -600,9 +690,9 @@ public class OnGoingTrips extends Fragment {
                 s_address = jsonArray.optJSONObject(position).optString("s_address");
                 d_address = jsonArray.optJSONObject(position).optString("d_address");
 
-                intent.putExtra("request_id", request_id);
-                intent.putExtra("s_address", s_address);
-                intent.putExtra("d_address", d_address);
+                intent.putExtra("request_id", jsonArray.optJSONObject(position).optString("id"));
+                intent.putExtra("s_address", jsonArray.optJSONObject(position).optString("s_address"));
+                intent.putExtra("d_address", jsonArray.optJSONObject(position).optString("d_address"));
                 intent.putExtra("s_date", s_date);
                 intent.putExtra("s_time", s_time);
                 intent.putExtra("fare", fare);
@@ -614,9 +704,9 @@ public class OnGoingTrips extends Fragment {
                 intent.putExtra("tag", "upcoming_trips");
 
 
-                request_id = jsonArray.optJSONObject(position).optString("id");
-                s_address = jsonArray.optJSONObject(position).optString("s_address");
-                d_address = jsonArray.optJSONObject(position).optString("d_address");
+//                request_id = jsonArray.optJSONObject(position).optString("id");
+//                s_address = jsonArray.optJSONObject(position).optString("s_address");
+//                d_address = jsonArray.optJSONObject(position).optString("d_address");
                 booking_id = jsonArray.optJSONObject(position).optString("booking_id");
                 status = jsonArray.optJSONObject(position).optString("status");
                 if(jsonArray.optJSONObject(position).optString("payment_mode") != null){
@@ -647,19 +737,19 @@ public class OnGoingTrips extends Fragment {
 
 
 
-                intent.putExtra("request_id", request_id);
-                intent.putExtra("s_address", s_address);
-                intent.putExtra("d_address", d_address);
+//                intent.putExtra("request_id", request_id);
+//                intent.putExtra("s_address", s_address);
+//                intent.putExtra("d_address", d_address);
                 intent.putExtra("booking_id", booking_id);
-                intent.putExtra("s_date", s_date);
-                intent.putExtra("s_time", s_time);
+//                intent.putExtra("s_date", s_date);
+//                intent.putExtra("s_time", s_time);
                 intent.putExtra("status", status);
                 intent.putExtra("payment_mode", payment_mode);
                 intent.putExtra("estimated_fare", estimated_fare);
                 intent.putExtra("verification_code", verification_code);
                 intent.putExtra("static_map", static_map);
                 intent.putExtra("first_name", first_name);
-                intent.putExtra("rating", rating);
+                intent.putExtra("rating", jsonArray.optJSONObject(position).optJSONObject("provider").optString("rating"));
                 intent.putExtra("avatar", avatar);
                 intent.putExtra("current_trip_user_id", jsonArray.optJSONObject(position).optString("user_id"));
 

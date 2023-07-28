@@ -485,27 +485,12 @@ public class InvoiceActivity extends AppCompatActivity {
 
         public PostAdapter(JSONArray array) {
             this.jsonArrayParent = array;
-//            try {
-//
-//                for (int i = 0; i < jsonArrayParent.length(); i++) {
-////                    jsonArray.getJSONObject(position).optJSONObject("trip").optString("status").equalsIgnoreCase("COMPLETED")
-//                    if(array.getJSONObject(i).optJSONObject("trip").optString("status").equalsIgnoreCase("COMPLETED")){
-////                        this.jsonArray = array;
-//                        this.jsonArray.put(array.get(i));
-//                    }
-//                }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
 
         }
 
         public void append(JSONArray array) {
             try {
                 for (int i = 0; i < jsonArrayParent.length(); i++) {
-////                    jsonArray.getJSONObject(position).optJSONObject("trip").optString("status").equalsIgnoreCase("COMPLETED")
-//                    if(array.getJSONObject(i).optJSONObject("trip").optString("status").equalsIgnoreCase("COMPLETED")){
-//                    }
                     this.jsonArray.put(array.get(i));
                 }
             } catch (JSONException e) {

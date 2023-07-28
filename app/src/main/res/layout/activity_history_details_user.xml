@@ -574,7 +574,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="start"
-                        android:text="@string/distance_price"
+                        android:text="Distance"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_13sdp" />
 

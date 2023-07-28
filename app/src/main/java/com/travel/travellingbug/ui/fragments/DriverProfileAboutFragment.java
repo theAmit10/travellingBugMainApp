@@ -262,7 +262,6 @@ public class DriverProfileAboutFragment extends Fragment {
     private void getProfileData(String user_id) {
         mFrameLayout.startShimmer();
 
-
         // Getting other details of profile
 
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.MY_PUBLISH_UPCOMMING_TRIPS_DETAILS, new Response.Listener<String>() {
@@ -309,15 +308,82 @@ public class DriverProfileAboutFragment extends Fragment {
                         }
 
 
-                        vehicleCapacityVal.setText(jsonObject.optString("availablecapacity") + " Seat left");
+
 
 
                         JSONObject providerJsonObj = jsonObject.optJSONObject("provider");
+
                         try {
                             providerFirstName = providerJsonObj.optString("first_name");
                             providerId = providerJsonObj.optString("id");
                             providerMobileNo = providerJsonObj.optString("mobile");
                         } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            JSONObject provider_service_json_obj = jsonObject.optJSONObject("provider_service");
+
+                            if(provider_service_json_obj != null ){
+                                if(!provider_service_json_obj.optString("service_model").equalsIgnoreCase("null") && !provider_service_json_obj.optString("service_name").equalsIgnoreCase("null") && !provider_service_json_obj.optString("service_color").equalsIgnoreCase("null") ){
+                                    String vehicle_name = provider_service_json_obj.optString("service_model")+ " " + provider_service_json_obj.optString("service_name") +" | "+provider_service_json_obj.optString("service_color").toLowerCase();
+                                    System.out.println("vehicle name : "+vehicle_name);
+                                    carTypeVal.setText(vehicle_name);
+                                }else {
+                                    carTypeVal.setText("");
+                                }
+
+                                // vehicle capacity
+                                if(!provider_service_json_obj.optString("service_capacity").equalsIgnoreCase("null")){
+                                    vehicleCapacityVal.setText(provider_service_json_obj.optString("service_capacity")+ " Seat left");
+                                }else {
+                                    vehicleCapacityVal.setText("");
+                                }
+
+                                // vehicle ac
+                                if(!provider_service_json_obj.optString("service_ac").equalsIgnoreCase("null")){
+                                    if(provider_service_json_obj.optString("service_ac").toLowerCase().equalsIgnoreCase("Yes")){
+                                        airConditionerVal.setText("AC available");
+                                    }else {
+                                        airConditionerVal.setText("Not available");
+                                    }
+                                }else {
+                                    airConditionerVal.setText("");
+                                }
+
+
+                                // vehicle name
+                                if (!provider_service_json_obj.optString("service_model").equalsIgnoreCase("null") && !provider_service_json_obj.optString("service_name").equalsIgnoreCase("null") ) {
+                                    String vehicle_name = provider_service_json_obj.optString("service_model") + " " + provider_service_json_obj.optString("service_name");
+                                    System.out.println("vehicle name : " + vehicle_name);
+                                    vehicleName.setText(vehicle_name);
+                                } else {
+                                    vehicleName.setText("");
+                                }
+
+
+                                // vehicle number
+                                if(!provider_service_json_obj.optString("service_number").equalsIgnoreCase("null")){
+                                    vehicleNumber.setText(provider_service_json_obj.optString("service_number"));
+                                }else {
+                                    vehicleNumber.setText("");
+                                }
+
+                            }else {
+                                carTypeVal.setText("");
+                                vehicleCapacityVal.setText("");
+                                airConditionerVal.setText("");
+                                vehicleName.setText("");
+                                vehicleNumber.setText("");
+
+                            }
+
+
+
+
+
+
+                        }catch (Exception e ){
                             e.printStackTrace();
                         }
 
@@ -338,6 +404,97 @@ public class DriverProfileAboutFragment extends Fragment {
 //                        listitemrating.setRating(Float.parseFloat(jsonObject.optString("rating")));
 //                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar"))
 //                                .placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(profileImgeIv);
+
+
+
+
+                        // Getting Fare Value
+                        // for fare details
+                        try {
+                            StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + jsonObject.optString("s_latitude") + "&s_longitude=" + jsonObject.optString("s_longitude") + "&d_latitude=" + jsonObject.optString("d_latitude") + "&d_longitude=" + jsonObject.optString("d_longitude") + "&service_type=2", new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+
+
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response);
+
+                                        if (response != null) {
+                                            System.out.println("payment details estimated data : " + jsonObject.toString());
+                                            jsonObject.optString("estimated_fare");
+                                            jsonObject.optString("distance");
+                                            jsonObject.optString("time");
+                                            jsonObject.optString("tax_price");
+                                            jsonObject.optString("base_price");
+                                            jsonObject.optString("discount");
+                                            jsonObject.optString("currency");
+
+                                            String con = jsonObject.optString("currency") + " ";
+
+                                            System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+
+                                            try {
+                                                System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+
+//                                                Double fare = Double.valueOf(jsonObject.optString("estimated_fare"));
+//                                                int no_of_seat = Integer.parseInt(s_seat);
+//                                                Double c_fare = fare * no_of_seat;
+//                                                String calculated_fare = con + c_fare;
+
+                                                perSeatPerKmVal.setText(con + jsonObject.optString("estimated_fare"));
+
+                                            }catch (Exception e){
+                                                e.printStackTrace();
+                                            }
+
+
+                                        }
+
+                                    } catch (JSONException e) {
+
+                                        e.printStackTrace();
+                                    }
+
+
+                                }
+                            }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+
+                                    try {
+                                        Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+
+                            }) {
+
+
+
+
+                                @Override
+                                public Map<String, String> getHeaders() {
+                                    HashMap<String, String> headers = new HashMap<String, String>();
+                                    headers.put("X-Requested-With", "XMLHttpRequest");
+                                    headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                                    return headers;
+                                }
+
+                            };
+
+                            ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+
+
+
 
 
                     }

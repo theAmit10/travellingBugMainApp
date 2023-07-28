@@ -1,7 +1,6 @@
 package com.travel.travellingbug.ui.activities;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +21,9 @@ import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,6 +36,11 @@ public class ConfirmRideRequestActivity extends AppCompatActivity {
     TextView nameTv, carModelAndColor, pickupLocation, dropLocation, dateVal, timeVal, fareVal, seatVal;
 
     String sc_address = "", dc_address = "", s_profileImage = "", s_name = "", s_carModleAndColor = "", s_date = "", s_time = "", s_fare = "", s_seat = "", s_id = "";
+
+    String s_latitude="", s_longitude="", d_latitude="",d_longitude="";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +65,95 @@ public class ConfirmRideRequestActivity extends AppCompatActivity {
         dropLocation.setText(dc_address);
         dateVal.setText(s_date);
         timeVal.setText(s_time);
-        fareVal.setText(s_fare);
+//        fareVal.setText(s_fare);
         seatVal.setText(s_seat + " Seats");
+
+
+        // Getting Fare Value
+        // for fare details
+        try {
+            StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + s_latitude + "&s_longitude=" + s_longitude + "&d_latitude=" + d_latitude + "&d_longitude=" + d_longitude + "&service_type=2", new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+
+                        if (response != null) {
+                            System.out.println("payment details estimated data : " + jsonObject.toString());
+                            jsonObject.optString("estimated_fare");
+                            jsonObject.optString("distance");
+                            jsonObject.optString("time");
+                            jsonObject.optString("tax_price");
+                            jsonObject.optString("base_price");
+                            jsonObject.optString("discount");
+                            jsonObject.optString("currency");
+
+                            String con = jsonObject.optString("currency") + " ";
+
+                            System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+
+                            try {
+                                System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+
+                                Double fare = Double.valueOf(jsonObject.optString("estimated_fare"));
+                                int no_of_seat = Integer.parseInt(s_seat);
+                                Double c_fare = fare * no_of_seat;
+                                String calculated_fare = con + c_fare;
+
+                                fareVal.setText(calculated_fare);
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+
+
+                        }
+
+                    } catch (JSONException e) {
+
+                        e.printStackTrace();
+                    }
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                    try {
+                        Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            }) {
+
+
+
+
+                @Override
+                public Map<String, String> getHeaders() {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("X-Requested-With", "XMLHttpRequest");
+                    headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                    return headers;
+                }
+
+            };
+
+            ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
 
     }
 
@@ -75,6 +169,12 @@ public class ConfirmRideRequestActivity extends AppCompatActivity {
         s_seat = getIntent().getStringExtra("s_seat");
         s_name = getIntent().getStringExtra("s_name");
         s_id = getIntent().getStringExtra("s_id");
+
+
+        s_latitude = getIntent().getStringExtra("s_latitude");
+        s_longitude = getIntent().getStringExtra("s_longitude");
+        d_latitude = getIntent().getStringExtra("d_latitude");
+        d_longitude = getIntent().getStringExtra("d_longitude");
 
 
         System.out.println("S_ID : " + s_id);
@@ -123,8 +223,9 @@ public class ConfirmRideRequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 confirmDialog.dismiss();
-                Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+//                startActivity(intent);
+                finish();
             }
         });
     }

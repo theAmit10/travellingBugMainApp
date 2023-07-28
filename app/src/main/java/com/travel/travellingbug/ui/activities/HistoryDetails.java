@@ -198,6 +198,9 @@ public class HistoryDetails extends AppCompatActivity {
         booking_id = getIntent().getStringExtra("booking_id");
         current_trip_user_id = getIntent().getStringExtra("current_trip_user_id");
 
+
+        System.out.println("HD -> rating : "+rating);
+
     }
 
     private void updateStatusForSingleUserRide(String rideId, String status){

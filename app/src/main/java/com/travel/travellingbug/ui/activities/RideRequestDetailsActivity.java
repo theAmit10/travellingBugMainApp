@@ -111,7 +111,11 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                acceptRequest(person_id);
+                if(acceptBtn.getText().toString().equalsIgnoreCase("ACCEPTED")){
+                    Toast.makeText(RideRequestDetailsActivity.this, "Already accepted", Toast.LENGTH_SHORT).show();
+                }else{
+                    acceptRequest(person_id);
+                }
             }
         });
 
@@ -119,7 +123,11 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         rejectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cancelRequest(person_id);
+                if(rejectBtn.getText().toString().equalsIgnoreCase("CANCELLED")){
+                    Toast.makeText(RideRequestDetailsActivity.this, "Already cancelled", Toast.LENGTH_SHORT).show();
+                }else{
+                    cancelRequest(person_id);
+                }
             }
         });
 
