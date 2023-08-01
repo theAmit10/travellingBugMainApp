@@ -149,8 +149,8 @@ public class RatingReceivedFragment extends Fragment {
                                     JSONObject dataJsonObj = dataJsonArray.getJSONObject(i);
 
                                     UserProfileReviewDataModel userProfileReviewDataModel = new UserProfileReviewDataModel();
-                                    String user_rating = dataJsonObj.getString("user_rating");
-                                    String user_comment = dataJsonObj.getString("user_comment");
+                                    String user_rating = dataJsonObj.getString("provider_rating");
+                                    String user_comment = dataJsonObj.getString("provider_comment");
                                     String first_name = dataJsonObj.getString("first_name");
                                     String avatar = dataJsonObj.getString("avatar");
 //                                    String created_at_time =  dataJsonObj.getString("created_at");

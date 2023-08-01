@@ -179,6 +179,8 @@ public interface URLHelper {
 
     String USER_PAYMENT_HISTORY = BASE +"api/provider/mypaymenthistory";
 
+    String PROVIDER_PAYMENT_HISTORY = BASE +"api/provider/providerpaymenthistory";
+
     String PUBLISH_TRACKING_LINK = BASE +"api/provider/addtrackinglink";
 
 

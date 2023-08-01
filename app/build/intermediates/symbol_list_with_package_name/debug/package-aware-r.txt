@@ -3510,6 +3510,8 @@ drawable cancel_text
 drawable car
 drawable car_bg
 drawable car_green
+drawable car_green_back
+drawable car_green_background_last
 drawable car_select
 drawable car_travel
 drawable car_with_people_background
@@ -6454,6 +6456,7 @@ id txtdriverpicked
 id txtpaiddriver
 id txtuserName
 id txtvehicleEdit
+id type
 id unchecked
 id underline
 id uniform

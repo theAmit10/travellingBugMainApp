@@ -285,7 +285,7 @@ android:fontFamily="@font/nunito_bold"
                     android:drawableTint="@color/black"
                     android:textStyle="bold"
                     android:maxLines="1"
-                    android:text="10:30 AM"
+                    android:text=""
                     android:textColor="@color/dark_gray" />
 
             </LinearLayout>

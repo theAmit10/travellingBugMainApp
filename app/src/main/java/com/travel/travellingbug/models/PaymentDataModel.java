@@ -1,18 +1,27 @@
 package com.travel.travellingbug.models;
 
 public class PaymentDataModel {
-    String profileImage, username, time, fare, userid, requestid;
+    String profileImage, username, time, fare, userid, requestid,type;
 
-    public PaymentDataModel(String profileImage, String username, String time, String fare, String userid, String requestid) {
+    public PaymentDataModel(String profileImage, String username, String time, String fare, String userid, String requestid,String type) {
         this.profileImage = profileImage;
         this.username = username;
         this.time = time;
         this.fare = fare;
         this.userid = userid;
         this.requestid = requestid;
+        this.type = type;
     }
 
     public PaymentDataModel() {
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getProfileImage() {

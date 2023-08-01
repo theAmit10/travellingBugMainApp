@@ -25,9 +25,9 @@ import java.lang.Override;
 public class DriverMapFragment_ViewBinding implements Unbinder {
   private DriverMapFragment target;
 
-  private View view7f0a03bb;
+  private View view7f0a03bc;
 
-  private View view7f0a02c0;
+  private View view7f0a02c1;
 
   private View view7f0a0138;
 
@@ -45,13 +45,13 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
 
   private View view7f0a013e;
 
-  private View view7f0a02cc;
+  private View view7f0a02cd;
 
-  private View view7f0a02b8;
+  private View view7f0a02b9;
 
-  private View view7f0a02e0;
+  private View view7f0a02e1;
 
-  private View view7f0a0425;
+  private View view7f0a0427;
 
   @UiThread
   public DriverMapFragment_ViewBinding(final DriverMapFragment target, View source) {
@@ -61,7 +61,7 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
     target.btnSearch = Utils.findRequiredViewAsType(source, R.id.btnSearch, "field 'btnSearch'", Button.class);
     view = Utils.findRequiredView(source, R.id.menuIcon, "field 'menuIcon' and method 'menuIconClick'");
     target.menuIcon = Utils.castView(view, R.id.menuIcon, "field 'menuIcon'", ImageView.class);
-    view7f0a03bb = view;
+    view7f0a03bc = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -70,7 +70,7 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.imgCurrentLoc, "field 'imgCurrentLoc' and method 'imgCurrentLocClick'");
     target.imgCurrentLoc = Utils.castView(view, R.id.imgCurrentLoc, "field 'imgCurrentLoc'", ImageView.class);
-    view7f0a02c0 = view;
+    view7f0a02c1 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -171,7 +171,7 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
     target.lnrNotApproved = Utils.findRequiredViewAsType(source, R.id.lnrNotApproved, "field 'lnrNotApproved'", LinearLayout.class);
     view = Utils.findRequiredView(source, R.id.imgNavigationToSource, "field 'imgNavigationToSource' and method 'imgNavigationToSourceClick'");
     target.imgNavigationToSource = Utils.castView(view, R.id.imgNavigationToSource, "field 'imgNavigationToSource'", ImageView.class);
-    view7f0a02cc = view;
+    view7f0a02cd = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -200,7 +200,7 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
     target.rat03UserRating = Utils.findRequiredViewAsType(source, R.id.rat03UserRating, "field 'rat03UserRating'", RatingBar.class);
     view = Utils.findRequiredView(source, R.id.img03Call, "field 'img03Call' and method 'img03CallClick'");
     target.img03Call = Utils.castView(view, R.id.img03Call, "field 'img03Call'", ImageButton.class);
-    view7f0a02b8 = view;
+    view7f0a02b9 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -209,7 +209,7 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.img_chat, "field 'img_chat' and method 'img_chatClick'");
     target.img_chat = Utils.castView(view, R.id.img_chat, "field 'img_chat'", ImageButton.class);
-    view7f0a02e0 = view;
+    view7f0a02e1 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -242,7 +242,7 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
     target.user_total_ride_distanse = Utils.findRequiredViewAsType(source, R.id.user_total_ride_distanse, "field 'user_total_ride_distanse'", TextView.class);
     view = Utils.findRequiredView(source, R.id.online_offline_switch, "field 'online_offline_switch' and method 'online_offline_switchClick'");
     target.online_offline_switch = Utils.castView(view, R.id.online_offline_switch, "field 'online_offline_switch'", Switch.class);
-    view7f0a0425 = view;
+    view7f0a0427 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -344,10 +344,10 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
     target.edt05Comment = null;
     target.topSrcDestTxtLbl = null;
 
-    view7f0a03bb.setOnClickListener(null);
-    view7f0a03bb = null;
-    view7f0a02c0.setOnClickListener(null);
-    view7f0a02c0 = null;
+    view7f0a03bc.setOnClickListener(null);
+    view7f0a03bc = null;
+    view7f0a02c1.setOnClickListener(null);
+    view7f0a02c1 = null;
     view7f0a0138.setOnClickListener(null);
     view7f0a0138 = null;
     view7f0a013f.setOnClickListener(null);
@@ -364,13 +364,13 @@ public class DriverMapFragment_ViewBinding implements Unbinder {
     view7f0a013d = null;
     view7f0a013e.setOnClickListener(null);
     view7f0a013e = null;
-    view7f0a02cc.setOnClickListener(null);
-    view7f0a02cc = null;
-    view7f0a02b8.setOnClickListener(null);
-    view7f0a02b8 = null;
-    view7f0a02e0.setOnClickListener(null);
-    view7f0a02e0 = null;
-    view7f0a0425.setOnClickListener(null);
-    view7f0a0425 = null;
+    view7f0a02cd.setOnClickListener(null);
+    view7f0a02cd = null;
+    view7f0a02b9.setOnClickListener(null);
+    view7f0a02b9 = null;
+    view7f0a02e1.setOnClickListener(null);
+    view7f0a02e1 = null;
+    view7f0a0427.setOnClickListener(null);
+    view7f0a0427 = null;
   }
 }

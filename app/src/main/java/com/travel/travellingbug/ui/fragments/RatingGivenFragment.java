@@ -175,6 +175,7 @@ public class RatingGivenFragment extends Fragment {
                                 }
                                 adapter = new UserProfileReviewDataAdapter(getContext(), list);
                                 fragmentDriverReviewRV.setAdapter(adapter);
+                                errorLayout.setVisibility(View.GONE);
                                 mFrameLayout.setVisibility(View.GONE);
                                 reviewDataLl.setVisibility(View.VISIBLE);
                             }else {
@@ -184,8 +185,8 @@ public class RatingGivenFragment extends Fragment {
 
 
                         } catch (Exception e) {
-                            mFrameLayout.setVisibility(View.GONE);
-                            errorLayout.setVisibility(View.VISIBLE);
+                            mFrameLayout.setVisibility(View.VISIBLE);
+//                            errorLayout.setVisibility(View.VISIBLE);
                             e.printStackTrace();
                         }
 
@@ -195,7 +196,7 @@ public class RatingGivenFragment extends Fragment {
 
                 } catch (JSONException e) {
                     mFrameLayout.setVisibility(View.GONE);
-                    errorLayout.setVisibility(View.VISIBLE);
+//                    errorLayout.setVisibility(View.VISIBLE);
                     e.printStackTrace();
                 }
 

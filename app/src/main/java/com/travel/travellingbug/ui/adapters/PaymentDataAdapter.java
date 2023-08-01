@@ -34,15 +34,24 @@ public class PaymentDataAdapter extends RecyclerView.Adapter<PaymentDataAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder , int position) {
 
         PaymentDataModel paymentDataModel = list.get(position);
-
         try {
+
+            System.out.println("DATA getUsername : ->  : "+paymentDataModel.getUsername());
+            System.out.println("DATA getType() : ->  : "+paymentDataModel.getType());
+            System.out.println("DATA getProfileImage() : ->  : "+paymentDataModel.getProfileImage());
+            System.out.println("DATA getTime() : ->  : "+paymentDataModel.getTime());
+
+
+            holder.username.setText(paymentDataModel.getUsername());
             holder.fare.setText(paymentDataModel.getFare());
             holder.dateTimeVal.setText(paymentDataModel.getTime());
             holder.username.setText(paymentDataModel.getUsername());
+            holder.type.setText(paymentDataModel.getType());
             Picasso.get().load(paymentDataModel.getProfileImage()).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.profileImgeIv);
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -57,7 +66,7 @@ public class PaymentDataAdapter extends RecyclerView.Adapter<PaymentDataAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView profileImgeIv;
-        TextView username,dateTimeVal,fare;
+        TextView username,dateTimeVal,fare,type;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -65,6 +74,7 @@ public class PaymentDataAdapter extends RecyclerView.Adapter<PaymentDataAdapter.
             username = itemView.findViewById(R.id.username);
             dateTimeVal = itemView.findViewById(R.id.dateTimeVal);
             fare = itemView.findViewById(R.id.fare);
+            type = itemView.findViewById(R.id.type);
         }
     }
 }

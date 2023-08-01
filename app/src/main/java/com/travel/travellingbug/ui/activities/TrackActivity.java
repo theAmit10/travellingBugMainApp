@@ -2252,10 +2252,25 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 //                                                                        txtDiscount.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("discount"));
 //                                                                    }
                                                                                         //lblCommision.setText(SharedHelper.getKey(context, "currency") + "" + payment.optString("commision"));
-                                                                                        lblTotalPrice.setText(con + jsonObject.optString("estimated_fare"));
-                                                                                        SharedHelper.putKey(TrackActivity.this, "total_price",
-                                                                                                jsonObject.optString("estimated_fare"));
 
+
+                                                                                        // for fare multiple with total number of passenger
+
+
+                                                                                        try {
+                                                                                            System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+                                                                                            Double fares = Double.valueOf(jsonObject.optString("estimated_fare"));
+                                                                                            int no_of_seat = Integer.parseInt(filterJsonObject.optString("noofseats"));
+                                                                                            Double c_fare = fares * no_of_seat;
+                                                                                            String calculated_fare = con + c_fare;
+                                                                                            lblTotalPrice.setText(calculated_fare);
+                                                                                            SharedHelper.putKey(TrackActivity.this, "total_price",
+                                                                                                    calculated_fare);
+
+
+                                                                                        }catch (Exception e){
+                                                                                            e.printStackTrace();
+                                                                                        }
 
                                                                                         System.out.println("ESTIMATED FARE STATUS :" + response.toString());
 
@@ -2263,12 +2278,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
                                                                                 } catch (
                                                                                         JSONException e) {
-//                                                                                Toast.makeText(getApplicationContext(), "error: dropped", Toast.LENGTH_SHORT).show();
-//                                                                                Toast.makeText(getApplicationContext(), "error" + e, Toast.LENGTH_SHORT).show();
+//
                                                                                     Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                                                                                    System.out.println(" Error  : " + e.getMessage());
-                                                                                    System.out.println(" Error  : " + e.getCause());
-                                                                                    System.out.println(" Error : " + e);
                                                                                     e.printStackTrace();
                                                                                 }
 
@@ -2278,12 +2289,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                             @Override
                                                                             public void onErrorResponse(VolleyError error) {
 
-//                                                                            Toast.makeText(getApplicationContext(), "Error Drop", Toast.LENGTH_SHORT).show();
-//                                                                            Toast.makeText(getApplicationContext(), "Error Found payment details :" + error, Toast.LENGTH_SHORT).show();
                                                                                 Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                                                                                System.out.println(" Error  : " + error.getMessage());
-                                                                                System.out.println(" Error  : " + error.getCause());
-                                                                                System.out.println(" Error : " + error);
                                                                                 error.printStackTrace();
                                                                             }
 

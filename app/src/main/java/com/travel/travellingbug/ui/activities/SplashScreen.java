@@ -422,6 +422,9 @@ public class SplashScreen extends AppCompatActivity {
                                 startActivity(new Intent(SplashScreen.this, IntroActivity.class));
                                 finish();
                             }
+                        }else{
+                            Toast.makeText(SplashScreen.this, "Grant permission to continue", Toast.LENGTH_SHORT).show();
+                            showPermissionDialog();
                         }
                         if (report.isAnyPermissionPermanentlyDenied()) {
                             showSettingsDialog();

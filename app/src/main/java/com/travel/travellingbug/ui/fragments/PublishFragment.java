@@ -467,6 +467,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             } else if (SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("no")) {
                 Intent intent = new Intent(getContext(), DocUploadActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);
             }
 
 
@@ -480,10 +481,11 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             } else if (SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("no")) {
                 Intent intent = new Intent(getContext(), DocUploadActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);
             }
         }
 
-        if(SharedHelper.getKey(getContext(),"status").equalsIgnoreCase("onboarding")){
+        if(SharedHelper.getKey(getContext(),"status").equalsIgnoreCase("onboarding") && SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("yes") ){
             Intent intent = new Intent(getContext(), WaitingForApproval.class);
             startActivity(intent);
             getActivity().overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);

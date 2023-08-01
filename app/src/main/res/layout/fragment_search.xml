@@ -21,7 +21,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/car_green"
+                android:background="@drawable/car_green_background_last"
                 android:orientation="vertical">
 
                 <!-- Map frame -->

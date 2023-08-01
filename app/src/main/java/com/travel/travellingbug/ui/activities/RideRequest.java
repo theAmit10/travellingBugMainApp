@@ -710,6 +710,8 @@ public class RideRequest extends AppCompatActivity {
 
                                             holder.fare.setText(calculated_fare);
 
+//                                            number_of_seat
+
                                         }catch (Exception e){
                                             e.printStackTrace();
                                         }

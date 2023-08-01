@@ -50,6 +50,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import es.dmoral.toasty.Toasty;
 
@@ -73,6 +75,7 @@ public class OnGoingTrips extends Fragment {
 
     String booking_id="",status="",payment_mode="",estimated_fare="",verification_code="",static_map="",first_name="",mobile="",avatar="",rating="";
 
+    private ExecutorService executorService;
 
     public OnGoingTrips() {
         // Required empty public constructor
@@ -89,6 +92,10 @@ public class OnGoingTrips extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_on_going_trips, container, false);
         findViewByIdAndInitialize();
+
+        // Initialize the ExecutorService with a fixed number of threads
+        int numberOfThreads = 3; // You can adjust this number as per your needs
+        executorService = Executors.newFixedThreadPool(numberOfThreads);
 
         if (isInternet) {
             getUpcomingList();
@@ -121,6 +128,8 @@ public class OnGoingTrips extends Fragment {
         backImg = rootView.findViewById(R.id.backArrow);
     }
 
+
+
     @Override
     public void onResume() {
         if (upcomingsAdapter != null) {
@@ -142,56 +151,125 @@ public class OnGoingTrips extends Fragment {
         customDialog.show();
 
 
+        // Simulate adding more items in the background using ExecutorService
+        executorService.execute(() -> {
+            try {
+//                Thread.sleep(2000); // Simulate some background work
+                JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.MY_PUBLISH_UPCOMMING_TRIPS, response -> {
+                    customDialog.dismiss();
+                    Log.v("onGoingTrips", response.toString());
+                    getActivity().runOnUiThread(() -> {
+                        if (response != null) {
+                            upcomingsAdapter = new UpcomingsAdapter(response);
+                            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                            recyclerView.setLayoutManager(mLayoutManager);
+                            recyclerView.setItemAnimator(new DefaultItemAnimator());
+                            if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
+                                errorLayout.setVisibility(View.GONE);
+                                recyclerView.setVisibility(View.VISIBLE);
+                                recyclerView.setAdapter(upcomingsAdapter);
+
+                                mFrameLayout.setVisibility(View.GONE);
+                                recyclerView.setVisibility(View.VISIBLE);
+                            } else {
+                                recyclerView.setVisibility(View.GONE);
+                                mFrameLayout.setVisibility(View.GONE);
+                                errorLayout.setVisibility(View.VISIBLE);
+                            }
+
+                        } else {
+                            recyclerView.setVisibility(View.GONE);
+                            mFrameLayout.setVisibility(View.GONE);
+                            errorLayout.setVisibility(View.VISIBLE);
+                        }
+                    });
 
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.MY_PUBLISH_UPCOMMING_TRIPS, response -> {
-            customDialog.dismiss();
-            Log.v("onGoingTrips", response.toString());
-            if (response != null) {
-                upcomingsAdapter = new UpcomingsAdapter(response);
-                //  recyclerView.setHasFixedSize(true);
-                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
-                recyclerView.setLayoutManager(mLayoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-                if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
-                    errorLayout.setVisibility(View.GONE);
-                    recyclerView.setVisibility(View.VISIBLE);
-                    recyclerView.setAdapter(upcomingsAdapter);
+                }, error -> {
+                    getActivity().runOnUiThread(() -> {
+                        customDialog.dismiss();
+                        recyclerView.setVisibility(View.GONE);
+                        errorLayout.setVisibility(View.VISIBLE);
+                        error.printStackTrace();
+                        displayMessage(getString(R.string.something_went_wrong));
+                    });
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() {
+                        HashMap<String, String> headers = new HashMap<String, String>();
+                        headers.put("X-Requested-With", "XMLHttpRequest");
+                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getActivity(), "access_token"));
+                        return headers;
+                    }
+                };
 
-                    mFrameLayout.setVisibility(View.GONE);
-                    recyclerView.setVisibility(View.VISIBLE);
-                } else {
-                    recyclerView.setVisibility(View.GONE);
-                    mFrameLayout.setVisibility(View.GONE);
-                    errorLayout.setVisibility(View.VISIBLE);
-                }
 
-            } else {
-                recyclerView.setVisibility(View.GONE);
-                mFrameLayout.setVisibility(View.GONE);
-                errorLayout.setVisibility(View.VISIBLE);
+                ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
+
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
+            // Add more items to the list (e.g., fetching data from a server)
 
 
-        }, error -> {
-            customDialog.dismiss();
-            recyclerView.setVisibility(View.GONE);
-            errorLayout.setVisibility(View.VISIBLE);
-            error.printStackTrace();
-            displayMessage(getString(R.string.something_went_wrong));
-        }) {
-            @Override
-            public Map<String, String> getHeaders() {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("X-Requested-With", "XMLHttpRequest");
-                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getActivity(), "access_token"));
-                return headers;
-            }
-        };
+            // Update the RecyclerView on the UI thread
+//            getActivity().runOnUiThread(() -> adapter.notifyDataSetChanged());
+        });
 
 
-        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
+
+
+//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.MY_PUBLISH_UPCOMMING_TRIPS, response -> {
+//            customDialog.dismiss();
+//            Log.v("onGoingTrips", response.toString());
+//            if (response != null) {
+//                upcomingsAdapter = new UpcomingsAdapter(response);
+//                //  recyclerView.setHasFixedSize(true);
+//                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+//                recyclerView.setLayoutManager(mLayoutManager);
+//                recyclerView.setItemAnimator(new DefaultItemAnimator());
+//                if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
+//                    errorLayout.setVisibility(View.GONE);
+//                    recyclerView.setVisibility(View.VISIBLE);
+//                    recyclerView.setAdapter(upcomingsAdapter);
+//
+//                    mFrameLayout.setVisibility(View.GONE);
+//                    recyclerView.setVisibility(View.VISIBLE);
+//                } else {
+//                    recyclerView.setVisibility(View.GONE);
+//                    mFrameLayout.setVisibility(View.GONE);
+//                    errorLayout.setVisibility(View.VISIBLE);
+//                }
+//
+//            } else {
+//                recyclerView.setVisibility(View.GONE);
+//                mFrameLayout.setVisibility(View.GONE);
+//                errorLayout.setVisibility(View.VISIBLE);
+//            }
+//
+//
+//
+//        }, error -> {
+//            customDialog.dismiss();
+//            recyclerView.setVisibility(View.GONE);
+//            errorLayout.setVisibility(View.VISIBLE);
+//            error.printStackTrace();
+//            displayMessage(getString(R.string.something_went_wrong));
+//        }) {
+//            @Override
+//            public Map<String, String> getHeaders() {
+//                HashMap<String, String> headers = new HashMap<String, String>();
+//                headers.put("X-Requested-With", "XMLHttpRequest");
+//                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getActivity(), "access_token"));
+//                return headers;
+//            }
+//        };
+//
+//
+//        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
     }
 
     public void GoToBeginActivity() {
@@ -204,6 +282,17 @@ public class OnGoingTrips extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        if(executorService != null){
+            executorService.shutdown();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(executorService != null){
+            executorService.shutdown();
+        }
     }
 
     public void displayMessage(String toastString) {

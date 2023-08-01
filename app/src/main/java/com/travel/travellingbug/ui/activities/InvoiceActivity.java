@@ -329,50 +329,7 @@ public class InvoiceActivity extends AppCompatActivity {
 
 
 
-//        customDialog = new CustomDialog(InvoiceActivity.this);
-//        customDialog.setCancelable(false);
-//        customDialog.show();
-//
-//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.GET_ALL_RIDES, response -> {
-//
-//            if (response != null) {
-//                postAdapter = new InvoiceActivity.PostAdapter(response);
-//                recyclerView.setHasFixedSize(true);
-//                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()) {
-//                    @Override
-//                    public RecyclerView.LayoutParams generateDefaultLayoutParams() {
-//                        return new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-//                                ViewGroup.LayoutParams.WRAP_CONTENT);
-//                    }
-//                });
-//                if (postAdapter != null && postAdapter.getItemCount() > 0) {
-//                    errorLayout.setVisibility(View.GONE);
-//                    recyclerView.setAdapter(postAdapter);
-//                } else {
-//                    errorLayout.setVisibility(View.VISIBLE);
-//                }
-//
-//            } else {
-//                errorLayout.setVisibility(View.VISIBLE);
-//            }
-//
-//            customDialog.dismiss();
-//
-//        }, error -> {
-//            customDialog.dismiss();
-//            errorLayout.setVisibility(View.VISIBLE);
-//            displayMessage(getString(R.string.something_went_wrong));
-//        }) {
-//            @Override
-//            public Map<String, String> getHeaders() {
-//                HashMap<String, String> headers = new HashMap<String, String>();
-//                headers.put("X-Requested-With", "XMLHttpRequest");
-//                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
-//                return headers;
-//            }
-//        };
-//
-//        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
+
     }
 
 
@@ -890,7 +847,32 @@ public class InvoiceActivity extends AppCompatActivity {
                                         canvas.drawText("Distance               "+jsonObject.optString("distance") + " KM", 396, 710, title);
                                         canvas.drawText("Tax                    "+con + jsonObject.optString("tax_price"), 396, 750, title);
                                         canvas.drawText("--------------------------------------------", 396, 790, title);
-                                        canvas.drawText("Total                  "+con + jsonObject.optString("estimated_fare"), 396, 830, title);
+
+
+                                        // for number of passenger
+                                        // getting taken seat
+                                        JSONArray filterJsonArray = jsonObjectTrip.optJSONArray("filters");
+                                        if (filterJsonArray != null && filterJsonArray.length() > 0) {
+                                            for (int j = 0; j < filterJsonArray.length(); j++) {
+                                                JSONObject filterJsonObject = filterJsonArray.optJSONObject(j);
+                                                if (filterJsonObject.optString("user_id").equalsIgnoreCase(SharedHelper.getKey(getApplicationContext(), "id"))) {
+                                                    try {
+                                                        System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+                                                        Double fares = Double.valueOf(jsonObject.optString("estimated_fare"));
+                                                        int no_of_seat = Integer.parseInt(filterJsonObject.optString("noofseats"));
+                                                        Double c_fare = fares * no_of_seat;
+                                                        String calculated_fare = con + c_fare;
+                                                        canvas.drawText("Total                  "+calculated_fare, 396, 830, title);
+
+                                                    }catch (Exception e){
+                                                        e.printStackTrace();
+                                                    }
+                                                }
+                                            }
+                                        }
+
+
+//                                        canvas.drawText("Total                  "+con + jsonObject.optString("estimated_fare"), 396, 830, title);
                                         canvas.drawText("--------------------------------------------", 396, 870, title);
 
                                         // after adding all attributes to our

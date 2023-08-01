@@ -33,36 +33,43 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingStart="@dimen/_12sdp"
-                android:text="PAYMENT HISTORY"
                 android:fontFamily="@font/nunito_bold"
                 android:gravity="center"
+                android:paddingStart="@dimen/_12sdp"
+                android:text="PAYMENT HISTORY"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_16sdp" />
 
         </LinearLayout>
     </LinearLayout>
 
-
-    <RelativeLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/paymentRv"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        </androidx.recyclerview.widget.RecyclerView>
-    </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/paymentRv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                tools:listitem="@layout/design_payment_refund_history">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 
     <RelativeLayout
         android:id="@+id/errorLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,12 +81,11 @@
                 android:id="@+id/error_image"
                 android:layout_width="@dimen/_184sdp"
                 android:layout_height="@dimen/_184sdp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
-                android:scaleType="centerCrop"
-                android:layout_centerHorizontal="true"
                 android:background="@drawable/travel"
-                />
+                android:scaleType="centerCrop" />
 
 
             <TextView
@@ -91,8 +97,8 @@
 
                 android:text="Your payment history will appear here."
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="@dimen/_20sdp" />
+                android:textSize="@dimen/_20sdp"
+                android:textStyle="bold" />
 
             <!--            <com.travel.travellingbug.utills.MyTextView-->
             <!--                android:layout_width="wrap_content"-->
@@ -118,10 +124,7 @@
         </LinearLayout>
 
 
-
     </RelativeLayout>
-
-
 
 
 </LinearLayout>

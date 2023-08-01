@@ -46,6 +46,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import es.dmoral.toasty.Toasty;
 
@@ -81,7 +83,7 @@ public class FindRidesActivity extends AppCompatActivity {
     ProgressBar idPBLoading;
     NestedScrollView nestedSv;
     String s_latitude = "", s_longitude = "", d_latitude = "", d_longitude = "", s_address = "", d_address = "", service_type = "", distance = "", schedule_date = "", schedule_time = "", upcoming = "", use_wallet = "", payment_mode = "";
-
+    private ExecutorService executorService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +98,10 @@ public class FindRidesActivity extends AppCompatActivity {
         getIntentData();
         setDataOnComponent();
         clickHandler();
-//        getUpcomingList();
+
+        // Initialize the ExecutorService with a fixed number of threads
+        int numberOfThreads = 3; // You can adjust this number as per your needs
+        executorService = Executors.newFixedThreadPool(numberOfThreads);
 
         sendRequestToGetProvider();
 
@@ -280,115 +285,112 @@ public class FindRidesActivity extends AppCompatActivity {
         customDialog.setCancelable(false);
         customDialog.show();
 
-        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.SEND_REQUEST_API_PROVIDER, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                customDialog.dismiss();
-                customDialog.cancel();
+        executorService.execute(() -> {
+            // Perform background task here
 
-                System.out.println("size : " + response.length());
-                System.out.println("data : " + response);
+            StringRequest request = new StringRequest(Request.Method.POST, URLHelper.SEND_REQUEST_API_PROVIDER, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    // Update the UI using runOnUiThread() or Handler
+                    runOnUiThread(() -> {
+                        // Update UI elements here
+                        customDialog.dismiss();
+                        customDialog.cancel();
 
-                try {
-                    JSONArray jsonArray = new JSONArray(response);
-                    System.out.println("size : " + jsonArray.length());
-                    System.out.println("data : " + jsonArray);
-                    System.out.println("data : " + jsonArray.getString(0));
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
 
-
-                    if (response != null) {
-                        System.out.println("data : " + jsonArray.getString(0));
-                        upcomingsAdapter = new UpcomingsAdapter(jsonArray);
-                        //  recyclerView.setHasFixedSize(true);
-
-
-
-
-                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext().getApplicationContext());
-                        recyclerView.setLayoutManager(mLayoutManager);
-                        recyclerView.setItemAnimator(new DefaultItemAnimator());
-                        if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
-                            recyclerView.setVisibility(View.VISIBLE);
-                            errorLayout.setVisibility(View.GONE);
-                            recyclerView.setAdapter(upcomingsAdapter);
-                            mFrameLayout.startShimmer();
-                            mFrameLayout.setVisibility(View.GONE);
-                            recyclerView.setVisibility(View.VISIBLE);
-                        } else {
-//                    errorLayout.setVisibility(View.VISIBLE);
+                            if (response != null) {
+                                upcomingsAdapter = new UpcomingsAdapter(jsonArray);
+                                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext().getApplicationContext());
+                                recyclerView.setLayoutManager(mLayoutManager);
+                                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                                if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
+                                    recyclerView.setVisibility(View.VISIBLE);
+                                    errorLayout.setVisibility(View.GONE);
+                                    recyclerView.setAdapter(upcomingsAdapter);
+                                    mFrameLayout.startShimmer();
+                                    mFrameLayout.setVisibility(View.GONE);
+                                    recyclerView.setVisibility(View.VISIBLE);
+                                } else {
+                                    recyclerView.setVisibility(View.GONE);
+                                    mFrameLayout.startShimmer();
+                                }
+                            } else {
+                                mFrameLayout.startShimmer();
+                            }
+                        } catch (JSONException e) {
+                            displayMessage(e.toString());
+                            e.printStackTrace();
+                            errorLayout.setVisibility(View.VISIBLE);
                             recyclerView.setVisibility(View.GONE);
-                            mFrameLayout.startShimmer();
                         }
-
-                    } else {
-                        mFrameLayout.startShimmer();
-//                errorLayout.setVisibility(View.VISIBLE);
-//                        recyclerView.setVisibility(View.GONE);
-                    }
-
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        System.out.println("data : " + jsonObject.toString());
-                        System.out.println("data : " + jsonObject.getString("s_address"));
-                    }
-
-                } catch (JSONException e) {
-//                    throw new RuntimeException(e);
-                    displayMessage(e.toString());
-                    errorLayout.setVisibility(View.VISIBLE);
-                    recyclerView.setVisibility(View.GONE);
+                    });
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(FindRidesActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    error.printStackTrace();
+                    customDialog.dismiss();
+                    customDialog.cancel();
                 }
 
-//                Toast.makeText(FindRidesActivity.this, "Data Found succesfully..", Toast.LENGTH_SHORT).show();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(FindRidesActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
-                error.printStackTrace();
-                customDialog.dismiss();
-                customDialog.cancel();
-            }
-
-        }) {
+            }) {
 
 
-            @Override
-            public Map<String, String> getParams() {
-                Map<String, String> params = new HashMap<>();
-                params.put("s_latitude", s_latitude);
-                params.put("s_longitude", s_longitude);
-                params.put("d_latitude", d_latitude);
-                params.put("d_longitude", d_longitude);
-                params.put("s_address", s_address);
-                params.put("d_address", d_address);
+                @Override
+                public Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("s_latitude", s_latitude);
+                    params.put("s_longitude", s_longitude);
+                    params.put("d_latitude", d_latitude);
+                    params.put("d_longitude", d_longitude);
+                    params.put("s_address", s_address);
+                    params.put("d_address", d_address);
 
-                params.put("service_type", service_type);
-                params.put("distance", distance);
-                params.put("schedule_date", schedule_date);
-                params.put("schedule_time", schedule_time);
-                params.put("upcoming", upcoming);
-                params.put("use_wallet", use_wallet);
-                params.put("payment_mode", payment_mode);
+                    params.put("service_type", service_type);
+                    params.put("distance", distance);
+                    params.put("schedule_date", schedule_date);
+                    params.put("schedule_time", schedule_time);
+                    params.put("upcoming", upcoming);
+                    params.put("use_wallet", use_wallet);
+                    params.put("payment_mode", payment_mode);
 
-                System.out.println("PARAMS : "+params.toString());
+                    System.out.println("PARAMS : "+params.toString());
 
-                return params;
-            }
+                    return params;
+                }
 
-            @Override
-            public Map<String, String> getHeaders() {
-                HashMap<String, String> headers = new HashMap<String, String>();
-                headers.put("X-Requested-With", "XMLHttpRequest");
-                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
-                return headers;
-            }
+                @Override
+                public Map<String, String> getHeaders() {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("X-Requested-With", "XMLHttpRequest");
+                    headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+                    return headers;
+                }
 
-        };
+            };
 
-        ClassLuxApp.getInstance().addToRequestQueue(request);
+            ClassLuxApp.getInstance().addToRequestQueue(request);
 
 
+        });
+
+
+
+
+
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(executorService != null)
+        {
+            executorService.shutdown();
+        }
     }
 
     @Override
@@ -482,98 +484,7 @@ public class FindRidesActivity extends AppCompatActivity {
         return timeName;
     }
 
-//    public void getVehicleDetails() {
-//        customDialog = new CustomDialog(this);
-//        customDialog.setCancelable(false);
-//        customDialog.show();
-//
-//        // Getting User details
-//        StringRequest request = new StringRequest(Request.Method.GET, URLHelper.GET_VEHICLE_DETAILS, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                try {
-//                    JSONObject jsonObjectUser = new JSONObject(response);
-//
-//                    if (response != null) {
-//                        System.out.println("data : " + jsonObjectUser.toString());
-//
-//                        JSONObject jsonObject = new JSONObject(response);
-//
-//                        jsonObject.optString("service_model");
-//
-//
-//
-//                    }
-//                } catch (JSONException e) {
-//                    displayMessage(e.toString());
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                System.out.println("error : " + error);
-//            }
-//
-//        }) {
-//            @Override
-//            public Map<String, String> getHeaders() {
-//                HashMap<String, String> headers = new HashMap<String, String>();
-//                headers.put("X-Requested-With", "XMLHttpRequest");
-//                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
-//                return headers;
-//            }
-//        };
-//        ClassLuxApp.getInstance().addToRequestQueue(request);
-//
-//
-//    }
 
-//    public void getUpcomingList() {
-//
-////        customDialog = new CustomDialog(getApplicationContext());
-////        customDialog.setCancelable(false);
-////        customDialog.show();
-//
-//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.MY_PUBLISH_UPCOMMING_TRIPS, response -> {
-//
-//            Log.v("GetHistoryList", response.toString());
-//            if (response != null) {
-//                upcomingsAdapter = new FindRidesActivity.UpcomingsAdapter(response);
-//                //  recyclerView.setHasFixedSize(true);
-//                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext().getApplicationContext());
-//                recyclerView.setLayoutManager(mLayoutManager);
-//                recyclerView.setItemAnimator(new DefaultItemAnimator());
-//                if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
-//                    recyclerView.setVisibility(View.VISIBLE);
-////                    errorLayout.setVisibility(View.GONE);
-//                    recyclerView.setAdapter(upcomingsAdapter);
-//                } else {
-////                    errorLayout.setVisibility(View.VISIBLE);
-//                    recyclerView.setVisibility(View.GONE);
-//                }
-//
-//            } else {
-////                errorLayout.setVisibility(View.VISIBLE);
-//                recyclerView.setVisibility(View.GONE);
-//            }
-//
-////            customDialog.dismiss();
-//
-//        }, error -> {
-////            customDialog.dismiss();
-//            displayMessage(getString(R.string.something_went_wrong));
-//        }) {
-//            @Override
-//            public Map<String, String> getHeaders() {
-//                HashMap<String, String> headers = new HashMap<String, String>();
-//                headers.put("X-Requested-With", "XMLHttpRequest");
-//                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
-//                return headers;
-//            }
-//        };
-//
-//        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
-//    }
 
     private class UpcomingsAdapter extends RecyclerView.Adapter<FindRidesActivity.UpcomingsAdapter.MyViewHolder> {
         JSONArray jsonArray;
@@ -864,15 +775,33 @@ public class FindRidesActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     try {
-                        JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
-                        if (serviceObj != null) {
-//                            holder.car_name.setText(serviceObj.optString("name"));
-                            s_carModleAndColor = serviceObj.optString("name");
+                        JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("provider_service");
 
+                        if(serviceObj != null ){
+                            if(!serviceObj.optString("service_model").equalsIgnoreCase("null") && !serviceObj.optString("service_name").equalsIgnoreCase("null") && !serviceObj.optString("service_color").equalsIgnoreCase("null") ){
+                                String vehicle_name = serviceObj.optString("service_model")+ " " + serviceObj.optString("service_name") +" | "+serviceObj.optString("service_color").toLowerCase();
+                                System.out.println("vehicle name : "+vehicle_name);
+                                holder.car_name.setText(vehicle_name);
+                                s_carModleAndColor = vehicle_name;
+                            }else {
+                                holder.car_name.setText("");
+                            }
+                        }else {
+                            holder.car_name.setText("");
                         }
+
+
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
+
+
+
+
+
+
 
                     try {
                         JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("provider");
@@ -883,7 +812,7 @@ public class FindRidesActivity extends AppCompatActivity {
 //                            holder.profileNameTv.setText(serviceObj.optString("first_name"));
 
                             s_profileImage = URLHelper.BASE + "storage/app/public/" + serviceObj.optString("avatar");
-//                            s_name = serviceObj.optString("first_name");
+                            s_name = serviceObj.optString("first_name");
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
