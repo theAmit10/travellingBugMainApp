@@ -101,7 +101,7 @@
                 android:layout_below="@+id/error_image"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:text="You have no upcoming rides to track"
+                android:text="You have no rides to track"
                 android:textColor="@color/colorDarkGray"
                 android:textSize="@dimen/_12sdp" />
 

@@ -123,6 +123,8 @@ public class PastTrips extends Fragment {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URLHelper.GET_ALL_RIDES, response -> {
 
             if (response != null) {
+                System.out.println("RESPONSE LENGTH  : "+response.length());
+                System.out.println("RESPONSE data LENGTH  : "+response.toString());
                 postAdapter = new PostAdapter(response);
                 recyclerView.setHasFixedSize(true);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()) {

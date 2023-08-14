@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.models.VerifyIdMainActivityModel;
 import com.travel.travellingbug.ui.activities.UpdatePreference;
@@ -39,8 +41,17 @@ public class PreferenceTitleAdapter extends RecyclerView.Adapter<PreferenceTitle
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         VerifyIdMainActivityModel verifyIdMainActivityModel = list.get(position);
-        holder.title.setText(verifyIdMainActivityModel.getTitle());
-        holder.description.setText(verifyIdMainActivityModel.getDescription());
+
+        try {
+            holder.title.setText(verifyIdMainActivityModel.getTitle());
+            holder.description.setText(verifyIdMainActivityModel.getDescription());
+            Picasso.get().load(verifyIdMainActivityModel.getAllowed()).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.allowed);
+            Picasso.get().load(verifyIdMainActivityModel.getNotAllowed()).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.notAllowed);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
 
         holder.preferenceContainer.setOnClickListener(new View.OnClickListener() {
@@ -86,8 +97,8 @@ public class PreferenceTitleAdapter extends RecyclerView.Adapter<PreferenceTitle
 
         TextView title;
         TextView description;
-
-        ConstraintLayout preferenceContainer;
+        ImageView allowed,notAllowed;
+        LinearLayout preferenceContainer;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -95,6 +106,8 @@ public class PreferenceTitleAdapter extends RecyclerView.Adapter<PreferenceTitle
             title = itemView.findViewById(R.id.titleVIMtv);
             description = itemView.findViewById(R.id.descriptionVIMtv);
             preferenceContainer = itemView.findViewById(R.id.preferenceContainer);
+            allowed = itemView.findViewById(R.id.allowed);
+            notAllowed = itemView.findViewById(R.id.notAllowed);
         }
     }
 }

@@ -134,10 +134,19 @@ public class UpdateProfile extends AppCompatActivity implements View.OnClickList
         if (v.getId() == R.id.backArrow) {
             onBackPressed();
             finish();
+            overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);
         }
         if (v.getId() == R.id.btnUpdate) {
             if (editText.getText().toString().equals("") ) {
                 text_input_layout.setError("This field not should be empty");
+            }
+            // Define your strong validation criteria
+            else if (editText.toString().isEmpty()) {
+                text_input_layout.setError("This field not should be empty");
+                // Show an error message or toast indicating that the name cannot be empty.
+            } else if (editText.toString().length() < 2 && parameter.equals("first_name")) {
+                // Show an error message or toast indicating that the name must be at least 2 characters long.
+                text_input_layout.setError("name must be at least 2 characters long");
             }
             else if(editText.getText().toString().equals("Confirm your email") ){
                 text_input_layout.setError("This field not should be empty");

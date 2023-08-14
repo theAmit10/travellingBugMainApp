@@ -81,6 +81,7 @@ public interface URLHelper {
 
     String REDIRECT_URL = BASE;
     String REDIRECT_SHARE_URL = "http://maps.google.com/maps?q=loc:";
+    String TRACKING_LINK_SHARE_URL = BASE +"maps/";
 
     String image_url_signature = BASE + "public/";
     String CURRENT_TRIP = BASE + "api/user/trips/current";
@@ -182,6 +183,12 @@ public interface URLHelper {
     String PROVIDER_PAYMENT_HISTORY = BASE +"api/provider/providerpaymenthistory";
 
     String PUBLISH_TRACKING_LINK = BASE +"api/provider/addtrackinglink";
+
+    String INTRO_SCREEN_API = BASE + "api/user/setting/introscreens";
+
+    String PROVIDER_CHATLIST_API = BASE + "api/provider/firebase/chatlists";
+
+    String USER_CHATLIST_API = BASE + "api/provider/firebase/userchatlists";
 
 
 

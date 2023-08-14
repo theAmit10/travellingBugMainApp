@@ -577,13 +577,23 @@ public class HomeScreenActivity extends AppCompatActivity implements
                 GoToFragment();
                 return;
             } else {
-                System.exit(0);
+                exitConfirmation();
+//                System.exit(0);
             }
         }
 
         super.onBackPressed();
     }
 
+    private void exitConfirmation() {
+        new AlertDialog.Builder(getApplicationContext())
+                .setTitle("Confirmation")
+                .setMessage("Do you really want to TravellingBug Services?")
+                .setIcon(R.drawable
+                        .app_logo_org)
+                .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> finish())
+                .setNegativeButton(android.R.string.no, null).show();
+    }
 
     private void map() {
         HomeScreenActivity.this.runOnUiThread(() -> {

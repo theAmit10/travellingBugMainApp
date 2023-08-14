@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -38,6 +39,9 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
     FloatingActionButton floatingActionButton;
     TextInputEditText licenseNumberETL;
     private static final String LICENSE_NUMBER_REGEX = "^[A-Z]{3}\\d{3}$";
+
+    private String vehicle_type = "private_car";
+
 //    private static final String LICENSE_NUMBER_REGEX_ONE = "^[A-Z]{2}[ -]{0,1}[0-9]{2}[ -]{0,1}(?:[A-Z])[ -]{0,1}[A-Z]{1,2}[ -]{0,1}[0-9]{1,4}$";
 //    private static final String LICENSE_NUMBER_REGEX_TWO = "^[A-Z]{2}[ -]{0,1}[0-9]{2}[ -]{0,1}[A-Z]{1,2}[ -]{0,1}[0-9]{1,4}$";
 //    private static final String LICENSE_NUMBER_REGEX_THREE = "^[A-Z]{3}[ -]{0,1}[0-9]{1,4}$";
@@ -59,6 +63,8 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
 
     String license_number = "";
 
+    CheckBox privateCarCheckBox,texiCarCheckBox;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +74,8 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
         clickHandlerOnComponent();
 
         licenseNumberETL.setText(SharedHelper.getKey(getApplicationContext(), "service_number"));
+        int textLength = licenseNumberETL.getText().length();
+        licenseNumberETL.setSelection(textLength);
 
     }
 
@@ -167,7 +175,7 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
 
     private void clickHandlerOnComponent() {
 
-
+        privateCarCheckBox.setChecked(true);
         license_number = licenseNumberETL.getText().toString();
 
         licenseNumberETL.addTextChangedListener(new TextWatcher() {
@@ -187,6 +195,33 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
             }
         });
 
+        privateCarCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(privateCarCheckBox.isChecked())
+                {
+                    texiCarCheckBox.setChecked(false);
+                }
+                vehicle_type = "private_car";
+            }
+        });
+
+        texiCarCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(texiCarCheckBox.isChecked())
+                {
+                    privateCarCheckBox.setChecked(false);
+                    vehicle_type = "taxi";
+                }
+                vehicle_type = "taxi";
+            }
+        });
+
+
+
+
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -205,7 +240,8 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
                 }else {
                     Toast.makeText(VehicleDetailsLicensePlateNumberActivity.this, "Processing ", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(VehicleDetailsLicensePlateNumberActivity.this, VehicleDetailsBrandActivity.class);
-                    intent.putExtra("license_number", license_number);
+                    intent.putExtra("license_number", license_number.trim());
+                    SharedHelper.putKey(getApplicationContext(),"vehicle_type",vehicle_type);
                     startActivity(intent);
                 }
 
@@ -240,6 +276,8 @@ public class VehicleDetailsLicensePlateNumberActivity extends AppCompatActivity 
         licenseNumberETL = findViewById(R.id.licenseNumberETL);
         backArrow = findViewById(R.id.backArrow);
         ccp = findViewById(R.id.ccp);
+        privateCarCheckBox = findViewById(R.id.privateCarCheckBox);
+        texiCarCheckBox = findViewById(R.id.texiCarCheckBox);
 
     }
 }

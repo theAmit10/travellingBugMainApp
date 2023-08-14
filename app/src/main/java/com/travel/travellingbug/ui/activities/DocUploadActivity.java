@@ -47,6 +47,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.travel.travellingbug.BuildConfig;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
@@ -110,6 +111,9 @@ public class DocUploadActivity extends AppCompatActivity {
     ImageView backArrow;
     TextView txtUploa;
     Uri documentUri;
+
+    private ShimmerFrameLayout mFrameLayout;
+
     private String first = "", boring_depth = "";
     private String fileExt = "";
     private byte[] b, b1, b2;
@@ -218,6 +222,7 @@ public class DocUploadActivity extends AppCompatActivity {
         btnDone = findViewById(R.id.btnDone);
         chkTerm = findViewById(R.id.chkTerm);
         backArrow = findViewById(R.id.backArrow);
+        mFrameLayout = findViewById(R.id.shimmerLayout);
 
         btMotorInspectCertificate = findViewById(R.id.btMotorInspectCertificate);
         btPsvInsurenceCertificate = findViewById(R.id.btPsvInsurenceCertificate);
@@ -371,6 +376,8 @@ public class DocUploadActivity extends AppCompatActivity {
 
         try {
 
+            mFrameLayout.startShimmer();
+
 
             String url = URLHelper.CHECK_DOCUMENT;
             final JsonObjectRequest jsonObjectRequest = new
@@ -391,6 +398,8 @@ public class DocUploadActivity extends AppCompatActivity {
                                             ViewGroup.LayoutParams.WRAP_CONTENT);
                                 }
                             });
+                            mFrameLayout.setVisibility(View.GONE);
+                            recDoc.setVisibility(View.VISIBLE);
                             recDoc.setAdapter(docAdapter);
 
 
@@ -421,6 +430,18 @@ public class DocUploadActivity extends AppCompatActivity {
         Toast.makeText(this, toastString, Toast.LENGTH_LONG).show();
     }
 
+
+    @Override
+    protected void onResume() {
+        mFrameLayout.startShimmer();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        mFrameLayout.stopShimmer();
+        super.onPause();
+    }
 
     private void showImageDialog() {
 

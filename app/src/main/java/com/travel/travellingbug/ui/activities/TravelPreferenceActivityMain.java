@@ -252,13 +252,6 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
                             Log.v("jsonObjectPreference : ", jsonObjectPreference.optString("subtitle"));
 
 
-//                        if(!jsonObjectPreference.optString("title").equalsIgnoreCase("null") || !jsonObjectPreference.optString("title").equalsIgnoreCase("") || !jsonObjectPreference.optString("title").equalsIgnoreCase(null)){
-//                            titles = jsonObjectPreference.optString("title");
-//                        }
-//
-//                        if(!jsonObjectPreference.optString("subtitle").equalsIgnoreCase("null") || !jsonObjectPreference.optString("subtitle").equalsIgnoreCase("") || !jsonObjectPreference.optString("subtitle").equalsIgnoreCase(null)){
-//                            subTitle = jsonObjectPreference.optString("subtitle");
-//                        }
 
 
                             titles = jsonObjectPreference.optString("title");
@@ -267,7 +260,32 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
                             title_id = jsonObjectPreference.optString("title_id");
 
 
-                            list.add(new VerifyIdMainActivityModel(titles, subTitle, id,title_id));
+                            VerifyIdMainActivityModel verifyIdMainActivityModel = new VerifyIdMainActivityModel();
+
+
+                            if (!jsonObjectPreference.optString("title").equalsIgnoreCase("null") || !jsonObjectPreference.optString("title").equalsIgnoreCase("") || !jsonObjectPreference.optString("title").equalsIgnoreCase(null)) {
+
+                                verifyIdMainActivityModel.setTitle(jsonObjectPreference.optString("title"));
+                            }
+
+                            if (!jsonObjectPreference.optString("title_id").equalsIgnoreCase("null") || !jsonObjectPreference.optString("title_id").equalsIgnoreCase("") || !jsonObjectPreference.optString("title_id").equalsIgnoreCase(null)) {
+                                subTitle = jsonObjectPreference.optString("title_id");
+                            }
+
+                            if (jsonObjectPreference.optString("picture") != null && !jsonObjectPreference.optString("picture").equalsIgnoreCase("null")) {
+                                verifyIdMainActivityModel.setAllowed(jsonObjectPreference.optString("picture"));
+                            } else {
+                                verifyIdMainActivityModel.setAllowed("");
+                            }
+
+                            verifyIdMainActivityModel.setId(jsonObjectPreference.optString("id"));
+                            verifyIdMainActivityModel.setTitle_id(jsonObjectPreference.optString("title_id"));
+                            verifyIdMainActivityModel.setDescription(jsonObjectPreference.optString("subtitle"));
+
+
+
+//                            list.add(new VerifyIdMainActivityModel(titles, subTitle, id,title_id));
+                            list.add(verifyIdMainActivityModel);
 
 
                         } catch (JSONException e) {

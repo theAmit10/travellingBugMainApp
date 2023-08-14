@@ -266,6 +266,7 @@ public class InvoiceActivity extends AppCompatActivity {
 
                                     list.add(invoiceModel);
 
+
                                     System.out.println("Invoice model list size : "+list.size());
 
                                 }
@@ -287,6 +288,14 @@ public class InvoiceActivity extends AppCompatActivity {
 
 
 
+
+
+
+
+                        }
+                        else {
+                            errorLayout.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
                         }
 
 
@@ -331,6 +340,8 @@ public class InvoiceActivity extends AppCompatActivity {
 
 
     }
+
+
 
 
 

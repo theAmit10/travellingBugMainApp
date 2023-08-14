@@ -495,9 +495,9 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                         },
                         error -> {
                             customDialog.dismiss();
-                            displayMessage(getString(R.string.something_went_wrong));
+                            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
                             displayMessage(error.toString());
-                            displayMessage(error.getMessage());
+
                         }) {
 
                     @Override

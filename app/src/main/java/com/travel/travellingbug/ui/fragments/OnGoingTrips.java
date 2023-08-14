@@ -544,20 +544,7 @@ public class OnGoingTrips extends Fragment {
                             holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
                         }
 
-//                        if (jsonObjectTrip.optString("status").equalsIgnoreCase("PENDING")) {
-//                            holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
-//                            holder.status.setText(jsonObjectTrip.optString("status"));
-//
-//                        } else if(jsonObjectTrip.optString("status").equalsIgnoreCase("CANCELLED")){
-//                            holder.status.setBackgroundResource(R.drawable.auth_btn_gray_bg);
-//                            holder.status.setText(jsonObjectTrip.optString("status"));
-//                        }else if(jsonObjectTrip.optString("status").equalsIgnoreCase("STARTED")){
-//                            holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
-//                            holder.status.setText(jsonObjectTrip.optString("status"));
-//                        }else {
-//                            holder.status.setText(jsonObjectTrip.optString("status"));
-//                            holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
-//                        }
+
 
 
 
@@ -569,21 +556,6 @@ public class OnGoingTrips extends Fragment {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
-
-//            try {
-//                JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
-//                if (serviceObj != null) {
-////                    holder.car_name.setText(serviceObj.optString("name"));
-//                    holder.tripAmount.setText("₹ "+serviceObj.optString("fixed"));
-//                    //holder.tripAmount.setText(SharedHelper.getKey(context, "currency")+serviceObj.optString("price"));
-//                    Picasso.get().load(serviceObj.optString("image"))
-//                            .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
-//                }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
 
 
             // for fare details
@@ -793,9 +765,6 @@ public class OnGoingTrips extends Fragment {
                 intent.putExtra("tag", "upcoming_trips");
 
 
-//                request_id = jsonArray.optJSONObject(position).optString("id");
-//                s_address = jsonArray.optJSONObject(position).optString("s_address");
-//                d_address = jsonArray.optJSONObject(position).optString("d_address");
                 booking_id = jsonArray.optJSONObject(position).optString("booking_id");
                 status = jsonArray.optJSONObject(position).optString("status");
                 if(jsonArray.optJSONObject(position).optString("payment_mode") != null){
@@ -824,14 +793,8 @@ public class OnGoingTrips extends Fragment {
                 }
 
 
-
-
-//                intent.putExtra("request_id", request_id);
-//                intent.putExtra("s_address", s_address);
-//                intent.putExtra("d_address", d_address);
                 intent.putExtra("booking_id", booking_id);
-//                intent.putExtra("s_date", s_date);
-//                intent.putExtra("s_time", s_time);
+
                 intent.putExtra("status", status);
                 intent.putExtra("payment_mode", payment_mode);
                 intent.putExtra("estimated_fare", estimated_fare);

@@ -112,12 +112,15 @@ public class TrackLinkUserActivity extends AppCompatActivity {
                 customDialog.dismiss();
                 customDialog.cancel();
 
-                System.out.println("size : " + response.length());
-                System.out.println("data : " + response);
+                System.out.println("size response length : " + response.length());
+                System.out.println("data response : " + response.toString());
 
-                if (response != null) {
+                if (response.length() > 0) {
                     try {
+                        System.out.println("data response two : " + response.toString());
                         JSONArray jsonArray = new JSONArray(response);
+                        System.out.println("size jsonArray length : " + jsonArray.length());
+                        System.out.println("data jsonArray : " + jsonArray.toString());
                         if (jsonArray.length() > 0) {
                             System.out.println("size : " + jsonArray.length());
                             System.out.println("data : " + jsonArray);
@@ -243,6 +246,10 @@ public class TrackLinkUserActivity extends AppCompatActivity {
 
 
 
+                        }
+                        else {
+                            errorLayout.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
                         }
 
 

@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.chat.UserChatActivity;
@@ -338,6 +339,17 @@ public class DriverProfileAboutFragment extends Fragment {
                                     vehicleCapacityVal.setText(provider_service_json_obj.optString("service_capacity")+ " Seat left");
                                 }else {
                                     vehicleCapacityVal.setText("");
+                                }
+
+                                // vehicle Image
+                                if(!provider_service_json_obj.optString("vehicle_image").equalsIgnoreCase("null")){
+//                                    vehicleCapacityVal.setText(provider_service_json_obj.optString("service_capacity")+ " Seat left");
+                                    Picasso.get().load(provider_service_json_obj.optString("vehicle_image"))
+                                            .placeholder(R.drawable.car_select)
+                                            .error(R.drawable.car_select)
+                                            .into(vehicleImage);
+                                }else {
+                                    vehicleImage.setImageResource(R.drawable.car_select);
                                 }
 
                                 // vehicle ac

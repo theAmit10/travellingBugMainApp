@@ -89,7 +89,7 @@ public class AddTrackingLinkActivity extends AppCompatActivity {
                         JSONObject jsonObject = jsonArray.getJSONObject(0);
 
                         if(jsonArray.getJSONObject(0).optString("track_lat").equalsIgnoreCase("null") && jsonArray.getJSONObject(0).optString("track_long").equalsIgnoreCase("null") ){
-                            btnSubmit.setText("Submit");
+                            btnSubmit.setText("Add Tracking Link");
                             btnSubmit.setClickable(true);
                         }else {
                             btnSubmit.setText("Activated");
@@ -220,10 +220,10 @@ public class AddTrackingLinkActivity extends AppCompatActivity {
         generateTrackingLinkTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddTrackingLinkActivity.this, TrackActivityDriver.class);
-//                shareUrl+ current_lat + "," + current_lng
-                intent.putExtra("address",URLHelper.REDIRECT_SHARE_URL +latitude+","+longitude);
-                startActivity(intent);
+//                Intent intent = new Intent(AddTrackingLinkActivity.this, TrackActivityDriver.class);
+////                shareUrl+ current_lat + "," + current_lng
+//                intent.putExtra("address",URLHelper.REDIRECT_SHARE_URL +latitude+","+longitude);
+//                startActivity(intent);
             }
         });
 
@@ -241,12 +241,12 @@ public class AddTrackingLinkActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
 
-                    String shareUrl = "http://maps.google.com/maps?q=loc:";
+                    String shareUrl = URLHelper.TRACKING_LINK_SHARE_URL;
 
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     String name = SharedHelper.getKey(getApplicationContext(), "first_name");
-                    String text = "TravellingBug App,\n" + name + "\nwould like to share a trip with you at \n" + shareUrl + latitude + "," + longitude;
+                    String text = "TravellingBug App,\n" + name + "\nwould like to share a trip with you at \n" + shareUrl + SharedHelper.getKey(getApplicationContext(),"id");
                     intent.putExtra(Intent.EXTRA_SUBJECT, "TravellingBug App");
                     intent.putExtra(Intent.EXTRA_TEXT, text);
                     startActivity(Intent.createChooser(intent, "Share Via"));

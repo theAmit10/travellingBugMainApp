@@ -63,6 +63,7 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
     String service_ac = "";
 
     String service_seat = "";
+    String vehicle_type = "";
 
     EditText vehicleModelETL, vehicleAcETL, vehicleSeatETL;
 
@@ -102,25 +103,38 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vehicle_details_menufacture);
 
-        license_number = getIntent().getStringExtra("license_number");
-        service_name = getIntent().getStringExtra("service_name");
-        service_model = getIntent().getStringExtra("service_model");
-        service_type = getIntent().getStringExtra("service_type");
-        service_color = getIntent().getStringExtra("service_color");
+        try {
+            license_number = getIntent().getStringExtra("license_number");
+            service_name = getIntent().getStringExtra("service_name");
+            service_model = getIntent().getStringExtra("service_model");
+            service_type = getIntent().getStringExtra("service_type");
+            service_color = getIntent().getStringExtra("service_color");
 
-        service_manufacture = SharedHelper.getKey(getApplicationContext(), "service_make");
+            if(SharedHelper.getKey(getApplicationContext(),"vehicle_type") != null){
+                vehicle_type = SharedHelper.getKey(getApplicationContext(),"vehicle_type");
+            }else {
+                vehicle_type = "private_car";
+            }
 
-        initComponent();
-        vehicleModelETL.setText(SharedHelper.getKey(getApplicationContext(), "service_make"));
-        vehicleAcETL.setText(SharedHelper.getKey(getApplicationContext(), "service_ac"));
-        vehicleSeatETL.setText(SharedHelper.getKey(getApplicationContext(), "service_capacity"));
+            service_manufacture = SharedHelper.getKey(getApplicationContext(), "service_make");
 
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        deviceHeight = displayMetrics.heightPixels;
-        deviceWidth = displayMetrics.widthPixels;
+            initComponent();
+            vehicleModelETL.setText(SharedHelper.getKey(getApplicationContext(), "service_make"));
+            vehicleAcETL.setText(SharedHelper.getKey(getApplicationContext(), "service_ac"));
+            vehicleSeatETL.setText(SharedHelper.getKey(getApplicationContext(), "service_capacity"));
 
-        clickHandlerOnComponent();
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            deviceHeight = displayMetrics.heightPixels;
+            deviceWidth = displayMetrics.widthPixels;
+
+
+            clickHandlerOnComponent();
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
 
     }
@@ -245,14 +259,15 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
                     @Override
                     public Map<String, String> getParams() {
                         Map<String, String> params = new HashMap<>();
-                        params.put("model", service_model);
-                        params.put("year", service_manufacture);
-                        params.put("make", service_manufacture);
-                        params.put("ac", "No");
-                        params.put("vehicle_name", service_name);
-                        params.put("service_number", license_number);
-                        params.put("service_color", service_color);
-                        params.put("capacity", "3");
+                        params.put("model", service_model.trim());
+                        params.put("year", service_manufacture.trim());
+                        params.put("make", service_manufacture.trim());
+                        params.put("ac", service_ac.trim());
+                        params.put("vehicle_name", service_name.trim());
+                        params.put("service_number", license_number.trim());
+                        params.put("service_color", service_color.trim());
+                        params.put("capacity", service_seat.trim());
+                        params.put("vehicletype", vehicle_type.trim());
 
                         System.out.println("MANUFACTURE PARAM : " + params.toString());
 
@@ -414,6 +429,10 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
                 if (isInternet) {
                     if(service_ac.equalsIgnoreCase("")){
                         Toast.makeText(context, "Add Ac Details", Toast.LENGTH_SHORT).show();
+                    }else if(service_manufacture.equalsIgnoreCase("")){
+                        Toast.makeText(context, "Add Manufacture Details", Toast.LENGTH_SHORT).show();
+                    }else if(service_seat.equalsIgnoreCase("")){
+                        Toast.makeText(context, "Add Vehicle Capacity", Toast.LENGTH_SHORT).show();
                     }
                     else {
                         updateProfile();
@@ -470,7 +489,7 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
                 if (resizeImg != null) {
                     Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg, AppHelper.getPath(this, uri));
                     vehicleImage.setImageBitmap(reRotateImg);
-//                    updateProfileWithImage();
+                    updateProfileWithImage();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -542,7 +561,7 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                displayMessage(getString(R.string.something_went_wrong));
+                                displayMessage("Something went wrong \nPlease, try again ");
                             }
 
 
@@ -563,7 +582,7 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
                         params.put("service_color", service_color);
                         params.put("capacity", service_seat);
 
-                        System.out.println("MANUFACTURE PARAM : " + params.toString());
+                        System.out.println("MANUFACTURE with image PARAM : " + params.toString());
 
 
                         return params;

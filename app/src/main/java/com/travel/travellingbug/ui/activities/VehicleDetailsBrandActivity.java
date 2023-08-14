@@ -43,6 +43,7 @@ public class VehicleDetailsBrandActivity extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
     String license_number = "";
     String service_name = "";
+
     EditText vehicleBrandETL;
     VehicleClickListener vehicleClickListener;
     CustomDialog customDialog;
@@ -66,6 +67,8 @@ public class VehicleDetailsBrandActivity extends AppCompatActivity {
         clickHandlerOnComponent();
 
         vehicleBrandETL.setText(SharedHelper.getKey(getApplicationContext(), "service_name"));
+        int textLength = vehicleBrandETL.getText().length();
+        vehicleBrandETL.setSelection(textLength);
         service_name = SharedHelper.getKey(getApplicationContext(), "service_name");
 
         vehicleBrandETL.addTextChangedListener(new TextWatcher() {

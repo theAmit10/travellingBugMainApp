@@ -159,7 +159,7 @@
                 android:orientation="horizontal"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp"
-                android:paddingTop="@dimen/_10sdp">
+                android:paddingTop="@dimen/_5sdp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profileImgeIv"
@@ -178,31 +178,28 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
-                    >
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/userName"
                         android:layout_width="wrap_content"
-                        android:theme="@style/SubTitle"
                         android:layout_height="wrap_content"
-                        android:text="username"
-
                         android:drawableRight="@drawable/ic_green_tick"
                         android:drawablePadding="@dimen/_10sdp"
-                        android:textStyle="bold"
+                        android:text="username"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
+                        android:textSize="@dimen/_15sdp"
+                        android:textStyle="bold"
+                        android:theme="@style/SubTitle" />
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:visibility="gone"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_10sdp"
-                        >
+                        android:visibility="gone">
 
 
                         <ImageView
@@ -267,11 +264,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
                 </LinearLayout>
-
-
 
 
             </LinearLayout>
@@ -288,7 +281,9 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_2sdp"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:background="@color/colorGray"
         android:layout_marginBottom="@dimen/_3sdp"/>
 

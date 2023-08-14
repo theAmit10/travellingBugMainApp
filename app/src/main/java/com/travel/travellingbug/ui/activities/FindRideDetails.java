@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.ConnectionHelper;
@@ -29,6 +30,7 @@ import com.travel.travellingbug.models.FRDModel;
 import com.travel.travellingbug.models.PassengerDataModel;
 import com.travel.travellingbug.models.StopOverModel;
 import com.travel.travellingbug.models.TravelPreferenceFindRideDetialsModel;
+import com.travel.travellingbug.models.VerifyIdMainActivityModel;
 import com.travel.travellingbug.ui.adapters.PassengerDataAdapter;
 import com.travel.travellingbug.ui.adapters.StepOverAdapter;
 
@@ -48,6 +50,8 @@ public class FindRideDetails extends AppCompatActivity {
 
     RecyclerView recyclerViewPreference;
     ArrayList<PassengerDataModel> list;
+
+    ArrayList<VerifyIdMainActivityModel> driverPreferenceList;
 
 
 
@@ -75,6 +79,9 @@ public class FindRideDetails extends AppCompatActivity {
 
 
     StepOverAdapter stepOverAdapter;
+
+    private ShimmerFrameLayout mFrameLayout;
+    private ShimmerFrameLayout mFrameLayout2;
     ArrayList<StopOverModel> stopOverModelArrayList;
 
 
@@ -117,12 +124,11 @@ public class FindRideDetails extends AppCompatActivity {
 
 
     private void getPassengerData() {
+        mFrameLayout.startShimmer();
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.UPCOMMING_TRIPS_DETAILS_ONE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                System.out.println("size : " + response.length());
-                System.out.println("data : " + response);
                 String location;
 
                 try {
@@ -135,10 +141,8 @@ public class FindRideDetails extends AppCompatActivity {
                         JSONArray filtersJsonArray = jsonObject.getJSONArray("filters");
 
                         location = jsonArray.getJSONObject(0).optString("s_address") + " --> " + jsonArray.getJSONObject(0).optString("d_address");
-                        System.out.println("location " + location);
 
                         if (filtersJsonArray != null && filtersJsonArray.length() > 0) {
-                            System.out.println("filter length : " + filtersJsonArray.length());
 
                             for (int i = 0; i < filtersJsonArray.length(); i++) {
                                 String name;
@@ -152,99 +156,27 @@ public class FindRideDetails extends AppCompatActivity {
                             }
 
                             PassengerDataAdapter passengerDataAdapter = new PassengerDataAdapter(getApplicationContext(), list);
+                            mFrameLayout.setVisibility(View.GONE);
+                            passengerRV.setVisibility(View.VISIBLE);
                             passengerRV.setAdapter(passengerDataAdapter);
 
                         } else {
                             allAvailabelSeatTv.setVisibility(View.VISIBLE);
                             passengerRV.setVisibility(View.GONE);
+                            mFrameLayout.setVisibility(View.GONE);
                         }
-
-
                     }
-//                    JSONObject jsonObject = new JSONObject(response);
-//
-//                    JSONObject jsonObject1 = jsonObject.optJSONObject("data");
-//                    location = jsonObject1.optString("s_address") +" -> "+ jsonObject1.optString("d_address");
-//
-//
-////                    JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
-//
-//                    JSONArray filterArray = jsonObject1.getJSONArray("filters");
-//
-//                    System.out.println("filter length : "+filterArray.length());
-
-//                    if(filterArray != null ){
-//                        String name;
-//
-//                        for(int i=0;i<filterArray.length();i++){
-//
-//                            if(!filterArray.getJSONObject(i).optString("status").equalsIgnoreCase("CANCELLED")){
-//                                name = filterArray.getJSONObject(i).optString("first_name");
-//                                System.out.println("name opt : "+name);
-//                                name = filterArray.getJSONObject(i).getString("first_name");
-//                                System.out.println("name get : "+name);
-//                                list.add(new PassengerDataModel(name,location));
-//                            }
-//                        }
-//
-//                        PassengerDataAdapter passengerDataAdapter = new PassengerDataAdapter(getApplicationContext(), list);
-//                        passengerRV.setAdapter(passengerDataAdapter);
-//
-//                    }
-
 
                 } catch (JSONException e) {
-                    System.out.println("Error : " + e.getMessage());
+                    e.printStackTrace();
                 }
 
 
-//                try {
-//                    JSONArray jsonArray = new JSONArray(response);
-//                    System.out.println("size : "+jsonArray.length());
-//                    System.out.println("data : "+jsonArray);
-//                    System.out.println("data : "+jsonArray.getString(0));
-//
-//
-//                    if (response != null) {
-//                        System.out.println("data : "+jsonArray.getString(0));
-//                        upcomingsAdapter = new FindRidesActivity.UpcomingsAdapter(jsonArray);
-//                        //  recyclerView.setHasFixedSize(true);
-//                        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext().getApplicationContext());
-//                        recyclerView.setLayoutManager(mLayoutManager);
-//                        recyclerView.setItemAnimator(new DefaultItemAnimator());
-//                        if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
-//                            recyclerView.setVisibility(View.VISIBLE);
-//                            errorLayout.setVisibility(View.GONE);
-//                            recyclerView.setAdapter(upcomingsAdapter);
-//                        } else {
-////                    errorLayout.setVisibility(View.VISIBLE);
-//                            recyclerView.setVisibility(View.GONE);
-//                        }
-//
-//                    } else {
-//                        errorLayout.setVisibility(View.VISIBLE);
-//                        recyclerView.setVisibility(View.GONE);
-//                    }
-//
-//                    for(int i=0 ; i<jsonArray.length(); i++){
-//                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-//                        System.out.println("data : "+jsonObject.toString());
-//                        System.out.println("data : "+jsonObject.getString("s_address"));
-//                    }
-//
-//                } catch (JSONException e) {
-////                    throw new RuntimeException(e);
-//                    displayMessage(e.toString());
-//                    errorLayout.setVisibility(View.VISIBLE);
-//                    recyclerView.setVisibility(View.GONE);
-//                }
-
-//                Toast.makeText(FindRidesActivity.this, "Data Found succesfully..", Toast.LENGTH_SHORT).show();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(FindRideDetails.this, "Error Found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FindRideDetails.this, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
 
         }) {
@@ -378,12 +310,20 @@ public class FindRideDetails extends AppCompatActivity {
 //    }
 
     public void getPreferencesTitle() {
+        customDialog = new CustomDialog(this);
+        if(!customDialog.isShowing()){
+            customDialog.show();
+        }
+
+        mFrameLayout2.startShimmer();
 
         JSONObject object = new JSONObject();
         JSONArray jsonArray = new JSONArray();
 //            list = new ArrayList<>();
 
         stopOverModelArrayList = new ArrayList<>();
+        driverPreferenceList = new ArrayList<>();
+
 
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URLHelper.PREFERENCES_TITLE,
@@ -392,7 +332,27 @@ public class FindRideDetails extends AppCompatActivity {
 
             if (response.length() > 0) {
 
-                SharedHelper.putKey(getApplicationContext(),"TravelPreferenceStatus", String.valueOf(response.length()));
+
+
+//                for (int i = 0; i < response.length(); i++) {
+//                    try {
+//
+//                        Log.v("jsonObjectLength : ", String.valueOf(response.length()));
+//                        Log.v("jsonObjectLength : ", String.valueOf(jsonArray.length()));
+//
+//                        JSONObject jsonObjectPreference = response.getJSONObject(i);
+//                        Log.v("jsonObjectPreference : ", jsonObjectPreference.toString());
+//                        Log.v("jsonObjectPreference : ", jsonObjectPreference.optString("title"));
+//
+//
+//                        stopOverModelArrayList.add(new StopOverModel(jsonObjectPreference.optString("title")));
+//
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+
 
                 for (int i = 0; i < response.length(); i++) {
                     try {
@@ -403,38 +363,65 @@ public class FindRideDetails extends AppCompatActivity {
                         JSONObject jsonObjectPreference = response.getJSONObject(i);
                         Log.v("jsonObjectPreference : ", jsonObjectPreference.toString());
                         Log.v("jsonObjectPreference : ", jsonObjectPreference.optString("title"));
+//                            Log.v("jsonObjectPreference : ", jsonObjectPreference.optString("subtitle"));
 
-//                            if(!jsonObjectPreference.optString("title").equalsIgnoreCase("null") || !jsonObjectPreference.optString("title").equalsIgnoreCase("") || !jsonObjectPreference.optString("title").equalsIgnoreCase(null)){
-//                                titles = jsonObjectPreference.optString("title");
-//                            }
+                        StopOverModel verifyIdMainActivityModel = new StopOverModel();
 
-//                            list.add(new FRDModel(jsonObjectPreference.optString("title")));
 
-                        stopOverModelArrayList.add(new StopOverModel(jsonObjectPreference.optString("title")));
+                        if (!jsonObjectPreference.optString("title").equalsIgnoreCase("null") || !jsonObjectPreference.optString("title").equalsIgnoreCase("") || !jsonObjectPreference.optString("title").equalsIgnoreCase(null)) {
+                            titles = jsonObjectPreference.optString("title");
+                            verifyIdMainActivityModel.setTitle(jsonObjectPreference.optString("title"));
+                        }
+
+                        if (!jsonObjectPreference.optString("title_id").equalsIgnoreCase("null") || !jsonObjectPreference.optString("title_id").equalsIgnoreCase("") || !jsonObjectPreference.optString("title_id").equalsIgnoreCase(null)) {
+                            subTitle = jsonObjectPreference.optString("title_id");
+                        }
+
+                        if (jsonObjectPreference.optString("picture") != null && !jsonObjectPreference.optString("picture").equalsIgnoreCase("null")) {
+                            verifyIdMainActivityModel.setAllowed(jsonObjectPreference.optString("picture"));
+                        } else {
+                            verifyIdMainActivityModel.setAllowed("");
+                        }
+
+                        if (jsonObjectPreference.optString("picture") != null && !jsonObjectPreference.optString("picture").equalsIgnoreCase("null")) {
+                            verifyIdMainActivityModel.setAllowed(jsonObjectPreference.optString("picture"));
+                        } else {
+                            verifyIdMainActivityModel.setAllowed("");
+                        }
+
+                        if (jsonObjectPreference.optString("picture1") != null && !jsonObjectPreference.optString("picture1").equalsIgnoreCase("null")) {
+                            verifyIdMainActivityModel.setNotAllowed(jsonObjectPreference.optString("picture1"));
+                        } else {
+                            verifyIdMainActivityModel.setNotAllowed("");
+                        }
+
+
+                        verifyIdMainActivityModel.setId(jsonObjectPreference.optString("title_id"));
+                        verifyIdMainActivityModel.setTitle_id(jsonObjectPreference.optString("title_id"));
+                        verifyIdMainActivityModel.setDescription(jsonObjectPreference.optString("subtitle"));
+
+
+//                            list.add(new VerifyIdMainActivityModel(titles, subTitle, id, title_id));
+                        stopOverModelArrayList.add(verifyIdMainActivityModel);
 
 
                     } catch (JSONException e) {
-                        throw new RuntimeException(e);
+                        customDialog.dismiss();
+                        e.printStackTrace();
                     }
                 }
 
-//                    VerifyIdMainActivityAdapter verifyIdMainActivityAdapter = new VerifyIdMainActivityAdapter(getApplicationContext(), list);
-//                    FRDAdapter frdAdapter = new FRDAdapter(getContext(), list);
-//                    recyclerViewPreference.setAdapter(frdAdapter);
 
 
-
-
-
-
-
-                stepOverAdapter = new StepOverAdapter(getContext(), stopOverModelArrayList,user_id);
+                customDialog.dismiss();
+                StepOverAdapter stepOverAdapter = new StepOverAdapter(getContext(), stopOverModelArrayList,user_id);
                 recyclerViewPreference.setHasFixedSize(true);
                 GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
                 gridLayoutManager.setOrientation(RecyclerView.VERTICAL);
-//                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-//                recyclerViewPreference.setLayoutManager(linearLayoutManager);
+
                 recyclerViewPreference.setLayoutManager(gridLayoutManager);
+                mFrameLayout2.setVisibility(View.GONE);
+                recyclerViewPreference.setVisibility(View.VISIBLE);
                 recyclerViewPreference.setAdapter(stepOverAdapter);
                 recyclerViewPreference.setNestedScrollingEnabled(false);
 
@@ -444,7 +431,8 @@ public class FindRideDetails extends AppCompatActivity {
 
         }, error -> {
 //                displayMessage(getString(R.string.something_went_wrong));
-            Toast.makeText(this, "Error:", Toast.LENGTH_SHORT).show();
+            customDialog.dismiss();
+            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
         }) {
             @Override
             public Map<String, String> getHeaders() {
@@ -499,6 +487,9 @@ public class FindRideDetails extends AppCompatActivity {
 
     private void initData() {
         passengerRV = findViewById(R.id.passengerRV);
+        mFrameLayout = findViewById(R.id.shimmerLayout);
+        mFrameLayout2 = findViewById(R.id.shimmerLayout2);
+
 //        travelPreferencesFRDRV = findViewById(R.id.travelPreferencesFRDRV);
 //        recyclerViewPreference = findViewById(R.id.recyclerViewPreference);
         allAvailabelSeatTv = findViewById(R.id.allAvailabelSeatTv);

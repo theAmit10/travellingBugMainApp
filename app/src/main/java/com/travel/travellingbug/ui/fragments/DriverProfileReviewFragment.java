@@ -81,7 +81,7 @@ public class DriverProfileReviewFragment extends Fragment {
             getProfileData(user_id);
         }
 
-        getProfileData(user_id);
+//        getProfileData(user_id);
 
         return view;
     }
@@ -138,7 +138,8 @@ public class DriverProfileReviewFragment extends Fragment {
             public void onResponse(String response) {
 
                 System.out.println("size : " + response.length());
-                System.out.println("data : " + response);
+                System.out.println("user_id : "+user_id);
+
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -162,6 +163,7 @@ public class DriverProfileReviewFragment extends Fragment {
 
 
                             JSONArray dataJsonArray = jsonObject.getJSONArray("Data");
+                            System.out.println("data length : "+dataJsonArray.length());
                             if (dataJsonArray.length() > 0) {
                                 for (int i = 0; i < dataJsonArray.length(); i++) {
                                     JSONObject dataJsonObj = dataJsonArray.getJSONObject(i);
@@ -183,7 +185,7 @@ public class DriverProfileReviewFragment extends Fragment {
 
                                 }
 
-                                adapter = new UserProfileReviewDataAdapter(getContext(), list);
+                                UserProfileReviewDataAdapter adapter = new UserProfileReviewDataAdapter(getContext(), list);
                                 fragmentDriverReviewRV.setAdapter(adapter);
                                 mFrameLayout.setVisibility(View.GONE);
                                 reviewDataLl.setVisibility(View.VISIBLE);
@@ -224,6 +226,7 @@ public class DriverProfileReviewFragment extends Fragment {
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("provider_id", user_id);
+                System.out.println("user_id : "+user_id);
                 return params;
             }
 

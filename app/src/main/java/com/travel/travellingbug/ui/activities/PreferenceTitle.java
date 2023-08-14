@@ -174,24 +174,49 @@ public class PreferenceTitle extends AppCompatActivity {
                             Log.v("jsonObjectPreference : ", jsonObjectPreference.optString("title"));
 //                            Log.v("jsonObjectPreference : ", jsonObjectPreference.optString("subtitle"));
 
-
-                        if(!jsonObjectPreference.optString("title").equalsIgnoreCase("null") || !jsonObjectPreference.optString("title").equalsIgnoreCase("") || !jsonObjectPreference.optString("title").equalsIgnoreCase(null)){
-                            titles = jsonObjectPreference.optString("title");
-                        }
-
-                        if(!jsonObjectPreference.optString("title_id").equalsIgnoreCase("null") || !jsonObjectPreference.optString("title_id").equalsIgnoreCase("") || !jsonObjectPreference.optString("title_id").equalsIgnoreCase(null)){
-                            subTitle = jsonObjectPreference.optString("title_id");
-                        }
+                            VerifyIdMainActivityModel verifyIdMainActivityModel = new VerifyIdMainActivityModel();
 
 
-                            titles = jsonObjectPreference.optString("title");
+                            if (!jsonObjectPreference.optString("title").equalsIgnoreCase("null") || !jsonObjectPreference.optString("title").equalsIgnoreCase("") || !jsonObjectPreference.optString("title").equalsIgnoreCase(null)) {
+                                titles = jsonObjectPreference.optString("title");
+                                verifyIdMainActivityModel.setTitle(jsonObjectPreference.optString("title"));
+                            }
+
+                            if (!jsonObjectPreference.optString("title_id").equalsIgnoreCase("null") || !jsonObjectPreference.optString("title_id").equalsIgnoreCase("") || !jsonObjectPreference.optString("title_id").equalsIgnoreCase(null)) {
+                                subTitle = jsonObjectPreference.optString("title_id");
+                            }
+
+                            if (jsonObjectPreference.optString("picture") != null && !jsonObjectPreference.optString("picture").equalsIgnoreCase("null")) {
+                                verifyIdMainActivityModel.setAllowed(jsonObjectPreference.optString("picture"));
+                            } else {
+                                verifyIdMainActivityModel.setAllowed("");
+                            }
+
+                            if (jsonObjectPreference.optString("picture") != null && !jsonObjectPreference.optString("picture").equalsIgnoreCase("null")) {
+                                verifyIdMainActivityModel.setAllowed(jsonObjectPreference.optString("picture"));
+                            } else {
+                                verifyIdMainActivityModel.setAllowed("");
+                            }
+
+                            if (jsonObjectPreference.optString("picture1") != null && !jsonObjectPreference.optString("picture1").equalsIgnoreCase("null")) {
+                                verifyIdMainActivityModel.setNotAllowed(jsonObjectPreference.optString("picture1"));
+                            } else {
+                                verifyIdMainActivityModel.setNotAllowed("");
+                            }
+
+
+//                            titles = jsonObjectPreference.optString("title");
 //                            subTitle = jsonObjectPreference.optString("subtitle");
                             subTitle = "Add Value";
-                            id = jsonObjectPreference.optString("title_id");
-                            title_id = jsonObjectPreference.optString("title_id");
+//                            id = jsonObjectPreference.optString("title_id");
+//                            title_id = jsonObjectPreference.optString("title_id");
+                            verifyIdMainActivityModel.setId(jsonObjectPreference.optString("title_id"));
+                            verifyIdMainActivityModel.setTitle_id(jsonObjectPreference.optString("title_id"));
+                            verifyIdMainActivityModel.setDescription("Add Value");
 
 
-                            list.add(new VerifyIdMainActivityModel(titles,subTitle,id,title_id));
+//                            list.add(new VerifyIdMainActivityModel(titles, subTitle, id, title_id));
+                            list.add(verifyIdMainActivityModel);
 
 
                         } catch (JSONException e) {

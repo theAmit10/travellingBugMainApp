@@ -3442,6 +3442,7 @@ drawable auth_btn_blue_bgs
 drawable auth_btn_gray_bg
 drawable auth_btn_green_bg
 drawable auth_btn_purple_bg
+drawable auth_btn_red_bg
 drawable auth_btn_white_bg
 drawable auth_btn_white_low_corner_bg
 drawable auth_btn_yellow_bg
@@ -3452,6 +3453,7 @@ drawable back_icon
 drawable back_white
 drawable backarrow
 drawable background
+drawable background_blur
 drawable banned
 drawable baseline_add
 drawable baseline_call_24
@@ -3508,13 +3510,27 @@ drawable call_support
 drawable cancel_button_bg
 drawable cancel_text
 drawable car
+drawable car_a
 drawable car_bg
+drawable car_d
+drawable car_e
+drawable car_f
 drawable car_green
 drawable car_green_back
 drawable car_green_background_last
+drawable car_i
+drawable car_o
+drawable car_p
+drawable car_q
+drawable car_r
+drawable car_s
 drawable car_select
+drawable car_t
 drawable car_travel
+drawable car_u
+drawable car_w
 drawable car_with_people_background
+drawable car_y
 drawable cash_payment
 drawable ccp_down_arrow
 drawable ccp_ic_arrow_drop_down
@@ -4228,6 +4244,7 @@ drawable ic_facebook
 drawable ic_fb
 drawable ic_forward
 drawable ic_forward_gray
+drawable ic_gallery
 drawable ic_google
 drawable ic_green_tick
 drawable ic_history
@@ -4342,6 +4359,8 @@ drawable jz_volume_icon
 drawable jz_volume_progress_bg
 drawable l
 drawable left_chat
+drawable loader_black_blur
+drawable loader_blur
 drawable loading
 drawable loading_gif
 drawable loading_ic
@@ -4993,6 +5012,7 @@ id aligned
 id all
 id allAvailabelSeatTv
 id allStates
+id allowed
 id always
 id amountEditText
 id ampm_hitspace
@@ -5087,6 +5107,7 @@ id bt_card_form_save_card_checkbox
 id bt_expiration_date_sheet
 id bt_expiration_month_grid_view
 id bt_expiration_year_grid_view
+id btnAllowed
 id btnCall
 id btnCancel
 id btnCancelRide
@@ -5097,6 +5118,7 @@ id btnDonePopup
 id btnFb
 id btnGoogle
 id btnLogout
+id btnNotAllowed
 id btnNotest
 id btnPayNow
 id btnRequestRideConfirm
@@ -5855,6 +5877,7 @@ id no_of_rides_txt
 id none
 id normal
 id north
+id notAllowed
 id note
 id notificationEmailAndSmstv
 id notification_background
@@ -6134,6 +6157,7 @@ id shadowBack
 id sharedValueSet
 id sharedValueUnset
 id shimmerLayout
+id shimmerLayout2
 id shipping_flow_viewpager
 id shipping_info_widget
 id shortcut
@@ -6928,6 +6952,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout select_shipping_method_widget
 layout service_type_list_item
+layout shimmer_custom_google_layout
 layout shimmer_placeholder_layout
 layout shipping_method_view
 layout support_simple_spinner_dropdown_item

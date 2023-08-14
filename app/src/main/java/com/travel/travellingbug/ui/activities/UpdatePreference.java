@@ -14,6 +14,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.material.textfield.TextInputLayout;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
@@ -32,12 +35,17 @@ public class UpdatePreference extends AppCompatActivity {
     ImageView backArrow;
     TextView toolName;
     String parameter, value;
-    String title, subtitle, id,title_id,update;
-    EditText editTexttitle,editTextsubtitle;
-    TextInputLayout text_input_layout_title,text_input_layout_subtitle;
+    String title, subtitle, id, title_id, update;
+    EditText editTexttitle, editTextsubtitle;
+    TextInputLayout text_input_layout_title, text_input_layout_subtitle;
     Button btnUpdate;
     Boolean isInternet;
     ConnectionHelper helper;
+
+    Button btnAllowed,btnNotAllowed ;
+
+    private String preferenceStatus = "";
+    private String TAG = "UPDATEpREFERENCES";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +59,50 @@ public class UpdatePreference extends AppCompatActivity {
         btnUpdate = findViewById(R.id.btnUpdate);
         text_input_layout_title = findViewById(R.id.text_input_layout_title);
         text_input_layout_subtitle = findViewById(R.id.text_input_layout_subtitle);
+        btnNotAllowed = findViewById(R.id.btnNotAllowed);
+        btnAllowed = findViewById(R.id.btnAllowed);
 
         backArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
                 finish();
+            }
+        });
+
+
+        btnAllowed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(preferenceStatus.equalsIgnoreCase("") || preferenceStatus.equalsIgnoreCase("1")){
+                    preferenceStatus = "0";
+                    btnAllowed.setBackgroundResource(R.drawable.auth_btn_gray_bg);
+                    btnNotAllowed.setBackgroundResource(R.drawable.auth_btn_red_bg);
+                }
+                else {
+                    preferenceStatus = "";
+                    btnAllowed.setBackgroundResource(R.drawable.auth_btn_green_bg);
+                }
+
+                Log.d(TAG, "onClick: status "+preferenceStatus);
+            }
+        });
+
+        btnNotAllowed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(preferenceStatus.equalsIgnoreCase("") || preferenceStatus.equalsIgnoreCase("0")){
+                    preferenceStatus = "1";
+                    btnNotAllowed.setBackgroundResource(R.drawable.auth_btn_gray_bg);
+                    btnAllowed.setBackgroundResource(R.drawable.auth_btn_green_bg);
+
+                }
+                else {
+                    preferenceStatus = "";
+                    btnNotAllowed.setBackgroundResource(R.drawable.auth_btn_red_bg);
+                }
+
+                Log.d(TAG, "onClick: status "+preferenceStatus);
             }
         });
 
@@ -73,25 +119,25 @@ public class UpdatePreference extends AppCompatActivity {
 
 //                    Toast.makeText(UpdatePreference.this, "UPDATE : "+update, Toast.LENGTH_SHORT).show();
 
-                    if(update.equalsIgnoreCase("no")){
-                        if(!editTexttitle.getText().toString().equalsIgnoreCase("") && !editTextsubtitle.getText().toString().equalsIgnoreCase("")&& !editTextsubtitle.getText().toString().equalsIgnoreCase("Add Value")    ){
+                    if (update.equalsIgnoreCase("no")) {
+                        if (!preferenceStatus.equalsIgnoreCase("")) {
                             addPreferences();
-                        }else {
-                            displayMessage("Enter Preference");
+                        } else {
+                            Toast.makeText(UpdatePreference.this, "Select Preference", Toast.LENGTH_SHORT).show();
                         }
-                    }else{
-                        if(!editTexttitle.getText().toString().equalsIgnoreCase("") && !editTextsubtitle.getText().toString().equalsIgnoreCase("")    ){
+
+                    } else {
+
+                        if (!preferenceStatus.equalsIgnoreCase("")) {
                             updatePreferences();
 //                            addPreferences();
-                        }else {
-                            displayMessage("Enter Preference");
+
+                        } else {
+                            Toast.makeText(UpdatePreference.this, "Select Preference", Toast.LENGTH_SHORT).show();
                         }
 
+
                     }
-
-
-
-
 
 
                 }
@@ -118,7 +164,7 @@ public class UpdatePreference extends AppCompatActivity {
             String res = new String(response.data);
             //                JSONObject jsonObject = new JSONObject(res);
 //                Log.e("update url : ", URLHelper.USER_PROFILE_API);
-                Log.e("update preferences : ", res.toString());
+            Log.e("update preferences : ", res.toString());
 //                SharedHelper.putKey(getApplicationContext(), "id", jsonObject.optString("id"));
 //                SharedHelper.putKey(getApplicationContext(), "first_name", jsonObject.optString("first_name"));
 ////                    SharedHelper.putKey(getApplicationContext(), "last_name", jsonObject.optString("last_name"));
@@ -137,7 +183,7 @@ public class UpdatePreference extends AppCompatActivity {
 //                        SharedHelper.putKey(context, "wallet_balance", jsonObject.optString("wallet_balance"));
 //                        SharedHelper.putKey(context, "payment_mode", jsonObject.optString("payment_mode"));
             callSuccess();
-            Toast.makeText(UpdatePreference.this,"Preferences Updated", Toast.LENGTH_SHORT).show();
+            Toast.makeText(UpdatePreference.this, "Preferences Updated", Toast.LENGTH_SHORT).show();
 
             //displayMessage(getString(R.string.update_success));
 
@@ -145,17 +191,17 @@ public class UpdatePreference extends AppCompatActivity {
         }, error -> {
             if ((dialogCustom != null) && dialogCustom.isShowing())
                 dialogCustom.dismiss();
-            System.out.println("error : "+error.toString());
-            System.out.println("error : "+error.getCause());
-            System.out.println("error : "+error.getMessage());
-            System.out.println("error : "+error.getStackTrace());
+            System.out.println("error : " + error.toString());
+            System.out.println("error : " + error.getCause());
+            System.out.println("error : " + error.getMessage());
+            System.out.println("error : " + error.getStackTrace());
             displayMessage(getString(R.string.something_went_wrong));
         }) {
             @Override
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("title", title_id);
-                params.put("subtitle", editTextsubtitle.getText().toString());
+                params.put("subtitle", preferenceStatus);
                 params.put("id", id);
                 return params;
             }
@@ -176,33 +222,74 @@ public class UpdatePreference extends AppCompatActivity {
         dialogCustom.setContentView(R.layout.custom_dialog);
         dialogCustom.setCancelable(false);
         dialogCustom.show();
-        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLHelper.PREFERENCES, response -> {
-            dialogCustom.dismiss();
-            String res = new String(response.data);
+//        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLHelper.PREFERENCES, response -> {
+//            dialogCustom.dismiss();
+//            String res = new String(response.data);
+//
+//            Log.e("Added preferences : ", res.toString());
+//
+//            callSuccess();
+//            Toast.makeText(UpdatePreference.this, "Preferences Added", Toast.LENGTH_SHORT).show();
+//
+//
+//        }, error -> {
+//            if ((dialogCustom != null) && dialogCustom.isShowing())
+//                dialogCustom.dismiss();
+//            error.printStackTrace();
+//            displayMessage(getString(R.string.something_went_wrong));
+//        }) {
+//            @Override
+//            public Map<String, String> getParams() {
+//                Map<String, String> params = new HashMap<>();
+//                params.put("title", id);
+//                params.put("subtitle", preferenceStatus);
+//                return params;
+//            }
+//
+//            @Override
+//            public Map<String, String> getHeaders() {
+//                HashMap<String, String> headers = new HashMap<String, String>();
+//                headers.put("X-Requested-With", "XMLHttpRequest");
+//                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+//                return headers;
+//            }
+//        };
+//        ClassLuxApp.getInstance().addToRequestQueue(volleyMultipartRequest);
 
-            Log.e("Added preferences : ", res.toString());
-
-            callSuccess();
-            Toast.makeText(UpdatePreference.this,"Preferences Added", Toast.LENGTH_SHORT).show();
 
 
+//        // Getting other details of profile
 
-        }, error -> {
-            if ((dialogCustom != null) && dialogCustom.isShowing())
+        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.PREFERENCES, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
                 dialogCustom.dismiss();
-            error.printStackTrace();
-            System.out.println("error : "+error.toString());
-            System.out.println("error : "+error.getCause());
-            System.out.println("error : "+error.getMessage());
-            System.out.println("error : "+error.getStackTrace());
-            displayMessage(getString(R.string.something_went_wrong));
+                String res = new String(response.toString());
+
+                Log.e("Added preferences : ", res.toString());
+
+                callSuccess();
+                Toast.makeText(UpdatePreference.this, "Preferences Added", Toast.LENGTH_SHORT).show();
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if ((dialogCustom != null) && dialogCustom.isShowing())
+                    dialogCustom.dismiss();
+                error.printStackTrace();
+                displayMessage(getString(R.string.something_went_wrong));
+            }
+
         }) {
+
+
             @Override
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("title", id);
-                params.put("subtitle", editTextsubtitle.getText().toString());
-
+                params.put("subtitle", preferenceStatus);
                 return params;
             }
 
@@ -213,12 +300,16 @@ public class UpdatePreference extends AppCompatActivity {
                 headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
                 return headers;
             }
+
         };
-        ClassLuxApp.getInstance().addToRequestQueue(volleyMultipartRequest);
+
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
     }
 
     private void callSuccess() {
-        Intent returnIntent = new Intent(getApplicationContext(),TravelPreferenceActivityMain.class);
+        Intent returnIntent = new Intent(getApplicationContext(), TravelPreferenceActivityMain.class);
         startActivity(returnIntent);
     }
 
@@ -237,10 +328,10 @@ public class UpdatePreference extends AppCompatActivity {
         editTexttitle.setText(title);
         editTextsubtitle.setText(subtitle);
 
-        System.out.println(" preferecnce id"+id);
-        System.out.println(" preferecnce title"+title);
-        System.out.println(" preferecnce subtitle"+subtitle);
-        System.out.println(" preferecnce update"+update);
+        System.out.println(" preferecnce id" + id);
+        System.out.println(" preferecnce title" + title);
+        System.out.println(" preferecnce subtitle" + subtitle);
+        System.out.println(" preferecnce update" + update);
 
 //        if (parameter.equalsIgnoreCase("first_name")) {
 //
@@ -271,7 +362,6 @@ public class UpdatePreference extends AppCompatActivity {
 //        }
 
     }
-
 
 
 }

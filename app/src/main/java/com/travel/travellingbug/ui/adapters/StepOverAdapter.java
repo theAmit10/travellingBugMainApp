@@ -7,13 +7,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.SharedHelper;
@@ -63,7 +65,15 @@ public class StepOverAdapter extends RecyclerView.Adapter<StepOverAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         StopOverModel stopOverModel = list.get(position);
-        holder.location.setText(stopOverModel.getArea());
+
+        try {
+            holder.location.setText(stopOverModel.getTitle());
+            Picasso.get().load(stopOverModel.getAllowed()).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.allowed);
+            Picasso.get().load(stopOverModel.getNotAllowed()).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(holder.notAllowed);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 //        String user_id = getContext();
 
@@ -78,18 +88,28 @@ public class StepOverAdapter extends RecyclerView.Adapter<StepOverAdapter.ViewHo
                         JSONObject jsonObjectPreference = response.getJSONObject(i);
                         Log.v("jsonObjectPreference : ", jsonObjectPreference.optString("title"));
 
-//                        jsonObjectPreference.optString("title");
+                        if(!jsonObjectPreference.optString("subtitle").equalsIgnoreCase("null")){
+                            if(stopOverModel.getTitle().equalsIgnoreCase(jsonObjectPreference.optString("title"))){
 
-                        if(jsonObjectPreference.optString("title") != null){
-                            if(stopOverModel.getArea().equalsIgnoreCase(jsonObjectPreference.optString("title"))){
-                                holder.location.setChecked(true);
+                                if(jsonObjectPreference.optString("subtitle").equalsIgnoreCase("0")){
+                                    int newBorderColor = ContextCompat.getColor(getContext(), R.color.green);
+                                    holder.allowed.setBorderColor(newBorderColor);
+//                                    holder.allowed.setImageResource(R.drawable.car);
+
+                                }
+//                                else if(jsonObjectPreference.optString("subtitle").equalsIgnoreCase("1")){
+//                                    holder.notAllowed.setImageResource(R.drawable.ic_dummy_user);
+//                                    System.out.println("Title: 1 -> "+jsonObjectPreference.optString("subtitle"));
+//
+//                                }
+
                             }
                         }
 
 
 
                     } catch (JSONException e) {
-                        throw new RuntimeException(e);
+                        e.printStackTrace();
                     }
                 }
 
@@ -99,13 +119,12 @@ public class StepOverAdapter extends RecyclerView.Adapter<StepOverAdapter.ViewHo
 
 
         }, error -> {
-            System.out.println("error");
+            System.out.println("error"+error);
         }) {
             @Override
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("X-Requested-With", "XMLHttpRequest");
-                Log.e(TAG, "getHeaders: Token" + SharedHelper.getKey(getContext(), "access_token") + SharedHelper.getKey(getContext(), "token_type"));
                 headers.put("Authorization", "" + "Bearer" + " " + SharedHelper.getKey(getContext(), "access_token"));
                 return headers;
             }
@@ -181,12 +200,15 @@ public class StepOverAdapter extends RecyclerView.Adapter<StepOverAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        CheckBox location;
+        TextView location;
+        de.hdodenhof.circleimageview.CircleImageView allowed, notAllowed;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             location = itemView.findViewById(R.id.location);
+            allowed = itemView.findViewById(R.id.allowed);
+            notAllowed = itemView.findViewById(R.id.notAllowed);
         }
     }
 }

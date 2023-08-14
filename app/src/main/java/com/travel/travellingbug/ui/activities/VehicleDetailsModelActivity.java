@@ -70,6 +70,10 @@ public class VehicleDetailsModelActivity extends AppCompatActivity {
         clickHandlerOnComponent();
 
         vehicleModelETL.setText(SharedHelper.getKey(getApplicationContext(), "service_model"));
+        int textLength = vehicleModelETL.getText().length();
+        vehicleModelETL.setSelection(textLength);
+
+
         service_model = SharedHelper.getKey(getApplicationContext(), "service_model");
 
         vehicleModelETL.addTextChangedListener(new TextWatcher() {

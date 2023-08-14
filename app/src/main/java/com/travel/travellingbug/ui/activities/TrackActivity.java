@@ -671,8 +671,9 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 .getString(R.string.cancel_trip)))
             showCancelRideDialog();
         else {
-            String shareUrl = URLHelper.REDIRECT_SHARE_URL;
+            String shareUrl = URLHelper.TRACKING_LINK_SHARE_URL;
             navigateToShareScreen(shareUrl);
+
         }
     }
 
@@ -739,7 +740,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
             public void onClick(View v) {
 //                navigateToShareScreen("https://www.google.com/maps/dir/Delhi/Uttarakhand/@29.3972372,76.9344011,8z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x390cfd5b347eb62d:0x37205b715389640!2m2!1d77.1024902!2d28.7040592!1m5!1m1!1s0x3909dcc202279c09:0x7c43b63689cc005!2m2!1d79.0192997!2d30.066753?entry=ttu");
 
-                String shareUrl = URLHelper.REDIRECT_SHARE_URL;
+                String shareUrl = URLHelper.TRACKING_LINK_SHARE_URL;
                 navigateToShareScreen(shareUrl);
             }
         });
@@ -767,7 +768,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
                     if (response != null) {
                         System.out.println("data : " + jsonObject.toString());
-                        displayMessage("Verification Code Added.");
+                        displayMessage("Share this verification code with Driver");
 
                     }
 
@@ -781,6 +782,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
             }
 
         }) {
@@ -1196,10 +1198,12 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 //            Intent.createChooser(sendIntent, "Share Via");
 
 
+
+
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("text/plain");
             String name = SharedHelper.getKey(context, "first_name");
-            String text = "TravellingBug App,\n" + name + "\nwould like to share a trip with you at \n" + shareUrl + current_lat + "," + current_lng;
+            String text = "TravellingBug App,\n" + name + "\nwould like to share a trip with you at \n" + shareUrl + SharedHelper.getKey(getApplicationContext(),"id");
             intent.putExtra(Intent.EXTRA_SUBJECT, "TravellingBug App");
             intent.putExtra(Intent.EXTRA_TEXT, text);
             startActivity(Intent.createChooser(intent, "Share Via"));
@@ -1958,11 +1962,20 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                             Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
                                                                         else
                                                                             Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
-                                                                        lblServiceRequested.setText(service_type.optString("name"));
+//                                                                        lblServiceRequested.setText(service_type.optString("name"));
                                                                         lblModelNumber.setText(provider_service.optString("service_model") + "\n" + provider_service.optString("service_number"));
-                                                                        Picasso.get().load(service_type.optString("image"))
-                                                                                .placeholder(R.drawable.car_select).error(R.drawable.car_select)
-                                                                                .into(imgServiceRequested);
+//                                                                        Picasso.get().load(service_type.optString("image"))
+//                                                                                .placeholder(R.drawable.car_select).error(R.drawable.car_select)
+//                                                                                .into(imgServiceRequested);
+
+
+                                                                        JSONObject provider_service_jsonObj = tripsJsonObj.getJSONObject("provider_service");
+
+                                                                        if(provider_service_jsonObj != null)
+                                                                        {
+                                                                            lblServiceRequested.setText(provider_service_jsonObj.optString("service_name"));
+                                                                            Picasso.get().load(provider_service_jsonObj.optString("vehicle_image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+                                                                        }
 //                                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
                                                                         if (!provider.optString("rating").equalsIgnoreCase("null")) {
                                                                             ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
@@ -2029,6 +2042,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 //                                                                JSONObject provider = providerJsonObject;
                                                                         JSONObject service_type = tripsJsonObj.getJSONObject("service_type");
 
+
                                                                         lblProvider.setText(provider.optString("first_name"));
 
 //                                                                Random random = new Random();
@@ -2065,9 +2079,15 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                             e.printStackTrace();
                                                                         }
 
+                                                                        JSONObject provider_service_jsonObj = tripsJsonObj.getJSONObject("provider_service");
 
-                                                                        lblServiceRequested.setText(service_type.optString("name"));
-                                                                        Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+                                                                        if(provider_service_jsonObj != null)
+                                                                        {
+                                                                            lblServiceRequested.setText(provider_service_jsonObj.optString("service_name"));
+                                                                            Picasso.get().load(provider_service_jsonObj.optString("vehicle_image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+                                                                        }
+//                                                                        lblServiceRequested.setText(service_type.optString("name"));
+//                                                                        Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
 
 
 //                                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
@@ -2148,8 +2168,17 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                                                                         } else {
                                                                             Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
                                                                         }
-                                                                        lblServiceRequested.setText(service_type.optString("name"));
-                                                                        Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+
+                                                                        JSONObject provider_service_jsonObj = tripsJsonObj.getJSONObject("provider_service");
+
+                                                                        if(provider_service_jsonObj != null)
+                                                                        {
+                                                                            lblServiceRequested.setText(provider_service_jsonObj.optString("service_name"));
+                                                                            Picasso.get().load(provider_service_jsonObj.optString("vehicle_image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+                                                                        }
+
+//                                                                        lblServiceRequested.setText(service_type.optString("name"));
+//                                                                        Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
 
 //                                                                        ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
                                                                         if (!provider.optString("rating").equalsIgnoreCase("null")) {
@@ -4198,6 +4227,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 JSONObject provider = requestStatusCheckObject.getJSONObject("provider");
                 JSONObject service_type = requestStatusCheckObject.getJSONObject("service_type");
 
+
+
                 SharedHelper.putKey(context, "provider_mobile_no", "" + provider.optString("mobile"));
                 lblProvider.setText(provider.optString("first_name"));
 
@@ -4208,7 +4239,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                     Picasso.get().load(URLHelper.BASE + "storage/app/public/" + provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProvider);
                     Picasso.get().load(provider.optString("avatar")).placeholder(R.drawable.ic_dummy_user).error(R.drawable.ic_dummy_user).into(imgProviderRate);
                 }
-                lblServiceRequested.setText(service_type.optString("name"));
+//                lblServiceRequested.setText(service_type.optString("name"));
 
                 try {
 
@@ -4228,8 +4259,16 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                 }
 
 
-                Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select)
-                        .error(R.drawable.car_select).into(imgServiceRequested);
+                JSONObject provider_service_jsonObj = requestStatusCheckObject.getJSONObject("provider_service");
+
+                if(provider_service_jsonObj != null)
+                {
+                    lblServiceRequested.setText(provider_service_jsonObj.optString("service_name"));
+                    Picasso.get().load(provider_service_jsonObj.optString("vehicle_image")).placeholder(R.drawable.car_select).error(R.drawable.car_select).into(imgServiceRequested);
+                }
+
+//                Picasso.get().load(URLHelper.BASE + service_type.optString("image")).placeholder(R.drawable.car_select)
+//                        .error(R.drawable.car_select).into(imgServiceRequested);
                 if (!provider.optString("rating").equalsIgnoreCase("null")) {
                     ratingProvider.setRating(Float.parseFloat(provider.optString("rating")));
                 } else {

@@ -299,8 +299,10 @@ public class FindRidesActivity extends AppCompatActivity {
 
                         try {
                             JSONArray jsonArray = new JSONArray(response);
+                            System.out.println("FIND RIDE RESPONSE : "+response);
 
                             if (response != null) {
+                                System.out.println("FIND RIDE RESPONSE not null : "+response);
                                 upcomingsAdapter = new UpcomingsAdapter(jsonArray);
                                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext().getApplicationContext());
                                 recyclerView.setLayoutManager(mLayoutManager);
@@ -320,10 +322,11 @@ public class FindRidesActivity extends AppCompatActivity {
                                 mFrameLayout.startShimmer();
                             }
                         } catch (JSONException e) {
-                            displayMessage(e.toString());
+                            displayMessage("No Driver Found");
                             e.printStackTrace();
                             errorLayout.setVisibility(View.VISIBLE);
                             recyclerView.setVisibility(View.GONE);
+                            mFrameLayout.setVisibility(View.GONE);
                         }
                     });
                 }
@@ -348,7 +351,6 @@ public class FindRidesActivity extends AppCompatActivity {
                     params.put("d_longitude", d_longitude);
                     params.put("s_address", s_address);
                     params.put("d_address", d_address);
-
                     params.put("service_type", service_type);
                     params.put("distance", distance);
                     params.put("schedule_date", schedule_date);
@@ -357,7 +359,7 @@ public class FindRidesActivity extends AppCompatActivity {
                     params.put("use_wallet", use_wallet);
                     params.put("payment_mode", payment_mode);
 
-                    System.out.println("PARAMS : "+params.toString());
+                    System.out.println("REQUEST PARAMS : "+params.toString());
 
                     return params;
                 }

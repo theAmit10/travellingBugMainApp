@@ -120,22 +120,35 @@ public class UserChatActivity extends AppCompatActivity {
         intentFilter.addAction("com.my.app.onMessageReceived");
         receiver = new MyBroadcastReceiver();
 
-
-        ha = new Handler();
-        ha.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //call function
+        try {
+            ha = new Handler();
+            ha.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    //call function
 //                getChatDetails();
-                getlengthofChatDetails();
-                System.out.println("Realtime working");
+                    getlengthofChatDetails();
+                    System.out.println("Realtime working");
 
-                ha.postDelayed(this, 2000);
-            }
-        }, 2000);
+                    if(ha != null){
+                        ha.postDelayed(this, 2000);
+                    }
+
+                }
+            }, 2000);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
 
 
     }
+
+
+
 
     private void initViews() {
         recyclerChat = findViewById(R.id.recyclerChat);
@@ -334,6 +347,9 @@ public class UserChatActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(receiver);
+        if(ha != null){
+            ha = null;
+        }
     }
 
     public void getChatDetails() {

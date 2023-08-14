@@ -25,6 +25,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
@@ -51,6 +52,7 @@ import com.travel.travellingbug.ui.activities.VehicleDetailsLicensePlateNumberAc
 import com.travel.travellingbug.ui.activities.VerifyIdActivity;
 import com.travel.travellingbug.utills.Utilities;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -132,6 +134,7 @@ public class ProfileAboutFragment extends Fragment {
 
             clickHandlerOnComponenet();
             getProfile();
+            getPreferenceDetails();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -566,99 +569,137 @@ public class ProfileAboutFragment extends Fragment {
     }
 
     public void getProfile() {
+        try {
+            if (isInternet) {
+                JSONObject object = new JSONObject();
+                JsonObjectRequest jsonObjectRequest = new
+                        JsonObjectRequest(Request.Method.GET, URLHelper.USER_PROFILE_API,
+                                object, response -> {
+                            Log.v("GetProfile", response.toString());
+                            SharedHelper.putKey(getContext(), "id", response.optString("id"));
+                            SharedHelper.putKey(getContext(), "first_name", response.optString("first_name"));
+                            SharedHelper.putKey(getContext(), "last_name", response.optString("last_name"));
+                            SharedHelper.putKey(getContext(), "email", response.optString("email"));
+                            SharedHelper.putKey(getContext(), "picture", URLHelper.BASE + "storage/app/public/" + response.optString("picture"));
+                            SharedHelper.putKey(getContext(), "gender", response.optString("gender"));
+                            SharedHelper.putKey(getContext(), "sos", response.optString("sos"));
+                            SharedHelper.putKey(getContext(), "mobile", response.optString("mobile"));
+                            SharedHelper.putKey(getContext(), "refer_code", response.optString("refer_code"));
+                            SharedHelper.putKey(getContext(), "wallet_balance", response.optString("wallet_balance"));
+                            SharedHelper.putKey(getContext(), "payment_mode", response.optString("payment_mode"));
+                            SharedHelper.putKey(getContext(), "currency", response.optString("currency"));
+
+
+
+                            //                    SharedHelper.putKey(context, "currency", response.optString("payment_mode"));
+                            SharedHelper.putKey(getContext(), "rating", response.optString("rating"));
+                            SharedHelper.putKey(getContext(), "status", response.optString("status"));
+                            SharedHelper.putKey(getContext(), "ulatitude", response.optString("latitude"));
+                            SharedHelper.putKey(getContext(), "ulongitude", response.optString("longitude"));
+                            SharedHelper.putKey(getContext(), "udevice_token", response.optString("device_token"));
+                            SharedHelper.putKey(getContext(), "bio", response.optString("bio"));
+
+
+                            SharedHelper.putKey(getContext(), "loggedIn", "true");
+                            if (response.optString("avatar").startsWith("http"))
+                                SharedHelper.putKey(getContext(), "picture", response.optString("avatar"));
+                            else
+                                SharedHelper.putKey(getContext(), "picture", URLHelper.BASE + "storage/app/public/" + response.optString("avatar"));
+
+                            if (response.optJSONObject("service") != null) {
+                                try {
+                                    JSONObject service = response.optJSONObject("service");
+
+                                    SharedHelper.putKey(getContext(), "service_id", service.optString("id"));
+                                    SharedHelper.putKey(getContext(), "service_status", service.optString("status"));
+                                    SharedHelper.putKey(getContext(), "service_number", service.optString("service_number"));
+                                    SharedHelper.putKey(getContext(), "service_model", service.optString("service_model"));
+                                    SharedHelper.putKey(getContext(), "service_capacity", service.optString("service_capacity"));
+                                    SharedHelper.putKey(getContext(), "service_year", service.optString("service_year"));
+                                    SharedHelper.putKey(getContext(), "service_make", service.optString("service_make"));
+                                    SharedHelper.putKey(getContext(), "service_name", service.optString("service_name"));
+                                    SharedHelper.putKey(getContext(), "service_ac", service.optString("service_ac"));
+                                    SharedHelper.putKey(getContext(), "service_color", service.optString("service_color"));
+
+
+                                    if (service.optJSONObject("service_type") != null) {
+                                        JSONObject serviceType = service.optJSONObject("service_type");
+                                        SharedHelper.putKey(getContext(), "service", serviceType.optString("name"));
+                                        SharedHelper.putKey(getContext(), "service_image", serviceType.optString("vehicle_image"));
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+
+                            if (response.optJSONObject("profile") != null) {
+                                try {
+                                    JSONObject profile = response.optJSONObject("profile");
+
+                                    SharedHelper.putKey(getContext(), "full_address", profile.optString("address"));
+
+
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            setProviderDetails();
+
+
+                        }, error -> {
+                            displayMessage(getString(R.string.something_went_wrong));
+                        }) {
+                            @Override
+                            public Map<String, String> getHeaders() {
+                                HashMap<String, String> headers = new HashMap<String, String>();
+                                headers.put("X-Requested-With", "XMLHttpRequest");
+                                Log.e(TAG, "getHeaders: Token" + SharedHelper.getKey(getContext(), "access_token") + SharedHelper.getKey(getContext(), "token_type"));
+                                headers.put("Authorization", "" + "Bearer" + " " + SharedHelper.getKey(getContext(), "access_token"));
+                                return headers;
+                            }
+                        };
+
+                ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+            } else {
+                displayMessage(getString(R.string.something_went_wrong_net));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+    public void getPreferenceDetails() {
 
         if (isInternet) {
-            JSONObject object = new JSONObject();
-            JsonObjectRequest jsonObjectRequest = new
-                    JsonObjectRequest(Request.Method.GET, URLHelper.USER_PROFILE_API,
-                            object, response -> {
-                        Log.v("GetProfile", response.toString());
-                        SharedHelper.putKey(getContext(), "id", response.optString("id"));
-                        SharedHelper.putKey(getContext(), "first_name", response.optString("first_name"));
-                        SharedHelper.putKey(getContext(), "last_name", response.optString("last_name"));
-                        SharedHelper.putKey(getContext(), "email", response.optString("email"));
-                        SharedHelper.putKey(getContext(), "picture", URLHelper.BASE + "storage/app/public/" + response.optString("picture"));
-                        SharedHelper.putKey(getContext(), "gender", response.optString("gender"));
-                        SharedHelper.putKey(getContext(), "sos", response.optString("sos"));
-                        SharedHelper.putKey(getContext(), "mobile", response.optString("mobile"));
-                        SharedHelper.putKey(getContext(), "refer_code", response.optString("refer_code"));
-                        SharedHelper.putKey(getContext(), "wallet_balance", response.optString("wallet_balance"));
-                        SharedHelper.putKey(getContext(), "payment_mode", response.optString("payment_mode"));
-                        SharedHelper.putKey(getContext(), "currency", response.optString("currency"));
+
+            JSONArray jsonArray = new JSONArray();
+            JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URLHelper.PREFERENCES+"?user_id="+SharedHelper.getKey(getContext(),"id"),
+                    jsonArray, response -> {
+                Log.v("GetPreferences", response.toString());
+
+                SharedHelper.putKey(getContext(),"TravelPreferenceStatus", String.valueOf(response.length()));
 
 
+            }, error -> {
 
-                        //                    SharedHelper.putKey(context, "currency", response.optString("payment_mode"));
-                        SharedHelper.putKey(getContext(), "rating", response.optString("rating"));
-                        SharedHelper.putKey(getContext(), "status", response.optString("status"));
-                        SharedHelper.putKey(getContext(), "ulatitude", response.optString("latitude"));
-                        SharedHelper.putKey(getContext(), "ulongitude", response.optString("longitude"));
-                        SharedHelper.putKey(getContext(), "udevice_token", response.optString("device_token"));
-                        SharedHelper.putKey(getContext(), "bio", response.optString("bio"));
+            }) {
+                @Override
+                public Map<String, String> getHeaders() {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("X-Requested-With", "XMLHttpRequest");
+                    headers.put("Authorization", "" + "Bearer" + " " + SharedHelper.getKey(getContext(), "access_token"));
+                    return headers;
+                }
+            };
 
-
-                        SharedHelper.putKey(getContext(), "loggedIn", getString(R.string.True));
-                        if (response.optString("avatar").startsWith("http"))
-                            SharedHelper.putKey(getContext(), "picture", response.optString("avatar"));
-                        else
-                            SharedHelper.putKey(getContext(), "picture", URLHelper.BASE + "storage/app/public/" + response.optString("avatar"));
-
-                        if (response.optJSONObject("service") != null) {
-                            try {
-                                JSONObject service = response.optJSONObject("service");
-
-                                SharedHelper.putKey(getContext(), "service_id", service.optString("id"));
-                                SharedHelper.putKey(getContext(), "service_status", service.optString("status"));
-                                SharedHelper.putKey(getContext(), "service_number", service.optString("service_number"));
-                                SharedHelper.putKey(getContext(), "service_model", service.optString("service_model"));
-                                SharedHelper.putKey(getContext(), "service_capacity", service.optString("service_capacity"));
-                                SharedHelper.putKey(getContext(), "service_year", service.optString("service_year"));
-                                SharedHelper.putKey(getContext(), "service_make", service.optString("service_make"));
-                                SharedHelper.putKey(getContext(), "service_name", service.optString("service_name"));
-                                SharedHelper.putKey(getContext(), "service_ac", service.optString("service_ac"));
-                                SharedHelper.putKey(getContext(), "service_color", service.optString("service_color"));
+            ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
 
 
-                                if (service.optJSONObject("service_type") != null) {
-                                    JSONObject serviceType = service.optJSONObject("service_type");
-                                    SharedHelper.putKey(getContext(), "service", serviceType.optString("name"));
-                                    SharedHelper.putKey(getContext(), "service_image", serviceType.optString("vehicle_image"));
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-
-                        if (response.optJSONObject("profile") != null) {
-                            try {
-                                JSONObject profile = response.optJSONObject("profile");
-
-                                SharedHelper.putKey(getContext(), "full_address", profile.optString("address"));
-
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                        setProviderDetails();
-
-
-                    }, error -> {
-                        displayMessage(getString(R.string.something_went_wrong));
-                    }) {
-                        @Override
-                        public Map<String, String> getHeaders() {
-                            HashMap<String, String> headers = new HashMap<String, String>();
-                            headers.put("X-Requested-With", "XMLHttpRequest");
-                            Log.e(TAG, "getHeaders: Token" + SharedHelper.getKey(getContext(), "access_token") + SharedHelper.getKey(getContext(), "token_type"));
-                            headers.put("Authorization", "" + "Bearer" + " " + SharedHelper.getKey(getContext(), "access_token"));
-                            return headers;
-                        }
-                    };
-
-            ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
         } else {
             displayMessage(getString(R.string.something_went_wrong_net));
         }

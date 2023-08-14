@@ -33,6 +33,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -82,6 +83,8 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
     private GoogleApiClient mGoogleApiClient;
     private PlacePredictions placePredictions = new PlacePredictions();
 
+    private ShimmerFrameLayout mFrameLayout;
+
 
     PlacesClient placesClient;
     String TAG = "CustomGoogleplacesearch";
@@ -112,7 +115,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
         backArrow = findViewById(R.id.backArrow);
         imgDestClose = findViewById(R.id.imgDestClose);
         imgSourceClose = findViewById(R.id.imgSourceClose);
-
+        mFrameLayout = findViewById(R.id.shimmerLayout);
         txtPickLocation = findViewById(R.id.txtPickLocation);
 
 

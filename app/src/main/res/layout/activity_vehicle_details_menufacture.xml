@@ -224,7 +224,8 @@
                 android:id="@+id/choosePicturetv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableRight="@drawable/ic_camera"
+                android:drawableRight="@drawable/ic_gallery"
+                android:drawableTint="@color/green"
                 android:layout_marginStart="16dp"
                 android:padding="@dimen/_10sdp"
                 android:text="Upload Car Picture ? "
@@ -257,7 +258,7 @@
                     android:layout_height="@dimen/_100sdp"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="-20dp"
-                    app:srcCompat="@drawable/maruti_car" />
+                    app:srcCompat="@drawable/car_select" />
 
                 <TextView
                     android:id="@+id/textView7"

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.models.IntroModel;
 
@@ -43,7 +44,17 @@ public class IntroAdapter extends PagerAdapter {
         TextView my_caption_title = sliderLayout.findViewById(R.id.my_caption_title);
         TextView the_caption_Title_description = sliderLayout.findViewById(R.id.the_caption_Title_description);
 
-        featured_image.setImageResource(list.get(position).getFeatured_image());
+
+        try{
+            if(list.get(position).getFeatured_image() != null && !list.get(position).getFeatured_image().equalsIgnoreCase("null") ){
+                Picasso.get().load(list.get(position).getFeatured_image()).into(featured_image);
+            }else {
+                featured_image.setImageResource(list.get(position).getFeatured_image_local());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         my_caption_title.setText(list.get(position).getThe_caption_Title());
         the_caption_Title_description.setText(list.get(position).getThe_caption_Title_description());
 

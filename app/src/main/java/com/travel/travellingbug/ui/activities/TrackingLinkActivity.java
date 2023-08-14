@@ -37,7 +37,6 @@ import com.travel.travellingbug.helper.URLHelper;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -607,28 +606,28 @@ public class TrackingLinkActivity extends AppCompatActivity {
                 alert.show();
             });
 
-            holder.btnStart.setOnClickListener(view -> {
-                //Toast.makeText(getActivity(),"Start Ride",Toast.LENGTH_SHORT).show();
-
-                updateStatusForSingleUserRide(jsonArray.optJSONObject(position).optString("id"), "STARTED");
-
-                Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
-                JSONArray array = new JSONArray();
-                JSONObject req = new JSONObject();
-                try {
-                    JSONObject object = (JSONObject) new JSONTokener(jsonArray.optJSONObject(position).toString()).nextValue();
-                    req.put("request", object);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                array.put(req);
-                Log.e("TAG", "REQ: " + array);
-                Intent i = new Intent(TrackingLinkActivity.this, MainActivity.class);
-                i.putExtra("datas", array.toString());
-                i.putExtra("ride_request_id", request_id);
-                i.putExtra("type", "SCHEDULED");
-                startActivity(i);
-            });
+//            holder.btnStart.setOnClickListener(view -> {
+//                //Toast.makeText(getActivity(),"Start Ride",Toast.LENGTH_SHORT).show();
+//
+//                updateStatusForSingleUserRide(jsonArray.optJSONObject(position).optString("id"), "STARTED");
+//
+//                Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
+//                JSONArray array = new JSONArray();
+//                JSONObject req = new JSONObject();
+//                try {
+//                    JSONObject object = (JSONObject) new JSONTokener(jsonArray.optJSONObject(position).toString()).nextValue();
+//                    req.put("request", object);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//                array.put(req);
+//                Log.e("TAG", "REQ: " + array);
+//                Intent i = new Intent(TrackingLinkActivity.this, MainActivity.class);
+//                i.putExtra("datas", array.toString());
+//                i.putExtra("ride_request_id", request_id);
+//                i.putExtra("type", "SCHEDULED");
+//                startActivity(i);
+//            });
 
 
             holder.pContainer.setOnClickListener(view -> {

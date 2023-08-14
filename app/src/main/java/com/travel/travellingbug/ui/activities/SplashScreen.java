@@ -26,6 +26,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,6 +70,8 @@ public class SplashScreen extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private static final String TAG = SplashScreen.class.getSimpleName();
+
+    private static final int APP_SETTINGS_REQUEST_CODE = 101;
     ConnectionHelper helper;
     Boolean isInternet;
     Handler handleCheckStatus;
@@ -256,6 +259,7 @@ public class SplashScreen extends AppCompatActivity {
                                 if (task.isSuccessful() && task.getResult() != null) {
                                     String newToken = task.getResult().getToken();
                                     Log.d("Installations", "Installation auth token: " + task.getResult().getToken());
+                                    System.out.println("DEVICE TOKEN TB : "+ task.getResult().getToken());
                                     Log.e("newToken", newToken);
                                     SharedHelper.putKey(getApplicationContext(), "device_token", "" + newToken);
                                     device_token = newToken;
@@ -423,12 +427,15 @@ public class SplashScreen extends AppCompatActivity {
                                 finish();
                             }
                         }else{
-                            Toast.makeText(SplashScreen.this, "Grant permission to continue", Toast.LENGTH_SHORT).show();
-                            showPermissionDialog();
-                        }
-                        if (report.isAnyPermissionPermanentlyDenied()) {
+                            if (report.isAnyPermissionPermanentlyDenied()) {
+                                showSettingsDialog();
+                            }
                             showSettingsDialog();
+//                            Toast.makeText(SplashScreen.this, "Grant permission to continue", Toast.LENGTH_SHORT).show();
+//                            showPermissionDialog();
                         }
+
+
 
                     }
 
@@ -443,12 +450,13 @@ public class SplashScreen extends AppCompatActivity {
     private void showSettingsDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SplashScreen.this);
         builder.setTitle("Need Permissions");
-        builder.setMessage("This app needs permission to use this feature. You can grant them in app settings.");
+        builder.setCancelable(false);
+        builder.setMessage("This app needs permission to enable some feature. You can grant them in app settings.");
         builder.setPositiveButton("GOTO SETTINGS", (dialog, which) -> {
             dialog.cancel();
             openSettings();
         });
-        builder.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
+        builder.setNegativeButton("Cancel", (dialog, which) -> finish());
         builder.show();
 
     }
@@ -457,7 +465,7 @@ public class SplashScreen extends AppCompatActivity {
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         Uri uri = Uri.fromParts("package", getPackageName(), null);
         intent.setData(uri);
-        startActivityForResult(intent, 101);
+        startActivityForResult(intent, APP_SETTINGS_REQUEST_CODE);
     }
 
     boolean localeHasChanged = false;
@@ -472,4 +480,24 @@ public class SplashScreen extends AppCompatActivity {
         localeHasChanged = true;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == APP_SETTINGS_REQUEST_CODE) {
+            // This block will be executed when the user returns from app settings
+
+            if (resultCode == RESULT_OK) {
+                // User made some changes in app settings, you can handle it here if needed
+                showPermissionDialog();
+            } else if (resultCode == RESULT_CANCELED) {
+                // User pressed the back button in app settings
+                showPermissionDialog();
+
+                // Redirect the user to a different screen or perform any other action
+                // For example:
+
+            }
+        }
+    }
 }

@@ -213,6 +213,16 @@ public class VehicleDetailsTypeActivity extends AppCompatActivity {
             public void onClick(int position, VehicelModel vehicelModel) {
                 service_type = vehicelModel.getVal();
                 Toast.makeText(VehicleDetailsTypeActivity.this, ""+vehicelModel.getVal(), Toast.LENGTH_SHORT).show();
+                if(service_type.equalsIgnoreCase("") || service_type.length() == 0){
+                    Toast.makeText(VehicleDetailsTypeActivity.this, "Select Vehicle Type", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent = new Intent(VehicleDetailsTypeActivity.this, VehicleDetailsColorActivity.class);
+                    intent.putExtra("license_number", license_number);
+                    intent.putExtra("service_name", service_name);
+                    intent.putExtra("service_model", service_model);
+                    intent.putExtra("service_type", service_type);
+                    startActivity(intent);
+                }
             }
         };
 

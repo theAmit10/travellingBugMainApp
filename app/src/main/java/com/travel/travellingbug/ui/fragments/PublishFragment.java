@@ -456,6 +456,12 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
         }
 
+        try {
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         if (SharedHelper.getKey(getContext(), "Old_User").equalsIgnoreCase("yes")) {
             // Setting Name First
             if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
@@ -464,6 +470,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 intent.putExtra("parameter", "first_name");
                 intent.putExtra("value", "");
                 startActivityForResult(intent, 1);
+                getActivity().overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);
             } else if (SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("no")) {
                 Intent intent = new Intent(getContext(), DocUploadActivity.class);
                 startActivity(intent);
@@ -478,6 +485,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 intent.putExtra("parameter", "first_name");
                 intent.putExtra("value", "");
                 startActivityForResult(intent, 1);
+                getActivity().overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);
             } else if (SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("no")) {
                 Intent intent = new Intent(getContext(), DocUploadActivity.class);
                 startActivity(intent);
@@ -734,49 +742,54 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
     private void getDocList() {
 
-        CustomDialog customDialog = new CustomDialog(getContext());
-        customDialog.setCancelable(false);
-        customDialog.show();
 
-        JsonArrayRequest jsonArrayRequest = new
-                JsonArrayRequest(URLHelper.BASE + "api/provider/document/status",
-                        response -> {
+        try{
+            if(getContext() != null){
+                CustomDialog customDialog = new CustomDialog(getContext());
+                customDialog.setCancelable(false);
+                customDialog.show();
 
-                            if (response != null) {
-                                Log.v("response doc", response + "doc");
-                                Log.v("response doc length", String.valueOf(+response.length()));
+                JsonArrayRequest jsonArrayRequest = new
+                        JsonArrayRequest(URLHelper.BASE + "api/provider/document/status",
+                                response -> {
 
-                                if (response.length() == 0) {
-                                    SharedHelper.putKey(getContext(), "DocumentStatus", "no");
-                                } else {
-                                    SharedHelper.putKey(getContext(), "DocumentStatus", "yes");
-                                }
+                                    if (response != null) {
+                                        Log.v("response doc", response + "doc");
+                                        Log.v("response doc length", String.valueOf(+response.length()));
 
+                                        if (response.length() == 0) {
+                                            SharedHelper.putKey(getContext(), "DocumentStatus", "no");
+                                        } else {
+                                            SharedHelper.putKey(getContext(), "DocumentStatus", "yes");
+                                        }
+                                    }
 
-                            }
+                                    customDialog.dismiss();
 
+                                }, error -> {
+                            Log.v("DocumentsStatus Error", error.getMessage() + "");
                             customDialog.dismiss();
+                            displayMessage(getContext().getString(R.string.something_went_wrong));
+                        }) {
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError {
+                                HashMap<String, String> headers = new HashMap<String, String>();
+                                headers.put("X-Requested-With", "XMLHttpRequest");
+                                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                                return headers;
+                            }
+                        };
 
-                        }, error -> {
-                    Log.v("DocumentsStatus Error", error.getMessage() + "");
-                    customDialog.dismiss();
-                    displayMessage(getActivity().getString(R.string.something_went_wrong));
-                }) {
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("X-Requested-With", "XMLHttpRequest");
-                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
-                        return headers;
-                    }
-                };
+                ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
 
-        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     private void initComponent(View view) {
-//        calendertv = view.findViewById(R.id.calendertv);
-//        timetv = view.findViewById(R.id.timetv);
+
 
         frmSource = view.findViewById(R.id.frmSource);
         frmDest = view.findViewById(R.id.frmDest);
@@ -1442,7 +1455,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 //                    String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
 //                    frmDest.setText(destination_address);
 //                } else {
-                frmDest.setText("Going to");
+                frmDest.setText("Set drop location");
 //            }
 
 //                getProvidersList("");
@@ -1546,23 +1559,23 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.driver) {
                     reasonEtxt.setVisibility(View.VISIBLE);
-                    cancaltype = getActivity().getResources().getString(R.string.plan_changed);
+                    cancaltype = getContext().getString(R.string.plan_changed);
                 }
                 if (checkedId == R.id.vehicle) {
                     reasonEtxt.setVisibility(View.VISIBLE);
-                    cancaltype = getActivity().getResources().getString(R.string.booked_another_cab);
+                    cancaltype = getContext().getString(R.string.booked_another_cab);
                 }
                 if (checkedId == R.id.app) {
                     reasonEtxt.setVisibility(View.VISIBLE);
-                    cancaltype = getActivity().getResources().getString(R.string.my_reason_is_not_listed);
+                    cancaltype = getContext().getString(R.string.my_reason_is_not_listed);
                 }
                 if (checkedId == R.id.denied) {
                     reasonEtxt.setVisibility(View.VISIBLE);
-                    cancaltype = getActivity().getResources().getString(R.string.driver_denied_to_come);
+                    cancaltype = getContext().getString(R.string.driver_denied_to_come);
                 }
                 if (checkedId == R.id.moving) {
                     reasonEtxt.setVisibility(View.VISIBLE);
-                    cancaltype = getActivity().getResources().getString(R.string.driver_is_not_moving);
+                    cancaltype = getContext().getString(R.string.driver_is_not_moving);
                 }
             }
         });
@@ -1574,12 +1587,12 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             public void onClick(View v) {
 
                 if (cancaltype.isEmpty()) {
-                    Toast.makeText(getActivity(), getActivity().getResources().getString(R.string.please_select_reason), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getContext().getString(R.string.please_select_reason), Toast.LENGTH_SHORT).show();
 
                 } else {
                     cancalReason = reasonEtxt.getText().toString();
                     if (cancalReason.isEmpty()) {
-                        reasonEtxt.setError(getActivity().getResources().getString(R.string.please_specify_reason));
+                        reasonEtxt.setError(getContext().getString(R.string.please_specify_reason));
                     } else {
                         cancelRequest();
                         dialog.dismiss();
@@ -3589,35 +3602,45 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             }
         }
 
-        getDocList();
+        try{
+            getDocList();
 
 
-        if (SharedHelper.getKey(getContext(), "Old_User").equalsIgnoreCase("yes")) {
-            // Setting Name First
-            if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
-                Toast.makeText(getContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getContext(), UpdateProfile.class);
-                intent.putExtra("parameter", "first_name");
-                intent.putExtra("value", "");
-                startActivityForResult(intent, 1);
-            } else if (SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("no")) {
-                Intent intent = new Intent(getContext(), DocUploadActivity.class);
-                startActivity(intent);
+            if (SharedHelper.getKey(getContext(), "Old_User").equalsIgnoreCase("yes")) {
+                // Setting Name First
+                if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
+                    Toast.makeText(getContext(), "Add your name to continue", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getContext(), UpdateProfile.class);
+                    intent.putExtra("parameter", "first_name");
+                    intent.putExtra("value", "");
+                    startActivityForResult(intent, 1);
+                    getActivity().overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);
+                } else if (SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("no")) {
+                    Intent intent = new Intent(getContext(), DocUploadActivity.class);
+                    startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);
+                }
+
+
+            } else {
+                if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
+                    Toast.makeText(getContext(), "Add your name to continue", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getContext(), UpdateProfile.class);
+                    intent.putExtra("parameter", "first_name");
+                    intent.putExtra("value", "");
+                    startActivityForResult(intent, 1);
+                    getActivity().overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);
+                } else if (SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("no")) {
+                    Intent intent = new Intent(getContext(), DocUploadActivity.class);
+                    startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.emoji_slide_down, R.anim.emoji_slide_up);
+                }
             }
-
-
-        } else {
-            if (SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("")) {
-                Toast.makeText(getContext(), "Add your Name to Continue", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getContext(), UpdateProfile.class);
-                intent.putExtra("parameter", "first_name");
-                intent.putExtra("value", "");
-                startActivityForResult(intent, 1);
-            } else if (SharedHelper.getKey(getContext(), "DocumentStatus").equalsIgnoreCase("no")) {
-                Intent intent = new Intent(getContext(), DocUploadActivity.class);
-                startActivity(intent);
-            }
+        }catch (Exception e) {
+            e.printStackTrace();
         }
+
+
 
 //        getPastTripRate();
     }

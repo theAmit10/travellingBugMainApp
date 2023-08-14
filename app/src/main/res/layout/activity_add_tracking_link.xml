@@ -62,7 +62,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:text="Generate Tracking link"
+                android:text="https://rdb.gy/rtfytm"
+                android:visibility="visible"
                 android:background="@drawable/auth_btn_white_low_corner_bg"
                 android:backgroundTint="@color/colorLightGray"
                 android:padding="@dimen/_10sdp"/>
@@ -115,7 +116,7 @@
             android:layout_marginTop="@dimen/_30sdp"
             android:background="@drawable/rounded_button"
             android:fontFamily="@font/nunito_bold"
-            android:text="Submit"
+            android:text="Add Tracking Link"
             android:textColor="@color/text_color_white"
             android:textSize="@dimen/_14sdp" />
 

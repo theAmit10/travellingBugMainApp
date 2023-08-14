@@ -167,9 +167,12 @@ public class DocumentStatus extends AppCompatActivity {
                         response -> {
 
                             if (response != null) {
-                                SharedHelper.putKey(getApplicationContext(),"DocumentStatus","yes");
+//                                SharedHelper.putKey(getApplicationContext(),"DocumentStatus","yes");
                                 Log.v("response doc", response + "doc");
                                 Log.v("response doc length", String.valueOf(+response.length()));
+                                if(response.length() > 0){
+                                    SharedHelper.putKey(getApplicationContext(),"DocumentStatus","yes");
+                                }
                                 PostAdapter postAdapter = new PostAdapter(response);
                                 recDocuments.setHasFixedSize(true);
                                 recDocuments.setLayoutManager(new LinearLayoutManager(DocumentStatus.this) {
@@ -180,10 +183,10 @@ public class DocumentStatus extends AppCompatActivity {
                                     }
                                 });
                                 if (postAdapter != null && postAdapter.getItemCount() > 0) {
-
+                                    errorLayout.setVisibility(View.GONE);
                                     recDocuments.setAdapter(postAdapter);
                                 } else {
-
+                                    errorLayout.setVisibility(View.VISIBLE);
                                 }
 
                             } else {
