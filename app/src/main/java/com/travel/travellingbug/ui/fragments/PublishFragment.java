@@ -764,7 +764,9 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                         }
                                     }
 
-                                    customDialog.dismiss();
+                                    if(customDialog.isShowing()){
+                                        customDialog.dismiss();
+                                    }
 
                                 }, error -> {
                             Log.v("DocumentsStatus Error", error.getMessage() + "");
@@ -1455,7 +1457,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 //                    String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
 //                    frmDest.setText(destination_address);
 //                } else {
-                frmDest.setText("Set drop location");
+//                frmDest.setText("Going to");
 //            }
 
 //                getProvidersList("");
@@ -1539,7 +1541,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(activity);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         builder.setTitle(context.getString(R.string.app_name))
-                .setIcon(R.mipmap.ic_launcher)
+                .setIcon(R.drawable.app_logo_org)
                 .setMessage(getString(R.string.cancel_ride_alert));
         builder.setCancelable(false);
         builder.setPositiveButton(getString(R.string.yes), (dialog, which) -> showreasonDialog());

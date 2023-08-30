@@ -6,15 +6,28 @@ public class InboxModel {
 
     String requestId, providerId, userId;
 
+    String type;
+
     int id;
 
     public InboxModel() {
     }
 
+
+
     public InboxModel(String profileImage, String username, int id) {
         this.profileImage = profileImage;
         this.username = username;
         this.id = id;
+    }
+
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getRequestId() {

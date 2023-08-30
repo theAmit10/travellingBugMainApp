@@ -19,7 +19,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
-import com.travel.travellingbug.chat.UserChatActivity;
+import com.travel.travellingbug.chat.InboxChatActivity;
 import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
@@ -31,6 +31,10 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
 
     String first_name = "",rating = "",rating_val = "",profile_image = "",user_id = "",s_address = "",d_address = "",pick_up_date = "",pick_up_time = "",noofseat = "",fare = "",request_id = "",tag = "",person_id="",status="";
     ImageView backArrow,profileImgeIv;
+
+    String provider_id = "",id = "";
+
+
 
     CustomDialog customDialog;
     RatingBar listitemrating;
@@ -147,9 +151,9 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         chatTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intentChat = new Intent(RideRequestDetailsActivity.this, UserChatActivity.class);
+                Intent intentChat = new Intent(RideRequestDetailsActivity.this, InboxChatActivity.class);
                 intentChat.putExtra("requestId", request_id);
-                intentChat.putExtra("providerId", user_id);
+                intentChat.putExtra("providerId", provider_id);
                 intentChat.putExtra("userId", user_id);
                 intentChat.putExtra("userName", first_name);
                 intentChat.putExtra("messageType", "up");
@@ -188,6 +192,7 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
             public void onResponse(String response) {
 
                 if(response != null){
+                    System.out.println("RESPONSE ACCEPT : "+response.toString());
                     customDialog.dismiss();
                     showAcceptedDialog();
                 }
@@ -196,6 +201,7 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
                 customDialog.dismiss();
                 Toast.makeText(RideRequestDetailsActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
@@ -292,6 +298,8 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 confirmDialog.dismiss();
+                finish();
+                overridePendingTransition(R.anim.emoji_slide_down,R.anim.emoji_slide_up);
             }
         });
     }
@@ -318,6 +326,8 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 confirmDialog.dismiss();
+                finish();
+                overridePendingTransition(R.anim.emoji_slide_down,R.anim.emoji_slide_up);
             }
         });
     }
@@ -339,5 +349,7 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         tag = getIntent().getStringExtra("tag");
         person_id = getIntent().getStringExtra("person_id");
         status = getIntent().getStringExtra("status");
+        provider_id = getIntent().getStringExtra("provider_id");
+        id = getIntent().getStringExtra("id");
     }
 }

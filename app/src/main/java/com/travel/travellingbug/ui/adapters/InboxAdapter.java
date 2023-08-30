@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.R;
-import com.travel.travellingbug.chat.UserChatActivity;
+import com.travel.travellingbug.chat.InboxChatActivity;
 import com.travel.travellingbug.models.InboxModel;
 
 import java.util.ArrayList;
@@ -52,16 +52,13 @@ public class InboxAdapter extends RecyclerView.Adapter<InboxAdapter.ViewHolder> 
 
             holder.historyContainerLL.setOnClickListener(view -> {
 
-                Intent intent = new Intent(context, UserChatActivity.class);
-
-
-
+                Intent intent = new Intent(context, InboxChatActivity.class);
 
                 intent.putExtra("requestId",inboxModel.getRequestId());
                 intent.putExtra("providerId", inboxModel.getProviderId());
                 intent.putExtra("userId", inboxModel.getUserId());
                 intent.putExtra("userName", inboxModel.getUsername());
-                intent.putExtra("messageType", "pu");
+                intent.putExtra("messageType", inboxModel.getType());
 
                 context.startActivity(intent);
 

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <!-- Header Section -->
+        <ImageView
+            android:id="@+id/uberLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/app_logo_org"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:contentDescription="Uber Logo" />
+
+        <TextView
+            android:id="@+id/contactDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="John Doe\njohn.doe@example.com\n123-456-7890"
+            app:layout_constraintTop_toBottomOf="@id/uberLogo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/invoiceDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Invoice Date: August 23, 2023"
+            app:layout_constraintTop_toBottomOf="@id/contactDetails"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Trip Details -->
+        <TextView
+            android:id="@+id/pickupLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pickup: 123 Main St"
+            app:layout_constraintTop_toBottomOf="@id/invoiceDate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/dropoffLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Drop-off: 456 Elm St"
+            app:layout_constraintTop_toBottomOf="@id/pickupLocation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Fare Breakdown -->
+        <TextView
+            android:id="@+id/baseFare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Base Fare: $5.00"
+            app:layout_constraintTop_toBottomOf="@id/dropoffLocation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/distanceFare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Distance Fare: $8.75"
+            app:layout_constraintTop_toBottomOf="@id/baseFare"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Subtotal -->
+        <TextView
+            android:id="@+id/subtotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subtotal: $13.75"
+            app:layout_constraintTop_toBottomOf="@id/distanceFare"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Taxes and Fees -->
+        <TextView
+            android:id="@+id/taxes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taxes: $1.50"
+            app:layout_constraintTop_toBottomOf="@id/subtotal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/bookingFee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Booking Fee: $1.00"
+            app:layout_constraintTop_toBottomOf="@id/taxes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Promotions or Discounts -->
+        <TextView
+            android:id="@+id/promoDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Promo Discount: -$2.00"
+            app:layout_constraintTop_toBottomOf="@id/bookingFee"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Total Amount -->
+        <TextView
+            android:id="@+id/totalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total: $14.25"
+            app:layout_constraintTop_toBottomOf="@id/promoDiscount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Payment Method -->
+        <TextView
+            android:id="@+id/paymentMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment Method: Visa **** 1234"
+            app:layout_constraintTop_toBottomOf="@id/totalAmount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Contact Information -->
+        <TextView
+            android:id="@+id/customerSupport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="For support, contact: support@uber.com"
+            app:layout_constraintTop_toBottomOf="@id/paymentMethod"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Footer Section -->
+        <TextView
+            android:id="@+id/termsConditions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terms and Conditions: Lorem ipsum dolor sit amet..."
+            app:layout_constraintTop_toBottomOf="@id/customerSupport"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

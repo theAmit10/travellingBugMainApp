@@ -508,7 +508,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
 
                     if(strSelected.equalsIgnoreCase("destination")){
                         if (!txtDestination.getText().toString().equalsIgnoreCase("")) {
-                            if (!txtDestination.getText().toString().equalsIgnoreCase("Going to")) {
+                            if (!txtDestination.getText().toString().equalsIgnoreCase("Going to") ) {
                                 if (!placePredictions.strDestAddress.equalsIgnoreCase(placePredictions.strSourceAddress)) {
                                     setAddress();
                                 }

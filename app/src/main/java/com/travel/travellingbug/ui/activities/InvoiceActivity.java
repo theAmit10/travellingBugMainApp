@@ -3,15 +3,20 @@ package com.travel.travellingbug.ui.activities;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -25,9 +30,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -72,6 +81,9 @@ public class InvoiceActivity extends AppCompatActivity {
     int pagewidth = 792;
     // creating a bitmap variable
     // for storing our images
+
+    int IMAGE_REQUEST = 190;
+    String currentPhotoPath;
     Bitmap bmp, scaledbmp;
     // constant code for runtime permissions
     private static final int PERMISSION_REQUEST_CODE = 200;
@@ -94,6 +106,30 @@ public class InvoiceActivity extends AppCompatActivity {
     ImageView backImg;
     LinearLayout toolbar;
 
+    private static final int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1;
+
+
+    private static final int REQUEST_CODE_PERMISSION = 101;
+
+    // Check and request permissions
+    private void checkPermissions() {
+        System.out.println("CP start");
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            System.out.println("CP if");
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUEST_CODE_PERMISSION);
+        } else {
+            System.out.println("CP else");
+            // Permissions are already granted
+//            generateAndSavePDF();
+        }
+
+        System.out.println("CP end");
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +137,37 @@ public class InvoiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_invoice);
 
         findViewByIdAndInitialize();
+
+//        TextView titleTv = findViewById(R.id.titleTv);
+////        titleTv.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                Intent intent = new Intent(InvoiceActivity.this, PdfActivity.class);
+////                startActivity(intent);
+////            }
+////        });
+
+//        checkPermissions();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            System.out.println("POGO if");
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                    && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+               System.out.println("POGO : alllow");
+//                generateAndSavePDF();
+//                openGalley();
+            } else {
+                System.out.println("POGO : ask permisssion");
+                allowPermissionForFile();
+            }
+        } else {
+            System.out.println("POGO if");
+//            generateAndSavePDF();
+//            openGalley();
+        }
+
+
+
 
         if (isInternet) {
             getHistoryList();
@@ -116,16 +183,105 @@ public class InvoiceActivity extends AppCompatActivity {
         });
 
 
-        if (checkPermission()) {
-//            Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
-            System.out.println("Permission Granted");
-        } else {
-            requestPermission();
+//        if (checkPermission()) {
+////            Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+//            System.out.println("Permission Granted");
+//        } else {
+//            requestPermission();
+//        }
+
+
+
+
+
+
+
+    }
+
+    private void allowPermissionForFile() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            ActivityCompat.requestPermissions(this, new String[]
+                    {
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                    }, 2);
+        }else {
+            ActivityCompat.requestPermissions(this, new String[]
+                    {
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                    }, 2);
         }
+    }
 
 
 
 
+
+
+
+
+
+
+
+
+//    private void generateAndSavePDF() {
+//        ContentValues values = new ContentValues();
+//        values.put(MediaStore.Downloads.DISPLAY_NAME, "sample.pdf");
+//        values.put(MediaStore.Downloads.MIME_TYPE, "application/pdf");
+//        values.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+//
+//        Uri uri = null;
+//        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+//            uri = getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
+//        }
+//
+//        try (OutputStream outputStream = getContentResolver().openOutputStream(uri)) {
+//            if (outputStream != null) {
+//                // Generate your PDF content here
+//                outputStream.write(/* Your PDF content bytes */);
+//                outputStream.close();
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+
+
+
+    // Handle permission request result
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == WRITE_EXTERNAL_STORAGE_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, proceed with PDF generation
+                Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+            } else {
+                // Permission denied, handle accordingly
+                Toast.makeText(getApplicationContext(), "Permission Not Granted", Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+        if (requestCode == REQUEST_CODE_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permissions granted, generate and save PDF
+//                generateAndSavePDF();
+            } else {
+                // Permissions denied, handle appropriately
+                Toast.makeText(getApplicationContext(), "Permission Not Granted u", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            File file = new File(String.valueOf(currentPhotoPath));
+        }
     }
 
     public void findViewByIdAndInitialize() {
@@ -447,6 +603,38 @@ public class InvoiceActivity extends AppCompatActivity {
         return timeName;
     }
 
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    private void generateAndSavePdf(JSONObject jsonObject) {
+        PdfDocument pdfDocument = new PdfDocument();
+        PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(300, 500, 1).create();
+        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
+
+        Canvas canvas = page.getCanvas();
+        Paint paint = new Paint();
+        paint.setColor(Color.BLACK);
+        canvas.drawText("Hello, PDF!", 80, 50, paint);
+
+        pdfDocument.finishPage(page);
+
+        File pdfFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "my_pdf.pdf");
+        try (FileOutputStream outputStream = new FileOutputStream(pdfFile)) {
+            pdfDocument.writeTo(outputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            pdfDocument.close();
+        }
+
+        // Launch PDF viewer
+        Uri pdfUri = FileProvider.getUriForFile(this, "com.travel.travellingbug.provider", pdfFile);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(pdfUri, "application/pdf");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        startActivity(intent);
+    }
+
     private class PostAdapter extends RecyclerView.Adapter<InvoiceActivity.PostAdapter.MyViewHolder> {
         JSONArray jsonArray;
         JSONArray jsonArrayParent;
@@ -472,6 +660,7 @@ public class InvoiceActivity extends AppCompatActivity {
                     .inflate(R.layout.design_invoice, parent, false);
             return new InvoiceActivity.PostAdapter.MyViewHolder(itemView);
         }
+
 
 
         @Override
@@ -732,11 +921,11 @@ public class InvoiceActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        if (checkPermission()) {
-                            Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
-                        } else {
-                            requestPermission();
-                        }
+//                        if (checkPermission()) {
+//                            Toast.makeText(getApplicationContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+//                        } else {
+//                            requestPermission();
+//                        }
 
 
 
@@ -756,6 +945,12 @@ public class InvoiceActivity extends AppCompatActivity {
 
                                     if (response != null) {
                                         System.out.println("payment details estimated data : " + jsonObject.toString());
+
+                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                                            generateAndSavePdf(jsonObject);
+                                        }
+
+
                                         jsonObject.optString("estimated_fare");
                                         jsonObject.optString("distance");
                                         jsonObject.optString("time");
@@ -890,26 +1085,58 @@ public class InvoiceActivity extends AppCompatActivity {
                                         // PDF file we will be finishing our page.
                                         pdfDocument.finishPage(myPage);
 
-                                        // below line is used to set the name of
-                                        // our PDF file and its path.
-                                        File file = new File(Environment.getExternalStorageDirectory(), "TravellingBug"+jsonArray.optJSONObject(position).optJSONObject("trip").optString("booking_id")+".pdf");
 
-                                        try {
-                                            // after creating a file name we will
-                                            // write our PDF file to that location.
-                                            pdfDocument.writeTo(new FileOutputStream(file));
+                                        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+                                        {
+                                            File pdfFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "TravellingBug"+jsonArray.optJSONObject(position).optJSONObject("trip").optString("booking_id")+".pdf");
+                                            try (FileOutputStream outputStream = new FileOutputStream(pdfFile)) {
+                                                pdfDocument.writeTo(outputStream);
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            } finally {
+                                                pdfDocument.close();
+                                            }
 
-                                            // below line is to print toast message
-                                            // on completion of PDF generation.
-                                            Toast.makeText(getApplicationContext(), "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
-                                        } catch (IOException e) {
-                                            // below line is used
-                                            // to handle error
-                                            e.printStackTrace();
+
+                                            // Launch PDF viewer
+                                            Uri pdfUri = FileProvider.getUriForFile(InvoiceActivity.this, "com.travel.travellingbug.provider", pdfFile);
+                                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                                            intent.setDataAndType(pdfUri, "application/pdf");
+                                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+
+
+                                        }else {
+                                            // below line is used to set the name of
+                                            // our PDF file and its path.
+                                            File file = new File(Environment.getExternalStorageDirectory(), "TravellingBug"+jsonArray.optJSONObject(position).optJSONObject("trip").optString("booking_id")+".pdf");
+
+                                            try {
+                                                // after creating a file name we will
+                                                // write our PDF file to that location.
+                                                pdfDocument.writeTo(new FileOutputStream(file));
+                                                // below line is to print toast message
+                                                // on completion of PDF generation.
+                                                Toast.makeText(getApplicationContext(), "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
+                                            } catch (IOException e) {
+                                                // below line is used
+                                                // to handle error
+                                                e.printStackTrace();
+                                            }
+
+
+                                            // Launch PDF viewer
+                                            Uri pdfUri = FileProvider.getUriForFile(InvoiceActivity.this, "com.travel.travellingbug.provider", file);
+                                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                                            intent.setDataAndType(pdfUri, "application/pdf");
+                                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+                                            // after storing our pdf to that
+                                            // location we are closing our PDF file.
+
+                                            pdfDocument.close();
                                         }
-                                        // after storing our pdf to that
-                                        // location we are closing our PDF file.
-                                        pdfDocument.close();
+
 
 
 

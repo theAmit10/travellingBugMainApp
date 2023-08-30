@@ -4,23 +4,6 @@
             "outputFile": "C:\\Users\\Demon\\Desktop\\Driver_App\\Driver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rGB\\values-en-rGB.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\47f25e4b29a4ebf4a515be24ad4ca6fa\\jetified-facebook-login-16.1.2\\res\\values-en-rGB\\values-en-rGB.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,190,302,410",
-                        "endColumns": "134,111,107,147",
-                        "endOffsets": "185,297,405,553"
-                    },
-                    "to": {
-                        "startLines": "37,38,39,40",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "3303,3438,3550,3658",
-                        "endColumns": "134,111,107,147",
-                        "endOffsets": "3433,3545,3653,3801"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\7d9c5e333e231e20215083fc5250ad49\\jetified-play-services-basement-18.2.0\\res\\values-en-rGB\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -52,6 +35,23 @@
                         "startOffsets": "6063,6163,6270,6913,7084,8141,11767,11857,11941,12029,12212",
                         "endColumns": "99,106,73,103,113,107,89,83,87,81,91",
                         "endOffsets": "6158,6265,6339,7012,7193,8244,11852,11936,12024,12106,12299"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\c73bbb84d4e75c498802972c9faad9e8\\jetified-facebook-login-16.2.0\\res\\values-en-rGB\\values-en-rGB.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,190,302,410",
+                        "endColumns": "134,111,107,147",
+                        "endOffsets": "185,297,405,553"
+                    },
+                    "to": {
+                        "startLines": "37,38,39,40",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "3303,3438,3550,3658",
+                        "endColumns": "134,111,107,147",
+                        "endOffsets": "3433,3545,3653,3801"
                     }
                 },
                 {

@@ -134,10 +134,10 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
                     SharedHelper.putKey(getApplicationContext(), "mobile", phone);
                     Log.v("Phonecode", phone + " ");
-                    registerAPI();
-//                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
-//                    intent.putExtra("phonenumber", phone);
-//                    startActivityForResult(intent, APP_REQUEST_CODE);
+//                    registerAPI();
+                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
+                    intent.putExtra("phonenumber", phone);
+                    startActivityForResult(intent, APP_REQUEST_CODE);
 
 
                 } else {
@@ -495,8 +495,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                         },
                         error -> {
                             customDialog.dismiss();
-                            Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
-                            displayMessage(error.toString());
+                            displayMessage("Something went wrong, please try after sometime");
+                            error.printStackTrace();
 
                         }) {
 

@@ -74,8 +74,15 @@ public class ChangeAddressAdtivityTwo extends AppCompatActivity {
 
                             JSONObject profileJsonObj = jsonObject.optJSONObject("profile");
 
-                            Toast.makeText(ChangeAddressAdtivityTwo.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
-                            finish();
+                            try {
+                                Toast.makeText(ChangeAddressAdtivityTwo.this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+                                SharedHelper.putKey(getApplicationContext(),"full_address",full_address);
+                                finish();
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+
+
 
 //                            showAddressUpdatedDialog();
 
@@ -90,7 +97,7 @@ public class ChangeAddressAdtivityTwo extends AppCompatActivity {
 
 
                 } catch (JSONException e) {
-                    System.out.println("Error : " + e.getMessage());
+                    e.printStackTrace();
                 }
 
 
@@ -98,9 +105,8 @@ public class ChangeAddressAdtivityTwo extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ChangeAddressAdtivityTwo.this, "Error Found", Toast.LENGTH_SHORT).show();
-                System.out.println("Error Response : " + error.getMessage());
-                System.out.println("Error Response : " + error.getCause());
+                Toast.makeText(ChangeAddressAdtivityTwo.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
             }
 
         }) {

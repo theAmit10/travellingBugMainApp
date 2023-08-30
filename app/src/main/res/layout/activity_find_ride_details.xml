@@ -204,11 +204,12 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/trackingLinkTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
 
                 android:padding="@dimen/_5sdp"
-                android:text="http://travellingbug.com/link"
+                android:text="loading..."
                 android:textColor="@color/dark_green"
                 android:textSize="@dimen/_12sdp"
                 android:textStyle="bold" />
@@ -231,10 +232,16 @@
                 android:layout_marginBottom="@dimen/_10sdp"
 
                 android:padding="@dimen/_5sdp"
-                android:text="Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:
-\n
-“Lorem ipsum dolor sit amet, \n\nconsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”
-The purpose of lorem ipsum is to create a natural \n\nlooking block of text (sentence, paragraph, page, etc.) that doesn't distract from the layout. A practice not without controversy, laying out pages with meaningless filler text can be very useful when the focus is meant to be on design, not content.
+                android:text="Welcome to Travelling Bug!
+
+These terms and conditions outline the rules and regulations for the use of Travelling Bug 's Website, located at https://travellingbug.in.
+
+By accessing this website, we assume you accept these terms and conditions. Do not continue to use Travelling Bug if you do not agree to take all of the terms and conditions stated on this page.
+\n\nThe website uses cookies to help personalize your online experience. By accessing Travelling Bug, you agreed to use the required cookies.
+
+A cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you and can only be read by a web server in the domain that issued the cookie to you.
+
+We may use cookies to collect, store, and track information for statistical or marketing purposes to operate our website. You have the ability to accept or decline optional Cookies. There are some required Cookies that are necessary for the operation of our website. These cookies do not require your consent as they always work. \n\nPlease keep in mind that by accepting required Cookies, you also accept third-party Cookies, which might be used via third-party provided services if you use such services on our website, for example, a video display window provided by third parties and integrated into our website.\n\n
 "
                 android:textColor="@color/colorDarkGray"
                 android:textSize="@dimen/_10sdp"
@@ -244,7 +251,7 @@ The purpose of lorem ipsum is to create a natural \n\nlooking block of text (sen
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:id="@+id/moreTv"
                 android:gravity="right"
                 android:padding="@dimen/_5sdp"
                 android:text="Read more   "

@@ -547,7 +547,7 @@ public class FindRidesActivity extends AppCompatActivity {
                         holder.tripDate.setText(getTime(form));
 //                        holder.tripId.setText(jsonArray.optJSONObject(position).optString("booking_id"));
 
-                        holder.listitemrating.setRating(Float.parseFloat("3.0"));
+//                        holder.listitemrating.setRating(Float.parseFloat("3.0"));
 
 
                         holder.txtSource.setText(jsonArray.optJSONObject(position).optString("s_address"));

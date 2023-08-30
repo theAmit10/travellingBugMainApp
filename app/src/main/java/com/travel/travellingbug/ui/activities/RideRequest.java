@@ -63,6 +63,7 @@ public class RideRequest extends AppCompatActivity {
 
     String post_value = "", tag = "";
     String current_trip_user_id = "";
+    String provider_id = "";
 
     String s_latitude = "",s_longitude="",d_latitude="",d_longitude="";
 
@@ -255,6 +256,10 @@ public class RideRequest extends AppCompatActivity {
                         s_longitude = jsonObject.optString("s_longitude");
                         d_latitude = jsonObject.optString("d_latitude");
                         d_longitude = jsonObject.optString("d_longitude");
+
+                        provider_id = jsonObject.optString("provider_id");
+
+
 
                         if(jsonObject.optString("status").equalsIgnoreCase("COMPLETED")   ){
                             startRideTv.setText("Completed");
@@ -580,18 +585,18 @@ public class RideRequest extends AppCompatActivity {
 
                                     profile_image = URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar");
 
-                                    if(!jsonObject.optString("rating").equalsIgnoreCase("null")){
-                                        holder.listitemrating.setRating(Float.parseFloat(jsonObject.optString("rating")));
-                                        holder.ratingVal.setText("( "+jsonObject.optString("noofrating")+" Reviews )");
+                                    if(!jsonObject.optString("asuser_rating").equalsIgnoreCase("null")){
+                                        holder.listitemrating.setRating(Float.parseFloat(jsonObject.optString("asuser_rating")));
+                                        holder.ratingVal.setText("( "+jsonObject.optString("asuser_noofrating")+" Reviews )");
 
-                                        rating =""+ Float.parseFloat(jsonObject.optString("rating"));
-                                        ratingVal =""+ jsonObject.optString("noofrating");
+                                        rating =""+ Float.parseFloat(jsonObject.optString("asuser_rating"));
+                                        ratingVal =""+ jsonObject.optString("asuser_noofrating");
                                     }else {
                                         holder.listitemrating.setRating(0);
                                         holder.ratingVal.setText("( 0"+" Reviews )");
 
                                         rating =""+0;
-                                        ratingVal =""+ jsonObject.optString("noofrating");
+                                        ratingVal =""+ jsonObject.optString("asuser_noofrating");
                                     }
 
 
@@ -843,10 +848,15 @@ public class RideRequest extends AppCompatActivity {
                 intent.putExtra("rating_val", "( "+ratingVal+" Reviews )");
                 intent.putExtra("profile_image", profile_image);
                 intent.putExtra("user_id", jsonArray.optJSONObject(position).optString("user_id"));
+                intent.putExtra("id", jsonArray.optJSONObject(position).optString("id"));
+                System.out.println("IC userid -> "+jsonArray.optJSONObject(position).optString("user_id"));
+                System.out.println("IC  id -> "+jsonArray.optJSONObject(position).optString("id"));
+//                jsonArray.optJSONObject(position).optString("id")
                 intent.putExtra("s_address", s_address);
                 intent.putExtra("d_address", d_address);
                 intent.putExtra("pick_up_date",s_date );
                 intent.putExtra("pick_up_time", s_time);
+                intent.putExtra("provider_id", provider_id);
                 intent.putExtra("noofseat", jsonArray.optJSONObject(position).optString("noofseats"));
                 intent.putExtra("fare", fare);
                 intent.putExtra("request_id", jsonArray.optJSONObject(position).optString("request_id"));

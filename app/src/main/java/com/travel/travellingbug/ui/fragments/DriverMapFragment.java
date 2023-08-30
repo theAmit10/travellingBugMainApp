@@ -23,6 +23,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.pdf.PdfDocument;
 import android.location.Address;
@@ -66,6 +67,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -106,7 +108,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
-import com.travel.travellingbug.chat.UserChatActivity;
+import com.travel.travellingbug.chat.InboxChatActivity;
 import com.travel.travellingbug.helper.ConnectionHelper;
 import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.DataParser;
@@ -117,7 +119,6 @@ import com.travel.travellingbug.models.User;
 import com.travel.travellingbug.ui.activities.DocUploadActivity;
 import com.travel.travellingbug.ui.activities.HomeScreenActivity;
 import com.travel.travellingbug.ui.activities.PickUpNotes;
-import com.travel.travellingbug.ui.activities.Profile;
 import com.travel.travellingbug.ui.activities.ShowProfile;
 import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.ui.adapters.ItemClickListener;
@@ -146,6 +147,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -166,12 +169,16 @@ public class DriverMapFragment extends Fragment implements
     private static int deviceHeight;
     private static int deviceWidth;
 
+    private ExecutorService executorService;
+
     TextView invoiceDownloadTv;
 
     int selected_user = 0;
 
     @BindView(R.id.btnSearch)
     Button btnSearch;
+
+    Dialog confirmDialog;
     @BindView(R.id.menuIcon)
     ImageView menuIcon;
     @BindView(R.id.imgCurrentLoc)
@@ -522,12 +529,12 @@ public class DriverMapFragment extends Fragment implements
 
     }
 
-    private void rateToUser(String request_id, String rating, String comment, String user_id) {
+    private void rateToUser(String request_id_rate, String rating_rate, String comment_rate, String user_id_rate) {
 
         CustomDialog customDialog = new CustomDialog(getContext());
         customDialog.show();
 
-        System.out.println("RATE TO USER  : " + request_id+" | "+ rating+" | "+ comment+" | "+ user_id);
+        System.out.println("RATE TO USER  : " + request_id_rate+" | "+ rating_rate+" | "+ comment_rate+" | "+ user_id_rate);
 
 
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.RATE_TO_USER, new Response.Listener<String>() {
@@ -587,10 +594,10 @@ public class DriverMapFragment extends Fragment implements
             @Override
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("request_id", request_id);
-                params.put("rating", rating);
-                params.put("comment", comment);
-                params.put("user_id", user_id);
+                params.put("request_id", request_id_rate);
+                params.put("rating", rating_rate);
+                params.put("comment", comment_rate);
+                params.put("user_id", user_id_rate);
                 return params;
             }
 
@@ -699,9 +706,9 @@ public class DriverMapFragment extends Fragment implements
     @OnClick(R.id.img_chat)
     void img_chatClick() {
 
-        Intent intentChat = new Intent(getActivity(), UserChatActivity.class);
+        Intent intentChat = new Intent(getActivity(), InboxChatActivity.class);
         intentChat.putExtra("requestId", current_trip_request_id);
-        intentChat.putExtra("providerId", providerId);
+        intentChat.putExtra("providerId", SharedHelper.getKey(getContext(),"id"));
         intentChat.putExtra("userId", userId);
         intentChat.putExtra("userName", userFirstName);
         intentChat.putExtra("messageType", "up");
@@ -726,33 +733,66 @@ public class DriverMapFragment extends Fragment implements
 
     @OnClick(R.id.imgNavigationToSource)
     void imgNavigationToSourceClick() {
-        String url = "http://maps.google.com/maps?"
-                + "saddr=" + address
-                + "&daddr=" + daddress;
-        Log.e("nav url", url + "url");
-        System.out.println("address : " + address);
-        System.out.println("address des : " + daddress);
-        if (btn_01_status.getText().toString().equalsIgnoreCase("ARRIVED")) {
-            Uri naviUri = Uri.parse("http://maps.google.com/maps?"
-                    + "saddr=" + crt_lat + "," + crt_lng
-                    + "&daddr=" + srcLatitude + "," + srcLongitude);
+
+        try {
+
+            String url = "http://maps.google.com/maps?"
+                    + "saddr=" + address
+                    + "&daddr=" + daddress;
+            Log.e("nav url", url + "url");
+            System.out.println("address : " + address);
+            System.out.println("address des : " + daddress);
+            if (btn_01_status.getText().toString().equalsIgnoreCase("ARRIVED")) {
+                System.out.println("GOOGLE IF : "+url);
+                Uri naviUri = Uri.parse("http://maps.google.com/maps?"
+                        + "saddr=" + crt_lat + "," + crt_lng
+                        + "&daddr=" + srcLatitude + "," + srcLongitude);
+
+                System.out.println("GOOGLE IF naviUri : "+naviUri);
 
 //            Uri naviUri = Uri.parse("http://maps.google.com/maps?"
 //                    + "saddr=" + crt_lat + "," + crt_lng
 //                    + "&daddr=" + destLatitude + "," + destLongitude);
 
-            Intent intent = new Intent(Intent.ACTION_VIEW, naviUri);
-            intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-            startActivity(intent);
-        } else {
-            Uri naviUri2 = Uri.parse("http://maps.google.com/maps?"
-                    + "saddr=" + srcLatitude + "," + srcLongitude
-                    + "&daddr=" + destLatitude + "," + destLongitude);
+                Intent intent = new Intent(Intent.ACTION_VIEW, naviUri);
+                intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+                startActivity(intent);
+                // Check if Google Maps is installed on the device
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), "App not found", Toast.LENGTH_SHORT).show();
+                }
 
-            Intent intent = new Intent(Intent.ACTION_VIEW, naviUri2);
-            intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-            startActivity(intent);
+            } else {
+//                Uri naviUri2 = Uri.parse("http://maps.google.com/maps?"
+//                        + "saddr=" + srcLatitude + "," + srcLongitude
+//                        + "&daddr=" + destLatitude + "," + destLongitude);
+
+                Uri naviUri2 = Uri.parse("http://maps.google.com/maps?"
+                        + "saddr=" + srcLatitude + "," + srcLongitude
+                        + "&daddr=" + destLatitude + "," + destLongitude);
+
+
+                System.out.println("GOOGLE else naviUri2 : "+naviUri2);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, naviUri2);
+                intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+                startActivity(intent);
+
+                if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getContext(), "App not found", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
+
     }
 
     @OnClick(R.id.online_offline_switch)
@@ -816,16 +856,17 @@ public class DriverMapFragment extends Fragment implements
 //                .into(img_profile);
         img_profile.setImageResource(R.drawable.ic_dummy_user);
 
+//        img_profile.setOnClickListener(v -> startActivity(new Intent(getActivity(), Profile.class)));
 
         view.setFocusableInTouchMode(true);
         view.requestFocus();
-        img_profile.setOnClickListener(v -> startActivity(new Intent(getActivity(), Profile.class)));
         view.setOnKeyListener((v, keyCode, event) -> {
             if (event.getAction() != KeyEvent.ACTION_DOWN)
                 return true;
             if (keyCode == KeyEvent.KEYCODE_BACK) {
                 if (doubleBackToExitPressedOnce) {
-                    getActivity().finish();
+                    System.exit(0);
+
                     return false;
                 }
                 doubleBackToExitPressedOnce = true;
@@ -836,7 +877,14 @@ public class DriverMapFragment extends Fragment implements
             return false;
         });
 
-        sos.setOnClickListener(v -> showSosDialog());
+
+
+        sos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSosDialog();
+            }
+        });
         lnrGoOffline.setVisibility(View.GONE);
 
         ride_request_id = getActivity().getIntent().getStringExtra("ride_request_id");
@@ -893,6 +941,10 @@ public class DriverMapFragment extends Fragment implements
         if (push) {
             isRunning = false;
         }
+
+        // Initialize the ExecutorService with a fixed number of threads
+        int numberOfThreads = 3; // You can adjust this number as per your needs
+        executorService = Executors.newFixedThreadPool(numberOfThreads);
 
 
         if (!SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("null") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase("") || SharedHelper.getKey(getContext(), "first_name").equalsIgnoreCase(null)) {
@@ -1025,15 +1077,26 @@ public class DriverMapFragment extends Fragment implements
             public void onClick(View v) {
 //                String paymentData = "{ \"amount\": 29.99, \"currency\": \"USD\", \"cardNumber\": \"**** **** **** 1234\", \"expiryDate\": \"08/25\", \"cvv\": \"123\", \"name\": \"John Doe\" }";
 
-                if (checkPermission()) {
-//                    Toast.makeText(getContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
-                    System.out.println("Permission Granted");
-                } else {
-                    requestPermission();
+//                if (checkPermission()) {
+////                    Toast.makeText(getContext(), "Permission Granted", Toast.LENGTH_SHORT).show();
+//                    System.out.println("Permission Granted");
+//                    if(SharedHelper.getKey(getContext(),"s_latitude_invoice") != null && SharedHelper.getKey(getContext(),"booking_id_invoice") != null )
+//                    {
+//                        invoicePdfDownload();
+//                    }
+//
+//                } else {
+//                    requestPermission();
+//                }
+
+                System.out.println("Permission Granted");
+                if(SharedHelper.getKey(getContext(),"s_latitude_invoice") != null && SharedHelper.getKey(getContext(),"booking_id_invoice") != null )
+                {
+                    invoicePdfDownload();
                 }
 
                 System.out.println("GENERATING PDF");
-                Toast.makeText(getContext(), "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
+
 
 //                generatePDF();
 
@@ -1369,7 +1432,10 @@ public class DriverMapFragment extends Fragment implements
                         intent.setData(Uri.parse("tel:" + SharedHelper.getKey(getActivity(), "sos")));
                         startActivity(intent);
                     } else {
-                        requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 3);
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:" + SharedHelper.getKey(getActivity(), "sos")));
+                        startActivity(intent);
+//                        requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 3);
                     }
                 }
                 break;
@@ -2699,14 +2765,14 @@ public class DriverMapFragment extends Fragment implements
                                     userName = jsonObjectUser.optString("first_name");
                                     userProfileImage = jsonObjectUser.optString("avatar");
 
-                                    if(!jsonObjectUser.optString("rating").equalsIgnoreCase("null")){
-                                        rating = jsonObjectUser.optString("rating");
+                                    if(!jsonObjectUser.optString("asuser_rating").equalsIgnoreCase("null")){
+                                        rating = jsonObjectUser.optString("asuser_rating");
                                     }else{
                                         rating = ""+0;
                                     }
 
-                                    if(!jsonObjectUser.optString("noofrating").equalsIgnoreCase("null")){
-                                        ratingVal = jsonObjectUser.optString("noofrating");
+                                    if(!jsonObjectUser.optString("asuser_noofrating").equalsIgnoreCase("null")){
+                                        ratingVal = jsonObjectUser.optString("asuser_noofrating");
                                     }else{
                                         ratingVal = ""+0;
                                     }
@@ -2740,11 +2806,11 @@ public class DriverMapFragment extends Fragment implements
 
                                     });
 
-                                    if (!jsonObjectUser.optString("rating").equalsIgnoreCase("null")) {
-                                        System.out.println("user rating : " + jsonObjectUser.optString("rating"));
+                                    if (!jsonObjectUser.optString("asuser_rating").equalsIgnoreCase("null")) {
+                                        System.out.println("user asuser_rating : " + jsonObjectUser.optString("asuser_rating"));
 
-                                        if (!jsonObjectUser.optString("rating").equalsIgnoreCase("null")) {
-                                            rat03UserRating.setRating(Float.valueOf(jsonObjectUser.optString("rating")));
+                                        if (!jsonObjectUser.optString("asuser_rating").equalsIgnoreCase("null")) {
+                                            rat03UserRating.setRating(Float.valueOf(jsonObjectUser.optString("asuser_rating")));
                                         } else {
                                             rat03UserRating.setRating(0);
                                         }
@@ -2855,16 +2921,13 @@ public class DriverMapFragment extends Fragment implements
         ActivityCompat.requestPermissions(getActivity(), new String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
     }
 
-    @SuppressLint("SetTextI18n")
-    private void setValuesTo_ll_04_contentLayer_payment(JSONObject status) {
-        System.out.println("payment details : " + status.toString());
-//        generatePDFbtn = getfindViewById(R.id.idBtnGeneratePDF);
+    private void invoicePdfDownload() {
+
         bmp = BitmapFactory.decodeResource(getResources(), R.drawable.app_logo_org);
         scaledbmp = Bitmap.createScaledBitmap(bmp, 140, 140, false);
-        JSONObject statusResponse = status;
 
 
-        StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + status.optString("s_latitude") + "&s_longitude=" + status.optString("s_longitude") + "&d_latitude=" + status.optString("d_latitude") + "&d_longitude=" + status.optString("d_longitude") + "&service_type=2", new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + SharedHelper.getKey(getContext(),"s_latitude_invoice") + "&s_longitude=" + SharedHelper.getKey(getContext(),"s_longitude_invoice") + "&d_latitude=" + SharedHelper.getKey(getContext(),"d_latitude_invoice") + "&d_longitude=" + SharedHelper.getKey(getContext(),"d_longitude_invoice") + "&service_type=2", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -2885,7 +2948,8 @@ public class DriverMapFragment extends Fragment implements
                         String con = jsonObject.optString("currency") + " ";
 
 
-                        txt04InvoiceId.setText(status.optString("booking_id"));
+
+                        txt04InvoiceId.setText(SharedHelper.getKey(getContext(),"booking_id_invoice"));
                         txt04BasePrice.setText(con + jsonObject.optString("base_price"));
                         txt04Distance.setText(jsonObject.optString("distance") + " KM");
                         txt04Tax.setText(con + jsonObject.optString("tax_price"));
@@ -2987,7 +3051,7 @@ public class DriverMapFragment extends Fragment implements
                         canvas.drawText("--------------------------------------------", 396, 540, title);
                         canvas.drawText("INVOICE", 396, 560, title);
                         canvas.drawText("--------------------------------------------", 396, 600, title);
-                        canvas.drawText("Booking ID             "+status.optString("booking_id"), 396, 630, title);
+                        canvas.drawText("Booking ID             "+SharedHelper.getKey(getContext(),"booking_id_invoice"), 396, 630, title);
                         canvas.drawText("Base fare              "+con + jsonObject.optString("base_price"), 396, 670, title);
                         canvas.drawText("Distance               "+jsonObject.optString("distance") + " KM", 396, 710, title);
                         canvas.drawText("Tax                    "+con + jsonObject.optString("tax_price"), 396, 750, title);
@@ -3014,24 +3078,323 @@ public class DriverMapFragment extends Fragment implements
 
                         // below line is used to set the name of
                         // our PDF file and its path.
-                        File file = new File(Environment.getExternalStorageDirectory(), "TravellingBug"+status.optString("booking_id")+".pdf");
+//                        File file = new File(Environment.getExternalStorageDirectory(), "TravellingBug"+status.optString("booking_id")+".pdf");
+//
+//                        try {
+//                            // after creating a file name we will
+//                            // write our PDF file to that location.
+//                            pdfDocument.writeTo(new FileOutputStream(file));
+//
+//                            // below line is to print toast message
+//                            // on completion of PDF generation.
+////                            Toast.makeText(getContext(), "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
+//                        } catch (IOException e) {
+//                            // below line is used
+//                            // to handle error
+//                            e.printStackTrace();
+//                        }
+//                        // after storing our pdf to that
+//                        // location we are closing our PDF file.
+//                        pdfDocument.close();
+
+
+                        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+                        {
+                            System.out.println("BUILD IF");
+                            File pdfFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "TravellingBug"+SharedHelper.getKey(getContext(),"booking_id_invoice")+".pdf");
+                            try (FileOutputStream outputStream = new FileOutputStream(pdfFile)) {
+                                pdfDocument.writeTo(outputStream);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } finally {
+                                pdfDocument.close();
+                            }
+
+                            try {
+                                // Launch PDF viewer
+                                Uri pdfUri = FileProvider.getUriForFile(getContext(), "com.travel.travellingbug.provider", pdfFile);
+                                Intent intent = new Intent(Intent.ACTION_VIEW);
+                                intent.setDataAndType(pdfUri, "application/pdf");
+                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+
+
+
+                        }else {
+                            System.out.println("BUILD ELSE");
+
+
+                            // below line is used to set the name of
+                            // our PDF file and its path.
+                            File file = new File(Environment.getExternalStorageDirectory(), "TravellingBug"+SharedHelper.getKey(getContext(),"booking_id_invoice")+".pdf");
+
+                            try {
+                                // after creating a file name we will
+                                // write our PDF file to that location.
+                                pdfDocument.writeTo(new FileOutputStream(file));
+                                // below line is to print toast message
+                                // on completion of PDF generation.
+                                Toast.makeText(getContext(), "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
+                            } catch (IOException e) {
+                                // below line is used
+                                // to handle error
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                // Launch PDF viewer
+                                Uri pdfUri = FileProvider.getUriForFile(getContext(), "com.travel.travellingbug.provider", file);
+                                Intent intent = new Intent(Intent.ACTION_VIEW);
+                                intent.setDataAndType(pdfUri, "application/pdf");
+                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
+
+                            // after storing our pdf to that
+                            // location we are closing our PDF file.
+
+                            pdfDocument.close();
+                        }
+
+
+
+                    }
+
+                } catch (JSONException e) {
+
+                    e.printStackTrace();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                try {
+                    Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        }) {
+
+
+
+
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                return headers;
+            }
+
+        };
+
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setValuesTo_ll_04_contentLayer_payment(JSONObject status) {
+        System.out.println("payment details : " + status.toString());
+//        generatePDFbtn = getfindViewById(R.id.idBtnGeneratePDF);
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.app_logo_org);
+        scaledbmp = Bitmap.createScaledBitmap(bmp, 140, 140, false);
+        JSONObject statusResponse = status;
+
+
+
+
+        StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + status.optString("s_latitude") + "&s_longitude=" + status.optString("s_longitude") + "&d_latitude=" + status.optString("d_latitude") + "&d_longitude=" + status.optString("d_longitude") + "&service_type=2", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    if (response != null) {
+                        System.out.println("payment details estimated data : " + jsonObject.toString());
+                        jsonObject.optString("estimated_fare");
+                        jsonObject.optString("distance");
+                        jsonObject.optString("time");
+                        jsonObject.optString("tax_price");
+                        jsonObject.optString("base_price");
+                        jsonObject.optString("discount");
+                        jsonObject.optString("currency");
+
+                        String con = jsonObject.optString("currency") + " ";
+
+                        SharedHelper.putKey(getContext(),"s_latitude_invoice",status.optString("s_latitude"));
+                        SharedHelper.putKey(getContext(),"s_longitude_invoice",status.optString("s_longitude"));
+                        SharedHelper.putKey(getContext(),"d_latitude_invoice",status.optString("d_latitude"));
+                        SharedHelper.putKey(getContext(),"d_longitude_invoice",status.optString("d_longitude"));
+                        SharedHelper.putKey(getContext(),"booking_id_invoice",status.optString("booking_id"));
+
+                        txt04InvoiceId.setText(status.optString("booking_id"));
+                        txt04BasePrice.setText(con + jsonObject.optString("base_price"));
+                        txt04Distance.setText(jsonObject.optString("distance") + " KM");
+                        txt04Tax.setText(con + jsonObject.optString("tax_price"));
+//                        txt04Total.setText(con + jsonObject.optString("estimated_fare"));
+                        txt04PaymentMode.setText("CASH");
+                        txt04Commision.setText(con + jsonObject.optString("discount"));
+//                        txtTotal.setText(con + jsonObject.optString("estimated_fare"));
+                        paymentTypeImg.setImageResource(R.drawable.money1);
+                        btn_confirm_payment.setVisibility(View.VISIBLE);
+
+                        System.out.println("ESTIMATED FARE STATUS :" + response.toString());
 
                         try {
-                            // after creating a file name we will
-                            // write our PDF file to that location.
-                            pdfDocument.writeTo(new FileOutputStream(file));
+                            System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
 
-                            // below line is to print toast message
-                            // on completion of PDF generation.
-//                            Toast.makeText(getContext(), "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
-                        } catch (IOException e) {
-                            // below line is used
-                            // to handle error
+                            Double fares = Double.valueOf(jsonObject.optString("estimated_fare"));
+                            int no_of_seat = Integer.parseInt(number_of_seat);
+                            Double c_fare = fares * no_of_seat;
+                            String calculated_fare = con + c_fare;
+
+                            txtTotal.setText(calculated_fare);
+                            txt04Total.setText(calculated_fare);
+
+
+                        }catch (Exception e){
                             e.printStackTrace();
                         }
-                        // after storing our pdf to that
-                        // location we are closing our PDF file.
-                        pdfDocument.close();
+
+
+
+//                        // creating an object variable
+//                        // for our PDF document.
+//                        PdfDocument pdfDocument = new PdfDocument();
+//
+//                        // two variables for paint "paint" is used
+//                        // for drawing shapes and we will use "title"
+//                        // for adding text in our PDF file.
+//                        Paint paint = new Paint();
+//                        Paint title = new Paint();
+//
+//                        // we are adding page info to our PDF file
+//                        // in which we will be passing our pageWidth,
+//                        // pageHeight and number of pages and after that
+//                        // we are calling it to create our PDF.
+//                        PdfDocument.PageInfo mypageInfo = new PdfDocument.PageInfo.Builder(pagewidth, pageHeight, 1).create();
+//
+//                        // below line is used for setting
+//                        // start page for our PDF file.
+//                        PdfDocument.Page myPage = pdfDocument.startPage(mypageInfo);
+//
+//                        // creating a variable for canvas
+//                        // from our page of PDF.
+//                        Canvas canvas = myPage.getCanvas();
+//
+//                        // below line is used to draw our image on our PDF file.
+//                        // the first parameter of our drawbitmap method is
+//                        // our bitmap
+//                        // second parameter is position from left
+//                        // third parameter is position from top and last
+//                        // one is our variable for paint.
+//                        canvas.drawBitmap(scaledbmp, 56, 40, paint);
+//
+//                        // below line is used for adding typeface for
+//                        // our text which we will be adding in our PDF file.
+//                        title.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+//
+//                        // below line is used for setting text size
+//                        // which we will be displaying in our PDF file.
+//                        title.setTextSize(15);
+//
+//                        // below line is sued for setting color
+//                        // of our text inside our PDF file.
+//                        title.setColor(ContextCompat.getColor(getContext(), R.color.black));
+//
+//                        // below line is used to draw text in our PDF file.
+//                        // the first parameter is our text, second parameter
+//                        // is position from start, third parameter is position from top
+//                        // and then we are passing our variable of paint which is title.
+//                        canvas.drawText("Travelling Bug", 209, 80, title);
+//                        canvas.drawText("", 209, 100, title);
+//                        canvas.drawText("We believe that travel is not just a hobby, it's a way of life.", 209, 120, title);
+//                        canvas.drawText("Our mission is to provide exceptional  travel experiences ", 209, 140, title);
+//                        canvas.drawText("that inspire and enrich our clients'lives.", 209, 160, title);
+//                        canvas.drawText("With our expertise and passion for travel,", 209, 180, title);
+//                        canvas.drawText("we make your dream vacation a reality.", 209, 200, title);
+//
+//
+//                        // similarly we are creating another text and in this
+//                        // we are aligning this text to center of our PDF file.
+//                        title.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+//                        title.setColor(ContextCompat.getColor(getContext(), R.color.black));
+//                        title.setTextSize(24);
+//
+//
+//                        // below line is used for setting
+//                        // our text to center of PDF.
+//                        title.setTextAlign(Paint.Align.CENTER);
+//
+//                        canvas.drawText("--------------------------------------------", 396, 540, title);
+//                        canvas.drawText("INVOICE", 396, 560, title);
+//                        canvas.drawText("--------------------------------------------", 396, 600, title);
+//                        canvas.drawText("Booking ID             "+status.optString("booking_id"), 396, 630, title);
+//                        canvas.drawText("Base fare              "+con + jsonObject.optString("base_price"), 396, 670, title);
+//                        canvas.drawText("Distance               "+jsonObject.optString("distance") + " KM", 396, 710, title);
+//                        canvas.drawText("Tax                    "+con + jsonObject.optString("tax_price"), 396, 750, title);
+//                        canvas.drawText("--------------------------------------------", 396, 790, title);
+//
+//                        try {
+//                            System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+//                            Double fares = Double.valueOf(jsonObject.optString("estimated_fare"));
+//                            int no_of_seat = Integer.parseInt(number_of_seat);
+//                            Double c_fare = fares * no_of_seat;
+//                            String calculated_fare = con + c_fare;
+//
+//                            canvas.drawText("Total                  "+calculated_fare, 396, 830, title);
+//
+//                        }catch (Exception e){
+//                            e.printStackTrace();
+//                        }
+//
+//                        canvas.drawText("--------------------------------------------", 396, 870, title);
+//
+//                        // after adding all attributes to our
+//                        // PDF file we will be finishing our page.
+//                        pdfDocument.finishPage(myPage);
+//
+//                        // below line is used to set the name of
+////                         our PDF file and its path.
+//                        File file = new File(Environment.getExternalStorageDirectory(), "TravellingBug"+status.optString("booking_id")+".pdf");
+//
+//
+//                        try {
+//                            // after creating a file name we will
+//                            // write our PDF file to that location.
+//                            pdfDocument.writeTo(new FileOutputStream(file));
+//
+//
+//
+//                            // below line is to print toast message
+//                            // on completion of PDF generation.
+////                            Toast.makeText(getContext(), "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
+//                        } catch (IOException e) {
+//                            // below line is used
+//                            // to handle error
+//                            e.printStackTrace();
+//                        }
+//                        // after storing our pdf to that
+//                        // location we are closing our PDF file.
+//                        pdfDocument.close();
+
+
+
 
 
 
@@ -3095,65 +3458,90 @@ public class DriverMapFragment extends Fragment implements
     }
 
 
-//    private void setValuesTo_ll_05_contentLayer_feedback(JSONArray status) {
-//        rat05UserRating.setRating(1.0f);
-//        feedBackRating = "1";
-//        rat05UserRating.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
-//            utils.print("rating", rating + "");
-//            if (rating < 1.0f) {
-//                rat05UserRating.setRating(1.0f);
-//                feedBackRating = "1";
-//            }
-//            feedBackRating = String.valueOf((int) rating);
-//        });
-//        JSONObject statusResponse = new JSONObject();
-//        try {
-//            statusResponse = status.getJSONObject(0).getJSONObject("request");
-//            JSONObject user = statusResponse.getJSONObject("user");
-//            if (user != null) {
-//                lblProviderName.setText(user.optString("first_name"));
-//                if (!user.optString("picture").equals("null")) {
-//                    if (user.optString("picture").startsWith("http"))
-//                        Picasso.get().load(user.getString("picture"))
-//                                .placeholder(R.drawable.ic_dummy_user)
-//                                .error(R.drawable.ic_dummy_user).into(img05User);
-//                    else
-//                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + user
-//                                        .getString("picture")).placeholder(R.drawable.ic_dummy_user)
-//                                .error(R.drawable.ic_dummy_user).into(img05User);
-//                } else {
-//                    img05User.setImageResource(R.drawable.ic_dummy_user);
-//                }
-//                final User userProfile = this.user;
-//                img05User.setOnClickListener(v -> {
-//                    Intent intent = new Intent(getActivity(), ShowProfile.class);
-//                    intent.putExtra("user", userProfile);
-//                    startActivity(intent);
-//                });
-//
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        feedBackComment = edt05Comment.getText().toString();
-//    }
-
     private void setValuesTo_ll_05_contentLayer_feedback(JSONObject status) {
 //        rat05UserRating.setRating(1.0f);
 //        feedBackRating = "1";
-        rat05UserRating.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
-            utils.print("rating", rating + "");
-            if (rating < 1.0f) {
-                rat05UserRating.setRating(1.0f);
-                feedBackRating = "1";
 
+//a
+//
+//        try {
+//            rat05UserRating.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
+//                utils.print("rating", rating + "");
+//                if (rating < 1.0f) {
+//                    try {
+//                        rat05UserRating.setRating(1.0f);
+//                        feedBackRating = "1";
+//                    }catch (Exception e){
+//                        e.printStackTrace();
+//                    }
+//                }
+//                feedBackRating = String.valueOf((int) rating);
+//                rat05UserRating.setRating(rating);
+//                edt05Comment.requestFocus();
+//                edt05Comment.setSelection(edt05Comment.length());
+//            });
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }
+
+
+        // Simulate adding more items in the background using ExecutorService
+
+            try {
+//                Thread.sleep(2000); // Simulate some background work
+
+                rat05UserRating.setOnRatingBarChangeListener((ratingBar, rating, fromUser) -> {
+                    utils.print("rating", rating + "");
+                    if (rating < 1.0f) {
+                        try {
+                            rat05UserRating.setRating(1.0f);
+                            feedBackRating = "1";
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                    feedBackRating = String.valueOf((int) rating);
+                    rat05UserRating.setRating(rating);
+                    edt05Comment.requestFocus();
+                    edt05Comment.setSelection(edt05Comment.length());
+                });
+
+
+//                rat05UserRating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+//                    @Override
+//                    public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+//                        // Define your minimum rating threshold
+//                        float minRating = 1.0f; // Set your desired minimum rating value here
+//
+//                        // Enforce the minimum rating constraint
+//                        if (rating < minRating) {
+//                            ratingBar.setRating(minRating); // Set the rating to the minimum value
+//                            rat05UserRating.setRating(minRating);
+//                            feedBackRating = "1";
+//                        }else{
+//                            feedBackRating = String.valueOf((int) rating);
+//                            rat05UserRating.setRating(rating);
+//                            ratingBar.setRating(rating);
+//                        }
+//
+////                        feedBackRating = String.valueOf((int) rating);
+//////                        rat05UserRating.setRating(rating);
+//
+//                        edt05Comment.requestFocus();
+//                        edt05Comment.setSelection(edt05Comment.length());
+//                    }
+//                });
+
+
+
+
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            feedBackRating = String.valueOf((int) rating);
-            rat05UserRating.setRating(rating);
-            edt05Comment.requestFocus();
-            edt05Comment.setSelection(edt05Comment.length());
-        });
+
+            // Add more items to the list (e.g., fetching data from a server)
 
 
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
@@ -3224,7 +3612,17 @@ public class DriverMapFragment extends Fragment implements
             @Override
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
+//                params.put("id", status.optString("user_id"));
                 params.put("id", status.optString("user_id"));
+                System.out.println("CHECKING listener userId : "+userId);
+                System.out.println("CHECKING status userId : "+status.optString("user_id"));
+                System.out.println("CHECKING listener request_id : "+request_id);
+                System.out.println("CHECKING listener otp_request_id : "+otp_request_id);
+                System.out.println("CHECKING listener current_trip_request_id : "+current_trip_request_id);
+                System.out.println("CHECKING listener feedBackRating : "+feedBackRating);
+                System.out.println("CHECKING listener edt05Comment.getText().toString() : "+edt05Comment.getText().toString());
+
+
                 return params;
             }
 
@@ -3263,40 +3661,7 @@ public class DriverMapFragment extends Fragment implements
 
             }
         });
-//        feedBackComment = edt05Comment.getText().toString();
 
-
-//
-//        try {
-////            statusResponse = status.getJSONObject(0).getJSONObject("request");
-//            JSONObject user = statusResponse.getJSONObject("user");
-//            if (user != null) {
-//                lblProviderName.setText(user.optString("first_name"));
-//                if (!user.optString("picture").equals("null")) {
-//                    if (user.optString("picture").startsWith("http"))
-//                        Picasso.get().load(user.getString("picture"))
-//                                .placeholder(R.drawable.ic_dummy_user)
-//                                .error(R.drawable.ic_dummy_user).into(img05User);
-//                    else
-//                        Picasso.get().load(URLHelper.BASE + "storage/app/public/" + user
-//                                        .getString("picture")).placeholder(R.drawable.ic_dummy_user)
-//                                .error(R.drawable.ic_dummy_user).into(img05User);
-//                } else {
-//                    img05User.setImageResource(R.drawable.ic_dummy_user);
-//                }
-//                final User userProfile = this.user;
-//                img05User.setOnClickListener(v -> {
-//                    Intent intent = new Intent(getActivity(), ShowProfile.class);
-//                    intent.putExtra("user", userProfile);
-//                    startActivity(intent);
-//                });
-//
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        feedBackComment = edt05Comment.getText().toString();
     }
 
 //    private void update(final String status, String id) {
@@ -3780,34 +4145,104 @@ public class DriverMapFragment extends Fragment implements
     }
 
     private void showSosDialog() {
-        AlertDialog.Builder builder;
-        builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(getActivity().getString(R.string.sos_confirm));
+//        AlertDialog.Builder builder;
+//        builder = new AlertDialog.Builder(getActivity());
+//        builder.setTitle(getActivity().getString(R.string.sos_confirm));
+//
+//        builder.setPositiveButton(R.string.yes, (dialog, which) -> {
+//            //cancelRequest(request_id);
+//            dialog.dismiss();
+//            String mobile = SharedHelper.getKey(getActivity(), "sos");
+//            Toast.makeText(getContext(), "sos"+mobile, Toast.LENGTH_SHORT).show();
+//            if (mobile != null && !mobile.equalsIgnoreCase("null") && mobile.length() > 0) {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                    requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 3);
+//                } else {
+//                    Intent intent = new Intent(Intent.ACTION_CALL);
+//                    intent.setData(Uri.parse("tel:" + mobile));
+//                    startActivity(intent);
+//                }
+//            } else {
+//                displayMessage(getActivity().getString(R.string.user_no_mobile));
+//            }
+//
+//        });
+//
+//        builder.setNegativeButton(R.string.no, (dialog, which) -> dialog.dismiss());
+//        builder.setCancelable(false);
+//        final AlertDialog dialog = builder.create();
+//        dialog.setOnShowListener(arg -> {
+//        });
+//        dialog.show();
 
-        builder.setPositiveButton(R.string.yes, (dialog, which) -> {
-            //cancelRequest(request_id);
-            dialog.dismiss();
-            String mobile = SharedHelper.getKey(getActivity(), "sos");
-            if (mobile != null && !mobile.equalsIgnoreCase("null") && mobile.length() > 0) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 3);
+
+
+        confirmDialog = new Dialog(getContext());
+        confirmDialog.setContentView(R.layout.confirm_ride_dialog);
+        confirmDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        confirmDialog.show();
+        TextView tvCancel = confirmDialog.findViewById(R.id.tvCancel);
+        TextView tvDone = confirmDialog.findViewById(R.id.tvDone);
+        ImageView image = confirmDialog.findViewById(R.id.image);
+        TextView tvDriverMsg = confirmDialog.findViewById(R.id.tvDriverMsg);
+        TextView titleTv = confirmDialog.findViewById(R.id.titleTv);
+        TextView subTitleTv = confirmDialog.findViewById(R.id.subTitleTv);
+        View partition = confirmDialog.findViewById(R.id.partition);
+
+
+        image.setVisibility(View.GONE);
+        subTitleTv.setText(getString(R.string.sos_confirm));
+        subTitleTv.setVisibility(View.VISIBLE);
+        titleTv.setText("Emergency call");
+        tvDriverMsg.setVisibility(View.GONE);
+
+        tvDone.setText("Confirm");
+
+        tvCancel.setOnClickListener(v -> {
+            confirmDialog.dismiss();
+        });
+
+        tvDone.setOnClickListener(v -> {
+            String mobile = SharedHelper.getKey(getContext(), "sos");
+
+
+
+            try {
+                if (mobile != null && !mobile.equalsIgnoreCase("null") && mobile.length() > 0) {
+
+                    if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE)
+                            != PackageManager.PERMISSION_GRANTED) {
+                        // Permission not granted, request it
+                        ActivityCompat.requestPermissions(getActivity(),
+                                new String[]{Manifest.permission.CALL_PHONE},
+                                3);
+
+                    } else {
+                        // Permission already granted, proceed with PDF generation
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        intent.setData(Uri.parse("tel:" + mobile));
+                        startActivity(intent);
+                    }
+
+
                 } else {
-                    Intent intent = new Intent(Intent.ACTION_CALL);
-                    intent.setData(Uri.parse("tel:" + mobile));
-                    startActivity(intent);
+                    displayMessage(getString(R.string.user_no_mobile));
                 }
-            } else {
-                displayMessage(getActivity().getString(R.string.user_no_mobile));
+
+            }catch (Exception e){
+                e.printStackTrace();
             }
 
+
+
+
+            confirmDialog.dismiss();
+
         });
 
-        builder.setNegativeButton(R.string.no, (dialog, which) -> dialog.dismiss());
-        builder.setCancelable(false);
-        final AlertDialog dialog = builder.create();
-        dialog.setOnShowListener(arg -> {
-        });
-        dialog.show();
+
+
     }
 
     @Override

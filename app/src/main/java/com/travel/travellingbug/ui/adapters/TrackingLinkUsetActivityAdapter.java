@@ -214,6 +214,7 @@ public class TrackingLinkUsetActivityAdapter extends RecyclerView.Adapter<Tracki
 //                    intent.putExtra("fare", fare);
                     intent.putExtra("latitude", invoiceModel.getSlat());
                     intent.putExtra("longitude", invoiceModel.getSlong());
+                    intent.putExtra("provider_id", invoiceModel.getProviderid());
 //                    intent.putExtra("rideid", jsonArray.optJSONObject(position).optString("id"));
 //                    intent.putExtra("seat_left", jsonArray.optJSONObject(position).optString("availablecapacity"));
                     context.startActivity(intent);

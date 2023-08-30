@@ -180,7 +180,10 @@ public class DriverProfileReviewFragment extends Fragment {
                                     String s_date = getDate(form) + "th " + getMonth(form) + " " + getYear(form);
 
 
-                                    list.add(new UserProfileReviewDataModel(user_rating, user_comment, first_name, avatar, s_date));
+                                    System.out.println("USERRATING : "+user_rating);
+                                    if(!user_rating.equalsIgnoreCase("0")){
+                                        list.add(new UserProfileReviewDataModel(user_rating, user_comment, first_name, avatar, s_date));
+                                    }
 
 
                                 }

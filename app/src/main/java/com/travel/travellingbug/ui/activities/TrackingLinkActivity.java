@@ -14,7 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -414,7 +413,7 @@ public class TrackingLinkActivity extends AppCompatActivity {
 
                         if (jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("PENDING")) {
                             holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
-                            holder.btnCancel.setVisibility(View.VISIBLE);
+                            holder.btnCancel.setVisibility(View.GONE);
                         } else if (jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED")) {
                             holder.btnCancel.setVisibility(View.GONE);
                             holder.status.setBackgroundResource(R.drawable.auth_btn_gray_bg);
@@ -426,25 +425,11 @@ public class TrackingLinkActivity extends AppCompatActivity {
                             holder.status.setBackgroundResource(R.drawable.auth_btn_purple_bg);
                         } else if (jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("SCHEDULED")) {
                             holder.status.setBackgroundResource(R.drawable.auth_btn_blue_bgs);
-                            holder.btnCancel.setVisibility(View.VISIBLE);
+                            holder.btnCancel.setVisibility(View.GONE);
                         } else {
                             holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
                         }
 
-//                        if (jsonObjectTrip.optString("status").equalsIgnoreCase("PENDING")) {
-//                            holder.status.setBackgroundResource(R.drawable.auth_btn_yellow_bg);
-//                            holder.status.setText(jsonObjectTrip.optString("status"));
-//
-//                        } else if(jsonObjectTrip.optString("status").equalsIgnoreCase("CANCELLED")){
-//                            holder.status.setBackgroundResource(R.drawable.auth_btn_gray_bg);
-//                            holder.status.setText(jsonObjectTrip.optString("status"));
-//                        }else if(jsonObjectTrip.optString("status").equalsIgnoreCase("STARTED")){
-//                            holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
-//                            holder.status.setText(jsonObjectTrip.optString("status"));
-//                        }else {
-//                            holder.status.setText(jsonObjectTrip.optString("status"));
-//                            holder.status.setBackgroundResource(R.drawable.auth_btn_green_bg);
-//                        }
 
 
                     } catch (ParseException e) {
@@ -456,18 +441,6 @@ public class TrackingLinkActivity extends AppCompatActivity {
             }
 
 
-//            try {
-//                JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
-//                if (serviceObj != null) {
-////                    holder.car_name.setText(serviceObj.optString("name"));
-//                    holder.tripAmount.setText("₹ " + serviceObj.optString("fixed"));
-//                    //holder.tripAmount.setText(SharedHelper.getKey(context, "currency")+serviceObj.optString("price"));
-//                    Picasso.get().load(serviceObj.optString("image"))
-//                            .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
-//                }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
 
 
             // for fare details
@@ -592,42 +565,8 @@ public class TrackingLinkActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            holder.btnCancel.setOnClickListener(v -> {
-                AlertDialog.Builder builder = new AlertDialog.Builder(TrackingLinkActivity.this);
-                builder.setMessage(getString(R.string.cencel_request))
-                        .setCancelable(false)
-                        .setPositiveButton("YES", (dialog, id) -> {
-                            dialog.dismiss();
-                            Log.e("canceljson", jsonArray + "j");
-                            cancelRequest(jsonArray.optJSONObject(position).optString("id"));
-                        })
-                        .setNegativeButton("NO", (dialog, id) -> dialog.dismiss());
-                AlertDialog alert = builder.create();
-                alert.show();
-            });
 
-//            holder.btnStart.setOnClickListener(view -> {
-//                //Toast.makeText(getActivity(),"Start Ride",Toast.LENGTH_SHORT).show();
-//
-//                updateStatusForSingleUserRide(jsonArray.optJSONObject(position).optString("id"), "STARTED");
-//
-//                Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
-//                JSONArray array = new JSONArray();
-//                JSONObject req = new JSONObject();
-//                try {
-//                    JSONObject object = (JSONObject) new JSONTokener(jsonArray.optJSONObject(position).toString()).nextValue();
-//                    req.put("request", object);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//                array.put(req);
-//                Log.e("TAG", "REQ: " + array);
-//                Intent i = new Intent(TrackingLinkActivity.this, MainActivity.class);
-//                i.putExtra("datas", array.toString());
-//                i.putExtra("ride_request_id", request_id);
-//                i.putExtra("type", "SCHEDULED");
-//                startActivity(i);
-//            });
+
 
 
             holder.pContainer.setOnClickListener(view -> {

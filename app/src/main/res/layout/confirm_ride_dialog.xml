@@ -35,8 +35,8 @@
             android:id="@+id/subTitleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text="Your booking has been confirmed."
+            android:textAlignment="center"
             android:textColor="@color/colorDarkGray"
             android:textSize="@dimen/_14sdp" />
 

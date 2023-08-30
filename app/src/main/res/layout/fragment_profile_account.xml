@@ -56,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
+                android:visibility="gone"
                 android:fontFamily="@font/nunito_regular"
                 android:drawableRight="@drawable/ic_forward_gray"
                 android:text="Change Password"

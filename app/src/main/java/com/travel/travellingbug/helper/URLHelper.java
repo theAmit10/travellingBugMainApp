@@ -162,6 +162,7 @@ public interface URLHelper {
 
     String CHAT_API = BASE + "api/provider/firebase/sendchat";
 
+
     String CHANGE_STATUS_BY_USER = BASE +  "api/provider/changestatusbyuser";
 
     String PREFERENCES_TITLE = BASE +  "api/provider/profile/preferencetitle";
@@ -189,6 +190,11 @@ public interface URLHelper {
     String PROVIDER_CHATLIST_API = BASE + "api/provider/firebase/chatlists";
 
     String USER_CHATLIST_API = BASE + "api/provider/firebase/userchatlists";
+
+    String USER_COMPLAINTS = BASE + "api/provider/profile/complaint";
+
+    String HELP_TITLE = BASE + "api/provider/profile/complainttitle";
+
 
 
 

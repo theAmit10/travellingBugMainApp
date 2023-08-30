@@ -40,7 +40,8 @@ import es.dmoral.toasty.Toasty;
 public class PreferenceTitle extends AppCompatActivity {
 
     CustomDialog customDialog;
-
+    ConnectionHelper helper;
+    Boolean isInternet;
     RecyclerView travelPreferenceRV;
     ArrayList<VerifyIdMainActivityModel> list;
 
@@ -52,14 +53,9 @@ public class PreferenceTitle extends AppCompatActivity {
     public static int deviceHeight;
     public static int deviceWidth;
 
-    //    CustomDialog customDialog;
-    ConnectionHelper helper;
-    Boolean isInternet;
 
     String titles = "";
     String subTitle = "";
-    String id = "";
-    String title_id = "";
 
     ImageView backArrow;
 
@@ -80,18 +76,8 @@ public class PreferenceTitle extends AppCompatActivity {
     private void settingAdapterForRecycleView() {
 
 
-        // adding data to the list
-
-//        list = new ArrayList<>();
-//
-//        list.add(new VerifyIdMainActivityModel("Chattiness","I'm Chatty when i feel confortable "));
-//        list.add(new VerifyIdMainActivityModel("Music","I'll jam dependent on mood"));
-//        list.add(new VerifyIdMainActivityModel("Smoking","Cigarette break outside the car are ok."));
-//        list.add(new VerifyIdMainActivityModel("Pet's","I'll travel with pets depending on the animal"));
-
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false);
-//        VerifyIdMainActivityAdapter verifyIdMainActivityAdapter = new VerifyIdMainActivityAdapter(getApplicationContext(), list);
+
         PreferenceTitleAdapter preferenceTitleAdapter = new PreferenceTitleAdapter(getApplicationContext(), list);
         travelPreferenceRV.setLayoutManager(linearLayoutManager);
         travelPreferenceRV.setAdapter(preferenceTitleAdapter);

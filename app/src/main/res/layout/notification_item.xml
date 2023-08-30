@@ -8,7 +8,7 @@
     android:layout_marginEnd="@dimen/_4sdp"
     android:layout_marginBottom="@dimen/_1sdp"
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="@dimen/_3sdp"
+    app:cardCornerRadius="@dimen/_7sdp"
     app:cardElevation="@dimen/_10sdp">
 
     <LinearLayout
@@ -34,7 +34,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:layout_marginEnd="@dimen/_5sdp"
-
+                android:fontFamily="@font/nunito_semi_bold"
                 android:gravity="center_vertical"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp"
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_7sdp"
-
+                android:textStyle="bold"
                 android:text="10 JAN 2019 08:45 PM, Rajan Kumar"
                 android:textSize="@dimen/_10sdp" />
         </LinearLayout>

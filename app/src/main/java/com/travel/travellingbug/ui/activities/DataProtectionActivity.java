@@ -36,9 +36,10 @@ public class DataProtectionActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(DataProtectionActivity.this, "Comming soon", Toast.LENGTH_SHORT).show();
-                Uri uri = Uri.parse("https://travellingbug.in/about");
+                Uri uri = Uri.parse("https://travellingbug.in/terms-and-condition");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
+                overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 

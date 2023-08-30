@@ -51,6 +51,7 @@ import java.util.Map;
 import es.dmoral.toasty.Toasty;
 
 
+
 public class UserChatActivity extends AppCompatActivity {
 
     public Context context = UserChatActivity.this;
@@ -117,7 +118,8 @@ public class UserChatActivity extends AppCompatActivity {
             }
         }
         intentFilter = new IntentFilter();
-        intentFilter.addAction("com.my.app.onMessageReceived");
+//        intentFilter.addAction("com.my.app.onMessageReceived");
+        intentFilter.addAction("com.travel.travellingbug.onMessageReceived");
         receiver = new MyBroadcastReceiver();
 
         try {
@@ -248,6 +250,9 @@ public class UserChatActivity extends AppCompatActivity {
                             chatAppMsgAdapter.notifyItemInserted(newMsgPosition);
                             // Scroll RecyclerView to the last message.
                             recyclerChat.scrollToPosition(newMsgPosition);
+
+                            System.out.println("sent message: for notificatoion "  );
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -267,6 +272,8 @@ public class UserChatActivity extends AppCompatActivity {
                             chatAppMsgAdapter.notifyItemInserted(newMsgPosition);
                             // Scroll RecyclerView to the last message.
                             recyclerChat.scrollToPosition(newMsgPosition);
+
+
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

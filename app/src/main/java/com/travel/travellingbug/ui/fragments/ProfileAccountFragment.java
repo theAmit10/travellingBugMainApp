@@ -3,6 +3,7 @@ package com.travel.travellingbug.ui.fragments;
 import static java.lang.Thread.sleep;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -171,7 +172,7 @@ public class ProfileAccountFragment extends Fragment {
 
 
                                         } catch (Exception e) {
-                                            displayMessage("Error Found : " + e.getMessage());
+                                            displayMessage("Something went wrong ");
 
                                         } finally {
 //                                            if (Build.VERSION_CODES.KITKAT <= Build.VERSION.SDK_INT) {
@@ -224,7 +225,7 @@ public class ProfileAccountFragment extends Fragment {
             });
             builder.setCancelable(false);
             final AlertDialog dialog = builder.create();
-            //dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+            dialog.getWindow().setBackgroundDrawableResource(R.drawable.auth_btn_white_bg);
             dialog.setOnShowListener(arg -> {
                 dialog.getButton(AlertDialog.BUTTON_POSITIVE)
                         .setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
@@ -249,6 +250,7 @@ public class ProfileAccountFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ChangeAddressAdtivityOne.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 
@@ -258,6 +260,7 @@ public class ProfileAccountFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), HelpActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 
@@ -266,6 +269,7 @@ public class ProfileAccountFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), TermsAndConditionActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 
@@ -274,6 +278,7 @@ public class ProfileAccountFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ProviderReviewActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 
@@ -331,7 +336,10 @@ public class ProfileAccountFragment extends Fragment {
         licensesTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "Comming soon", Toast.LENGTH_SHORT).show();
+                Uri uri = Uri.parse("https://travellingbug.in/terms-and-condition");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
         });
 

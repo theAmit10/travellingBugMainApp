@@ -2,6 +2,8 @@ package com.travel.travellingbug.ui.activities;
 
 import static com.travel.travellingbug.ClassLuxApp.getContext;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -53,6 +55,8 @@ public class FindRideDetails extends AppCompatActivity {
 
     ArrayList<VerifyIdMainActivityModel> driverPreferenceList;
 
+    TextView moreTv;
+
 
 
     ArrayList<TravelPreferenceFindRideDetialsModel> travelPreferenceList;
@@ -84,6 +88,8 @@ public class FindRideDetails extends AppCompatActivity {
     private ShimmerFrameLayout mFrameLayout2;
     ArrayList<StopOverModel> stopOverModelArrayList;
 
+    TextView trackingLinkTv;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,6 +119,16 @@ public class FindRideDetails extends AppCompatActivity {
             }
         });
 
+        moreTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://travellingbug.in/terms-and-condition");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+                overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
+            }
+        });
+
     }
 
     private void getIntentData() {
@@ -138,7 +154,23 @@ public class FindRideDetails extends AppCompatActivity {
 
                         JSONObject jsonObject = jsonArray.getJSONObject(0);
 
+                        try {
+                            if(jsonObject.optString("track_link") != null){
+                                if(!jsonObject.optString("track_link").equalsIgnoreCase("null")){
+                                        trackingLinkTv.setText(jsonObject.optString("track_link"));
+                                }else {
+                                    trackingLinkTv.setText("No link available");
+                                }
+                            }else {
+                                trackingLinkTv.setText("No link available");
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+
                         JSONArray filtersJsonArray = jsonObject.getJSONArray("filters");
+
 
                         location = jsonArray.getJSONObject(0).optString("s_address") + " --> " + jsonArray.getJSONObject(0).optString("d_address");
 
@@ -204,110 +236,7 @@ public class FindRideDetails extends AppCompatActivity {
 
     }
 
-//    public void getPreferencesTitle() {
-//        customDialog = new CustomDialog(FindRideDetails.this);
-//        customDialog.setCancelable(false);
-//        if (customDialog != null)
-//            customDialog.show();
-//
-//        if (isInternet) {
-//            JSONObject object = new JSONObject();
-//            JSONArray jsonArray = new JSONArray();
-//            travelPreferenceList = new ArrayList<>();
-//
-//
-//            @SuppressLint("NotifyDataSetChanged") JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URLHelper.PREFERENCES_TITLE,
-//                    jsonArray, response -> {
-//                Log.v("GetPreferences", response.toString());
-//
-//                if (response.length() > 0) {
-////                    errorLayout.setVisibility(View.GONE);
-//                    travelPreferencesFRDRV.setVisibility(View.VISIBLE);
-//                    SharedHelper.putKey(getApplicationContext(), "TravelPreferenceStatus", String.valueOf(response.length()));
-//
-//                    for (int i = 0; i < response.length(); i++) {
-//                        try {
-//
-//                            Log.v("jsonObjectLength : ", String.valueOf(response.length()));
-//                            Log.v("jsonObjectLength : ", String.valueOf(jsonArray.length()));
-//
-//                            JSONObject jsonObjectPreference = response.getJSONObject(i);
-//                            Log.v("jsonObjectPreference : ", jsonObjectPreference.toString());
-//                            Log.v("jsonObjectPreference : ", jsonObjectPreference.optString("title"));
-////                            Log.v("jsonObjectPreference : ", jsonObjectPreference.optString("subtitle"));
-//
-//
-//                            if (!jsonObjectPreference.optString("title").equalsIgnoreCase("null") || !jsonObjectPreference.optString("title").equalsIgnoreCase("") || !jsonObjectPreference.optString("title").equalsIgnoreCase(null)) {
-//                                titles = jsonObjectPreference.optString("title");
-//                            }
-//
-////                            if(!jsonObjectPreference.optString("subtitle").equalsIgnoreCase("null") || !jsonObjectPreference.optString("subtitle").equalsIgnoreCase("") || !jsonObjectPreference.optString("subtitle").equalsIgnoreCase(null)){
-////                                subTitle = jsonObjectPreference.optString("subtitle");
-////                            }
-//
-//
-//                            titles = jsonObjectPreference.optString("title");
-////                            subTitle = jsonObjectPreference.optString("subtitle");
-////                            subTitle = "Add Value";
-////                            id = jsonObjectPreference.optString("title_id");
-////                            title_id = jsonObjectPreference.optString("title_id");
-//
-//
-//                            frdModelArrayList.add(new FRDModel(titles));
-//
-//
-//                        } catch (JSONException e) {
-//                            throw new RuntimeException(e);
-//                        }
-//                    }
-//
-////                    TravelPreferenceFindRideDetialsAdapter travelPreferenceFindRideDetialsAdapter = new TravelPreferenceFindRideDetialsAdapter(getApplicationContext(), travelPreferenceList);
-//                    if (customDialog != null)
-//                        customDialog.dismiss();
-//
-////                    System.out.println("PREFERENCES SIZE : " + travelPreferenceList.size());
-////                    for (int i = 0; i < travelPreferenceList.size(); i++) {
-////                        System.out.println("PREFERENCES  : " + travelPreferenceList.get(i).getTitle());
-////                    }
-////                    travelPreferenceRV.setAdapter(travelPreferenceFindRideDetialsAdapter);
-//                    LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-//                    FRDAdapter frdAdapter = new FRDAdapter(getContext(), frdModelArrayList);
-//                    travelPreferencesFRDRV.setLayoutManager(linearLayoutManager2);
-//                    travelPreferencesFRDRV.setAdapter(frdAdapter);
-//                    travelPreferencesFRDRV.setNestedScrollingEnabled(false);
-////                    travelPreferenceFindRideDetialsAdapter.notifyDataSetChanged();
-//
-//                } else {
-//                    if (customDialog != null)
-//                        customDialog.dismiss();
-////                    travelPreferenceRV.setVisibility(View.GONE);
-//                    Toast.makeText(this, "NO ITEM", Toast.LENGTH_SHORT).show();
-////                    errorLayout.setVisibility(View.VISIBLE);
-//
-//                }
-//
-//
-//            }, error -> {
-//                displayMessage(getString(R.string.something_went_wrong));
-//            }) {
-//                @Override
-//                public Map<String, String> getHeaders() {
-//                    HashMap<String, String> headers = new HashMap<String, String>();
-//                    headers.put("X-Requested-With", "XMLHttpRequest");
-//                    Log.e(TAG, "getHeaders: Token" + SharedHelper.getKey(getApplicationContext(), "access_token") + SharedHelper.getKey(getContext(), "token_type"));
-//                    headers.put("Authorization", "" + "Bearer" + " " + SharedHelper.getKey(getApplicationContext(), "access_token"));
-//                    return headers;
-//                }
-//            };
-//
-//            ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
-//
-//
-//        } else {
-//            displayMessage(getString(R.string.something_went_wrong_net));
-//        }
-//
-//    }
+
 
     public void getPreferencesTitle() {
         customDialog = new CustomDialog(this);
@@ -489,6 +418,8 @@ public class FindRideDetails extends AppCompatActivity {
         passengerRV = findViewById(R.id.passengerRV);
         mFrameLayout = findViewById(R.id.shimmerLayout);
         mFrameLayout2 = findViewById(R.id.shimmerLayout2);
+        trackingLinkTv = findViewById(R.id.trackingLinkTv);
+        moreTv = findViewById(R.id.moreTv);
 
 //        travelPreferencesFRDRV = findViewById(R.id.travelPreferencesFRDRV);
 //        recyclerViewPreference = findViewById(R.id.recyclerViewPreference);

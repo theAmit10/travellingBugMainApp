@@ -3,6 +3,8 @@ package com.travel.travellingbug.ui.activities;
 import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,6 +14,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
+import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -54,6 +57,7 @@ public class ProfilePictureActivity extends AppCompatActivity {
     ImageView profile_Image, backArrow;
     TextView updateProfile;
     Button btnTakePicture;
+    private Uri imageUrl;
 
     public Context context = ProfilePictureActivity.this;
 
@@ -70,12 +74,15 @@ public class ProfilePictureActivity extends AppCompatActivity {
     Boolean isImageChanged = false;
 
     private static final int SELECT_PHOTO = 100;
+    private static final int SELECT_PHOTO_13 = 100;
 
     public static int deviceHeight;
     public static int deviceWidth;
 
 
     private static final String TAG = "EditProfile";
+
+    ProgressDialog progressDialog;
 
 
     private static Bitmap getBitmapFromUri(@NonNull Context context, @NonNull Uri uri) throws IOException {
@@ -143,13 +150,25 @@ public class ProfilePictureActivity extends AppCompatActivity {
         btnTakePicture.setOnClickListener(view -> {
 
             if (checkStoragePermission()) {
-                goToImageIntent();
+//                goToImageIntent();
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     requestPermissions(new String[]{Manifest.permission.CAMERA,
                             Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
                 }
             } else {
-                goToImageIntent();
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+                {
+
+                    System.out.println("IFFFF");
+                    Intent intent = new Intent(MediaStore.ACTION_PICK_IMAGES);
+                    Uri imagePath = createPdf();
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT , imagePath);
+                    startActivityForResult(intent,SELECT_PHOTO_13);
+
+                }else{
+                    System.out.println("ELSEEEEE");
+                    goToImageIntent();
+                }
 
             }
 
@@ -273,15 +292,43 @@ public class ProfilePictureActivity extends AppCompatActivity {
             try {
                 isImageChanged = true;
                 //bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), uri);
+
+
+
+                Bitmap resizeImg = getBitmapFromUri(this, uri);
+                if (resizeImg != null) {
+                    Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg, AppHelper.getPath(this, uri));
+                    profile_Image.setImageBitmap(reRotateImg);
+                    try {
+                        updateProfileWithImage();
+                    }catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(requestCode == SELECT_PHOTO_13 && resultCode == RESULT_OK && data != null && data.getData() != null)
+        {
+            System.out.println("Working SELECT_PHOTO_13");
+            uri = data.getData();
+            try {
+                isImageChanged = true;
+                //bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), uri);
                 Bitmap resizeImg = getBitmapFromUri(this, uri);
                 if (resizeImg != null) {
                     Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg, AppHelper.getPath(this, uri));
                     profile_Image.setImageBitmap(reRotateImg);
                     updateProfileWithImage();
+                    System.out.println("Working SELECT_PHOTO_13 bottom");
                 }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
         }
 //        if (requestCode == 1) {
 //            if (resultCode == Activity.RESULT_OK) {
@@ -310,6 +357,43 @@ public class ProfilePictureActivity extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(progressDialog != null){
+            if(progressDialog.isShowing()){
+                progressDialog.dismiss();
+            }
+        }
+
+    }
+
+    private Uri createPdf(){
+        Uri uri = null;
+        ContentResolver resolver = getContentResolver();
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+        {
+            uri = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY);
+
+        }else {
+            uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+        }
+
+        String imageName = "pogo";
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MediaStore.Images.Media.DISPLAY_NAME, imageName+".jpeg");
+        contentValues.put(MediaStore.Images.Media.RELATIVE_PATH,"Pictures/"+"My image/");
+
+        Uri finalUri = resolver.insert(uri, contentValues);
+
+        imageUrl = finalUri;
+
+        return finalUri;
+
+
+    }
     private void updateProfileWithoutImage() {
 //        customDialog = new CustomDialog(context);
 //        customDialog.setCancelable(false);
@@ -377,98 +461,107 @@ public class ProfilePictureActivity extends AppCompatActivity {
 
     private void updateProfileWithImage() {
 
-        ProgressDialog progressDialog = new ProgressDialog(ProfilePictureActivity.this);
-        progressDialog.setCancelable(false);
-        progressDialog.setTitle("Uploading");
-        progressDialog.show();
+        try {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setCancelable(false);
+            progressDialog.setTitle("Uploading");
+            progressDialog.show();
 
-        VolleyMultipartRequest volleyMultipartRequest = new
-                VolleyMultipartRequest(Request.Method.POST, URLHelper.USER_PROFILE_API,
-                        response -> {
+            VolleyMultipartRequest volleyMultipartRequest = new
+                    VolleyMultipartRequest(Request.Method.POST, URLHelper.USER_PROFILE_API,
+                            response -> {
 
-                            progressDialog.dismiss();
 
-                            String res = new String(response.data);
-                            utils.print("ProfileUpdateRes", "" + res);
-                            try {
-                                JSONObject jsonObject = new JSONObject(res);
-                                SharedHelper.putKey(context, "id", jsonObject.optString("id"));
-                                SharedHelper.putKey(context, "first_name", jsonObject.optString("first_name"));
-                                SharedHelper.putKey(context, "last_name", jsonObject.optString("last_name"));
-                                SharedHelper.putKey(context, "sos", jsonObject.optString("sos"));
-                                SharedHelper.putKey(context, "email", jsonObject.optString("email"));
-                                if (jsonObject.optString("avatar").equals("") || jsonObject.optString("avatar") == null) {
-                                    SharedHelper.putKey(context, "picture", "");
-                                } else {
-                                    if (jsonObject.optString("avatar").startsWith("http"))
-                                        SharedHelper.putKey(context, "picture", jsonObject.optString("avatar"));
-                                    else
-                                        SharedHelper.putKey(context, "picture", URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar"));
+                                if(progressDialog.isShowing()){
+                                    progressDialog.dismiss();
                                 }
 
-                                SharedHelper.putKey(context, "gender", jsonObject.optString("gender"));
-                                SharedHelper.putKey(context, "mobile", jsonObject.optString("mobile"));
+                                String res = new String(response.data);
+                                utils.print("ProfileUpdateRes", "" + res);
+                                try {
+                                    JSONObject jsonObject = new JSONObject(res);
+                                    SharedHelper.putKey(context, "id", jsonObject.optString("id"));
+                                    SharedHelper.putKey(context, "first_name", jsonObject.optString("first_name"));
+                                    SharedHelper.putKey(context, "last_name", jsonObject.optString("last_name"));
+                                    SharedHelper.putKey(context, "sos", jsonObject.optString("sos"));
+                                    SharedHelper.putKey(context, "email", jsonObject.optString("email"));
+                                    if (jsonObject.optString("avatar").equals("") || jsonObject.optString("avatar") == null) {
+                                        SharedHelper.putKey(context, "picture", "");
+                                    } else {
+                                        if (jsonObject.optString("avatar").startsWith("http"))
+                                            SharedHelper.putKey(context, "picture", jsonObject.optString("avatar"));
+                                        else
+                                            SharedHelper.putKey(context, "picture", URLHelper.BASE + "storage/app/public/" + jsonObject.optString("avatar"));
+                                    }
+
+                                    SharedHelper.putKey(context, "gender", jsonObject.optString("gender"));
+                                    SharedHelper.putKey(context, "mobile", jsonObject.optString("mobile"));
 
 
-                                if (!SharedHelper.getKey(context, "picture").equalsIgnoreCase("")
-                                        && SharedHelper.getKey(context, "picture") != null
-                                        && !SharedHelper.getKey(context, "picture").equalsIgnoreCase("null")) {
-                                    Picasso.get()
-                                            .load(SharedHelper.getKey(context, "picture"))
-                                            .placeholder(R.drawable.ic_dummy_user)
-                                            .error(R.drawable.ic_dummy_user)
-                                            .into(profile_Image);
-                                } else {
-                                    Picasso.get()
-                                            .load(R.drawable.ic_dummy_user)
-                                            .placeholder(R.drawable.ic_dummy_user)
-                                            .error(R.drawable.ic_dummy_user)
-                                            .into(profile_Image);
+                                    if (!SharedHelper.getKey(context, "picture").equalsIgnoreCase("")
+                                            && SharedHelper.getKey(context, "picture") != null
+                                            && !SharedHelper.getKey(context, "picture").equalsIgnoreCase("null")) {
+                                        Picasso.get()
+                                                .load(SharedHelper.getKey(context, "picture"))
+                                                .placeholder(R.drawable.ic_dummy_user)
+                                                .error(R.drawable.ic_dummy_user)
+                                                .into(profile_Image);
+                                    } else {
+                                        Picasso.get()
+                                                .load(R.drawable.ic_dummy_user)
+                                                .placeholder(R.drawable.ic_dummy_user)
+                                                .error(R.drawable.ic_dummy_user)
+                                                .into(profile_Image);
+                                    }
+
+                                    Toast.makeText(ProfilePictureActivity.this, getString(R.string.update_success), Toast.LENGTH_SHORT).show();
+
+                                    finish();
+                                    //displayMessage(getString(R.string.update_success));
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    displayMessage(getString(R.string.something_went_wrong));
                                 }
 
-                                Toast.makeText(ProfilePictureActivity.this, getString(R.string.update_success), Toast.LENGTH_SHORT).show();
 
-                                finish();
-                                //displayMessage(getString(R.string.update_success));
+                            }, error -> {
+                        //                if ((customDialog != null) && customDialog.isShowing())
+                        progressDialog.dismiss();
+                        displayMessage(getString(R.string.something_went_wrong));
+                    }) {
+                        @Override
+                        public Map<String, String> getParams() {
+                            Map<String, String> params = new HashMap<>();
+                            params.put("first_name", SharedHelper.getKey(getApplicationContext(),"first_name"));
+                            params.put("last_name", "");
+                            params.put("email",  SharedHelper.getKey(getApplicationContext(),"email"));
+                            params.put("mobile",  SharedHelper.getKey(getApplicationContext(),"mobile"));
 
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                                displayMessage(getString(R.string.something_went_wrong));
-                            }
+                            return params;
+                        }
 
+                        @Override
+                        public Map<String, String> getHeaders() {
+                            HashMap<String, String> headers = new HashMap<String, String>();
+                            headers.put("X-Requested-With", "XMLHttpRequest");
+                            headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
+                            return headers;
+                        }
 
-                        }, error -> {
-                    //                if ((customDialog != null) && customDialog.isShowing())
-                    progressDialog.dismiss();
-                    displayMessage(getString(R.string.something_went_wrong));
-                }) {
-                    @Override
-                    public Map<String, String> getParams() {
-                        Map<String, String> params = new HashMap<>();
-                        params.put("first_name", SharedHelper.getKey(getApplicationContext(),"first_name"));
-                        params.put("last_name", "");
-                        params.put("email",  SharedHelper.getKey(getApplicationContext(),"email"));
-                        params.put("mobile",  SharedHelper.getKey(getApplicationContext(),"mobile"));
+                        @Override
+                        protected Map<String, VolleyMultipartRequest.DataPart> getByteData() {
+                            Map<String, VolleyMultipartRequest.DataPart> params = new HashMap<>();
+                            params.put("avatar", new VolleyMultipartRequest.DataPart("userImage.jpg", AppHelper.getFileDataFromDrawable(profile_Image.getDrawable()), "image/jpeg"));
+                            return params;
+                        }
+                    };
+            ClassLuxApp.getInstance().addToRequestQueue(volleyMultipartRequest);
 
-                        return params;
-                    }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
-                    @Override
-                    public Map<String, String> getHeaders() {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("X-Requested-With", "XMLHttpRequest");
-                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
-                        return headers;
-                    }
-
-                    @Override
-                    protected Map<String, VolleyMultipartRequest.DataPart> getByteData() {
-                        Map<String, VolleyMultipartRequest.DataPart> params = new HashMap<>();
-                        params.put("avatar", new VolleyMultipartRequest.DataPart("userImage.jpg", AppHelper.getFileDataFromDrawable(profile_Image.getDrawable()), "image/jpeg"));
-                        return params;
-                    }
-                };
-        ClassLuxApp.getInstance().addToRequestQueue(volleyMultipartRequest);
 
     }
 

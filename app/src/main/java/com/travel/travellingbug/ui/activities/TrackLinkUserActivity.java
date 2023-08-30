@@ -144,6 +144,7 @@ public class TrackLinkUserActivity extends AppCompatActivity {
                                     invoiceModel.setDlat(jsonObjectTrip.optString("d_latitude"));
                                     invoiceModel.setDlong(jsonObjectTrip.optString("d_longitude"));
                                     invoiceModel.setBookingId(jsonObjectTrip.optString("booking_id"));
+                                    invoiceModel.setProviderid(jsonObjectTrip.optString("provider_id"));
 
                                     JSONObject providerJsonObject = jsonObjectTrip.getJSONObject("provider");
                                     try {

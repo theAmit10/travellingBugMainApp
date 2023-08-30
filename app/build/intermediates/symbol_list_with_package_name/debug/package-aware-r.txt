@@ -3450,11 +3450,14 @@ drawable avd_hide_password
 drawable avd_show_password
 drawable back
 drawable back_icon
+drawable back_org
 drawable back_white
 drawable backarrow
 drawable background
 drawable background_blur
 drawable banned
+drawable banner_with
+drawable banner_without
 drawable baseline_add
 drawable baseline_call_24
 drawable baseline_chat_24
@@ -3510,27 +3513,16 @@ drawable call_support
 drawable cancel_button_bg
 drawable cancel_text
 drawable car
-drawable car_a
 drawable car_bg
-drawable car_d
-drawable car_e
-drawable car_f
 drawable car_green
 drawable car_green_back
 drawable car_green_background_last
-drawable car_i
-drawable car_o
-drawable car_p
-drawable car_q
-drawable car_r
 drawable car_s
 drawable car_select
-drawable car_t
+drawable car_shadow
 drawable car_travel
-drawable car_u
-drawable car_w
 drawable car_with_people_background
-drawable car_y
+drawable car_without_shadow
 drawable cash_payment
 drawable ccp_down_arrow
 drawable ccp_ic_arrow_drop_down
@@ -3587,6 +3579,7 @@ drawable common_google_signin_btn_text_light_normal_background
 drawable complaint_icon
 drawable complete
 drawable cornor_edge_bg
+drawable coupon
 drawable coupon_bg
 drawable credit_card
 drawable cross
@@ -4359,8 +4352,6 @@ drawable jz_volume_icon
 drawable jz_volume_progress_bg
 drawable l
 drawable left_chat
-drawable loader_black_blur
-drawable loader_blur
 drawable loading
 drawable loading_gif
 drawable loading_ic
@@ -5052,6 +5043,7 @@ id banner_image
 id banner_root
 id banner_title
 id barrier
+id baseFare
 id baseline
 id battery_level
 id battery_time_layout
@@ -5061,6 +5053,7 @@ id bestChoice
 id bioTv
 id blocking
 id body_scroll
+id bookingFee
 id bookingStatusSubTitleTv
 id bookingStatusTitleTv
 id booking_id
@@ -5249,7 +5242,9 @@ id confirm_password_lay
 id confirmation_code
 id constraint
 id constraintLayout
+id contactDetails
 id container
+id containerCV
 id containerLL
 id content
 id contentPanel
@@ -5276,6 +5271,7 @@ id currentState
 id current_password
 id custom
 id customPanel
+id customerSupport
 id cut
 id dark
 id dataProtectionTv
@@ -5298,6 +5294,7 @@ id default_reader_id
 id deltaRelative
 id denied
 id dependency_ordering
+id description
 id descriptionTPtv
 id descriptionVIMtv
 id design_bottom_sheet
@@ -5320,6 +5317,7 @@ id disableScroll
 id discount
 id disjoint
 id display_always
+id distanceFare
 id div
 id dobTv
 id dobValTv
@@ -5346,6 +5344,7 @@ id driver_image
 id driveraccepted
 id dropLocation
 id dropdown_menu
+id dropoffLocation
 id duration_image_tip
 id duration_progressbar
 id earnedMoneyTxtView
@@ -5365,6 +5364,7 @@ id edittextBoxLayout
 id edt05Comment
 id elastic
 id email
+id emailContainerll
 id emailETL
 id emailInput
 id emailTv
@@ -5461,6 +5461,7 @@ id fullscreen
 id genderTv
 id genderValTv
 id generateTrackingLinkTv
+id getGoogleAccount
 id getOtpButton
 id ghost_view
 id ghost_view_holder
@@ -5482,6 +5483,8 @@ id header
 id headerLayout
 id header_lay
 id header_title
+id helpRV
+id helpRVLayout
 id helpTv
 id hideable
 id hindiRB
@@ -5581,6 +5584,7 @@ id info
 id info_window_time
 id inline
 id invisible
+id invoiceDate
 id invoiceDownload
 id invoiceDownloadTv
 id invoice_txt
@@ -5803,6 +5807,7 @@ id month_navigation_next
 id month_navigation_previous
 id month_text_view
 id month_title
+id moreTv
 id motion_base
 id moving
 id mtrl_anchor_parent
@@ -5930,6 +5935,7 @@ id paymentCV
 id paymentCardView
 id paymentDescription
 id paymentLayout
+id paymentMethod
 id paymentRefundsTv
 id paymentRv
 id paymentTextView
@@ -5944,6 +5950,7 @@ id payment_methods_toolbar
 id paypalId
 id pb_file_pick
 id pb_video_pick
+id pdfBtn
 id peekHeight
 id perSeatPerKm
 id perSeatPerKmVal
@@ -6006,6 +6013,7 @@ id progress_bar
 id progress_bar_as
 id progress_circular
 id progress_horizontal
+id promoDiscount
 id promoLayout
 id promo_code
 id provider_map
@@ -6221,6 +6229,7 @@ id submenuarrow
 id submitButton
 id submit_area
 id submit_btn
+id subtotal
 id summaryText
 id sunday
 id surface_container
@@ -6242,11 +6251,13 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id taxes
 id tb_image_pick
 id tb_pick
 id termConditionTv
 id termsAndConditionTv
 id termsConditionTextView
+id termsConditions
 id termsTv
 id terrain
 id test_checkbox_android_button_tint
@@ -6285,6 +6296,7 @@ id textView_title
 id text_input_end_icon
 id text_input_error_icon
 id text_input_layout
+id text_input_layoutOrg
 id text_input_layout_subtitle
 id text_input_layout_title
 id text_input_start_icon
@@ -6339,10 +6351,12 @@ id topPanel
 id topTitle
 id top_to_bottom
 id total
+id totalAmount
 id total_earn_layout
 id touch_outside
 id trackVehicleTv
 id trackingLinkIv
+id trackingLinkTv
 id transitionToEnd
 id transitionToStart
 id transition_current_scene
@@ -6481,6 +6495,7 @@ id txtpaiddriver
 id txtuserName
 id txtvehicleEdit
 id type
+id uberLogo
 id unchecked
 id underline
 id uniform
@@ -6668,11 +6683,13 @@ layout activity_find_rides
 layout activity_forgot_password
 layout activity_full_image
 layout activity_google_login
+layout activity_google_update
 layout activity_help
 layout activity_history
 layout activity_history_details
 layout activity_history_details_user
 layout activity_home_screen
+layout activity_inbox_chat
 layout activity_intro
 layout activity_intro_screen
 layout activity_invoice
@@ -6686,6 +6703,8 @@ layout activity_otp_verify_forget_password
 layout activity_payment
 layout activity_payment_and_refund
 layout activity_payment_methods
+layout activity_pdf
+layout activity_pdf_pogo
 layout activity_personal_details
 layout activity_pick_up_notes
 layout activity_preference_title
@@ -6711,6 +6730,8 @@ layout activity_track_link_user
 layout activity_tracking_link
 layout activity_travel_preference
 layout activity_travel_preference_main
+layout activity_update_email_address
+layout activity_update_gmail
 layout activity_update_phone_number
 layout activity_update_preference
 layout activity_update_profile
@@ -6764,6 +6785,7 @@ layout country_picker
 layout coupon_list_item
 layout custom_dialog
 layout custom_info_contents
+layout custom_invoice_layout
 layout custom_list_document_adapter
 layout custom_marker
 layout date_picker_dialog
@@ -6776,6 +6798,7 @@ layout design_bottom_sheet_dialog
 layout design_call_request_passenger
 layout design_driver_profile_reviews
 layout design_find_ride
+layout design_help_layout
 layout design_inbox_fragment
 layout design_intro_view_pager
 layout design_invoice
@@ -8723,6 +8746,7 @@ styleable com_facebook_profile_picture_view com_facebook_is_cropped com_facebook
 styleable fastscroll__fastScroller fastscroll__bubbleColor fastscroll__bubbleTextAppearance fastscroll__handleColor
 styleable include constraintSet
 styleable ms9_MaterialShadowContainerView ms9_affectsDisplayedPosition ms9_ambientShadowDrawablesList ms9_forceUseCompatShadow ms9_shadowElevation ms9_shadowTranslationZ ms9_spotShadowDrawablesList ms9_useAmbientShadow ms9_useSpotShadow
+xml file_path_pdf
 xml file_paths
 xml image_share_filepaths
 xml jz_network_security_config

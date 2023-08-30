@@ -2,12 +2,15 @@ package com.travel.travellingbug.ui.fragments;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -22,6 +25,7 @@ public class HolidayPackageFragment extends Fragment {
 
     CustomDialog customDialog;
 
+    boolean doubleBackToExitPressedOnce = false;
 
     public HolidayPackageFragment() {
         // Required empty public constructor
@@ -32,6 +36,13 @@ public class HolidayPackageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        try {
+            customDialog = new CustomDialog(getContext());
+            customDialog.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
     }
@@ -45,7 +56,7 @@ public class HolidayPackageFragment extends Fragment {
         webView = view.findViewById(R.id.webviewOrg);
         url = "https://travellingbug.in/";
 
-        customDialog = new CustomDialog(getContext());
+
 
 
 //        WebViewClient webViewClient  = new WebViewClient();
@@ -54,7 +65,7 @@ public class HolidayPackageFragment extends Fragment {
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
 //                super.onPageStarted(view, url, favicon);
-                customDialog.show();
+
                 customDialog.setCancelable(false);
             }
 
@@ -83,8 +94,37 @@ public class HolidayPackageFragment extends Fragment {
 
         webView.loadUrl(url);
 
+
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
+        view.setOnKeyListener((v, keyCode, event) -> {
+            if (event.getAction() != KeyEvent.ACTION_DOWN)
+                return true;
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                if (doubleBackToExitPressedOnce) {
+                    getActivity().finish();
+                    return false;
+                }
+                doubleBackToExitPressedOnce = true;
+                Toast.makeText(getActivity(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 5000);
+                return true;
+            }
+            return false;
+        });
+
+
         return view;
     }
 
 
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        if(customDialog.isShowing()){
+            customDialog.dismiss();
+        }
+    }
 }

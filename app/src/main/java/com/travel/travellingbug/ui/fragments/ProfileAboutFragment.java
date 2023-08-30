@@ -46,6 +46,7 @@ import com.travel.travellingbug.ui.activities.ProfilePictureActivity;
 import com.travel.travellingbug.ui.activities.SplashScreen;
 import com.travel.travellingbug.ui.activities.TravelPreferenceActivity;
 import com.travel.travellingbug.ui.activities.TravelPreferenceActivityMain;
+import com.travel.travellingbug.ui.activities.UpdateEmailAddressActivity;
 import com.travel.travellingbug.ui.activities.UpdatePhoneNumber;
 import com.travel.travellingbug.ui.activities.UpdateProfile;
 import com.travel.travellingbug.ui.activities.VehicleDetailsLicensePlateNumberActivity;
@@ -263,7 +264,8 @@ public class ProfileAboutFragment extends Fragment {
         email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), UpdateProfile.class);
+//                Intent intent = new Intent(getContext(), UpdateProfile.class);
+                Intent intent = new Intent(getContext(), UpdateEmailAddressActivity.class);
                 intent.putExtra("parameter", "email");
                 intent.putExtra("value", email.getText().toString());
                 startActivityForResult(intent, 11);

@@ -122,10 +122,13 @@ public class SplashScreen extends AppCompatActivity {
 
         // To Remove Status bar
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        this.getWindow().setFlags(
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+
+        // Hide the status bar
 
         ExecutorService service = Executors.newSingleThreadExecutor();
         service.execute(new Runnable() {
@@ -402,11 +405,12 @@ public class SplashScreen extends AppCompatActivity {
                         Manifest.permission.ACCESS_FINE_LOCATION,
                         Manifest.permission.ACCESS_COARSE_LOCATION,
                         Manifest.permission.CALL_PHONE,
-                        Manifest.permission.CAMERA)
+                        Manifest.permission.CAMERA
+                        )
                 .withListener(new MultiplePermissionsListener() {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport report) {
-                        if (report.areAllPermissionsGranted()) {
+                        if (true) {
                             if (SharedHelper.getKey(getApplicationContext(), "selectedlanguage") != null &&
                                     !SharedHelper.getKey(getApplicationContext(), "selectedlanguage").isEmpty()) {
                                 setLocale(SharedHelper.getKey(getApplicationContext(), "selectedlanguage"));
@@ -429,9 +433,11 @@ public class SplashScreen extends AppCompatActivity {
                         }else{
                             if (report.isAnyPermissionPermanentlyDenied()) {
                                 showSettingsDialog();
+                            }else {
+                                showPermissionDialog();
                             }
-                            showSettingsDialog();
-//                            Toast.makeText(SplashScreen.this, "Grant permission to continue", Toast.LENGTH_SHORT).show();
+//                            showSettingsDialog();
+                            Toast.makeText(SplashScreen.this, "Grant permission to continue", Toast.LENGTH_SHORT).show();
 //                            showPermissionDialog();
                         }
 

@@ -105,7 +105,7 @@ import com.skyfishjy.library.RippleBackground;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
-import com.travel.travellingbug.chat.UserChatActivity;
+import com.travel.travellingbug.chat.InboxChatActivity;
 import com.travel.travellingbug.helper.ConnectionHelper;
 import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.DataParser;
@@ -166,6 +166,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     public String ride_time = "";
 
     ImageView trackingLinkIv;
+
+    private String ratingVal = "";
 
     @BindView(R.id.layoutdriverstatus)
     LinearLayout layoutdriverstatus;
@@ -394,7 +396,11 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
 
     @butterknife.OnClick(R.id.btnCall)
     void callbtnCall() {
+
         Intent intentCall = new Intent(Intent.ACTION_DIAL);
+
+        System.out.println("*** PN -> "+SharedHelper.getKey(context, "provider_mobile_no"));
+//        Toast.makeText(activity, "NUMBER - "+SharedHelper.getKey(context, "provider_mobile_no"), Toast.LENGTH_SHORT).show();
         intentCall.setData(Uri.parse("tel:" + SharedHelper.getKey(context, "provider_mobile_no")));
         startActivity(intentCall);
 
@@ -404,10 +410,10 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     void callbtnChat() {
 
 
-        Intent intentChat = new Intent(context, UserChatActivity.class);
+        Intent intentChat = new Intent(context, InboxChatActivity.class);
         intentChat.putExtra("requestId", current_chat_requestID);
         intentChat.putExtra("providerId", currentProviderID);
-        intentChat.putExtra("userId", userID);
+        intentChat.putExtra("userId", SharedHelper.getKey(getApplicationContext(), "id"));
         intentChat.putExtra("userName", providerFirstName);
         intentChat.putExtra("messageType", "pu");
         context.startActivity(intentChat);
@@ -1314,24 +1320,84 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     }
 
     private void showSosPopUp() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        builder.setTitle(context.getString(R.string.app_name))
-                .setIcon(R.drawable.app_logo_org)
-                .setMessage(getString(R.string.emaergeny_call))
-                .setCancelable(false);
-        builder.setPositiveButton(getString(R.string.yes), (dialog, which) -> {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 3);
-            } else {
-                Intent intentCall1 = new Intent(Intent.ACTION_DIAL);
-                intentCall1.setData(Uri.parse("tel:" + SharedHelper.getKey(context, "sos")));
-                startActivity(intentCall1);
-            }
+//        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+//        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        builder.setTitle(context.getString(R.string.app_name))
+//                .setIcon(R.drawable.app_logo_org)
+//                .setMessage(getString(R.string.emaergeny_call))
+//                .setCancelable(false);
+//        builder.setPositiveButton(getString(R.string.yes), (dialog, which) -> {
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 3);
+//            } else {
+//                Intent intentCall1 = new Intent(Intent.ACTION_DIAL);
+//                intentCall1.setData(Uri.parse("tel:" + SharedHelper.getKey(context, "sos")));
+//                startActivity(intentCall1);
+//            }
+//        });
+//        builder.setNegativeButton(getString(R.string.no), (dialog, which) -> dialog.dismiss());
+//        AlertDialog alertDialog = builder.create();
+//        alertDialog.show();
+
+
+
+
+
+
+
+        confirmDialog = new Dialog(TrackActivity.this);
+        confirmDialog.setContentView(R.layout.confirm_ride_dialog);
+        confirmDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        confirmDialog.show();
+        TextView tvCancel = confirmDialog.findViewById(R.id.tvCancel);
+        TextView tvDone = confirmDialog.findViewById(R.id.tvDone);
+        ImageView image = confirmDialog.findViewById(R.id.image);
+        TextView tvDriverMsg = confirmDialog.findViewById(R.id.tvDriverMsg);
+        TextView titleTv = confirmDialog.findViewById(R.id.titleTv);
+        TextView subTitleTv = confirmDialog.findViewById(R.id.subTitleTv);
+        View partition = confirmDialog.findViewById(R.id.partition);
+
+
+        image.setVisibility(View.GONE);
+        subTitleTv.setText(getString(R.string.sos_confirm));
+        subTitleTv.setVisibility(View.VISIBLE);
+        titleTv.setText("Emergency call");
+        tvDriverMsg.setVisibility(View.GONE);
+
+        tvDone.setText("Confirm");
+
+        tvCancel.setOnClickListener(v -> {
+            confirmDialog.dismiss();
         });
-        builder.setNegativeButton(getString(R.string.no), (dialog, which) -> dialog.dismiss());
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+
+        tvDone.setOnClickListener(v -> {
+            String mobile = SharedHelper.getKey(getApplicationContext(), "sos");
+
+            if (mobile != null && !mobile.equalsIgnoreCase("null") && mobile.length() > 0) {
+
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Permission not granted, request it
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.CALL_PHONE},
+                            3);
+
+                } else {
+                    // Permission already granted, proceed with PDF generation
+
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:" + mobile));
+                    startActivity(intent);
+                }
+
+
+            } else {
+                displayMessage(getString(R.string.user_no_mobile));
+            }
+            confirmDialog.dismiss();
+
+        });
     }
 
     public void submitReviewCall() {
@@ -1385,6 +1451,14 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     }
 
     private void rateToProvider(String request_id, String rating, String comment) {
+        ratingVal = rating;
+        System.out.println("RTP rating val : "+rating);
+        System.out.println("RTP rating before val : "+ratingVal);
+        if(ratingVal.equalsIgnoreCase(""))
+        {
+            ratingVal = "1";
+        }
+        System.out.println("RTP rating after val : "+ratingVal);
 
         customDialog = new CustomDialog(context);
         customDialog.setCancelable(false);
@@ -1411,6 +1485,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
                             if (lnrRateProvider.getVisibility() == View.VISIBLE) {
                                 lnrRateProvider.startAnimation(slide_down);
                                 lnrRateProvider.setVisibility(View.GONE);
+                                imgSos.setVisibility(View.GONE);
                             }
 
 
@@ -1444,7 +1519,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("request_id", request_id);
-                params.put("rating", rating);
+                params.put("rating", ratingVal);
                 params.put("comment", comment);
 
                 return params;

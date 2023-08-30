@@ -2,6 +2,8 @@ package com.travel.travellingbug.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +51,7 @@ public class InboxFragment extends Fragment {
     ConnectionHelper helper;
     CustomDialog customDialog;
     View rootView;
-
+    boolean doubleBackToExitPressedOnce = false;
     ImageView backImg;
     LinearLayout toolbar;
 
@@ -97,6 +99,26 @@ public class InboxFragment extends Fragment {
             this.toolbar.setVisibility(View.VISIBLE);
         }
 
+
+        rootView.setFocusableInTouchMode(true);
+        rootView.requestFocus();
+        rootView.setOnKeyListener((v, keyCode, event) -> {
+            if (event.getAction() != KeyEvent.ACTION_DOWN)
+                return true;
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                if (doubleBackToExitPressedOnce) {
+                    getActivity().finish();
+                    return false;
+                }
+                doubleBackToExitPressedOnce = true;
+                Toast.makeText(getActivity(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 5000);
+                return true;
+            }
+            return false;
+        });
+
+
         return rootView;
     }
 
@@ -105,7 +127,7 @@ public class InboxFragment extends Fragment {
     public void getHistoryList() {
         mFrameLayout.startShimmer();
         customDialog = new CustomDialog(getActivity());
-        customDialog.setCancelable(false);
+        customDialog.setCancelable(true);
         customDialog.show();
 
         // Getting Provider Chatlist
@@ -135,6 +157,8 @@ public class InboxFragment extends Fragment {
                                         }else{
                                             inboxModel.setProfileImage("");
                                         }
+
+                                        inboxModel.setType("up");
 
                                         JSONArray chatdetailJsonArray = dataJsonObject.getJSONArray("chatdetail");
                                         if(chatdetailJsonArray.length() > 0){
@@ -193,6 +217,9 @@ public class InboxFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                if(customDialog.isShowing()){
+                    customDialog.dismiss();
+                }
                 Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
                 error.printStackTrace();
             }
@@ -246,12 +273,15 @@ public class InboxFragment extends Fragment {
                                             inboxModel.setProfileImage("");
                                         }
 
+                                        inboxModel.setType("pu");
+
                                         JSONArray chatdetailJsonArray = dataJsonObject.getJSONArray("chatdetail");
                                         if(chatdetailJsonArray.length() > 0){
                                             JSONObject chatDetailJsonObject  = chatdetailJsonArray.getJSONObject(0);
                                             inboxModel.setRequestId(chatDetailJsonObject.getString("request_id"));
                                             inboxModel.setProviderId(chatDetailJsonObject.getString("provider_id"));
                                             inboxModel.setUserId(chatDetailJsonObject.getString("user_id"));
+
                                         }else {
                                             inboxModel.setRequestId("");
                                             inboxModel.setProviderId("");

@@ -297,8 +297,8 @@ public class PaymentAndRefundActivity extends AppCompatActivity {
                         paymentRv.setLayoutManager(linearLayoutManager);
                         paymentRv.setNestedScrollingEnabled(false);
                     }else {
-                        errorLayout.setVisibility(View.VISIBLE);
                         paymentRv.setVisibility(View.GONE);
+                        errorLayout.setVisibility(View.VISIBLE);
                     }
 
 
@@ -306,10 +306,12 @@ public class PaymentAndRefundActivity extends AppCompatActivity {
 
 
                 }else {
+                    paymentRv.setVisibility(View.GONE);
                     errorLayout.setVisibility(View.VISIBLE);
                 }
 
             } else {
+                paymentRv.setVisibility(View.GONE);
                 errorLayout.setVisibility(View.VISIBLE);
             }
 
@@ -317,6 +319,7 @@ public class PaymentAndRefundActivity extends AppCompatActivity {
 
         }, error -> {
             customDialog.dismiss();
+            paymentRv.setVisibility(View.GONE);
             errorLayout.setVisibility(View.VISIBLE);
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
         }) {
@@ -542,15 +545,18 @@ public class PaymentAndRefundActivity extends AppCompatActivity {
                                     paymentRv.setNestedScrollingEnabled(false);
                                     System.out.println("LENGTH AFTER ADDING BOTH DATA : -> : " + list.size());
 
+                                    if(list.size() == 0){
+                                        paymentRv.setVisibility(View.GONE);
+                                        errorLayout.setVisibility(View.VISIBLE);
+                                    }
+
                                 }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
-                    if(list.size() == 0){
-                        errorLayout.setVisibility(View.VISIBLE);
-                    }
+
                 }
             }
             if (customDialog.isShowing()) {
@@ -560,6 +566,7 @@ public class PaymentAndRefundActivity extends AppCompatActivity {
             if (customDialog.isShowing()) {
                 customDialog.dismiss();
             }
+            paymentRv.setVisibility(View.GONE);
             errorLayout.setVisibility(View.VISIBLE);
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
         }) {

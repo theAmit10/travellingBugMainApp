@@ -2259,7 +2259,7 @@
                                                             android:maxLength="40"
                                                             android:maxLines="1"
                                                             android:fontFamily="@font/nunito_semi_bold"
-                                                            android:text="Set drop location"
+                                                            android:text="Going to"
                                                             android:hint="Set drop location"
                                                             android:textColorHint="@color/black"
                                                             android:textColor="@color/black"

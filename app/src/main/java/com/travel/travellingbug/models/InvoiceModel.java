@@ -2,6 +2,7 @@ package com.travel.travellingbug.models;
 
 public class InvoiceModel {
     String image,username,rating,ratingVal,fare,seat,status,slat,slong,dlat,dlong,fromAddress,destAddress,time,vehicleDetails,bookingId;
+    String providerid;
 
     public InvoiceModel() {
     }
@@ -23,6 +24,14 @@ public class InvoiceModel {
         this.time = time;
         this.vehicleDetails = vehicleDetails;
         this.bookingId = bookingId;
+    }
+
+    public String getProviderid() {
+        return providerid;
+    }
+
+    public void setProviderid(String providerid) {
+        this.providerid = providerid;
     }
 
     public String getBookingId() {

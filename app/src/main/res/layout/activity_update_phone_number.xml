@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -33,7 +34,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/top"
         android:layout_marginTop="@dimen/_20sdp"
         android:orientation="vertical"
@@ -42,12 +43,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:orientation="horizontal">
 
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/text_input_layout"
+                android:id="@+id/text_input_layoutOrg"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,6 +83,7 @@
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/auth_btn_white_low_corner_bg"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -126,21 +129,25 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-
-
-        <Button
-            android:id="@+id/getOtpButton"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout"
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_30sdp"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="@color/yellow"
-            android:text="Generate OTP"
-            android:textColor="@color/text_color_white"
-            android:textSize="@dimen/_14sdp" />
+            android:textColorHint="@color/colorDarkGray"
+            app:helperTextTextColor="@color/colorDarkGray"
+            app:helperTextTextAppearance="@style/SubSubTitle"
+            app:hintTextColor="@color/colorDarkGray"
+            android:layout_marginStart="@dimen/_22sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:elevation="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_5sdp">
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.travel.travellingbug.utills.MyButton
             android:id="@+id/btnUpdate"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_30sdp"
@@ -148,6 +155,30 @@
             android:text="@string/update"
             android:textColor="@color/text_color_white"
             android:textSize="@dimen/_14sdp" />
+
+<!--        <Button-->
+<!--            android:id="@+id/getOtpButton"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="bottom"-->
+<!--            android:background="@drawable/auth_btn_green_bg"-->
+<!--            android:text="Generate OTP"-->
+<!--            android:layout_margin="@dimen/_15sdp"-->
+<!--            android:textColor="@color/text_color_white"-->
+<!--            android:fontFamily="@font/nunito_bold"-->
+<!--            android:textSize="@dimen/_14sdp"-->
+<!--             />-->
+        <com.travel.travellingbug.utills.MyButton
+            android:id="@+id/getOtpButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:background="@drawable/rounded_button"
+            android:text="Generate OTP"
+            android:textColor="@color/text_color_white"
+            android:textSize="@dimen/_14sdp" />
     </LinearLayout>
 
-</RelativeLayout>
+
+
+</LinearLayout>

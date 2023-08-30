@@ -79,7 +79,7 @@
                 android:gravity="center"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingEnd="@dimen/_10sdp"
-                android:text="Your Completed rides will appear here."
+                android:text="Your booked rides will appear here."
                 android:textColor="@color/black"
                 android:textSize="@dimen/_20sdp"
                 android:textStyle="bold" />
@@ -101,7 +101,7 @@
                 android:layout_below="@+id/error_image"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:text="You have no completed rides"
+                android:text="No ride bookings have been made as of now"
                 android:textColor="@color/colorDarkGray"
                 android:textSize="@dimen/_12sdp" />
 

@@ -2,12 +2,15 @@ package com.travel.travellingbug.ui.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +24,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
@@ -56,6 +60,8 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.ViewHold
     Bitmap bmp, scaledbmp;
     // constant code for runtime permissions
     private static final int PERMISSION_REQUEST_CODE = 200;
+
+    private static final int REQUEST_CODE_PERMISSION = 101;
 
 
     Context context;
@@ -234,6 +240,9 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.ViewHold
 
 
 
+
+
+
                                 // creating an object variable
                                 // for our PDF document.
                                 PdfDocument pdfDocument = new PdfDocument();
@@ -319,24 +328,123 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.ViewHold
 
                                 // below line is used to set the name of
                                 // our PDF file and its path.
-                                File file = new File(Environment.getExternalStorageDirectory(), "TravellingBug"+invoiceModel.getBookingId()+".pdf");
+//                                File file = new File(Environment.getExternalStorageDirectory(), "TravellingBug"+invoiceModel.getBookingId()+".pdf");
+//
+//                                try {
+//                                    // after creating a file name we will
+//                                    // write our PDF file to that location.
+//                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                                        pdfDocument.writeTo(Files.newOutputStream(file.toPath()));
+//                                    }else {
+//                                        pdfDocument.writeTo(new FileOutputStream(file));
+//                                    }
+//
+//                                    // below line is to print toast message
+//                                    // on completion of PDF generation.
+//                                    Toast.makeText(context, "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
+//                                } catch (IOException e) {
+//                                    // below line is used
+//                                    // to handle error
+//                                    e.printStackTrace();
+//                                }
+//                                // after storing our pdf to that
+//                                // location we are closing our PDF file.
+//                                pdfDocument.close();
 
-                                try {
-                                    // after creating a file name we will
-                                    // write our PDF file to that location.
-                                    pdfDocument.writeTo(new FileOutputStream(file));
 
-                                    // below line is to print toast message
-                                    // on completion of PDF generation.
-                                    Toast.makeText(context, "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
-                                } catch (IOException e) {
-                                    // below line is used
-                                    // to handle error
-                                    e.printStackTrace();
+
+
+                                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+                                {
+                                    System.out.println("BUILD IF");
+                                    File pdfFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "TravellingBug"+invoiceModel.getBookingId()+".pdf");
+                                    try (FileOutputStream outputStream = new FileOutputStream(pdfFile)) {
+                                        pdfDocument.writeTo(outputStream);
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    } finally {
+                                        pdfDocument.close();
+                                    }
+
+
+                                    // Launch PDF viewer
+                                    Uri pdfUri = FileProvider.getUriForFile(context, "com.travel.travellingbug.provider", pdfFile);
+                                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                                    intent.setDataAndType(pdfUri, "application/pdf");
+                                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    context.startActivity(intent);
+
+                                }else {
+                                    System.out.println("BUILD ELSE");
+                                    // below line is used to set the name of
+                                    // our PDF file and its path.
+                                    File file = new File(Environment.getExternalStorageDirectory(), "TravellingBug"+invoiceModel.getBookingId()+".pdf");
+
+                                    try {
+                                        // after creating a file name we will
+                                        // write our PDF file to that location.
+                                        pdfDocument.writeTo(new FileOutputStream(file));
+                                        // below line is to print toast message
+                                        // on completion of PDF generation.
+                                        Toast.makeText(context, "PDF file saved successfully.", Toast.LENGTH_SHORT).show();
+                                    } catch (IOException e) {
+                                        // below line is used
+                                        // to handle error
+                                        e.printStackTrace();
+                                    }
+
+                                    // Launch PDF viewer
+                                    Uri pdfUri = FileProvider.getUriForFile(context, "com.travel.travellingbug.provider", file);
+                                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                                    intent.setDataAndType(pdfUri, "application/pdf");
+                                    intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    context.startActivity(intent);
+                                    // after storing our pdf to that
+                                    // location we are closing our PDF file.
+
+                                    pdfDocument.close();
                                 }
-                                // after storing our pdf to that
-                                // location we are closing our PDF file.
-                                pdfDocument.close();
+
+//
+//
+//                                File pdfFile = null;
+//                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//                                    // Save to app-specific directory using MediaStore API
+//                                    ContentResolver resolver = context.getContentResolver();
+//                                    ContentValues contentValues = new ContentValues();
+//                                    contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "my_pdf.pdf");
+//                                    contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "application/pdf");
+//                                    contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOCUMENTS);
+//
+//                                    Uri uri = resolver.insert(MediaStore.Files.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY), contentValues);
+//                                    try (OutputStream outputStream = resolver.openOutputStream(uri)) {
+//                                        pdfDocument.writeTo(outputStream);
+//                                    } catch (IOException e) {
+//                                        e.printStackTrace();
+//                                    } finally {
+//                                        pdfDocument.close();
+//                                    }
+//                                } else {
+//                                    // Save to public external storage
+//                                    pdfFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "my_pdf.pdf");
+//                                    try (FileOutputStream outputStream = new FileOutputStream(pdfFile)) {
+//                                        pdfDocument.writeTo(outputStream);
+//                                    } catch (IOException e) {
+//                                        e.printStackTrace();
+//                                    } finally {
+//                                        pdfDocument.close();
+//                                    }
+//                                }
+//
+//                                // Launch PDF viewer
+//                                Uri pdfUri = FileProvider.getUriForFile(context, "com.travel.travellingbug.provider", pdfFile);
+//                                Intent intent = new Intent(Intent.ACTION_VIEW);
+//                                intent.setDataAndType(pdfUri, "application/pdf");
+//                                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+//
+//                                context.startActivity(intent);
 
 
 
@@ -389,12 +497,12 @@ public class InvoiceAdapter extends RecyclerView.Adapter<InvoiceAdapter.ViewHold
 
     }
 
+
+
     @Override
     public int getItemCount() {
         return list.size();
     }
-
-
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {

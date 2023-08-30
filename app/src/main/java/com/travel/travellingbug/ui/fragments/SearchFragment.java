@@ -3066,8 +3066,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
 //            object.put("schedule_date", scheduledDate);
 //            object.put("schedule_time", scheduledTime);
-            object.put("schedule_date", "y");
-            object.put("schedule_time", "y");
+            object.put("schedule_date", scheduledDate);
+            object.put("schedule_time", scheduledTime);
             object.put("upcoming", "1");
             object.put("use_wallet", "0");
             object.put("payment_mode", "CASH");
@@ -3093,6 +3093,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 //                object.put("card_id", SharedHelper.getKey(context, "card_id"));
 //            }
             Utilities.print("SendRequestInput", "" + object.toString());
+            System.out.println("SendRequestInput : "+object.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -3615,7 +3616,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                                     SharedHelper.putKey(context, "surge", response.optString("surge"));
                                     SharedHelper.putKey(context, "surge_value", response.optString("surge_value"));
                                     SharedHelper.putKey(context, "currency", response.optString("currency"));
-                                    System.out.println("SURGE SURGE SURGE 123456 " + response.optString("surge"));
+                                    System.out.println("SURGE " + response.optString("surge"));
                                     //   setNewValuesForApproximateLayout();
                                     double wallet_balance = response.optDouble("wallet_balance");
                                     SharedHelper.putKey(context, "wallet_balance", "" + response.optDouble("wallet_balance"));
@@ -3655,6 +3656,12 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             mapRipple.stopRippleMapAnimation();
         }
         super.onDestroy();
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
     }
 
     private void stopAnim() {
@@ -4381,8 +4388,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     frmSource.setOnClickListener(null);
 //                    sourceDestLayout.setClickable(false);
                     SharedHelper.putKey(context, "name", "");
-                    scheduledDate = "";
-                    scheduledTime = "";
+//                    scheduledDate = "";
+//                    scheduledTime = "";
                     btnRequestRideConfirm.setEnabled(true);
                     sendRequest();
                     break;

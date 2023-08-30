@@ -17,12 +17,12 @@ import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.travel.travellingbug.R;
-import com.travel.travellingbug.ui.activities.MainActivity;
-import com.travel.travellingbug.chat.UserChatActivity;
-import com.travel.travellingbug.helper.SharedHelper;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.travel.travellingbug.R;
+import com.travel.travellingbug.chat.UserChatActivity;
+import com.travel.travellingbug.helper.SharedHelper;
+import com.travel.travellingbug.ui.activities.HomeScreenActivity;
 
 import java.util.List;
 
@@ -56,7 +56,8 @@ public class FCMService extends FirebaseMessagingService {
                 if (getTopAppName().equals(UserChatActivity.class.getName())) {
                     Intent intent = new Intent();
                     intent.putExtra("message", remoteMessage.getNotification().getBody());
-                    intent.setAction("com.my.app.onMessageReceived");
+                    intent.setAction("com.travel.travellingbug.onMessageReceived");
+//                    intent.setAction("com.my.app.onMessageReceived");
                     sendBroadcast(intent);
 
                 } else {
@@ -65,7 +66,10 @@ public class FCMService extends FirebaseMessagingService {
             } else if (msg_type.contains("admin")) {
                 String title = remoteMessage.getNotification().getTitle();
                 String message = remoteMessage.getNotification().getBody();
-                String click_action = "com.classluxdrive.providers.TARGETNOTIFICATION";
+                System.out.println("MESSSAGE admin  : "+message);
+                System.out.println("MESSSAGE admin TITLE  : "+title);
+//                String click_action = "com.classluxdrive.providers.TARGETNOTIFICATION";
+                String click_action = "com.travel.travellingbug.TARGETNOTIFICATION";
                 Intent intent = new Intent(click_action);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_ONE_SHOT);
@@ -83,7 +87,7 @@ public class FCMService extends FirebaseMessagingService {
                 Intent i = new Intent(this, MyBroadcastReceiver.class);
                 sendBroadcast(i);
 
-                Intent notifyIntent = new Intent(this, MainActivity.class);
+                Intent notifyIntent = new Intent(this, HomeScreenActivity.class);
                 notifyIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 PendingIntent notifyPendingIntent = PendingIntent.getActivity(
                         this, 0, notifyIntent, PendingIntent.FLAG_IMMUTABLE
@@ -92,7 +96,7 @@ public class FCMService extends FirebaseMessagingService {
                 builder.setSmallIcon(R.drawable.app_logo_org);
                 builder.setContentIntent(notifyPendingIntent);
                 builder.setContentTitle(getString(R.string.app_name));
-                builder.setContentText("New Incoming Ride");
+                builder.setContentText("Ride Request");
 
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
                 notificationManager.notify(0, builder.build());
@@ -131,6 +135,9 @@ public class FCMService extends FirebaseMessagingService {
         try {
             String title = notificationTitle;
             String message = notificationBody;
+
+            System.out.println("MESSSAGE send notification  : "+message);
+            System.out.println("MESSSAGE send notification TITLE  : "+title);
             intent.putExtra("message", message);
             intent.putExtra("request_id", requestId);
             intent.putExtra("userName", userName);
@@ -165,7 +172,7 @@ public class FCMService extends FirebaseMessagingService {
     }
 
     private void sendNotification(String notificationBody) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, HomeScreenActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         try {
@@ -185,6 +192,12 @@ public class FCMService extends FirebaseMessagingService {
                     .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
             NotificationManager notificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+            System.out.println("MESSSAGE send notification only body : "+message);
+
+
+
             // check for orio 8
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 int importance = NotificationManager.IMPORTANCE_HIGH;

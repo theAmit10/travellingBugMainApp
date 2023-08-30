@@ -1,9 +1,12 @@
 package com.travel.travellingbug.ui.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
@@ -18,7 +21,7 @@ public class YourRideFragment extends Fragment {
 
 
 
-
+    boolean doubleBackToExitPressedOnce = false;
     ViewPager2 viewPager;
     TabLayout tabLayout;
     YourRideViewPagerAdapter yourRideViewPagerAdapter;
@@ -47,6 +50,25 @@ public class YourRideFragment extends Fragment {
         initComponent();
         tabLayoutController();
         clickHandlerComponent();
+
+
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
+        view.setOnKeyListener((v, keyCode, event) -> {
+            if (event.getAction() != KeyEvent.ACTION_DOWN)
+                return true;
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                if (doubleBackToExitPressedOnce) {
+                    getActivity().finish();
+                    return false;
+                }
+                doubleBackToExitPressedOnce = true;
+                Toast.makeText(getActivity(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(() -> doubleBackToExitPressedOnce = false, 5000);
+                return true;
+            }
+            return false;
+        });
 
         return  view;
     }

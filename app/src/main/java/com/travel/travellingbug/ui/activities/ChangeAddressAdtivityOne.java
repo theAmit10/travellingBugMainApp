@@ -34,7 +34,7 @@ public class ChangeAddressAdtivityOne extends AppCompatActivity {
         System.out.println("postal address len "+SharedHelper.getKey(getApplicationContext(), "full_address").length());
 
 
-        if(SharedHelper.getKey(getApplicationContext(), "full_address").equalsIgnoreCase("") || SharedHelper.getKey(getApplicationContext(), "full_address").equalsIgnoreCase("null")){
+        if( SharedHelper.getKey(getApplicationContext(), "full_address").equalsIgnoreCase("null")){
             addPostalAddressTv.setText("Add Postal Address");
         }else {
             addPostalAddressTv.setText(SharedHelper.getKey(getApplicationContext(), "full_address"));

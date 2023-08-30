@@ -10,10 +10,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+         />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" /> -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -30,10 +33,6 @@
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
-
-
-
-
 
     <application
         android:name=".ClassLuxApp"
@@ -52,6 +51,24 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
+        <activity
+            android:name=".ui.activities.PdfPogoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.PdfActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.login.UpdateGmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.login.GoogleUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activities.UpdateEmailAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".chat.InboxChatActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activities.TrackLinkUserActivity"
             android:exported="false" />
@@ -449,6 +466,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+
     </application>
 
 </manifest>

@@ -122,6 +122,7 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
             vehicleModelETL.setText(SharedHelper.getKey(getApplicationContext(), "service_make"));
             vehicleAcETL.setText(SharedHelper.getKey(getApplicationContext(), "service_ac"));
             vehicleSeatETL.setText(SharedHelper.getKey(getApplicationContext(), "service_capacity"));
+            service_seat = vehicleSeatETL.getText().toString();
 
             DisplayMetrics displayMetrics = new DisplayMetrics();
             getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -410,16 +411,40 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
 
         updateProfile.setOnClickListener(view -> {
 
-            if (checkStoragePermission()) {
-                goToImageIntent();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    requestPermissions(new String[]{Manifest.permission.CAMERA,
-                            Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+            if (isInternet) {
+                if(service_ac.equalsIgnoreCase("")){
+                    Toast.makeText(context, "Add Ac Details", Toast.LENGTH_SHORT).show();
+                }else if(service_manufacture.equalsIgnoreCase("")){
+                    Toast.makeText(context, "Add Manufacture Details", Toast.LENGTH_SHORT).show();
+                }else if(service_seat.equalsIgnoreCase("")){
+                    Toast.makeText(context, "Add Vehicle Capacity", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    if (checkStoragePermission()) {
+                        goToImageIntent();
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            requestPermissions(new String[]{Manifest.permission.CAMERA,
+                                    Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+                        }
+                    } else {
+                        goToImageIntent();
+
+                    }
                 }
             } else {
-                goToImageIntent();
-
+                displayMessage(getString(R.string.something_went_wrong_net));
             }
+
+//            if (checkStoragePermission()) {
+//                goToImageIntent();
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                    requestPermissions(new String[]{Manifest.permission.CAMERA,
+//                            Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+//                }
+//            } else {
+//                goToImageIntent();
+//
+//            }
 
         });
 
@@ -568,7 +593,8 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
                         }, error -> {
                     //                if ((customDialog != null) && customDialog.isShowing())
                     progressDialog.dismiss();
-                    displayMessage(getString(R.string.something_went_wrong));
+                    error.printStackTrace();
+//                    displayMessage(getString(R.string.something_went_wrong));
                 }) {
                     @Override
                     public Map<String, String> getParams() {

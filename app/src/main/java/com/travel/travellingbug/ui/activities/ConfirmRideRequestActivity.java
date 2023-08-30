@@ -1,6 +1,7 @@
 package com.travel.travellingbug.ui.activities;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -223,9 +224,9 @@ public class ConfirmRideRequestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 confirmDialog.dismiss();
-//                Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
-//                startActivity(intent);
-                finish();
+                Intent intent = new Intent(getApplicationContext(), HomeScreenActivity.class);
+                startActivity(intent);
+//                finish();
             }
         });
     }
@@ -239,7 +240,9 @@ public class ConfirmRideRequestActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, URLHelper.BOOK_FOR_UPCOMMING_TRIPS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                customDialog.dismiss();
+                if(customDialog.isShowing()){
+                    customDialog.dismiss();
+                }
 
                 System.out.println("size : " + response.length());
                 System.out.println("data : " + response);
@@ -251,7 +254,9 @@ public class ConfirmRideRequestActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                customDialog.dismiss();
+                if(customDialog.isShowing()){
+                    customDialog.dismiss();
+                }
                 Toast.makeText(ConfirmRideRequestActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
             }
         }) {

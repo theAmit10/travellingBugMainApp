@@ -189,6 +189,7 @@ public class OnGoingTrips extends Fragment {
                     getActivity().runOnUiThread(() -> {
                         customDialog.dismiss();
                         recyclerView.setVisibility(View.GONE);
+                        mFrameLayout.setVisibility(View.GONE);
                         errorLayout.setVisibility(View.VISIBLE);
                         error.printStackTrace();
                         displayMessage(getString(R.string.something_went_wrong));

@@ -3,24 +3,24 @@
 3    package="com.travel.travellingbug.test" >
 4
 5    <uses-sdk
-5-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:5:5-74
+5-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:5:5-74
 6        android:minSdkVersion="21"
-6-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:5:15-41
-7        android:targetSdkVersion="32" />
-7-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:5:42-71
+6-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:5:15-41
+7        android:targetSdkVersion="33" />
+7-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:5:42-71
 8
 9    <instrumentation
-9-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:11:5-15:74
+9-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:11:5-15:74
 10        android:name="androidx.test.runner.AndroidJUnitRunner"
-10-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:11:22-76
+10-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:11:22-76
 11        android:functionalTest="false"
-11-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:14:22-52
+11-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:14:22-52
 12        android:handleProfiling="false"
-12-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:13:22-53
+12-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:13:22-53
 13        android:label="Tests for com.travel.travellingbug"
-13-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:15:22-72
+13-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:15:22-72
 14        android:targetPackage="com.travel.travellingbug" />
-14-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:12:22-70
+14-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:12:22-70
 15
 16    <queries>
 16-->[androidx.test:runner:1.4.0] C:\Users\Demon\Music\truelysell-android\truelysell-android\gradle\caches\transforms-2\files-2.1\566e76af4ead1499d767eb501aeb05a0\runner-1.4.0\AndroidManifest.xml:24:5-28:15
@@ -36,11 +36,11 @@
 20    </queries>
 21
 22    <application android:debuggable="true" >
-22-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:7:5-9:19
-22-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:7:18-43
+22-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:7:5-9:19
+22-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:7:18-43
 23        <uses-library android:name="android.test.runner" />
-23-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:8:9-60
-23-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger14332941726862990820.xml:8:23-57
+23-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:8:9-60
+23-->C:\Users\Demon\Desktop\Driver_App\Driver\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger12288457291855401612.xml:8:23-57
 24    </application>
 25
 26</manifest>

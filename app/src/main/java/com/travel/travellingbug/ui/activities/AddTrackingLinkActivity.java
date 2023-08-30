@@ -42,6 +42,7 @@ public class AddTrackingLinkActivity extends AppCompatActivity {
     String latitude="";
     String longitude="";
     String rideid="";
+    String provider_id="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class AddTrackingLinkActivity extends AppCompatActivity {
             latitude = getIntent().getStringExtra("latitude");
             longitude = getIntent().getStringExtra("longitude");
             rideid = getIntent().getStringExtra("rideid");
+            provider_id = getIntent().getStringExtra("provider_id");
 
             if(getIntent().getStringExtra("rideid") == null){
                 btnSubmit.setVisibility(View.GONE);
@@ -246,7 +248,7 @@ public class AddTrackingLinkActivity extends AppCompatActivity {
                     Intent intent = new Intent(Intent.ACTION_SEND);
                     intent.setType("text/plain");
                     String name = SharedHelper.getKey(getApplicationContext(), "first_name");
-                    String text = "TravellingBug App,\n" + name + "\nwould like to share a trip with you at \n" + shareUrl + SharedHelper.getKey(getApplicationContext(),"id");
+                    String text = "TravellingBug App,\n" + name + "\nwould like to share a trip with you at \n" + shareUrl + provider_id;
                     intent.putExtra(Intent.EXTRA_SUBJECT, "TravellingBug App");
                     intent.putExtra(Intent.EXTRA_TEXT, text);
                     startActivity(Intent.createChooser(intent, "Share Via"));

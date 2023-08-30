@@ -22,7 +22,7 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
-import com.travel.travellingbug.chat.UserChatActivity;
+import com.travel.travellingbug.chat.InboxChatActivity;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 
@@ -170,10 +170,10 @@ public class DriverProfileAboutFragment extends Fragment {
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), UserChatActivity.class);
+                Intent intent = new Intent(getContext(), InboxChatActivity.class);
                 intent.putExtra("requestId", request_id);
                 intent.putExtra("providerId", providerId);
-                intent.putExtra("userId", user_id);
+                intent.putExtra("userId", SharedHelper.getKey(getContext(),"id"));
                 intent.putExtra("userName", providerFirstName);
                 intent.putExtra("messageType", "pu");
                 startActivity(intent);
