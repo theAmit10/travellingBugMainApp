@@ -292,14 +292,15 @@ public class ProfilePictureActivity extends AppCompatActivity {
             try {
                 isImageChanged = true;
                 //bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), uri);
-
+                System.out.println("Working SELECT_PHOTO");
 
 
                 Bitmap resizeImg = getBitmapFromUri(this, uri);
                 if (resizeImg != null) {
-                    Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg, AppHelper.getPath(this, uri));
-                    profile_Image.setImageBitmap(reRotateImg);
                     try {
+//                        Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg, AppHelper.getPath(this, uri));
+//                        profile_Image.setImageBitmap(reRotateImg);
+                        profile_Image.setImageBitmap(resizeImg);
                         updateProfileWithImage();
                     }catch (Exception e) {
                         e.printStackTrace();
@@ -310,7 +311,7 @@ public class ProfilePictureActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        if(requestCode == SELECT_PHOTO_13 && resultCode == RESULT_OK && data != null && data.getData() != null)
+        else if(requestCode == SELECT_PHOTO_13 && resultCode == RESULT_OK && data != null && data.getData() != null)
         {
             System.out.println("Working SELECT_PHOTO_13");
             uri = data.getData();
@@ -319,8 +320,9 @@ public class ProfilePictureActivity extends AppCompatActivity {
                 //bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), uri);
                 Bitmap resizeImg = getBitmapFromUri(this, uri);
                 if (resizeImg != null) {
-                    Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg, AppHelper.getPath(this, uri));
-                    profile_Image.setImageBitmap(reRotateImg);
+//                    Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg, AppHelper.getPath(this, uri));
+//                    profile_Image.setImageBitmap(reRotateImg);
+                    profile_Image.setImageBitmap(resizeImg);
                     updateProfileWithImage();
                     System.out.println("Working SELECT_PHOTO_13 bottom");
                 }

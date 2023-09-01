@@ -318,9 +318,10 @@ public class DocumentStatus extends AppCompatActivity {
                             if (resizeImg != null) {
                                 documentUri = uri;
 
-                                Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg,
-                                        AppHelper.getPath(DocumentStatus.this, uri));
-                                showImage1(reRotateImg);
+//                                Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg,
+//                                        AppHelper.getPath(DocumentStatus.this, uri));
+//                                showImage1(reRotateImg);
+                                showImage1(resizeImg);
                             }
 
                         } catch (Exception e) {

@@ -654,9 +654,10 @@ public class DocUploadActivity extends AppCompatActivity {
                             if (resizeImg != null) {
                                 documentUri = uri;
                                 Log.e("calllogbook", "calllogbook");
-                                Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg,
-                                        AppHelper.getPath(DocUploadActivity.this, uri));
-                                showImage1(reRotateImg);
+//                                Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg,
+//                                        AppHelper.getPath(DocUploadActivity.this, uri));
+//                                showImage1(reRotateImg);
+                                showImage1(resizeImg);
                             }
 
                         } catch (Exception e) {

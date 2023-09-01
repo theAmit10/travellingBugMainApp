@@ -512,8 +512,9 @@ public class VehicleDetailsMenufactureActivity extends AppCompatActivity {
                 //bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), uri);
                 Bitmap resizeImg = getBitmapFromUri(this, uri);
                 if (resizeImg != null) {
-                    Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg, AppHelper.getPath(this, uri));
-                    vehicleImage.setImageBitmap(reRotateImg);
+//                    Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg, AppHelper.getPath(this, uri));
+//                    vehicleImage.setImageBitmap(reRotateImg);
+                    vehicleImage.setImageBitmap(resizeImg);
                     updateProfileWithImage();
                 }
             } catch (IOException e) {

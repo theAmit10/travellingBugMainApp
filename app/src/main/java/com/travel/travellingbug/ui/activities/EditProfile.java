@@ -278,8 +278,9 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
                 //bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), uri);
                 Bitmap resizeImg = getBitmapFromUri(this, uri);
                 if (resizeImg != null) {
-                    Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg, AppHelper.getPath(this, uri));
-                    profile_Image.setImageBitmap(reRotateImg);
+//                    Bitmap reRotateImg = AppHelper.modifyOrientation(resizeImg, AppHelper.getPath(this, uri));
+//                    profile_Image.setImageBitmap(reRotateImg);
+                    profile_Image.setImageBitmap(resizeImg);
                     updateProfileWithImage();
                 }
             } catch (IOException e) {

@@ -69,7 +69,7 @@ public class InboxChatActivity extends AppCompatActivity {
     String currentMessagelength = "0";
     int differenceCount = 0;
     EmojiPopup emojiPopup;
-    ViewGroup rootView;
+    public ViewGroup rootView;
     EmojiEditText msgInputText;
     String TAG = "USERCHATACTIVITY";
     private RecyclerView recyclerChat;
