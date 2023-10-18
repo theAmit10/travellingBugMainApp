@@ -646,7 +646,7 @@ public class OnGoingTrips extends Fragment {
 
                 if(!providerServiceJsonObj.optString("service_model").equalsIgnoreCase("null")){
                     String vehicle_name = providerServiceJsonObj.optString("service_model")+ " " + providerServiceJsonObj.optString("service_name") +" | "+providerServiceJsonObj.optString("service_color").toLowerCase();
-                    holder.car_name.setText(vehicle_name);
+                    holder.car_name.setText(vehicle_name.trim());
                 }else {
                     holder.car_name.setText("");
                 }

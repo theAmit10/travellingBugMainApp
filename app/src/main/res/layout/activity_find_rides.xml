@@ -20,7 +20,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/_10sdp"
             android:padding="@dimen/_7sdp"
-            android:src="@drawable/back_white" />
+            android:src="@drawable/back_white"
+            android:contentDescription="backarrow" />
 
         <TextView
             android:layout_width="match_parent"
@@ -30,7 +31,7 @@
             android:text="FIND A RIDE"
             android:fontFamily="@font/nunito_bold"
             android:textColor="@color/white"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_14ssp" />
     </LinearLayout>
 
     <LinearLayout
@@ -66,7 +67,7 @@
                 android:textStyle="bold"
                 android:text=""
                 android:textColor="@color/dark_gray"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_9ssp" />
 
             <TextView
                 android:id="@+id/destination"
@@ -79,7 +80,7 @@
                 android:maxLines="1"
                 android:text=""
                 android:textColor="@color/dark_gray"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_9ssp" />
 
         </LinearLayout>
 
@@ -104,7 +105,7 @@
                 android:maxLines="1"
                 android:text=""
                 android:textColor="@color/dark_gray"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_9ssp" />
 
             <TextView
                 android:id="@+id/time"
@@ -120,7 +121,7 @@
                 android:text="11:30 PM"
                 android:visibility="gone"
                 android:textColor="@color/dark_gray"
-                android:textSize="@dimen/_9sdp" />
+                android:textSize="@dimen/_9ssp" />
 
         </LinearLayout>
     </LinearLayout>
@@ -227,7 +228,7 @@
                             android:paddingEnd="@dimen/_10sdp"
                             android:text="No Rides Found"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_16sdp"
+                            android:textSize="@dimen/_16ssp"
                             android:textStyle="bold" />
 
 
@@ -239,7 +240,7 @@
                             android:layout_marginTop="20dp"
                             android:text="Currently, no driver available try after sometime. "
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12ssp" />
 
                     </LinearLayout>
 

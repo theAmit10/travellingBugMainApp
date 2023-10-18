@@ -64,7 +64,7 @@
                 android:maxLines="1"
                 android:paddingTop="@dimen/_5sdp"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14ssp" />
 
 <!--            <TextView-->
 <!--                android:id="@+id/tvRate"-->
@@ -103,7 +103,7 @@
                 android:maxLines="2"
                 android:paddingTop="@dimen/_5sdp"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/_10sdp" />
+                android:textSize="@dimen/_10ssp" />
 
 
         </LinearLayout>

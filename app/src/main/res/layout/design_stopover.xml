@@ -20,7 +20,8 @@
             android:layout_weight="0"
             android:padding="@dimen/_5sdp"
             app:srcCompat="@drawable/back"
-            app:tint="@color/green" />
+            app:tint="@color/green"
+            tools:ignore="ContentDescription,InefficientWeight" />
 
     </LinearLayout>
 
@@ -35,8 +36,9 @@
         android:paddingEnd="@dimen/_20sdp"
         android:text="Add stopovers to get more passengers"
         android:textColor="@color/black"
-        android:textSize="@dimen/_18sdp"
-        android:textStyle="bold" />
+        android:textSize="@dimen/_18ssp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
 
     <androidx.core.widget.NestedScrollView
@@ -88,7 +90,7 @@
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:hint="Add location"
                     android:padding="@dimen/_10sdp"
-                    tools:ignore="TouchTargetSizeCheck"
+                    tools:ignore="HardcodedText,TouchTargetSizeCheck"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,8 +108,8 @@
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_13sdp"
-             />
+                android:textSize="@dimen/_13ssp"
+                tools:ignore="UseCompatTextViewDrawableXml" />
 
         </LinearLayout>
 
@@ -128,7 +130,8 @@
             app:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_arrow_forward" />
+            app:srcCompat="@drawable/ic_arrow_forward"
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

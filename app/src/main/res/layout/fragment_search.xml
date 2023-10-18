@@ -21,7 +21,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/back_org"
+                android:background="@drawable/travelling"
                 android:orientation="vertical">
 
                 <!-- Map frame -->
@@ -114,7 +114,7 @@
                                         android:paddingEnd="@dimen/_10sdp"
                                         android:text="Leaving From"
                                         android:textColor="@color/black"
-                                        android:textSize="@dimen/_11sdp"
+                                        android:textSize="@dimen/_11ssp"
                                         android:textStyle="bold"
                                         app:layout_constraintBottom_toBottomOf="@+id/imageView11"
                                         app:layout_constraintEnd_toEndOf="parent"
@@ -165,7 +165,7 @@
                                         android:paddingEnd="@dimen/_10sdp"
                                         android:text="Leaving From"
                                         android:textColor="@color/black"
-                                        android:textSize="@dimen/_11sdp"
+                                        android:textSize="@dimen/_11ssp"
                                         android:textStyle="bold"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintEnd_toEndOf="parent"
@@ -185,7 +185,7 @@
                                 android:fontFamily="@font/nunito_bold"
                                 android:text="Payment Method"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_18sdp"
+                                android:textSize="@dimen/_18ssp"
                                 android:visibility="gone" />
 
                             <androidx.cardview.widget.CardView
@@ -229,7 +229,7 @@
                                             android:textStyle="bold"
                                             android:text="Cash"
                                             android:textColor="@color/black"
-                                            android:textSize="@dimen/_15sdp" />
+                                            android:textSize="@dimen/_15ssp" />
 
 
                                     </LinearLayout>
@@ -301,7 +301,7 @@
                                     android:gravity="center_vertical"
                                     android:text="@string/cash"
                                     android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:textSize="@dimen/_10ssp" />
 
 
                                 <ImageView
@@ -323,7 +323,7 @@
                                     android:gravity="center"
                                     android:text="@string/promo_code"
                                     android:textColor="@color/black"
-                                    android:textSize="@dimen/_12sdp"
+                                    android:textSize="@dimen/_12ssp"
                                     android:visibility="visible" />
 
                                 <com.travel.travellingbug.utills.MyBoldTextView
@@ -387,7 +387,7 @@
                                 android:fontFamily="@font/nunito_regular"
                                 android:textStyle="bold"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_14sdp" />
+                                android:textSize="@dimen/_14ssp" />
 
                             <ProgressBar
                                 android:id="@+id/progress"
@@ -437,7 +437,7 @@
                                 android:gravity="center"
                                 android:text="BOOK RIDE"
                                 android:textColor="@color/button_text_color"
-                                android:textSize="@dimen/_12sdp"
+                                android:textSize="@dimen/_12ssp"
                                 android:visibility="gone" />
 
                             <TextView
@@ -451,7 +451,7 @@
                                 android:gravity="center"
                                 android:text="CONTINUE"
                                 android:textColor="@color/button_text_color"
-                                android:textSize="@dimen/_12sdp"
+                                android:textSize="@dimen/_12ssp"
                                 android:visibility="gone" />
 
                             <!--                            <androidx.cardview.widget.CardView-->
@@ -478,7 +478,7 @@
                                 android:paddingEnd="@dimen/_8sdp"
                                 android:text="NEXT"
                                 android:textColor="@color/button_text_color"
-                                android:textSize="@dimen/_12sdp"
+                                android:textSize="@dimen/_12ssp"
                                 android:visibility="gone" />
 
 
@@ -504,7 +504,7 @@
                                     android:paddingEnd="@dimen/_8sdp"
                                     android:text="CANCEL RIDE"
                                     android:textColor="@color/button_text_color"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
 
 
                                 <TextView
@@ -521,7 +521,7 @@
                                     android:paddingEnd="@dimen/_8sdp"
                                     android:text="CONTINUE"
                                     android:textColor="@color/button_text_color"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
 
 
                             </LinearLayout>
@@ -569,7 +569,7 @@
                                 android:maxLines="1"
                                 android:text="Rate Card"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_16sdp" />
+                                android:textSize="@dimen/_16ssp" />
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/imgProviderPopup"
@@ -587,7 +587,7 @@
                                 android:maxLines="1"
                                 android:text=""
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_14sdp" />
+                                android:textSize="@dimen/_14ssp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -611,7 +611,7 @@
                                         android:maxLines="1"
                                         android:text="@string/base_fare"
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                     <com.travel.travellingbug.utills.MyBoldTextView
                                         android:id="@+id/lblBasePricePopup"
@@ -622,7 +622,7 @@
                                         android:maxLines="1"
                                         android:text=""
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -640,7 +640,7 @@
                                         android:maxLines="1"
                                         android:text="@string/fare"
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                     <com.travel.travellingbug.utills.MyBoldTextView
                                         android:id="@+id/lblPriceKm"
@@ -651,7 +651,7 @@
                                         android:maxLines="1"
                                         android:text=""
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                 </LinearLayout>
 
@@ -670,7 +670,7 @@
                                         android:maxLines="1"
                                         android:text="@string/fare_min"
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                     <com.travel.travellingbug.utills.MyBoldTextView
                                         android:id="@+id/lblPriceMin"
@@ -681,7 +681,7 @@
                                         android:maxLines="1"
                                         android:text=""
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -698,7 +698,7 @@
                                         android:maxLines="1"
                                         android:text="@string/fare_type"
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                     <com.travel.travellingbug.utills.MyBoldTextView
                                         android:id="@+id/lblCalculationType"
@@ -709,7 +709,7 @@
                                         android:maxLines="1"
                                         android:text=""
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -726,7 +726,7 @@
                                         android:maxLines="1"
                                         android:text="@string/capacity"
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
 
                                     <LinearLayout
@@ -752,7 +752,7 @@
                                             android:paddingStart="@dimen/_2sdp"
                                             android:text="5"
                                             android:textColor="@color/white"
-                                            android:textSize="@dimen/_12sdp" />
+                                            android:textSize="@dimen/_12ssp" />
                                     </LinearLayout>
                                 </LinearLayout>
 
@@ -767,7 +767,7 @@
                                 android:lineSpacingMultiplier="1.3"
                                 android:text="The fare will be the price presented upon booking, or, if the journey changes, the fare will be based on the rates provided. Tap fare for details."
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_10sdp" />
+                                android:textSize="@dimen/_10ssp" />
                         </LinearLayout>
 
                         <View
@@ -782,7 +782,7 @@
                             android:background="@color/colorPrimaryDark"
                             android:text="@string/done"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_14sdp" />
+                            android:textSize="@dimen/_14ssp" />
 
                     </LinearLayout>
 
@@ -813,7 +813,7 @@
                                 android:layout_marginBottom="@dimen/_10sdp"
                                 android:text="@string/schedule"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_16sdp"
+                                android:textSize="@dimen/_16ssp"
                                 android:textStyle="bold" />
 
                             <LinearLayout
@@ -830,7 +830,7 @@
                                     android:layout_marginBottom="@dimen/_7sdp"
                                     android:text="@string/sample_date"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textSize="@dimen/_14ssp" />
 
                                 <com.travel.travellingbug.utills.MyBoldTextView
                                     android:id="@+id/scheduleTime"
@@ -838,7 +838,7 @@
                                     android:layout_height="@dimen/_25sdp"
                                     android:text="@string/sample_time"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textSize="@dimen/_14ssp" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -861,7 +861,7 @@
                             android:background="@drawable/red_color_rect_shape"
                             android:text="@string/next"
                             android:textColor="@color/button_text_color"
-                            android:textSize="@dimen/_14sdp" />
+                            android:textSize="@dimen/_14ssp" />
 
 
                     </LinearLayout>
@@ -913,7 +913,7 @@
                                         android:paddingBottom="@dimen/_5sdp"
                                         android:text="lmdlkmdnf"
                                         android:textColor="@color/black_text_color"
-                                        android:textSize="@dimen/_14sdp" />
+                                        android:textSize="@dimen/_14ssp" />
 
                                     <com.travel.travellingbug.utills.MyBoldTextView
                                         android:id="@+id/lblETA"
@@ -926,7 +926,7 @@
                                         android:paddingBottom="@dimen/_5sdp"
                                         android:text=""
                                         android:textColor="@color/black_text_color"
-                                        android:textSize="@dimen/_14sdp" />
+                                        android:textSize="@dimen/_14ssp" />
 
                                 </LinearLayout>
 
@@ -966,7 +966,7 @@
                                         android:layout_marginTop="@dimen/_5sdp"
                                         android:text="@string/sample_name"
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                     <RatingBar
                                         android:id="@+id/ratingProvider"
@@ -1002,7 +1002,7 @@
                                         android:layout_marginTop="@dimen/_5sdp"
                                         android:text="@string/sample_service"
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_11sdp" />
+                                        android:textSize="@dimen/_11ssp" />
 
                                     <com.travel.travellingbug.utills.MyBoldTextView
                                         android:id="@+id/lblModelNumber"
@@ -1014,7 +1014,7 @@
                                         android:lineSpacingMultiplier="1.3"
                                         android:text="Audi A6 PY 05 A 2388"
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_10sdp" />
+                                        android:textSize="@dimen/_10ssp" />
 
                                 </LinearLayout>
 
@@ -1043,7 +1043,7 @@
                                 android:lineSpacingMultiplier="1.3"
                                 android:padding="@dimen/_5sdp"
                                 android:text="@string/surge_pricing"
-                                android:textSize="@dimen/_10sdp"
+                                android:textSize="@dimen/_10ssp"
                                 android:visibility="gone" />
 
                             <LinearLayout
@@ -1066,7 +1066,7 @@
                                     android:backgroundTint="@color/confirmcolor"
                                     android:text="@string/cancel_trip"
                                     android:textColor="@color/button_text_color"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                             </LinearLayout>
 
@@ -1102,7 +1102,7 @@
                                 android:paddingBottom="@dimen/_5sdp"
                                 android:text="@string/invoice"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_14sdp"
+                                android:textSize="@dimen/_14ssp"
                                 android:textStyle="bold" />
 
                             <LinearLayout
@@ -1118,7 +1118,7 @@
                                     android:gravity="start"
                                     android:text="@string/book_name"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
 
 
                                 <com.travel.travellingbug.utills.MyBoldTextView
@@ -1128,7 +1128,7 @@
                                     android:layout_weight="1"
                                     android:gravity="end"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -1144,7 +1144,7 @@
                                     android:gravity="start"
                                     android:text="@string/base_price"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <com.travel.travellingbug.utills.MyBoldTextView
                                     android:id="@+id/lblBasePrice"
@@ -1154,7 +1154,7 @@
                                     android:gravity="end"
                                     android:text="@string/sample_base_price"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -1171,7 +1171,7 @@
                                     android:gravity="start"
                                     android:text="@string/extra_price"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <com.travel.travellingbug.utills.MyBoldTextView
                                     android:id="@+id/lblExtraPrice"
@@ -1181,7 +1181,7 @@
                                     android:gravity="end"
                                     android:text="@string/sample_base_price"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -1197,7 +1197,7 @@
                                     android:gravity="start"
                                     android:text="@string/distance_price"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <com.travel.travellingbug.utills.MyBoldTextView
                                     android:id="@+id/lblDistancePrice"
@@ -1207,7 +1207,7 @@
                                     android:gravity="end"
                                     android:text="@string/sample_base_price"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -1223,7 +1223,7 @@
                                     android:gravity="start"
                                     android:text="@string/tax"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <com.travel.travellingbug.utills.MyBoldTextView
                                     android:id="@+id/lblTaxPrice"
@@ -1233,7 +1233,7 @@
                                     android:gravity="end"
                                     android:text="@string/sample_base_price"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -1250,7 +1250,7 @@
                                     android:gravity="start"
                                     android:text="@string/commision"
                                     android:textColor="@android:color/black"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <com.travel.travellingbug.utills.MyBoldTextView
                                     android:layout_width="match_parent"
@@ -1259,7 +1259,7 @@
                                     android:gravity="end"
                                     android:text="@string/sample_base_price"
                                     android:textColor="@android:color/black"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
                             </LinearLayout>
 
 
@@ -1277,7 +1277,7 @@
 
                                     android:text="@string/total"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_16sdp" />
+                                    android:textSize="@dimen/_16ssp" />
 
                                 <com.travel.travellingbug.utills.MyBoldTextView
                                     android:id="@+id/lblTotalPrice"
@@ -1287,7 +1287,7 @@
                                     android:gravity="end"
                                     android:text="@string/sample_base_price"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_16sdp"
+                                    android:textSize="@dimen/_16ssp"
                                     android:textStyle="bold" />
                             </LinearLayout>
 
@@ -1305,7 +1305,7 @@
                                 android:padding="@dimen/_5sdp"
                                 android:text="@string/paid_driver"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_15sdp" />
+                                android:textSize="@dimen/_15ssp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -1329,14 +1329,14 @@
                                     android:layout_marginStart="@dimen/_10sdp"
                                     android:text="@string/selected_payment_mode"
                                     android:textColor="@android:color/black"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
 
                                 <com.travel.travellingbug.utills.MyBoldTextView
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:gravity="end"
                                     android:text="@string/change"
-                                    android:textSize="@dimen/_12sdp"
+                                    android:textSize="@dimen/_12ssp"
                                     android:visibility="gone" />
 
                             </LinearLayout>
@@ -1385,7 +1385,7 @@
                                 android:gravity="center_horizontal"
                                 android:text="@string/rate_provider"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_14sdp" />
+                                android:textSize="@dimen/_14ssp" />
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/imgProviderRate"
@@ -1406,7 +1406,7 @@
                                 android:gravity="center"
                                 android:text="Rajan"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_14sdp" />
+                                android:textSize="@dimen/_14ssp" />
 
                             <RatingBar
                                 android:id="@+id/ratingProviderRate"
@@ -1437,7 +1437,7 @@
                                 android:padding="@dimen/_5sdp"
                                 android:textColor="@color/white"
                                 android:textColorHint="@color/white"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12ssp" />
                         </LinearLayout>
 
 
@@ -1453,7 +1453,7 @@
                             android:padding="@dimen/_5sdp"
                             android:text="@string/submit"
                             android:textColor="@color/button_text_color"
-                            android:textSize="@dimen/_14sdp" />
+                            android:textSize="@dimen/_14ssp" />
                     </LinearLayout>
 
 
@@ -1500,7 +1500,7 @@
                                 android:padding="@dimen/_7sdp"
                                 android:text="@string/driver_is_on_the_way"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </RelativeLayout>
 
@@ -1553,7 +1553,7 @@
                                 android:gravity="center"
                                 android:padding="@dimen/_7sdp"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </RelativeLayout>
 
@@ -1604,7 +1604,7 @@
                                 android:gravity="center"
                                 android:padding="@dimen/_7sdp"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </RelativeLayout>
 
@@ -1655,7 +1655,7 @@
                                 android:gravity="center"
                                 android:padding="@dimen/_7sdp"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12ssp" />
 
                         </RelativeLayout>
 
@@ -1769,7 +1769,7 @@
                                 android:layout_marginTop="@dimen/_10sdp"
                                 android:text="Payment"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_12sdp"
+                                android:textSize="@dimen/_12ssp"
                                 android:textStyle="bold"
                                 android:visibility="gone" />
 
@@ -1794,7 +1794,7 @@
                                         android:layout_height="wrap_content"
                                         android:text="Pickup"
                                         android:textColor="@color/cardview_dark_background"
-                                        android:textSize="@dimen/_10sdp" />
+                                        android:textSize="@dimen/_10ssp" />
 
                                     <TextView
                                         android:id="@+id/tvSourcePoint"
@@ -1804,7 +1804,7 @@
                                         android:maxLines="1"
                                         android:text=""
                                         android:textColor="@color/cardview_dark_background"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
                                 </LinearLayout>
 
                                 <View
@@ -1822,7 +1822,7 @@
                                         android:layout_height="wrap_content"
                                         android:text="Drop off"
                                         android:textColor="@color/cardview_dark_background"
-                                        android:textSize="@dimen/_10sdp" />
+                                        android:textSize="@dimen/_10ssp" />
 
                                     <TextView
                                         android:id="@+id/tvDroppoint"
@@ -1832,7 +1832,7 @@
                                         android:maxLines="1"
                                         android:text=""
                                         android:textColor="@color/cardview_dark_background"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -1887,7 +1887,7 @@
                             android:layout_marginStart="@dimen/_10sdp"
 
                             android:layout_marginEnd="@dimen/_10sdp"
-                            android:elevation="@dimen/_5sdp">
+                            android:elevation="@dimen/_20sdp">
 
                             <FrameLayout
                                 android:id="@+id/frmDestination"
@@ -1966,7 +1966,7 @@
                                         android:gravity="center"
                                         android:text="@string/change_destination"
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_10sdp" />
+                                        android:textSize="@dimen/_10ssp" />
 
                                     <RadioButton
                                         android:id="@+id/addStop"
@@ -1978,7 +1978,7 @@
                                         android:gravity="center"
                                         android:text="@string/add_stop"
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_10sdp" />
+                                        android:textSize="@dimen/_10ssp" />
 
                                     <RadioButton
                                         android:id="@+id/roundtrip"
@@ -1990,7 +1990,7 @@
                                         android:gravity="center"
                                         android:text="@string/round_trip"
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_10sdp" />
+                                        android:textSize="@dimen/_10ssp" />
                                 </RadioGroup>
 
                                 <FrameLayout
@@ -2022,7 +2022,7 @@
                                             android:gravity="center_vertical"
                                             android:maxLines="1"
                                             android:text="@string/enter_destination"
-                                            android:textSize="@dimen/_14sdp" />
+                                            android:textSize="@dimen/_14ssp" />
 
                                     </androidx.cardview.widget.CardView>
                                 </FrameLayout>
@@ -2058,7 +2058,7 @@
                                         android:textColorHint="@color/black"
                                         android:text="Leaving From"
                                         android:textColor="@color/black"
-                                        android:textSize="@dimen/_11sdp"
+                                        android:textSize="@dimen/_11ssp"
                                         android:textStyle="bold" />
 
                                     <ImageView
@@ -2102,7 +2102,7 @@
                                         android:padding="@dimen/_10sdp"
                                         android:text="Going To"
                                         android:textColor="@color/black"
-                                        android:textSize="@dimen/_11sdp"
+                                        android:textSize="@dimen/_11ssp"
                                         android:textStyle="bold" />
 
                                 </LinearLayout>
@@ -2138,7 +2138,7 @@
                                         android:padding="@dimen/_5sdp"
                                         android:text="Today"
                                         android:textColor="@color/black"
-                                        android:textSize="@dimen/_11sdp"
+                                        android:textSize="@dimen/_11ssp"
                                         android:textStyle="bold" />
 
                                     <View
@@ -2158,7 +2158,7 @@
                                         android:padding="@dimen/_10sdp"
                                         android:text="1"
                                         android:textColor="@color/black"
-                                        android:textSize="@dimen/_14sdp"
+                                        android:textSize="@dimen/_14ssp"
                                         android:textStyle="bold" />
 
 
@@ -2174,7 +2174,7 @@
                                     android:fontFamily="@font/nunito_bold"
                                     android:textAllCaps="false"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_12sdp" />
+                                    android:textSize="@dimen/_12ssp" />
 
 
                             </LinearLayout>
@@ -2217,6 +2217,7 @@
                                         android:layout_marginStart="@dimen/_10sdp"
                                         android:layout_marginTop="@dimen/_30sdp"
                                         android:layout_marginEnd="@dimen/_10sdp"
+                                        android:visibility="gone"
                                         android:background="@color/colorGray_light"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintHorizontal_bias="0.5"
@@ -2228,6 +2229,7 @@
                                         android:layout_width="@dimen/_50sdp"
                                         android:layout_height="@dimen/_4sdp"
                                         android:layout_marginTop="@dimen/_10sdp"
+                                        android:visibility="gone"
                                         android:background="@drawable/auth_btn_green_bg"
                                         app:layout_constraintBottom_toBottomOf="@+id/view"
                                         app:layout_constraintEnd_toEndOf="@+id/view"
@@ -2317,7 +2319,7 @@
                                     android:gravity="center"
                                     android:text="@string/looking_for_ride"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_13sdp"
+                                    android:textSize="@dimen/_13ssp"
                                     android:visibility="visible" />
 
                                 <com.travel.travellingbug.utills.MyButton
@@ -2382,7 +2384,7 @@
                             android:maxLines="2"
                             android:text="@string/source_location"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_14sdp" />
+                            android:textSize="@dimen/_14ssp" />
 
                         <ImageView
                             android:id="@+id/cross_icon"
@@ -2422,7 +2424,7 @@
                         android:paddingBottom="@dimen/_25sdp"
                         android:text="Apply"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <ImageView
@@ -2491,7 +2493,7 @@
                         android:paddingTop="@dimen/_3sdp"
                         android:text="1"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_22sdp"
+                        android:textSize="@dimen/_22ssp"
                         android:textStyle="bold"
                         android:visibility="gone" />
 
@@ -2505,7 +2507,7 @@
                         android:padding="@dimen/_5sdp"
                         android:text="@string/surge_pricing_title"
                         android:textColor="@android:color/holo_blue_light"
-                        android:textSize="@dimen/_13sdp"
+                        android:textSize="@dimen/_13ssp"
                         android:visibility="gone" />
 
                     <LinearLayout
@@ -2572,7 +2574,7 @@
                                         android:maxLines="2"
                                         android:text="Anamika Enclave"
                                         android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                     <com.travel.travellingbug.utills.MyTextView
                                         android:id="@+id/lblCmfrmDestAddress"
@@ -2583,7 +2585,7 @@
 
                                         android:maxLines="2"
                                         android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                 </LinearLayout>
 
@@ -2619,7 +2621,7 @@
                                         android:layout_weight="1"
                                         android:gravity="end"
                                         android:textColor="@color/white"
-                                        android:textSize="@dimen/_10sdp"
+                                        android:textSize="@dimen/_10ssp"
                                         android:visibility="gone" />
 
                                 </LinearLayout>
@@ -2637,7 +2639,7 @@
 
                                         android:text="Distance"
                                         android:textColor="@color/cancel_ride_color"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                     <TextView
                                         android:id="@+id/lblDis"
@@ -2646,7 +2648,7 @@
 
                                         android:gravity="end"
                                         android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                 </LinearLayout>
 
@@ -2663,7 +2665,7 @@
 
                                         android:text="Time"
                                         android:textColor="@color/cancel_ride_color"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                     <com.travel.travellingbug.utills.MyBoldTextView
                                         android:id="@+id/lblEta"
@@ -2672,7 +2674,7 @@
 
                                         android:gravity="end"
                                         android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                 </LinearLayout>
 
@@ -2689,7 +2691,7 @@
 
                                         android:text="Price"
                                         android:textColor="@color/cancel_ride_color"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
 
                                     <TextView
                                         android:id="@+id/lblApproxAmount"
@@ -2698,7 +2700,7 @@
 
                                         android:gravity="end"
                                         android:textColor="@color/black"
-                                        android:textSize="@dimen/_12sdp" />
+                                        android:textSize="@dimen/_12ssp" />
                                 </LinearLayout>
 
 
@@ -2719,7 +2721,7 @@
                             android:layout_marginStart="@dimen/_15sdp"
                             android:layout_marginTop="@dimen/_5sdp"
                             android:text="@string/use_wallet_amount"
-                            android:textSize="@dimen/_12sdp"
+                            android:textSize="@dimen/_12ssp"
                             android:visibility="gone" />
 
                         <LinearLayout
@@ -2741,7 +2743,7 @@
                                 android:text="CONFIRM"
 
                                 android:textColor="@color/button_text_color"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12ssp" />
 
 
                             <TextView

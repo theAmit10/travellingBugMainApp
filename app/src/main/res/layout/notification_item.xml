@@ -40,7 +40,7 @@
                 android:paddingEnd="@dimen/_10sdp"
                 android:text="Very good service "
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12ssp" />
         </LinearLayout>
 
         <ImageView
@@ -80,7 +80,7 @@
                 android:layout_marginEnd="@dimen/_7sdp"
                 android:textStyle="bold"
                 android:text="10 JAN 2019 08:45 PM, Rajan Kumar"
-                android:textSize="@dimen/_10sdp" />
+                android:textSize="@dimen/_10ssp" />
         </LinearLayout>
 
     </LinearLayout>

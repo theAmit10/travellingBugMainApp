@@ -80,7 +80,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_weight="1"
                 android:textColor="@color/text_color_white"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14ssp" />
 
             <Button
                 android:id="@+id/btnNotAllowed"
@@ -91,7 +91,7 @@
                 android:fontFamily="@font/nunito_bold"
                 android:text="Not Allowed"
                 android:textColor="@color/text_color_white"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14ssp" />
         </LinearLayout>
 
 
@@ -133,7 +133,7 @@
                 android:fontFamily="@font/nunito_bold"
                 android:text="@string/update"
                 android:textColor="@color/text_color_white"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_14ssp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

@@ -17,6 +17,7 @@
             app:tabIndicatorColor="@color/white"
             app:tabIndicatorHeight="3dp"
             app:tabMode="fixed"
+            android:contentDescription="tablayout"
             app:tabSelectedTextColor="@color/text_color_white"
             app:tabTextColor="#b0ffffff" />
 
@@ -26,6 +27,7 @@
             android:padding="@dimen/_5sdp"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:contentDescription="tabcontainer"
             android:background="@android:color/white" />
 
     </LinearLayout>

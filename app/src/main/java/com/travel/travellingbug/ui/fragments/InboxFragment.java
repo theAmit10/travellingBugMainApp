@@ -107,7 +107,8 @@ public class InboxFragment extends Fragment {
                 return true;
             if (keyCode == KeyEvent.KEYCODE_BACK) {
                 if (doubleBackToExitPressedOnce) {
-                    getActivity().finish();
+//                    getActivity().finish();
+                    System.exit(0);
                     return false;
                 }
                 doubleBackToExitPressedOnce = true;
@@ -158,7 +159,7 @@ public class InboxFragment extends Fragment {
                                             inboxModel.setProfileImage("");
                                         }
 
-                                        inboxModel.setType("up");
+
 
                                         JSONArray chatdetailJsonArray = dataJsonObject.getJSONArray("chatdetail");
                                         if(chatdetailJsonArray.length() > 0){
@@ -166,6 +167,7 @@ public class InboxFragment extends Fragment {
                                             inboxModel.setRequestId(chatDetailJsonObject.getString("request_id"));
                                             inboxModel.setProviderId(chatDetailJsonObject.getString("provider_id"));
                                             inboxModel.setUserId(chatDetailJsonObject.getString("user_id"));
+                                            inboxModel.setType("up");
                                         }else {
                                             inboxModel.setRequestId("");
                                             inboxModel.setProviderId("");
@@ -261,6 +263,8 @@ public class InboxFragment extends Fragment {
                             for(int i=0; i<jsonArray.length(); i++){
                                 JSONObject dataJsonObject = jsonArray.getJSONObject(i);
 
+
+
                                 if(!dataJsonObject.getString("id").equalsIgnoreCase(SharedHelper.getKey(getContext(),"id"))){
                                     InboxModel inboxModel = new InboxModel();
                                     try {
@@ -273,7 +277,7 @@ public class InboxFragment extends Fragment {
                                             inboxModel.setProfileImage("");
                                         }
 
-                                        inboxModel.setType("pu");
+
 
                                         JSONArray chatdetailJsonArray = dataJsonObject.getJSONArray("chatdetail");
                                         if(chatdetailJsonArray.length() > 0){
@@ -281,6 +285,7 @@ public class InboxFragment extends Fragment {
                                             inboxModel.setRequestId(chatDetailJsonObject.getString("request_id"));
                                             inboxModel.setProviderId(chatDetailJsonObject.getString("provider_id"));
                                             inboxModel.setUserId(chatDetailJsonObject.getString("user_id"));
+                                            inboxModel.setType("pu");
 
                                         }else {
                                             inboxModel.setRequestId("");

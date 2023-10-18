@@ -20,7 +20,7 @@
             android:layout_weight="1.2"
             android:paddingStart="@dimen/_10sdp"
             android:text=""
-            android:textSize="@dimen/_12sdp" />
+            android:textSize="@dimen/_12ssp" />
 
         <TextView
 
@@ -33,7 +33,7 @@
             android:gravity="end"
             android:paddingStart="@dimen/_10sdp"
             android:text=""
-            android:textSize="@dimen/_12sdp" />
+            android:textSize="@dimen/_12ssp" />
 
         <!-- <ImageView
 

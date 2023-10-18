@@ -28,7 +28,7 @@
                 android:paddingStart="@dimen/_15sdp"
                 android:text="Image Title"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14ssp" />
         </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 

@@ -689,7 +689,7 @@ public class FindRidesActivity extends AppCompatActivity {
                     if(!serviceObj.optString("service_model").equalsIgnoreCase("null") && !serviceObj.optString("service_name").equalsIgnoreCase("null") && !serviceObj.optString("service_color").equalsIgnoreCase("null") ){
                         String vehicle_name = serviceObj.optString("service_model")+ " " + serviceObj.optString("service_name") +" | "+serviceObj.optString("service_color").toLowerCase();
                         System.out.println("vehicle name : "+vehicle_name);
-                        holder.car_name.setText(vehicle_name);
+                        holder.car_name.setText(vehicle_name.trim());
                         s_name = vehicle_name;
                     }else {
                         holder.car_name.setText("");
@@ -783,7 +783,7 @@ public class FindRidesActivity extends AppCompatActivity {
                             if(!serviceObj.optString("service_model").equalsIgnoreCase("null") && !serviceObj.optString("service_name").equalsIgnoreCase("null") && !serviceObj.optString("service_color").equalsIgnoreCase("null") ){
                                 String vehicle_name = serviceObj.optString("service_model")+ " " + serviceObj.optString("service_name") +" | "+serviceObj.optString("service_color").toLowerCase();
                                 System.out.println("vehicle name : "+vehicle_name);
-                                holder.car_name.setText(vehicle_name);
+                                holder.car_name.setText(vehicle_name.trim());
                                 s_carModleAndColor = vehicle_name;
                             }else {
                                 holder.car_name.setText("");

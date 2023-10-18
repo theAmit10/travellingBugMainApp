@@ -205,7 +205,6 @@
     <string name="first_name_no_number">الاسم لا يقبل الأرقام</string>
     <string msgid="9521340570209730" name="gcm_fallback_notification_channel_label">"متنوعة"</string>
     <string name="go_online">GO ONLINE</string>
-    <string name="google_map_api">AIzaSyCXr0_LD2gosGvCyeghGW3OGlXq_VjOuQA</string>
     <string name="help">مساعدة</string>
     <string name="history">السجل</string>
     <string name="home">الرئيسية</string>

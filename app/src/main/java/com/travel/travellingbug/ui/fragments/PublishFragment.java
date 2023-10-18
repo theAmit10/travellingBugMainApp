@@ -110,6 +110,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.maps.android.ui.IconGenerator;
 import com.koushikdutta.ion.Ion;
 import com.skyfishjy.library.RippleBackground;
+import com.travel.travellingbug.BuildConfig;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.ConnectionHelper;
@@ -745,9 +746,6 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
         try{
             if(getContext() != null){
-                CustomDialog customDialog = new CustomDialog(getContext());
-                customDialog.setCancelable(false);
-                customDialog.show();
 
                 JsonArrayRequest jsonArrayRequest = new
                         JsonArrayRequest(URLHelper.BASE + "api/provider/document/status",
@@ -764,14 +762,13 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                                         }
                                     }
 
-                                    if(customDialog.isShowing()){
-                                        customDialog.dismiss();
-                                    }
+
 
                                 }, error -> {
                             Log.v("DocumentsStatus Error", error.getMessage() + "");
-                            customDialog.dismiss();
-                            displayMessage(getContext().getString(R.string.something_went_wrong));
+
+
+//                            displayMessage(getContext().getString(R.string.something_went_wrong));
                         }) {
                             @Override
                             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -813,8 +810,9 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         try {
             listener = (SearchFragment.HomeFragmentListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
-                    + " must implement HomeFragmentListener");
+            e.printStackTrace();
+//            throw new ClassCastException(context.toString()
+//                    + " must implement HomeFragmentListener");
         }
     }
 
@@ -1347,7 +1345,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                 .setTitle("Confirmation")
                 .setMessage("Do you really want to Exit Cab Services?")
                 .setIcon(R.drawable.app_logo_org)
-                .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> getActivity().finish())
+                .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> System.exit(0))
                 .setNegativeButton(android.R.string.no, null).show();
     }
 
@@ -4575,7 +4573,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
     private void trackPickToDest() throws Exception {
 
-        GoogleDirection.withServerKey(getString(R.string.google_map_api))
+        GoogleDirection.withServerKey(BuildConfig.API_KEY)
                 .from(new LatLng(Double.parseDouble(source_lat), Double.parseDouble(source_lng)))
                 .to(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)))
                 .transportMode(TransportMode.DRIVING)
@@ -4777,7 +4775,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
     private void trackPickToDest(String source_lat,String source_lng,String dest_lat,String dest_lng) throws Exception {
 
-        GoogleDirection.withServerKey(getString(R.string.google_map_api))
+        GoogleDirection.withServerKey(BuildConfig.API_KEY)
                 .from(new LatLng(Double.parseDouble(source_lat), Double.parseDouble(source_lng)))
                 .to(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)))
                 .transportMode(TransportMode.DRIVING)

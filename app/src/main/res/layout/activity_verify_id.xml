@@ -21,7 +21,8 @@
             android:layout_height="@dimen/_30sdp"
             android:layout_weight="0"
             android:padding="@dimen/_5sdp"
-            app:srcCompat="@drawable/ic_wrong" />
+            app:srcCompat="@drawable/ic_wrong"
+            tools:ignore="ContentDescription,InefficientWeight,ImageContrastCheck" />
 
     </LinearLayout>
 
@@ -33,8 +34,9 @@
         android:fontFamily="@font/montserrat_semibold"
         android:text="First tell us your name, \nexactly as it is on your ID\nDocument"
         android:textColor="@color/black"
-        android:textSize="@dimen/_18sdp"
-        android:textStyle="bold" />
+        android:textSize="@dimen/_18ssp"
+        android:textStyle="bold"
+        tools:ignore="HardcodedText" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/firstNameInput"
@@ -79,7 +81,8 @@
             app:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_arrow_forward" />
+            app:srcCompat="@drawable/ic_arrow_forward"
+            tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

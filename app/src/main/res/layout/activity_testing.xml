@@ -42,7 +42,7 @@
                     android:maxLines="2"
                     android:text="@string/source_location"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp" />
+                    android:textSize="@dimen/_14ssp" />
 
                 <ImageView
                     android:layout_width="@dimen/_20sdp"
@@ -81,7 +81,7 @@
                 android:paddingBottom="@dimen/_25sdp"
                 android:text="Apply"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14ssp" />
 
             <ImageView
                 android:layout_width="@dimen/_110sdp"

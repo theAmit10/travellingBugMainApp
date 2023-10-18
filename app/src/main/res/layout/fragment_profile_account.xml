@@ -27,7 +27,7 @@
                 android:drawableRight="@drawable/ic_forward_gray"
                 android:fontFamily="@font/nunito_regular"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold"
                 />
 
@@ -47,7 +47,7 @@
                 android:drawableRight="@drawable/ic_forward_gray"
                 android:text="Notification, email and SMS"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -61,7 +61,7 @@
                 android:drawableRight="@drawable/ic_forward_gray"
                 android:text="Change Password"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -74,7 +74,7 @@
                 android:drawableRight="@drawable/ic_forward_gray"
                 android:text="Postal Address"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
             <View
@@ -93,7 +93,7 @@
                 android:drawableRight="@drawable/ic_forward_gray"
                 android:text="Available Funds"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -106,7 +106,7 @@
                 android:drawableRight="@drawable/ic_forward_gray"
                 android:text="Payments &amp; Refunds "
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
             <View
@@ -125,7 +125,7 @@
                 android:text="Help"
                 android:fontFamily="@font/nunito_regular"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -138,7 +138,7 @@
                 android:text="Terms &amp; Conditions "
                 android:textColor="@color/black"
                 android:fontFamily="@font/nunito_regular"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -151,7 +151,7 @@
                 android:text="Data Protection"
                 android:textColor="@color/black"
                 android:fontFamily="@font/nunito_regular"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -164,7 +164,7 @@
                 android:text="Licenses"
                 android:fontFamily="@font/nunito_regular"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -177,7 +177,7 @@
                 android:text="Send Tracking link"
                 android:fontFamily="@font/nunito_regular"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
             <View
@@ -196,7 +196,7 @@
                 android:text="Log out"
                 android:fontFamily="@font/nunito_regular"
                 android:textColor="@color/dark_green"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
 
 

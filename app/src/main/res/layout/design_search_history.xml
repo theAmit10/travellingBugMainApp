@@ -37,7 +37,7 @@
                 android:text="A-18 Info Tech Park sector 34 Gurugarm , Haryana Rishikesh bus Stand, Rishikesh"
                 android:textColor="@color/black"
                 android:maxLines="3"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="@+id/view3"
                 tools:layout_editor_absoluteX="200dp" />
@@ -49,7 +49,7 @@
                 android:text="1- passanger"
                 android:maxLines="1"
                 android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="@+id/view3"
                 tools:layout_editor_absoluteX="200dp" />

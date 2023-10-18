@@ -94,7 +94,7 @@
                                 android:gravity="start"
                                 android:text="TravellingBug"
                                 android:textColor="@color/done_disabled_dark"
-                                android:textSize="@dimen/_10sdp" />
+                                android:textSize="@dimen/_10ssp" />
 
                             <com.travel.travellingbug.utills.MyBoldTextView
                                 android:id="@+id/footer_item_version"
@@ -106,7 +106,7 @@
                                 android:gravity="end"
                                 android:text="v1.0"
                                 android:textColor="@color/done_disabled_dark"
-                                android:textSize="@dimen/_10sdp" />
+                                android:textSize="@dimen/_10ssp" />
 
                         </LinearLayout>
 
@@ -132,8 +132,10 @@
             app:tabIndicatorHeight="@dimen/_3sdp"
             app:tabSelectedTextColor="@color/dark_green"
             app:tabIndicatorGravity="top"
+            app:tabTextColor="@color/colorDarkGray"
+            app:tabTextAppearance="@style/HomeCustomTabTextText"
 
-            app:tabTextAppearance="@style/MineCustomTabText" />
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

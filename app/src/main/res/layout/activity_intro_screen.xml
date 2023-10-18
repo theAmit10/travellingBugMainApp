@@ -37,7 +37,7 @@
         android:text="Skip"
         android:fontFamily="@font/montserrat_semibold"
         android:textColor="@color/green"
-        android:textSize="@dimen/_12sdp"
+        android:textSize="@dimen/_12ssp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -50,6 +50,7 @@
         android:layout_marginBottom="@dimen/_30sdp"
         android:clickable="true"
         app:backgroundTint="@color/white"
+        android:contentDescription="next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_arrow_forward" />

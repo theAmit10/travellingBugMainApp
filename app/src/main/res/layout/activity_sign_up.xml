@@ -38,7 +38,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
                     android:textColorHint="@color/black"
-                    android:textSize="@dimen/_14sdp" />
+                    android:textSize="@dimen/_14ssp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
                     android:textColorHint="@color/black"
-                    android:textSize="@dimen/_14sdp" />
+                    android:textSize="@dimen/_14ssp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -80,7 +80,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
                     android:textColorHint="@color/black"
-                    android:textSize="@dimen/_14sdp" />
+                    android:textSize="@dimen/_14ssp" />
 
             </LinearLayout>
 
@@ -119,7 +119,7 @@
             android:gravity="center"
             android:text="@string/registration"
             android:textColor="@color/black"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="@dimen/_18ssp" />
 
         <LinearLayout
             android:layout_width="@dimen/_170sdp"
@@ -139,7 +139,7 @@
                 android:padding="@dimen/_5sdp"
                 android:text="@string/login"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_21sdp" />
+                android:textSize="@dimen/_21ssp" />
         </LinearLayout>
 
     </RelativeLayout>
@@ -179,7 +179,7 @@
                 android:gravity="center"
                 android:text="Welcome to Travelling Bug"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_18sdp"
+                android:textSize="@dimen/_16ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -192,7 +192,7 @@
                 android:gravity="center"
                 android:text="Make your travel better with us "
                 android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_11sdp" />
+                android:textSize="@dimen/_12ssp" />
 
             <LinearLayout
                 android:id="@+id/ll_mobileLayout"
@@ -224,7 +224,7 @@
                         app:ccp_autoDetectCountry="true"
                         app:ccp_showNameCode="false"
                         app:ccp_showPhoneCode="true"
-                        app:ccp_textSize="@dimen/_10sdp" />
+                        app:ccp_textSize="@dimen/_12ssp" />
                 </FrameLayout>
 
 
@@ -242,7 +242,8 @@
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/colorDarkGray"
                     android:textColorHint="@color/colorDarkGray"
-                    android:textSize="@dimen/_11sdp"
+                    android:textSize="@dimen/_12ssp"
+
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -269,7 +270,7 @@
                     android:text="OR CONTINUE WITH"
                     android:fontFamily="@font/nunito_bold"
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_11sdp" />
+                    android:textSize="@dimen/_10ssp" />
 
                 <View
                     android:layout_width="@dimen/_80sdp"
@@ -301,7 +302,7 @@
                     android:text="Google"
                     android:textAllCaps="false"
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_12ssp" />
 
                 <Button
                     android:id="@+id/btnFb"
@@ -316,7 +317,7 @@
                     android:text="Facebook"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_12ssp" />
 
 <!--                <com.facebook.login.widget.LoginButton-->
 <!--                    android:id="@+id/login_button"-->
@@ -358,7 +359,7 @@
                     android:padding="@dimen/_5sdp"
                     android:text="@string/resgist"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_15sdp" />
+                    android:textSize="@dimen/_15ssp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -376,7 +377,7 @@
                         android:gravity="center"
                         android:text="@string/driver"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_24sdp" />
+                        android:textSize="@dimen/_24ssp" />
 
                     <ImageView
                         android:layout_width="120dp"
@@ -429,7 +430,7 @@
                         android:gravity="center"
 
                         android:text="@string/i_forgot_my_password"
-                        android:textSize="@dimen/_14sdp" />
+                        android:textSize="@dimen/_14ssp" />
 
 
                 </RelativeLayout>
@@ -451,7 +452,7 @@
             android:text="Continue"
 
             android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_12ssp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout"
             app:layout_constraintHorizontal_bias="0.5"

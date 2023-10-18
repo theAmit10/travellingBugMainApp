@@ -78,7 +78,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/source_location"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12ssp" />
 
 <!--                        <com.travel.travellingbug.utills.MyTextView-->
 <!--                            android:id="@+id/txtSource"-->
@@ -103,7 +103,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/destination_location"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12ssp" />
 
 <!--                        <com.travel.travellingbug.utills.MyTextView-->
 <!--                            android:id="@+id/txtDestination"-->
@@ -144,7 +144,7 @@
             android:rotation="-90"
             android:text="Completed"
             android:textColor="@color/black"
-            android:textSize="@dimen/_10sdp" />
+            android:textSize="@dimen/_10ssp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -193,7 +193,7 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_10sdp" />
+                        android:textSize="@dimen/_10ssp" />
 
 <!--                    <RatingBar-->
 
@@ -244,7 +244,7 @@
                         android:layout_marginTop="5dp"
                         android:text=""
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_8ssp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -263,7 +263,7 @@
                         android:layout_gravity="right"
                         android:theme="@style/SubTitle"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_10sdp"
+                        android:textSize="@dimen/_10ssp"
                         android:textStyle="bold"
                         />
                     <TextView
@@ -276,7 +276,7 @@
                         android:layout_gravity="right"
                         android:text=""
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_10sdp"
+                        android:textSize="@dimen/_10ssp"
 
                         />
 
@@ -330,7 +330,7 @@
                     android:maxLines="1"
                     android:text=""
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
@@ -345,7 +345,7 @@
                     android:maxLines="1"
                     android:text=""
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView10"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -382,7 +382,7 @@
                         android:text=""
                         android:layout_weight="1"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_10sdp"
+                        android:textSize="@dimen/_10ssp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -404,7 +404,7 @@
                         android:layout_height="wrap_content"
                         android:text=""
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_10sdp"
+                        android:textSize="@dimen/_10ssp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -415,7 +415,7 @@
                     android:layout_height="@dimen/_20sdp"
                     android:text="Details"
                     android:visibility="gone"
-                    android:textSize="@dimen/_8sdp"
+                    android:textSize="@dimen/_8ssp"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:background="@drawable/auth_btn_green_bg"/>
@@ -429,7 +429,7 @@
                     android:text="Rate Now"
                     android:textColor="@color/white"
                     android:textStyle="bold"
-                    android:textSize="@dimen/_8sdp"
+                    android:textSize="@dimen/_8ssp"
                     android:textAllCaps="false"
                     android:background="@drawable/auth_btn_green_bg"
                     android:backgroundTint="@color/quantum_yellow"/>

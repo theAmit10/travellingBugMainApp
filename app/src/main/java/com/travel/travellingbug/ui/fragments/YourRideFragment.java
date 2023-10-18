@@ -59,7 +59,8 @@ public class YourRideFragment extends Fragment {
                 return true;
             if (keyCode == KeyEvent.KEYCODE_BACK) {
                 if (doubleBackToExitPressedOnce) {
-                    getActivity().finish();
+//                    getActivity().finish();
+                    System.exit(0);
                     return false;
                 }
                 doubleBackToExitPressedOnce = true;

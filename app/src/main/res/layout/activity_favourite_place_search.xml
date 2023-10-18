@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/view_grey_bg_"
@@ -52,8 +53,6 @@
                     <ImageView
                         android:layout_width="@dimen/_20sdp"
                         android:layout_height="@dimen/_20sdp"
-
-
                         android:src="@drawable/destination_icon" />
 
 
@@ -66,7 +65,8 @@
                     android:gravity="center|start"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toStartOf="@id/imgSourceClose"
-                    app:layout_constraintStart_toEndOf="@id/llLeftTop">
+                    app:layout_constraintStart_toEndOf="@id/llLeftTop"
+                    tools:ignore="MissingConstraints">
 
                     <com.travel.travellingbug.utills.MyTextView
                         android:id="@+id/addressType"
@@ -76,7 +76,8 @@
 
                         android:paddingStart="@dimen/_5sdp"
                         android:text="Home Address"
-                        android:textSize="14dp" />
+                        android:textSize="@dimen/_10ssp"
+                        tools:ignore="TextSizeCheck" />
 
                     <com.travel.travellingbug.utills.MyEditText
                         android:id="@+id/txtaddressSource"
@@ -93,7 +94,8 @@
                         android:paddingEnd="@dimen/_5sdp"
                         android:paddingBottom="@dimen/_5sdp"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
 
 
                 </LinearLayout>

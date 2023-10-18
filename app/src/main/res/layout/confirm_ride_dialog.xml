@@ -29,7 +29,7 @@
             android:fontFamily="@font/nunito_bold"
             android:text="Booking Successful"
             android:textColor="@color/black"
-            android:textSize="@dimen/_20sdp" />
+            android:textSize="@dimen/_20ssp" />
 
         <TextView
             android:id="@+id/subTitleTv"
@@ -38,7 +38,7 @@
             android:text="Your booking has been confirmed."
             android:textAlignment="center"
             android:textColor="@color/colorDarkGray"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_14ssp" />
 
         <TextView
             android:id="@+id/tvDriverMsg"
@@ -48,7 +48,7 @@
 
             android:text="Driver will pickup you in early"
             android:textColor="@color/colorDarkGray"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_14ssp" />
 
 
         <View
@@ -71,7 +71,7 @@
                 android:text="Cancel"
 
                 android:textColor="@color/view_grey_bg"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14ssp" />
 
             <View
                 android:id="@+id/partition"
@@ -88,7 +88,7 @@
                 android:gravity="center"
                 android:text="Done"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14ssp" />
         </LinearLayout>
     </LinearLayout>
 

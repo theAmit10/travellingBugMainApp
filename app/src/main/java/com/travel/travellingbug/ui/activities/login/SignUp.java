@@ -121,28 +121,53 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             public void onClick(View v) {
                 helper = new ConnectionHelper(getApplicationContext());
                 isInternet = helper.isConnectingToInternet();
-                if (etName.getText().toString().equals("") ||
-                        etName.getText().toString().equalsIgnoreCase(getString(R.string.first_name))) {
-                    displayMessage("Phone Number Required");
-                } else if (isInternet) {
-
-                    dialog = new Dialog(SignUp.this, R.style.AppTheme_NoActionBar);
 
 
-                    String phone = ccp.getSelectedCountryCodeWithPlus() + etName.getText().toString();
+                if(isInternet)
+                {
+                    if(etName.getText().toString().length() != 10)
+                    {
+                        displayMessage("Enter valid mobile number");
+                    }else {
+                        dialog = new Dialog(SignUp.this, R.style.AppTheme_NoActionBar);
 
-                    SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
-                    SharedHelper.putKey(getApplicationContext(), "mobile", phone);
-                    Log.v("Phonecode", phone + " ");
+                        String phone = ccp.getSelectedCountryCodeWithPlus() + etName.getText().toString();
+                        SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
+                        SharedHelper.putKey(getApplicationContext(), "mobile", phone);
+                        Log.v("Phonecode", phone + " ");
 //                    registerAPI();
-                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
-                    intent.putExtra("phonenumber", phone);
-                    startActivityForResult(intent, APP_REQUEST_CODE);
+                        Intent intent = new Intent(SignUp.this, OtpVerification.class);
+                        intent.putExtra("phonenumber", phone);
+                        startActivityForResult(intent, APP_REQUEST_CODE);
+                    }
 
-
-                } else {
+                }else {
                     displayMessage(getString(R.string.something_went_wrong_net));
                 }
+
+
+//                if (etName.getText().toString().equals("") ||
+//                        etName.getText().toString().equalsIgnoreCase(getString(R.string.first_name)))   {
+//                    displayMessage("Phone Number Required");
+//                } else if (isInternet) {
+//
+//                    dialog = new Dialog(SignUp.this, R.style.AppTheme_NoActionBar);
+//
+//
+//                    String phone = ccp.getSelectedCountryCodeWithPlus() + etName.getText().toString();
+//
+//                    SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
+//                    SharedHelper.putKey(getApplicationContext(), "mobile", phone);
+//                    Log.v("Phonecode", phone + " ");
+////                    registerAPI();
+//                    Intent intent = new Intent(SignUp.this, OtpVerification.class);
+//                    intent.putExtra("phonenumber", phone);
+//                    startActivityForResult(intent, APP_REQUEST_CODE);
+//
+//
+//                } else {
+//                    displayMessage(getString(R.string.something_went_wrong_net));
+//                }
             }
 
         });
@@ -489,7 +514,8 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 //                                SharedHelper.putKey(getApplicationContext(), "email", etEmail.getText().toString());
 //                                SharedHelper.putKey(getApplicationContext(), "password", etPassword.getText().toString());
                                 SharedHelper.putKey(getApplicationContext(), "Old_User", "no");
-                                displayMessage("User Registered Successfully");
+//                                displayMessage("User Registered Successfully");
+                                displayMessage("Processing...");
                                 signIn();
                             }
                         },
@@ -548,15 +574,22 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         EditText mobile_no = dialog.findViewById(R.id.mobile_no);
         imgBack.setOnClickListener(v -> dialog.dismiss());
         nextIcon.setOnClickListener(v -> {
-            dialog.dismiss();
-            String phone = ccp.getSelectedCountryCodeWithPlus() + mobile_no.getText().toString();
-            mobile = phone;
-            SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
-            SharedHelper.putKey(getApplicationContext(), "mobile", phone);
+            if(mobile_no.getText().toString().length() != 10)
+            {
+                displayMessage("Enter valid mobile number");
+            }else {
+                dialog.dismiss();
+                String phone = ccp.getSelectedCountryCodeWithPlus() + mobile_no.getText().toString();
+                mobile = phone;
+                SharedHelper.putKey(getApplicationContext(), "mobile_number", phone);
+                SharedHelper.putKey(getApplicationContext(), "mobile", phone);
 //            socialJson.addProperty("mobile", mobile);
-            Intent intent = new Intent(SignUp.this, OtpVerification.class);
-            intent.putExtra("phonenumber", phone);
-            startActivityForResult(intent, APP_REQUEST_CODE);
+                Intent intent = new Intent(SignUp.this, OtpVerification.class);
+                intent.putExtra("phonenumber", phone);
+                startActivityForResult(intent, APP_REQUEST_CODE);
+
+            }
+
 
 
         });
@@ -564,7 +597,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void signIn() {
-        if (isInternet) {
+
             customDialog = new CustomDialog(SignUp.this);
             customDialog.setCancelable(false);
             if (customDialog != null)
@@ -642,9 +675,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
 
             ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
 
-        } else {
-            displayMessage(getString(R.string.something_went_wrong_net));
-        }
+
 
     }
 

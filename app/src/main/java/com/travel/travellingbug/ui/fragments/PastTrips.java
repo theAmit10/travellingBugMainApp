@@ -447,7 +447,7 @@ public class PastTrips extends Fragment {
                     if(providerServiceJsonObj != null){
                         if(!providerServiceJsonObj.optString("service_model").equalsIgnoreCase("null") && !providerServiceJsonObj.optString("service_name").equalsIgnoreCase("null") && !providerServiceJsonObj.optString("service_color").equalsIgnoreCase("null") ){
                             String vehicle_name = providerServiceJsonObj.optString("service_model")+ " " + providerServiceJsonObj.optString("service_name") +" | "+providerServiceJsonObj.optString("service_color").toLowerCase();
-                            holder.carTypeVal.setText(vehicle_name);
+                            holder.carTypeVal.setText(vehicle_name.trim());
                         }else {
                             holder.carTypeVal.setText("");
                         }

@@ -98,9 +98,10 @@ public class DriverProfileAboutFragment extends Fragment {
                 if (providerMobileNo != null && !providerMobileNo.equalsIgnoreCase("null") && providerMobileNo.length() > 0) {
                     System.out.println("val if 1 : " + providerMobileNo);
                     try {
-                        Intent intentCall = new Intent(Intent.ACTION_CALL);
+                        Intent intentCall = new Intent(Intent.ACTION_DIAL);
                         intentCall.setData(Uri.parse("tel:" + providerMobileNo));
                         startActivity(intentCall);
+
                         System.out.println("val if 2 : " + providerMobileNo);
 
                     }catch (Exception e){
@@ -329,7 +330,7 @@ public class DriverProfileAboutFragment extends Fragment {
                                 if(!provider_service_json_obj.optString("service_model").equalsIgnoreCase("null") && !provider_service_json_obj.optString("service_name").equalsIgnoreCase("null") && !provider_service_json_obj.optString("service_color").equalsIgnoreCase("null") ){
                                     String vehicle_name = provider_service_json_obj.optString("service_model")+ " " + provider_service_json_obj.optString("service_name") +" | "+provider_service_json_obj.optString("service_color").toLowerCase();
                                     System.out.println("vehicle name : "+vehicle_name);
-                                    carTypeVal.setText(vehicle_name);
+                                    carTypeVal.setText(vehicle_name.trim());
                                 }else {
                                     carTypeVal.setText("");
                                 }
@@ -368,7 +369,7 @@ public class DriverProfileAboutFragment extends Fragment {
                                 if (!provider_service_json_obj.optString("service_model").equalsIgnoreCase("null") && !provider_service_json_obj.optString("service_name").equalsIgnoreCase("null") ) {
                                     String vehicle_name = provider_service_json_obj.optString("service_model") + " " + provider_service_json_obj.optString("service_name");
                                     System.out.println("vehicle name : " + vehicle_name);
-                                    vehicleName.setText(vehicle_name);
+                                    vehicleName.setText(vehicle_name.trim());
                                 } else {
                                     vehicleName.setText("");
                                 }

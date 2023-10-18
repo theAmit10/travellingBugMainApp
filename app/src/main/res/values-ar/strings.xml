@@ -2,7 +2,7 @@
 
 <resources>
     <string name="app_name">TravellingBug</string>
-    <string name="google_map_api">AIzaSyCXr0_LD2gosGvCyeghGW3OGlXq_VjOuQA</string>
+<!--    <string name="google_map_api">AIzaSyCXr0_LD2gosGvCyeghGW3OGlXq_VjOuQA</string>-->
 
     <string name="facebook_app_id">758774072385786</string>
     <string name="fb_login_protocol_scheme">fb758774072385786</string>

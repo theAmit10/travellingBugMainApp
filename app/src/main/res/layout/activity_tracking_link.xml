@@ -23,6 +23,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/_10sdp"
             android:padding="@dimen/_7sdp"
+            android:contentDescription="backarrow"
             android:src="@drawable/back_white" />
 
         <TextView
@@ -36,7 +37,7 @@
             android:textStyle="bold"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_14ssp" />
 
     </LinearLayout>
 
@@ -80,7 +81,7 @@
 
                 android:text="Your future travel plans will appear here."
                 android:textColor="@color/black"
-                android:textSize="@dimen/_20sdp"
+                android:textSize="@dimen/_20ssp"
                 android:textStyle="bold" />
 
             <!--            <com.travel.travellingbug.utills.MyTextView-->
@@ -102,7 +103,7 @@
                 android:layout_marginTop="20dp"
                 android:text="You have no upcomming rides"
                 android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12ssp" />
 
         </LinearLayout>
 

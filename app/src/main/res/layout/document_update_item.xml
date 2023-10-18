@@ -35,7 +35,7 @@
                 android:text="@string/document_name"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12ssp" />
 
             <TextView
                 android:id="@+id/txtSatus"
@@ -45,7 +45,7 @@
                 android:text="@string/status"
                 android:textStyle="bold"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12ssp" />
         </LinearLayout>
 
         <TextView
@@ -61,6 +61,6 @@
             android:text="@string/update"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/_10sdp" />
+            android:textSize="@dimen/_10ssp" />
     </LinearLayout>
 </LinearLayout>

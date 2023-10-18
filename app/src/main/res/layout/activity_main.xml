@@ -71,7 +71,7 @@
                             android:gravity="start"
                             android:text="TravellingBug"
                             android:textColor="@color/done_disabled_dark"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textSize="@dimen/_10ssp" />
 
                         <com.travel.travellingbug.utills.MyBoldTextView
                             android:id="@+id/footer_item_version"
@@ -83,7 +83,7 @@
                             android:gravity="end"
                             android:text="v1.0"
                             android:textColor="@color/done_disabled_dark"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textSize="@dimen/_10ssp" />
 
                     </LinearLayout>
 

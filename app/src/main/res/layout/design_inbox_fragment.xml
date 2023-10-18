@@ -78,7 +78,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/source_location"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12ssp" />
 
                         <!--                        <com.travel.travellingbug.utills.MyTextView-->
                         <!--                            android:id="@+id/txtSource"-->
@@ -103,7 +103,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/destination_location"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12ssp" />
 
                         <!--                        <com.travel.travellingbug.utills.MyTextView-->
                         <!--                            android:id="@+id/txtDestination"-->
@@ -190,7 +190,7 @@
                         android:drawablePadding="@dimen/_10sdp"
                         android:text="username"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_15sdp"
+                        android:textSize="@dimen/_15ssp"
                         android:textStyle="bold"
                         android:theme="@style/SubTitle" />
 
@@ -238,7 +238,7 @@
                             android:maxLines="1"
                             android:text=""
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_10ssp"
                             android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/imageView9"
@@ -253,7 +253,7 @@
                             android:maxLines="1"
                             android:text=""
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_10ssp"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView10"
                             app:layout_constraintEnd_toEndOf="parent"

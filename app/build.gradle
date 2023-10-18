@@ -8,7 +8,8 @@ android {
         applicationId "com.travel.travellingbug"
         minSdkVersion 21
         targetSdkVersion 33
-        versionCode 1
+        versionCode 3
+
         versionName "1.0.0.0"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
@@ -16,7 +17,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         resConfigs "en", "ar"
 
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+        manifestPlaceholders = [MAPS_API_KEY_FOR_MANIFEST: properties.getProperty("API_KEY")]
+        buildConfigField "String", "API_KEY", "\"${properties.getProperty("API_KEY")}\""
+
     }
+
+
+
+
 
     buildTypes {
         release {
@@ -46,6 +56,9 @@ android {
         disable 'InvalidPackage'
         checkReleaseBuilds false
     }
+
+
+
 
 
 }
@@ -125,6 +138,7 @@ dependencies {
     implementation 'com.vincent.filepicker:MultiTypeFilePicker:1.0.8'
     implementation 'com.github.citux:datetimepicker:0.3.0'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.1.0'
     implementation 'com.facebook.android:facebook-android-sdk:5.11.2'
     implementation 'com.github.PhilJay:MPAndroidChart:v2.0.9'
     implementation 'com.vanniktech:emoji-ios:0.6.0'

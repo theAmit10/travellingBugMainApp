@@ -25,7 +25,7 @@
             android:layout_weight="1"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_14ssp" />
 
         <TextView
             android:id="@+id/startRideTv"
@@ -40,7 +40,7 @@
             android:background="@drawable/auth_btn_green_bg"
             android:textStyle="bold"
             android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp" />
+            android:textSize="@dimen/_12ssp" />
 
 
     </LinearLayout>
@@ -89,7 +89,7 @@
                     android:text="Ride Requests"
                     android:textColor="@color/black"
                     android:textStyle="bold"
-                    android:textSize="@dimen/_20sdp" />
+                    android:textSize="@dimen/_20ssp" />
 
 
                 <com.travel.travellingbug.utills.MyTextView
@@ -100,7 +100,7 @@
                     android:layout_marginTop="20dp"
                     android:text="You have no ride request"
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_12ssp" />
 
             </LinearLayout>
 

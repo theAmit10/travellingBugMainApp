@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/notifications_none/baseline_notifications_none_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/my_location/baseline_my_location_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,9 +33,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="assetSourceType" value="FILE" />
-                            <entry key="color" value="050505" />
-                            <entry key="outputName" value="coupon" />
+                            <entry key="color" value="5fe35c" />
+                            <entry key="outputName" value="baseline_my_location_24" />
                             <entry key="sourceFile" value="C:\Users\Demon\Desktop\New folder\coupon.svg" />
                           </map>
                         </option>

@@ -18,7 +18,7 @@
         android:drawableLeft="@drawable/ic_suv_car"
         android:drawablePadding="@dimen/_14sdp"
         android:textColor="@color/black"
-        android:textSize="@dimen/_14sdp"
+        android:textSize="@dimen/_14ssp"
         />
 
     <View

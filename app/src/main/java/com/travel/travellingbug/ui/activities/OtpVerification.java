@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.travel.travellingbug.R;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +22,7 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.mukesh.OnOtpCompletionListener;
 import com.mukesh.OtpView;
+import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 
@@ -60,6 +60,8 @@ public class OtpVerification extends AppCompatActivity implements OnOtpCompletio
         otpView = findViewById(R.id.otp_view);
         tvResend = findViewById(R.id.tvResend);
         otpView.setOtpCompletionListener(this);
+
+//        String abc = BuildConfig.API_KEY;
 
         setUpVerificatonCallbacks();
         backArrow.setOnClickListener(v -> onBackPressed());

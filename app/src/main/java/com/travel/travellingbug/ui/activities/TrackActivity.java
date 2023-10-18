@@ -103,6 +103,7 @@ import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.maps.android.ui.IconGenerator;
 import com.skyfishjy.library.RippleBackground;
 import com.squareup.picasso.Picasso;
+import com.travel.travellingbug.BuildConfig;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.chat.InboxChatActivity;
@@ -703,7 +704,8 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         activity = TrackActivity.this;
         ButterKnife.bind(this);
         // Initialize the SDK
-        Places.initialize(getApplicationContext(), getString(R.string.google_map_api));
+//        Places.initialize(getApplicationContext(), getString(R.string.google_map_api));
+        Places.initialize(getApplicationContext(), BuildConfig.API_KEY);
 
 // Create a new Places client instance
         PlacesClient placesClient = Places.createClient(this);
@@ -4539,7 +4541,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
         if (isInternet) {
             if (!source_lat.equalsIgnoreCase("")) {
                 if (!source_address.equalsIgnoreCase("")) {
-                    //  frmSource.setText(source_address);
+//                      frmSource.setText(source_address);
                 } else {
                     //  frmSource.setText(current_address);
                 }
@@ -4796,7 +4798,7 @@ public class TrackActivity extends AppCompatActivity implements OnMapReadyCallba
     private void trackPickToDest() throws Exception {
 
 
-        GoogleDirection.withServerKey(getString(R.string.google_map_api))
+        GoogleDirection.withServerKey(BuildConfig.API_KEY)
                 .from(new LatLng(Double.parseDouble(source_lat), Double.parseDouble(source_lng)))
                 .to(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)))
                 .transportMode(TransportMode.DRIVING)

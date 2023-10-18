@@ -3,7 +3,10 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">TravellingBug</string>
-    <string name="google_map_api">AIzaSyCXr0_LD2gosGvCyeghGW3OGlXq_VjOuQA</string>
+
+    <!--    <string name="google_map_api">AIzaSyCXr0_LD2gosGvCyeghGW3OGlXq_VjOuQA</string>-->
+    <!--    <string name="google_map_api">AIzaSyCXr0_LD2gosGvCyeghGW3OGlXq_VjOuQA</string>-->
+
     <!--    <string name="google_map_api">AIzaSyDYbRQKyMGHPP-hh1jOTaPv3f3jSXQScUg</string>-->
 
     <string name="facebook_app_id">758774072385786</string>

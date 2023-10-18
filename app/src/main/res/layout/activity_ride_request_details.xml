@@ -30,6 +30,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:padding="@dimen/_7sdp"
+                    android:contentDescription="backarrow"
                     android:src="@drawable/back_white" />
 
                 <TextView
@@ -41,7 +42,7 @@
                     android:gravity="center_vertical"
                     android:text="RIDE REQUEST"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -83,7 +84,7 @@
                         android:fontFamily="@font/nunito_bold"
                         android:text="user name"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp"
+                        android:textSize="@dimen/_14ssp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -109,9 +110,9 @@
                             android:fontFamily="@font/nunito_regular"
                             android:paddingStart="@dimen/_5sdp"
                             android:paddingEnd="@dimen/_5sdp"
-                            android:text="( 115 Reviews )"
+                            android:text="( 0 Reviews )"
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_7sdp"
+                            android:textSize="@dimen/_7ssp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -148,7 +149,7 @@
                     android:fontFamily="@font/nunito_bold"
                     android:text="VIEW PROFILE"
                     android:textColor="@color/dark_green"
-                    android:textSize="@dimen/_12sdp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="bold" />
 
                 <View
@@ -170,7 +171,7 @@
                     android:fontFamily="@font/nunito_bold"
                     android:text="CHAT"
                     android:textColor="@color/dark_green"
-                    android:textSize="@dimen/_12sdp"
+                    android:textSize="@dimen/_12ssp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -188,7 +189,7 @@
                 android:fontFamily="@font/nunito_bold"
                 android:text="Addresses"
                 android:textColor="@color/dark_green"
-                android:textSize="@dimen/_13sdp"
+                android:textSize="@dimen/_13ssp"
                 android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -234,7 +235,7 @@
                     android:maxLines="1"
                     android:text="Pickup location"
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
 
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
@@ -250,7 +251,7 @@
 
                     android:text=""
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
@@ -265,7 +266,7 @@
                     android:maxLines="1"
                     android:text=""
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -280,7 +281,7 @@
                     android:maxLines="1"
                     android:text="Drop location"
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
 
                     app:layout_constraintEnd_toEndOf="@+id/dropLocation"
                     app:layout_constraintStart_toEndOf="@+id/imageView10"
@@ -303,7 +304,7 @@
                 android:fontFamily="@font/nunito_bold"
                 android:text="Ride info"
                 android:textColor="@color/dark_green"
-                android:textSize="@dimen/_13sdp"
+                android:textSize="@dimen/_13ssp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -448,7 +449,7 @@
                 android:text="Reject"
                 android:textAllCaps="false"
                 android:textColor="@color/red"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
                 android:textStyle="bold"
                 android:visibility="gone" />
 

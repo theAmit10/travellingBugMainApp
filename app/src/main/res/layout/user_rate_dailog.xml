@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -33,9 +34,9 @@
                 android:layout_margin="@dimen/_5sdp"
 
                 android:maxLines="2"
-                android:text="Amit Tiwari"
+                android:text="username"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12ssp" />
 
         </LinearLayout>
 
@@ -56,7 +57,8 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:isIndicator="false"
                 android:numStars="5"
-                android:stepSize="1" />
+                android:stepSize="1"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,7 +68,7 @@
 
                 android:text="Give a compliment"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12ssp" />
 
             <HorizontalScrollView
                 android:layout_width="match_parent"
@@ -100,7 +102,7 @@
                             android:gravity="center"
                             android:paddingTop="@dimen/_5sdp"
                             android:text="Hero"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textSize="@dimen/_10ssp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -122,7 +124,7 @@
                             android:gravity="center"
                             android:paddingTop="@dimen/_5sdp"
                             android:text="6-star service"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textSize="@dimen/_10ssp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -145,7 +147,7 @@
                             android:gravity="center"
                             android:paddingTop="@dimen/_5sdp"
                             android:text="Great Conversation"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textSize="@dimen/_10ssp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -167,7 +169,7 @@
                             android:gravity="center"
                             android:paddingTop="@dimen/_5sdp"
                             android:text="Great attitude"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textSize="@dimen/_10ssp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -189,7 +191,7 @@
                             android:gravity="center"
                             android:paddingTop="@dimen/_5sdp"
                             android:text="Tidy and clean"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textSize="@dimen/_10ssp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -211,7 +213,7 @@
                             android:gravity="center"
                             android:paddingTop="@dimen/_5sdp"
                             android:text="Great Amenties"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textSize="@dimen/_10ssp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -230,7 +232,7 @@
                 android:minLines="2"
                 android:padding="@dimen/_5sdp"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13ssp" />
 
         </LinearLayout>
 
@@ -250,7 +252,8 @@
                 android:gravity="center"
                 android:text="RATE"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="TextContrastCheck" />
 
             <TextView
                 android:id="@+id/tvSkip"
@@ -262,7 +265,7 @@
                 android:gravity="center"
                 android:text="SKIP"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_12ssp"
                 android:visibility="gone" />
 
         </LinearLayout>

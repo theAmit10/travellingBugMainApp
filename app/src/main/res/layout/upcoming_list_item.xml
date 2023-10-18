@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -133,7 +134,7 @@
                                 android:text="@string/start_ride"
                                 android:textAllCaps="false"
                                 android:textColor="@color/cancel_ride_color"
-                                android:textSize="@dimen/_12sdp"
+                                android:textSize="@dimen/_12ssp"
                                 android:visibility="gone" />
                         </LinearLayout>
                     </LinearLayout>
@@ -258,7 +259,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/source_location"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12ssp" />
 
                             <!--                        <com.travel.travellingbug.utills.MyTextView-->
                             <!--                            android:id="@+id/txtSource"-->
@@ -283,7 +284,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/destination_location"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textSize="@dimen/_12ssp" />
 
                             <!--                        <com.travel.travellingbug.utills.MyTextView-->
                             <!--                            android:id="@+id/txtDestination"-->
@@ -325,7 +326,7 @@
                 android:rotation="-90"
                 android:text="Completed"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp" />
+                android:textSize="@dimen/_10ssp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -378,7 +379,7 @@
                                 android:drawablePadding="@dimen/_10sdp"
                                 android:text="Username"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/_10sdp"
+                                android:textSize="@dimen/_10ssp"
                                 android:textStyle="bold" />
 
                             <RatingBar
@@ -399,7 +400,7 @@
                                 android:layout_marginTop="-5dp"
                                 android:text=""
                                 android:textColor="@color/colorDarkGray"
-                                android:textSize="@dimen/_8sdp" />
+                                android:textSize="@dimen/_8ssp" />
                         </LinearLayout>
 
 
@@ -417,7 +418,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_8sdp"
+                            android:textSize="@dimen/_8ssp"
                             android:visibility="gone" />
 
 
@@ -439,7 +440,7 @@
                             android:text=""
                             android:theme="@style/SubTitle"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_10ssp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -451,7 +452,7 @@
                             android:maxLines="1"
                             android:text=""
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_10ssp"
 
                             />
 
@@ -503,7 +504,7 @@
                         android:maxLines="1"
                         android:text=""
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_10sdp"
+                        android:textSize="@dimen/_10ssp"
                         android:textStyle="bold"
                         card_view:layout_constraintEnd_toEndOf="parent"
                         card_view:layout_constraintStart_toEndOf="@+id/imageView9"
@@ -518,7 +519,7 @@
                         android:maxLines="1"
                         android:text=""
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_10sdp"
+                        android:textSize="@dimen/_10ssp"
                         android:textStyle="bold"
                         card_view:layout_constraintBottom_toBottomOf="@+id/imageView10"
                         card_view:layout_constraintEnd_toEndOf="parent"
@@ -554,7 +555,7 @@
                             android:layout_weight="1"
                             android:text=""
                             android:textColor="@color/green"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_10ssp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -574,7 +575,7 @@
                             android:layout_height="wrap_content"
                             android:text=""
                             android:textColor="@color/green"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_10ssp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -587,7 +588,7 @@
                         android:text="Details"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_8sdp"
+                        android:textSize="@dimen/_8ssp"
                         android:visibility="gone" />
 
                     <Button
@@ -600,8 +601,9 @@
                         android:text="@string/cancel_ride"
                         android:textAllCaps="false"
                         android:textColor="@color/red"
-                        android:textSize="@dimen/_8sdp"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/_8ssp"
+                        android:textStyle="bold"
+                        tools:ignore="TouchTargetSizeCheck" />
 
 
                 </LinearLayout>

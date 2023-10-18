@@ -36,7 +36,7 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:text="Ride Info"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_10sdp"
+                        android:textSize="@dimen/_10ssp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -46,7 +46,7 @@
                         android:layout_marginStart="@dimen/_140sdp"
                         android:text="View in map"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_11sdp"
+                        android:textSize="@dimen/_11ssp"
                         android:textStyle="bold"
                         android:visibility="gone" />
                 </LinearLayout>
@@ -66,7 +66,8 @@
                         android:src="@drawable/ic_circle_green"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/dark_green" />
+                        app:tint="@color/dark_green"
+                        tools:ignore="ContentDescription" />
 
                     <View
                         android:id="@+id/view5"
@@ -84,7 +85,8 @@
                         android:src="@drawable/ic_circle_yellow"
                         app:layout_constraintStart_toStartOf="@+id/imageView9"
                         app:layout_constraintTop_toBottomOf="@+id/view5"
-                        app:tint="#eec62d" />
+                        app:tint="#eec62d"
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/sourceTv"
@@ -95,7 +97,7 @@
                         android:maxLines="1"
                         android:text=""
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_11sdp"
+                        android:textSize="@dimen/_11ssp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageView9"
@@ -112,7 +114,7 @@
                         android:maxLines="1"
                         android:text=""
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_11sdp"
+                        android:textSize="@dimen/_11ssp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -143,7 +145,7 @@
                             android:layout_height="wrap_content"
                             android:text="Start Time"
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_10ssp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -153,7 +155,7 @@
                             android:fontFamily="@font/nunito_bold"
                             android:text=""
                             android:textColor="@color/green"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -171,7 +173,7 @@
                             android:layout_height="wrap_content"
                             android:text="Return Time"
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_10ssp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -181,7 +183,7 @@
                             android:fontFamily="@font/nunito_bold"
                             android:text=""
                             android:textColor="@color/green"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -199,7 +201,7 @@
                             android:layout_height="wrap_content"
                             android:text="Car Type"
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_10ssp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -209,7 +211,7 @@
                             android:fontFamily="@font/nunito_bold"
                             android:text=""
                             android:textColor="@color/green"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -244,7 +246,7 @@
                             android:layout_height="wrap_content"
                             android:text="Vehicle Capacity"
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_10ssp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -254,7 +256,7 @@
                             android:fontFamily="@font/nunito_bold"
                             android:text=""
                             android:textColor="@color/green"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -272,7 +274,7 @@
                             android:layout_height="wrap_content"
                             android:text="Air Conditioner"
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_10ssp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -282,7 +284,7 @@
                             android:fontFamily="@font/nunito_bold"
                             android:text=""
                             android:textColor="@color/green"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -300,7 +302,7 @@
                             android:layout_height="wrap_content"
                             android:text="Per Seat Per KM"
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_10sdp"
+                            android:textSize="@dimen/_10ssp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -310,7 +312,7 @@
                             android:fontFamily="@font/nunito_bold"
                             android:text=""
                             android:textColor="@color/green"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -333,7 +335,7 @@
 
                     android:text="Vehicle Details"
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -362,7 +364,7 @@
                             android:paddingEnd="@dimen/_5sdp"
                             android:text=""
                             android:textColor="@color/green"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -375,7 +377,7 @@
                             android:paddingBottom="@dimen/_5sdp"
                             android:text=""
                             android:textColor="@color/dark_gray"
-                            android:textSize="@dimen/_11sdp"
+                            android:textSize="@dimen/_11ssp"
                             android:textStyle="bold" />
 
 
@@ -413,7 +415,7 @@
                             android:padding="@dimen/_5sdp"
                             android:text="Sunday"
                             android:textColor="@color/colorDarkGray"
-                            android:textSize="@dimen/_14sdp"
+                            android:textSize="@dimen/_14ssp"
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -451,7 +453,7 @@
                         android:text="Chat"
                         android:textAllCaps="true"
                         android:textColor="@color/green"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textSize="@dimen/_12ssp" />
 
                     <Button
                         android:id="@+id/continueButton"
@@ -467,7 +469,7 @@
                         android:text="Call"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_12ssp"
                         android:visibility="visible" />
 
 

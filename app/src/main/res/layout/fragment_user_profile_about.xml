@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="Personal Info"
         android:fontFamily="@font/nunito_bold"
-        android:textSize="@dimen/_12sdp"
+        android:textSize="@dimen/_12ssp"
         android:textColor="@color/green"
         android:padding="@dimen/_10sdp"
         android:textStyle="bold"
@@ -36,7 +36,7 @@
         android:paddingStart="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp"
         android:paddingBottom="@dimen/_20sdp"
-        android:textSize="@dimen/_12sdp"
+        android:textSize="@dimen/_12ssp"
         android:textStyle="bold"
         />
 
@@ -58,7 +58,7 @@
         android:paddingStart="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp"
         android:paddingBottom="@dimen/_20sdp"
-        android:textSize="@dimen/_12sdp"
+        android:textSize="@dimen/_12ssp"
         android:textStyle="bold"
         />
 
@@ -81,7 +81,7 @@
         android:paddingStart="@dimen/_10sdp"
         android:paddingEnd="@dimen/_10sdp"
         android:paddingBottom="@dimen/_20sdp"
-        android:textSize="@dimen/_12sdp"
+        android:textSize="@dimen/_12ssp"
         android:textStyle="bold"
         />
 

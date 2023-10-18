@@ -66,7 +66,7 @@ public class HolidayPackageFragment extends Fragment {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
 //                super.onPageStarted(view, url, favicon);
 
-                customDialog.setCancelable(false);
+                customDialog.setCancelable(true);
             }
 
             @Override
@@ -102,7 +102,8 @@ public class HolidayPackageFragment extends Fragment {
                 return true;
             if (keyCode == KeyEvent.KEYCODE_BACK) {
                 if (doubleBackToExitPressedOnce) {
-                    getActivity().finish();
+//                    getActivity().finish();
+                    System.exit(0);
                     return false;
                 }
                 doubleBackToExitPressedOnce = true;

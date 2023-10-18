@@ -68,10 +68,10 @@ import com.travel.travellingbug.listeners.Connect;
 import com.travel.travellingbug.ui.activities.login.LoginActivity;
 import com.travel.travellingbug.ui.adapters.MainActivityViewPagerAdapter;
 import com.travel.travellingbug.ui.fragments.DriverMapFragment;
+import com.travel.travellingbug.ui.fragments.FSearch;
 import com.travel.travellingbug.ui.fragments.HolidayPackageFragment;
 import com.travel.travellingbug.ui.fragments.InboxFragment;
 import com.travel.travellingbug.ui.fragments.PublishFragment;
-import com.travel.travellingbug.ui.fragments.SearchFragment;
 import com.travel.travellingbug.ui.fragments.SummaryFragment;
 import com.travel.travellingbug.ui.fragments.YourRideFragment;
 import com.travel.travellingbug.utills.CustomTypefaceSpan;
@@ -87,7 +87,7 @@ import java.util.HashMap;
 import es.dmoral.toasty.Toasty;
 
 public class HomeScreenActivity extends AppCompatActivity implements
-        SearchFragment.HomeFragmentListener,
+        FSearch.HomeFragmentListener,
         ResponseListener {
 
     ViewPager2 viewPager;
@@ -168,8 +168,11 @@ public class HomeScreenActivity extends AppCompatActivity implements
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
+
                 switch (tab.getPosition()) {
                     case 1:
+
                         HomeScreenActivity.this.runOnUiThread(() -> {
                             fragment = new PublishFragment();
                             FragmentManager manager = getSupportFragmentManager();
@@ -227,7 +230,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
                     case 0:
                     default:
                         HomeScreenActivity.this.runOnUiThread(() -> {
-                            fragment = new SearchFragment();
+                            fragment = new FSearch();
                             FragmentManager manager = getSupportFragmentManager();
                             @SuppressLint("CommitTransaction")
                             FragmentTransaction transaction = manager.beginTransaction();
@@ -350,7 +353,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
             switch (menuItem.getItemId()) {
                 case R.id.nav_home:
                     drawer.closeDrawers();
-                    fragment = new SearchFragment();
+                    fragment = new FSearch();
                     GoToFragment();
 //                    if (CURRENT_TAG != TAG_HOME) {
 //                        fragment = new SearchFragment();
@@ -526,9 +529,14 @@ public class HomeScreenActivity extends AppCompatActivity implements
             approvaltxt.setTextColor(Color.RED);
             approvaltxt.setText(getText(R.string.banned));
             status.setImageResource(R.drawable.banned);
-        } else {
+        }
+        else if (SharedHelper.getKey(context, "status").equals("approved")) {
             approvaltxt.setTextColor(Color.WHITE);
             approvaltxt.setText(getText(R.string.approved));
+            status.setImageResource(R.drawable.approved);
+        }else {
+            approvaltxt.setTextColor(Color.WHITE);
+            approvaltxt.setText("New User");
             status.setImageResource(R.drawable.approved);
         }
 
@@ -573,7 +581,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
             if (navItemIndex != 0) {
                 navItemIndex = 0;
                 CURRENT_TAG = TAG_HOME;
-                fragment = new SearchFragment();
+                fragment = new FSearch();
                 GoToFragment();
                 return;
             } else {
@@ -597,7 +605,7 @@ public class HomeScreenActivity extends AppCompatActivity implements
 
     private void map() {
         HomeScreenActivity.this.runOnUiThread(() -> {
-            fragment = new SearchFragment();
+            fragment = new FSearch();
             FragmentManager manager = getSupportFragmentManager();
             @SuppressLint("CommitTransaction")
             FragmentTransaction transaction = manager.beginTransaction();

@@ -13,7 +13,7 @@
         android:layout_marginEnd="@dimen/_10sdp"
         android:text="Chattiness"
         android:textColor="@color/black"
-        android:textSize="@dimen/_10sdp"
+        android:textSize="@dimen/_10ssp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
         android:layout_marginBottom="@dimen/_10sdp"
         android:text="I'm chatty when i feel comfortable"
         android:textColor="@color/green"
-        android:textSize="@dimen/_14sdp"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/titleTPtv"
         app:layout_constraintStart_toStartOf="@+id/titleTPtv"

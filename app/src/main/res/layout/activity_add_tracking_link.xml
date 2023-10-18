@@ -30,7 +30,7 @@
             android:text="Tracking link"
             android:textAllCaps="true"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp" />
+            android:textSize="@dimen/_14ssp" />
     </LinearLayout>
 
 
@@ -118,7 +118,7 @@
             android:fontFamily="@font/nunito_bold"
             android:text="Add Tracking Link"
             android:textColor="@color/text_color_white"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_12ssp" />
 
         <Button
             android:id="@+id/btnShareLink"
@@ -129,7 +129,7 @@
             android:fontFamily="@font/nunito_bold"
             android:text="Share tracking link"
             android:textColor="@color/text_color_white"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_12ssp" />
     </LinearLayout>
 
 </RelativeLayout>

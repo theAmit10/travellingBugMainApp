@@ -45,7 +45,7 @@
                         android:drawableTint="@color/quantum_yellow"
                         android:text="5"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_12ssp"
                         android:textStyle="bold" />
 
                     <ProgressBar
@@ -68,7 +68,7 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:text=""
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_12ssp"
                         android:textStyle="bold" />
 
 
@@ -93,7 +93,7 @@
                         android:drawableTint="@color/quantum_yellow"
                         android:text="4"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_12ssp"
                         android:textStyle="bold" />
 
                     <ProgressBar
@@ -115,7 +115,7 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:text=""
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_12ssp"
                         android:textStyle="bold" />
 
 
@@ -140,7 +140,7 @@
                         android:drawableTint="@color/quantum_yellow"
                         android:text="3"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_12ssp"
                         android:textStyle="bold" />
 
                     <ProgressBar
@@ -162,7 +162,7 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:text=""
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_12ssp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -186,7 +186,7 @@
                         android:drawableTint="@color/quantum_yellow"
                         android:text="2"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_12ssp"
                         android:textStyle="bold" />
 
                     <ProgressBar
@@ -208,7 +208,7 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:text=""
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_12ssp"
                         android:textStyle="bold" />
 
 
@@ -233,7 +233,7 @@
                         android:drawableTint="@color/quantum_yellow"
                         android:text="1"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_12ssp"
                         android:textStyle="bold" />
 
                     <ProgressBar
@@ -255,7 +255,7 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:text=""
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="@dimen/_12sdp"
+                        android:textSize="@dimen/_12ssp"
                         android:textStyle="bold" />
 
 
@@ -359,7 +359,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="No review"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_20sdp"
+                android:textSize="@dimen/_20ssp"
                 android:textStyle="bold" />
 
             <!--            <com.travel.travellingbug.utills.MyTextView-->
@@ -382,7 +382,7 @@
                 android:textStyle="bold"
                 android:text="User haven't received any rating yet."
                 android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12ssp" />
 
         </LinearLayout>
 

@@ -33,7 +33,7 @@
             android:gravity="center_vertical"
             android:text="@string/upcoming_rides"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_14ssp" />
 
     </LinearLayout>
 
@@ -103,7 +103,7 @@
                 android:text="Your future travel plans will appear here."
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="@dimen/_20sdp" />
+                android:textSize="@dimen/_20ssp" />
 
 <!--            <com.travel.travellingbug.utills.MyTextView-->
 <!--                android:layout_width="wrap_content"-->
@@ -124,7 +124,7 @@
                 android:layout_marginTop="20dp"
                 android:text="You have no upcomming rides"
                 android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12ssp" />
 
         </LinearLayout>
 

@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
+            android:contentDescription="backarrow"
             android:src="@drawable/back_white" />
 
         <TextView
@@ -90,7 +91,7 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/emoji_ios_category_smileysandpeople"
-                    tools:ignore="ContentDescription" />
+                    tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 <com.vanniktech.emoji.EmojiEditText
                     android:id="@+id/editWriteMessage"
@@ -109,7 +110,8 @@
                     android:textColor="@color/black"
                     android:textColorHint="#aeafaf"
                     android:textCursorDrawable="@null"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_12ssp"
+                    tools:ignore="TouchTargetSizeCheck" />
 
 
             </LinearLayout>
@@ -121,7 +123,8 @@
             android:layout_height="@dimen/_40sdp"
             android:background="@drawable/round_shape"
             android:elevation="@dimen/_5sdp"
-            android:src="@drawable/ic_send_black_24dp" />
+            android:src="@drawable/ic_send_black_24dp"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
 

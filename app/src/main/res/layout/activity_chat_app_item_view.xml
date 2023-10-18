@@ -24,7 +24,7 @@
             android:layout_marginBottom="4dp"
             android:background="@drawable/left_chat"
             android:padding="@dimen/_10sdp"
-            android:textSize="@dimen/_10sdp" />
+            android:textSize="@dimen/_10ssp" />
 
 
         <TextView
@@ -71,7 +71,7 @@
             android:background="@drawable/rightchat"
             android:padding="@dimen/_10sdp"
             android:textColor="@color/white"
-            android:textSize="@dimen/_10sdp" />
+            android:textSize="@dimen/_10ssp" />
 
         <TextView
             android:id="@+id/tmRight"

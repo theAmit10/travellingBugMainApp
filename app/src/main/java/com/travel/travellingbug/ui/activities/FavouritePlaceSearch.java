@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.travel.travellingbug.BuildConfig;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.ui.adapters.AutoCompleteAdapter;
@@ -202,7 +203,8 @@ public class FavouritePlaceSearch extends AppCompatActivity implements View.OnCl
         urlString.append("&location=");
         urlString.append(latitude + "," + longitude); // append lat long of current location to show nearby results.
         urlString.append("&radius=500&language=en");
-        urlString.append("&key=" + getResources().getString(R.string.google_map_api));
+//        urlString.append("&key=" + getResources().getString(R.string.google_map_api));
+        urlString.append("&key=" + BuildConfig.API_KEY);
 
         Log.d("FINAL URL:::   ", urlString.toString());
         return urlString.toString();

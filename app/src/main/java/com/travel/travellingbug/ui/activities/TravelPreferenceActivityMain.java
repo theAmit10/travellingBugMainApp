@@ -240,6 +240,8 @@ public class TravelPreferenceActivityMain extends AppCompatActivity {
                     travelPreferenceRVLayout.setVisibility(View.VISIBLE);
 
 
+
+
                     for (int i = 0; i < response.length(); i++) {
                         try {
 

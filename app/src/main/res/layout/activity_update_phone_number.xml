@@ -107,7 +107,7 @@
                     app:ccp_autoDetectCountry="true"
                     app:ccp_showNameCode="false"
                     app:ccp_showPhoneCode="true"
-                    app:ccp_textSize="@dimen/_10sdp" />
+                    app:ccp_textSize="@dimen/_10ssp" />
             </FrameLayout>
 
 
@@ -125,7 +125,7 @@
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/colorDarkGray"
                 android:textColorHint="@color/colorDarkGray"
-                android:textSize="@dimen/_11sdp"
+                android:textSize="@dimen/_11ssp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -154,7 +154,7 @@
             android:background="@drawable/rounded_button"
             android:text="@string/update"
             android:textColor="@color/text_color_white"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_14ssp" />
 
 <!--        <Button-->
 <!--            android:id="@+id/getOtpButton"-->
@@ -176,7 +176,7 @@
             android:background="@drawable/rounded_button"
             android:text="Generate OTP"
             android:textColor="@color/text_color_white"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_14ssp" />
     </LinearLayout>
 
 

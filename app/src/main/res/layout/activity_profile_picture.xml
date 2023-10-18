@@ -41,7 +41,7 @@
         android:padding="@dimen/_20sdp"
         android:text="Don't wear sunglasses, look straight ahead and make sure you are alone."
         android:textColor="@color/black"
-        android:textSize="@dimen/_18sdp"
+        android:textSize="@dimen/_18ssp"
         android:textStyle="bold" />
 
 
@@ -60,7 +60,7 @@
             android:paddingBottom="@dimen/_20sdp"
             android:text="Update"
             android:textColor="#2196F3"
-            android:textSize="@dimen/_14sdp"
+            android:textSize="@dimen/_14ssp"
             android:textStyle="bold"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -79,7 +79,7 @@
             android:text="Choose a picture"
             android:textAllCaps="true"
             android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_12ssp"
             app:layout_constraintBottom_toTopOf="@+id/choosePicturetv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.36"

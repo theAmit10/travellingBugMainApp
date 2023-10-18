@@ -114,6 +114,7 @@ import com.google.maps.android.ui.IconGenerator;
 import com.koushikdutta.ion.Ion;
 import com.skyfishjy.library.RippleBackground;
 import com.squareup.picasso.Picasso;
+import com.travel.travellingbug.BuildConfig;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.helper.ConnectionHelper;
@@ -180,7 +181,6 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         GoogleApiClient.OnConnectionFailedListener, ResponseListener, GoogleMap.OnCameraMoveListener {
 
     private static final String TAG = "UserMapFragment";
-
     private static final int REQUEST_LOCATION = 1450;
     private static final Interpolator INTERPOLATOR = new FastOutSlowInInterpolator();
     private final int ADD_CARD_CODE = 435;
@@ -497,6 +497,22 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         }
 
 
+        // For Android 13 Notication Permission
+        // Request the POST_NOTIFICATIONS permission.
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Check if the user granted the permission.
+            if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                // Send the notification.
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.POST_NOTIFICATIONS}, 0);
+            }
+
+        }
+
+
+
+
+
         restInterface = ServiceGenerator.createService(RestInterface.class);
         customDialog = new CustomDialog(getActivity());
         if (activity != null && isAdded()) {
@@ -508,6 +524,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     try {
                         getProfile();
                         getDocList();
+
 
                         //permission to access location
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
@@ -568,90 +585,106 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
             }
         }
 
+
         calendertv = rootView.findViewById(R.id.calendertv);
+
+        Date currentDate = Calendar.getInstance().getTime();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String formattedDate = dateFormat.format(currentDate);
+
+        calendertv = rootView.findViewById(R.id.calendertv);
+
+        // Check if the date is today and update the TextView accordingly
+        if (isToday(currentDate)) {
+            scheduledDate = formattedDate;
+            calendertv.setText("Today");
+        } else {
+            calendertv.setText(formattedDate);
+        }
+
+//        calendertv.setText("Abcd");
         calendertv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Calendar mcurrentTime = Calendar.getInstance();
-                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mcurrentTime.get(Calendar.MINUTE);
-                TimePickerDialog mTimePicker;
-
-                mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
-                    int callCount = 0;   //To track number of calls to onTimeSet()
-
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-
-                        if (callCount == 0) {
-                            String choosedHour = "";
-                            String choosedMinute = "";
-                            String choosedTimeZone = "";
-                            String choosedTime = "";
-
-                            scheduledTime = selectedHour + ":" + selectedMinute;
-
-                            if (selectedHour > 12) {
-                                choosedTimeZone = "PM";
-                                selectedHour = selectedHour - 12;
-                                if (selectedHour < 10) {
-                                    choosedHour = "0" + selectedHour;
-                                } else {
-                                    choosedHour = "" + selectedHour;
-                                }
-                            } else {
-                                choosedTimeZone = "AM";
-                                if (selectedHour < 10) {
-                                    choosedHour = "0" + selectedHour;
-                                } else {
-                                    choosedHour = "" + selectedHour;
-                                }
-                            }
-
-                            if (selectedMinute < 10) {
-                                choosedMinute = "0" + selectedMinute;
-                            } else {
-                                choosedMinute = "" + selectedMinute;
-                            }
-                            choosedTime = choosedHour + ":" + choosedMinute + " " + choosedTimeZone;
-
-                            if (scheduledDate != "" && scheduledTime != "") {
-                                Date date = null;
-                                try {
-                                    date = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(scheduledDate);
-                                } catch (ParseException e) {
-                                    e.printStackTrace();
-                                }
-                                long milliseconds = date.getTime();
-                                if (!DateUtils.isToday(milliseconds)) {
-//                                    timetv.setText(choosedTime);
-                                    System.out.println("time : " + choosedTime);
-                                } else {
-                                    if (utils.checktimings(scheduledTime)) {
-//                                        timetv.setText(choosedTime);
-                                        System.out.println("time : " + choosedTime);
-                                    } else {
-                                        Toast toast = new Toast(getActivity());
-                                        Toast.makeText(getActivity(), getContext().getString(R.string.different_time), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            } else {
-                                Toast.makeText(getActivity(), getContext().getString(R.string.choose_date_time), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        callCount++;
-                    }
-                }, hour, minute, false);//Yes 24 hour time
-                mTimePicker.setTitle("Select Time");
-                mTimePicker.show();
+//                Calendar mcurrentTime = Calendar.getInstance();
+//                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+//                int minute = mcurrentTime.get(Calendar.MINUTE);
+//                TimePickerDialog mTimePicker;
+//
+//                mTimePicker = new TimePickerDialog(getActivity(), new TimePickerDialog.OnTimeSetListener() {
+//                    int callCount = 0;   //To track number of calls to onTimeSet()
+//
+//                    @Override
+//                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+//
+//                        if (callCount == 0) {
+//                            String choosedHour = "";
+//                            String choosedMinute = "";
+//                            String choosedTimeZone = "";
+//                            String choosedTime = "";
+//
+//                            scheduledTime = selectedHour + ":" + selectedMinute;
+//
+//                            if (selectedHour > 12) {
+//                                choosedTimeZone = "PM";
+//                                selectedHour = selectedHour - 12;
+//                                if (selectedHour < 10) {
+//                                    choosedHour = "0" + selectedHour;
+//                                } else {
+//                                    choosedHour = "" + selectedHour;
+//                                }
+//                            } else {
+//                                choosedTimeZone = "AM";
+//                                if (selectedHour < 10) {
+//                                    choosedHour = "0" + selectedHour;
+//                                } else {
+//                                    choosedHour = "" + selectedHour;
+//                                }
+//                            }
+//
+//                            if (selectedMinute < 10) {
+//                                choosedMinute = "0" + selectedMinute;
+//                            } else {
+//                                choosedMinute = "" + selectedMinute;
+//                            }
+//                            choosedTime = choosedHour + ":" + choosedMinute + " " + choosedTimeZone;
+//
+//                            if (scheduledDate != "" && scheduledTime != "") {
+//                                Date date = null;
+//                                try {
+//                                    date = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(scheduledDate);
+//                                } catch (ParseException e) {
+//                                    e.printStackTrace();
+//                                }
+//                                long milliseconds = date.getTime();
+//                                if (!DateUtils.isToday(milliseconds)) {
+////                                    timetv.setText(choosedTime);
+//                                    System.out.println("time : " + choosedTime);
+//                                } else {
+//                                    if (utils.checktimings(scheduledTime)) {
+////                                        timetv.setText(choosedTime);
+//                                        System.out.println("time : " + choosedTime);
+//                                    } else {
+//                                        Toast toast = new Toast(getActivity());
+//                                        Toast.makeText(getActivity(), getContext().getString(R.string.different_time), Toast.LENGTH_SHORT).show();
+//                                    }
+//                                }
+//                            } else {
+//                                Toast.makeText(getActivity(), getContext().getString(R.string.choose_date_time), Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                        callCount++;
+//                    }
+//                }, hour, minute, false);//Yes 24 hour time
+//                mTimePicker.setTitle("Select Time");
+//                mTimePicker.show();
 
 
                 final Calendar c = Calendar.getInstance();
                 int mYear = c.get(Calendar.YEAR); // current year
                 int mMonth = c.get(Calendar.MONTH); // current month
                 int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
-
 
                 // date picker dialog
                 datePickerDialog = new DatePickerDialog(getActivity(),
@@ -715,6 +748,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 datePickerDialog.show();
 
 
+
             }
         });
 
@@ -754,26 +788,29 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 Type type = new TypeToken<ArrayList<SearchHistoryModel>>() {
                 }.getType();
                 mSearchHistoryModel = gson.fromJson(json, type);
-                System.out.println("mSearchHistoryModel size : "+mSearchHistoryModel.size());
-                for(int i=0;i<mSearchHistoryModel.size(); i++){
-                    System.out.println("mSearchHistoryModel add : "+mSearchHistoryModel.get(i).getFromAddress());
-                    System.out.println("mSearchHistoryModel pass : "+mSearchHistoryModel.get(i).getPassenger());
+                if(mSearchHistoryModel != null){
+                    System.out.println("mSearchHistoryModel size : "+mSearchHistoryModel.size());
+                    for(int i=0;i<mSearchHistoryModel.size(); i++){
+                        System.out.println("mSearchHistoryModel add : "+mSearchHistoryModel.get(i).getFromAddress());
+                        System.out.println("mSearchHistoryModel pass : "+mSearchHistoryModel.get(i).getPassenger());
+                    }
+
+                    ArrayList<SearchHistoryModel> desenList = new ArrayList<>();
+                    int j = 0;
+                    for(int i=mSearchHistoryModel.size()-1; i>=0; i--){
+                        desenList.add(mSearchHistoryModel.get(j));
+                        j++;
+                    }
+
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
+                    searchHistoryRv.setLayoutManager(linearLayoutManager);
+                    searchHistoryRv.setNestedScrollingEnabled(false);
+                    SearchHistoryAdpater searchHistoryAdpater = new SearchHistoryAdpater(getContext(), desenList,searchHistoryItemClickListener);
+                    searchHistoryRv.setAdapter(searchHistoryAdpater);
+                    searchHistoryRelativeLayout.setVisibility(View.VISIBLE);
+
+
                 }
-
-                ArrayList<SearchHistoryModel> desenList = new ArrayList<>();
-                int j = 0;
-                for(int i=mSearchHistoryModel.size()-1; i>=0; i--){
-                    desenList.add(mSearchHistoryModel.get(j));
-                    j++;
-                }
-
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
-                searchHistoryRv.setLayoutManager(linearLayoutManager);
-                searchHistoryRv.setNestedScrollingEnabled(false);
-                SearchHistoryAdpater searchHistoryAdpater = new SearchHistoryAdpater(getContext(), desenList,searchHistoryItemClickListener);
-                searchHistoryRv.setAdapter(searchHistoryAdpater);
-                searchHistoryRelativeLayout.setVisibility(View.VISIBLE);
-
 
 
 
@@ -803,6 +840,15 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
         return rootView;
 
 
+    }
+
+    private boolean isToday(Date date) {
+        Calendar today = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return today.get(Calendar.YEAR) == calendar.get(Calendar.YEAR) &&
+                today.get(Calendar.MONTH) == calendar.get(Calendar.MONTH) &&
+                today.get(Calendar.DAY_OF_MONTH) == calendar.get(Calendar.DAY_OF_MONTH);
     }
 
     private String getMonth(String date) throws ParseException {
@@ -1426,6 +1472,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     Gson gson = new Gson();
                     String json = SharedHelper.getKey(getContext(),"getSearchHistory");
                     Type type = new TypeToken<ArrayList<SearchHistoryModel>>() {}.getType();
+
                     mSearchHistoryModel = gson.fromJson(json, type);
 
                     if (mSearchHistoryModel == null) {
@@ -1683,7 +1730,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 .setMessage("Do you really want to TravellingBug Services?")
                 .setIcon(R.drawable
                         .app_logo_org)
-                .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> getActivity().finish())
+                .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> System.exit(0))
                 .setNegativeButton(android.R.string.no, null).show();
     }
 
@@ -1765,19 +1812,20 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     latitude = location.getLatitude();
                     longitude = location.getLongitude();
                     currentAddress = utils.getCompleteAddressString(context, latitude, longitude);
-                    source_lat = "" + latitude;
-                    source_lng = "" + longitude;
-                    source_address = currentAddress;
+
+                    // commenting below to disable automatic add current location
+//                    source_lat = "" + latitude;
+//                    source_lng = "" + longitude;
+//                    source_address = currentAddress;
+
                     current_address = currentAddress;
-//                if(getContext() != null){
-//                    frmSource.setTextColor(getResources().getColor(R.color.dark_gray));
-//                    frmDest.setTextColor(getResources().getColor(R.color.dark_gray));
-//                }
+
                     try {
                         if (current_address.equalsIgnoreCase("") || current_address.length() == 0) {
                             frmSource.setText("Leaving From");
                         } else {
-                            frmSource.setText(currentAddress);
+                            frmSource.setText("");
+//                            frmSource.setText(currentAddress);
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -1795,17 +1843,17 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
                             String destination_address = utils.getCompleteAddressString(context, dlat, dlong);
                             if (destination_address.equalsIgnoreCase("")) {
-                                frmDest.setText("Going to");
+                                frmDest.setText("Going To");
                             } else {
                                 frmDest.setText(destination_address);
                             }
                         } else {
-                            frmDest.setText("Going to");
+                            frmDest.setText("Going To");
                         }
 
                     } catch (Exception e) {
                         e.printStackTrace();
-//                    frmDest.setText("Going to");
+//                    frmDest.setText("Going To");
                     }
 
 
@@ -2037,8 +2085,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                 sourceDestLayout.setVisibility(View.VISIBLE);
                 imgMenu.setVisibility(View.VISIBLE);
                 destination.setText("");
-                frmDest.setText(""+"Going to");
-                frmSource.setText("" + current_address);
+                frmDest.setText(""+"Going To");
+                frmSource.setText("" + "Leaving From");
+//                frmSource.setText("" + current_address);
                 dest_address = "";
                 dest_lat = "";
                 dest_lng = "";
@@ -2520,7 +2569,9 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
                         if (dest_address.equalsIgnoreCase("")) {
                             flowValue = 1;
+                            // commenting below
                             frmSource.setText(source_address);
+
 //                            getValidZone();
 //                            getServiceList();
                         } else {
@@ -3282,6 +3333,25 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
     public void setValuesForSourceAndDestination() {
         try {
             if (isInternet) {
+//                if (!source_lat.equalsIgnoreCase("")) {
+//                    if (!source_address.equalsIgnoreCase("")) {
+//                        frmSource.setText(source_address);
+//                        frmSourceBottom.setText(source_address);
+//
+//                    } else {
+//                        frmSource.setText(current_address);
+////                        frmSource.setText(source_address);
+//                        frmSourceBottom.setText(source_address);
+//                    }
+//                } else {
+//                    frmSource.setText(current_address);
+////                    frmSource.setText(source_address);
+//                    frmSourceBottom.setText(source_address);
+//                }
+
+
+
+
                 if (!source_lat.equalsIgnoreCase("")) {
                     if (!source_address.equalsIgnoreCase("")) {
                         frmSource.setText(source_address);
@@ -3295,6 +3365,8 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     frmSource.setText(current_address);
                     frmSourceBottom.setText(source_address);
                 }
+
+
 
                 /***************************************CHANGES HERE TO HIDE SOURCE ADDRESS AND DESTINATION ADDRESS TEXTVIEW***********************************************/
 
@@ -4215,9 +4287,20 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     Intent intent = new Intent(getActivity(), CustomGooglePlacesSearch.class);
                     searchHistoryRelativeLayout.setVisibility(View.GONE);
                     intent.putExtra("cursor", "source");
-                    intent.putExtra("s_address", frmSource.getText().toString());
+                    if(current_address == null)
+                    {
+                        intent.putExtra("s_address", source_address);
+                    }
+                    else {
+                        intent.putExtra("s_address", currentAddress);
+                    }
+//                    intent.putExtra("s_address", frmSource.getText().toString());
                     intent.putExtra("d_address", destination.getText().toString());
                     intent.putExtra("d_address", frmDest.getText().toString());
+
+//                    intent.putExtra("s_address", "");
+//                    intent.putExtra("d_address", "");
+//                    intent.putExtra("d_address", "");
                     startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST);
                     break;
 
@@ -4226,9 +4309,13 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
                     Intent intent2 = new Intent(getActivity(), CustomGooglePlacesSearch.class);
                     searchHistoryRelativeLayout.setVisibility(View.GONE);
                     intent2.putExtra("cursor", "destination");
-                    intent2.putExtra("s_address", frmSource.getText().toString());
+                    intent2.putExtra("s_address", currentAddress);
+//                    intent2.putExtra("s_address", frmSource.getText().toString());
                     intent2.putExtra("d_address", destination.getText().toString());
                     intent2.putExtra("d_address", frmDest.getText().toString());
+//                    intent2.putExtra("s_address", "");
+//                    intent2.putExtra("d_address", "");
+//                    intent2.putExtra("d_address", "");
                     startActivityForResult(intent2, PLACE_AUTOCOMPLETE_REQUEST_CODE_DEST);
                     break;
                 case R.id.lblPromo:
@@ -4766,7 +4853,7 @@ public class SearchFragment extends Fragment implements OnMapReadyCallback, Loca
 
     private void trackPickToDest() throws Exception {
 
-        GoogleDirection.withServerKey(getActivity().getResources().getString(R.string.google_map_api))
+        GoogleDirection.withServerKey(BuildConfig.API_KEY)
                 .from(new LatLng(Double.parseDouble(source_lat), Double.parseDouble(source_lng)))
                 .to(new LatLng(Double.parseDouble(dest_lat), Double.parseDouble(dest_lng)))
                 .transportMode(TransportMode.DRIVING)

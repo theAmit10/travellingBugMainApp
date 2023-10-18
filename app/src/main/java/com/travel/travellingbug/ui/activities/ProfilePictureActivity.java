@@ -149,15 +149,20 @@ public class ProfilePictureActivity extends AppCompatActivity {
     private void onClickHandlerOnComponent() {
         btnTakePicture.setOnClickListener(view -> {
 
+
+
+
             if (checkStoragePermission()) {
+
 //                goToImageIntent();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    requestPermissions(new String[]{Manifest.permission.CAMERA,
-                            Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
-                }
-            } else {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                    Toast.makeText(context, "App permission required", Toast.LENGTH_SHORT).show();
+//                    requestPermissions(new String[]{
+//                            Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+//                }
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
                 {
+
 
                     System.out.println("IFFFF");
                     Intent intent = new Intent(MediaStore.ACTION_PICK_IMAGES);
@@ -166,6 +171,29 @@ public class ProfilePictureActivity extends AppCompatActivity {
                     startActivityForResult(intent,SELECT_PHOTO_13);
 
                 }else{
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        Toast.makeText(context, "App permission required", Toast.LENGTH_SHORT).show();
+                        requestPermissions(new String[]{
+                                Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+                    }
+
+                }
+
+
+            } else {
+
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+                {
+
+
+                    System.out.println("IFFFF");
+                    Intent intent = new Intent(MediaStore.ACTION_PICK_IMAGES);
+                    Uri imagePath = createPdf();
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT , imagePath);
+                    startActivityForResult(intent,SELECT_PHOTO_13);
+
+                }else{
+
                     System.out.println("ELSEEEEE");
                     goToImageIntent();
                 }
@@ -372,27 +400,36 @@ public class ProfilePictureActivity extends AppCompatActivity {
     }
 
     private Uri createPdf(){
-        Uri uri = null;
-        ContentResolver resolver = getContentResolver();
+        try {
+            Uri uri = null;
+            ContentResolver resolver = getContentResolver();
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
-        {
-            uri = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY);
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+            {
+                uri = MediaStore.Images.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY);
 
-        }else {
-            uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            }else {
+                uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            }
+
+
+            String imageName = "pogo"+SharedHelper.getKey(getApplicationContext(), "id");
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(MediaStore.Images.Media.DISPLAY_NAME, imageName+".jpeg");
+            contentValues.put(MediaStore.Images.Media.RELATIVE_PATH,"Pictures/"+"My image/");
+
+            Uri finalUri = resolver.insert(uri, contentValues);
+
+            imageUrl = finalUri;
+
+            return finalUri;
+
+        }catch (Exception e){
+
+            e.printStackTrace();
+            return  null;
         }
 
-        String imageName = "pogo";
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(MediaStore.Images.Media.DISPLAY_NAME, imageName+".jpeg");
-        contentValues.put(MediaStore.Images.Media.RELATIVE_PATH,"Pictures/"+"My image/");
-
-        Uri finalUri = resolver.insert(uri, contentValues);
-
-        imageUrl = finalUri;
-
-        return finalUri;
 
 
     }

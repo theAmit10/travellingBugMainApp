@@ -6,8 +6,9 @@ public interface URLHelper {
     int client_id = 2;
     String client_secret = "WifS1rMi3LvuorP1G2UdtKZairUNSH2iMqrKivPf";
 
-//    String BASE = "https://pintaxi.xyz/";
-    String BASE = "https://tejratidukan.com/carpool/";
+
+//    String BASE = "https://tejratidukan.com/carpool/";
+    String BASE = "https://travllingbug.com/";
     String STRIPE_TOKEN = "pk_test_LTXZTPA9yepu9dEodKsJm6GA";
     String GET_USERREVIEW = BASE + "api/provider/review";
     String GET_NOTIFICATIONS = BASE + "api/provider/notification";
@@ -194,6 +195,8 @@ public interface URLHelper {
     String USER_COMPLAINTS = BASE + "api/provider/profile/complaint";
 
     String HELP_TITLE = BASE + "api/provider/profile/complainttitle";
+
+    String HOME_SCREEN_IMAGE = BASE + "api/user/screenimages";
 
 
 

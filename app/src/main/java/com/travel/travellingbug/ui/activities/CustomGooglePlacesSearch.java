@@ -41,6 +41,7 @@ import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.gson.Gson;
+import com.travel.travellingbug.BuildConfig;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.consts.AutoCompleteAdapter;
@@ -104,7 +105,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
         thisActivity = this;
 
         // Initialize the SDK
-        com.google.android.libraries.places.api.Places.initialize(getApplicationContext(), getString(R.string.google_map_api));
+        com.google.android.libraries.places.api.Places.initialize(getApplicationContext(), BuildConfig.API_KEY);
 
         placesClient = com.google.android.libraries.places.api.Places.createClient(this);
         txtDestination = findViewById(R.id.txtDestination);
@@ -138,7 +139,14 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
         String d_address = getIntent().getExtras().getString("d_address");
         Log.e("CustomGoogleSearch", "onCreate: source " + s_address);
         Log.e("CustomGoogleSearch", "onCreate: destination" + d_address);
+
+//        if(s_address.equalsIgnoreCase("Leaving From")){
+//            txtaddressSource.setText("");
+//        }else{
+//            txtaddressSource.setText(s_address);
+//        }
         txtaddressSource.setText(s_address);
+
 
         if (d_address != null && !d_address.equalsIgnoreCase("")) {
             txtDestination.setText(d_address);
@@ -242,9 +250,10 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                 imgDestClose.setVisibility(View.VISIBLE);
                 strSelected = "destination";
                 if (txtDestination.getText().length() > 0) {
-                    txtPickLocation.setVisibility(View.VISIBLE);
+//                    txtPickLocation.setVisibility(View.VISIBLE);
                     imgDestClose.setVisibility(View.VISIBLE);
                     txtPickLocation.setText(getString(R.string.pin_location));
+                    txtPickLocation.setVisibility(View.GONE);
                     Runnable run = new Runnable() {
                         @Override
                         public void run() {
@@ -315,9 +324,10 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
                 // optimised way is to start searching for laction after user has typed minimum 3 chars
                 strSelected = "source";
                 if (txtaddressSource.getText().length() > 0) {
-                    txtPickLocation.setVisibility(View.VISIBLE);
+//                    txtPickLocation.setVisibility(View.VISIBLE);
                     imgSourceClose.setVisibility(View.VISIBLE);
                     txtPickLocation.setText(getString(R.string.pin_location));
+                    txtPickLocation.setVisibility(View.GONE);
                     if (mAutoCompleteAdapter == null)
                         mAutoCompleteList.setVisibility(View.VISIBLE);
                     Runnable run = new Runnable() {
@@ -508,7 +518,7 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
 
                     if(strSelected.equalsIgnoreCase("destination")){
                         if (!txtDestination.getText().toString().equalsIgnoreCase("")) {
-                            if (!txtDestination.getText().toString().equalsIgnoreCase("Going to") ) {
+                            if (!txtDestination.getText().toString().equalsIgnoreCase("Going To") ) {
                                 if (!placePredictions.strDestAddress.equalsIgnoreCase(placePredictions.strSourceAddress)) {
                                     setAddress();
                                 }
@@ -604,7 +614,8 @@ public class CustomGooglePlacesSearch extends AppCompatActivity
         urlString.append("&location=");
         urlString.append(latitude + "," + longitude); // append lat long of current location to show nearby results.
         urlString.append("&radius=500&language=en");
-        urlString.append("&key=" + getResources().getString(R.string.google_map_api));
+//        urlString.append("&key=" + getResources().getString(R.string.google_map_api));
+        urlString.append("&key=" + BuildConfig.API_KEY);
 
         Log.d("FINAL URL:::   ", urlString.toString());
 

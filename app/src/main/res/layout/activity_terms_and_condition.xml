@@ -29,6 +29,7 @@
                     android:layout_height="@dimen/_40sdp"
                     android:layout_weight="0"
                     android:padding="@dimen/_5sdp"
+                    android:contentDescription="backarrow"
                     app:srcCompat="@drawable/ic_arrow_back" />
 
                 <TextView
@@ -39,7 +40,7 @@
                     android:fontFamily="@font/nunito_bold"
                     android:text="Terms And Condition"
                     android:textColor="@color/colorLightGray"
-                    android:textSize="@dimen/_14sdp"
+                    android:textSize="@dimen/_14ssp"
                     android:textStyle="bold" />
 
 
@@ -61,7 +62,7 @@
                 android:text="Terms of Travelling Bug"
                 android:textColor="@color/black"
                 android:fontFamily="@font/nunito_bold"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -94,7 +95,7 @@ Reproduce, duplicate or copy material from Travelling Bug
 Redistribute content from Travelling Bug
 "
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp" />
+                android:textSize="@dimen/_10ssp" />
 
 
             <TextView
@@ -108,7 +109,7 @@ Redistribute content from Travelling Bug
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="See more"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_11sdp" />
+                android:textSize="@dimen/_11ssp" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

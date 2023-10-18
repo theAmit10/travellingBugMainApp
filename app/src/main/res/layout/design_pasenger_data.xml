@@ -16,7 +16,7 @@
         android:text="Vikas"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="@dimen/_12sdp"
+        android:textSize="@dimen/_12ssp"
         />
     <TextView
         android:id="@+id/plocation"
@@ -31,7 +31,7 @@
         android:drawableRight="@drawable/ic_forward_gray"
         android:drawableTint="@color/white"
         android:textColor="@color/colorDarkGray"
-        android:textSize="@dimen/_9sdp"
+        android:textSize="@dimen/_9ssp"
         />
 
 </LinearLayout>

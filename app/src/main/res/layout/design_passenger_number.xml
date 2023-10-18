@@ -20,7 +20,8 @@
             android:layout_weight="0"
             android:padding="@dimen/_5sdp"
             app:srcCompat="@drawable/back"
-            app:tint="@color/green" />
+            app:tint="@color/green"
+            tools:ignore="ImageContrastCheck" />
 
     </LinearLayout>
 
@@ -35,7 +36,7 @@
         android:paddingEnd="@dimen/_20sdp"
         android:text="So how many passenger you take ?"
         android:textColor="@color/black"
-        android:textSize="@dimen/_18sdp"
+        android:textSize="@dimen/_18ssp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -67,20 +68,20 @@
             android:padding="@dimen/_10sdp"
             android:text="2"
             android:textColor="@color/black"
-            android:textSize="@dimen/_40sdp"
+            android:textSize="@dimen/_40ssp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/addPassenger"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
-            android:layout_weight="0"
             android:layout_gravity="center_vertical"
+            android:layout_weight="0"
+            android:background="@drawable/circle_cornor_edge_bg"
             android:padding="@dimen/_5sdp"
             app:srcCompat="@drawable/baseline_add"
-            android:background="@drawable/circle_cornor_edge_bg"
             app:tint="@color/green"
-             />
+            tools:ignore="ImageContrastCheck" />
 
     </LinearLayout>
 
@@ -100,7 +101,8 @@
             app:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_arrow_forward" />
+            app:srcCompat="@drawable/ic_arrow_forward"
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

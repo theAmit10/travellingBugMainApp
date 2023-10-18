@@ -44,7 +44,7 @@
                 android:padding="@dimen/_5sdp"
                 android:text="Passenger"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
 
@@ -71,7 +71,7 @@
                     android:paddingEnd="@dimen/_20sdp"
                     android:text="There is no Passenger. \nAll seats are available for booking"
                     android:textColor="@color/dark_green"
-                    android:textSize="@dimen/_13sdp"
+                    android:textSize="@dimen/_13ssp"
                     android:textStyle="bold"
                     android:visibility="gone" />
 
@@ -100,7 +100,7 @@
                 android:padding="@dimen/_5sdp"
                 android:text="Travel preferences"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
 <!--            <RelativeLayout-->
@@ -200,7 +200,7 @@
                 android:padding="@dimen/_5sdp"
                 android:text="Tracking Link"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -211,7 +211,7 @@
                 android:padding="@dimen/_5sdp"
                 android:text="loading..."
                 android:textColor="@color/dark_green"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_12ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -222,7 +222,7 @@
                 android:padding="@dimen/_5sdp"
                 android:text="Terms and conditions"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -244,7 +244,7 @@ A cookie is a text file that is placed on your hard disk by a web page server. C
 We may use cookies to collect, store, and track information for statistical or marketing purposes to operate our website. You have the ability to accept or decline optional Cookies. There are some required Cookies that are necessary for the operation of our website. These cookies do not require your consent as they always work. \n\nPlease keep in mind that by accepting required Cookies, you also accept third-party Cookies, which might be used via third-party provided services if you use such services on our website, for example, a video display window provided by third parties and integrated into our website.\n\n
 "
                 android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
                 android:textStyle="bold" />
 
 
@@ -256,7 +256,7 @@ We may use cookies to collect, store, and track information for statistical or m
                 android:padding="@dimen/_5sdp"
                 android:text="Read more   "
                 android:textColor="@color/green"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_12ssp"
                 android:textStyle="bold" />
 
 

@@ -19,7 +19,7 @@
         android:drawableRight="@drawable/ic_forward_gray"
         android:fontFamily="@font/nunito_semi_bold"
         android:textColor="@color/black"
-        android:textSize="@dimen/_14sdp"
+        android:textSize="@dimen/_14ssp"
         app:layout_constraintEnd_toStartOf="@+id/imageView7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +43,7 @@
         android:visibility="gone"
         android:textStyle="bold"
         android:textColor="@color/colorDarkGray"
-        android:textSize="@dimen/_10sdp"
+        android:textSize="@dimen/_10ssp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/titleVIMtv"
         app:layout_constraintStart_toStartOf="@+id/titleVIMtv"

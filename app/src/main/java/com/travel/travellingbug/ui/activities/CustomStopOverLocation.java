@@ -40,6 +40,7 @@ import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.gson.Gson;
+import com.travel.travellingbug.BuildConfig;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
 import com.travel.travellingbug.consts.AutoCompleteAdapter;
@@ -105,7 +106,8 @@ public class CustomStopOverLocation extends AppCompatActivity
         thisActivity = this;
 
         // Initialize the SDK
-        com.google.android.libraries.places.api.Places.initialize(getApplicationContext(), getString(R.string.google_map_api));
+//        com.google.android.libraries.places.api.Places.initialize(getApplicationContext(), getString(R.string.google_map_api));
+        com.google.android.libraries.places.api.Places.initialize(getApplicationContext(), BuildConfig.API_KEY);
 
         placesClient = com.google.android.libraries.places.api.Places.createClient(this);
         txtDestination = findViewById(R.id.txtDestination);
@@ -490,7 +492,7 @@ public class CustomStopOverLocation extends AppCompatActivity
                     System.out.println("cursor txtDestination : " + txtDestination.getText().toString());
 
                     if(strSelected.equalsIgnoreCase("destination")){
-                        if (!txtDestination.getText().toString().equalsIgnoreCase("Going to")) {
+                        if (!txtDestination.getText().toString().equalsIgnoreCase("Going To")) {
                             if (strSelected.equalsIgnoreCase("destination")) {
                                 if (!placePredictions.strDestAddress.equalsIgnoreCase(placePredictions.strSourceAddress)) {
                                     setAddress();
@@ -579,7 +581,8 @@ public class CustomStopOverLocation extends AppCompatActivity
         urlString.append("&location=");
         urlString.append(latitude + "," + longitude); // append lat long of current location to show nearby results.
         urlString.append("&radius=500&language=en");
-        urlString.append("&key=" + getResources().getString(R.string.google_map_api));
+//        urlString.append("&key=" + getResources().getString(R.string.google_map_api));
+        urlString.append("&key=" + BuildConfig.API_KEY);
 
         Log.d("FINAL URL:::   ", urlString.toString());
         return urlString.toString();

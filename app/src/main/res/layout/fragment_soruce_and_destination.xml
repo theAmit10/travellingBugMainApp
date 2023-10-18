@@ -37,7 +37,7 @@
                 android:text="Book Your Ride"
                 android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14ssp" />
         </LinearLayout>
 
 
@@ -100,7 +100,7 @@
                         android:textColor="@color/colorDarkGray"
                         android:paddingStart="@dimen/_5sdp"
                         android:text="@string/pick_up"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/txtaddressSource"
@@ -116,20 +116,21 @@
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
                         android:paddingBottom="@dimen/_5sdp"
-                        android:textColorHint="@color/black"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textColorHint="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="TouchTargetSizeCheck" />
 
 
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/imgSourceClose"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@drawable/cross"
+                    android:background="@drawable/ic_cross"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -188,7 +189,7 @@
                         android:paddingStart="@dimen/_5sdp"
                         android:text="@string/destination_location"
                         android:textColor="@color/colorDarkGray"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/txtDestination"
@@ -198,26 +199,27 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/nunito_semi_bold"
                         android:gravity="center_vertical"
-                        android:hint="Going to"
-                        android:text="Going to"
-                        android:textColorHint="@color/black"
+                        android:hint="Going To"
                         android:inputType="text"
                         android:maxLines="1"
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
                         android:paddingBottom="@dimen/_5sdp"
+                        android:text="Going To"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textColorHint="@color/black"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/imgDestClose"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@drawable/cross"
+                    android:background="@drawable/ic_cross"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -373,7 +375,7 @@
 
                 android:padding="5dp"
                 android:textColor="@color/light_gray"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14ssp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -401,7 +403,7 @@
 
                 android:padding="5dp"
                 android:textColor="@color/light_gray"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14ssp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -429,7 +431,7 @@
 
                 android:padding="5dp"
                 android:textColor="@color/light_gray"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14ssp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -464,7 +466,7 @@
             android:textStyle="bold"
             android:fontFamily="@font/nunito_bold"
             android:textColor="@color/black_text_color"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <View
             android:layout_width="match_parent"

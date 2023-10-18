@@ -45,7 +45,7 @@
                 android:text="What is your license \nplate number?"
                 android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_18sdp"
+                android:textSize="@dimen/_18ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -58,7 +58,7 @@
                 android:text="Country"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -86,7 +86,7 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    app:ccp_textSize="@dimen/_10sdp" />
+                    app:ccp_textSize="@dimen/_10ssp" />
             </FrameLayout>
 
             <TextView
@@ -100,7 +100,7 @@
                 android:visibility="gone"
                 android:textStyle="bold"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14ssp" />
 
             <TextView
                 android:id="@+id/selectVTtv"
@@ -112,7 +112,7 @@
                 android:text="Select Vehicle Type"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -130,8 +130,9 @@
                     android:layout_centerInParent="true"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:text="Private Car"
+                    android:textColor="@color/green"
                     android:textStyle="bold"
-                    android:textColor="@color/green" />
+                    tools:ignore="TouchTargetSizeCheck" />
 
 
                 <CheckBox
@@ -141,8 +142,9 @@
                     android:layout_centerInParent="true"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:text="Taxi"
+                    android:textColor="@color/green"
                     android:textStyle="bold"
-                    android:textColor="@color/green" />
+                    tools:ignore="TouchTargetSizeCheck" />
 
 
             </LinearLayout>
@@ -184,7 +186,7 @@
                 android:text="I don't know my license plate number"
                 android:visibility="gone"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_12ssp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/imageView7"
                 app:layout_constraintStart_toStartOf="parent"
@@ -211,6 +213,7 @@
             app:backgroundTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_arrow_forward" />
+            app:srcCompat="@drawable/ic_arrow_forward"
+            tools:ignore="SpeakableTextPresentCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

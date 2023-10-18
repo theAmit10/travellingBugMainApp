@@ -20,7 +20,7 @@
             android:gravity="center|start"
             android:text="Motor Vehicle Inspection Certificate"
             android:textColor="@color/black"
-            android:textSize="@dimen/_10sdp" />
+            android:textSize="@dimen/_10ssp" />
 
         <com.travel.travellingbug.utills.MyButton
             android:id="@+id/btBrowse"
@@ -30,7 +30,7 @@
             android:background="@drawable/rounded_button"
             android:text="Browse"
             android:textColor="@color/white"
-            android:textSize="@dimen/_10sdp" />
+            android:textSize="@dimen/_10ssp" />
 
         <ImageView
             android:id="@+id/ivImage"

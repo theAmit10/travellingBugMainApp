@@ -83,7 +83,7 @@
             android:background="@drawable/rounded_button"
             android:text="@string/update"
             android:textColor="@color/text_color_white"
-            android:textSize="@dimen/_14sdp" />
+            android:textSize="@dimen/_14ssp" />
     </LinearLayout>
 
 </RelativeLayout>

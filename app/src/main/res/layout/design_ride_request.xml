@@ -43,7 +43,7 @@
                 android:drawablePadding="@dimen/_10sdp"
                 android:text="username"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -72,7 +72,7 @@
                     android:textStyle="bold"
                     android:text=""
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_8sdp" />
+                    android:textSize="@dimen/_8ssp" />
 
             </LinearLayout>
         </LinearLayout>
@@ -94,7 +94,7 @@
                 android:maxLines="1"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -109,7 +109,7 @@
                 android:textStyle="bold"
                 android:text=""
                 android:textColor="@color/colorDarkGray"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
 
                 />
 
@@ -162,7 +162,7 @@
             android:fontFamily="@font/nunito_regular"
             android:text=""
             android:textColor="@color/colorDarkGray"
-            android:textSize="@dimen/_10sdp"
+            android:textSize="@dimen/_10ssp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.224"
@@ -179,7 +179,7 @@
             android:fontFamily="@font/nunito_regular"
             android:text=""
             android:textColor="@color/colorDarkGray"
-            android:textSize="@dimen/_10sdp"
+            android:textSize="@dimen/_10ssp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView10"
@@ -213,7 +213,7 @@
                 android:text=""
 
                 android:textColor="@color/green"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_10ssp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -228,7 +228,7 @@
             android:padding="@dimen/_3sdp"
             android:textAllCaps="false"
             android:textColor="@color/red"
-            android:textSize="@dimen/_8sdp"
+            android:textSize="@dimen/_8ssp"
             android:visibility="gone" />
 
         <Button
@@ -242,7 +242,7 @@
             android:visibility="gone"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="@dimen/_8sdp" />
+            android:textSize="@dimen/_8ssp" />
 
 
     </LinearLayout>

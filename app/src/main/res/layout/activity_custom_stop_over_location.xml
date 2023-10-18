@@ -26,6 +26,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:padding="@dimen/_7sdp"
+                android:contentDescription="backarrow"
                 android:src="@drawable/back_white"
                 app:tint="@color/green" />
 
@@ -51,7 +52,7 @@
             android:paddingEnd="@dimen/_10sdp"
             android:text="Add stopovers to get more passengers"
             android:textColor="@color/black"
-            android:textSize="@dimen/_18sdp"
+            android:textSize="@dimen/_18ssp"
             android:textStyle="bold" />
 
 
@@ -112,7 +113,7 @@
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/nunito_regular"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_11sdp"
+                        android:textSize="@dimen/_11ssp"
                         android:textStyle="bold"
                         android:paddingStart="@dimen/_5sdp"
                         android:text="Address"
@@ -130,7 +131,7 @@
                         android:maxLines="1"
                         android:fontFamily="@font/nunito_regular"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_11sdp"
+                        android:textSize="@dimen/_11ssp"
                         android:textStyle="bold"
                         android:paddingStart="@dimen/_5sdp"
                         android:paddingEnd="@dimen/_5sdp"
@@ -474,7 +475,7 @@
             android:gravity="center|start"
             android:text="@string/pin_location"
             android:fontFamily="@font/nunito_bold"
-            android:textSize="@dimen/_11sdp"
+            android:textSize="@dimen/_11ssp"
             android:textStyle="bold"
             android:textColor="@color/dark_green"
             android:visibility="visible" />

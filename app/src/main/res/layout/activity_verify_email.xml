@@ -21,6 +21,7 @@
             android:layout_height="@dimen/_40sdp"
             android:layout_weight="0"
             android:padding="@dimen/_5sdp"
+            android:contentDescription="backarrow"
             app:srcCompat="@drawable/ic_wrong" />
 
     </LinearLayout>
@@ -33,7 +34,7 @@
         android:padding="@dimen/_10sdp"
         android:text="What's your email ?"
         android:textColor="@color/black"
-        android:textSize="@dimen/_18sdp"
+        android:textSize="@dimen/_18ssp"
         android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -84,7 +85,8 @@
             android:textSize="@dimen/_12sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextSizeCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

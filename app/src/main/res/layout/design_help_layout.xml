@@ -27,7 +27,7 @@
                 android:paddingTop="@dimen/_10sdp"
                 android:text="Trips and Fare"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_12ssp"
                 android:textStyle="bold" />
 
             <TextView
@@ -38,7 +38,7 @@
                 android:text="Any issue  regarding your trip and fare"
                 android:textColor="@color/colorDarkGray"
                 android:textStyle="bold"
-                android:textSize="@dimen/_8sdp" />
+                android:textSize="@dimen/_8ssp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

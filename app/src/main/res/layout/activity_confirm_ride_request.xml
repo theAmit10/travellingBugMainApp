@@ -26,10 +26,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-android:fontFamily="@font/nunito_bold"
+            android:fontFamily="@font/nunito_bold"
             android:text="CONFIRM RIDE REQUEST"
             android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp" />
+            android:textSize="@dimen/_14ssp" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -82,7 +82,7 @@ android:fontFamily="@font/nunito_bold"
                         android:drawablePadding="@dimen/_10sdp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_13sdp" />
+                        android:textSize="@dimen/_14ssp" />
 
 
 
@@ -109,7 +109,7 @@ android:fontFamily="@font/nunito_bold"
                 android:fontFamily="@font/nunito_bold"
                 android:layout_marginStart="@dimen/_70sdp"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_12ssp"
                 android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -157,7 +157,7 @@ android:fontFamily="@font/nunito_bold"
                     android:maxLines="1"
                     android:text="Pickup location"
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_8sdp"
+                    android:textSize="@dimen/_8ssp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView9"
@@ -172,7 +172,7 @@ android:fontFamily="@font/nunito_bold"
                     android:maxLines="1"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -188,7 +188,7 @@ android:fontFamily="@font/nunito_bold"
                     android:maxLines="1"
                     android:text=""
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp"
+                    android:textSize="@dimen/_10ssp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -204,7 +204,7 @@ android:fontFamily="@font/nunito_bold"
                     android:text="Drop location"
 
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_8sdp"
+                    android:textSize="@dimen/_8ssp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="@+id/dropLocation"
                     app:layout_constraintStart_toEndOf="@+id/imageView10"
@@ -227,7 +227,7 @@ android:fontFamily="@font/nunito_bold"
                 android:layout_marginStart="@dimen/_70sdp"
                 android:textColor="@color/green"
                 android:fontFamily="@font/nunito_bold"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_12ssp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -239,7 +239,7 @@ android:fontFamily="@font/nunito_bold"
 
                 <TextView
                     android:id="@+id/date"
-                    android:textSize="@dimen/_8sdp"
+                    android:textSize="@dimen/_8ssp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
@@ -267,7 +267,7 @@ android:fontFamily="@font/nunito_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:textSize="@dimen/_8sdp"
+                    android:textSize="@dimen/_8ssp"
                     android:drawableLeft="@drawable/ic_time"
                     android:textStyle="bold"
                     android:drawablePadding="@dimen/_30sdp"
@@ -304,7 +304,7 @@ android:fontFamily="@font/nunito_bold"
                 android:layout_marginStart="@dimen/_70sdp"
                 android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_12sdp"
+                android:textSize="@dimen/_12ssp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -319,7 +319,7 @@ android:fontFamily="@font/nunito_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:textSize="@dimen/_8sdp"
+                    android:textSize="@dimen/_8ssp"
                     android:drawableLeft="@drawable/fare"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/colorDarkGray"
@@ -349,7 +349,7 @@ android:fontFamily="@font/nunito_bold"
                     android:textStyle="bold"
                     android:drawablePadding="@dimen/_30sdp"
                     android:drawableTint="@color/colorDarkGray"
-                    android:textSize="@dimen/_8sdp"
+                    android:textSize="@dimen/_8ssp"
                     android:maxLines="1"
                     android:text="Numbers of seats"
                     android:textColor="@color/colorDarkGray" />

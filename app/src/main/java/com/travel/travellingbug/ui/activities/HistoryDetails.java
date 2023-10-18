@@ -30,6 +30,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
+import com.travel.travellingbug.BuildConfig;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.Login;
 import com.travel.travellingbug.R;
@@ -139,7 +140,8 @@ public class HistoryDetails extends AppCompatActivity {
     private void SetDetailInComponent() {
 
         try {
-            String replacedStr = static_map.replaceAll("google_map_key", getResources().getString(R.string.google_map_api));
+//            String replacedStr = static_map.replaceAll("google_map_key", getResources().getString(R.string.google_map_api));
+            String replacedStr = static_map.replaceAll("google_map_key", BuildConfig.API_KEY);
             Picasso.get().load(replacedStr)
                     .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(tripImg);
 

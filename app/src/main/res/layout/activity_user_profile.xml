@@ -20,6 +20,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginStart="@dimen/_10sdp"
             android:padding="@dimen/_7sdp"
+            android:contentDescription="baclkarrow"
             android:src="@drawable/back_white" />
 
         <TextView
@@ -30,7 +31,7 @@
             android:gravity="center_vertical"
             android:text="PROFILE"
             android:textColor="@color/white"
-            android:textSize="@dimen/_12sdp"
+            android:textSize="@dimen/_12ssp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -72,7 +73,7 @@
                 android:text="username"
                 android:fontFamily="@font/nunito_bold"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_14ssp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -101,7 +102,7 @@
                     android:text=""
                     android:textStyle="bold"
                     android:textColor="@color/colorDarkGray"
-                    android:textSize="@dimen/_7sdp" />
+                    android:textSize="@dimen/_7ssp" />
 
             </LinearLayout>
         </LinearLayout>
@@ -112,12 +113,13 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
         android:background="@color/white"
-        app:tabSelectedTextColor="@color/dark_green"
-        app:tabTextColor="@color/colorDarkGray"
-        app:tabTextAppearance="@style/TabFont"
         app:tabIndicatorColor="@color/dark_green"
-        android:layout_height="@dimen/_40sdp"/>
+        app:tabSelectedTextColor="@color/dark_green"
+        app:tabTextAppearance="@style/TabFont"
+        app:tabTextColor="@color/colorDarkGray"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"

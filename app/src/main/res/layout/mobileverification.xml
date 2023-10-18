@@ -62,7 +62,7 @@
                 android:maxLines="1"
                 android:text=""
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_14ssp"
                 android:textStyle="bold"
 
                 app:layout_constraintBottom_toBottomOf="@+id/imageView8"
@@ -121,7 +121,7 @@
                             app:ccp_autoDetectCountry="true"
                             app:ccp_showNameCode="false"
                             app:ccp_showPhoneCode="true"
-                            app:ccp_textSize="@dimen/_10sdp" />
+                            app:ccp_textSize="@dimen/_10ssp" />
 
                     </FrameLayout>
 
@@ -138,7 +138,7 @@
                         android:inputType="number"
                         android:maxLength="12"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_14sdp" />
+                        android:textSize="@dimen/_14ssp" />
                 </LinearLayout>
 
 
@@ -150,7 +150,7 @@
                     android:gravity="center"
                     android:text="we will send you a one time password in this number"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_10sdp" />
+                    android:textSize="@dimen/_10ssp" />
 
                 <ImageButton
                     android:id="@+id/nextIcon"

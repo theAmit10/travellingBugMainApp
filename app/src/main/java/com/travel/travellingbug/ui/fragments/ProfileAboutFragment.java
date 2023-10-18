@@ -3,7 +3,6 @@ package com.travel.travellingbug.ui.fragments;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -350,14 +349,23 @@ public class ProfileAboutFragment extends Fragment {
             titlePAtv.setText(getText(R.string.waiting_for_approval));
 //            status.setImageResource(R.drawable.newuser);
         } else if (SharedHelper.getKey(getContext(), "approval_status").equals("banned")) {
-            titlePAtv.setTextColor(Color.RED);
+//            titlePAtv.setTextColor(Color.RED);
             titlePAtv.setText(getText(R.string.banned));
 //            status.setImageResource(R.drawable.banned);
-        } else {
+        }
+        else if (SharedHelper.getKey(getContext(), "status").equals("approved")) {
 //            titlePAtv.setTextColor(Color.WHITE);
             titlePAtv.setText(getText(R.string.approved));
-//            titlePAtv.setImageResource(R.drawable.approved);
+        }else {
+//            titlePAtv.setTextColor(Color.WHITE);
+            titlePAtv.setText("New User");
+//            status.setImageResource(R.drawable.approved);
         }
+//        else {
+////            titlePAtv.setTextColor(Color.WHITE);
+//            titlePAtv.setText(getText(R.string.approved));
+////            titlePAtv.setImageResource(R.drawable.approved);
+//        }
 
 
 
@@ -500,9 +508,6 @@ public class ProfileAboutFragment extends Fragment {
 
         }
 
-
-
-
     }
 
 
@@ -564,10 +569,7 @@ public class ProfileAboutFragment extends Fragment {
 //                    txtHeaderName.setText(SharedHelper.getKey(EditProfile.this, "first_name"));
                 }
             }
-
         }
-
-
     }
 
     public void getProfile() {
