@@ -67,6 +67,9 @@ public class RideRequest extends AppCompatActivity {
 
     String s_latitude = "",s_longitude="",d_latitude="",d_longitude="";
 
+    String trip_distance = "";
+    String trip_fare = "";
+
 
 
 
@@ -372,6 +375,8 @@ public class RideRequest extends AppCompatActivity {
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("id",id);
+                params.put("total_amount",trip_fare);
+                params.put("totaldistance",trip_distance);
                 return params;
             }
 
@@ -712,8 +717,14 @@ public class RideRequest extends AppCompatActivity {
                                             Double c_fare = fares * no_of_seat;
                                             String calculated_fare = con + c_fare;
                                             fare = calculated_fare;
+                                            trip_fare = c_fare+"";
 
                                             holder.fare.setText(calculated_fare);
+                                            if(jsonObject.optString("distance") != null){
+                                                trip_distance = jsonObject.optString("distance");
+                                            }
+                                            System.out.println("DISTANCE TRIP : "+trip_distance);
+                                            System.out.println("DISTANCE TRIP trip_fare : "+trip_fare);
 
 //                                            number_of_seat
 
@@ -863,6 +874,8 @@ public class RideRequest extends AppCompatActivity {
                 intent.putExtra("tag", "RideRequestDetails");
                 intent.putExtra("person_id",jsonArray.optJSONObject(position).optString("id"));
                 intent.putExtra("status",jsonArray.optJSONObject(position).optString("status"));
+                intent.putExtra("trip_distance", trip_distance);
+                intent.putExtra("trip_fare", trip_fare);
                 startActivity(intent);
 
 

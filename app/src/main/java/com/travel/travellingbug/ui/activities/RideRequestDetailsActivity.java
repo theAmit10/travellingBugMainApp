@@ -32,7 +32,7 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
     String first_name = "",rating = "",rating_val = "",profile_image = "",user_id = "",s_address = "",d_address = "",pick_up_date = "",pick_up_time = "",noofseat = "",fare = "",request_id = "",tag = "",person_id="",status="";
     ImageView backArrow,profileImgeIv;
 
-    String provider_id = "",id = "";
+    String provider_id = "",id = "",trip_distance="",trip_fare="";
 
 
 
@@ -213,6 +213,8 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
             public Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("id",id);
+                params.put("total_amount",trip_fare);
+                params.put("totaldistance",trip_distance);
                 return params;
             }
 
@@ -351,5 +353,7 @@ public class RideRequestDetailsActivity extends AppCompatActivity {
         status = getIntent().getStringExtra("status");
         provider_id = getIntent().getStringExtra("provider_id");
         id = getIntent().getStringExtra("id");
+        trip_distance = getIntent().getStringExtra("trip_distance");
+        trip_fare = getIntent().getStringExtra("trip_fare");
     }
 }
