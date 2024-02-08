@@ -49,6 +49,9 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
         <activity
+            android:name=".ui.activities.TestActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activities.SetAddressActivity"
             android:exported="false" />
         <activity

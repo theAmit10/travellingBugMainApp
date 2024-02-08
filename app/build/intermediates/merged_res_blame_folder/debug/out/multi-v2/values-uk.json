@@ -142,23 +142,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\c73bbb84d4e75c498802972c9faad9e8\\jetified-facebook-login-16.2.0\\res\\values-uk\\values-uk.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,143,235,315,407,496,609,729,818,907,1007,1092,1177,1277",
-                        "endColumns": "87,91,79,91,88,112,119,88,88,99,84,84,99,113",
-                        "endOffsets": "138,230,310,402,491,604,724,813,902,1002,1087,1172,1272,1386"
-                    },
-                    "to": {
-                        "startLines": "39,40,41,42,43,44,45,46,47,48,49,50,51,52",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "3486,3574,3666,3746,3838,3927,4040,4160,4249,4338,4438,4523,4608,4708",
-                        "endColumns": "87,91,79,91,88,112,119,88,88,99,84,84,99,113",
-                        "endOffsets": "3569,3661,3741,3833,3922,4035,4155,4244,4333,4433,4518,4603,4703,4817"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\9ca7b38e404533c812d4ee8449c65048\\browser-1.4.0\\res\\values-uk\\values-uk.xml",
                     "from": {
                         "startLines": "2,3,4,5",
@@ -190,6 +173,23 @@
                         "startOffsets": "12357,12433,12501,12608,12674,12726,12797,12868",
                         "endColumns": "75,67,106,65,51,70,70,54",
                         "endOffsets": "12428,12496,12603,12669,12721,12792,12863,12918"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Demon\\Music\\truelysell-android\\truelysell-android\\gradle\\caches\\transforms-2\\files-2.1\\e394fd799d189e7d477132202f9d2199\\jetified-facebook-login-16.3.0\\res\\values-uk\\values-uk.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,143,235,315,407,496,609,729,818,907,1007,1092,1177,1277",
+                        "endColumns": "87,91,79,91,88,112,119,88,88,99,84,84,99,113",
+                        "endOffsets": "138,230,310,402,491,604,724,813,902,1002,1087,1172,1272,1386"
+                    },
+                    "to": {
+                        "startLines": "39,40,41,42,43,44,45,46,47,48,49,50,51,52",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "3486,3574,3666,3746,3838,3927,4040,4160,4249,4338,4438,4523,4608,4708",
+                        "endColumns": "87,91,79,91,88,112,119,88,88,99,84,84,99,113",
+                        "endOffsets": "3569,3661,3741,3833,3922,4035,4155,4244,4333,4433,4518,4603,4703,4817"
                     }
                 }
             ]

@@ -280,6 +280,41 @@
 
                         />
 
+
+
+                    <TextView
+                        android:id="@+id/otpTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:maxLines="1"
+                        android:text="OTP "
+                        android:layout_gravity="right"
+
+                        android:paddingHorizontal="4dp"
+                        android:theme="@style/SubTitle"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_8ssp"
+                        android:textStyle="bold"
+                        />
+                    <TextView
+                        android:id="@+id/otpValTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:maxLines="1"
+                        android:text="8754"
+                        android:layout_gravity="right"
+                        android:background="@drawable/auth_btn_gray_bg"
+                        android:padding="4dp"
+                        android:theme="@style/SubTitle"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10ssp"
+                        android:textStyle="bold"
+                        />
+
                 </LinearLayout>
 
 
@@ -355,6 +390,65 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:elevation="@dimen/_10sdp"
+                android:layout_gravity="right"
+                android:gravity="left"
+                >
+
+                <Button
+                    android:id="@+id/trackBtn"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:text="Track"
+                    android:visibility="visible"
+                    android:textSize="@dimen/_8ssp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:background="@drawable/auth_btn_green_bg"/>
+
+                <Button
+                    android:id="@+id/callBtn"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:visibility="visible"
+                    android:text="Call"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_8ssp"
+                    android:textAllCaps="false"
+                    android:background="@drawable/auth_btn_green_bg"
+                    />
+
+
+
+
+
+
+                <Button
+                    android:id="@+id/messageTv"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:text="Message"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:visibility="visible"
+                    android:textSize="@dimen/_8ssp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:background="@drawable/auth_btn_green_bg"/>
+
+
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

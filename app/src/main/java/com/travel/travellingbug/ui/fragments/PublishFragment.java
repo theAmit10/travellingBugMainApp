@@ -30,6 +30,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -404,6 +406,8 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
     private Marker destinationMarker;
     private Marker providerMarker;
     private boolean isDragging;
+    EditText addFareInputETL;
+    String fare_amount;
 
 
     public PublishFragment() {
@@ -454,7 +458,6 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
         if (getContext() != null) {
             getDocList();
-
         }
 
         try {
@@ -510,6 +513,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
         mapLayout = rootView.findViewById(R.id.mapLayout);
 
         backarrow = rootView.findViewById(R.id.backarrow);
+
         backarrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -548,6 +552,28 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             }
         });
 
+
+        addFareInputETL = rootView.findViewById(R.id.addFareInputETL);
+
+
+        // Adding Fare Amount
+        fare_amount = addFareInputETL.getText().toString();
+        addFareInputETL.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                fare_amount = addFareInputETL.getText().toString();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                fare_amount = addFareInputETL.getText().toString();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         cross_icon = rootView.findViewById(R.id.cross_icon);
         cross_icon.setOnClickListener(new View.OnClickListener() {
@@ -2546,50 +2572,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
     }
 
-//    public void getServiceList() {
-//        if (customDialog != null && (!customDialog.isShowing())) {
-//            customDialog = new CustomDialog(getActivity());
-//            customDialog.setCancelable(false);
-//            customDialog.show();
-//        }
-//
-//        JsonArrayRequest jsonArrayRequest = new
-//                JsonArrayRequest(URLHelper.GET_SERVICE_LIST_API,
-//                        response -> {
-//                            Utilities.print("GetServices", response.toString());
-//                            customDialog.dismiss();
-//                            customDialog.cancel();
-//                            if ((customDialog != null) && (customDialog.isShowing()))
-//                                customDialog.dismiss();
-//                            if (response.length() > 0) {
-//                                currentPostion = 0;
-//                                PublishFragment.ServiceListAdapter serviceListAdapter = new PublishFragment.ServiceListAdapter(response);
-//                                rcvServiceTypes.setLayoutManager(new LinearLayoutManager(activity,
-//                                        LinearLayoutManager.HORIZONTAL, false));
-//                                rcvServiceTypes.setAdapter(serviceListAdapter);
-////                                getProvidersList(SharedHelper.getKey(context, "service_type"));
-//                            }
-//                            mMap.clear();
-//                            setValuesForSourceAndDestination();
-//                        }, error -> {
-//                    if ((customDialog != null) && (customDialog.isShowing()))
-//                        customDialog.dismiss();
-//                    displayMessage(getActivity().getString(R.string.something_went_wrong));
-//                }) {
-//                    @Override
-//                    public Map<String, String> getHeaders() throws AuthFailureError {
-//                        HashMap<String, String> headers = new HashMap<String, String>();
-//                        headers.put("X-Requested-With", "XMLHttpRequest");
-//                        headers.put("Authorization", "" + SharedHelper.getKey(context, "token_type") + " "
-//                                + SharedHelper.getKey(context, "access_token"));
-//                        return headers;
-//                    }
-//                };
-//
-//        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
-//
-//        Log.i(TAG, "getServiceList: " + jsonArrayRequest.getUrl());
-//    }
+
 
     public void getApproximateFare() {
 
@@ -2653,65 +2636,7 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 
     }
 
-//    void getProvidersList(String strTag) {
-//        String providers_request = URLHelper.GET_PROVIDERS_LIST_API + "?" +
-//                "latitude=" + current_lat +
-//                "&longitude=" + current_lng +
-//                "&service=" + strTag;
-//
-//        for (int i = 0; i < lstProviderMarkers.size(); i++) {
-//            lstProviderMarkers.get(i).remove();
-//        }
-//
-//        JsonArrayRequest jsonArrayRequest = new
-//                JsonArrayRequest(providers_request,
-//                        response -> {
-//                            Utilities.print("GetProvidersList", response.toString());
-//                            LatLngBounds.Builder builder = new LatLngBounds.Builder();
-//                            for (int i = 0; i < response.length(); i++) {
-//                                try {
-//                                    JSONObject jsonObj = response.getJSONObject(i);
-//                                    Utilities.print("GetProvidersList", jsonObj.getString("latitude")
-//                                            + "," + jsonObj.getString("longitude"));
-//                                    if (!jsonObj.getString("latitude").equalsIgnoreCase("")
-//                                            && !jsonObj.getString("longitude").equalsIgnoreCase("")) {
-//
-//                                        Double proLat = Double.parseDouble(jsonObj.getString("latitude"));
-//                                        Double proLng = Double.parseDouble(jsonObj.getString("longitude"));
-//
-//                                        Float rotation = 0.0f;
-//
-//                                        MarkerOptions markerOptions = new MarkerOptions()
-//                                                .anchor(0.5f, 0.75f)
-//                                                .position(new LatLng(proLat, proLng))
-//                                                .rotation(rotation)
-//                                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_provider_marker));
-//
-//                                        lstProviderMarkers.add(mMap.addMarker(markerOptions));
-//
-//                                        builder.include(new LatLng(proLat, proLng));
-//                                    }
-//
-//                                } catch (JSONException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//
-//                        }, error -> {
-//                    displayMessage("Something went wrong");
-//                }) {
-//                    @Override
-//                    public Map<String, String> getHeaders() throws AuthFailureError {
-//                        HashMap<String, String> headers = new HashMap<String, String>();
-//                        headers.put("X-Requested-With", "XMLHttpRequest");
-//                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(context, "access_token"));
-//                        return headers;
-//                    }
-//                };
-//
-//        ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
-//
-//    }
+
 
     public void sendRequest() {
 
@@ -2729,14 +2654,12 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             object.put("s_address", source_address);
             object.put("d_address", dest_address);
             object.put("service_type", "2");
-            object.put("distance", "0");
-
-//            if(SharedHelper.getKey(getContext(),"PUBLISHED_DISTANCE") != null){
-//                object.put("distance", SharedHelper.getKey(getContext(),"PUBLISHED_DISTANCE"));
-//            }else{
-//                object.put("distance", "0");
-//            }
-
+//            object.put("distance", "0");
+            if(SharedHelper.getKey(getContext(),"PUBLISHED_DISTANCE") != null){
+                object.put("distance", SharedHelper.getKey(getContext(),"PUBLISHED_DISTANCE"));
+            }else{
+                object.put("distance", "0");
+            }
 
             object.put("schedule_date", scheduledDate);
             object.put("schedule_time", scheduledTime);
@@ -2751,23 +2674,9 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
             object.put("returnschedule_date", scheduledDateR);
             object.put("returnschedule_time", scheduledTimeR);
             object.put("stopover",jsonArrayStopOver);
-
-//            JSONArray stopOverJsonArray = {"lat": "91.88","lng": "41.66","area": "Area1"},{"lat": "94.88","lng": "52.66","area": "Area2"}
-//            stopOverJsonArray.put({"lat""91.88","lng": "41.66","area": "Area1"})
-
-//            object.put("stopover", );
-
-//            if (chkWallet.isChecked()) {
-//                object.put("use_wallet", 1);
-//            } else {
-//                object.put("use_wallet", 0);
-//            }
-//            if (SharedHelper.getKey(context, "payment_mode").equals("CASH")) {
-//                object.put("payment_mode", SharedHelper.getKey(context, "payment_mode"));
-//            } else {
-//                object.put("payment_mode", SharedHelper.getKey(context, "payment_mode"));
-//                object.put("card_id", SharedHelper.getKey(context, "card_id"));
-//            }
+            object.put("fare", fare_amount);
+            object.put("passenger", 1);
+            object.put("totalFare", 1);
             Utilities.print("SendPublishRequestInput", "" + object.toString());
         } catch (Exception e) {
             e.printStackTrace();
@@ -4031,9 +3940,18 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
                     if (!frmSource.getText().toString().equalsIgnoreCase("") &&
                             !destination.getText().toString().equalsIgnoreCase("") &&
                             !frmDest.getText().toString().equalsIgnoreCase("")) {
-//                        getApproximateFare();
+
+//                        if(fare_amount.equalsIgnoreCase("")){
+//                            Toast.makeText(context, "Please enter a valid fare",
+//                                    Toast.LENGTH_SHORT).show();
+//                        }else{
+//                            flowValue = 7;
+//                            layoutChanges();
+//                        }
+
                         flowValue = 7;
                         layoutChanges();
+
                     } else {
                         Toast.makeText(context, "Please enter both pickup and drop locations",
                                 Toast.LENGTH_SHORT).show();
@@ -4407,22 +4325,37 @@ public class PublishFragment extends Fragment implements OnMapReadyCallback, Loc
 //                    scheduleTime.setTextColor(getResources().getColor(R.color.green));
 //                    scheduleDate.setTextColor(getResources().getColor(R.color.green));
                     if ((!scheduledDate.equals("")) && (!scheduledTime.equals(""))) {
-                        Date date = null;
-                        try {
-                            date = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(scheduledDate);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                        long milliseconds = date.getTime();
-                        if (!DateUtils.isToday(milliseconds)) {
-                            sendRequest();
-                        } else {
-                            if (utils.checktimings(scheduledTime)) {
-                                sendRequest();
-                            } else {
-                                Toast.makeText(activity, getString(R.string.different_time), Toast.LENGTH_SHORT).show();
+                        if(fare_amount.equalsIgnoreCase("")){
+                           try {
+                               Toast.makeText(activity, "Entered fare amount", Toast.LENGTH_SHORT).show();
+
+                           }catch (Exception e){
+                              e.printStackTrace();
+                           }
+                        }else{
+                            if(Integer.parseInt(fare_amount) < 10){
+                                Toast.makeText(activity, "Entered fare amount must be greater than 10 ", Toast.LENGTH_SHORT).show();
+                            }else {
+                                Date date = null;
+                                try {
+                                    date = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH).parse(scheduledDate);
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                long milliseconds = date.getTime();
+                                if (!DateUtils.isToday(milliseconds)) {
+                                    sendRequest();
+                                } else {
+                                    if (utils.checktimings(scheduledTime)) {
+                                        sendRequest();
+                                    } else {
+                                        Toast.makeText(activity, getString(R.string.different_time), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
                             }
+
                         }
+
                     } else {
                         Toast.makeText(activity, getString(R.string.choose_date_time), Toast.LENGTH_SHORT).show();
                     }

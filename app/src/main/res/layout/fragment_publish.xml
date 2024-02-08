@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:visibility="gone"
-
         >
 
 
@@ -714,6 +713,75 @@
                                             android:textColor="@color/black"
                                             android:textSize="@dimen/_11ssp"
                                             android:textStyle="bold" />
+
+
+<!--                                        <TextView-->
+<!--                                            android:id="@+id/addFare"-->
+<!--                                            android:layout_width="match_parent"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:layout_margin="@dimen/_10sdp"-->
+<!--                                            android:layout_weight="1"-->
+<!--                                            android:background="@drawable/auth_btn_green_bg"-->
+<!--                                            android:backgroundTint="@color/colorLightGray"-->
+<!--                                            android:drawableLeft="@drawable/fare_ic"-->
+<!--                                            android:drawablePadding="@dimen/_10sdp"-->
+<!--                                            android:drawableTint="@color/black"-->
+<!--                                            android:padding="@dimen/_10sdp"-->
+<!--                                            android:text="Add Fare "-->
+<!--                                            android:inputType="number"-->
+<!--                                            android:textColor="@color/black"-->
+<!--                                            android:textSize="@dimen/_11ssp"-->
+<!--                                            android:textStyle="bold" />-->
+
+                                        <com.travel.travellingbug.utills.MyBoldTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="@dimen/_5sdp"
+                                            android:layout_marginBottom="@dimen/_10sdp"
+                                            android:text="Add Fare"
+                                            android:textColor="@color/dark_green"
+                                            android:textSize="@dimen/_16ssp"
+                                            android:textStyle="bold" />
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:id="@+id/addFareInput"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/_10sdp"
+                                            android:background="@drawable/auth_btn_gray_bg"
+
+                                            >
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal"
+                                                >
+
+                                                <ImageView
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:src="@drawable/fare_ic"
+                                                    android:paddingHorizontal="@dimen/_10sdp"
+                                                    app:tint="@color/black" />
+
+                                                <com.google.android.material.textfield.TextInputEditText
+                                                    android:id="@+id/addFareInputETL"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:background="@android:color/transparent"
+
+                                                    android:hint="Enter fare amount"
+                                                    android:inputType="number"
+                                                    android:textColorHint="@color/black"
+                                                    android:paddingBottom="@dimen/_5sdp"
+                                                    android:textColor="@color/black"
+                                                    android:textSize="@dimen/_11ssp"
+                                                    android:textStyle="bold"
+                                                    tools:ignore="TouchTargetSizeCheck" />
+                                            </LinearLayout>
+
+                                        </com.google.android.material.textfield.TextInputLayout>
 
                                     </LinearLayout>
 

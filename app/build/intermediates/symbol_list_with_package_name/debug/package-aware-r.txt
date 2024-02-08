@@ -3537,6 +3537,7 @@ drawable approved
 drawable arrived
 drawable arrived_select
 drawable arriveddisable
+drawable arrow_down_up
 drawable auth_btn_blue_bg
 drawable auth_btn_blue_bgs
 drawable auth_btn_gray_bg
@@ -3773,6 +3774,7 @@ drawable emoji_ios_sheet_8
 drawable emoji_ios_sheet_9
 drawable emoji_recent
 drawable fare
+drawable fare_ic
 drawable fastscroll__default_bubble
 drawable fastscroll__default_handle
 drawable filechooselogo
@@ -5083,6 +5085,9 @@ id addBankName
 id addCard
 id addCountryCode
 id addCountryName
+id addFare
+id addFareInput
+id addFareInputETL
 id addMyPreferencesTv
 id addPassenger
 id addPostalAddressTv
@@ -5251,6 +5256,7 @@ id button2
 id buttonPanel
 id cache_measures
 id calendertv
+id callBtn
 id calligraphy_tag_id
 id cancelBtn
 id cancelButton
@@ -5894,6 +5900,7 @@ id material_value_index
 id media_actions
 id menuIcon
 id message
+id messageTv
 id message_body
 id message_title
 id messenger_send_button
@@ -6006,6 +6013,8 @@ id online_txtx
 id open_graph
 id otp
 id otpSendTxt
+id otpTv
+id otpValTv
 id otp_lay
 id otp_view
 id otprecivedTxt
@@ -6460,6 +6469,7 @@ id total
 id totalAmount
 id total_earn_layout
 id touch_outside
+id trackBtn
 id trackVehicleTv
 id trackingLinkIv
 id trackingLinkTv
@@ -6831,6 +6841,7 @@ layout activity_splash
 layout activity_stripe
 layout activity_terms_and_condition
 layout activity_terms_of_use
+layout activity_test
 layout activity_testing
 layout activity_track
 layout activity_track_driver

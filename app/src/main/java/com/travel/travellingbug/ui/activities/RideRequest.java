@@ -380,7 +380,6 @@ public class RideRequest extends AppCompatActivity {
                 return params;
             }
 
-
             @Override
             public Map<String, String> getHeaders() {
                 HashMap<String, String> headers = new HashMap<String, String>();

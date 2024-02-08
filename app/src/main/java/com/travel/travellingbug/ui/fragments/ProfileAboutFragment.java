@@ -196,6 +196,7 @@ public class ProfileAboutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), VehicleDetailsLicensePlateNumberActivity.class);
+//                Intent intent = new Intent(getContext(), TestActivity.class);
                 startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
             }
