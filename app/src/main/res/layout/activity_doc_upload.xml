@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_12sdp"
                 android:fontFamily="@font/nunito_semi_bold"
-                android:text="@string/terms_and_condition"
+                android:text="@string/terms_and_condition_during_document_verification"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_11ssp"
                 app:layout_constraintBottom_toBottomOf="parent"

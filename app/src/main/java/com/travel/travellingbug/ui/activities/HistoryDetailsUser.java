@@ -123,6 +123,8 @@ public class HistoryDetailsUser extends AppCompatActivity {
         findViewByIdAndInitialize();
 
 
+
+
         try {
             Intent intent = getIntent();
             String post_details = intent.getStringExtra("post_value");
@@ -496,26 +498,72 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                 });
 
 
+                                // getting taken seat
+//                                JSONArray filterJsonArray = jsonObjectTrip.optJSONArray("filters");
+//                                if (filterJsonArray != null && filterJsonArray.length() > 0) {
+//                                    for (int j = 0; j < filterJsonArray.length(); j++) {
+//                                        JSONObject filterJsonObject = filterJsonArray.optJSONObject(j);
+//                                        System.out.println("j" + filterJsonObject.optString("user_id"));
+//                                        System.out.println("j" + SharedHelper.getKey(getContext(), "id"));
+//                                        if (filterJsonObject.optString("user_id").equalsIgnoreCase(SharedHelper.getKey(getContext(), "id"))) {
+//                                            holder.availableSeat.setText(filterJsonObject.optString("noofseats")+" Seat");
+//                                            // for fare details
+//                                            try {
+//                                                Double fares = Double.valueOf(jsonObjectTrip.optString("fare"));
+//                                                int no_of_seat = Integer.parseInt(filterJsonObject.optString("noofseats"));
+//                                                Double c_fare = fares * no_of_seat;
+//                                                String calculated_fare = URLHelper.INR_SYMBOL + c_fare;
+//
+//                                                holder.fare.setText(calculated_fare);
+//
+//                                            }catch (Exception e){
+//                                                e.printStackTrace();
+//                                            }
+//                                        }
+//                                    }
+//                                }
+
+
+
+
+
                                 JSONArray filterJsonArray = jsonArray.optJSONObject(i).optJSONArray("filters");
                                 for(int j=0; j<filterJsonArray.length(); j++){
                                     JSONObject filterJsonObj = filterJsonArray.getJSONObject(j);
-//                                    System.out.println("filter cancelled status user_id given 1 : "+user_id);
-
                                     if(filterJsonObj.optString("user_id").equalsIgnoreCase(user_id)){
-//                                        System.out.println("filter cancelled status user_id given 2 : "+user_id);
-//                                        System.out.println("filter cancelled status user_id found 2 : "+filterJsonObj.optString("user_id"));
-
                                         noofseats = filterJsonObj.optString("noofseats");
+
+//                                        holder.availableSeat.setText(filterJsonObject.optString("noofseats")+" Seat");
+
+                                        lblBasePrice.setText(URLHelper.INR_SYMBOL + jsonArray.optJSONObject(i).optString("fare"));
+                                        lblDistancePrice.setText(jsonArray.optJSONObject(i).optString("distance") + " KM");
+                                        lblTaxPrice.setText(filterJsonObj.optString("noofseats"));
+                                        paymentTypeImg.setImageResource(R.drawable.money1);
+
+
+                                        // for fare details
+                                        try {
+                                            Double fares = Double.valueOf(jsonArray.optJSONObject(i).optString("fare"));
+                                            int no_of_seat = Integer.parseInt(filterJsonObj.optString("noofseats"));
+                                            Double c_fare = fares * no_of_seat;
+                                            String calculated_fare = URLHelper.INR_SYMBOL + c_fare;
+
+                                            tripAmount.setText(calculated_fare);
+                                            lblTotalPrice.setText(calculated_fare);
+
+
+
+                                        }catch (Exception e){
+                                            e.printStackTrace();
+                                        }
+
+
 
                                         if(filterJsonObj.optString("status").equalsIgnoreCase("CANCELLED")){
                                             try {
                                                 btnCancelRide.setText("Service Cancelled");
                                                 btnCall.setVisibility(View.GONE);
                                                 trackVehicleTv.setVisibility(View.GONE);
-//                                                System.out.println("filter cancelled status : "+filterJsonObj.optString("status"));
-//                                                System.out.println("filter cancelled status user_id given : "+user_id);
-//                                                System.out.println("filter cancelled status user_id found : "+filterJsonObj.optString("user_id"));
-//                                                Toast.makeText(getApplicationContext(), "Service Cancelled", Toast.LENGTH_SHORT).show();
                                             }catch (Exception e){
                                                 e.printStackTrace();
                                             }
@@ -533,110 +581,89 @@ public class HistoryDetailsUser extends AppCompatActivity {
                                 } else {
                                     form = jsonArray.optJSONObject(i).optString("schedule_at");
                                 }
-//                                if (jsonArray.optJSONObject(i).optJSONObject("payment") != null && jsonArray.optJSONObject(i).optJSONObject("payment").optString("total") != null &&
-//                                        !jsonArray.optJSONObject(i).optJSONObject("payment").optString("total").equalsIgnoreCase("")) {
-//                                    tripAmount.setText(SharedHelper.getKey(context, "currency") + "" + jsonArray.optJSONObject(i).optJSONObject("payment").optString("total"));
-//                                    jsonArray.optJSONObject(i).optJSONObject("payment");
-//                                    lblBasePrice.setText((SharedHelper.getKey(context, "currency") + ""
-//                                            + jsonArray.optJSONObject(i).optJSONObject("payment").optString("fixed")));
-//                                    lblDistancePrice.setText((SharedHelper.getKey(context, "currency") + ""
-//                                            + jsonArray.optJSONObject(i).optJSONObject("payment").optString("distance")));
-//                                    lblTaxPrice.setText((SharedHelper.getKey(context, "currency") + ""
-//                                            + jsonArray.optJSONObject(i).optJSONObject("payment").optString("tax")));
-//                                    lblTotalPrice.setText((SharedHelper.getKey(context, "currency") + ""
-//                                            + jsonArray.optJSONObject(i).optJSONObject("payment").optString("total" +
-//                                            "")));
-//                                } else {
-//                                    tripAmount.setVisibility(View.GONE);
-//                                }
 
 
-
-
-                                // getting fare details
-                                StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + jsonArray.optJSONObject(i).optString("s_latitude") + "&s_longitude=" + jsonArray.optJSONObject(i).optString("s_longitude") + "&d_latitude=" + jsonArray.optJSONObject(i).optString("d_latitude") + "&d_longitude=" + jsonArray.optJSONObject(i).optString("d_longitude") + "&service_type=2", new Response.Listener<String>() {
-                                    @Override
-                                    public void onResponse(String response) {
-
-
-                                        try {
-                                            JSONObject jsonObject = new JSONObject(response);
-
-                                            if (response != null) {
-                                                System.out.println("payment details estimated data : " + jsonObject.toString());
-                                                jsonObject.optString("estimated_fare");
-                                                jsonObject.optString("distance");
-                                                jsonObject.optString("time");
-                                                jsonObject.optString("tax_price");
-                                                jsonObject.optString("base_price");
-                                                jsonObject.optString("discount");
-                                                jsonObject.optString("currency");
-
-                                                String con = jsonObject.optString("currency") + " ";
-
-
-//                                                txt04InvoiceId.setText(jsonArray.optJSONObject(i).optString("booking_id"));
-                                                lblBasePrice.setText(con + jsonObject.optString("base_price"));
-                                                lblDistancePrice.setText(jsonObject.optString("distance") + " KM");
-                                                lblTaxPrice.setText(con + jsonObject.optString("tax_price"));
-
-//                                                txt04PaymentMode.setText("CASH");
-//                                                txt04Commision.setText(con + jsonObject.optString("discount"));
-//                                                txtTotal.setText(con + jsonObject.optString("estimated_fare"));
-                                                paymentTypeImg.setImageResource(R.drawable.money1);
-
-
-                                                try {
-                                                    System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
-
-                                                    Double fare = Double.valueOf(jsonObject.optString("estimated_fare"));
-                                                    int no_of_seat = Integer.parseInt(noofseats);
-                                                    Double c_fare = fare * no_of_seat;
-                                                    String calculated_fare = con + c_fare;
-
-                                                    tripAmount.setText(calculated_fare);
-                                                    lblTotalPrice.setText(calculated_fare);
-
-                                                }catch (Exception e){
-                                                    e.printStackTrace();
-                                                }
-
-
-                                                System.out.println("ESTIMATED FARE STATUS :" + response.toString());
-
-                                            }
-
-                                        } catch (JSONException e) {
-                                            Toast.makeText(HistoryDetailsUser.this, "Something went wrong", Toast.LENGTH_SHORT).show();
-                                            e.printStackTrace();
-                                        }
-
-
-                                    }
-                                }, new Response.ErrorListener() {
-                                    @Override
-                                    public void onErrorResponse(VolleyError error) {
-
-                                        try {
-                                            Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-
-                                    }
-
-                                }) {
-                                    @Override
-                                    public Map<String, String> getHeaders() {
-                                        HashMap<String, String> headers = new HashMap<String, String>();
-                                        headers.put("X-Requested-With", "XMLHttpRequest");
-                                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
-                                        return headers;
-                                    }
-
-                                };
-
-                                ClassLuxApp.getInstance().addToRequestQueue(request);
+//                                // getting fare details
+//                                StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + jsonArray.optJSONObject(i).optString("s_latitude") + "&s_longitude=" + jsonArray.optJSONObject(i).optString("s_longitude") + "&d_latitude=" + jsonArray.optJSONObject(i).optString("d_latitude") + "&d_longitude=" + jsonArray.optJSONObject(i).optString("d_longitude") + "&service_type=2", new Response.Listener<String>() {
+//                                    @Override
+//                                    public void onResponse(String response) {
+//
+//
+//                                        try {
+//                                            JSONObject jsonObject = new JSONObject(response);
+//
+//                                            if (response != null) {
+//                                                System.out.println("payment details estimated data : " + jsonObject.toString());
+//                                                jsonObject.optString("estimated_fare");
+//                                                jsonObject.optString("distance");
+//                                                jsonObject.optString("time");
+//                                                jsonObject.optString("tax_price");
+//                                                jsonObject.optString("base_price");
+//                                                jsonObject.optString("discount");
+//                                                jsonObject.optString("currency");
+//
+//                                                String con = jsonObject.optString("currency") + " ";
+//
+//
+////                                                txt04InvoiceId.setText(jsonArray.optJSONObject(i).optString("booking_id"));
+//                                                lblBasePrice.setText(con + jsonObject.optString("base_price"));
+//                                                lblDistancePrice.setText(jsonObject.optString("distance") + " KM");
+//                                                lblTaxPrice.setText(con + jsonObject.optString("tax_price"));
+//
+//                                                paymentTypeImg.setImageResource(R.drawable.money1);
+//
+//
+//                                                try {
+//                                                    System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+//
+//                                                    Double fare = Double.valueOf(jsonObject.optString("estimated_fare"));
+//                                                    int no_of_seat = Integer.parseInt(noofseats);
+//                                                    Double c_fare = fare * no_of_seat;
+//                                                    String calculated_fare = con + c_fare;
+//
+//                                                    tripAmount.setText(calculated_fare);
+//                                                    lblTotalPrice.setText(calculated_fare);
+//
+//                                                }catch (Exception e){
+//                                                    e.printStackTrace();
+//                                                }
+//
+//
+//                                                System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+//
+//                                            }
+//
+//                                        } catch (JSONException e) {
+//                                            Toast.makeText(HistoryDetailsUser.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+//                                            e.printStackTrace();
+//                                        }
+//
+//
+//                                    }
+//                                }, new Response.ErrorListener() {
+//                                    @Override
+//                                    public void onErrorResponse(VolleyError error) {
+//
+//                                        try {
+//                                            Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+//                                        } catch (Exception e) {
+//                                            e.printStackTrace();
+//                                        }
+//
+//                                    }
+//
+//                                }) {
+//                                    @Override
+//                                    public Map<String, String> getHeaders() {
+//                                        HashMap<String, String> headers = new HashMap<String, String>();
+//                                        headers.put("X-Requested-With", "XMLHttpRequest");
+//                                        headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+//                                        return headers;
+//                                    }
+//
+//                                };
+//
+//                                ClassLuxApp.getInstance().addToRequestQueue(request);
 
 
 

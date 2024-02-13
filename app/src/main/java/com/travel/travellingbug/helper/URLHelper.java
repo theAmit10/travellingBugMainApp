@@ -22,6 +22,8 @@ public interface URLHelper {
 
     String MY_PUBLISH_UPCOMMING_TRIPS_DETAILS = BASE + "api/provider/myupcoming/details";
 
+    String INR_SYMBOL = "₹ ";
+
     String CANCEL_REQUEST_API = BASE + "api/provider/cancel";
     String TARGET_API = BASE + "api/provider/target";
     String RESET_PASSWORD = BASE + "api/provider/reset/password";

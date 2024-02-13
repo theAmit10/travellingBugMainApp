@@ -44,12 +44,9 @@ public class DriverProfileAboutFragment extends Fragment {
 
     TextView dropLocation, sourceTv, startTimeVal, returnTimeVal, carTypeVal, vehicleCapacityVal, airConditionerVal, perSeatPerKmVal, vehicleName, vehicleNumber;
     ImageView vehicleImage;
-
     Button chatButton, continueButton;
-
     String user_id = "";
     String request_id = "";
-
     String providerFirstName = "";
     String providerId = "";
     String providerMobileNo = "";
@@ -93,46 +90,18 @@ public class DriverProfileAboutFragment extends Fragment {
                 System.out.println("val : " + providerMobileNo);
 
 
-
-
                 if (providerMobileNo != null && !providerMobileNo.equalsIgnoreCase("null") && providerMobileNo.length() > 0) {
                     System.out.println("val if 1 : " + providerMobileNo);
                     try {
                         Intent intentCall = new Intent(Intent.ACTION_DIAL);
                         intentCall.setData(Uri.parse("tel:" + providerMobileNo));
                         startActivity(intentCall);
-
                         System.out.println("val if 2 : " + providerMobileNo);
 
                     }catch (Exception e){
                         e.printStackTrace();
                     }
 
-
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                        System.out.println("val if 2 : " + providerMobileNo);
-//                        getActivity().requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 2);
-//                    } else {
-//                        System.out.println("val else 1 : " + providerMobileNo);
-//                        Intent intentCall = new Intent(Intent.ACTION_CALL);
-//                        intentCall.setData(Uri.parse("tel:" + providerMobileNo));
-//                        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//                            // TODO: Consider calling
-//                            //    ActivityCompat#requestPermissions
-//                            // here to request the missing permissions, and then overriding
-//                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//                            //                                          int[] grantResults)
-//                            // to handle the case where the user grants the permission. See the documentation
-//                            // for ActivityCompat#requestPermissions for more details.
-//                            System.out.println("val 2: " + providerMobileNo);
-//                            return;
-//                        }
-//                        System.out.println("val 3 : " + providerMobileNo);
-//                        getActivity().startActivity(intentCall);
-//                        System.out.println("val 4: " + providerMobileNo);
-//
-//
-//                    }
                 } else {
                     System.out.println("val error : " + providerMobileNo);
                     Toast.makeText(getContext(), "User do not have a valid mobile number", Toast.LENGTH_SHORT).show();

@@ -41,6 +41,7 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.travel.travellingbug.BuildConfig;
 import com.travel.travellingbug.ClassLuxApp;
@@ -76,7 +77,7 @@ public class DocumentStatus extends AppCompatActivity {
     public static int deviceHeight;
     public static int deviceWidth;
     RecyclerView recDocuments;
-
+    JSONArray responseArrayList;
     ImageView backArrow;
 
     RelativeLayout errorLayout;
@@ -146,7 +147,9 @@ public class DocumentStatus extends AppCompatActivity {
             }
         });
 
+        getListOfDocumentFile();
         getDocList();
+
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         deviceHeight = displayMetrics.heightPixels;
@@ -165,7 +168,6 @@ public class DocumentStatus extends AppCompatActivity {
         JsonArrayRequest jsonArrayRequest = new
                 JsonArrayRequest(URLHelper.BASE + "api/provider/document/status",
                         response -> {
-
                             if (response != null) {
 //                                SharedHelper.putKey(getApplicationContext(),"DocumentStatus","yes");
                                 Log.v("response doc", response + "doc");
@@ -173,6 +175,7 @@ public class DocumentStatus extends AppCompatActivity {
                                 if(response.length() > 0){
                                     SharedHelper.putKey(getApplicationContext(),"DocumentStatus","yes");
                                 }
+
                                 PostAdapter postAdapter = new PostAdapter(response);
                                 recDocuments.setHasFixedSize(true);
                                 recDocuments.setLayoutManager(new LinearLayoutManager(DocumentStatus.this) {
@@ -209,6 +212,7 @@ public class DocumentStatus extends AppCompatActivity {
                         return headers;
                     }
                 };
+
 
         ClassLuxApp.getInstance().addToRequestQueue(jsonArrayRequest);
     }
@@ -445,6 +449,42 @@ public class DocumentStatus extends AppCompatActivity {
 
 
         return builder.create();
+    }
+
+    private void getListOfDocumentFile() {
+
+        try {
+
+
+            String url = URLHelper.CHECK_DOCUMENT;
+            final JsonObjectRequest jsonObjectRequest = new
+                    JsonObjectRequest(Request.Method.GET, url,
+                            null, response -> {
+                        Log.v("DocumentListing", response + "Document");
+                        try {
+
+                            JSONArray jsonArray = response.getJSONArray("data");
+                            responseArrayList = jsonArray;
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }, error -> Log.v("DocListActivity", error.getMessage() + "")) {
+                        @Override
+                        public java.util.Map<String, String> getHeaders() throws AuthFailureError {
+                            HashMap<String, String> headers = new HashMap<>();
+                            headers.put("X-Requested-With", "XMLHttpRequest");
+                            headers.put("Authorization", "Bearer " + SharedHelper.getKey(DocumentStatus.this, "access_token"));
+                            return headers;
+                        }
+                    };
+            ClassLuxApp.getInstance().addToRequestQueue(jsonObjectRequest);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void saveProfileAccount(String filename, byte[] bytes, String docid) {

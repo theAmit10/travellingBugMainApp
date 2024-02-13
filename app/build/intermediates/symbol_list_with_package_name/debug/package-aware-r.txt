@@ -5104,6 +5104,7 @@ id addressTxt
 id addressType
 id adjust_height
 id adjust_width
+id afterAcceptedContainerLL
 id airConditioner
 id airConditionerVal
 id alertTitle
@@ -5900,6 +5901,7 @@ id material_value_index
 id media_actions
 id menuIcon
 id message
+id messageBtn
 id messageTv
 id message_body
 id message_title
@@ -6071,6 +6073,7 @@ id perSeatPerKmVal
 id percent
 id persontv
 id phoneTv
+id pickUpBtn
 id pickUpData
 id pickUpDataVal
 id pickUpTime
@@ -7757,6 +7760,7 @@ string tap_when_pickedup
 string tax
 string terms_amp_conditions
 string terms_and_condition
+string terms_and_condition_during_document_verification
 string terms_of_Service
 string text_size_multiplier_inner
 string text_size_multiplier_normal

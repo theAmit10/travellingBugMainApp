@@ -43,10 +43,8 @@ import java.util.Map;
 public class RatingGivenFragment extends Fragment {
 
     String user_id = "";
-
     LinearLayout reviewDataLl;
     RelativeLayout errorLayout;
-
     RecyclerView fragmentDriverReviewRV;
     private ShimmerFrameLayout mFrameLayout;
     ArrayList<UserProfileReviewDataModel> list = new ArrayList<>();

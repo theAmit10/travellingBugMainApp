@@ -340,6 +340,11 @@
     <string name="account" translatable="false">Account</string>
 
     <string name="terms_and_condition" translatable="false">The information colledted below by travelling bug us necessary to verify your identity. You can learn more about your rights and how we handle your personal data in our  <font color='#01C6DB'>Privacy Policy.</font></string>
+    <string name="terms_and_condition_during_document_verification" translatable="false">At Traveling Bug, we understand that verification is a necessary step to ensure the safety and security of our valued community members. We only require the specified documents for verification purposes, and they will be handled with utmost care and in accordance with strict privacy protocols.
+Your Aadhar card, for instance, plays a crucial role in providing quick access to medical assistance during emergency situations. By submitting it for verification, you contribute to creating a safe environment where urgent help can be efficiently provided when needed.
+Similarly, your driving license is required for validation purposes. It helps us ensure the integrity of our community and maintain a high standard of trust among our members.
+Rest assured that your personal information will be handled securely and only used as outlined in our privacy policy. Your trust means everything to us!
+<font color='#01C6DB'>Privacy Policy.</font></string>
 
     <string name="trip_completed" translatable="false">Trip Completed</string>
     <string name="change_destination" translatable="false">Change Destination</string>

@@ -2,6 +2,7 @@ package com.travel.travellingbug.ui.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,12 +28,14 @@ import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
+import com.travel.travellingbug.chat.InboxChatActivity;
 import com.travel.travellingbug.helper.ConnectionHelper;
 import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
 import com.travel.travellingbug.ui.activities.HistoryDetailsUser;
 import com.travel.travellingbug.ui.activities.SplashScreen;
+import com.travel.travellingbug.ui.activities.TrackActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,6 +48,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 import es.dmoral.toasty.Toasty;
 
@@ -268,6 +272,61 @@ public class PastTrips extends Fragment {
         return timeName;
     }
 
+    private void addVerificationCode(String rideId, String user_id, String code) {
+
+        StringRequest request = new StringRequest(Request.Method.POST, URLHelper.ADD_VERIFICATION_CODE, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    if (response != null) {
+                        System.out.println("data : " + jsonObject.toString());
+                        displayMessage("Share this verification code with Driver");
+
+                    }
+
+                } catch (JSONException e) {
+                    displayMessage(e.toString());
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                error.printStackTrace();
+            }
+
+        }) {
+
+
+            @Override
+            public Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("rideid", rideId);
+                params.put("user_id", user_id);
+                params.put("code", code);
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("X-Requested-With", "XMLHttpRequest");
+                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+                return headers;
+            }
+
+        };
+
+        ClassLuxApp.getInstance().addToRequestQueue(request);
+
+
+    }
+
     private class PostAdapter extends RecyclerView.Adapter<PostAdapter.MyViewHolder> {
         JSONArray jsonArray;
 
@@ -348,6 +407,18 @@ public class PastTrips extends Fragment {
                         System.out.println("j" + SharedHelper.getKey(getContext(), "id"));
                         if (filterJsonObject.optString("user_id").equalsIgnoreCase(SharedHelper.getKey(getContext(), "id"))) {
                             holder.availableSeat.setText(filterJsonObject.optString("noofseats")+" Seat");
+                            // for fare details
+                            try {
+                                Double fares = Double.valueOf(jsonObjectTrip.optString("fare"));
+                                int no_of_seat = Integer.parseInt(filterJsonObject.optString("noofseats"));
+                                Double c_fare = fares * no_of_seat;
+                                String calculated_fare = URLHelper.INR_SYMBOL + c_fare;
+
+                                holder.fare.setText(calculated_fare);
+
+                            }catch (Exception e){
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }
@@ -359,82 +430,84 @@ public class PastTrips extends Fragment {
 //                holder.fare.setText("₹ "+jsonObjectServiceType.optString("fixed"));
 
                 // for fare details
-                try {
-                    StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + jsonArray.optJSONObject(position).optJSONObject("trip").optString("s_latitude") + "&s_longitude=" + jsonArray.optJSONObject(position).optJSONObject("trip").optString("s_longitude") + "&d_latitude=" + jsonArray.optJSONObject(position).optJSONObject("trip").optString("d_latitude") + "&d_longitude=" + jsonArray.optJSONObject(position).optJSONObject("trip").optString("d_longitude") + "&service_type=2", new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
+//                try {
+//                    StringRequest request = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + jsonArray.optJSONObject(position).optJSONObject("trip").optString("s_latitude") + "&s_longitude=" + jsonArray.optJSONObject(position).optJSONObject("trip").optString("s_longitude") + "&d_latitude=" + jsonArray.optJSONObject(position).optJSONObject("trip").optString("d_latitude") + "&d_longitude=" + jsonArray.optJSONObject(position).optJSONObject("trip").optString("d_longitude") + "&service_type=2", new Response.Listener<String>() {
+//                        @Override
+//                        public void onResponse(String response) {
+//
+//
+//                            try {
+//                                JSONObject jsonObject = new JSONObject(response);
+//
+//                                if (response != null) {
+//                                    System.out.println("payment details estimated data : " + jsonObject.toString());
+//                                    jsonObject.optString("estimated_fare");
+//                                    jsonObject.optString("distance");
+//                                    jsonObject.optString("time");
+//                                    jsonObject.optString("tax_price");
+//                                    jsonObject.optString("base_price");
+//                                    jsonObject.optString("discount");
+//                                    jsonObject.optString("currency");
+//
+//                                    String con = jsonObject.optString("currency") + " ";
+//
+//
+//                                    System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+//
+//                                    try {
+//                                        System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+//                                        holder.fare.setText(con + jsonObject.optString("estimated_fare"));
+//
+//                                    }catch (Exception e){
+//                                        e.printStackTrace();
+//                                    }
+//
+//
+//                                }
+//
+//                            } catch (JSONException e) {
+//
+//                                e.printStackTrace();
+//                            }
+//
+//
+//                        }
+//                    }, new Response.ErrorListener() {
+//                        @Override
+//                        public void onErrorResponse(VolleyError error) {
+//
+//                            try {
+//                                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
+//
+//                        }
+//
+//                    }) {
+//
+//
+//
+//
+//                        @Override
+//                        public Map<String, String> getHeaders() {
+//                            HashMap<String, String> headers = new HashMap<String, String>();
+//                            headers.put("X-Requested-With", "XMLHttpRequest");
+//                            headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
+//                            return headers;
+//                        }
+//
+//                    };
+//
+//                    ClassLuxApp.getInstance().addToRequestQueue(request);
+//
+//
+//
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
 
 
-                            try {
-                                JSONObject jsonObject = new JSONObject(response);
-
-                                if (response != null) {
-                                    System.out.println("payment details estimated data : " + jsonObject.toString());
-                                    jsonObject.optString("estimated_fare");
-                                    jsonObject.optString("distance");
-                                    jsonObject.optString("time");
-                                    jsonObject.optString("tax_price");
-                                    jsonObject.optString("base_price");
-                                    jsonObject.optString("discount");
-                                    jsonObject.optString("currency");
-
-                                    String con = jsonObject.optString("currency") + " ";
-
-
-                                    System.out.println("ESTIMATED FARE STATUS :" + response.toString());
-
-                                    try {
-                                        System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
-                                        holder.fare.setText(con + jsonObject.optString("estimated_fare"));
-
-                                    }catch (Exception e){
-                                        e.printStackTrace();
-                                    }
-
-
-                                }
-
-                            } catch (JSONException e) {
-
-                                e.printStackTrace();
-                            }
-
-
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                            try {
-                                Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-
-                    }) {
-
-
-
-
-                        @Override
-                        public Map<String, String> getHeaders() {
-                            HashMap<String, String> headers = new HashMap<String, String>();
-                            headers.put("X-Requested-With", "XMLHttpRequest");
-                            headers.put("Authorization", "Bearer " + SharedHelper.getKey(getContext(), "access_token"));
-                            return headers;
-                        }
-
-                    };
-
-                    ClassLuxApp.getInstance().addToRequestQueue(request);
-
-
-
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
 
 
 
@@ -459,6 +532,8 @@ public class PastTrips extends Fragment {
                 }catch (Exception e){
                     e.printStackTrace();
                 }
+
+
 
 
 
@@ -536,15 +611,7 @@ public class PastTrips extends Fragment {
 
 
             holder.historyContainerLL.setOnClickListener(view -> {
-//                Intent intent = new Intent(getActivity(), HistoryDetails.class);
-//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
-//                intent.putExtra("post_value", jsonArray.optJSONObject(position).toString());
-//                intent.putExtra("tag", "past_trips");
-//                startActivity(intent);
 
-//                Toast.makeText(getContext(), "user id: " + jsonArray.optJSONObject(position).optString("user_id"), Toast.LENGTH_SHORT).show();
-//                Toast.makeText(getContext(), "id: " + jsonArray.optJSONObject(position).optString("id"), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getActivity(), HistoryDetailsUser.class);
                 intent.putExtra("request_id", jsonArray.optJSONObject(position).optString("request_id"));
                 intent.putExtra("user_id" , jsonArray.optJSONObject(position).optString("user_id"));
@@ -552,74 +619,95 @@ public class PastTrips extends Fragment {
                 Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
                 intent.putExtra("post_value", jsonArray.optJSONObject(position).toString());
                 intent.putExtra("tag", "past_trips");
-
                 intent.putExtra("flowValue", 3);
                 intent.putExtra("request_id_from_trip", jsonArray.optJSONObject(position).optString("request_id"));
-
-//                request_id = jsonArray.optJSONObject(position).optString("id");
-//
-//                s_address = jsonArray.optJSONObject(position).optString("s_address");
-//
-//                d_address = jsonArray.optJSONObject(position).optString("d_address");
-//
-//                booking_id = jsonArray.optJSONObject(position).optString("booking_id");
-//
-//                status = jsonArray.optJSONObject(position).optString("status");
-//
-//                if(jsonArray.optJSONObject(position).optString("payment_mode") != null){
-//                    payment_mode = jsonArray.optJSONObject(position).optString("payment_mode");
-//                }
-//
-//                if(jsonArray.optJSONObject(position).optString("estimated_fare") != null){
-//                    estimated_fare = jsonArray.optJSONObject(position).optString("estimated_fare");
-//
-//                }
-//
-//                if(jsonArray.optJSONObject(position).optString("verification_code") != null){
-//                    verification_code = jsonArray.optJSONObject(position).optString("verification_code");
-//                }else{
-//                    verification_code = "0000";
-//                }
-//
-//                if(jsonArray.optJSONObject(position).optString("static_map") != null){
-//                    static_map = jsonArray.optJSONObject(position).optString("static_map");
-//                }
-//
-//
-////                // getting firstname
-////                try {
-////                    JSONObject providerObj = jsonArray.getJSONObject(position).optJSONObject("provider");
-////                    if (providerObj != null) {
-////
-////                        first_name  = providerObj.optString("first_name");
-////                        rating  = providerObj.optString("rating");
-////                        avatar = providerObj.optString("avatar");
-////
-////
-////                    }
-////                } catch (JSONException e) {
-////                    e.printStackTrace();
-////                }
-//
-//
-//                intent.putExtra("request_id", request_id);
-//                intent.putExtra("s_address", s_address);
-//                intent.putExtra("d_address", d_address);
-//                intent.putExtra("booking_id", booking_id);
-//                intent.putExtra("s_date", s_date);
-//                intent.putExtra("s_time", s_time);
-//                intent.putExtra("status", status);
-//                intent.putExtra("payment_mode", payment_mode);
-//                intent.putExtra("estimated_fare", estimated_fare);
-//                intent.putExtra("verification_code", verification_code);
-//                intent.putExtra("static_map", static_map);
-//                intent.putExtra("first_name", userName);
-//                intent.putExtra("rating", rating);
-//                intent.putExtra("avatar", userProfileImage);
-
                 startActivity(intent);
 
             });
+
+
+            holder.trackBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(getContext(), TrackActivity.class);
+                    intent.putExtra("flowValue", 3);
+                    intent.putExtra("request_id_from_trip", jsonArray.optJSONObject(position).optString("request_id"));
+                    startActivity(intent);
+                    getActivity().overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
+                }
+            });
+
+            holder.callBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                   String provider_phone_number =  jsonArray.optJSONObject(position).optJSONObject("trip").optJSONObject("provider").optString("mobile");
+                    if (provider_phone_number != null && !provider_phone_number.equalsIgnoreCase("null") && provider_phone_number.length() > 0) {
+                        System.out.println("val if 1 : " + provider_phone_number);
+                        try {
+                            Intent intentCall = new Intent(Intent.ACTION_DIAL);
+                            intentCall.setData(Uri.parse("tel:" + provider_phone_number));
+                            startActivity(intentCall);
+                            System.out.println("val if 2 : " + provider_phone_number);
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        System.out.println("val error : " + provider_phone_number);
+                        Toast.makeText(getContext(), "User do not have a valid mobile number", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            holder.messageTv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(getContext(), InboxChatActivity.class);
+                    intent.putExtra("requestId", jsonArray.optJSONObject(position).optJSONObject("trip").optString("id"));
+                    intent.putExtra("providerId", jsonArray.optJSONObject(position).optJSONObject("trip").optJSONObject("provider").optString("id"));
+                    intent.putExtra("userId", SharedHelper.getKey(getContext(),"id"));
+                    intent.putExtra("userName", jsonArray.optJSONObject(position).optJSONObject("trip").optJSONObject("provider").optString("first_name"));
+                    intent.putExtra("messageType", "pu");
+                    startActivity(intent);
+                }
+            });
+
+
+
+
+
+            JSONArray filterJsonArray = jsonArray.optJSONObject(position).optJSONObject("trip").optJSONArray("filters");
+            for (int j = 0; j < filterJsonArray.length(); j++) {
+                JSONObject filterJsonObject = filterJsonArray.optJSONObject(j);
+
+                if (filterJsonObject.optString("user_id").equalsIgnoreCase(SharedHelper.getKey(getContext(), "id"))) {
+
+
+
+                    if (filterJsonObject.optString("verification_code") == null) {
+                        // Generating OTP and Adding to the Database
+                        Random random = new Random();
+                        String otp_code = String.format("%04d", random.nextInt(10000));
+                        System.out.printf("OTP : " + otp_code);
+                        holder.otpValTv.setText(otp_code);
+                        addVerificationCode(jsonArray.optJSONObject(position).optJSONObject("trip").optString("id"), SharedHelper.getKey(getContext(),"id"), otp_code);
+                    }
+                    else {
+                        holder.otpValTv.setText(filterJsonObject.optString("verification_code"));
+                    }
+                }
+            }
+
+
+
+
+
+
+
+
 
         }
 
@@ -630,14 +718,14 @@ public class PastTrips extends Fragment {
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView datetime, txtSource, txtDestination, status, userName, ratingVal, availableSeat, fare, carTypeVal;
-
+            TextView datetime, txtSource, txtDestination, status, userName, ratingVal, availableSeat, fare, carTypeVal,otpValTv;
             RatingBar listitemrating;
-
             ImageView profileImgeIv;
             Button rateRider;
-
             LinearLayout historyContainerLL;
+
+            Button trackBtn,callBtn,messageTv;
+
 
             public MyViewHolder(View itemView) {
                 super(itemView);
@@ -657,14 +745,12 @@ public class PastTrips extends Fragment {
                 fare = itemView.findViewById(R.id.fare);
                 availableSeat = itemView.findViewById(R.id.availableSeat);
 
-//                itemView.setOnClickListener(view -> {
-//                    Intent intent = new Intent(getActivity(), HistoryDetails.class);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                    Log.e("Intent", "" + jsonArray.optJSONObject(getAdapterPosition()).toString());
-//                    intent.putExtra("post_value", jsonArray.optJSONObject(getAdapterPosition()).toString());
-//                    intent.putExtra("tag", "past_trips");
-//                    startActivity(intent);
-//                });
+                messageTv = itemView.findViewById(R.id.messageTv);
+                callBtn = itemView.findViewById(R.id.callBtn);
+                trackBtn = itemView.findViewById(R.id.trackBtn);
+                otpValTv = itemView.findViewById(R.id.otpValTv);
+
+
 
             }
         }

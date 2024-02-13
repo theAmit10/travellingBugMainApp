@@ -604,7 +604,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="start"
-                        android:text="@string/tax"
+                        android:text="Number of Seats"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_13ssp" />
 

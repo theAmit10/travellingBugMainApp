@@ -3,6 +3,7 @@ package com.travel.travellingbug.ui.activities;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.squareup.picasso.Picasso;
 import com.travel.travellingbug.ClassLuxApp;
 import com.travel.travellingbug.R;
+import com.travel.travellingbug.chat.InboxChatActivity;
 import com.travel.travellingbug.helper.CustomDialog;
 import com.travel.travellingbug.helper.SharedHelper;
 import com.travel.travellingbug.helper.URLHelper;
@@ -55,29 +57,23 @@ public class RideRequest extends AppCompatActivity {
     RideRequest.UpcomingsAdapter upcomingsAdapter;
 
     String noofseat="",request_id="", person_id="",s_address="",d_address="",s_date = "",s_time = "",seat_left = "", profile_image = "",fare = "";
-
     String rating="",ratingVal="";
-
-
-    String booking_id = "", status = "", payment_mode = "", estimated_fare = "", verification_code = "", static_map = "", first_name = "", mobile = "", avatar = "";
+    String booking_id = "", status = "", payment_mode = "", estimated_fare = "", verification_code = "", static_map = "", first_name = "", provider_phone_number = "", avatar = "";
 
     String post_value = "", tag = "";
     String current_trip_user_id = "";
     String provider_id = "";
-
     String s_latitude = "",s_longitude="",d_latitude="",d_longitude="";
-
     String trip_distance = "";
     String trip_fare = "";
+    String distance = "";
 
-
-
+    // Today Worked on the Publish Section Backend of the Travelling Bug Project
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ride_request);
-
 
         try {
             errorLayout = findViewById(R.id.errorLayoutRl);
@@ -85,9 +81,6 @@ public class RideRequest extends AppCompatActivity {
             getIntentData();
             startRideTv = findViewById(R.id.startRideTv);
             getRideRequest();
-
-
-
             startRideTv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -98,7 +91,6 @@ public class RideRequest extends AppCompatActivity {
                     s_time = getIntent().getStringExtra("s_time");
                     seat_left = getIntent().getStringExtra("seat_left");
                     fare = getIntent().getStringExtra("fare");
-
 
                     // for history screen to start ride
                     request_id = getIntent().getStringExtra("request_id");
@@ -155,19 +147,9 @@ public class RideRequest extends AppCompatActivity {
                 }
             });
 
-
-
-
-
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
-
-
-
-
 
 
     }
@@ -213,9 +195,7 @@ public class RideRequest extends AppCompatActivity {
 
         bookingStatusTitleTv.setText("Cancelled");
         bookingStatusSubTitleTv.setText("Ride Request has been Cancelled successfully");
-
         tvDriverMsg.setText("");
-
         confirmDialog.show();
         tvDone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -242,41 +222,34 @@ public class RideRequest extends AppCompatActivity {
                 System.out.println("Request Data : "+response);
                 String location;
 
-
                 try {
                     customDialog.dismiss();
-
                     JSONArray jsonArray = new JSONArray(response);
 
                     for(int i=0;i <jsonArray.length(); i++){
-
 //                        JSONObject jsonObject = new JSONObject(response);
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
-
 
 //                        s_latitude = "",s_longitude="",d_latitude="",d_longitude="";
                         s_latitude = jsonObject.optString("s_latitude");
                         s_longitude = jsonObject.optString("s_longitude");
                         d_latitude = jsonObject.optString("d_latitude");
                         d_longitude = jsonObject.optString("d_longitude");
-
                         provider_id = jsonObject.optString("provider_id");
 
-
-
-                        if(jsonObject.optString("status").equalsIgnoreCase("COMPLETED")   ){
+                        if(jsonObject.optString("status").equalsIgnoreCase("COMPLETED")){
                             startRideTv.setText("Completed");
                         }else if(jsonObject.optString("status").equalsIgnoreCase("CANCELLED")){
                             startRideTv.setText("Cancelled");
                         }
-                        startRideTv.setVisibility(View.VISIBLE);
 
+
+                        startRideTv.setVisibility(View.VISIBLE);
 
                         JSONArray filterArray = jsonObject.getJSONArray("filters");
                         if(response != null ){
                             upcomingsAdapter = new RideRequest.UpcomingsAdapter(filterArray);
                             System.out.println("filter length : "+filterArray.length());
-
 //                            Toast.makeText(RideRequest.this, "filter length : "+filterArray.length(), Toast.LENGTH_SHORT).show();
 
                             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -285,7 +258,7 @@ public class RideRequest extends AppCompatActivity {
 
                             if (upcomingsAdapter != null && upcomingsAdapter.getItemCount() > 0) {
                                 recyclerView.setVisibility(View.VISIBLE);
-                            errorLayout.setVisibility(View.GONE);
+                                errorLayout.setVisibility(View.GONE);
                                 recyclerView.setAdapter(upcomingsAdapter);
                             } else {
                             errorLayout.setVisibility(View.VISIBLE);
@@ -479,7 +452,7 @@ public class RideRequest extends AppCompatActivity {
         s_time = getIntent().getStringExtra("s_time");
         seat_left = getIntent().getStringExtra("seat_left");
         fare = getIntent().getStringExtra("fare");
-
+        distance = getIntent().getStringExtra("distance");
 
         // for history screen to start ride
         request_id = getIntent().getStringExtra("request_id");
@@ -499,6 +472,7 @@ public class RideRequest extends AppCompatActivity {
         current_trip_user_id = getIntent().getStringExtra("current_trip_user_id");
         post_value = getIntent().getStringExtra("post_value");
         tag = getIntent().getStringExtra("tag");
+        provider_phone_number = getIntent().getStringExtra("provider_phone_number");
 
         System.out.println("request_id : "+request_id);
         System.out.println("RR INTENT rating : "+rating);
@@ -534,37 +508,16 @@ public class RideRequest extends AppCompatActivity {
 
             holder.saddress.setText(s_address);
             holder.dropLocation.setText(d_address);
-//            holder.fare.setText(fare);
+
 
             try {
                 if (!jsonArray.optJSONObject(position).optString("first_name", "").isEmpty()) {
 
 
-
-//                    holder.listitemrating.setRating(Float.parseFloat("3.0"));
                     holder.nametv.setText(jsonArray.optJSONObject(position).optString("first_name"));
                     person_id = jsonArray.optJSONObject(position).optString("id");
 
-
-
                     holder.startTimeVal.setText(s_date + " "+s_time);
-
-// getting taken seat
-//                    JSONArray filterJsonArray = jsonArray.optJSONObject(position).optJSONArray("filters");
-//                    if (filterJsonArray != null && filterJsonArray.length() > 0) {
-//                        for (int j = 0; j < filterJsonArray.length(); j++) {
-//                            JSONObject filterJsonObject = filterJsonArray.optJSONObject(j);
-//                            System.out.println("j" + filterJsonObject.optString("user_id"));
-//                            System.out.println("j" + SharedHelper.getKey(getApplicationContext(), "id"));
-//                            if (filterJsonObject.optString("user_id").equalsIgnoreCase(SharedHelper.getKey(getApplicationContext(), "id"))) {
-//                                holder.availableSeat.setText(filterJsonObject.optString("noofseats")+" Seat");
-//                            }
-//                        }
-//                    }
-
-
-
-//                    holder..setText(seat_left +" Seat left");
                     holder.availableSeat.setText(jsonArray.optJSONObject(position).optString("noofseats")+" Seat");
 
 
@@ -572,7 +525,6 @@ public class RideRequest extends AppCompatActivity {
 
 
                     // Getting other details of profile
-
                     StringRequest request = new StringRequest(Request.Method.POST, URLHelper.GET_DETAILS_OF_ONE_USER, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -653,8 +605,9 @@ public class RideRequest extends AppCompatActivity {
                             holder.acceptBtn.setText("ACCEPTED");
                             holder.acceptBtn.setClickable(false);
 
-                            holder.acceptBtn.setVisibility(View.VISIBLE);
+                            holder.acceptBtn.setVisibility(View.GONE);
                             holder.rejectBtn.setVisibility(View.GONE);
+                            holder.afterAcceptedContainerLL.setVisibility(View.VISIBLE);
 
                         }else if(jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED")){
                             System.out.println("CANCELLED : "+jsonArray.optJSONObject(position).optString("status").equalsIgnoreCase("CANCELLED"));
@@ -672,113 +625,118 @@ public class RideRequest extends AppCompatActivity {
 
 
                     // for fare details
+
                     try {
-                        StringRequest requestFare = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + s_latitude + "&s_longitude=" + s_longitude + "&d_latitude=" + d_latitude + "&d_longitude=" + d_longitude + "&service_type=2", new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
+//                        System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
 
+                        Double fares = Double.valueOf(fare);
+                        int no_of_seat = Integer.parseInt(jsonArray.optJSONObject(position).optString("noofseats"));
+                        Double c_fare = fares * no_of_seat;
+                        String calculated_fare = URLHelper.INR_SYMBOL + c_fare;
+                        fare = calculated_fare;
+                        trip_fare = c_fare+"";
 
-                                try {
-                                    JSONObject jsonObject = new JSONObject(response);
+                        holder.fare.setText(calculated_fare);
 
-                                    if (response != null) {
-                                        System.out.println("payment details estimated data : " + jsonObject.toString());
-                                        jsonObject.optString("estimated_fare");
-                                        jsonObject.optString("distance");
-                                        jsonObject.optString("time");
-                                        jsonObject.optString("tax_price");
-                                        jsonObject.optString("base_price");
-                                        jsonObject.optString("discount");
-                                        jsonObject.optString("currency");
+                            trip_distance = distance;
 
-                                        String con = jsonObject.optString("currency") + " ";
-
-
-//                                txt04InvoiceId.setText(status.optString("booking_id"));
-//                                txt04BasePrice.setText(con + jsonObject.optString("base_price"));
-//                                txt04Distance.setText(jsonObject.optString("distance") + " KM");
-//                                txt04Tax.setText(con + jsonObject.optString("tax_price"));
-//                                txt04Total.setText(con + jsonObject.optString("estimated_fare"));
-//                                txt04PaymentMode.setText("CASH");
-//                                txt04Commision.setText(con + jsonObject.optString("discount"));
-//                                txtTotal.setText(con + jsonObject.optString("estimated_fare"));
-//                                paymentTypeImg.setImageResource(R.drawable.money1);
-//                                btn_confirm_payment.setVisibility(View.VISIBLE);
-
-                                        System.out.println("ESTIMATED FARE STATUS :" + response.toString());
-
-
-                                        try {
-                                            System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
-
-                                            Double fares = Double.valueOf(jsonObject.optString("estimated_fare"));
-                                            int no_of_seat = Integer.parseInt(jsonArray.optJSONObject(position).optString("noofseats"));
-                                            Double c_fare = fares * no_of_seat;
-                                            String calculated_fare = con + c_fare;
-                                            fare = calculated_fare;
-                                            trip_fare = c_fare+"";
-
-                                            holder.fare.setText(calculated_fare);
-                                            if(jsonObject.optString("distance") != null){
-                                                trip_distance = jsonObject.optString("distance");
-                                            }
-                                            System.out.println("DISTANCE TRIP : "+trip_distance);
-                                            System.out.println("DISTANCE TRIP trip_fare : "+trip_fare);
-
-//                                            number_of_seat
-
-                                        }catch (Exception e){
-                                            e.printStackTrace();
-                                        }
-
-
-
-
-
-
-                                    }
-
-                                } catch (JSONException e) {
-
-                                    e.printStackTrace();
-                                }
-
-
-                            }
-                        }, new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-
-                                try {
-                                    Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-
-                        }) {
-
-
-
-
-                            @Override
-                            public Map<String, String> getHeaders() {
-                                HashMap<String, String> headers = new HashMap<String, String>();
-                                headers.put("X-Requested-With", "XMLHttpRequest");
-                                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
-                                return headers;
-                            }
-
-                        };
-
-                        ClassLuxApp.getInstance().addToRequestQueue(requestFare);
-
-
+                        System.out.println("DISTANCE TRIP : "+trip_distance);
+                        System.out.println("DISTANCE TRIP trip_fare : "+trip_fare);
 
                     }catch (Exception e){
                         e.printStackTrace();
                     }
+
+
+
+//                    try {
+//                        StringRequest requestFare = new StringRequest(Request.Method.GET, URLHelper.ESTIMATED_FARE_AND_DISTANCE + "?s_latitude=" + s_latitude + "&s_longitude=" + s_longitude + "&d_latitude=" + d_latitude + "&d_longitude=" + d_longitude + "&service_type=2", new Response.Listener<String>() {
+//                            @Override
+//                            public void onResponse(String response) {
+//
+//
+//                                try {
+//                                    JSONObject jsonObject = new JSONObject(response);
+//
+//                                    if (response != null) {
+//                                        System.out.println("payment details estimated data : " + jsonObject.toString());
+//                                        jsonObject.optString("estimated_fare");
+//                                        jsonObject.optString("distance");
+//                                        jsonObject.optString("time");
+//                                        jsonObject.optString("tax_price");
+//                                        jsonObject.optString("base_price");
+//                                        jsonObject.optString("discount");
+//                                        jsonObject.optString("currency");
+//
+//                                        String con = jsonObject.optString("currency") + " ";
+//
+//                                        System.out.println("ESTIMATED FARE STATUS :" + response.toString());
+//
+//
+//                                        try {
+//                                            System.out.println("Fare : "+con + jsonObject.optString("estimated_fare"));
+//
+//                                            Double fares = Double.valueOf(jsonObject.optString("estimated_fare"));
+//                                            int no_of_seat = Integer.parseInt(jsonArray.optJSONObject(position).optString("noofseats"));
+//                                            Double c_fare = fares * no_of_seat;
+//                                            String calculated_fare = con + c_fare;
+//                                            fare = calculated_fare;
+//                                            trip_fare = c_fare+"";
+//
+//                                            holder.fare.setText(calculated_fare);
+//                                            if(jsonObject.optString("distance") != null){
+//                                                trip_distance = jsonObject.optString("distance");
+//                                            }
+//                                            System.out.println("DISTANCE TRIP : "+trip_distance);
+//                                            System.out.println("DISTANCE TRIP trip_fare : "+trip_fare);
+//
+//                                        }catch (Exception e){
+//                                            e.printStackTrace();
+//                                        }
+//
+//                                    }
+//
+//                                } catch (JSONException e) {
+//
+//                                    e.printStackTrace();
+//                                }
+//
+//
+//                            }
+//                        }, new Response.ErrorListener() {
+//                            @Override
+//                            public void onErrorResponse(VolleyError error) {
+//
+//                                try {
+//                                    Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+//                                } catch (Exception e) {
+//                                    e.printStackTrace();
+//                                }
+//
+//                            }
+//
+//                        }) {
+//
+//
+//
+//
+//                            @Override
+//                            public Map<String, String> getHeaders() {
+//                                HashMap<String, String> headers = new HashMap<String, String>();
+//                                headers.put("X-Requested-With", "XMLHttpRequest");
+//                                headers.put("Authorization", "Bearer " + SharedHelper.getKey(getApplicationContext(), "access_token"));
+//                                return headers;
+//                            }
+//
+//                        };
+//
+//                        ClassLuxApp.getInstance().addToRequestQueue(requestFare);
+//
+//
+//
+//                    }catch (Exception e){
+//                        e.printStackTrace();
+//                    }
 
 
                     holder.acceptBtn.setOnClickListener(new View.OnClickListener() {
@@ -815,38 +773,6 @@ public class RideRequest extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-//            try {
-//                JSONObject serviceObj = jsonArray.getJSONObject(position).optJSONObject("service_type");
-//                if (serviceObj != null) {
-//                    holder.car_name.setText(serviceObj.optString("name"));
-//                    //holder.tripAmount.setText(SharedHelper.getKey(context, "currency")+serviceObj.optString("price"));
-//                    Picasso.get().load(serviceObj.optString("image"))
-//                            .placeholder(R.drawable.car_select).error(R.drawable.car_select).into(holder.driver_image);
-//                }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-
-
-
-//            holder.btnStart.setOnClickListener(view -> {
-//                //Toast.makeText(getActivity(),"Start Ride",Toast.LENGTH_SHORT).show();
-//                Log.e("Intent", "" + jsonArray.optJSONObject(position).toString());
-//                JSONArray array = new JSONArray();
-//                JSONObject req = new JSONObject();
-//                try {
-//                    JSONObject object = (JSONObject) new JSONTokener(jsonArray.optJSONObject(position).toString()).nextValue();
-//                    req.put("request", object);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//                array.put(req);
-//                Log.e("TAG", "REQ: " + array);
-//                Intent i = new Intent(getActivity(), MainActivity.class);
-//                i.putExtra("datas", array.toString());
-//                i.putExtra("type", "SCHEDULED");
-//                startActivity(i);
-//            });
 
             holder.rContainer.setOnClickListener(view -> {
                 Intent intent = new Intent(getApplicationContext(), RideRequestDetailsActivity.class);
@@ -876,9 +802,54 @@ public class RideRequest extends AppCompatActivity {
                 intent.putExtra("trip_distance", trip_distance);
                 intent.putExtra("trip_fare", trip_fare);
                 startActivity(intent);
+            });
+
+            // For Calling
+            holder.trackBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (provider_phone_number != null && !provider_phone_number.equalsIgnoreCase("null") && provider_phone_number.length() > 0) {
+                        System.out.println("val if 1 : " + provider_phone_number);
+                        try {
+                            Intent intentCall = new Intent(Intent.ACTION_DIAL);
+                            intentCall.setData(Uri.parse("tel:" + provider_phone_number));
+                            startActivity(intentCall);
+                            System.out.println("val if 2 : " + provider_phone_number);
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                    } else {
+                        System.out.println("val error : " + provider_phone_number);
+                        Toast.makeText(RideRequest.this, "User do not have a valid mobile number", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
+
+            holder.messageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                    Toast.makeText(RideRequest.this, "Getting Message ", Toast.LENGTH_SHORT).show();
+                    Intent intentChat = new Intent(RideRequest.this, InboxChatActivity.class);
+                    intentChat.putExtra("requestId", jsonArray.optJSONObject(position).optString("request_id"));
+                    intentChat.putExtra("providerId", provider_id);
+                    intentChat.putExtra("userId", jsonArray.optJSONObject(position).optString("user_id"));
+                    intentChat.putExtra("userName", jsonArray.optJSONObject(position).optString("first_name"));
+                    intentChat.putExtra("messageType", "up");
+                    System.out.println("request id: "+jsonArray.optJSONObject(position).optString("request_id"));
+                    startActivity(intentChat);
+                }
+            });
+
+            holder.pickUpBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(RideRequest.this, "Getting Ready for pickup", Toast.LENGTH_SHORT).show();
 
 
-
+                }
             });
 
         }
@@ -889,15 +860,12 @@ public class RideRequest extends AppCompatActivity {
         }
 
         public class MyViewHolder extends RecyclerView.ViewHolder {
-
             TextView nametv, ratingVal;
             RatingBar listitemrating;
             TextView fare, availableSeat, saddress,dropLocation,startTimeVal;
             ImageView  profileImgeIv;
-            Button btnCancel, btnStart,rejectBtn,acceptBtn;
-
-            LinearLayout rContainer;
-
+            Button btnCancel, btnStart,rejectBtn,acceptBtn,trackBtn,messageBtn,pickUpBtn;
+            LinearLayout rContainer,afterAcceptedContainerLL;
 
             public MyViewHolder(View itemView) {
                 super(itemView);
@@ -917,6 +885,14 @@ public class RideRequest extends AppCompatActivity {
 
                 listitemrating = itemView.findViewById(R.id.listitemrating);
                 rContainer = itemView.findViewById(R.id.rContainer);
+
+
+                afterAcceptedContainerLL = itemView.findViewById(R.id.afterAcceptedContainerLL);
+                trackBtn = itemView.findViewById(R.id.trackBtn);
+                messageBtn = itemView.findViewById(R.id.messageBtn);
+                pickUpBtn = itemView.findViewById(R.id.pickUpBtn);
+
+
 
 
             }

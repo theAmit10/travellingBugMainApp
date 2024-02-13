@@ -111,9 +111,7 @@ public class DocUploadActivity extends AppCompatActivity {
     ImageView backArrow;
     TextView txtUploa;
     Uri documentUri;
-
     private ShimmerFrameLayout mFrameLayout;
-
     private String first = "", boring_depth = "";
     private String fileExt = "";
     private byte[] b, b1, b2;
@@ -385,7 +383,6 @@ public class DocUploadActivity extends AppCompatActivity {
                             null, response -> {
                         Log.v("checkDocumentStatus", response + "Document");
                         try {
-
                             JSONArray jsonArray = response.getJSONArray("data");
                             responseArray = jsonArray;
                             DocAdapter docAdapter = new DocAdapter(jsonArray);
@@ -717,7 +714,6 @@ public class DocUploadActivity extends AppCompatActivity {
 
                             return headers;
                         }
-
 
                         @Override
                         protected java.util.Map<String, DataPart> getByteData() {

@@ -17,7 +17,6 @@ public class VerifyIdActivity extends AppCompatActivity {
 
     FloatingActionButton floatingActionButton2;
     TextInputEditText firstNameETL;
-
     ImageView backArrow;
 
     @Override
